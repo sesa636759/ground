@@ -1,127 +1,131 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
-    icon="🏅"
-    title="Badge Component"
-    description="A small visual indicator for status, counts, or categories."
+    icon="🏷️"
+    title="Badge"
+    description="A small component typically used to indicate status, categories, or numerical counts on top of other elements."
   ></pg-demo-header>
 
   <pg-demo-tabs>
-    <!-- Playground Slot -->
     <div slot="playground">
       <dm-badge-playground></dm-badge-playground>
     </div>
 
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Colors -->
-        <pg-example-section
-          id="colors"
-          title="Colors"
-          description="Semantic colors for different states."
-          [code]="colorsCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-grid col-3">
-            <ui-badge value="1" color="primary">Primary</ui-badge>
-            <ui-badge value="2" color="success">Success</ui-badge>
-            <ui-badge value="3" color="warning">Warning</ui-badge>
-            <ui-badge value="4" color="danger">Danger</ui-badge>
-            <ui-badge value="5" color="info">Info</ui-badge>
-          </div>
-        </pg-example-section>
-
-        <!-- Styles -->
-        <pg-example-section
-          id="styles"
-          title="Styles"
-          description="Standard, soft, and outlined variants."
-          [code]="stylesCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Standard (Filled)</h3>
-              <ui-badge value="New" variant="standard"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Soft variant</h3>
-              <ui-badge value="Hot" variant="soft" color="warning"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Outlined variant</h3>
-              <ui-badge value="99" variant="outlined" color="primary"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Dot Style</h3>
-              <ui-badge dot color="success">Online</ui-badge>
-            </div>
-          </div>
-        </pg-example-section>
-
-        <!-- Positions -->
-        <pg-example-section
-          id="positions"
-          title="Positions"
-          description="Place badges in any corner of a target element."
-          [code]="positionsCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <ui-badge value="5" position="top-right">
-                <div class="demo-target">Top Right</div>
+        <div class="examples-content">
+          <!-- Basic -->
+          <section class="demo-section" id="basic">
+            <div class="section-header"><h2>Basic Usage</h2><p>Positioned on an element to display numeric counts, unread status, or dots.</p></div>
+            <div class="demo-card badge-grid">
+              <ui-badge value="4">
+                <ui-icon name="bell" library="lucide" size="2em" class="icon-wrapper"></ui-icon>
+              </ui-badge>
+              <ui-badge [attr.value]="120" [attr.max]="99">
+                <ui-icon name="mail" library="lucide" size="2em" class="icon-wrapper"></ui-icon>
+              </ui-badge>
+              <ui-badge dot>
+                <ui-icon name="message-square" library="lucide" size="2em" class="icon-wrapper"></ui-icon>
               </ui-badge>
             </div>
-            <div class="demo-card">
-              <ui-badge value="5" position="top-left">
-                <div class="demo-target">Top Left</div>
-              </ui-badge>
-            </div>
-            <div class="demo-card">
-              <ui-badge value="5" position="bottom-right">
-                <div class="demo-target">Bottom Right</div>
-              </ui-badge>
-            </div>
-            <div class="demo-card">
-              <ui-badge value="5" position="bottom-left">
-                <div class="demo-target">Bottom Left</div>
-              </ui-badge>
-            </div>
-          </div>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Special Features -->
-        <pg-example-section
-          id="special"
-          title="Special Features"
-          description="Advanced features like max values, animations, and icons."
-          [code]="specialCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Max Value (100 -> 99+)</h3>
-              <ui-badge value="100" max="99" color="danger"></ui-badge>
+          <!-- Colors -->
+          <section class="demo-section" id="colors">
+            <div class="section-header"><h2>Colors & Gradients</h2><p>Predefined colors, stunning gradients, and fully custom color support.</p></div>
+            <div class="demo-card badge-row">
+              <ui-badge color="primary" value="New"></ui-badge>
+              <ui-badge color="success" value="Success"></ui-badge>
+              <ui-badge color="warning" value="Warn"></ui-badge>
+              <ui-badge color="danger" value="Error"></ui-badge>
+              <ui-badge gradient="blue-purple" value="Pro"></ui-badge>
+              <ui-badge custom-color="#ff00ff" custom-text-color="#ffffff" value="Custom"></ui-badge>
             </div>
-            <div class="demo-card">
-              <h3>Glow & Pulse</h3>
-              <ui-badge glow animation="pulse" value="!" color="success"></ui-badge>
+            <ui-code-preview [htmlCode]="colorsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Variants -->
+          <section class="demo-section" id="variants">
+            <div class="section-header"><h2>Style Variants</h2><p>Soft, outlined, and bordered configurations for varying emphasis.</p></div>
+            <div class="demo-card badge-row bg-surface-muted">
+              <ui-badge variant="standard" value="Standard"></ui-badge>
+              <ui-badge variant="soft" color="success" value="Soft"></ui-badge>
+              <ui-badge variant="outlined" color="primary" value="Outlined"></ui-badge>
+              <ui-badge variant="bordered" color="danger" value="Bordered"></ui-badge>
             </div>
-            <div class="demo-card">
-              <h3>Icon Support</h3>
-              <ui-badge icon="⭐" value="PRO" color="warning"></ui-badge>
+            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Shapes -->
+          <section class="demo-section" id="shapes">
+            <div class="section-header"><h2>Size & Shapes</h2><p>Different physical sizes and shapes (pill, circle, square).</p></div>
+            <div class="demo-card badge-stack">
+              <div class="badge-row">
+                <ui-badge size="sm" value="Small"></ui-badge>
+                <ui-badge size="md" value="Medium"></ui-badge>
+                <ui-badge size="lg" value="Large"></ui-badge>
+              </div>
+              <div class="badge-row">
+                <ui-badge shape="square" value="Square"></ui-badge>
+                <ui-badge shape="circle" value="9"></ui-badge>
+                <ui-badge shape="default" value="Pill Default"></ui-badge>
+              </div>
             </div>
-          </div>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="shapesCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Positioning -->
+          <section class="demo-section" id="positioning">
+            <div class="section-header"><h2>Position & Offset</h2><p>Place the badge on any corner, and precisely adjust via X/Y offsets.</p></div>
+            <div class="demo-card badge-grid">
+              <ui-badge value="1" position="top-right">
+                <div class="box"></div>
+              </ui-badge>
+              <ui-badge value="2" position="top-right" [attr.offset-x]="-10" [attr.offset-y]="10">
+                <div class="box"></div>
+              </ui-badge>
+              <ui-badge value="3" position="bottom-left">
+                <div class="box"></div>
+              </ui-badge>
+            </div>
+            <ui-code-preview [htmlCode]="positioningCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Animations -->
+          <section class="demo-section" id="animations">
+            <div class="section-header"><h2>Animations & Glow</h2><p>Catch the user's attention with CSS animations and dropshadow/glow effects.</p></div>
+            <div class="demo-card badge-row">
+              <ui-badge value="Alert" animation="pulse" color="danger"></ui-badge>
+              <ui-badge value="New" animation="bounce" color="primary"></ui-badge>
+              <ui-badge value="Error" animation="shake" color="warning"></ui-badge>
+              <div class="p-16 bg-dark rounded-8">
+                <ui-badge value="Glowing" glow color="success"></ui-badge>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="animationsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Interactive -->
+          <section class="demo-section" id="interactive">
+            <div class="section-header"><h2>Interactive & Icons</h2><p>Make them clickable, removable, or embed icons.</p></div>
+            <div class="demo-card badge-row">
+              <ui-badge value="Click Me" interactive (badgeClick)="handleBadgeClick()"></ui-badge>
+              <ui-badge value="Removable" closeable (badgeClose)="handleBadgeClose()"></ui-badge>
+              <ui-badge value="Approved" icon="check" icon-library="lucide" color="success"></ui-badge>
+            </div>
+            <ui-code-preview [htmlCode]="interactiveCode" activeLang="html"></ui-code-preview>
+          </section>
+
+        </div>
       </div>
     </div>
 
-    <!-- Docs Slot -->
     <div slot="docs">
       <pg-component-documentation componentId="badge"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
+
 

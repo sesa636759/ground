@@ -22,10 +22,10 @@
         <!-- All Types -->
         <pg-example-section
           id="all-types"
-          title="?? All Types"
+          title="🗂️ All Types"
           description="Pre-configured types with default content and icons"
           [code]="typesCode()"
-          style="margin-top: 0"
+          class="mt-0"
         >
           <div class="demo-grid col-3">
             <div class="demo-card">
@@ -240,23 +240,13 @@
         <!-- Premium Showcase -->
         <pg-example-section
           id="showcase"
-          title="? Premium Showcase"
+          title="💎 Premium Showcase"
           description="Highly interactive and specialized empty state patterns"
           [code]="showcaseCode()"
         >
           <div class="demo-grid col-2">
             <!-- Glassmorphism -->
-            <div
-              class="demo-card preview-box glass-bg"
-              style="
-                min-height: 400px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                border-radius: 16px;
-              "
-            >
+            <div class="demo-card preview-box glass-bg">
               <app-empty-state
                 variant="glass"
                 label="Glassmorphism"
@@ -268,18 +258,8 @@
             </div>
 
             <!-- Compact Sidebar Mode -->
-            <div
-              class="demo-card"
-              style="
-                max-width: 320px;
-                margin: 0 auto;
-                background: var(--surface-color);
-                border: 1px solid #e2e8f0;
-                border-radius: 12px;
-                height: 100%;
-              "
-            >
-              <h4>?? Compact Sidebar Mode</h4>
+            <div class="demo-card compact-sidebar">
+              <h4>📱 Compact Sidebar Mode</h4>
               <app-empty-state
                 type="no-data"
                 compact
@@ -292,8 +272,8 @@
             </div>
 
             <!-- Custom Illustration (URL) -->
-            <div class="demo-card" style="display: flex; flex-direction: column; height: 100%">
-              <h4>??? Custom SVG Illustration</h4>
+            <div class="demo-card flex-column h-full">
+              <h4>🎨 Custom SVG Illustration</h4>
               <app-empty-state
                 label="Data Syncing"
                 message="Please wait while we sync your assets across all devices."
@@ -432,20 +412,12 @@
           [code]="premiumCode()"
         >
           <div class="demo-grid col-2">
-            <div class="demo-card" style="grid-column: 1 / -1; text-align: center">
-              <h4>? Action Loading & Celebration</h4>
-              <p style="font-size: 0.85rem; color: #666; margin-bottom: 16px">
+            <div class="demo-card col-span-all text-center">
+              <h4>✨ Action Loading & Celebration</h4>
+              <p class="text-muted mb-16 text-sm">
                 Click the button to trigger a loading state followed by a celebration effect.
               </p>
-              <div
-                [style.background]="celebrationActive ? 'rgba(16, 185, 129, 0.1)' : 'transparent'"
-                style="
-                  border-radius: 12px;
-                  transition: all 0.3s ease;
-                  padding: 20px;
-                  border: 1px dashed #e2e8f0;
-                "
-              >
+              <div class="celebration-zone" [class.active]="celebrationActive">
                 <app-empty-state
                   type="coming-soon"
                   label="Beta Access"
@@ -466,6 +438,7 @@
                 message="Join the waitlist for exclusive features."
                 primary-action="Join Waitlist"
                 primary-action-icon="fas fa-star"
+                iconLibrary="fa"
                 variant="glass"
                 animated
               ></app-empty-state>
@@ -516,10 +489,10 @@
           <div class="demo-container">
             <section class="demo-section">
               <div class="section-header">
-                <h2>?? Documentation</h2>
+                <h2>📚 Documentation</h2>
                 <p>Links, API references, and detailed usage notes</p>
               </div>
-              <div class="demo-card" style="padding: 24px">
+              <div class="demo-card p-24">
                 <p>
                   The documentation for this component is currently being compiled. Our technical
                   writers are working to provide comprehensive API references, accessibility

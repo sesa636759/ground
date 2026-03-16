@@ -4,6 +4,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { DmTimerPlaygroundComponent } from '../../../playground/common/timer-playground/timer-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -21,30 +22,36 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
   templateUrl: './timer-demo.component.html',
   styleUrl: './timer-demo.component.scss',
 })
-export class DmTimerDemoComponent {
+export class DmTimerDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'modes', title: 'Timer Modes', icon: 'timer', iconLibrary: 'lucide' },
-    { id: 'formats', title: 'Display Formats', icon: 'clock', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Basic Timers', icon: 'timer', iconLibrary: 'lucide' },
+    { id: 'modes', title: 'Modes & Precision', icon: 'clock', iconLibrary: 'lucide' },
+    { id: 'steps', title: 'Multi-Step Flow', icon: 'list-checks', iconLibrary: 'lucide' },
+    { id: 'display', title: 'Visualization', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'alerts', title: 'Alerts & Sounds', icon: 'bell', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Persistence & Behavior', icon: 'save', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<ui-timer [duration]="60" mode="countdown" format="mm:ss"></ui-timer>`;
+  pomodoroSteps = JSON.stringify([
+    { label: 'Work', duration: 1500, color: '#ef4444' },
+    { label: 'Short Break', duration: 300, color: '#10b981' },
+    { label: 'Work', duration: 1500, color: '#ef4444' },
+    { label: 'Long Break', duration: 900, color: '#3b82f6' }
+  ]);
 
-  modesCode = `<!-- Countdown from 5 mins -->
-<ui-timer mode="countdown" [duration]="300"></ui-timer>
+  basicCode = `<ui-timer [duration]="60"></ui-timer>`;
 
-<!-- Stopwatch -->
-<ui-timer mode="stopwatch"></ui-timer>`;
+  modesCode = `<ui-timer mode="stopwatch" precision="milliseconds"></ui-timer>
+<ui-timer mode="countdown" format="human" [duration]="3600"></ui-timer>`;
 
-  formatsCode = `<!-- Seconds Only -->
-<ui-timer format="ss"></ui-timer>
+  stepsCode = `<ui-timer [steps]='[{"label":"Exercise","duration":45},{"label":"Rest","duration":15}]' loop auto-start></ui-timer>`;
 
-<!-- Full Timestamp -->
-<ui-timer format="HH:mm:ss"></ui-timer>`;
+  displayCode = `<ui-timer variant="compact"></ui-timer>
+<ui-timer progress-type="linear" [duration]="120"></ui-timer>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  alertsCode = `<ui-timer enable-sound enable-notifications [alert-threshold]="20"></ui-timer>`;
+
+  targetDateCode = `<ui-timer target-date="2025-01-01T00:00:00"></ui-timer>`;
+
+  behaviorCode = `<ui-timer persist="my-timer-key" auto-start></ui-timer>`;
 }

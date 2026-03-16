@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmCarouselPlaygroundComponent } from '../../../playground/sets/carousel-playground/carousel-playground.component';
+import { DsCarouselPlaygroundComponent } from '../../../playground/sets/carousel-playground/carousel-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmCarouselPlaygroundComponent,
+    DsCarouselPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -403,10 +403,7 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
 
   responsiveCode = `<ui-carousel
   slides-to-show="3"
-  responsive=[
-    { breakpoint: 1024, settings: { slides-to-show: 2 } },
-    { breakpoint: 640, settings: { slides-to-show: 1 } }
-  ]
+  [responsive]="[{ breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 640, settings: { slidesToShow: 1 } }]"
 >
   <div class="slide">Responsive 1</div>
   <div class="slide">Responsive 2</div>

@@ -14,7 +14,7 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section" id="monthly" style="margin-top: 0">
+          <section class="demo-section mt-0" id="monthly" >
             <div class="section-header">
               <h2>🌹 Monthly Revenue</h2>
               <p>
@@ -22,14 +22,14 @@
                 patterns.
               </p>
             </div>
-            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+            <div class="demo-card display-flex justify-center p-24" >
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="right"
                 [responsive]="true"
                 [data]="monthlyData"
-                style="width: 480px; height: 360px"
+                 class="w-480 h-360"
               ></app-chart>
             </div>
             <ui-code-preview
@@ -45,14 +45,14 @@
               <h2>📊 Performance Radar</h2>
               <p>Compare performance metrics across multiple dimensions using a rose chart.</p>
             </div>
-            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+            <div class="demo-card display-flex justify-center p-24" >
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="bottom"
                 [responsive]="true"
                 [data]="perfData"
-                style="width: 480px; height: 360px"
+                 class="w-480 h-360"
               ></app-chart>
             </div>
             <ui-code-preview
@@ -68,14 +68,14 @@
               <h2>💨 Wind Direction</h2>
               <p>Classic meteorological wind rose showing frequency by compass direction.</p>
             </div>
-            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+            <div class="demo-card display-flex justify-center p-24" >
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="right"
                 [responsive]="true"
                 [data]="windData"
-                style="width: 480px; height: 360px"
+                 class="w-480 h-360"
               ></app-chart>
             </div>
             <ui-code-preview

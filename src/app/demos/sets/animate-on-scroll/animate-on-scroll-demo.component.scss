@@ -9,15 +9,102 @@
     align-items: flex-start;
     /* scrollable content usually needs top alignment */
   }
+
+  &.scrollable-preview {
+    min-height: 600px;
+    padding-top: 300px;
+    display: flex;
+    justify-content: center;
+    background: var(--surface-muted);
+    border-radius: 12px;
+  }
 }
 
-.animated-box {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  padding: 40px;
+.content-box {
+  padding: 30px;
+  background: var(--bg-secondary);
   border-radius: 12px;
-  font-size: 1.2rem;
-  font-weight: 600;
   text-align: center;
-  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 400px;
+
+  h3 { margin: 0 0 10px 0; }
+  p { margin: 0; opacity: 0.8; }
 }
+
+.cinematic-box {
+  @extend .content-box;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-box {
+  @extend .content-box;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 40px;
+}
+
+.stagger-item {
+  padding: 20px;
+  margin: 10px 0;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+
+  &.fast { padding: 15px; margin: 8px 0; text-align: center; }
+  &.slow { margin: 12px 0; text-align: center; }
+
+  p { margin: 5px 0 0 0; opacity: 0.8; }
+}
+
+.trigger-box {
+  display: flex;
+  gap: 20px;
+
+  .sticky-sidebar {
+    flex: 0 0 200px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+  }
+
+  .main-column { flex: 1; }
+  
+  .generic-content {
+    padding: 40px;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .trigger-zone {
+    padding: 60px;
+    background: linear-gradient(135deg, #ffa500, #ff6347);
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    margin: 400px 0;
+    
+    h3 { margin: 0 0 10px 0; color: white; }
+    p { margin: 0; }
+  }
+}
+
+.scrub-box {
+  text-align: center;
+  .scrub-item {
+    width: 150px;
+    height: 150px;
+    margin: 40px auto;
+    background: linear-gradient(45deg, #0cebeb, #20e2ff, #f637ec);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+  }
+}
+

@@ -26,42 +26,53 @@ import { DmAnchorPlaygroundComponent } from '../../../playground/sets/anchor-pla
 })
 export class DmAnchorDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮', iconLibrary: 'emoji' },
     // Basic Layouts
-    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: 'panel-left', iconLibrary: 'lucide' },
-    { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: 'panel-right', iconLibrary: 'lucide' },
-    { id: 'horizontal-top', title: 'Horizontal Navigation (Top)', icon: 'panel-top', iconLibrary: 'lucide' },
+    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '⬅️', iconLibrary: 'emoji' },
+    {
+      id: 'vertical-right',
+      title: 'Vertical Navigation (Right)',
+      icon: '➡️',
+      iconLibrary: 'emoji',
+    },
+    {
+      id: 'horizontal-top',
+      title: 'Horizontal Navigation (Top)',
+      icon: '🔼',
+      iconLibrary: 'emoji',
+    },
     {
       id: 'horizontal-bottom',
       title: 'Horizontal Navigation (Bottom)',
-      icon: 'panel-bottom',
-      iconLibrary: 'lucide',
+      icon: '🔽',
+      iconLibrary: 'emoji',
     },
     // Features
-    { id: 'with-badges', title: 'Anchor with Badges', icon: 'info', iconLibrary: 'lucide' },
-    { id: 'with-events', title: 'Horizontal with Events', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'with-badges', title: 'Anchor with Badges', icon: '📛', iconLibrary: 'emoji' },
+    { id: 'with-events', title: 'Horizontal with Events', icon: '⚡', iconLibrary: 'emoji' },
     // Sizes
-    { id: 'size-small', title: 'Small Size', icon: 'minimize-2', iconLibrary: 'lucide' },
-    { id: 'size-medium', title: 'Medium Size (Default)', icon: 'maximize-2', iconLibrary: 'lucide' },
-    { id: 'size-large', title: 'Large Size', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'size-small', title: 'Small Size', icon: '🤏', iconLibrary: 'emoji' },
+    { id: 'size-medium', title: 'Medium Size (Default)', icon: '📏', iconLibrary: 'emoji' },
+    { id: 'size-large', title: 'Large Size', icon: '📐', iconLibrary: 'emoji' },
     // Themes
-    { id: 'theme-light', title: 'Light Theme', icon: 'sun', iconLibrary: 'lucide' },
-    { id: 'theme-dark', title: 'Dark Theme', icon: 'moon', iconLibrary: 'lucide' },
-    { id: 'theme-custom', title: 'Custom Theme', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'theme-light', title: 'Light Theme', icon: '☀️', iconLibrary: 'emoji' },
+    { id: 'theme-dark', title: 'Dark Theme', icon: '🌙', iconLibrary: 'emoji' },
+    { id: 'theme-custom', title: 'Custom Theme', icon: '🎨', iconLibrary: 'emoji' },
     // Number Styles
-    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: 'list-ordered', iconLibrary: 'lucide' },
-    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: 'list-ordered', iconLibrary: 'lucide' },
-    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: 'a-large-small', iconLibrary: 'lucide' },
-    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: '1️⃣', iconLibrary: 'emoji' },
+    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: '🔢', iconLibrary: 'emoji' },
+    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: '🔤', iconLibrary: 'emoji' },
+    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: '🏛️', iconLibrary: 'emoji' },
     // Alignment
-    { id: 'align-left', title: 'Horizontal Left Aligned', icon: 'align-left', iconLibrary: 'lucide' },
-    { id: 'align-center', title: 'Horizontal Center Aligned', icon: 'align-center', iconLibrary: 'lucide' },
-    { id: 'align-right', title: 'Horizontal Right Aligned', icon: 'align-right', iconLibrary: 'lucide' },
+    { id: 'align-left', title: 'Horizontal Left Aligned', icon: '⬅️', iconLibrary: 'emoji' },
+    { id: 'align-center', title: 'Horizontal Center Aligned', icon: '↔️', iconLibrary: 'emoji' },
+    { id: 'align-right', title: 'Horizontal Right Aligned', icon: '➡️', iconLibrary: 'emoji' },
     // Advanced
-    { id: 'affix-behavior', title: 'Affix Behavior', icon: 'pin', iconLibrary: 'lucide' },
-    { id: 'progress-indicator', title: 'Progress Indicator', icon: 'loader', iconLibrary: 'lucide' },
-    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: 'link', iconLibrary: 'lucide' },
-    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: 'keyboard', iconLibrary: 'lucide' },
-    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: 'hierarchy', iconLibrary: 'lucide' },
+    { id: 'affix-behavior', title: 'Affix Behavior', icon: '📌', iconLibrary: 'emoji' },
+    { id: 'progress-indicator', title: 'Progress Indicator', icon: '📈', iconLibrary: 'emoji' },
+    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: '🔗', iconLibrary: 'emoji' },
+    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: '⌨️', iconLibrary: 'emoji' },
+    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: '🔝', iconLibrary: 'emoji' },
   ];
 
   // Sample data for anchor items
@@ -69,12 +80,14 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
     { id: 'intro', label: 'Introduction' },
     { id: 'features', label: 'Features' },
     { id: 'api', label: 'API Reference' },
+    { id: 'additional', label: 'Advanced Usage' },
   ];
 
   verticalRightItems = [
     { id: 'r-intro', label: 'Introduction' },
     { id: 'r-features', label: 'Features' },
     { id: 'r-api', label: 'API Reference' },
+    { id: 'r-extra', label: 'Extra Content' },
   ];
 
   horizontalTopItems = [
@@ -197,7 +210,7 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   position="left"
   sticky="true"
   smooth-scroll="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   verticalRightCode = signal(`<ui-anchor
@@ -205,7 +218,7 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   position="right"
   sticky="true"
   smooth-scroll="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   horizontalTopCode = signal(`<ui-anchor
@@ -213,7 +226,7 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   position="top"
   sticky="true"
   smooth-scroll="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   horizontalBottomCode = signal(`<ui-anchor
@@ -221,111 +234,111 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   position="bottom"
   sticky="true"
   smooth-scroll="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   badgeCode = signal(`<ui-anchor
   mode="vertical"
   position="left"
   show-badge="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   sizeSmallCode = signal(`<ui-anchor
   mode="vertical"
   size="small"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   sizeMediumCode = signal(`<ui-anchor
   mode="vertical"
   size="medium"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   sizeLargeCode = signal(`<ui-anchor
   mode="vertical"
   size="large"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   numericCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="numeric"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   decimalCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="decimal"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   alphaCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="alpha"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   romanCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="roman"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   affixCode = signal(`<ui-anchor
   mode="vertical"
   affix
   affix-offset="50"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   progressCode = signal(`<ui-anchor
   mode="vertical"
   show-progress="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   hashCode = signal(`<ui-anchor
   mode="vertical"
   update-hash="true"
   smooth-scroll="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   keyboardCode = signal(`<ui-anchor
   mode="vertical"
   arrow-navigation="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   nestedCode = signal(`<ui-anchor
   mode="vertical"
   collapsible="true"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   // Theme variants
   lightThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="light"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   darkThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="dark"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   customThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="custom"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   // Event handling
@@ -333,26 +346,26 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   mode="horizontal"
   position="top"
   (change)="onActiveChange($event)"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   // Alignment options
   alignLeftCode = signal(`<ui-anchor
   mode="horizontal"
   align="left"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   alignCenterCode = signal(`<ui-anchor
   mode="horizontal"
   align="center"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   alignRightCode = signal(`<ui-anchor
   mode="horizontal"
   align="right"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 
   playgroundCode = signal(`<ui-anchor
@@ -362,6 +375,6 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   [smooth-scroll]="smoothScroll"
   [offset-top]="offsetTop"
   [show-numbers]="showNumbers"
-  [links]="items"
+  [items]="items"
 ></ui-anchor>`);
 }

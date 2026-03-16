@@ -1,5 +1,19 @@
 @use '../../../../styles/playground-base.scss';
 
+.waterfall-gap-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.waterfall-chart-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.waterfall-chart-svg {
+  display: block;
+  font-family: inherit;
+}
+
 .chart-preview-wrapper {
   display: flex;
   justify-content: center;

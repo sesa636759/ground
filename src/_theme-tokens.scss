@@ -85,6 +85,7 @@
   --surface-1: #ffffff;
   --surface-2: #fafbfc;
   --surface-3: #f5f7fa;
+  --surface-low: var(--surface-2);
   --surface-elevated: #ffffff;
 
   /* Stencil Compatibility Tokens */
@@ -95,10 +96,20 @@
   --scroll-color-rgb: 61, 205, 88;
 
   --text-primary: #0f172a;
+  --text-color: var(--text-primary);
   --text-secondary: #475569;
   --text-tertiary: #94a3b8;
   --text-muted: #cbd5e1;
+  --color-neutral-500: #6b7280;
+  --color-neutral-800: #1f2937;
+  --color-emerald-500: #10b981;
+  --color-cyan-500: #0ea5e9;
+  --color-slate-50: #f8fafc;
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-blue-100: #dbeafe;
   --border-color: #e2e8f0;
+  --border-subtle: var(--border-color);
   --border-light: #f1f5f9;
   --border-strong: #cbd5e1;
   --overlay: rgba(0, 0, 0, 0.5);
@@ -114,6 +125,7 @@
   --surface-1: #0a1a0e;
   --surface-2: #0d2a1a;
   --surface-3: #1a3321;
+  --surface-low: var(--surface-2);
   --surface-elevated: #0d2a1a;
 
   /* Stencil Compatibility Tokens */
@@ -124,10 +136,12 @@
   --scroll-color-rgb: 61, 205, 88;
 
   --text-primary: #f1f5f9;
+  --text-color: var(--text-primary);
   --text-secondary: #cbd5e1;
   --text-tertiary: #94a3b8;
   --text-muted: #64748b;
   --border-color: rgba(61, 205, 88, 0.1);
+  --border-subtle: var(--border-color);
   --border-light: rgba(61, 205, 88, 0.05);
   --border-strong: rgba(61, 205, 88, 0.2);
   --overlay: rgba(0, 0, 0, 0.75);
@@ -350,4 +364,66 @@ body {
 
 .animate-scale-in {
   animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+// Theme Tokens Partial
+
+// Colors
+$color-bg-primary: #fff;
+$color-bg-secondary: #f8fafc;
+$color-text-primary: #222;
+$color-text-secondary: #6b7280;
+$color-border: #e5e7eb;
+
+// Spacing
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 24px;
+$space-lg: 32px;
+$space-xl: 40px;
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-preview {
+  padding: $space-xl;
+  @include flex-column;
+  align-items: center;
+  min-height: 500px;
+  background: $color-bg-secondary;
+}
+
+@mixin rounded {
+  border-radius: $radius-sm;
+}
+
+@mixin preview-stage {
+  width: 100%;
+  background: $color-bg-primary;
+  @include rounded;
+}
+
+// Fragments/Partials
+%preview-stage-base {
+  @include preview-stage;
+}
+%flex-center-base {
+  @include flex-center;
+}
+%flex-column-base {
+  @include flex-column;
 }

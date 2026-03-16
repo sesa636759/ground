@@ -1,1 +1,18 @@
 @use '../../../../styles/playground-base.scss';
+
+.dashboard-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-variants-section {
+  margin-top: 32px;
+}
+
+.dashboard-variants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}

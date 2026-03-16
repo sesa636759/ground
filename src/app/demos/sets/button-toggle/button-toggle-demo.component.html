@@ -94,6 +94,49 @@
           </div>
         </pg-example-section>
 
+        <!-- Shapes -->
+        <pg-example-section
+          id="shapes"
+          title="Button Shapes"
+          description="Rectangle, Round, Pill, Circle, and Square shapes"
+          [code]="shapesCode"
+        >
+          <div class="flex-wrap gap-16">
+            <ui-button-toggle-group shape="rectangle" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
+            <ui-button-toggle-group shape="pill" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
+            <ui-button-toggle-group shape="circle" display-mode="icon-only" value="left" [options]="alignOptions"></ui-button-toggle-group>
+            <ui-button-toggle-group shape="square" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
+          </div>
+        </pg-example-section>
+
+        <!-- Avatars & Status -->
+        <pg-example-section
+          id="avatars"
+          title="Avatars & Status"
+          description="Premium avatars with status dot indicator support"
+          [code]="avatarsCode"
+        >
+          <ui-button-toggle-group value="user1">
+            <ui-button-toggle value="user1" label="Alex" avatar-src="https://i.pravatar.cc/150?u=a" status="online"></ui-button-toggle>
+            <ui-button-toggle value="user2" label="Jordan" avatar-src="https://i.pravatar.cc/150?u=j" status="busy"></ui-button-toggle>
+            <ui-button-toggle value="user3" label="Taylor" avatar-src="https://i.pravatar.cc/150?u=t" status="offline"></ui-button-toggle>
+          </ui-button-toggle-group>
+        </pg-example-section>
+
+        <!-- Badges & Tooltips -->
+        <pg-example-section
+          id="badges-tooltips"
+          title="Badges & Tooltips"
+          description="Enhance toggles with notifications and helpful information"
+          [code]="badgesCode"
+        >
+          <ui-button-toggle-group value="inbox">
+            <ui-button-toggle value="inbox" label="Inbox" icon="fas fa-inbox" badge="12" tooltip="12 New Messages"></ui-button-toggle>
+            <ui-button-toggle value="sent" label="Sent" icon="fas fa-paper-plane" tooltip="View sent items"></ui-button-toggle>
+            <ui-button-toggle value="drafts" label="Drafts" icon="fas fa-file-alt" badge="3" tooltip="3 Drafts waiting"></ui-button-toggle>
+          </ui-button-toggle-group>
+        </pg-example-section>
+
         <!-- Sizes -->
         <pg-example-section
           id="sizes"
@@ -138,73 +181,35 @@
           </div>
         </pg-example-section>
 
-        <!-- Icon Only -->
+        <!-- Multi-Select & Search -->
         <pg-example-section
-          id="icon-only"
-          title="Icon Only"
-          description="Compact toggle buttons with icons and no label text � ideal for toolbars"
-          [code]="iconOnlyCode"
+          id="multi-select"
+          title="Multi-Select & Search"
+          description="Advanced group features for searching and batch selection"
+          [code]="multiSelectCode"
         >
-          <div class="demo-grid col-2">
+          <div class="demo-grid col-1">
             <div class="demo-card">
-              <h4 class="demo-sub-title">View Modes</h4>
+              <h4 class="demo-sub-title">Multi-Select with Search & Batch</h4>
               <ui-button-toggle-group
-                label="View"
-                value="grid"
-                color="primary"
-                display-mode="icon-only"
-                [options]="iconOnlyOptions"
+                multi-select="true"
+                search-enabled="true"
+                batch-actions="true"
+                label="Select Categories"
+                [options]="categoryOptions"
               ></ui-button-toggle-group>
             </div>
             <div class="demo-card">
-              <h4 class="demo-sub-title">Text Alignment</h4>
+              <h4 class="demo-sub-title">Multi-Select Dropdown with Export</h4>
               <ui-button-toggle-group
-                label="Align"
-                value="center"
-                color="secondary"
-                display-mode="icon-only"
-                [options]="iconOnlyAlignOptions"
+                mode="dropdown"
+                multi-select="true"
+                search-enabled="true"
+                export-enabled="true"
+                label="Group Permissions"
+                [options]="userListOptions"
               ></ui-button-toggle-group>
             </div>
-          </div>
-        </pg-example-section>
-
-        <pg-example-section
-          id="dropdown"
-          title="Dropdown Mode"
-          description="Single button with a dropdown menu for selection"
-          [code]="dropdownCode"
-        >
-          <ui-button-toggle-group
-            mode="dropdown"
-            label="Export Options"
-            value="pdf"
-            [options]="exportOptions"
-          ></ui-button-toggle-group>
-        </pg-example-section>
-
-        <!-- Split Button -->
-        <pg-example-section
-          id="split-button"
-          title="Split Button"
-          description="Action button with a separate dropdown for additional options"
-          [code]="splitButtonCode"
-        >
-          <div class="demo-grid col-2">
-            <ui-button-toggle-group
-              mode="dropdown"
-              keep-button-label="true"
-              label="File Operations"
-              value="file"
-              [options]="actionsMenuOptions"
-            ></ui-button-toggle-group>
-            <ui-button-toggle-group
-              mode="dropdown"
-              keep-button-label="false"
-              label="Select Action"
-              value="new"
-              [options]="actionsMenuOptions"
-            ></ui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -261,10 +266,10 @@
         >
           <ui-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
             <div slot="dropdown-content">
-              <div style="padding: 16px; min-width: 220px">
-                <h4 style="margin-top: 0">Filter Content</h4>
+              <div class="p-16 min-w-220">
+                <h4 class="mt-0">Filter Content</h4>
                 <p>Custom HTML or components can be projected here.</p>
-                <ui-button style="width: 100%; padding: 8px">Apply Changes</ui-button>
+                <ui-button class="w-full p-8">Apply Changes</ui-button>
               </div>
             </div>
           </ui-button-toggle-group>

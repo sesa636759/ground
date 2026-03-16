@@ -1,3 +1,22 @@
 @use '../../../../styles/playground-base.scss';
 
+.otp-global-section,
+.otp-appearance-section,
+.otp-states-section {
+  padding: 16px;
+}
+
+.otp-preview {
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.otp-preview-inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* Playground-specific overrides */

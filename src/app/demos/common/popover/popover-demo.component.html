@@ -42,7 +42,7 @@
               <ui-input
                 type="text"
                 placeholder="Focus Me"
-                style="padding: 8px; border: 1px solid var(--color-border); border-radius: 6px"
+                 class="p-8 border-color-border rounded-6"
               ></ui-input>
             </ui-popover>
           </div>
@@ -103,15 +103,15 @@
         >
           <ui-popover heading="User Profile" interactive>
             <ui-button label="View Profile" variant="primary"></ui-button>
-            <div slot="content" style="display: flex; gap: 12px; align-items: center; padding: 4px">
+            <div slot="content"  class="display-flex gap-12 items-center p-4">
               <img
                 src="https://ui-avatars.com/api/?name=PK&background=6366f1&color=fff"
-                style="width: 40px; height: 40px; border-radius: 50%"
+                 class="w-40 h-40 rounded-50"
                 alt="Avatar"
               />
               <div>
-                <strong style="display: block">Praveen Kumar</strong>
-                <span style="font-size: 12px; color: #6b7280">Lead Architect</span>
+                <strong  class="display-block">Praveen Kumar</strong>
+                <span  class="fs-12 text-gray-500">Lead Architect</span>
               </div>
             </div>
           </ui-popover>

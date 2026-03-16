@@ -1,11 +1,4 @@
-﻿import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ViewChild,
-  ElementRef,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -19,16 +12,14 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   encapsulation: ViewEncapsulation.None,
 })
 export class DmDockPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
-  @ViewChild('demoElement') demoElement!: ElementRef;
-
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
-    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'settings', title: 'Core Settings', icon: '⚙️', iconLibrary: 'emoji' },
+    { id: 'style', title: 'Appearance', icon: '🎨', iconLibrary: 'emoji' },
   ];
 
-  defaultOpen = ['layout'];
+  accordionDefaultOpen = ['settings'];
 
   positionOptions = [
     { label: 'Bottom', value: 'bottom' },
@@ -37,16 +28,31 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
     { label: 'Right', value: 'right' },
   ];
 
-  model = [
-    { label: 'Finder', icon: 'search', command: () => this.logAction('Finder') },
-    { label: 'App Store', icon: 'shopping-bag', command: () => this.logAction('App Store') },
-    { label: 'Photos', icon: 'image', command: () => this.logAction('Photos') },
-    { label: 'Settings', icon: 'settings', command: () => this.logAction('Settings') },
-    { label: 'Trash', icon: 'trash-2', command: () => this.logAction('Trash') },
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
   ];
 
-  modelJson = JSON.stringify(this.model);
-  lastAction = '';
+  iconLibraryOptions = [
+    { label: 'Emoji', value: 'emoji' },
+    { label: 'Default', value: 'default' },
+    { label: 'Lucide', value: 'lucide' },
+    { label: 'Ionicons', value: 'ionicons' },
+    { label: 'FontAwesome', value: 'fontawesome' },
+    { label: 'Bootstrap', value: 'bootstrap' },
+  ];
+
+  items = [
+    { id: 'finder', label: 'Finder', icon: '🔍', iconLibrary: 'emoji' },
+    { id: 'appstore', label: 'App Store', icon: '🛍️', iconLibrary: 'emoji' },
+    { id: 'photos', label: 'Photos', icon: '🖼️', iconLibrary: 'emoji' },
+    { separator: true },
+    { id: 'settings', label: 'Settings', icon: '⚙️', active: true, iconLibrary: 'emoji' },
+    { id: 'trash', label: 'Trash', icon: '🗑️', badge: 3, iconLibrary: 'emoji' },
+  ];
+
+  itemsJson = JSON.stringify(this.items, null, 2);
 
   constructor() {
     super();
@@ -58,30 +64,52 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
 
   getDefaultConfig() {
     return {
+      items: JSON.stringify([
+        { id: 'finder', label: 'Finder', icon: '🔍', iconLibrary: 'emoji' },
+        { id: 'appstore', label: 'App Store', icon: '🛍️', iconLibrary: 'emoji' },
+        { id: 'photos', label: 'Photos', icon: '🖼️', iconLibrary: 'emoji' },
+        { separator: true },
+        { id: 'settings', label: 'Settings', icon: '⚙️', iconLibrary: 'emoji' },
+        { id: 'trash', label: 'Trash', icon: '🗑️', iconLibrary: 'emoji' },
+      ]),
       position: 'bottom',
-      breakpoint: '960px',
-      autoZIndex: true,
+      size: 'md',
       magnify: true,
-      blurEffect: false,
+      blurEffect: true,
       showLabels: true,
+      iconLibrary: 'emoji',
     };
   }
 
   updateConfig() {
-    setTimeout(() => {
-      if (!this.demoElement) return;
-      let code = this.getCleanFormattedDom(this.demoElement, 'ui-dock');
-      code = code.replace('></ui-dock>', '\n  [items]="menuItems"\n></ui-dock>');
-      this.generatedCode.set(code);
-      this.refreshCode();
-    }, 50);
+    let code = `<ui-dock\n`;
+    code += `  [items]="dockItems"\n`;
+    if (this.pgConfig.position !== 'bottom') code += `  position="${this.pgConfig.position}"\n`;
+    if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
+    if (!this.pgConfig.magnify) code += `  [magnify]="false"\n`;
+    if (!this.pgConfig.blurEffect) code += `  [blur-effect]="false"\n`;
+    if (!this.pgConfig.showLabels) code += `  [show-labels]="false"\n`;
+    if (this.pgConfig.iconLibrary !== 'default')
+      code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+
+    code += `></ui-dock>`;
+
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
-  logAction(action: string) {
-    this.lastAction = action;
-    this.logEvent(`Dock item clicked: ${action}`);
+  onJsonChange() {
+    try {
+      if (this.pgConfig.items) JSON.parse(this.pgConfig.items);
+      this.updateConfig();
+    } catch (e) {}
+  }
+
+  onDockItemClick(ev: any) {
+    this.logEvent(`Dock Item Clicked: ${ev.detail.itemId}`);
+  }
+
+  onOrderChange(ev: any) {
+    this.logEvent('Dock Items Order Changed');
   }
 }
-
-
-

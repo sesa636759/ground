@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -25,10 +25,10 @@ export class DmSplitButtonPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   menuItems = [
-    { label: 'Save and Exit', icon: '??' },
-    { label: 'Save as Draft', icon: '??' },
+    { label: 'Save and Exit', icon: '💾' },
+    { label: 'Save as Draft', icon: '📝' },
     { separator: true },
-    { label: 'Discard', icon: '???' },
+    { label: 'Discard', icon: '🗑️' },
   ];
 
   constructor() {
@@ -39,7 +39,7 @@ export class DmSplitButtonPlaygroundComponent extends BasePlaygroundComponent {
   getDefaultConfig() {
     return {
       label: 'Save Changes',
-      icon: '??',
+      icon: '💾',
       variant: 'primary',
       size: 'md',
       disabled: false,

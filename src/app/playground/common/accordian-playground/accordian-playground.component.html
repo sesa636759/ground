@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-visual" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -52,7 +52,7 @@
       ></ui-input>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.hideArrow" (ngModelChange)="updateConfig()" /> Hide Arrow
       </label>
@@ -69,7 +69,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Expansion Mode</label>
       <ui-dropdown
@@ -79,7 +79,7 @@
       ></ui-dropdown>
     </div>
 
-    <div class="control-group" style="margin-top: 16px">
+    <div class="control-group mt-16">
       <label>Default Open (IDs, comma-separated)</label>
       <ui-input
         type="text"
@@ -89,7 +89,7 @@
       ></ui-input>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
@@ -116,7 +116,7 @@
     </div>
   </div>
 
-  <div slot="content-animation" class="control-grid" style="padding: 16px">
+  <div slot="content-animation" class="control-grid p-16">
     <div class="control-group">
       <label>Duration (ms)</label>
       <ui-input
@@ -133,7 +133,7 @@
         [options]="timingOptions"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.lazy" (ngModelChange)="updateConfig()" /> Lazy Load
       </label>
@@ -164,7 +164,7 @@
       [attr.animation-timing]="pgConfig.animationTiming"
       [attr.lazy]="pgConfig.lazy ? '' : null"
       [attr.header-level]="pgConfig.headerLevel"
-      style="width: 100%"
+       class="w-full"
       (accordionChange)="onAccordionChange($event)"
     >
     </ui-accordion>

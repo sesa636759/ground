@@ -15,7 +15,7 @@
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Basic Tree -->
-        <section class="demo-section" id="basic-tree" style="margin-top: 0">
+        <section class="demo-section mt-0" id="basic-tree">
           <div class="section-header">
             <h2>🌳 Basic Tree</h2>
             <p>Simple tree structure with expandable nodes</p>
@@ -241,10 +241,7 @@
           </div>
           <div class="demo-card">
             <h3>Dark Mode</h3>
-            <div
-              class="tree-container"
-              style="background: #0f172a; padding: 2rem; border-radius: 8px"
-            >
+            <div class="tree-container bg-dark p-32 rounded-8">
               <app-tree [nodes]="projectTreeData" show-lines theme="dark"></app-tree>
             </div>
           </div>

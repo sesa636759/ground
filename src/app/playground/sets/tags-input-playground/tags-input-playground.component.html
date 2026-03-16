@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-grid">
       <div class="control-group">
         <label>Label</label>
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.enableAutocomplete" (ngModelChange)="updateConfig()" />
         Autocomplete
@@ -124,3 +124,72 @@
     (clear)="eventLog.set([])"
   ></pg-playground-event-log>
 </pg-playground>
+
+<!-- All possible variants/examples -->
+<div class="mt-32">
+  <h3>All Variants & Examples</h3>
+  <div class="flex-wrap gap-24">
+    <app-tags-input
+      label="Technologies"
+      placeholder="Add a tag..."
+      size="small"
+      color="primary"
+      variant="default"
+      max-tags="5"
+      suggestions="['JavaScript','TypeScript','Python']"
+    ></app-tags-input>
+    <app-tags-input
+      label="Skills"
+      placeholder="Add skill..."
+      size="medium"
+      color="success"
+      variant="outlined"
+      max-tags="10"
+      enable-autocomplete
+    ></app-tags-input>
+    <app-tags-input
+      label="Categories"
+      placeholder="Add category..."
+      size="large"
+      color="danger"
+      variant="filled"
+      max-tags="3"
+      allow-duplicates
+    ></app-tags-input>
+    <app-tags-input
+      label="Readonly Tags"
+      size="medium"
+      color="info"
+      variant="default"
+      readonly
+    ></app-tags-input>
+    <app-tags-input
+      label="Disabled Tags"
+      size="small"
+      color="warning"
+      variant="outlined"
+      disabled
+    ></app-tags-input>
+    <app-tags-input
+      label="Required Tags"
+      size="large"
+      color="secondary"
+      variant="filled"
+      required
+    ></app-tags-input>
+    <app-tags-input
+      label="Invalid Tags"
+      size="medium"
+      color="primary"
+      variant="default"
+      invalid
+    ></app-tags-input>
+    <app-tags-input
+      label="Case Sensitive"
+      size="medium"
+      color="success"
+      variant="outlined"
+      case-sensitive
+    ></app-tags-input>
+  </div>
+</div>

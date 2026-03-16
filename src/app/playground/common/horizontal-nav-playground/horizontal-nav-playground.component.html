@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Theme</label>
       <ui-dropdown
@@ -13,7 +13,7 @@
         [options]="themeOptions"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
         Sticky Position
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -35,10 +35,10 @@
 
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
   >
-    <div class="nav-wrapper" style="width: 100%">
+    <div class="nav-wrapper w-full" >
       <ui-horizontal-nav
         #demoElement
         [attr.theme]="pgConfig.theme"

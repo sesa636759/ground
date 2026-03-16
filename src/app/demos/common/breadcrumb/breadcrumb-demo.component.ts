@@ -5,7 +5,6 @@ import { DmBreadcrumbPlaygroundComponent } from '../../../playground/common/brea
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -16,7 +15,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
     DmBreadcrumbPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    ExampleSectionComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
   ],
@@ -26,29 +24,54 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmBreadcrumbDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'separators', title: 'Separators', icon: '➖' },
-    { id: 'collapsing', title: 'Collapsing', icon: '📉' },
-    { id: 'visuals', title: 'Visual Variants', icon: '🎨' },
+    { id: 'basic', title: 'Basic Usage', icon: 'chevron-right', iconLibrary: 'lucide' },
+    { id: 'separators', title: 'Custom Separators', icon: 'divide', iconLibrary: 'lucide' },
+    { id: 'icons', title: 'Icons & Badges', icon: 'star', iconLibrary: 'lucide' },
+    { id: 'collapsing', title: 'Smart Collapsing', icon: 'more-horizontal', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  items = [
-    { label: 'Home', icon: '🏠', href: '/' },
-    { label: 'Settings', href: '/settings' },
+  basicItems = JSON.stringify([
+    { label: 'Admin', href: '/admin' },
+    { label: 'Users', href: '/admin/users' },
     { label: 'Profile', active: true },
-  ];
+  ]);
 
-  collapsibleItems = [
-    { label: 'Cloud Console', href: '#' },
-    { label: 'Compute Engine', href: '#' },
-    { label: 'Instances', href: '#' },
-    { label: 'Production Clusters', href: '#' },
-    { label: 'East-Region-Node-01', active: true },
-  ];
+  iconItems = JSON.stringify([
+    { label: 'Store', icon: 'store', iconLibrary: 'lucide', href: '/store' },
+    { label: 'Orders', icon: 'shopping-cart', iconLibrary: 'lucide', badge: '12', badgeVariant: 'danger', href: '/orders' },
+    { label: 'Tracking', icon: 'map-pin', iconLibrary: 'lucide', active: true },
+  ]);
 
-  playgroundCode = `<ui-breadcrumb [items]="breadcrumbItems" show-home></ui-breadcrumb>`;
-  separatorsCode = `<ui-breadcrumb [items]="items" separator=">" show-home></ui-breadcrumb>
-<ui-breadcrumb [items]="items" separator-icon="→" show-home></ui-breadcrumb>`;
-  collapsingCode = `<ui-breadcrumb [items]="collapsibleItems" [max-items]="4" show-home></ui-breadcrumb>`;
-  visualsCode = `<ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
-<ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>`;
+  collapsibleItems = JSON.stringify([
+    { label: 'Dashboard', href: '#' },
+    { label: 'Reports', href: '#' },
+    { label: 'Financials', href: '#' },
+    { label: '2025', href: '#' },
+    { label: 'Q1 Results', active: true },
+  ]);
+
+  basicCode = `<ui-breadcrumb [items]="basicItems"></ui-breadcrumb>`;
+  
+  separatorsCode = `<ui-breadcrumb [items]="basicItems" separator=">"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>`;
+
+  iconsCode = `<ui-breadcrumb [items]="iconItems" show-home home-icon="home" home-icon-library="lucide"></ui-breadcrumb>`;
+
+  collapsingCode = `<ui-breadcrumb [items]="collapsibleItems" max-items="3" show-home home-icon="layout-dashboard" home-icon-library="lucide"></ui-breadcrumb>`;
+
+  sizesCode = `<ui-breadcrumb [items]="basicItems" size="sm"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" size="md"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" size="lg"></ui-breadcrumb>`;
+
+  variantsCode = `<ui-breadcrumb [items]="basicItems" variant="default"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" variant="pills"></ui-breadcrumb>
+<div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 1.5rem; border-radius: 8px;">
+  <ui-breadcrumb [items]="basicItems" variant="glass"></ui-breadcrumb>
+</div>`;
+
+  handleBreadcrumbClick(ev: any) {
+    console.log(`Breadcrumb Clicked: ${ev.detail.label}`);
+  }
 }

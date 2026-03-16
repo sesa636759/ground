@@ -24,7 +24,7 @@
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+          <span  class="fs-08rem text-muted"
             >{{ cfg.strokeWidth }}px</span
           >
         </div>
@@ -38,7 +38,7 @@
             [(ngModel)]="cfg.fillOpacity"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.fillOpacity }}</span>
+          <span  class="fs-08rem text-muted">{{ cfg.fillOpacity }}</span>
         </div>
       </div>
       <div class="control-section">
@@ -83,8 +83,8 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
     <chart-line
       [data]="activeData"

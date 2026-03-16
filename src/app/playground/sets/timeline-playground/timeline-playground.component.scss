@@ -1,5 +1,12 @@
 @use '../../../../styles/playground-base.scss';
 
+.timeline-preview {
+  padding: 32px;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 8px;
+}
+
 .control-group {
   input[type='color'] {
     padding: 5px;

@@ -2,7 +2,7 @@
   <pg-demo-header
     icon="⌨️"
     title="Input Component"
-    description="Comprehensive input component with support for labels, validation states, prefixes, suffixes, multiline text, and floating animations."
+    description="A high-performance, feature-rich input system with specialized types, masking, validation, and premium aesthetics."
   >
   </pg-demo-header>
   <pg-demo-tabs>
@@ -13,323 +13,237 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Input Types -->
+        <!-- Basic Types -->
         <pg-example-section
-          id="basic-types"
-          title="Basic Input Types"
-          description="Standard input types with various configurations"
-          [code]="basicInputsCode"
+          id="basic"
+          title="Basic Types"
+          description="Support for standard native input types with enhanced UI."
+          [code]="basicCode"
         >
-          <div class="demo-grid col-3">
-            <ui-input label="Username" placeholder="Enter your username" full-width></ui-input>
-            <ui-input
-              type="email"
-              label="Email Address"
-              placeholder="user@example.com"
-              full-width
-            ></ui-input>
-            <ui-input
-              type="password"
-              label="Password"
-              placeholder="Enter password"
-              show-password-toggle
-              full-width
-            ></ui-input>
-            <ui-input
-              type="number"
-              label="Age"
-              placeholder="0"
-              min="0"
-              max="120"
-              full-width
-            ></ui-input>
-            <ui-input
-              type="search"
-              label="Search"
-              placeholder="Search..."
-              show-clear
-              full-width
-            ></ui-input>
-            <ui-input type="date" label="Birth Date" full-width></ui-input>
+          <div class="demo-grid col-2">
+            <ui-input label="Full Name" placeholder="John Doe" full-width></ui-input>
+            <ui-input type="email" label="Email Address" placeholder="john@example.com" full-width></ui-input>
+            <ui-input type="search" label="Search" placeholder="Search product..." full-width></ui-input>
+            <ui-input type="tel" label="Telephone" placeholder="+1 (234) 567" full-width></ui-input>
           </div>
         </pg-example-section>
 
-        <!-- Variants -->
+        <!-- Password Features -->
+        <pg-example-section
+          id="passwords"
+          title="Password Features"
+          description="Advanced password handling with strength meters and visibility toggles."
+          [code]="passwordsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input type="password" label="Basic Password" full-width></ui-input>
+            <ui-input type="password" label="Secured Entry" show-password-toggle value="Secret123!" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Numbers & Steppers -->
+        <pg-example-section
+          id="numbers"
+          title="Numbers & Steppers"
+          description="Numeric inputs with convenient increment/decrement buttons."
+          [code]="numbersCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input type="number" label="Quantity Selection" show-steppers value="10" full-width></ui-input>
+            <ui-input type="number" label="Percentage Range" min="0" max="100" placeholder="0-100" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Visual Variants -->
         <pg-example-section
           id="variants"
-          title="Input Variants"
-          description="Visual styles: Outlined, Filled, Underlined, Soft, and Ghost"
+          title="Visual Variants"
+          description="Multiple style architectures to integrate seamlessly into any theme."
           [code]="variantsCode"
         >
-          <div class="demo-grid col-3">
-            <ui-input label="Outlined" variant="outlined" full-width></ui-input>
-            <ui-input label="Filled" variant="filled" full-width></ui-input>
-            <ui-input label="Underlined" variant="underlined" full-width></ui-input>
-            <ui-input label="Soft" variant="soft" full-width></ui-input>
-            <ui-input label="Ghost" variant="ghost" full-width></ui-input>
+          <div class="demo-grid col-2">
+            <ui-input variant="outlined" label="Outlined (Default)" full-width></ui-input>
+            <ui-input variant="filled" label="Filled" full-width></ui-input>
+            <ui-input variant="soft" label="Soft / Secondary" full-width></ui-input>
+            <ui-input variant="underlined" label="Underlined" full-width></ui-input>
+            <ui-input variant="ghost" label="Ghost / Minimal" full-width></ui-input>
           </div>
         </pg-example-section>
 
-        <!-- Sizes -->
+        <!-- Input Sizes -->
         <pg-example-section
           id="sizes"
           title="Input Sizes"
-          description="Standard small, medium, and large size options"
+          description="Support for three distinct size tiers: small, medium, and large."
           [code]="sizesCode"
         >
-          <div class="demo-grid col-3">
-            <ui-input label="Small" size="small" full-width></ui-input>
-            <ui-input label="Medium" size="medium" full-width></ui-input>
-            <ui-input label="Large" size="large" full-width></ui-input>
-          </div>
-        </pg-example-section>
-
-        <!-- Validation States -->
-        <pg-example-section
-          id="validation"
-          title="Validation States"
-          description="Visual feedback for error, success, and informative states"
-          [code]="validationCode"
-        >
-          <div class="demo-grid col-2">
-            <ui-input
-              label="Email"
-              value="invalid-email"
-              validation-state="error"
-              error-text="Please enter a valid email address"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Username"
-              value="john_doe"
-              validation-state="success"
-              success-text="Username is available!"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Password"
-              type="password"
-              value="12345"
-              validation-state="warning"
-              warning-text="Password is weak"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Username"
-              placeholder="Choose a username"
-              helper-text="Must be 3-20 characters"
-              full-width
-            ></ui-input>
-          </div>
-        </pg-example-section>
-
-        <!-- Prefix & Suffix -->
-        <pg-example-section
-          id="prefix-suffix"
-          title="Prefix & Suffix"
-          description="In-line text or icons before and after the input value"
-          [code]="prefixSuffixCode"
-        >
-          <div class="demo-grid col-2">
-            <ui-input
-              label="Website"
-              placeholder="your-site"
-              prefix-text="https://"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Email"
-              placeholder="username"
-              suffix-text="@company.com"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Price"
-              placeholder="0.00"
-              prefix-text="$"
-              suffix-text="USD"
-              type="number"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Search"
-              placeholder="Type to search..."
-              show-clear
-              full-width
-            ></ui-input>
-          </div>
-        </pg-example-section>
-
-        <!-- Advanced Features -->
-        <pg-example-section
-          id="advanced"
-          title="Advanced Interaction"
-          description="Number steppers, auto-resize textareas, and skeleton states"
-          [code]="advancedCode"
-        >
-          <div class="demo-grid col-2">
-            <ui-input
-              type="number"
-              label="Quantity"
-              value="1"
-              min="0"
-              max="100"
-              show-steppers
-              full-width
-            ></ui-input>
-            <ui-input
-              multiline
-              auto-resize
-              max-rows="4"
-              label="Smart Textarea"
-              placeholder="Type to auto-resize..."
-              full-width
-            ></ui-input>
-            <div class="demo-card">
-              <ui-input
-                label="Loading State"
-                [attr.skeleton]="skeletonState"
-                placeholder="Content..."
-                full-width
-              ></ui-input>
-              <ui-button
-                (click)="toggleSkeleton()"
-                label="Toggle Loading"
-                style="margin-top: 12px; display: block"
-              ></ui-button>
-            </div>
+          <div class="demo-flex-wrap flex-items-end">
+            <ui-input size="small" label="Compact" full-width></ui-input>
+            <ui-input size="medium" label="Standard" full-width></ui-input>
+            <ui-input size="large" label="Prominent" full-width></ui-input>
           </div>
         </pg-example-section>
 
         <!-- Floating Labels -->
         <pg-example-section
-          id="floating-labels"
+          id="floating"
           title="Floating Labels"
-          description="Modern labels that float above the field on interaction"
-          [code]="floatingLabelsCode"
+          description="Premium animation where the label floats above the field on interaction."
+          [code]="floatingCode"
         >
-          <div class="demo-grid col-3">
-            <ui-input variant="outlined" label="Full Name" floating-label full-width></ui-input>
-            <ui-input variant="filled" label="Email Address" floating-label full-width></ui-input>
-            <ui-input
-              variant="underlined"
-              label="Phone Number"
-              floating-label
-              full-width
-            ></ui-input>
+          <div class="demo-grid col-2">
+            <ui-input floating-label label="Quick Search" variant="outlined" full-width></ui-input>
+            <ui-input floating-label label="Email Address" variant="filled" prefix-icon="mail" full-width></ui-input>
           </div>
         </pg-example-section>
 
-        <!-- Multiline Input -->
+        <!-- Prefix & Suffix -->
+        <pg-example-section
+          id="decorators"
+          title="Prefix & Suffix"
+          description="Contextual decorators for URLs, currency, search, and more."
+          [code]="decoratorsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input prefix-text="https://" label="Website URL" full-width></ui-input>
+            <ui-input suffix-text=".com" label="Domain Name" full-width></ui-input>
+            <ui-input prefix-icon="search" suffix-icon="mic" placeholder="Speak to search" full-width></ui-input>
+            <ui-input badge="99+" label="Inbound Tasks" suffix-icon="bell" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Multiline -->
         <pg-example-section
           id="multiline"
-          title="Multiline (Textarea)"
-          description="Dedicated textarea support with character counts and rows"
+          title="Multiline & Auto-resize"
+          description="Textareas that can automatically expand based on content volume."
           [code]="multilineCode"
         >
-          <div class="demo-grid col-2">
-            <ui-input multiline label="Description" rows="3" full-width></ui-input>
-            <ui-input
-              multiline
-              label="Bio"
-              max-length="200"
-              show-char-count
-              rows="3"
-              full-width
-            ></ui-input>
+          <div class="demo-grid col-1">
+            <ui-input multiline rows="3" label="Fixed Text Area" full-width></ui-input>
+            <ui-input multiline auto-resize label="Auto-expanding thoughts" placeholder="Type a long story..." full-width></ui-input>
           </div>
         </pg-example-section>
 
-        <!-- Color Input -->
+        <!-- Validation -->
         <pg-example-section
-          id="color-input"
-          title="Color Input"
-          description="Native color picker wrapped in the ui-input component. Use show-copy to let users copy the hex value."
-          [code]="colorInputCode"
-        >
-          <div class="demo-grid col-3">
-            <ui-input type="color" label="Accent Color" full-width></ui-input>
-            <ui-input type="color" label="Brand Color" value="#6366f1" full-width></ui-input>
-            <ui-input
-              type="color"
-              label="Background"
-              value="#f8fafc"
-              show-copy
-              full-width
-            ></ui-input>
-          </div>
-        </pg-example-section>
-
-        <!-- File Upload -->
-        <pg-example-section
-          id="file-upload"
-          title="File Upload"
-          description="File input with accept filters and multiple-file support."
-          [code]="fileUploadCode"
+          id="validation"
+          title="Rich Feedback"
+          description="Communicate validation results using semantic colors."
+          [code]="validationCode"
         >
           <div class="demo-grid col-2">
-            <ui-input type="file" label="Upload Document" full-width></ui-input>
-            <ui-input type="file" label="Upload Image" accept="image/*" full-width></ui-input>
-            <ui-input type="file" label="Upload PDF" accept=".pdf" full-width></ui-input>
-            <ui-input
-              type="file"
-              label="Upload Files"
-              accept="image/*,.pdf,.docx"
-              multiple
-              full-width
-            ></ui-input>
+            <ui-input validation-state="error" error-text="Username already taken" label="Username" full-width></ui-input>
+            <ui-input validation-state="success" success-text="Strong password" type="password" label="Password" full-width></ui-input>
+            <ui-input validation-state="warning" warning-text="Database connection is slow" label="Search" full-width></ui-input>
+            <ui-input validation-state="info" info-text="Last synced 5m ago" label="Status" full-width></ui-input>
           </div>
         </pg-example-section>
 
-        <!-- Input Masking -->
+        <!-- Constraints -->
         <pg-example-section
-          id="input-masking"
+          id="constraints"
+          title="Length Constraints"
+          description="Manage input length with visual counters and minimum markers."
+          [code]="constraintsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input max-length="20" show-counter label="Bio (Max 20 chars)" full-width></ui-input>
+            <ui-input min-length-indicator="10" label="Comment (Min 10 chars)" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- masking -->
+        <pg-example-section
+          id="masking"
           title="Input Masking"
-          description="Built-in formatting masks for various data types"
-          [code]="inputMaskCode"
+          description="Data formatted automatically for phone, cards, currency and more."
+          [code]="maskingCode"
         >
           <div class="demo-grid col-2">
-            <ui-input
-              label="Phone Number"
-              mask="phone"
-              placeholder="(555) 555-5555"
-              full-width
-            ></ui-input>
-            <ui-input
-              label="Credit Card"
-              mask="credit-card"
-              placeholder="0000 0000 0000 0000"
-              full-width
-            ></ui-input>
-            <ui-input label="Currency" mask="currency" placeholder="$0.00" full-width></ui-input>
-            <ui-input label="Date" mask="date" placeholder="MM/DD/YYYY" full-width></ui-input>
+            <ui-input mask="phone" label="Phone" placeholder="(000) 000-0000" full-width></ui-input>
+            <ui-input mask="credit-card" label="Credit Card" prefix-icon="credit-card" full-width></ui-input>
+            <ui-input mask="currency" label="Monthly Budget" value="5000" full-width></ui-input>
+            <ui-input mask="date" label="Birth Date" placeholder="MM/DD/YYYY" full-width></ui-input>
           </div>
         </pg-example-section>
+
+        <!-- Multimedia -->
         <pg-example-section
-          id="input-states"
-          title="Input States"
-          description="Disabled, readonly, and required state variations"
-          [code]="inputStatesCode"
+          id="multimedia"
+          title="Pickers & Sliders"
+          description="Advanced inputs for colors, dates, and ranges."
+          [code]="multimediaCode"
         >
           <div class="demo-grid col-2">
-            <ui-input
-              label="Disabled"
-              value="Read only and disabled"
-              disabled
+            <ui-input type="color" value="#4f46e5" label="Primary Theme Color" full-width></ui-input>
+            <ui-input type="range" label="Master Volume" min="0" max="100" value="75" full-width></ui-input>
+            <ui-input type="date" label="Project Deadline" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Files -->
+        <pg-example-section
+          id="files"
+          title="File Uploads"
+          description="Robust file selection system with support for multiples and type filters."
+          [code]="filesCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input type="file" label="Standard Document" full-width></ui-input>
+            <ui-input type="file" multiple label="Batch Gallery" accept="image/*" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Interaction -->
+        <pg-example-section
+          id="interaction"
+          title="Interaction Kits"
+          description="Premium helpers for clear, copy, loading, and skeleton states."
+          [code]="interactionCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input show-clear placeholder="Type to clear" label="Clearable Entry" value="Initial text" full-width></ui-input>
+            <ui-input show-copy value="API_KEY_SECURE_123" label="Access Token" full-width></ui-input>
+            <ui-input loading label="Data Pipeline" placeholder="Processing records..." full-width></ui-input>
+            <ui-input skeleton label="Loading Component" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Suggestions -->
+        <pg-example-section
+          id="suggestions"
+          title="Autocomplete"
+          description="Fuzzy matching suggestions for faster input entry."
+          [code]="suggestionsCode"
+        >
+          <div class="max-w-400">
+            <ui-input 
+              label="Framework" 
+              [attr.suggestions]="'Angular,React,Vue,Svelte,Solid,Stencil'" 
+              placeholder="Search library..." 
               full-width
             ></ui-input>
-            <ui-input label="Read-only" value="Cannot be edited" readonly full-width></ui-input>
-            <ui-input
-              label="Required"
-              placeholder="Field is required"
-              required
-              full-width
-            ></ui-input>
-            <ui-input label="Loading" value="Fetching..." loading full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- States -->
+        <pg-example-section
+          id="states"
+          title="Component States"
+          description="Inert states like disabled, readonly, and RTL support."
+          [code]="statesCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input disabled value="Not editable" label="Disabled State" full-width></ui-input>
+            <ui-input readonly value="View only data" label="Readonly State" full-width></ui-input>
+            <ui-input rtl value="امتحان نص مكتوب للعرب" label="RTL Mode" full-width></ui-input>
           </div>
         </pg-example-section>
       </div>
     </div>
+
+    <!-- Playground Slot -->
     <div slot="playground">
       <ds-input-playground />
     </div>
@@ -340,4 +254,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

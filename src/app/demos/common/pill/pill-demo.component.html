@@ -1,4 +1,4 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="💊"
     title="Pill / Tag"
@@ -12,57 +12,106 @@
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Styling Variants -->
-          <section class="demo-section" id="styling" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎨 Styling Variants</h2>
-              <p>Explore different visual styles and density options.</p>
-            </div>
+          <!-- Variants -->
+          <section class="demo-section" id="variants">
+            <div class="section-header"><h2>Visual Variants</h2><p>Structural styles including soft, outlined, and gradient backgrounds.</p></div>
             <div class="demo-card">
-              <ui-pill label="Default" color="default"></ui-pill>
-              <ui-pill label="Primary" color="primary"></ui-pill>
-              <ui-pill label="Success" color="success" variant="soft"></ui-pill>
-              <ui-pill label="Danger" color="danger" variant="outlined"></ui-pill>
-              <ui-pill label="Warning" color="warning" variant="bordered"></ui-pill>
-              <ui-pill label="Gradient" variant="gradient" gradient="purple-blue"></ui-pill>
+              <div class="demo-flex">
+                <ui-pill label="Filled" variant="filled" color="primary"></ui-pill>
+                <ui-pill label="Outlined" variant="outlined" color="primary"></ui-pill>
+                <ui-pill label="Soft" variant="soft" color="success"></ui-pill>
+                <ui-pill label="Bordered" variant="bordered" color="danger"></ui-pill>
+                <ui-pill label="Gradient" variant="gradient" gradient="blue-purple"></ui-pill>
+              </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="stylingCode"
-              [label]="'Style Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Special Features -->
-          <section class="demo-section" id="features">
-            <div class="section-header">
-              <h2>🚀 Special Features</h2>
-              <p>Advanced capabilities like counters, remove buttons, and loading states.</p>
+          <!-- Colors -->
+          <section class="demo-section" id="colors">
+            <div class="section-header"><h2>Colors & Sizes</h2><p>Standard color palettes, custom colors, and various scale options.</p></div>
+            <div class="demo-card pill-stack">
+              <div class="demo-flex">
+                <ui-pill label="Primary" color="primary"></ui-pill>
+                <ui-pill label="Secondary" color="secondary"></ui-pill>
+                <ui-pill label="Success" color="success"></ui-pill>
+                <ui-pill label="Warning" color="warning"></ui-pill>
+                <ui-pill label="Danger" color="danger"></ui-pill>
+                <ui-pill label="Info" color="info"></ui-pill>
+              </div>
+              <div class="demo-flex mt-24">
+                <ui-pill label="Custom" custom-color="#6366f1" custom-text-color="#ffffff"></ui-pill>
+                <ui-pill label="Neon" custom-color="#00ff00" custom-text-color="#000000"></ui-pill>
+              </div>
+              <div class="demo-flex mt-24">
+                <ui-pill label="Small" size="sm" color="default"></ui-pill>
+                <ui-pill label="Medium" size="md" color="default"></ui-pill>
+                <ui-pill label="Large" size="lg" color="default"></ui-pill>
+              </div>
             </div>
+            <ui-code-preview [htmlCode]="colorsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Media -->
+          <section class="demo-section" id="media">
+            <div class="section-header"><h2>Icons & Avatars</h2><p>Enhance information density with visual cues and media.</p></div>
             <div class="demo-card">
-              <ui-pill label="Notifications" counter="9" color="primary"></ui-pill>
-              <ui-pill
-                label="User Profile"
-                avatar="https://i.pravatar.cc/150?u=1"
-                clickable
-              ></ui-pill>
-              <ui-pill label="Removable" removable color="secondary"></ui-pill>
-              <ui-pill label="Loading State" loading></ui-pill>
-              <ui-pill label="Horizontal" orientation="horizontal" icon="⭐"></ui-pill>
-              <ui-pill label="Vertical" orientation="vertical" icon="⚓"></ui-pill>
+              <div class="demo-flex">
+                <ui-pill label="Start Icon" icon="star" icon-library="lucide"></ui-pill>
+                <ui-pill label="End Icon" icon="chevron-right" icon-library="lucide" icon-position="end"></ui-pill>
+                <ui-pill label="John Doe" avatar="https://i.pravatar.cc/150?u=1"></ui-pill>
+                <ui-pill label="Messages" icon="mail" icon-library="lucide" counter="12" color="warning"></ui-pill>
+              </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="featuresCode"
-              [label]="'Feature Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="mediaCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Orientations -->
+          <section class="demo-section" id="orientations">
+            <div class="section-header"><h2>Vertical Layouts</h2><p>Alternate layouts for specific UI patterns like pipelines or sidebars.</p></div>
+            <div class="demo-card">
+              <div class="demo-flex h-120 flex-items-center">
+                <ui-pill label="Horizontal" orientation="horizontal"></ui-pill>
+                <ui-pill label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></ui-pill>
+                <ui-pill label="Vertical Text" orientation="vertical-text"></ui-pill>
+                <ui-pill label="Vertical Rotated" orientation="vertical-rotated"></ui-pill>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="orientationsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Actions -->
+          <section class="demo-section" id="actions">
+            <div class="section-header"><h2>Actions & States</h2><p>Interactive behaviors for selection, removal, or loading.</p></div>
+            <div class="demo-card pill-stack">
+              <div class="demo-flex">
+                <ui-pill label="Clickable" clickable (pillClick)="onPillClick()"></ui-pill>
+                <ui-pill label="Toggleable" clickable selected (pillSelect)="onPillSelect($event)"></ui-pill>
+                <ui-pill label="Removable" removable color="danger" (pillRemove)="onPillRemove()"></ui-pill>
+              </div>
+              <div class="demo-flex mt-24">
+                <ui-pill label="Loading" loading color="info"></ui-pill>
+                <ui-pill label="Disabled" disabled></ui-pill>
+                <ui-pill label="Hover me" color="success" tooltip="Click to explore!"></ui-pill>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="actionsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Animations -->
+          <section class="demo-section" id="animations">
+            <div class="section-header"><h2>Animations</h2><p>Entrance and exit animation styles.</p></div>
+            <div class="demo-card">
+              <div class="demo-flex">
+                <ui-pill label="Scale" animation="scale" color="primary"></ui-pill>
+                <ui-pill label="Fade" animation="fade" color="success"></ui-pill>
+                <ui-pill label="Slide" animation="slide" color="warning"></ui-pill>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="animationsCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>
@@ -73,4 +122,5 @@
     </div>
   </pg-demo-tabs>
 </div>
+
 

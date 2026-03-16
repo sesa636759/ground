@@ -1,36 +1,26 @@
-﻿<pg-playground
-  [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCode()"
-  (reset)="resetConfig()"
->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+<pg-playground [items]="pgAccordionItems" [code]="generatedCode()" (reset)="resetConfig()">
+  <!-- Rating Configuration -->
+  <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
-      <label>Type</label>
+      <label>Rating Type</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"
       ></ui-dropdown>
     </div>
-    <div class="control-group">
-      <label>Value</label>
-      <ui-input
-        type="number"
-        [(ngModel)]="pgConfig.value"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-    <div class="control-group">
-      <label>Max (Stars/Smiley)</label>
+    <div class="control-group" *ngIf="pgConfig.type !== 'thumb'">
+      <label>Max Rating</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
+        [min]="1"
+        [max]="10"
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Size</label>
+      <label>Size tier</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
@@ -38,63 +28,87 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Color</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.color"
+      <label>Rating Labels (JSON Array)</label>
+      <ui-input
+        [(ngModel)]="pgConfig.labels"
         (ngModelChange)="updateConfig()"
-        [options]="standardColorOptions"
-      ></ui-dropdown>
+        placeholder='["Poor", "Fair", "Good"...]'
+      ></ui-input>
     </div>
   </div>
 
-  <div slot="content-states" style="padding: 16px">
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
+  <!-- Visual Appearance -->
+  <div slot="content-visuals" class="control-grid p-16">
+    <div class="control-group">
+      <label>Active Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="ratingColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label class="checkbox-item mt-24" >
         <ui-checkbox
           [(ngModel)]="pgConfig.allowHalf"
           (ngModelChange)="updateConfig()"
           [disabled]="pgConfig.type !== 'star'"
         ></ui-checkbox>
-        Allow Half
+        Allow Half-Stars
       </label>
-      <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label class="checkbox-item mt-24" >
         <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
-        Show Text
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Read-Only
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Disabled
+        Show Value/Label
       </label>
     </div>
   </div>
 
-  <div preview class="preview-stage">
-    <div style="width: 100%; display: flex; flex-direction: column; align-items: center">
+  <!-- Behavioral States -->
+  <div slot="content-states" class="p-16">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Read-only
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview -->
+  <div
+    preview
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
+  >
+    <div  class="text-center">
       <ui-rating
         #ratingElement
         [attr.type]="pgConfig.type"
-        [attr.value]="pgConfig.value"
         [attr.max]="pgConfig.max"
         [attr.size]="pgConfig.size"
         [attr.color]="pgConfig.color"
+        [attr.value]="pgConfig.value"
         [attr.readonly]="pgConfig.readonly ? '' : null"
         [attr.disabled]="pgConfig.disabled ? '' : null"
         [attr.allow-half]="pgConfig.allowHalf ? '' : null"
         [attr.show-value]="pgConfig.showValue ? '' : null"
+        [attr.labels]="pgConfig.labels || null"
         (ratingChange)="onRatingChange($event)"
       ></ui-rating>
-      <div
-        class="rating-display"
-        style="margin-top: 24px; font-weight: 600; color: var(--text-primary)"
-      >
-        Current Value: {{ pgConfig.value }}
+
+      <div  class="mt-24 text-muted fs-14">
+        Submitted Rating:
+        <span  class="font-semibold text-primary-color fs-18">
+          {{ pgConfig.value }}
+        </span>
       </div>
     </div>
   </div>

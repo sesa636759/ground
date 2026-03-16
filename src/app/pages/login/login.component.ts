@@ -1,4 +1,4 @@
-﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
@@ -74,8 +74,8 @@ export class LoginComponent {
       const result = await this.authService.login(this.credentials);
 
       if (result.success) {
-        const redirectUrl = localStorage.getItem('redirectUrl') || '/home';
-        localStorage.removeItem('redirectUrl');
+        const redirectUrl = sessionStorage.getItem('redirectUrl') || '/home';
+        sessionStorage.removeItem('redirectUrl');
         this.router.navigate([redirectUrl]);
       } else {
         this.error.set(result.message);

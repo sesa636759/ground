@@ -1,207 +1,178 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="⏳"
-    title="Progress Component"
-    description="Versatile progress indicators for tracking task completion with support for various shapes, statuses, steps, and premium effects."
-  >
-  </pg-demo-header>
+    icon="📈"
+    title="Progress"
+    description="Dynamic progress indicators with support for line, circle, dashboard, multi-segments, and premium visual effects."
+  ></pg-demo-header>
 
   <pg-demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="playground">
+      <ds-progress-playground></ds-progress-playground>
+    </div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Line Progress -->
-        <pg-example-section
-          id="line"
-          title="Line Progress"
-          description="Standard horizontal progress bars with various completion levels"
-          [code]="lineCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="30"></app-progress>
-            <app-progress percent="50"></app-progress>
-            <app-progress percent="70"></app-progress>
-            <app-progress percent="100" status="success"></app-progress>
-          </div>
-        </pg-example-section>
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Circle Progress -->
-        <pg-example-section
-          id="circle"
-          title="Circle Progress"
-          description="Circular progress indicators with different sizes and states"
-          [code]="circleCode"
-        >
-          <div class="demo-grid col-3">
-            <app-progress type="circle" percent="60"></app-progress>
-            <app-progress type="circle" percent="75"></app-progress>
-            <app-progress type="circle" percent="100" status="success"></app-progress>
-            <app-progress type="circle" percent="50" width="80"></app-progress>
-            <app-progress type="circle" percent="85" width="150"></app-progress>
-          </div>
-        </pg-example-section>
+        <div class="examples-content">
+          <!-- Line Progress -->
+          <section class="demo-section" id="line">
+            <div class="section-header">
+              <h2>Line Progress</h2>
+              <p>Standard linear progress indicators with various configurations.</p>
+            </div>
+            <div class="demo-card progress-stack">
+              <div class="demo-row">
+                <p>Default Line</p>
+                <ui-progress [percent]="progressValue"></ui-progress>
+              </div>
+              <div class="demo-row">
+                <p>Thick Stroke</p>
+                <ui-progress [percent]="75" stroke-width="20"></ui-progress>
+              </div>
+              <div class="demo-row">
+                <p>Steps Layout</p>
+                <ui-progress [percent]="60" steps="5"></ui-progress>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="lineCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Dashboard Progress -->
-        <pg-example-section
-          id="dashboard"
-          title="Dashboard Progress"
-          description="Semi-circular dashboard progress with adjustable gaps"
-          [code]="dashboardCode"
-        >
-          <div class="demo-grid col-2">
-            <app-progress type="dashboard" percent="75"></app-progress>
-            <app-progress type="dashboard" percent="75" gap-position="top"></app-progress>
-            <app-progress type="dashboard" percent="75" gap-position="bottom"></app-progress>
-            <app-progress type="dashboard" percent="50" gap-degree="120"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Circle Progress -->
+          <section class="demo-section" id="circle">
+            <div class="section-header">
+              <h2>Circle Progress</h2>
+              <p>Circular indicators suitable for compact areas and dashboard widgets.</p>
+            </div>
+            <div class="demo-card progress-row">
+              <ui-progress type="circle" [percent]="progressValue"></ui-progress>
+              <ui-progress type="circle" [percent]="100" status="success"></ui-progress>
+              <ui-progress type="circle" [percent]="50" size="small"></ui-progress>
+            </div>
+            <ui-code-preview [htmlCode]="circleCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Progress Status -->
-        <pg-example-section
-          id="status"
-          title="Progress Status"
-          description="Visual feedback for active, success, and error states"
-          [code]="statusCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="60" status="active"></app-progress>
-            <app-progress percent="100" status="success"></app-progress>
-            <app-progress percent="50" status="exception"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Dashboard Style -->
+          <section class="demo-section" id="dashboard">
+            <div class="section-header">
+              <h2>Dashboard Style</h2>
+              <p>Segmented arcs perfect for performance gauges and limits.</p>
+            </div>
+            <div class="demo-card progress-row">
+              <ui-progress type="dashboard" [percent]="progressValue"></ui-progress>
+              <ui-progress type="dashboard" [percent]="75" gap-degree="90" gap-position="bottom"></ui-progress>
+              <ui-progress type="dashboard" [percent]="60" gap-degree="120" gap-position="top"></ui-progress>
+            </div>
+            <ui-code-preview [htmlCode]="dashboardCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Indeterminate State -->
-        <pg-example-section
-          id="indeterminate"
-          title="Indeterminate State"
-          description="Loading animations for processes of unknown duration"
-          [code]="indeterminateCode"
-        >
-          <div class="demo-grid col-3">
-            <app-progress indeterminate="true"></app-progress>
-            <app-progress type="circle" indeterminate="true"></app-progress>
-            <app-progress type="dashboard" indeterminate="true"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- State & Status -->
+          <section class="demo-section" id="status">
+            <div class="section-header">
+              <h2>State & Status</h2>
+              <p>Visual hints representing different progress states.</p>
+            </div>
+            <div class="demo-card progress-stack">
+              <ui-progress percent="100" status="success"></ui-progress>
+              <ui-progress percent="50" status="exception"></ui-progress>
+              <ui-progress percent="70" status="active"></ui-progress>
+              <ui-progress percent="30" status="normal"></ui-progress>
+            </div>
+            <ui-code-preview [htmlCode]="statusCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Custom Colors -->
-        <pg-example-section
-          id="colors"
-          title="Custom Colors"
-          description="Personalize progress bars with custom HEX color values"
-          [code]="colorsCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="60" stroke-color="#9b59b6"></app-progress>
-            <app-progress percent="75" stroke-color="#ff9800"></app-progress>
-            <app-progress percent="85" stroke-color="#e91e63"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Buffer & Loading -->
+          <section class="demo-section" id="buffer">
+            <div class="section-header">
+              <h2>Buffer & Indeterminate</h2>
+              <p>Indicators for streaming data or unknown durations.</p>
+            </div>
+            <div class="demo-card progress-stack">
+              <div class="demo-row">
+                <p>Buffer State</p>
+                <ui-progress [percent]="40" show-buffer buffer="65"></ui-progress>
+              </div>
+              <div class="demo-row">
+                <p>Indeterminate Line</p>
+                <ui-progress indeterminate></ui-progress>
+              </div>
+              <div class="demo-row">
+                <p>Indeterminate Circle</p>
+                <ui-progress type="circle" indeterminate></ui-progress>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="bufferCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Gradient Progress -->
-        <pg-example-section
-          id="gradient"
-          title="Gradient Progress"
-          description="Dynamic visual appeal with linear gradient support"
-          [code]="gradientCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress
-              percent="80"
-              stroke-color="linear-gradient(to right, #667eea, #06b6d4)"
-            ></app-progress>
-            <app-progress
-              percent="90"
-              stroke-color="linear-gradient(to right, #a855f7, #ec4899)"
-            ></app-progress>
-            <app-progress
-              percent="70"
-              stroke-color="linear-gradient(to right, #f97316, #ef4444)"
-            ></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Multi-Segment -->
+          <section class="demo-section" id="multi">
+            <div class="section-header">
+              <h2>Multi-Segment Progress</h2>
+              <p>Stack multiple progress values in a single bar for data breakdown.</p>
+            </div>
+            <div class="demo-card">
+              <ui-progress [attr.multi-progress]="'[{&quot;percent&quot;:30,&quot;color&quot;:&quot;#3b82f6&quot;,&quot;label&quot;:&quot;Apps&quot;},{&quot;percent&quot;:20,&quot;color&quot;:&quot;#ef4444&quot;,&quot;label&quot;:&quot;System&quot;},{&quot;percent&quot;:15,&quot;color&quot;:&quot;#10b981&quot;,&quot;label&quot;:&quot;Media&quot;}]'"></ui-progress>
+            </div>
+            <ui-code-preview [htmlCode]="multiCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Steps Progress -->
-        <pg-example-section
-          id="steps"
-          title="Steps Progress"
-          description="Progress divided into discrete segments or steps"
-          [code]="stepsCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="60" steps="5"></app-progress>
-            <app-progress percent="80" steps="10"></app-progress>
-            <app-progress percent="100" steps="8" status="success"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Premium Effects -->
+          <section class="demo-section" id="premium">
+            <div class="section-header">
+              <h2>Premium Visual Effects</h2>
+              <p>Advanced animations and styling for high-end interfaces.</p>
+            </div>
+            <div class="demo-card progress-stack bg-dark p-32">
+              <div class="demo-row">
+                <p class="text-white">Liquid Wave Effect</p>
+                <ui-progress [percent]="65" liquid stroke-color="#00f2fe"></ui-progress>
+              </div>
+              <div class="demo-row">
+                <p class="text-white">Glassmorphism & Glow</p>
+                <ui-progress [percent]="80" glass glow stroke-color="#fff" trail-color="rgba(255,255,255,0.1)"></ui-progress>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="premiumCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Stroke Width -->
-        <pg-example-section
-          id="stroke"
-          title="Stroke Width"
-          description="Adjust the thickness of the progress indicator"
-          [code]="strokeCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="60" stroke-width="4"></app-progress>
-            <app-progress percent="60" stroke-width="10"></app-progress>
-            <app-progress percent="60" stroke-width="20"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Interactive Controls -->
+          <section class="demo-section" id="controls">
+            <div class="section-header">
+              <h2>Interactive Controls</h2>
+              <p>Pause buttons and time estimation features.</p>
+            </div>
+            <div class="demo-card progress-stack">
+              <ui-progress [percent]="45" show-pause-button show-time-estimate estimated-time="150"></ui-progress>
+              <div class="display-flex gap-8 mt-16">
+                <ui-button (click)="increaseProgress()">+10%</ui-button>
+                <ui-button (click)="decreaseProgress()">-10%</ui-button>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="controlsCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Stroke Linecap -->
-        <pg-example-section
-          id="linecap"
-          title="Stroke Linecap"
-          description="Customize the shape of the progress bar ends"
-          [code]="linecapCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="75" stroke-linecap="round"></app-progress>
-            <app-progress percent="75" stroke-linecap="square"></app-progress>
-          </div>
-        </pg-example-section>
-
-        <!-- Hide Info Text -->
-        <pg-example-section
-          id="hide-info"
-          title="Hide Info Text"
-          description="Minimalist progress display without percentage text"
-          [code]="hideInfoCode"
-        >
-          <div class="demo-grid col-2">
-            <app-progress percent="60" show-info="false"></app-progress>
-            <app-progress type="circle" percent="75" show-info="false"></app-progress>
-          </div>
-        </pg-example-section>
-
-        <!-- Premium Styles -->
-        <pg-example-section
-          id="premium"
-          title="Premium Styles"
-          description="Advanced animations including liquid wave, glassmorphism, and glow effects"
-          [code]="premiumCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="65" liquid="true" stroke-color="#3DCD58"></app-progress>
-            <app-progress percent="50" glass="true" stroke-color="#fff"></app-progress>
-            <app-progress percent="80" glow="true" stroke-color="#ff4d4f"></app-progress>
-          </div>
-        </pg-example-section>
+          <!-- Layout & Labels -->
+          <section class="demo-section" id="labels">
+            <div class="section-header">
+              <h2>Layout & Label Customization</h2>
+              <p>Positioning labels and customizing their appearance.</p>
+            </div>
+            <div class="demo-card progress-stack">
+              <div class="demo-row">
+                <p>Top Label Position</p>
+                <ui-progress [percent]="85" label-position="top"></ui-progress>
+              </div>
+              <div class="demo-row">
+                <p>Custom Color Percentage</p>
+                <ui-progress [percent]="60" percentage-color="#8b5cf6" decimal-precision="1"></ui-progress>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="labelsCode" activeLang="html"></ui-code-preview>
+          </section>
+        </div>
       </div>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <ds-progress-playground />
-    </div>
-
-    <!-- Documentation Slot -->
     <div slot="docs">
       <pg-component-documentation componentId="progress"></pg-component-documentation>
     </div>

@@ -2,4 +2,11 @@
 
 .preview-box {
   min-height: 150px;
+  background: var(--surface-muted);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+

@@ -28,12 +28,14 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
     { id: 'color-variants', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'premium-variants', title: 'Premium Variants', icon: 'zap', iconLibrary: 'lucide' },
-    { id: 'skeleton', title: 'Skeleton State', icon: 'ghost', iconLibrary: 'lucide' },
-    { id: 'sizes-variants', title: 'Sizes & Variants', icon: 'maximize', iconLibrary: 'lucide' },
-    { id: 'states', title: 'States', icon: 'list-checks', iconLibrary: 'lucide' },
+    { id: 'premium-styles', title: 'Premium Styles', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'label-positions', title: 'Label Positions', icon: 'align-left', iconLibrary: 'lucide' },
+    { id: 'custom-icons', title: 'Custom Icons', icon: 'star', iconLibrary: 'lucide' },
+    { id: 'badges-tooltips', title: 'Badges & Tooltips', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Component States', icon: 'list-checks', iconLibrary: 'lucide' },
     { id: 'groups', title: 'Checkbox Groups', icon: 'layers', iconLibrary: 'lucide' },
-    { id: 'form', title: 'Form Example', icon: 'clipboard-list', iconLibrary: 'lucide' },
+    { id: 'form', title: 'Form Integration', icon: 'clipboard-list', iconLibrary: 'lucide' },
   ];
 
   // Select All Group State
@@ -66,17 +68,55 @@ export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit
 <ui-checkbox label="Danger" color="danger" checked></ui-checkbox>
 <ui-checkbox label="Indigo" color="indigo" checked></ui-checkbox>`;
 
-  premiumVariantsCode = `<ui-checkbox label="Button Variant" variant="button" color="primary" checked></ui-checkbox>
-<ui-checkbox label="Chip Variant" variant="chip" color="info" checked></ui-checkbox>
-<ui-checkbox label="Soft Variant" variant="soft" color="success" checked></ui-checkbox>`;
+  premiumStylesCode = `<ui-checkbox label="Filled Variant" variant="filled" color="primary" checked></ui-checkbox>
+<ui-checkbox label="Tick Only" variant="tick" color="success" checked></ui-checkbox>
+<ui-checkbox label="Soft Variant" variant="soft" color="info" checked></ui-checkbox>
+<ui-checkbox label="Button Style" variant="button" color="danger" checked></ui-checkbox>
+<ui-checkbox label="Chip Style" variant="chip" color="warning" checked></ui-checkbox>`;
 
-  skeletonCode = `<ui-checkbox skeleton size="small"></ui-checkbox>
-<ui-checkbox skeleton size="medium"></ui-checkbox>
-<ui-checkbox skeleton size="large"></ui-checkbox>`;
+  shapesSizesCode = `<ui-checkbox label="Rounded" variant="rounded" checked></ui-checkbox>
+<ui-checkbox label="Square" variant="square" checked></ui-checkbox>
+<ui-checkbox label="Round Color" variant="round-color" checked></ui-checkbox>
 
-  sizesVariantsCode = `<ui-checkbox label="Small" size="small"></ui-checkbox>
-<ui-checkbox label="Medium" size="medium"></ui-checkbox>
-<ui-checkbox label="Large" size="large"></ui-checkbox>`;
+<ui-checkbox label="Small" size="small" checked></ui-checkbox>
+<ui-checkbox label="Medium" size="medium" checked></ui-checkbox>
+<ui-checkbox label="Large" size="large" checked></ui-checkbox>`;
+
+  labelPositionsCode = `<ui-checkbox label="Right (Default)" label-position="right"></ui-checkbox>
+<ui-checkbox label="Left Position" label-position="left"></ui-checkbox>
+<ui-checkbox label="Top Position" label-position="top"></ui-checkbox>
+<ui-checkbox label="Bottom Position" label-position="bottom"></ui-checkbox>`;
+
+  customIconsCode = `<ui-checkbox 
+  label="Star Icon" 
+  custom-check-icon="star" 
+  checked
+></ui-checkbox>
+
+<ui-checkbox 
+  label="Heart Icon" 
+  custom-check-icon="heart" 
+  color="danger" 
+  checked
+></ui-checkbox>
+
+<ui-checkbox 
+  label="Custom Indeterminate" 
+  custom-indeterminate-icon="help-circle" 
+  indeterminate
+></ui-checkbox>`;
+
+  badgesTooltipsCode = `<ui-checkbox 
+  label="With Badge" 
+  badge="New" 
+  color="primary"
+></ui-checkbox>
+
+<ui-checkbox 
+  label="With Tooltip" 
+  tooltip="Extra helpful information" 
+  tooltip-position="right"
+></ui-checkbox>`;
 
   statesCode = `<ui-checkbox label="Checked" checked></ui-checkbox>
 <ui-checkbox label="Indeterminate" indeterminate></ui-checkbox>

@@ -1,8 +1,8 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
-    icon="⏲️"
-    title="Timer / Stopwatch"
-    description="A versatile time-tracking component for countdowns, stopwatches, and duration displays. Supports various time formats and offers programmatic control for starting, pausing, and resetting."
+    icon="⏱️"
+    title="Timer"
+    description="A versatile timing utility supporting countdowns, stopwatches, multi-step workflows (Pomodoro), persistence, and browser notifications."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -12,61 +12,117 @@
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Timer Modes -->
-          <section class="demo-section" id="modes" style="margin-top: 0">
+          <!-- Basic Timers -->
+          <section class="demo-section" id="basic">
             <div class="section-header">
-              <h2>⏲️ Timer Modes</h2>
-              <p>Choose between decreasing time (countdown) or increasing time (stopwatch).</p>
+              <h2>Basic Timers</h2>
+              <p>Standard countdown and stopwatch functionality.</p>
             </div>
-            <div class="demo-card">
-              <div class="timer-box">
-                <span>Countdown (1 min):</span>
-                <ui-timer mode="countdown" [duration]="60" auto-start></ui-timer>
+            <div class="demo-card timer-grid">
+              <div class="timer-item">
+                <p>Simple 1min Countdown</p>
+                <ui-timer [duration]="60"></ui-timer>
               </div>
-              <div class="timer-box">
-                <span>Stopwatch:</span>
-                <ui-timer mode="stopwatch" auto-start></ui-timer>
+              <div class="timer-item">
+                <p>Standard Stopwatch</p>
+                <ui-timer mode="stopwatch"></ui-timer>
               </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="modesCode"
-              [label]="'Mode Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Display Formats -->
-          <section class="demo-section" id="formats">
+          <!-- Modes & Precision -->
+          <section class="demo-section" id="modes">
             <div class="section-header">
-              <h2>🕰️ Display Formats</h2>
-              <p>Adapt the display level of detail based on your application's needs.</p>
+              <h2>Modes & Precision</h2>
+              <p>Switch between formats and precision levels (seconds/milliseconds).</p>
+            </div>
+            <div class="demo-card timer-grid">
+              <div class="timer-item">
+                <p>High Precision (MS)</p>
+                <ui-timer mode="stopwatch" precision="milliseconds"></ui-timer>
+              </div>
+              <div class="timer-item">
+                <p>Human Readable</p>
+                <ui-timer mode="countdown" format="human" [duration]="3665"></ui-timer>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="modesCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Multi-Step Flow -->
+          <section class="demo-section" id="steps">
+            <div class="section-header">
+              <h2>Workflows & Multi-Step</h2>
+              <p>Perfect for interval training, Pomodoro sessions, or multi-phase tasks.</p>
             </div>
             <div class="demo-card">
-              <div class="timer-box">
-                <span>Compact (ss):</span>
-                <ui-timer format="ss" [duration]="45" auto-start></ui-timer>
-              </div>
-              <div class="timer-box">
-                <span>Standard (mm:ss):</span>
-                <ui-timer format="mm:ss" [duration]="125" auto-start></ui-timer>
-              </div>
-              <div class="timer-box">
-                <span>Detailed (HH:mm:ss):</span>
-                <ui-timer format="HH:mm:ss" [duration]="3665" auto-start></ui-timer>
+              <div class="timer-item w-full">
+                <p>Pomodoro Flow (Work / Break / Repeat)</p>
+                <ui-timer [attr.steps]="pomodoroSteps" loop></ui-timer>
               </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="formatsCode"
-              [label]="'Format Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="stepsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Visualization -->
+          <section class="demo-section" id="display">
+            <div class="section-header">
+              <h2>Display Variants</h2>
+              <p>Different UI presets for compact or full-screen usage.</p>
+            </div>
+            <div class="demo-card timer-grid">
+              <div class="timer-item">
+                <p>Compact Variant</p>
+                <ui-timer variant="compact" [duration]="300"></ui-timer>
+              </div>
+              <div class="timer-item">
+                <p>Linear Progress Type</p>
+                <ui-timer progress-type="linear" [duration]="120"></ui-timer>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="displayCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Alerts & Sounds -->
+          <section class="demo-section" id="alerts">
+            <div class="section-header">
+              <h2>Alerts & Notifications</h2>
+              <p>Audio-visual cues when thresholds are met or timer completes.</p>
+            </div>
+            <div class="demo-card timer-grid">
+              <div class="timer-item">
+                <p>Alert at 20% Remaining</p>
+                <ui-timer [alert-threshold]="20" [duration]="30" auto-start></ui-timer>
+              </div>
+              <div class="timer-item">
+                <p>Interactive Controls</p>
+                <ui-timer enable-sound enable-notifications [duration]="10"></ui-timer>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="alertsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Persistence & Behavior -->
+          <section class="demo-section" id="behavior">
+            <div class="section-header">
+              <h2>Persistence & Dynamic Targets</h2>
+              <p>Keep state across page refreshes or target specific dates.</p>
+            </div>
+            <div class="demo-card timer-stack">
+              <div class="demo-row">
+                <p>Persistent Timer (Retains state after refresh)</p>
+                <ui-timer persist="demo-timer" [duration]="1000"></ui-timer>
+              </div>
+              <div class="demo-row">
+                <p>New Year Countdown (Dynamic Target)</p>
+                <ui-timer target-date="2027-01-01T00:00:00"></ui-timer>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="behaviorCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>
@@ -77,4 +133,5 @@
     </div>
   </pg-demo-tabs>
 </div>
+
 

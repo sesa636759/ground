@@ -16,20 +16,20 @@
 
         <div class="examples-content">
           <!-- Pie -->
-          <section class="demo-section" id="pie" style="margin-top: 0">
+          <section class="demo-section mt-0" id="pie" >
             <div class="section-header">
               <h2>🥧 Pie Chart</h2>
               <p>Classic pie chart showing proportional distribution of categorical values.</p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center">
+              <div  class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="pie"
                   [showLegend]="true"
                   legendPosition="right"
                   [responsive]="true"
                   [data]="pieData"
-                  style="width: 100%; max-width: 520px"
+                   class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
@@ -50,7 +50,7 @@
               </p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center">
+              <div  class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="doughnut"
                   [showLegend]="true"
@@ -58,7 +58,7 @@
                   [responsive]="true"
                   [data]="doughnutData"
                   [options]="doughnutOptions"
-                  style="width: 100%; max-width: 520px"
+                   class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
@@ -80,14 +80,14 @@
               </p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center">
+              <div  class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="polarArea"
                   [showLegend]="true"
                   legendPosition="right"
                   [responsive]="true"
                   [data]="polarData"
-                  style="width: 100%; max-width: 520px"
+                   class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
@@ -108,7 +108,7 @@
               </p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center">
+              <div  class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="doughnut"
                   [showLegend]="true"
@@ -116,7 +116,7 @@
                   [responsive]="true"
                   [data]="multiRingData"
                   [options]="multiRingOptions"
-                  style="width: 100%; max-width: 520px"
+                   class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>

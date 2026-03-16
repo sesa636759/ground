@@ -2,9 +2,18 @@
 
 .preview-box {
   min-height: 150px;
+  display: flex;
+  background: var(--surface-muted);
+  border-radius: 8px;
 
   &.center-content {
     align-items: center;
     justify-content: center;
   }
+
+  &.glass-preview {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+  }
 }
+

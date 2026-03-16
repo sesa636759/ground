@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid stepper-global-section">
     <div class="control-section">
       <h3>Layout</h3>
       <div class="control-group">
@@ -171,17 +171,7 @@
     </div>
   </div>
 
-  <div
-    preview
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 2rem;
-    "
-  >
+  <div preview class="preview-stage stepper-preview">
     <ui-stepper
       [attr.orientation]="pgConfig.orientation"
       [attr.size]="pgConfig.size"
@@ -210,9 +200,73 @@
       (stepperFail)="onEvent($event, 'stepperFail')"
     ></ui-stepper>
 
-    <div class="step-content-preview" style="margin-top: 2rem; text-align: center">
+    <div class="step-content-preview stepper-content-preview">
       <h3>{{ steps[pgConfig.activeStep]?.label }}</h3>
       <p>{{ steps[pgConfig.activeStep]?.description }}</p>
+    </div>
+  </div>
+
+  <!-- All possible variants/examples -->
+  <div class="stepper-variants-section">
+    <h3>All Variants & Examples</h3>
+    <div class="stepper-variants-grid">
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="horizontal"
+        variant="default"
+        color-scheme="primary"
+        show-numbers
+        show-descriptions
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="vertical"
+        variant="panel"
+        color-scheme="success"
+        show-controls
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="horizontal"
+        variant="navigation"
+        color-scheme="warning"
+        progress-dot
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="vertical"
+        variant="outlined"
+        color-scheme="danger"
+        animated
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="horizontal"
+        variant="minimal"
+        color-scheme="primary"
+        compact
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="vertical"
+        variant="filled"
+        color-scheme="success"
+        scrollable
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="horizontal"
+        variant="snack"
+        color-scheme="warning"
+        clickable
+      ></ui-stepper>
+      <ui-stepper
+        [steps]="stepsJson"
+        orientation="vertical"
+        variant="inline"
+        color-scheme="danger"
+        show-progress
+      ></ui-stepper>
     </div>
   </div>
 

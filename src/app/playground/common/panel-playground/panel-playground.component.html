@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Panel Title</label>
       <ui-input
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div slot="content-visual" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -48,7 +48,7 @@
         [options]="themeOptions"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass Effect
       </label>
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.showClose" (ngModelChange)="updateConfig()" /> Show Close
@@ -94,7 +94,7 @@
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <div style="width: 100%; max-width: 600px">
+    <div  class="w-full max-w-600">
       <ui-panel
         [attr.panel-title]="pgConfig.panelTitle"
         [attr.panel-subtitle]="pgConfig.panelSubtitle"
@@ -122,13 +122,13 @@
             This interactive panel demonstrates various layout and behavioral capabilities. You can
             titles, subtitles, badges, and control which actions are available in the header.
           </p>
-          <div style="margin-top: 16px; display: flex; gap: 8px">
+          <div  class="mt-16 display-flex gap-8">
             <ui-button label="Action 1" variant="solid"></ui-button>
             <ui-button label="Action 2" variant="soft"></ui-button>
           </div>
         </div>
         <div slot="footer">
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">
+          <span  class="fs-08rem text-muted">
             Last updated: Today at 10:45 AM
           </span>
         </div>

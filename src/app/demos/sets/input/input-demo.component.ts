@@ -26,87 +26,90 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic-types', title: 'Basic Input Types', icon: 'type', iconLibrary: 'lucide' },
-    { id: 'variants', title: 'Input Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Basic Types', icon: 'type', iconLibrary: 'lucide' },
+    { id: 'passwords', title: 'Password Features', icon: 'lock', iconLibrary: 'lucide' },
+    { id: 'numbers', title: 'Numbers & Steppers', icon: 'hash', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
     { id: 'sizes', title: 'Input Sizes', icon: 'maximize', iconLibrary: 'lucide' },
-    { id: 'validation', title: 'Validation States', icon: 'check-circle', iconLibrary: 'lucide' },
-    { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: 'at-sign', iconLibrary: 'lucide' },
-    { id: 'advanced', title: 'Advanced Features', icon: 'zap', iconLibrary: 'lucide' },
-    { id: 'floating-labels', title: 'Floating Labels', icon: 'arrow-up-to-line', iconLibrary: 'lucide' },
-    { id: 'multiline', title: 'Multiline Input', icon: 'align-left', iconLibrary: 'lucide' },
-    { id: 'color-input', title: 'Color Input', icon: 'pipette', iconLibrary: 'lucide' },
-    { id: 'file-upload', title: 'File Upload', icon: 'file-up', iconLibrary: 'lucide' },
-    { id: 'input-masking', title: 'Input Masking', icon: 'shield-check', iconLibrary: 'lucide' },
-    { id: 'input-states', title: 'Input States', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'floating', title: 'Floating Labels', icon: 'arrow-up-circle', iconLibrary: 'lucide' },
+    { id: 'decorators', title: 'Prefix & Suffix', icon: 'tags', iconLibrary: 'lucide' },
+    { id: 'multiline', title: 'Multiline & Auto-resize', icon: 'align-left', iconLibrary: 'lucide' },
+    { id: 'validation', title: 'Rich Feedback', icon: 'check-circle', iconLibrary: 'lucide' },
+    { id: 'constraints', title: 'Length Constraints', icon: 'scissors', iconLibrary: 'lucide' },
+    { id: 'masking', title: 'Input Masking', icon: 'shield-check', iconLibrary: 'lucide' },
+    { id: 'multimedia', title: 'Pickers & Sliders', icon: 'pipette', iconLibrary: 'lucide' },
+    { id: 'files', title: 'File Uploads', icon: 'file-up', iconLibrary: 'lucide' },
+    { id: 'interaction', title: 'Interaction Kits', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'suggestions', title: 'Autocomplete', icon: 'list-start', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Component States', icon: 'info', iconLibrary: 'lucide' },
   ];
 
-  skeletonState = false;
+  basicCode = `<ui-input label="Full Name" placeholder="John Doe"></ui-input>
+<ui-input type="email" label="Email Address"></ui-input>
+<ui-input type="search" placeholder="Search product..."></ui-input>
+<ui-input type="tel" label="Telephone"></ui-input>`;
 
-  // Code snippets
-  basicInputsCode = `<ui-input label="Username" placeholder="Enter username" full-width></ui-input>
-<ui-input type="email" label="Email" placeholder="user@example.com" full-width></ui-input>
-<ui-input type="password" label="Password" show-password-toggle full-width></ui-input>`;
+  passwordsCode = `<!-- Password with toggle and strength meter -->
+<ui-input type="password" label="Password" show-password-toggle></ui-input>
 
-  variantsCode = `<ui-input label="Outlined" variant="outlined" full-width></ui-input>
-<ui-input label="Filled" variant="filled" full-width></ui-input>
-<ui-input label="Underlined" variant="underlined" full-width></ui-input>`;
+<!-- Password strength is calculated automatically based on common rules -->`;
 
-  sizesCode = `<ui-input label="Small" size="small" full-width></ui-input>
-<ui-input label="Medium" size="medium" full-width></ui-input>
-<ui-input label="Large" size="large" full-width></ui-input>`;
+  numbersCode = `<!-- Continuous number input with steppers -->
+<ui-input type="number" label="Quantity" show-steppers value="10"></ui-input>
 
-  validationCode = `<ui-input label="Error" validation-state="error" error-text="Invalid email" full-width></ui-input>
-<ui-input label="Success" validation-state="success" success-text="Available!" full-width></ui-input>`;
+<!-- Number with min/max -->
+<ui-input type="number" label="Score" min="0" max="100"></ui-input>`;
 
-  prefixSuffixCode = `<ui-input label="Website" prefix-text="https://" full-width></ui-input>
-<ui-input label="Price" prefix-text="$" suffix-text="USD" type="number" full-width></ui-input>`;
+  variantsCode = `<ui-input variant="outlined" label="Outlined (Standard)"></ui-input>
+<ui-input variant="filled" label="Filled (Soft fill)"></ui-input>
+<ui-input variant="soft" label="Soft (Secondary)"></ui-input>
+<ui-input variant="underlined" label="Underlined (Sleek)"></ui-input>
+<ui-input variant="ghost" label="Ghost (Minimalist)"></ui-input>`;
 
-  advancedCode = `<ui-input type="number" label="Quantity" show-steppers full-width></ui-input>
-<ui-input multiline auto-resize label="Auto-resize Area" full-width></ui-input>`;
+  sizesCode = `<ui-input size="small" label="Compact"></ui-input>
+<ui-input size="medium" label="Standard"></ui-input>
+<ui-input size="large" label="Prominent"></ui-input>`;
 
-  floatingLabelsCode = `<ui-input variant="outlined" label="Full Name" floating-label full-width></ui-input>
-<ui-input variant="filled" label="Email" floating-label full-width></ui-input>`;
+  floatingCode = `<ui-input floating-label label="Quick Search" variant="outlined"></ui-input>
+<ui-input floating-label label="Email" variant="filled" prefix-icon="mail"></ui-input>`;
 
-  multilineCode = `<ui-input multiline label="Description" rows="3" full-width></ui-input>
-<ui-input multiline max-length="200" show-char-count label="Bio" full-width></ui-input>`;
+  decoratorsCode = `<ui-input prefix-text="https://" label="Website"></ui-input>
+<ui-input suffix-text=".com" label="Domain"></ui-input>
+<ui-input prefix-icon="search" suffix-icon="mic" placeholder="Speak to search"></ui-input>
+<ui-input badge="99+" label="Notifications" suffix-icon="bell"></ui-input>`;
 
-  inputStatesCode = `<ui-input label="Disabled" value="Locked" disabled full-width></ui-input>
-<ui-input label="Readonly" value="View only" readonly full-width></ui-input>`;
+  multilineCode = `<ui-input multiline rows="3" label="Fixed Area"></ui-input>
+<ui-input multiline auto-resize label="Auto-expanding Area"></ui-input>`;
 
-  colorInputCode = `<!-- Basic color picker -->
-<ui-input type="color" label="Accent Color" full-width></ui-input>
+  validationCode = `<ui-input validation-state="error" error-text="Username already taken" label="Username"></ui-input>
+<ui-input validation-state="success" success-text="Strong password" type="password" label="Password"></ui-input>
+<ui-input validation-state="warning" warning-text="Weak connection" label="Sync Status"></ui-input>
+<ui-input validation-state="info" info-text="Optional field" label="Comment"></ui-input>`;
 
-<!-- Color picker with default value -->
-<ui-input type="color" label="Brand Color" value="#6366f1" full-width></ui-input>
+  constraintsCode = `<ui-input max-length="20" show-counter label="Character Limit"></ui-input>
+<ui-input min-length-indicator="10" label="Minimum Required"></ui-input>`;
 
-<!-- Color picker with copy button -->
-<ui-input type="color" label="Background Color" show-copy full-width></ui-input>`;
+  maskingCode = `<ui-input mask="phone" label="Phone" placeholder="(000) 000-0000"></ui-input>
+<ui-input mask="credit-card" label="Credit Card" prefix-icon="credit-card"></ui-input>
+<ui-input mask="currency" label="Salary Deposit" value="5000"></ui-input>`;
 
-  fileUploadCode = `<!-- Single file -->
-<ui-input type="file" label="Upload Document" full-width></ui-input>
+  multimediaCode = `<ui-input type="color" value="#4f46e5" label="Primary Color"></ui-input>
+<ui-input type="range" min="0" max="100" value="75" label="System Volume"></ui-input>
+<ui-input type="date" label="Release Date"></ui-input>`;
 
-<!-- Accept specific types -->
-<ui-input type="file" label="Upload Image" accept="image/*" full-width></ui-input>
+  filesCode = `<ui-input type="file" label="Standard Upload"></ui-input>
+<ui-input type="file" multiple label="Batch Gallery" accept="image/*"></ui-input>
+<ui-input type="file" accept=".pdf,.doc" label="Resume Picker"></ui-input>`;
 
-<!-- Accept PDF only -->
-<ui-input type="file" label="Upload PDF" accept=".pdf" full-width></ui-input>
+  interactionCode = `<ui-input show-clear placeholder="Type to clear" label="Clearable"></ui-input>
+<ui-input show-copy value="TOKEN_XYZ" label="Token (Copy-able)"></ui-input>
+<ui-input loading label="Processing..."></ui-input>
+<ui-input skeleton label="Loading Skeleton"></ui-input>`;
 
-<!-- Multiple file selection -->
-<ui-input type="file" label="Upload Files" accept="image/*,.pdf,.docx" multiple full-width></ui-input>`;
+  suggestionsCode = `<ui-input [suggestions]="['Angular', 'React', 'Vue', 'Svelte']" placeholder="Pick framework..."></ui-input>`;
 
-  inputMaskCode = `<!-- Phone Mask -->
-<ui-input label="Phone Number" mask="phone" placeholder="(555) 555-5555" full-width></ui-input>
+  statesCode = `<ui-input disabled value="Not editable" label="Disabled"></ui-input>
+<ui-input readonly value="View only data" label="Readonly"></ui-input>
+<ui-input rtl value="امتحان نص مكتوب للعرب" label="RTL Support"></ui-input>`;
 
-<!-- Credit Card Mask -->
-<ui-input label="Credit Card" mask="credit-card" placeholder="0000 0000 0000 0000" full-width></ui-input>
-
-<!-- Currency Mask -->
-<ui-input label="Currency" mask="currency" placeholder="$0.00" full-width></ui-input>
-
-<!-- Date Mask -->
-<ui-input label="Date" mask="date" placeholder="MM/DD/YYYY" full-width></ui-input>`;
-
-  toggleSkeleton() {
-    this.skeletonState = !this.skeletonState;
-  }
 }

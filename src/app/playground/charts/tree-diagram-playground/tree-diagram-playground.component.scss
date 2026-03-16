@@ -1,5 +1,24 @@
 @use '../../../../styles/playground-base.scss';
 
+.tree-diagram-node-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.tree-diagram-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.tree-diagram-svg-wrapper {
+  width: 100%;
+  overflow: auto;
+}
+.tree-diagram-svg {
+  display: block;
+  margin: 0 auto;
+  font-family: inherit;
+}
+
 .chart-preview-wrapper {
   display: flex;
   justify-content: center;

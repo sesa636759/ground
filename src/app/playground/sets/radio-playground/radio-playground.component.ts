@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
+
 @Component({
   selector: 'ds-radio-playground',
   standalone: true,
@@ -29,20 +30,18 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
       description: 'The standard choice for most users.',
       badge: 'New',
       tooltip: 'Select this for default settings',
-      icon: 'fas fa-star',
-      iconPosition: 'left',
-      color: '',
-      size: '',
+      customIcon: 'star',
+      color: 'primary',
+      size: 'medium',
     },
     {
       value: 'option2',
       label: 'Option 2',
       description: 'Advanced configuration for experts.',
       tooltip: 'Use for custom setup',
-      icon: 'fas fa-cog',
-      iconPosition: 'left',
-      color: '',
-      size: '',
+      customIcon: 'settings',
+      color: 'primary',
+      size: 'medium',
     },
     {
       value: 'option3',
@@ -50,18 +49,36 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
       description: 'Experimental features and tools.',
       disabled: true,
       tooltip: 'Currently unavailable',
-      icon: 'fas fa-flask',
-      iconPosition: 'left',
-      color: '',
-      size: '',
+      customIcon: 'flask-conical',
+      color: 'primary',
+      size: 'medium',
     },
   ];
 
   pgAccordionItems = [
     { id: 'global', title: 'Group Configuration', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'items', title: 'Manage Radio Options', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'validation', title: 'Validation & Help', icon: 'check-circle', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Grid & Layout', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'items', title: 'Manage Radio Options', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'validation', title: 'Validation & Help', icon: 'alert-circle', iconLibrary: 'lucide' },
+  ];
+
+  layoutOptions = [
+    { label: 'Vertical', value: 'vertical' },
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Grid', value: 'grid' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Bordered', value: 'bordered' },
+    { label: 'Underlined', value: 'underlined' },
+    { label: 'Card', value: 'card' },
+  ];
+
+  labelPositionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
   ];
 
   constructor() {
@@ -85,14 +102,11 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
       invalid: false,
       enableAnimation: true,
       rippleEffect: true,
-      variant: 'default',
       buttonGroup: false,
+      variant: 'default',
       skeleton: false,
       allowEmpty: false,
       showDot: true,
-      fullWidth: false,
-      loading: false,
-      elevation: 0,
       value: 'option1',
     };
   }
@@ -106,8 +120,7 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
       if (opt.description) innerContent += `    description="${opt.description}"\n`;
       if (opt.badge) innerContent += `    badge="${opt.badge}"\n`;
       if (opt.tooltip) innerContent += `    tooltip="${opt.tooltip}"\n`;
-      if (opt.icon) innerContent += `    icon="${opt.icon}"\n`;
-      if (opt.iconPosition) innerContent += `    icon-position="${opt.iconPosition}"\n`;
+      if (opt.customIcon) innerContent += `    custom-icon="${opt.customIcon}"\n`;
       if (opt.color) innerContent += `    color="${opt.color}"\n`;
       if (opt.size) innerContent += `    size="${opt.size}"\n`;
       if (opt.disabled) innerContent += `    disabled\n`;
@@ -121,9 +134,10 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
     return opt.value;
   }
 
-  onRadioGroupChange(value: any) {
-    this.logEvent(`Selection changed to: "${value}"`);
-    this.pgConfig.value = value;
+  onRadioGroupChange(event: any) {
+    const val = event.detail?.value ?? event.detail;
+    this.logEvent(`Selection changed to: "${val}"`);
+    this.pgConfig.value = val;
     this.updateConfig();
   }
 
@@ -135,10 +149,9 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
       description: '',
       tooltip: '',
       badge: '',
-      icon: '',
-      iconPosition: 'left',
-      color: '',
-      size: '',
+      customIcon: '',
+      color: 'primary',
+      size: 'medium',
     });
     this.updateConfig();
   }
@@ -159,20 +172,18 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
         description: 'The standard choice for most users.',
         badge: 'New',
         tooltip: 'Select this for default settings',
-        icon: 'fas fa-star',
-        iconPosition: 'left',
-        color: '',
-        size: '',
+        customIcon: 'star',
+        color: 'primary',
+        size: 'medium',
       },
       {
         value: 'option2',
         label: 'Option 2',
         description: 'Advanced configuration for experts.',
         tooltip: 'Use for custom setup',
-        icon: 'fas fa-cog',
-        iconPosition: 'left',
-        color: '',
-        size: '',
+        customIcon: 'settings',
+        color: 'primary',
+        size: 'medium',
       },
       {
         value: 'option3',
@@ -180,10 +191,9 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
         description: 'Experimental features and tools.',
         disabled: true,
         tooltip: 'Currently unavailable',
-        icon: 'fas fa-flask',
-        iconPosition: 'left',
-        color: '',
-        size: '',
+        customIcon: 'flask-conical',
+        color: 'primary',
+        size: 'medium',
       },
     ];
     this.updateConfig();

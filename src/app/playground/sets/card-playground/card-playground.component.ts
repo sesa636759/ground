@@ -17,7 +17,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './card-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
+export class DsCardPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('cardSet') cardSet!: ElementRef;
 
   // Playground State
@@ -25,7 +25,8 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = [
     { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'behavior', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral States', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Style & Presentation', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
   constructor() {
@@ -34,19 +35,24 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
 
   getDefaultConfig() {
     return {
-      title: 'Card Title',
-      extra: 'More',
-      cover: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop',
-      actions: 'Settings,Edit,More',
+      title: 'Dynamic Set Card',
+      extra: 'v1.0',
+      cover: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
+      coverAlt: 'Mountain view',
+      actions: 'View,Next,Archive',
       hoverable: true,
       size: 'default',
       bordered: true,
+      border: '',
+      borderRadius: '12px',
+      importance: 'standard',
+      pattern: 'default',
       type: 'default',
       loading: false,
       flippable: false,
       flipTrigger: 'click',
       closable: false,
-      menuActions: '',
+      menuActions: 'Refresh,Download,Settings',
       layout: 'vertical',
       glass: false,
       variant: 'default',
@@ -57,13 +63,22 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
       collapsed: false,
       selectable: false,
       selected: false,
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Card',
       avatarIcon: '',
+      description: 'A dedicated playground for the card set components.',
+      tag: 'Set Component',
+      buttonText: 'Action',
+      width: '100%',
+      height: 'auto',
+      aspectRatio: '16/9',
+      clickable: false,
+      href: '',
+      target: '_blank'
     };
   }
 
   updateConfig() {
-    this.updateConfigFromDom(this.cardSet, 'app-card');
+    this.updateConfigFromDom(this.cardSet, 'ui-card');
   }
 
   onCardAction(event: any) {
@@ -75,14 +90,20 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   onCardCollapse(event: any) {
-    this.logEvent(`Card ${event.detail.collapsed ? 'collapsed' : 'expanded'}`);
-    this.pgConfig.collapsed = event.detail.collapsed;
+    const isCollapsed = event.detail.collapsed;
+    this.logEvent(`Card ${isCollapsed ? 'collapsed' : 'expanded'}`);
+    this.pgConfig.collapsed = isCollapsed;
     this.updateConfig();
   }
 
   onCardSelect(event: any) {
-    this.logEvent(`Card ${event.detail.selected ? 'selected' : 'deselected'}`);
-    this.pgConfig.selected = event.detail.selected;
+    const isSelected = event.detail.selected;
+    this.logEvent(`Card ${isSelected ? 'Selected' : 'Deselected'}`);
+    this.pgConfig.selected = isSelected;
     this.updateConfig();
+  }
+
+  onCardFlip(event: any) {
+    this.logEvent(`Card flipped: ${event.detail.flipped}`);
   }
 }

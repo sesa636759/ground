@@ -1,13 +1,13 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseDemoComponent } from 'src/app/shared/base-demo.component';
-import { ExampleSectionComponent } from 'src/app/shared/components/example-section/example-section.component';
-
+import { BaseDemoComponent } from '../../../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../../../shared/components/example-section/example-section.component';
+import { PLAYGROUND_IMPORTS } from '../../../../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'app-card-examples',
   standalone: true,
-  imports: [CommonModule, ExampleSectionComponent],
+  imports: [CommonModule, ExampleSectionComponent, ...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './card-examples.component.html',
   styleUrl: './card-examples.component.scss',
@@ -16,13 +16,73 @@ export class CardExamplesComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
     { id: 'basic', title: 'Core Structure', icon: '📋' },
-    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
     { id: 'interactions', title: 'Rich Interactions', icon: '⚡' },
+    { id: 'patterns', title: 'Hierarchy & Patterns', icon: '🏗️' },
+    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
+    { id: 'specialized', title: 'Specialized Behaviors', icon: '🛠️' },
+    { id: 'advanced-slots', title: 'Advanced Slots', icon: '🚀' },
     { id: 'variants-showcase', title: 'Design Variants', icon: '🎨' },
     { id: 'responsive', title: 'Adaptive Layouts', icon: '📱' },
     { id: 'states', title: 'Functional States', icon: '⏳' },
-    { id: 'advanced', title: 'Advanced Patterns', icon: '🚀' },
   ];
+
+  patternsCode = `<div class="card-grid">
+  <!-- Emphasized Importance -->
+  <ui-card importance="emphasized" card-title="Emphasized Card" description="Used for high-priority items."></ui-card>
+  
+  <!-- Product Pattern -->
+  <ui-card pattern="product" card-title="Smart Watch Pro" tag="Sale -20%" cover="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"></ui-card>
+  
+  <!-- Shortcut Pattern -->
+  <ui-card pattern="shortcut" card-title="Quick Settings" avatar-icon="fas fa-cog"></ui-card>
+</div>`;
+
+  specializedCode = `<div class="card-grid">
+  <!-- Collapsible Card -->
+  <ui-card collapsible card-title="Collapsible Details">
+    <div slot="content">Detailed performance logs and system status information that can be hidden.</div>
+  </ui-card>
+
+  <!-- Auto-Scrolling Card -->
+  <ui-card auto-scroll height="200px" card-title="Real-time Logs">
+    <div slot="content">
+      <p style="margin: 4px 0;">[10:00:01] System boot started...</p>
+      <p style="margin: 4px 0;">[10:00:05] Kernel loaded.</p>
+      <p style="margin: 4px 0;">[10:00:10] Services initializing...</p>
+      <p style="margin: 4px 0;">[10:00:15] Network interface active.</p>
+      <p style="margin: 4px 0;">[10:00:20] Database connection established.</p>
+      <p style="margin: 4px 0;">[10:00:25] API Gateway ready.</p>
+      <p style="margin: 4px 0;">[10:00:30] System operational.</p>
+    </div>
+  </ui-card>
+  
+  <!-- Inner Type for Nesting -->
+  <ui-card card-title="Project Management">
+    <div slot="content">
+      <p>Main project overview content.</p>
+      <ui-card type="inner" card-title="Sub-task A" description="Due in 2 days" variant="outlined"></ui-card>
+      <ui-card type="inner" card-title="Sub-task B" description="Completed" variant="outlined" style="margin-top: 8px;"></ui-card>
+    </div>
+  </ui-card>
+</div>`;
+
+  advancedSlotsCode = `<ui-card>
+  <div slot="tabs">
+    <ui-tabs>
+      <ui-tab-panel label="Details">Technical specifications of the product...</ui-tab-panel>
+      <ui-tab-panel label="Reviews">User feedback and ratings...</ui-tab-panel>
+    </ui-tabs>
+  </div>
+  <div slot="content">Main product description goes here. This area is visible below the tabs.</div>
+</ui-card>
+
+<ui-card>
+  <div slot="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #eee;">
+    <div style="background: white; padding: 20px; text-align: center;">Feature 1</div>
+    <div style="background: white; padding: 20px; text-align: center;">Feature 2</div>
+    <div style="background: white; padding: 20px; text-align: center;">Feature 3</div>
+  </div>
+</ui-card>`;
 
   premiumHeroCode = `<div class="card-grid">
   <!-- Dashboard Card -->
@@ -96,20 +156,7 @@ export class CardExamplesComponent extends BaseDemoComponent {
   </ui-card>
 </div>`;
 
-  basicCode = `<ui-card variant="elevated">
-  <div slot="header">
-    <div class="header-content">
-      <span class="category">Product Design</span>
-      <h3>Design System Evolution</h3>
-    </div>
-  </div>
-  <div slot="content">
-    <p>A comprehensive guide on transitioning from monolithic styles to a token-based design system.</p>
-  </div>
-  <div slot="footer">
-    <ui-button variant="ghost" label="Read Article" icon="fas fa-arrow-right"></ui-button>
-  </div>
-</ui-card>`;
+  basicCode = `<ui-card variant="elevated" card-title="Basic Card" description="This is a basic card using properties instead of slots for simple content."></ui-card>`;
 
   mediaCode = `<ui-card hoverable>
   <div slot="cover">
@@ -148,7 +195,8 @@ export class CardExamplesComponent extends BaseDemoComponent {
   <ui-card variant="elevated">Elevated</ui-card>
   <ui-card variant="outlined">Outlined</ui-card>
   <ui-card variant="filled">Filled</ui-card>
-  <ui-card variant="default">Default</ui-card>
+  <ui-card variant="primary">Primary</ui-card>
+  <ui-card variant="success">Success</ui-card>
 </div>`;
 
   responsiveCode = `<ui-card layout="horizontal" width="100%">
@@ -156,17 +204,14 @@ export class CardExamplesComponent extends BaseDemoComponent {
     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" />
   </div>
   <div slot="header"><h3>Horizontal Layout</h3></div>
-  <div slot="content">Perfect for list items and article previews.</div>
+  <div slot="content">Perfect for list items and article previews. content should wrap nicely.</div>
 </ui-card>`;
 
   statesCode = `<ui-card loading></ui-card>
-<ui-card disabled>Disabled State</ui-card>`;
+<ui-card disabled>Disabled State content</ui-card>`;
 
   advancedCode = `<ui-card glass="true" ribbon="FEATURED">
   <div slot="header"><h3>Premium Glass Card</h3></div>
   <div slot="content">Utilizing glassmorphism for modern interfaces.</div>
 </ui-card>`;
 }
-
-
-

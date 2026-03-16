@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-type" class="control-grid" style="padding: 16px">
+  <div slot="content-type" class="control-grid p-16">
     <div class="control-group">
       <label>Chart Type</label>
       <ui-dropdown
@@ -31,11 +31,11 @@
         [(ngModel)]="pgConfig.cutout"
         (ngModelChange)="updateConfig()"
       ></ui-input>
-      <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ pgConfig.cutout }}%</span>
+      <span  class="fs-08rem text-muted">{{ pgConfig.cutout }}%</span>
     </div>
   </div>
 
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Legend Position</label>
       <ui-dropdown
@@ -54,13 +54,13 @@
         [(ngModel)]="pgConfig.borderWidth"
         (ngModelChange)="updateConfig()"
       ></ui-input>
-      <span style="font-size: 0.8rem; color: var(--text-secondary)"
+      <span  class="fs-08rem text-muted"
         >{{ pgConfig.borderWidth }}px</span
       >
     </div>
   </div>
 
-  <div slot="content-features" class="control-grid" style="padding: 16px">
+  <div slot="content-features" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -95,10 +95,10 @@
 
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center; padding: 40px"
+    class="chart-preview-wrapper w-full display-flex justify-center p-40"
+    
   >
-    <div class="pie-preview-wrapper" style="width: 100%; max-width: 480px">
+    <div class="pie-preview-wrapper w-full max-w-480" >
       <app-chart
         [chartType]="pgConfig.chartType"
         [showLegend]="pgConfig.showLegend"
@@ -106,7 +106,7 @@
         [responsive]="pgConfig.responsive"
         [data]="activeChartData"
         [options]="activeOptions"
-        style="width: 100%; height: 360px; margin: 0 auto; display: block"
+         class="w-full h-360 m-0-auto display-block"
       ></app-chart>
     </div>
   </div>

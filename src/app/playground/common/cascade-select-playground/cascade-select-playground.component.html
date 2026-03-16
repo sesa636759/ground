@@ -1,10 +1,10 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Placeholder</label>
       <ui-input
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div slot="content-states" class="control-grid" style="padding: 16px">
+  <div slot="content-states" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -59,7 +59,7 @@
   </div>
 
   <div preview class="preview-stage">
-    <div style="width: 100%; display: flex; flex-direction: column; align-items: center">
+    <div  class="w-full display-flex flex-col items-center">
       <ui-cascade-select
         #demoElement
         [attr.placeholder]="pgConfig.placeholder"
@@ -68,21 +68,13 @@
         [attr.show-full-path]="pgConfig.showFullPath ? 'true' : 'false'"
         [attr.separator]="pgConfig.separator"
         [attr.change-on-select]="pgConfig.changeOnSelect ? '' : null"
-        [options]="optionsJson"
+        [options]="options"
         (cascadeChange)="onValueChange($event)"
       ></ui-cascade-select>
 
       @if (currentValue) {
         <div
-          style="
-            margin-top: 40px;
-            padding: 12px;
-            background: var(--surface-2);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-          "
+           class="mt-40 p-12 bg-surface-2 border rounded-8 font-mono-var fs-08rem"
         >
           Selection Value: {{ currentValue | json }}
         </div>

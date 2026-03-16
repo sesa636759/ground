@@ -1,103 +1,79 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Direction</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.direction"
-        (ngModelChange)="updateConfig()"
-        [options]="directionOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="directionOptions" [(ngModel)]="pgConfig.direction" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Spacing</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.spacing"
-        (ngModelChange)="updateConfig()"
-        placeholder="e.g. 16px, -10px"
-      ></ui-input>
+      <label>Wrap</label>
+      <ui-dropdown [options]="wrapOptions" [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Align</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.align"
-        (ngModelChange)="updateConfig()"
-        [options]="alignOptions"
-      ></ui-dropdown>
+      <label>Alignment (Cross)</label>
+      <ui-dropdown [options]="alignOptions" [(ngModel)]="pgConfig.align" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Justify</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.justify"
-        (ngModelChange)="updateConfig()"
-        [options]="justifyOptions"
-      ></ui-dropdown>
+      <label>Justify (Main)</label>
+      <ui-dropdown [options]="justifyOptions" [(ngModel)]="pgConfig.justify" (ngModelChange)="updateConfig()"></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Spacing (px/css)</label>
+      <ui-input [(ngModel)]="pgConfig.spacing" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
-      <label>Max Items (0 = all)</label>
-      <ui-input
-        type="number"
-        [(ngModel)]="pgConfig.max"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Divider Style</label>
+      <ui-dropdown [options]="dividerOptions" [(ngModel)]="pgConfig.dividerType" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.overlap" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Overlap
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showDividers"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.showDividers" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Dividers
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.overlap" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Overlap Mode
+      </label>
     </div>
   </div>
 
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid pg-panel-container">
     <div class="control-group">
-      <label>Num Boxes</label>
-      <ui-input
-        type="number"
-        min="1"
-        max="10"
-        [(ngModel)]="numBoxes"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Max Visible Items</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Total Item Count</label>
+      <ui-input type="number" [(ngModel)]="numBoxes" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
-  <div preview class="preview-stage">
-    <div style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div preview>
+    <div class="preview-stage p-32 min-h-200 bg-white w-full rounded-8 border border-dashed">
       <ui-stack
-        #stack
         [attr.direction]="pgConfig.direction"
+        [attr.wrap]="pgConfig.wrap"
         [attr.spacing]="pgConfig.spacing"
         [attr.align]="pgConfig.align"
         [attr.justify]="pgConfig.justify"
         [attr.max]="pgConfig.max"
         [attr.overlap]="pgConfig.overlap ? '' : null"
         [attr.show-dividers]="pgConfig.showDividers ? '' : null"
-        style="width: 100%"
+        [attr.divider-type]="pgConfig.dividerType"
       >
-        <div *ngFor="let i of boxes" class="box box-{{ i }}">{{ i }}</div>
+        <div *ngFor="let i of boxes" class="box-item">
+          {{ i }}
+        </div>
       </ui-stack>
     </div>
   </div>
-
-  <pg-playground-event-log
-    events
-    [logs]="eventLog()"
-    (clear)="eventLog.set([])"
-  ></pg-playground-event-log>
 </pg-playground>
+
+

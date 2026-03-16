@@ -1,12 +1,12 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config" class="control-grid" style="padding: 16px">
+  <div slot="content-config" class="control-grid p-16">
     <div class="control-group">
-      <label>Separator</label>
+      <label>Separator Text</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.separator"
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
@@ -40,7 +40,7 @@
         [options]="variantOptions"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.showHome" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Home
@@ -48,26 +48,57 @@
     </div>
   </div>
 
+  <div slot="content-icons" class="control-grid p-16">
+    <div class="control-group">
+      <label>Separator Icon</label>
+      <ui-input
+        type="text"
+        placeholder="e.g., chevron-right"
+        [(ngModel)]="pgConfig.separatorIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Home Icon</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.homeIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconLibrary"
+        (ngModelChange)="updateConfig()"
+        [options]="iconLibraryOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
   >
     <div
-      style="
-        background: var(--surface-1);
-        padding: 16px 24px;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
+       class="bg-surface-1 p-16-24 rounded-8 border min-w-300"
+      [style.background]="
+        pgConfig.variant === 'glass' ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' : ''
       "
     >
       <ui-breadcrumb
         #demoElement
         [attr.separator]="pgConfig.separator"
+        [attr.separator-icon]="pgConfig.separatorIcon"
+        [attr.separator-icon-library]="pgConfig.separatorIconLibrary"
         [attr.max-items]="pgConfig.maxItems"
         [attr.size]="pgConfig.size"
         [attr.variant]="pgConfig.variant"
         [attr.show-home]="pgConfig.showHome ? '' : null"
+        [attr.home-icon]="pgConfig.homeIcon"
+        [attr.home-icon-library]="pgConfig.homeIconLibrary"
+        [attr.icon-library]="pgConfig.iconLibrary"
         [items]="itemsJson"
         (breadcrumbClick)="onBreadcrumbClick($event)"
       ></ui-breadcrumb>

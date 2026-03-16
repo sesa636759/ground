@@ -1,10 +1,10 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Label</label>
       <ui-input
@@ -24,7 +24,7 @@
     </div>
     <div class="control-group">
       <label>Icon Library</label>
-      <ui-dropdown 
+      <ui-dropdown
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
         [options]="iconLibraryOptions"
@@ -38,12 +38,21 @@
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
+    <div class="control-group" *ngIf="pgConfig.badge">
+      <label>Badge Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.badgePosition"
+        (ngModelChange)="updateConfig()"
+        [options]="badgePositionOptions"
+      ></ui-dropdown>
+    </div>
   </div>
 
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
+        [ignoreParentPosition]="true"
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
@@ -52,6 +61,7 @@
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
+        [ignoreParentPosition]="true"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOptions"
@@ -70,6 +80,7 @@
     <div class="control-group">
       <label>Icon Position</label>
       <ui-dropdown
+        [ignoreParentPosition]="true"
         [(ngModel)]="pgConfig.iconPosition"
         (ngModelChange)="updateConfig()"
         [options]="positionOptions"
@@ -86,7 +97,7 @@
     </div>
   </div>
 
-  <div slot="content-states" style="padding: 16px">
+  <div slot="content-states" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.iconOnly" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -127,8 +138,12 @@
         <ui-checkbox [(ngModel)]="pgConfig.noRipple" (ngModelChange)="updateConfig()"></ui-checkbox>
         No Ripple
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></ui-checkbox>
+        RTL
+      </label>
     </div>
-    <div class="control-grid" style="margin-top: 16px">
+    <div class="control-grid mt-16">
       <div class="control-group">
         <label>Width</label>
         <ui-input
@@ -150,6 +165,7 @@
       <div class="control-group" *ngIf="pgConfig.loading">
         <label>Loading Pos</label>
         <ui-dropdown
+          [ignoreParentPosition]="true"
           [(ngModel)]="pgConfig.loadingPosition"
           (ngModelChange)="updateConfig()"
           [options]="positionOptions"
@@ -158,7 +174,7 @@
     </div>
   </div>
 
-  <div slot="content-link" class="control-grid" style="padding: 16px">
+  <div slot="content-link" class="control-grid p-16">
     <div class="control-group">
       <label>Type</label>
       <ui-dropdown
@@ -196,11 +212,7 @@
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
-  >
+  <div preview class="preview-stage">
     <ui-button
       #demoElement
       [attr.label]="pgConfig.label"
@@ -209,6 +221,7 @@
       [attr.icon-position]="pgConfig.iconPosition"
       [attr.icon-size]="pgConfig.iconSize"
       [attr.badge]="pgConfig.badge"
+      [attr.badge-position]="pgConfig.badgePosition"
       [attr.variant]="pgConfig.variant"
       [attr.size]="pgConfig.size"
       [attr.elevation]="pgConfig.elevation"
@@ -216,6 +229,7 @@
       [attr.loading]="pgConfig.loading ? '' : null"
       [attr.loading-position]="pgConfig.loadingPosition"
       [attr.disabled]="pgConfig.disabled ? '' : null"
+      [attr.rtl]="pgConfig.rtl ? '' : null"
       [attr.pill]="pgConfig.pill ? '' : null"
       [attr.rounded]="pgConfig.rounded ? '' : null"
       [attr.full-width]="pgConfig.fullWidth ? '' : null"

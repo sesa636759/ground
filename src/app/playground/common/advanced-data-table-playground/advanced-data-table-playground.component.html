@@ -1,10 +1,10 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-core" class="control-grid" style="padding: 16px">
+  <div slot="content-core" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -32,7 +32,7 @@
         Sticky Header
       </label>
     </div>
-    <div class="control-group" style="margin-top: 16px">
+    <div class="control-group mt-16">
       <label>Empty Message</label>
       <ui-input
         type="text"
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div slot="content-selection" class="control-grid" style="padding: 16px">
+  <div slot="content-selection" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div slot="content-pagination" class="control-grid" style="padding: 16px">
+  <div slot="content-pagination" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -124,7 +124,7 @@
     </div>
   </div>
 
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid p-16">
     <div class="control-grid-2">
       <div class="control-group">
         <label>Row Height</label>
@@ -143,7 +143,7 @@
         ></ui-dropdown>
       </div>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.striped" (ngModelChange)="updateConfig()"></ui-checkbox>
         Striped
@@ -166,7 +166,7 @@
     </div>
   </div>
 
-  <div slot="content-advanced" class="control-grid" style="padding: 16px">
+  <div slot="content-advanced" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -184,6 +184,48 @@
       </label>
       <label class="checkbox-item">
         <ui-checkbox
+          [(ngModel)]="pgConfig.rowPinning"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Row Pinning
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.columnAggregation"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Aggregation
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.undoRedo"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Undo/Redo
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.rangeSelection"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Range Select
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.copyPaste"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Copy/Paste
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.conditionalFormatting"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Condit. Format
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
           [(ngModel)]="pgConfig.exportable"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
@@ -198,15 +240,29 @@
       </label>
       <label class="checkbox-item">
         <ui-checkbox
+          [(ngModel)]="pgConfig.pdfExport"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        PDF Export
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
           [(ngModel)]="pgConfig.rowDetails"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
         Row Details
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showActions"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Actions
+      </label>
     </div>
   </div>
 
-  <div slot="content-grouping" class="control-grid" style="padding: 16px">
+  <div slot="content-grouping" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.grouping" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -223,10 +279,17 @@
         ></ui-checkbox>
         Grouping UI
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.columnGrouping"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Col Grouping
+      </label>
     </div>
   </div>
 
-  <div slot="content-json" class="control-grid" style="padding: 16px">
+  <div slot="content-json" class="control-grid p-16">
     <div class="control-group">
       <label>JSON Data</label>
       <textarea
@@ -236,7 +299,7 @@
         spellcheck="false"
       ></textarea>
     </div>
-    <div class="control-group" style="margin-top: 16px">
+    <div class="control-group mt-16">
       <label>JSON Columns</label>
       <textarea
         class="json-editor"
@@ -249,10 +312,9 @@
 
   <div
     preview
-    class="preview-stage h-scrollable"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage h-scrollable w-full display-flex justify-center items-center p-40"
   >
-    <div class="table-container" style="width: 100%">
+    <div class="table-container w-full" >
       <ui-advanced-data-table
         #demoElement
         [attr.data]="dataJson"
@@ -267,6 +329,7 @@
         [attr.pagination-shape]="pgConfig.paginationShape"
         [attr.pagination-sticky]="pgConfig.paginationSticky"
         [attr.virtual-scroll]="pgConfig.virtualScroll ? '' : null"
+        [attr.virtual-row-height]="pgConfig.virtualRowHeight"
         [attr.searchable]="pgConfig.searchable"
         [attr.sortable]="pgConfig.sortable"
         [attr.filterable]="pgConfig.filterable"
@@ -275,10 +338,35 @@
         [attr.hoverable]="pgConfig.hoverable"
         [attr.bordered]="pgConfig.bordered"
         [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.show-skeleton]="pgConfig.showSkeleton"
+        [attr.skeleton-rows]="pgConfig.skeletonRows"
         [attr.empty-message]="pgConfig.emptyMessage"
         [attr.theme]="pgConfig.theme"
         [attr.grouping]="pgConfig.grouping ? '' : null"
         [attr.tree-data]="pgConfig.treeData ? '' : null"
+        [attr.column-pinning]="pgConfig.columnPinning"
+        [attr.row-pinning]="pgConfig.rowPinning"
+        [attr.multi-filter]="pgConfig.multiFilter"
+        [attr.show-filter-panel]="pgConfig.advancedFilters"
+        [attr.exportable]="pgConfig.exportable"
+        [attr.excel-export]="pgConfig.excelExport"
+        [attr.pdf-export]="pgConfig.pdfExport"
+        [attr.row-details]="pgConfig.rowDetails"
+        [attr.show-grouping-controls]="pgConfig.showGroupingControls"
+        [attr.show-actions]="pgConfig.showActions"
+        [attr.column-reorder]="pgConfig.columnReorder"
+        [attr.column-visibility]="pgConfig.columnVisibility"
+        [attr.range-selection]="pgConfig.rangeSelection"
+        [attr.copy-paste]="pgConfig.copyPaste"
+        [attr.conditional-formatting]="pgConfig.conditionalFormatting"
+        [attr.undo-redo]="pgConfig.undoRedo"
+        [attr.column-aggregation]="pgConfig.columnAggregation"
+        [attr.icon-library]="pgConfig.iconLibrary"
+        (rowSelect)="onRowSelect($event)"
+        (cellEdit)="onCellEdit($event)"
+        (sortChange)="onSortChange($event)"
+        (pageChange)="onPageChange($event)"
+        (searchChange)="onSearchChange($event)"
       ></ui-advanced-data-table>
     </div>
   </div>

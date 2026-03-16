@@ -72,47 +72,37 @@
               width="500px"
               icon-library="lucide"
             >
-              <div slot="header" style="display: flex; align-items: center; gap: 8px">
+              <div slot="header"  class="display-flex items-center gap-8">
                 <ui-icon
                   name="palette"
                   library="lucide"
                   size="24px"
-                  style="color: #10b981"
+                   class="text-emerald-500"
                 ></ui-icon>
                 <div>
-                  <h3 style="margin: 0; color: #10b981; font-size: 18px">Custom Header</h3>
-                  <span style="font-size: 12px; color: #666">With subtitle</span>
+                  <h3  class="m-0 text-emerald-500 fs-18">Custom Header</h3>
+                  <span  class="fs-12 text-gray-600-alt">With subtitle</span>
                 </div>
               </div>
               <ui-button
                 slot="header-actions"
                 title="Star"
-                style="background: transparent; border: none; cursor: pointer"
+                 class="bg-transparent border-none cursor-pointer"
               >
                 <ui-icon name="star" library="lucide" size="16px"></ui-icon>
               </ui-button>
               <div
-                style="
-                  padding: 16px;
-                  background: #f0fdf4;
-                  border: 1px dashed #10b981;
-                  border-radius: 6px;
-                "
+                 class="p-16 bg-success-soft border-success-dashed rounded-6"
               >
-                <h4 style="margin-top: 0">Slot Content Area</h4>
+                <h4  class="mt-0">Slot Content Area</h4>
                 <p>This content is injected via the default slot. It is fully customizable.</p>
               </div>
               <div
                 slot="footer"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  width: 100%;
-                  align-items: center;
-                "
+                 class="display-flex justify-between w-full items-center"
               >
-                <span style="font-size: 12px; color: #6b7280">Auto-saved: 2m ago</span>
-                <div style="display: flex; gap: 8px">
+                <span  class="fs-12 text-gray-500">Auto-saved: 2m ago</span>
+                <div  class="display-flex gap-8">
                   <ui-button
                     label="Cancel"
                     variant="secondary"
@@ -137,7 +127,7 @@
           [code]="sizesCode"
         >
           <div class="demo-card">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <div  class="display-flex gap-12 wrap">
               <ui-button label="XS" variant="secondary" (click)="toggle('sXS')"></ui-button>
               <ui-button label="SM" variant="primary" (click)="toggle('sSM')"></ui-button>
               <ui-button label="MD" variant="success" (click)="toggle('sMD')"></ui-button>
@@ -145,7 +135,7 @@
               <ui-button label="XL" variant="danger" (click)="toggle('sXL')"></ui-button>
               <ui-button
                 label="Fill (90%)"
-                style="background-color: #8b5cf6"
+                 class="bg-violet-500"
                 (click)="toggle('sFill')"
               ></ui-button>
             </div>
@@ -206,7 +196,7 @@
             <ui-button
               label="Open Registration Form"
               variant="primary"
-              style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none"
+               class="bg-gradient-violet-pink border-none"
               (click)="toggle('form')"
             ></ui-button>
 
@@ -217,8 +207,8 @@
               width="550px"
               icon-library="lucide"
             >
-              <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 0.5rem">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+              <div  class="display-flex flex-col gap-24 p-8">
+                <div  class="display-grid grid-cols-2 gap-16">
                   <ui-input
                     label="First Name"
                     placeholder="John"
@@ -236,7 +226,7 @@
                   icon-library="lucide"
                 ></ui-input>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+                <div  class="display-grid grid-cols-2 gap-16">
                   <ui-dropdown
                     label="Department"
                     placeholder="Select Department"
@@ -251,28 +241,28 @@
                   <ui-input label="Joining Date" type="date"></ui-input>
                 </div>
 
-                <div style="display: flex; flex-direction: column; gap: 0.75rem">
-                  <label style="font-size: 14px; font-weight: 500; color: #374151"
+                <div  class="display-flex flex-col gap-12">
+                  <label  class="fs-14 font-medium text-gray-700"
                     >Preferences & Settings</label
                   >
-                  <div style="display: flex; align-items: center; gap: 2rem">
+                  <div  class="display-flex items-center gap-32">
                     <ui-checkbox label="Subscribe to Newsletter" checked="true"></ui-checkbox>
                     <ui-switch label="Dark Mode" checked="false"></ui-switch>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 2rem">
+                  <div  class="display-flex items-center gap-32">
                     <ui-toggle label="Enable Notifications" checked="true"></ui-toggle>
-                    <div style="display: flex; align-items: center; gap: 0.5rem">
-                      <span style="font-size: 14px; color: #4b5563">Experience Level:</span>
+                    <div  class="display-flex items-center gap-8">
+                      <span  class="fs-14 text-gray-600">Experience Level:</span>
                       <ui-rating value="4" max="5"></ui-rating>
                     </div>
                   </div>
                 </div>
 
-                <div style="display: flex; flex-direction: column; gap: 0.5rem">
-                  <label style="font-size: 14px; font-weight: 500; color: #374151"
+                <div  class="display-flex flex-col gap-8">
+                  <label  class="fs-14 font-medium text-gray-700"
                     >Account Type</label
                   >
-                  <div style="display: flex; gap: 1.5rem">
+                  <div  class="display-flex gap-24">
                     <ui-radio
                       name="account-type"
                       label="Personal"
@@ -309,7 +299,7 @@
           [code]="variantsCode"
         >
           <div class="demo-card">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <div  class="display-flex gap-12 wrap">
               <ui-button label="Info" variant="primary" (click)="toggle('vInfo')"></ui-button>
               <ui-button label="Success" variant="success" (click)="toggle('vSuccess')"></ui-button>
               <ui-button label="Warning" variant="warning" (click)="toggle('vWarning')"></ui-button>
@@ -358,7 +348,7 @@
           [code]="positionsCode"
         >
           <div class="demo-card">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <div  class="display-flex gap-12 wrap">
               <ui-button label="Center" variant="secondary" (click)="toggle('pCenter')"></ui-button>
               <ui-button label="Top" variant="secondary" (click)="toggle('pTop')"></ui-button>
               <ui-button label="Bottom" variant="secondary" (click)="toggle('pBottom')"></ui-button>
@@ -417,7 +407,7 @@
           [code]="scrollCode"
         >
           <div class="demo-card">
-            <div style="display: flex; gap: 12px">
+            <div  class="display-flex gap-12">
               <ui-button
                 label="Scroll Paper"
                 variant="primary"
@@ -471,7 +461,7 @@
           [code]="advancedCode"
         >
           <div class="demo-card">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <div  class="display-flex gap-12 wrap">
               <ui-button
                 label="Static Backdrop"
                 variant="warning"
@@ -479,12 +469,12 @@
               ></ui-button>
               <ui-button
                 label="Draggable"
-                style="background: #8b5cf6"
+                 class="bg-violet-500"
                 (click)="toggle('aDrag')"
               ></ui-button>
               <ui-button
                 label="Resizable"
-                style="background: #ec4899"
+                 class="bg-pink-500"
                 (click)="toggle('aResize')"
               ></ui-button>
               <ui-button
@@ -546,22 +536,22 @@
           [code]="premiumCode"
         >
           <div class="demo-card">
-            <h4 style="margin-top: 0; color: #86198f">✨ Animation Gallery</h4>
+            <h4  class="mt-0 text-purple-700">✨ Animation Gallery</h4>
             <br />
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px">
+            <div  class="display-flex gap-12 wrap mb-24">
               <ui-button
                 label="Scale (Default)"
-                style="background: white; border: 1px solid #e879f9; color: #a21caf"
+                 class="bg-white border-purple-300 text-purple-700"
                 (click)="toggle('anScale')"
               ></ui-button>
               <ui-button
                 label="Fade"
-                style="background: white; border: 1px solid #e879f9; color: #a21caf"
+                 class="bg-white border-purple-300 text-purple-700"
                 (click)="toggle('anFade')"
               ></ui-button>
               <ui-button
                 label="Slide Right (Drawer)"
-                style="background: white; border: 1px solid #e879f9; color: #a21caf"
+                 class="bg-white border-purple-300 text-purple-700"
                 (click)="toggle('anSlideR')"
               ></ui-button>
             </div>
@@ -597,7 +587,7 @@
               </div>
             </ui-dialog-box>
 
-            <h4 style="margin-top: 0; color: #15803d">🪟 Persistent Dashboard Widgets</h4>
+            <h4  class="mt-0 text-emerald-700">🪟 Persistent Dashboard Widgets</h4>
             <br />
             <ui-button
               label="Open Main Sticky Note Widget"
@@ -616,19 +606,10 @@
               width="300px"
               height="300px"
             >
-              <div style="height: 100%; display: flex; flex-direction: column">
+              <div  class="h-full display-flex flex-col">
                 <textarea
                   placeholder="Type your notes here... Even if you close this dialog, thanks to 'keep-mounted' my DOM is preserved! Open it again and your text is still here without a backend save."
-                  style="
-                    flex: 1;
-                    border: none;
-                    outline: none;
-                    resize: none;
-                    width: 100%;
-                    height: 100%;
-                    padding: 4px;
-                    font-family: sans-serif;
-                  "
+                   class="flex-1 border-none outline-none resize-none w-full h-full p-4 font-sans"
                 ></textarea>
               </div>
             </ui-dialog-box>

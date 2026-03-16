@@ -1,8 +1,8 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="🎛️"
-    title="Knob / Rotary Selector"
-    description="An intuitive circular input for selecting values within a range. Perfect for audio controls, temperature settings, and dashboard metrics."
+    title="Knob"
+    description="A versatile circular control for numeric input, supporting snapping, custom track styles, and gauge-style arc rotation."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -12,69 +12,71 @@
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Visual Styles -->
-          <section class="demo-section" id="styles" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎨 Visual Styles</h2>
-              <p>Customize the look and feel of the rotary control.</p>
+          <!-- Size -->
+          <section class="demo-section" id="size">
+            <div class="section-header"><h2>Size Variants</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob size="60" value="30"></ui-knob>
+              <ui-knob size="100" value="50"></ui-knob>
+              <ui-knob size="150" value="70"></ui-knob>
             </div>
-            <div class="demo-card">
-              <div style="text-align: center">
-                <ui-knob
-                  [value]="30"
-                  value-color="#10b981"
-                  [size]="120"
-                  [stroke-width]="15"
-                ></ui-knob>
-                <p>Eco Green</p>
-              </div>
-              <div style="text-align: center">
-                <ui-knob
-                  [value]="85"
-                  value-color="#ef4444"
-                  [size]="120"
-                  [stroke-width]="25"
-                ></ui-knob>
-                <p>High Performance</p>
-              </div>
-              <div style="text-align: center">
-                <ui-knob
-                  [value]="45"
-                  value-color="#f59e0b"
-                  [size]="80"
-                  [show-value]="false"
-                ></ui-knob>
-                <p>Compact</p>
-              </div>
+          </section>
+
+          <!-- Colors -->
+          <section class="demo-section" id="colors">
+            <div class="section-header"><h2>Custom Colors</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob color="#ef4444" track-color="#fee2e2" thumb-color="#b91c1c" value="60"></ui-knob>
+              <ui-knob color="#22c55e" track-color="#dcfce7" value="80"></ui-knob>
+              <ui-knob color="#3b82f6" track-color="#dbeafe" value="40"></ui-knob>
             </div>
-            <ui-code-preview
-              [htmlCode]="stylesCode"
-              [label]="'Design Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+          </section>
+
+          <!-- Arc -->
+          <section class="demo-section" id="arc">
+            <div class="section-header"><h2>Arc & Gauge Styles</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob type="gauge" start-angle="135" end-angle="45" value="50"></ui-knob>
+              <ui-knob type="gauge" start-angle="180" end-angle="0" value="30"></ui-knob>
+            </div>
+          </section>
+
+          <!-- Ticks -->
+          <section class="demo-section" id="ticks">
+            <div class="section-header"><h2>Ticks & Subticks</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob show-ticks tick-count="12" sub-ticks="4" value="25"></ui-knob>
+              <ui-knob show-ticks tick-count="5" labels="LO,MED,HI,EXTREME" value="2"></ui-knob>
+            </div>
+          </section>
+
+          <!-- Snap -->
+          <section class="demo-section" id="snap">
+            <div class="section-header"><h2>Snapping & Steps</h2></div>
+            <div class="demo-card knob-grid">
+              <div><p>Snap to 10</p><ui-knob snap [snap-step]="10" value="50"></ui-knob></div>
+              <div><p>Step 0.1</p><ui-knob [step]="0.1" value="0.5" min="0" max="1"></ui-knob></div>
+            </div>
+          </section>
+
+          <!-- Interaction -->
+          <section class="demo-section" id="interaction">
+            <div class="section-header"><h2>Mouse Wheel & Multi-Touch</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob enable-wheel keyboard-step="5" value="45"></ui-knob>
+            </div>
           </section>
 
           <!-- States -->
-          <section class="demo-section" id="readonly">
-            <div class="section-header">
-              <h2>🔒 States</h2>
-              <p>Use readonly mode to display metrics without allowing user interaction.</p>
+          <section class="demo-section" id="states">
+            <div class="section-header"><h2>Disabled & Readonly</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob disabled value="40"></ui-knob>
+              <ui-knob readonly value="80"></ui-knob>
             </div>
-            <div class="demo-card">
-              <ui-knob [value]="75" readonly [size]="150" value-color="#8b5cf6"></ui-knob>
-            </div>
-            <ui-code-preview
-              [htmlCode]="readonlyCode"
-              [label]="'Readonly Usage'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
           </section>
         </div>
       </div>
@@ -85,4 +87,5 @@
     </div>
   </pg-demo-tabs>
 </div>
+
 

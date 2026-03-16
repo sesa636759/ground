@@ -1,13 +1,11 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-
 import { DmSpeedDialPlaygroundComponent } from '../../../playground/common/speed-dial-playground/speed-dial-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
-import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
-
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'dm-speed-dial-demo',
@@ -26,28 +24,44 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSpeedDialDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'directions', title: 'Opening Directions', icon: 'move', iconLibrary: 'lucide' },
-    { id: 'types', title: 'Motion Patterns', icon: 'swatch-book', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Basic Usage', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'positions', title: 'Positions & Direction', icon: 'crosshair', iconLibrary: 'lucide' },
+    { id: 'trigger', title: 'Trigger & Tooltips', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'styles', title: 'Sizes & Colors', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'custom-icons', title: 'Custom Icons', icon: 'star', iconLibrary: 'lucide' },
   ];
 
-  items = [
-    { label: 'Add', icon: '➕' },
-    { label: 'Update', icon: '🔄' },
-    { label: 'Delete', icon: '🗑️' },
-    { label: 'Home', icon: '🏠' },
-  ];
+  actions = JSON.stringify([
+    { id: 'copy', icon: 'copy', label: 'Copy Link' },
+    { id: 'edit', icon: 'edit-2', label: 'Edit Post' },
+    { id: 'delete', icon: 'trash-2', label: 'Delete', color: '#ef4444' }
+  ]);
 
-  playgroundCode = `<ui-speed-dial [model]="items" direction="up"></ui-speed-dial>`;
+  lucideActions = JSON.stringify([
+    { id: 'share', icon: 'share-2', label: 'Share', iconLibrary: 'lucide' },
+    { id: 'download', icon: 'download', label: 'Download', iconLibrary: 'lucide' },
+    { id: 'flag', icon: 'flag', label: 'Report', color: '#ef4444', iconLibrary: 'lucide' }
+  ]);
 
-  directionsCode = `<!-- Vertical Up -->
-<ui-speed-dial direction="up" [model]="items"></ui-speed-dial>
+  basicCode = `<ui-speed-dial [actions]="actions" icon="plus" icon-library="lucide"></ui-speed-dial>`;
+  
+  positionsCode = `<div style="position: relative; height: 300px;">
+  <!-- Render absolute speed dials inside container -->
+  <ui-speed-dial strategy="absolute" position="top-left" direction="right" [actions]="actions"></ui-speed-dial>
+  <ui-speed-dial strategy="absolute" position="top-right" direction="down" [actions]="actions"></ui-speed-dial>
+  <ui-speed-dial strategy="absolute" position="bottom-left" direction="up" [actions]="actions"></ui-speed-dial>
+  <ui-speed-dial strategy="absolute" position="bottom-right" direction="left" [actions]="actions"></ui-speed-dial>
+  <ui-speed-dial strategy="absolute" position="center" direction="up" [actions]="actions"></ui-speed-dial>
+</div>`;
 
-<!-- Horizontal Right -->
-<ui-speed-dial direction="right" [model]="items"></ui-speed-dial>`;
+  triggerCode = `<ui-speed-dial strategy="absolute" position="center" trigger="hover" tooltip-position="bottom" [actions]="actions"></ui-speed-dial>`;
 
-  typesCode = `<!-- Circular Expansion -->
-<ui-speed-dial type="circle" [radius]="100" [model]="items"></ui-speed-dial>
+  stylesCode = `<ui-speed-dial strategy="absolute" position="top-left" size="sm" color="success" [actions]="actions"></ui-speed-dial>
+<ui-speed-dial strategy="absolute" position="bottom-right" size="lg" color="danger" [actions]="actions"></ui-speed-dial>`;
 
-<!-- Half Circle -->
-<ui-speed-dial type="half-circle" direction="up" [model]="items"></ui-speed-dial>`;
+  customIconsCode = `<ui-speed-dial strategy="absolute" position="center" icon="menu" icon-library="lucide" [actions]="lucideActions"></ui-speed-dial>`;
+
+  handleActionClick(ev: any) {
+    console.log(`Action Clicked: ${ev.detail}`);
+  }
 }

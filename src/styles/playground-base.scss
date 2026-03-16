@@ -12,6 +12,14 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
+
+  &.p-16 {
+    padding: 1rem;
+  }
+}
+
+.pg-panel-container {
+  padding: 1rem;
 }
 
 .control-group {
@@ -146,4 +154,168 @@
       color: var(--text-primary);
     }
   }
+}
+
+// ── Utility Classes for Playgrounds (handled by utilities.scss) ────────────────
+
+.mt-16 {
+  @extend .mt-16;
+}
+.p-16 {
+  @extend .p-16;
+}
+
+.code-block-minimal {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin: 0;
+}
+
+.splitter-demo-container {
+  padding: 24px;
+  min-height: 400px;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.splitter-panel-content {
+  padding: 20px;
+  overflow: auto;
+}
+
+/*
+ * ─────────────────────────────────────────────────────────────────────────────
+ * MERGED & REFACTORED: playground-common utilities → Variables & Mixins
+ * Extracted repeats: flex centering, preview dimensions, paddings, overlays
+ * Improves maintainability & reduces duplication across playground demos
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+// ── Playground Common Variables & Mixins ──────────────────────────────────────
+$pg-preview-height: 400px;
+$pg-preview-padding: 24px;
+$pg-large-padding: 40px;
+$pg-xl-padding: 60px 80px;
+$pg-event-padding: 12px 20px;
+$pg-border-radius-lg: 12px;
+$pg-border-radius-md: 8px;
+$pg-shadow-log: 4px solid var(--primary-color);
+$pg-overlay-bg: rgba(0, 0, 0, 0.05);
+
+@mixin pg-centered-flex($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin pg-preview-container(
+  $bg: var(--surface-elevated),
+  $radius: $pg-border-radius-lg,
+  $height: $pg-preview-height
+) {
+  width: 100%;
+  height: $height;
+  border-radius: $radius;
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin pg-trigger-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+@mixin pg-overlay($pos: absolute, $top-right: true) {
+  position: $pos;
+  border-radius: $pg-border-radius-lg;
+  @if $top-right {
+    top: 20px;
+    right: 20px;
+  } @else {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+  }
+}
+
+// ── Refactored Classes (using mixins/vars) ────────────────────────────────────
+.preview-full {
+  width: 100%;
+  height: 100%;
+  @include pg-centered-flex;
+  padding: $pg-preview-padding;
+}
+
+.control-grid-padded {
+  padding: 16px;
+}
+
+// Slide utilities (carousel) - reduced duplication
+.slide-full {
+  height: 100%;
+  width: 100%;
+  @include pg-centered-flex;
+  color: white;
+}
+
+.slide-content-centered {
+  text-align: center;
+}
+
+.slide-title-large {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.slide-desc-faded {
+  opacity: 0.8;
+}
+
+// Context menu
+.preview-menu-container {
+  width: 100%;
+  @include pg-preview-container(var(--bg-secondary));
+  @include pg-centered-flex(column);
+  padding: $pg-large-padding;
+  background: var(--bg-secondary);
+}
+
+.trigger-area-demo {
+  padding: $pg-xl-padding;
+  @include pg-trigger-area;
+  @include pg-centered-flex(column);
+  gap: 12px;
+}
+
+.event-log-bottom {
+  @include pg-overlay;
+  padding: $pg-event-padding;
+  background: $pg-overlay-bg;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-left: $pg-shadow-log;
+}
+
+// Dock desktop background
+.dock-desktop-bg {
+  padding: $pg-large-padding;
+  @include pg-centered-flex;
+  min-height: $pg-preview-height;
+  background: url('https://w.wallhaven.cc/full/pk/wallhaven-pkvv2e.jpg') center/cover;
+  @include pg-preview-container($radius: $pg-border-radius-md);
+}
+
+.dock-time-overlay {
+  @include pg-overlay(absolute, true);
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
 }

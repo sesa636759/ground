@@ -1,5 +1,29 @@
 @use '../../../../styles/playground-base.scss';
 
+.timeline-range-row-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.timeline-range-radius-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.timeline-range-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.timeline-range-svg-wrapper {
+  width: 100%;
+  max-width: 700px;
+  overflow-x: auto;
+}
+.timeline-range-svg {
+  font-family: inherit;
+  display: block;
+  margin: 0 auto;
+}
+
 .chart-preview-wrapper {
   display: flex;
   justify-content: center;

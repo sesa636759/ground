@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-features" class="control-grid" style="padding: 16px">
+  <div slot="content-features" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -37,23 +37,10 @@
 
   <div
     preview
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px;
-    "
+     class="w-full display-flex justify-center items-start p-40"
   >
     <div
-      style="
-        width: 100%;
-        max-width: 400px;
-        background: var(--surface-1);
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        padding: 16px;
-      "
+       class="w-full max-w-400 bg-surface-1 rounded-12 border p-16"
     >
       <ui-tree-list
         #demoElement

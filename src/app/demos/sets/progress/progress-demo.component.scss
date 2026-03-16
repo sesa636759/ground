@@ -1,3 +1,5 @@
+@use '../../../../styles/demo-base.scss';
+
 .center-content {
   display: flex;
   justify-content: center;
@@ -8,7 +10,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--color-bg-tertiary);
+  background: var(--bg-tertiary);
   padding: 12px 20px;
   border-radius: 8px;
 
@@ -17,3 +19,33 @@
     min-width: 120px;
   }
 }
+
+.progress-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.demo-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+

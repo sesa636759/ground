@@ -1,5 +1,64 @@
 @use '../../../../styles/playground-base.scss';
 
+.features-section {
+  padding: 16px;
+}
+
+.features-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.card-back-title {
+  margin-top: 16px;
+}
+
+.appearance-section,
+.content-section {
+  padding: 16px;
+}
+
+.card-preview {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 700px;
+  background: #f8fafc;
+}
+
+.card-back-content {
+  padding: 24px;
+  text-align: center;
+}
+
+.card-footer-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.preview {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+}
+.preview {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.preview-stage {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .playground-controls {
   max-width: 450px;
 }

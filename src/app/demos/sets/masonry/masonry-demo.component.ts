@@ -1,11 +1,10 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmMasonryPlaygroundComponent } from '../../../playground/sets/masonry-playground/masonry-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
-
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
+import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -15,8 +14,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
     ...PLAYGROUND_IMPORTS,
     DmMasonryPlaygroundComponent,
     DemoTabsComponent,
-
-    ExampleSectionComponent,
+    ComponentDocumentationComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
   ],
@@ -26,106 +24,36 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmMasonryDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'masonry', title: 'Masonry Layout', icon: 'layout-grid', iconLibrary: 'lucide' },
-    { id: 'grid', title: 'Grid Layout', icon: 'grid-3x3', iconLibrary: 'lucide' },
-    { id: 'columns', title: 'Columns Layout', icon: 'columns-3', iconLibrary: 'lucide' },
+    { id: 'masonry', title: 'Masonry Layout', icon: 'grid', iconLibrary: 'lucide' },
+    { id: 'grid', title: 'Fixed Grid', icon: 'layout-grid', iconLibrary: 'lucide' },
+    { id: 'columns', title: 'Flex Columns', icon: 'columns-3', iconLibrary: 'lucide' },
     { id: 'responsive', title: 'Responsive Design', icon: 'tablet', iconLibrary: 'lucide' },
-    { id: 'filtering', title: 'Filtering & Sorting', icon: 'filter', iconLibrary: 'lucide' },
-    { id: 'selection', title: 'Multi-Select', icon: 'check-square', iconLibrary: 'lucide' },
-    { id: 'lightbox', title: 'Lightbox Gallery', icon: 'maximize', iconLibrary: 'lucide' },
-    { id: 'skeleton', title: 'Skeleton Loading', icon: 'ghost', iconLibrary: 'lucide' },
+    { id: 'filtering', title: 'Filtering & Sorting', icon: 'search', iconLibrary: 'lucide' },
+    { id: 'selection', title: 'Selection & Batch', icon: 'check-square', iconLibrary: 'lucide' },
+    { id: 'lightbox', title: 'Gallery Lightbox', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'skeleton', title: 'Loading States', icon: 'ghost', iconLibrary: 'lucide' },
   ];
 
-  // Sample items for different layouts
-  sampleItems = Array.from({ length: 12 }, (_, i) => ({
+  sampleItems = Array.from({ length: 15 }, (_, i) => ({
     id: i + 1,
-    image: `https://picsum.photos/400/${200 + (i % 5) * 50}?random=${i}`,
-    title: `Item ${i + 1}`,
-    description: 'Sample description for gallery item',
-    category: ['nature', 'tech', 'design', 'food', 'architecture'][i % 5],
-    tags: [`tag${(i % 3) + 1}`],
+    title: `Project ${String.fromCharCode(65 + i)}`,
+    image: `https://picsum.photos/seed/${i + 50}/400/${300 + (i % 4) * 100}`,
+    category: ['Nature', 'Urban', 'Tech'][i % 3],
+    date: new Date(Date.now() - i * 86400000).toISOString(),
   }));
 
-  // Code examples
-  masonryCode = signal(`<ui-masonry
-  layout-type="masonry"
-  columns="4"
-  gap="16"
-  [items]="items"
-></ui-masonry>`);
+  filterOptions = JSON.stringify([
+    { key: 'Nature', label: 'Nature' },
+    { key: 'Urban', label: 'Urban' },
+    { key: 'Tech', label: 'Technology' },
+  ]);
 
-  gridCode = signal(`<ui-masonry
-  layout-type="grid"
-  columns="4"
-  gap="16"
-  [items]="productItems"
-></ui-masonry>`);
-
-  columnsCode = signal(`<ui-masonry
-  layout-type="columns"
-  columns="3"
-  gap="20"
-  [items]="newsItems"
-></ui-masonry>`);
-
-  responsiveCode = signal(`<ui-masonry
-  layout-type="masonry"
-  columns="3"
-  gap="16"
-  responsive="true"
-  [breakpoints]="{ 640: 2, 768: 3, 1024: 4, 1280: 5 }"
-  [items]="items"
-></ui-masonry>`);
-
-  filteringCode = signal(`<ui-masonry
-  layout-type="masonry"
-  columns="3"
-  gap="16"
-  show-filters="true"
-  [filterOptions]="filterOptions"
-  [items]="items"
-  (filterChange)="onFilterChange($event)"
-></ui-masonry>`);
-
-  selectionCode = signal(`<ui-masonry
-  layout-type="masonry"
-  columns="3"
-  gap="16"
-  selectable="true"
-  multi-select="true"
-  show-batch-actions="true"
-  [items]="items"
-  (selectionChange)="onSelectionChange($event)"
-></ui-masonry>`);
-
-  lightboxCode = signal(`<ui-masonry
-  layout-type="masonry"
-  columns="4"
-  gap="12"
-  lightbox="true"
-  lightbox-animation="zoom"
-  [items]="galleryItems"
-  (itemClick)="onItemClick($event)"
-></ui-masonry>`);
-
-  skeletonCode = signal(`<ui-masonry
-  layout-type="masonry"
-  columns="3"
-  gap="16"
-  [loading]="isLoading"
-  [skeletonCount]="12"
-></ui-masonry>`);
-
-  playgroundCode = signal(`<ui-masonry
-  layout-type="masonry"
-  [columns]="columns"
-  [gap]="gap"
-  responsive="true"
-  selectable="true"
-  show-filters="true"
-  lazy-load="true"
-  [items]="items"
-  [breakpoints]="breakpoints"
-  (itemClick)="onItemClick($event)"
-></ui-masonry>`);
+  masonryCode = `<ui-masonry layout-type="masonry" [columns]="3" [items]="items"></ui-masonry>`;
+  gridCode = `<ui-masonry layout-type="grid" [columns]="4" [items]="items"></ui-masonry>`;
+  columnsCode = `<ui-masonry layout-type="columns" [columns]="3" [items]="items"></ui-masonry>`;
+  responsiveCode = `<ui-masonry [breakpoints]='{"640":2, "768":3, "1024":4}' [items]="items"></ui-masonry>`;
+  filteringCode = `<ui-masonry show-filters [filter-options]="options" [items]="items"></ui-masonry>`;
+  selectionCode = `<ui-masonry selectable multi-select show-batch-actions [items]="items"></ui-masonry>`;
+  lightboxCode = `<ui-masonry lightbox [items]="items"></ui-masonry>`;
+  skeletonCode = `<ui-masonry loading-state [columns]="3"></ui-masonry>`;
 }

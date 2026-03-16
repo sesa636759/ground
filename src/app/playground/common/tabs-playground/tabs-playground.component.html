@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
       <ui-dropdown
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div slot="content-visual" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -33,7 +33,7 @@
       ></ui-dropdown>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
         Scrollable
@@ -46,7 +46,7 @@
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <div class="tabs-container" style="width: 100%">
+    <div class="tabs-container w-full" >
       <ui-tabs
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
@@ -56,8 +56,8 @@
         [value]="currentTab"
         (valueChange)="onTabChange($event)"
       >
-        <ui-tab label="Overview" icon="??" value="overview">
-          <div style="padding: 24px">
+        <ui-tab label="Overview" icon="📊" value="overview">
+          <div  class="p-24">
             <h4>Overview Content</h4>
             <p>
               Welcome to the dashboard overview. Here you can see your recent activity and system
@@ -65,14 +65,14 @@
             </p>
           </div>
         </ui-tab>
-        <ui-tab label="Settings" icon="??" value="settings">
-          <div style="padding: 24px">
+        <ui-tab label="Settings" icon="⚙️" value="settings">
+          <div  class="p-24">
             <h4>Settings Content</h4>
             <p>Manage your account preferences, security settings, and notification frequency.</p>
           </div>
         </ui-tab>
-        <ui-tab label="Profile" icon="??" value="profile">
-          <div style="padding: 24px">
+        <ui-tab label="Profile" icon="👤" value="profile">
+          <div  class="p-24">
             <h4>Profile Content</h4>
             <p>Update your personal information, bio, and social media links.</p>
           </div>

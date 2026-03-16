@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid sidebar-global-section">
     <div class="control-grid">
       <div class="control-group">
         <label>Position</label>
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid sidebar-checkbox-section">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />
         Collapsible

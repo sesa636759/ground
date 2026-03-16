@@ -1,1 +1,27 @@
 @use '../../../../styles/playground-base.scss';
+
+.stepper-global-section {
+  padding: 16px;
+}
+.stepper-preview {
+  padding: 32px;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.stepper-content-preview {
+  margin-top: 32px;
+  text-align: center;
+}
+.stepper-variants-section {
+  margin-top: 32px;
+}
+.stepper-variants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}

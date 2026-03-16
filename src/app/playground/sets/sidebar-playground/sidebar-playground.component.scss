@@ -1,4 +1,11 @@
 @use '../../../../styles/playground-base.scss';
+.sidebar-global-section {
+  padding: 16px;
+}
+
+.sidebar-checkbox-section {
+  margin-top: 16px;
+}
 
 .preview-stage {
   min-height: 400px;

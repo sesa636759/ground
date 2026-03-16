@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config" class="control-grid" style="padding: 16px">
+  <div slot="content-config" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
       <ui-dropdown
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -56,10 +56,10 @@
 
   <div
     preview
-    class="preview-stage"
-    style="display: flex; gap: 32px; height: 100%; border-radius: 8px; padding: 12px; height: 500px"
+    class="preview-stage display-flex gap-32 h-full rounded-8 p-12 h-500"
+    
   >
-    <div style="flex: 1; max-width: 250px">
+    <div  class="flex-1 max-w-250">
       <ui-anchor
         #anchor
         [attr.orientation]="pgConfig.orientation"
@@ -76,33 +76,25 @@
 
     <div
       id="pg-scroll-container"
-      style="
-        flex: 1;
-        height: 100%;
-        overflow-y: auto;
-        padding: 20px;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        background: var(--surface-1);
-      "
+       class="flex-1 h-full overflow-y-auto p-20 border rounded-8 bg-surface-1"
     >
-      <div id="basics-pg" style="height: 400px; padding: 20px 0">
-        <h2 style="margin: 0 0 16px 0; color: var(--text-color)">Basics</h2>
-        <p style="color: var(--text-secondary)">
+      <div id="basics-pg"  class="h-400 py-20">
+        <h2  class="m-0-0-16 text-color">Basics</h2>
+        <p  class="text-muted">
           This is the first segment of the anchor content container. Scrolling down will trigger the
           anchor active state automatically.
         </p>
       </div>
-      <div id="api-pg" style="height: 400px; padding: 20px 0">
-        <h2 style="margin: 0 0 16px 0; color: var(--text-color)">API Reference</h2>
-        <p style="color: var(--text-secondary)">
+      <div id="api-pg"  class="h-400 py-20">
+        <h2  class="m-0-0-16 text-color">API Reference</h2>
+        <p  class="text-muted">
           This is the middle section. Try adjusting the scroll offset on the left to see how it
           affects the trigger points.
         </p>
       </div>
-      <div id="theming-pg" style="height: 600px; padding: 20px 0">
-        <h2 style="margin: 0 0 16px 0; color: var(--text-color)">Theming</h2>
-        <p style="color: var(--text-secondary)">
+      <div id="theming-pg"  class="h-600 py-20">
+        <h2  class="m-0-0-16 text-color">Theming</h2>
+        <p  class="text-muted">
           Last segment to allow full scrolling. The progress indicator (if enabled) will stretch up
           to this point.
         </p>

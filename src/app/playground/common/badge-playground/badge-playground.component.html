@@ -1,16 +1,17 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Value</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
+        [disabled]="pgConfig.dot"
       ></ui-input>
     </div>
     <div class="control-group">
@@ -22,17 +23,28 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Icon</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.icon"
+      <label>Icon Name</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
-        placeholder="e.g. ⭐"
-      ></ui-input>
+        [options]="iconLibraryOptions"
+      ></ui-dropdown>
     </div>
   </div>
 
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
     <div class="control-group">
       <label>Color</label>
       <ui-dropdown
@@ -50,16 +62,24 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Variant</label>
+      <label>Shape</label>
       <ui-dropdown
-        [(ngModel)]="pgConfig.variant"
+        [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
-        [options]="variantOptions"
+        [options]="shapeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Gradient</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.gradient"
+        (ngModelChange)="updateConfig()"
+        [options]="gradientOptions"
       ></ui-dropdown>
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Position</label>
       <ui-dropdown
@@ -69,6 +89,25 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
+      <label>Offset X</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.offsetX"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Offset Y</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.offsetY"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
+
+  <div slot="content-behavior" class="control-grid p-16">
+    <div class="control-group">
       <label>Animation</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.animation"
@@ -76,7 +115,7 @@
         [options]="animationOptions"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.dot" (ngModelChange)="updateConfig()"></ui-checkbox>
         Dot Mode
@@ -85,13 +124,31 @@
         <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></ui-checkbox>
         Glow Effect
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.interactive"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Interactive
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.closeable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Closeable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showZero" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Zero
+      </label>
     </div>
   </div>
 
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-60"
+    
   >
     <ui-badge
       [attr.value]="pgConfig.value"
@@ -99,27 +156,27 @@
       [attr.color]="pgConfig.color"
       [attr.size]="pgConfig.size"
       [attr.variant]="pgConfig.variant"
+      [attr.shape]="pgConfig.shape"
       [attr.position]="pgConfig.position"
       [attr.animation]="pgConfig.animation"
       [attr.dot]="pgConfig.dot ? '' : null"
       [attr.glow]="pgConfig.glow ? '' : null"
+      [attr.interactive]="pgConfig.interactive ? '' : null"
+      [attr.closeable]="pgConfig.closeable ? '' : null"
+      [attr.show-zero]="pgConfig.showZero ? '' : null"
       [attr.icon]="pgConfig.icon"
+      [attr.icon-position]="pgConfig.iconPosition"
+      [attr.icon-library]="pgConfig.iconLibrary"
+      [attr.gradient]="pgConfig.gradient"
+      [attr.offset-x]="pgConfig.offsetX"
+      [attr.offset-y]="pgConfig.offsetY"
+      (badgeClick)="onBadgeClick()"
+      (badgeClose)="onBadgeClose()"
     >
       <div
-        class="badge-target"
-        style="
-          padding: 12px;
-          border-radius: 8px;
-          background: var(--surface-1);
-          box-shadow: var(--shadow-sm);
-        "
+         class="w-60 h-60 bg-gradient-surface border rounded-12 display-flex items-center justify-center fs-24"
       >
-        @if (!pgConfig.icon) {
-          <span style="font-size: 24px">✉️</span>
-        }
-        @if (pgConfig.icon) {
-          <span style="font-size: 24px">{{ pgConfig.icon }}</span>
-        }
+        <ui-icon name="bell" library="lucide"></ui-icon>
       </div>
     </ui-badge>
   </div>

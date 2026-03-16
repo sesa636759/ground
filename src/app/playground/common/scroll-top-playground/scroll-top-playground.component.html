@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Threshold (px)</label>
       <ui-input
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Icon</label>
       <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
@@ -40,24 +40,17 @@
 
   <div
     preview
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+     class="w-full display-flex justify-center items-center p-40"
   >
     <div
-      class="scroll-content"
+      class="scroll-content h-300 overflow-y-auto w-full border p-16 rounded-8"
       id="pg-scroll-target"
-      style="
-        height: 300px;
-        overflow-y: auto;
-        width: 100%;
-        border: 1px solid var(--border-color);
-        padding: 16px;
-        border-radius: 8px;
-      "
+      
     >
       <h3>Scroll down to see the button!</h3>
       <p
         *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
-        style="margin-bottom: 24px"
+         class="mb-24"
       >
         More content segment {{ i }}...
       </p>

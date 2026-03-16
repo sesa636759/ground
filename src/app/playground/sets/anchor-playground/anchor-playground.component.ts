@@ -32,17 +32,36 @@ export class DmAnchorPlaygroundComponent extends BasePlaygroundComponent impleme
   ];
 
   anchorItems = [
-    { id: 'section-1', label: 'Introduction', icon: 'fas fa-home', tooltip: 'Start here' },
+    {
+      id: 'section-1',
+      label: 'Introduction',
+      icon: 'fas fa-home',
+      iconLibrary: 'fa',
+      tooltip: 'Start here',
+    },
     {
       id: 'section-2',
       label: 'Features',
       icon: 'fas fa-star',
       badge: 'New',
+      iconLibrary: 'fa',
       tooltip: 'Key features',
     },
-    { id: 'section-3', label: 'Configuration', icon: 'fas fa-cog', tooltip: 'Setup guide' },
-    { id: 'section-4', label: 'API', icon: 'fas fa-code', tooltip: 'Reference' },
-    { id: 'section-5', label: 'Examples', icon: 'fas fa-book', tooltip: 'See more' },
+    {
+      id: 'section-3',
+      label: 'Configuration',
+      icon: 'fas fa-cog',
+      iconLibrary: 'fa',
+      tooltip: 'Setup guide',
+    },
+    { id: 'section-4', label: 'API', icon: 'fas fa-code', iconLibrary: 'fa', tooltip: 'Reference' },
+    {
+      id: 'section-5',
+      label: 'Examples',
+      icon: 'fas fa-book',
+      iconLibrary: 'fa',
+      tooltip: 'See more',
+    },
   ];
 
   constructor() {

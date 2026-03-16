@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -9,6 +9,8 @@
 
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
+
+import { ADVANCED_TABLE_DATA, ADVANCED_TABLE_COLUMNS } from '../../../data/advanced-table.data';
 
 @Component({
   selector: 'dm-advanced-data-table-playground',
@@ -28,91 +30,22 @@ export class DmAdvancedDataTablePlaygroundComponent
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'core', title: 'Core & Data', icon: 'database', iconLibrary: 'lucide' },
-    { id: 'selection', title: 'Selection & Editing', icon: 'check-square', iconLibrary: 'lucide' },
-    { id: 'pagination', title: 'Pagination Settings', icon: 'list', iconLibrary: 'lucide' },
-    { id: 'layout', title: 'Layout & Styling', icon: 'layout', iconLibrary: 'lucide' },
-    {
-      id: 'advanced',
-      title: 'Advanced Features',
-      icon: 'sparkles',
-      iconLibrary: 'lucide',
-    },
-    { id: 'grouping', title: 'Grouping & Tree', icon: 'git-branch', iconLibrary: 'lucide' },
-    { id: 'json', title: 'JSON Data Editor', icon: 'code', iconLibrary: 'lucide' },
+    { id: 'core', title: 'Core & Data', icon: '🗄️', iconLibrary: 'emoji' },
+    { id: 'selection', title: 'Selection & Editing', icon: '✔️', iconLibrary: 'emoji' },
+    { id: 'pagination', title: 'Pagination Settings', icon: '📄', iconLibrary: 'emoji' },
+    { id: 'layout', title: 'Layout & Styling', icon: '🎨', iconLibrary: 'emoji' },
+    { id: 'advanced', title: 'Advanced Features', icon: '✨', iconLibrary: 'emoji' },
+    { id: 'grouping', title: 'Grouping & Tree', icon: '🌳', iconLibrary: 'emoji' },
+    { id: 'json', title: 'JSON Data Editor', icon: '⚙️', iconLibrary: 'emoji' },
   ];
 
   accordionDefaultOpen = ['core'];
 
-  data = [
-    {
-      id: 1,
-      name: 'John Doe',
-      avatar: 'https://i.pravatar.cc/150?u=john',
-      role: 'Admin',
-      status: 'Active',
-      salary: 120000,
-      joined: '2023-01-15',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      avatar: 'https://i.pravatar.cc/150?u=jane',
-      role: 'Editor',
-      status: 'Pending',
-      salary: 85000,
-      joined: '2023-05-20',
-    },
-    {
-      id: 3,
-      name: 'Bob Johnson',
-      avatar: 'https://i.pravatar.cc/150?u=bob',
-      role: 'Viewer',
-      status: 'Inactive',
-      salary: 45000,
-      joined: '2022-11-10',
-    },
-    {
-      id: 4,
-      name: 'Alice Williams',
-      avatar: 'https://i.pravatar.cc/150?u=alice',
-      role: 'Manager',
-      status: 'Active',
-      salary: 95000,
-      joined: '2023-03-05',
-    },
-    {
-      id: 5,
-      name: 'Charlie Brown',
-      avatar: 'https://i.pravatar.cc/150?u=charlie',
-      role: 'Guest',
-      status: 'Active',
-      salary: 30000,
-      joined: '2024-02-12',
-    },
-    {
-      id: 6,
-      name: 'David Wilson',
-      avatar: 'https://i.pravatar.cc/150?u=david',
-      role: 'Editor',
-      status: 'Active',
-      salary: 78000,
-      joined: '2023-08-22',
-    },
-  ];
+  data = ADVANCED_TABLE_DATA;
+  columns = ADVANCED_TABLE_COLUMNS;
 
-  columns = [
-    { field: 'id', header: 'ID', sortable: true, width: '60px' },
-    { field: 'avatar', header: '', type: 'avatar', width: '50px' },
-    { field: 'name', header: 'Full Name', sortable: true, filter: true },
-    { field: 'role', header: 'User Role', filter: true },
-    { field: 'status', header: 'Current Status', badge: true },
-    { field: 'salary', header: 'Salary', format: 'currency', sortable: true },
-    { field: 'joined', header: 'Join Date', format: 'date' },
-  ];
-
-  dataJson = JSON.stringify(this.data);
-  columnsJson = JSON.stringify(this.columns);
+  dataJson = JSON.stringify(this.data, null, 2);
+  columnsJson = JSON.stringify(this.columns, null, 2);
 
   themeOptions = [
     { label: 'Auto', value: 'auto' },
@@ -214,6 +147,7 @@ export class DmAdvancedDataTablePlaygroundComponent
       grouping: false,
       showGroupingControls: true,
       treeData: false,
+      columnGrouping: false,
       showActions: false,
       iconLibrary: 'default',
       columnPinning: true,
@@ -265,6 +199,14 @@ export class DmAdvancedDataTablePlaygroundComponent
     if (this.pgConfig.treeData) code += `  tree-data\n`;
     if (this.pgConfig.virtualScroll) code += `  virtual-scroll\n`;
     if (this.pgConfig.grouping) code += `  grouping\n`;
+    if (this.pgConfig.columnPinning) code += `  column-pinning\n`;
+    if (this.pgConfig.rowPinning) code += `  row-pinning\n`;
+    if (this.pgConfig.multiFilter) code += `  multi-filter\n`;
+    if (this.pgConfig.columnAggregation) code += `  column-aggregation\n`;
+    if (this.pgConfig.undoRedo) code += `  undo-redo\n`;
+    if (this.pgConfig.rangeSelection) code += `  range-selection\n`;
+    if (this.pgConfig.showActions) code += `  show-actions\n`;
+    if (this.pgConfig.columnGrouping) code += `  column-grouping\n`;
 
     code += '></ui-advanced-data-table>';
 
@@ -290,6 +232,26 @@ export class DmAdvancedDataTablePlaygroundComponent
     } catch (e) {
       // Keep existing columns on parse error
     }
+  }
+
+  onRowSelect(event: any) {
+    this.logEvent(`Row Selected: ${JSON.stringify(event.detail.selectedRows)}`);
+  }
+
+  onCellEdit(event: any) {
+    this.logEvent(`Cell Edited: Row ${event.detail.rowId}, Field ${event.detail.field}, Value: ${event.detail.value}`);
+  }
+
+  onSortChange(event: any) {
+    this.logEvent(`Sort Changed: ${event.detail.field} ${event.detail.direction}`);
+  }
+
+  onPageChange(event: any) {
+    this.logEvent(`Page Changed: Page ${event.detail.page}, Size ${event.detail.pageSize}`);
+  }
+
+  onSearchChange(event: any) {
+    this.logEvent(`Search Query: ${event.detail.query}`);
   }
 }
 

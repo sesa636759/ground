@@ -26,310 +26,78 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmOtpInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    // Basic Layouts (1)
-    {
-      id: 'length-variants',
-      title: 'Length Variants',
-      icon: 'hash',
-      iconLibrary: 'lucide',
-      category: 'Basic Layouts',
-      tab: 'basic',
-    },
-
-    // Variants & Styles (1)
-    {
-      id: 'variants',
-      title: 'Variants & Styles',
-      icon: 'palette',
-      iconLibrary: 'lucide',
-      category: 'Variants & Styles',
-      tab: 'variants',
-    },
-
-    // Features (8)
-    {
-      id: 'validation-states',
-      title: 'Validation States',
-      icon: 'check-circle',
-      iconLibrary: 'lucide',
-      category: 'Validation',
-      tab: 'validation',
-    },
-    {
-      id: 'grouping-variants',
-      title: 'Groupings',
-      icon: 'grid-3x3',
-      iconLibrary: 'lucide',
-      category: 'Features',
-      tab: 'features',
-    },
-    { id: 'masking', title: 'Masked Input', icon: 'eye-off', iconLibrary: 'lucide', category: 'Features', tab: 'features' },
-
-    // Advanced (12)
-    { id: 'size-variants', title: 'Sizes', icon: 'maximize', iconLibrary: 'lucide', category: 'Advanced', tab: 'advanced' },
-    { id: 'secure-pin', title: 'Secure PIN', icon: 'lock', iconLibrary: 'lucide', category: 'Advanced', tab: 'advanced' },
-    {
-      id: 'readonly',
-      title: 'Read-only State',
-      icon: 'pencil-off',
-      iconLibrary: 'lucide',
-      category: 'Advanced',
-      tab: 'advanced',
-    },
-    {
-      id: 'disabled',
-      title: 'Disabled State',
-      icon: 'ban',
-      iconLibrary: 'lucide',
-      category: 'Advanced',
-      tab: 'advanced',
-    },
-    {
-      id: 'validation',
-      title: 'With Validation',
-      icon: 'shield-alert',
-      iconLibrary: 'lucide',
-      category: 'Advanced',
-      tab: 'advanced',
-    },
-    { id: 'autofocus', title: 'Auto Focus', icon: 'mouse-pointer-click', iconLibrary: 'lucide', category: 'Advanced', tab: 'advanced' },
-    {
-      id: 'pasteable',
-      title: 'Paste Support',
-      icon: 'clipboard-paste',
-      iconLibrary: 'lucide',
-      category: 'Advanced',
-      tab: 'advanced',
-    },
-    {
-      id: 'numeric-only',
-      title: 'Numeric Only',
-      icon: 'binary',
-      iconLibrary: 'lucide',
-      category: 'Advanced',
-      tab: 'advanced',
-    },
-    {
-      id: 'alphanumeric',
-      title: 'Alphanumeric',
-      icon: 'at-sign',
-      iconLibrary: 'lucide',
-      category: 'Advanced',
-      tab: 'advanced',
-    },
+    { id: 'basic', title: 'Basic Digits', icon: 'hash', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizing Options', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Color Palette', icon: 'droplet', iconLibrary: 'lucide' },
+    { id: 'grouping', title: 'Grouping Logic', icon: 'grid-3x3', iconLibrary: 'lucide' },
+    { id: 'secure', title: 'Secure PIN Mode', icon: 'lock', iconLibrary: 'lucide' },
+    { id: 'numeric', title: 'Numeric Type', icon: 'binary', iconLibrary: 'lucide' },
+    { id: 'alphanumeric', title: 'Alphanumeric Type', icon: 'at-sign', iconLibrary: 'lucide' },
+    { id: 'placeholders', title: 'Placeholders', icon: 'type', iconLibrary: 'lucide' },
+    { id: 'invalid', title: 'Error State', icon: 'alert-circle', iconLibrary: 'lucide' },
+    { id: 'feedback', title: 'Rich Feedback', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'behaviors', title: 'Auto Behaviors', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'disabled', title: 'Disabled State', icon: 'ban', iconLibrary: 'lucide' },
+    { id: 'readonly', title: 'Read-only State', icon: 'eye', iconLibrary: 'lucide' },
+    { id: 'skeleton', title: 'Skeleton Loader', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'prefilled', title: 'Initial Values', icon: 'key-round', iconLibrary: 'lucide' },
   ];
 
-  // Signal-based code examples
-  lengthVariantsCode = signal(
-    `<!-- 4-Digit -->
-<ui-otp-input
-  length="4"
-  type="numeric"
-  label="Enter PIN"
-></ui-otp-input>
+  basicCode = signal(`<ui-otp-input label="4-Digit Code" length="4"></ui-otp-input>
+<ui-otp-input label="6-Digit Code" length="6"></ui-otp-input>
+<ui-otp-input label="8-Digit Code" length="8"></ui-otp-input>`);
 
-<!-- 6-Digit -->
-<ui-otp-input
-  length="6"
-  type="numeric"
-  label="Verification Code"
-></ui-otp-input>
+  variantsCode = signal(`<ui-otp-input variant="default" label="Default"></ui-otp-input>
+<ui-otp-input variant="underlined" label="Underlined"></ui-otp-input>
+<ui-otp-input variant="flushed" label="Flushed"></ui-otp-input>
+<ui-otp-input variant="separated" label="Separated"></ui-otp-input>`);
 
-<!-- 8-Digit Alphanumeric -->
-<ui-otp-input
-  length="8"
-  type="alphanumeric"
-  label="Long Code"
-></ui-otp-input>`,
-  );
+  sizesCode = signal(`<ui-otp-input size="small" label="Small"></ui-otp-input>
+<ui-otp-input size="medium" label="Medium"></ui-otp-input>
+<ui-otp-input size="large" label="Large"></ui-otp-input>`);
 
-  variantsCode = signal(
-    `<!-- Default -->
-<ui-otp-input
-  variant="default"
-  length="6"
-  label="Default Style"
-></ui-otp-input>
+  colorsCode = signal(`<ui-otp-input color="primary" label="Primary"></ui-otp-input>
+<ui-otp-input color="secondary" label="Secondary"></ui-otp-input>
+<ui-otp-input color="success" label="Success"></ui-otp-input>
+<ui-otp-input color="danger" label="Danger"></ui-otp-input>
+<ui-otp-input color="warning" label="Warning"></ui-otp-input>
+<ui-otp-input color="info" label="Info"></ui-otp-input>`);
 
-<!-- Underlined -->
-<ui-otp-input
-  variant="underlined"
-  length="6"
-  label="Underlined"
-></ui-otp-input>
+  groupingCode = signal(`<ui-otp-input length="6" group-size="3" label="Grouped (3-3)"></ui-otp-input>
+<ui-otp-input length="8" group-size="2" label="Grouped (2-2-2-2)"></ui-otp-input>
+<ui-otp-input length="4" group-size="2" label="Grouped (2-2)"></ui-otp-input>`);
 
-<!-- Flushed -->
-<ui-otp-input
-  variant="flushed"
-  length="6"
-  label="Flushed Style"
-></ui-otp-input>
+  secureCode = signal(`<ui-otp-input secure label="Masked Entry" length="4"></ui-otp-input>`);
 
-<!-- Separated -->
-<ui-otp-input
-  variant="separated"
-  length="6"
-  label="Separated"
-  [spacing]="8"
-></ui-otp-input>`,
-  );
+  numericCode = signal(`<ui-otp-input type="number" label="Strict Numeric"></ui-otp-input>`);
 
-  validationStatesCode = signal(
-    `<!-- Success -->
-<ui-otp-input
-  length="6"
-  color="success"
-  label="Success State"
-  helper-text="Code accepted"
-></ui-otp-input>
+  alphanumericCode = signal(`<ui-otp-input type="alphanumeric" label="Alphanumeric"></ui-otp-input>`);
 
-<!-- Error -->
-<ui-otp-input
-  length="6"
-  color="error"
-  invalid="true"
-  error-text="Invalid code"
-></ui-otp-input>
+  placeholderCode = signal(`<ui-otp-input placeholder="-" label="Dash"></ui-otp-input>
+<ui-otp-input placeholder="•" label="Bullet"></ui-otp-input>
+<ui-otp-input placeholder="*" label="Star"></ui-otp-input>`);
 
-<!-- Warning -->
-<ui-otp-input
-  length="6"
-  color="warning"
-  label="Warning State"
-></ui-otp-input>
+  invalidCode = signal(`<ui-otp-input invalid error-text="Verification failed" label="Error State"></ui-otp-input>`);
 
-<!-- Info -->
-<ui-otp-input
-  length="6"
-  color="info"
-  label="Info Message"
-  helper-text="Check your email"
-></ui-otp-input>`,
-  );
+  feedbackCode = signal(`<ui-otp-input helper-text="Check your registration email" label="Helper Text"></ui-otp-input>`);
 
-  groupingVariantsCode = signal(
-    `<!-- 3-3 -->
-<ui-otp-input
-  length="6"
-  group-size="3"
-  [show-group-divider]="true"
-  label="Grouped 3-3"
-></ui-otp-input>
+  behaviorsCode = signal(`<ui-otp-input auto-focus label="Auto Focused"></ui-otp-input>
+<ui-otp-input auto-submit label="Auto Submit on Complete"></ui-otp-input>`);
 
-<!-- 2-2-2 -->
-<ui-otp-input
-  length="6"
-  group-divider="-"
-  label="Grouped 2-2-2"
-></ui-otp-input>
+  disabledCode = signal(`<ui-otp-input disabled value="1234" label="Disabled"></ui-otp-input>`);
 
-<!-- 4-4 -->
-<ui-otp-input
-  length="8"
-  group-size="4"
-  [show-group-divider]="true"
-  label="Grouped 4-4"
-></ui-otp-input>`,
-  );
+  readonlyCode = signal(`<ui-otp-input readonly value="5678" label="Read-only"></ui-otp-input>`);
 
-  sizeVariantsCode = signal(
-    `<!-- Small -->
-<ui-otp-input
-  size="small"
-  length="4"
-></ui-otp-input>
+  skeletonCode = signal(`<ui-otp-input skeleton label="Loading..."></ui-otp-input>`);
 
-<!-- Medium -->
-<ui-otp-input
-  size="medium"
-  length="4"
-></ui-otp-input>
+  prefilledCode = signal(`<ui-otp-input value="123456" label="Pre-filled PIN"></ui-otp-input>`);
 
-<!-- Large -->
-<ui-otp-input
-  size="large"
-  length="4"
-></ui-otp-input>`,
-  );
+  onOtpChange(event: any) {
+    console.log('OTP Changed:', event.detail);
+  }
 
-  secureCode = signal(
-    `<ui-otp-input
-  length="4"
-  [secure]="true"
-  label="Secure PIN"
-></ui-otp-input>`,
-  );
-
-  readonlyCode = signal(
-    `<ui-otp-input
-  length="6"
-  [readonly]="true"
-  value="123456"
-></ui-otp-input>`,
-  );
-
-  disabledCode = signal(
-    `<ui-otp-input
-  length="6"
-  [disabled]="true"
-></ui-otp-input>`,
-  );
-
-  maskedCode = signal(
-    `<ui-otp-input
-  length="6"
-  [mask]="true"
-  mask-char="*"
-></ui-otp-input>`,
-  );
-
-  validationCode = signal(
-    `<ui-otp-input
-  length="6"
-  [required]="true"
-  [validate]="validateOtp"
-  (validate)="onValidate($event)"
-></ui-otp-input>`,
-  );
-
-  autoFocusCode = signal(
-    `<ui-otp-input
-  length="6"
-  [autofocus]="true"
-  auto-submit="true"
-  (complete)="onComplete($event)"
-></ui-otp-input>`,
-  );
-
-  pasteableCode = signal(
-    `<ui-otp-input
-  length="6"
-  [allow-paste]="true"
-  [paste-separator]="true"
-></ui-otp-input>`,
-  );
-
-  numericOnlyCode = signal(
-    `<ui-otp-input
-  length="6"
-  type="numeric"
-  placeholder="0"
-></ui-otp-input>`,
-  );
-
-  alphanumericCode = signal(
-    `<ui-otp-input
-  length="8"
-  type="alphanumeric"
-  placeholder="A"
-></ui-otp-input>`,
-  );
-
-  playgroundCode = signal(
-    `<ui-otp-input
-  length="6"
-  [autofocus]="true"
-  (complete)="onOtpComplete($event)"
-></ui-otp-input>`,
-  );
+  onOtpComplete(event: any) {
+    console.log('OTP Complete:', event.detail);
+  }
 }

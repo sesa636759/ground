@@ -1,74 +1,120 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid p-16">
+    <div class="control-group">
+      <label>Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+        [options]="positionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Strategy</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.strategy"
+        (ngModelChange)="updateConfig()"
+        [options]="strategyOptions"
+      ></ui-dropdown>
+    </div>
     <div class="control-group">
       <label>Direction</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.direction"
         (ngModelChange)="updateConfig()"
-        [options]="standardDirectionOptions"
-      ></ui-dropdown>
-    </div>
-    <div class="control-group">
-      <label>Type</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.type"
-        (ngModelChange)="updateConfig()"
-        [options]="typeOptions"
+        [options]="directionOptions"
       ></ui-dropdown>
     </div>
   </div>
 
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
-      <label>Radius (for circles)</label>
-      <ui-input
-        type="number"
-        [(ngModel)]="pgConfig.radius"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Main Icon</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="control-group">
+      <label>Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="standardColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="standardSizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconLibrary"
+        (ngModelChange)="updateConfig()"
+        [options]="iconLibraryOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <div slot="content-behavior" class="control-grid p-16">
+    <div class="control-group">
+      <label>Trigger</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.trigger"
+        (ngModelChange)="updateConfig()"
+        [options]="triggerOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Tooltip Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.tooltipPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="tooltipOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.ripple" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Ripple Effect
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.mask" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Display Mask
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showTooltips"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Tooltips
       </label>
     </div>
   </div>
 
   <div
     preview
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      height: 300px;
-      padding: 40px;
-    "
+    class="preview-stage w-full h-300 relative display-flex justify-center items-center rounded-12 overflow-hidden"
+    
   >
-    <ui-speed-dial
-      [attr.direction]="pgConfig.direction"
-      [attr.type]="pgConfig.type"
-      [attr.radius]="pgConfig.radius"
-      [attr.ripple]="pgConfig.ripple ? '' : null"
-      [attr.mask]="pgConfig.mask ? '' : null"
-      [model]="modelJson"
-      button-class="ui-button-primary"
-    ></ui-speed-dial>
+    <div
+      class="bg-pattern absolute inset-0 opacity-10 pointer-events-none"
+      
+    ></div>
 
-    <p style="position: absolute; bottom: 20px; font-size: 0.8rem; color: var(--text-secondary)">
-      Direction: {{ pgConfig.direction }} | Type: {{ pgConfig.type }}
-    </p>
+    <ui-speed-dial
+      [attr.position]="pgConfig.position"
+      [attr.strategy]="pgConfig.strategy"
+      [attr.icon]="pgConfig.icon"
+      [attr.icon-library]="pgConfig.iconLibrary"
+      [attr.action-library]="pgConfig.actionLibrary"
+      [attr.color]="pgConfig.color"
+      [attr.size]="pgConfig.size"
+      [attr.direction]="pgConfig.direction"
+      [attr.tooltip-position]="pgConfig.tooltipPosition"
+      [attr.show-tooltips]="pgConfig.showTooltips ? '' : null"
+      [attr.trigger]="pgConfig.trigger"
+      [actions]="actionsJson"
+      (actionClick)="onActionClick($event)"
+    ></ui-speed-dial>
   </div>
 
   <pg-playground-event-log

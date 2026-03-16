@@ -16,7 +16,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './carousel-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmCarouselPlaygroundComponent extends BasePlaygroundComponent {
+export class DsCarouselPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('carouselElement') carouselElement!: ElementRef;
 
   // Playground State

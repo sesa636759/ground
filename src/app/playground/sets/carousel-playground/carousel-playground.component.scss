@@ -1,1 +1,33 @@
 @use '../../../../styles/playground-base.scss';
+
+.carousel-layout-section {
+  padding: 16px;
+}
+.carousel-layout-checkbox-grid {
+  margin-top: 16px;
+}
+.carousel-animation-section {
+  padding: 16px;
+}
+.carousel-animation-checkbox-grid {
+  margin-top: 16px;
+}
+.carousel-layout-checkbox-grid {
+  margin-top: 16px;
+}
+.carousel-animation-section {
+  padding: 16px;
+}
+.carousel-animation-checkbox-grid {
+  margin-top: 16px;
+}
+
+.carousel-preview-container {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: var(--surface-1);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}

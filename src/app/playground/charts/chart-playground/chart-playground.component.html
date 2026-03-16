@@ -43,14 +43,14 @@
     </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div preview  class="w-full display-flex justify-center items-center">
     <ui-chart
       #chart
       [attr.type]="pgConfig.type"
       [attr.show-legend]="pgConfig.showLegend ? '' : null"
       [attr.responsive]="pgConfig.responsive ? '' : null"
       [data]="chartDataJson"
-      style="width: 100%; height: 350px"
+       class="w-full h-350"
     >
     </ui-chart>
   </div>

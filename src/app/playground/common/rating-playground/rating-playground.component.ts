@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -23,14 +23,22 @@ export class DmRatingPlaygroundComponent extends BasePlaygroundComponent {
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'global', title: 'Rating Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
   typeOptions = [
     { label: 'Star', value: 'star' },
     { label: 'Smiley', value: 'smiley' },
     { label: 'Thumb', value: 'thumb' },
+  ];
+
+  ratingColorOptions = [
+    { label: 'Warning', value: 'warning' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
   ];
 
   constructor() {
@@ -49,6 +57,7 @@ export class DmRatingPlaygroundComponent extends BasePlaygroundComponent {
       disabled: false,
       allowHalf: false,
       showValue: true,
+      labels: '', // JSON string for labels
     };
   }
 
@@ -62,6 +71,3 @@ export class DmRatingPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 }
-
-
-

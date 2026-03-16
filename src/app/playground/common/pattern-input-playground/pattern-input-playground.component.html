@@ -1,10 +1,6 @@
-﻿<pg-playground
-  [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCode()"
-  (reset)="resetConfig()"
->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+<pg-playground [items]="pgAccordionItems" [code]="generatedCode()" (reset)="resetConfig()">
+  <!-- Global Configuration -->
+  <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Mask Pattern</label>
       <ui-dropdown
@@ -22,7 +18,7 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Size</label>
+      <label>Size tier</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
@@ -30,16 +26,46 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Mask Char</label>
+      <label>Mask Character</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.maskChar"
         (ngModelChange)="updateConfig()"
-        placeholder="e.g. 9, #, *"
+        placeholder="e.g. #, 9, *"
+      ></ui-input>
+    </div>
+  </div>
+
+  <!-- Pattern & Logic -->
+  <div slot="content-logic" class="control-grid p-16">
+    <div class="control-group">
+      <label>Input restriction</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.inputType"
+        (ngModelChange)="updateConfig()"
+        [options]="inputTypeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.inputType === 'custom'">
+      <label>Allowed Chars (Regex)</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.allowedChars"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. [A-Z]"
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Max Length</label>
+      <label>Validation Regex</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.validationRegex"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. ^\d{10}$"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Max Characters</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.maxLength"
@@ -48,7 +74,8 @@
     </div>
   </div>
 
-  <div slot="content-states" style="padding: 16px">
+  <!-- Behavioral States -->
+  <div slot="content-states" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -63,7 +90,7 @@
           [(ngModel)]="pgConfig.showValidation"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
-        Show Validation
+        Validation icons
       </label>
       <label class="checkbox-item">
         <ui-checkbox
@@ -77,14 +104,15 @@
           [(ngModel)]="pgConfig.showCounter"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
-        Show Counter
+        Display Counter
       </label>
     </div>
   </div>
 
-  <div slot="content-labels" class="control-grid" style="padding: 16px">
+  <!-- Labels & Messages -->
+  <div slot="content-labels" class="control-grid p-16">
     <div class="control-group">
-      <label>Label</label>
+      <label>Field Label</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.label"
@@ -92,47 +120,68 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Helper Text</label>
+      <label>Helper text</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.helperText"
         (ngModelChange)="updateConfig()"
-        placeholder="Hint shown below field"
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Error Message</label>
+      <label>Error text</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.errorMessage"
         (ngModelChange)="updateConfig()"
-        placeholder="Error hint text"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Success text</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.successMessage"
+        (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
   </div>
 
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
   >
-    <ui-pattern-input
-      #demoElement
-      [attr.mask]="pgConfig.pattern"
-      [attr.placeholder]="pgConfig.placeholder"
-      [attr.label]="pgConfig.label || null"
-      [attr.size]="pgConfig.size"
-      [attr.mask-char]="pgConfig.maskChar || null"
-      [attr.max-length]="pgConfig.maxLength || null"
-      [attr.helper-text]="pgConfig.helperText || null"
-      [attr.error-message]="pgConfig.errorMessage || null"
-      [attr.disabled]="pgConfig.disabled ? '' : null"
-      [attr.required]="pgConfig.required ? '' : null"
-      [attr.show-validation]="pgConfig.showValidation ? '' : null"
-      [attr.auto-format]="pgConfig.autoFormat ? '' : null"
-      [attr.show-counter]="pgConfig.showCounter ? '' : null"
-      (uiChange)="logEvent('Pattern Input Changed')"
-    ></ui-pattern-input>
+    <div  class="w-full max-w-400">
+      <ui-pattern-input
+        #demoElement
+        [attr.pattern]="pgConfig.pattern || null"
+        [attr.placeholder]="pgConfig.placeholder"
+        [attr.label]="pgConfig.label || null"
+        [attr.size]="pgConfig.size"
+        [attr.mask-char]="pgConfig.maskChar || null"
+        [attr.max-length]="pgConfig.maxLength || null"
+        [attr.helper-text]="pgConfig.helperText || null"
+        [attr.error-message]="pgConfig.errorMessage || null"
+        [attr.success-message]="pgConfig.successMessage || null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
+        [attr.show-validation]="pgConfig.showValidation ? '' : null"
+        [attr.auto-format]="pgConfig.autoFormat ? '' : null"
+        [attr.show-counter]="pgConfig.showCounter ? '' : null"
+        [attr.input-type]="pgConfig.inputType"
+        [attr.allowed-chars]="pgConfig.allowedChars || null"
+        [attr.validation-regex]="pgConfig.validationRegex || null"
+        (patternInputChange)="onPatternInputChange($event)"
+      ></ui-pattern-input>
+
+      <div
+         class="mt-24 text-muted fs-14 text-center"
+      >
+        Formatted Value:
+        <span  class="font-mono-var text-primary-color">{{
+          pgConfig.value || 'None'
+        }}</span>
+      </div>
+    </div>
   </div>
 
   <pg-playground-event-log

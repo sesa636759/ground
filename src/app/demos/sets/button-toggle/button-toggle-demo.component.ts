@@ -31,15 +31,16 @@ export class DmButtonToggleDemoComponent extends BaseDemoComponent {
     { id: 'colors', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
     { id: 'styles', title: 'Style Variants', icon: 'swatch-book', iconLibrary: 'lucide' },
     { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'shapes', title: 'Button Shapes', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'avatars', title: 'Avatars & Status', icon: 'circle-user', iconLibrary: 'lucide' },
+    { id: 'badges-tooltips', title: 'Badges & Tooltips', icon: 'tag', iconLibrary: 'lucide' },
     { id: 'icons', title: 'With Icons', icon: 'star', iconLibrary: 'lucide' },
-    { id: 'icon-only', title: 'Icon Only', icon: 'image', iconLibrary: 'lucide' },
-    { id: 'dropdown', title: 'Dropdown Mode', icon: 'chevron-down', iconLibrary: 'lucide' },
-    { id: 'split-button', title: 'Split Button', icon: 'columns-2', iconLibrary: 'lucide' },
     { id: 'display-modes', title: 'Display Modes', icon: 'monitor', iconLibrary: 'lucide' },
+    { id: 'dropdown', title: 'Dropdown Mode', icon: 'chevron-down', iconLibrary: 'lucide' },
+    { id: 'multi-select', title: 'Multi-Select & Search', icon: 'list-checks', iconLibrary: 'lucide' },
     { id: 'orientations', title: 'Orientations', icon: 'move-vertical', iconLibrary: 'lucide' },
     { id: 'custom-slots', title: 'Custom Content Slots', icon: 'box', iconLibrary: 'lucide' },
     { id: 'loading', title: 'Loading States', icon: 'refresh-cw', iconLibrary: 'lucide' },
-    { id: 'states', title: 'States', icon: 'check-square', iconLibrary: 'lucide' },
   ];
 
   get exampleVariants() {
@@ -88,6 +89,30 @@ export class DmButtonToggleDemoComponent extends BaseDemoComponent {
   ></ui-button-toggle-group>
 }`;
 
+  shapesCode = `<!-- Rectangle (Default) -->
+<ui-button-toggle-group shape="rectangle" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
+
+<!-- Pill Shape -->
+<ui-button-toggle-group shape="pill" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
+
+<!-- Circle Shape (best with icon-only) -->
+<ui-button-toggle-group shape="circle" display-mode="icon-only" value="left" [options]="alignOptions"></ui-button-toggle-group>
+
+<!-- Square Shape -->
+<ui-button-toggle-group shape="square" value="opt1" [options]="basicOptions"></ui-button-toggle-group>`;
+
+  avatarsCode = `<ui-button-toggle-group value="user1">
+  <ui-button-toggle value="user1" label="Alex" avatar-src="https://i.pravatar.cc/150?u=a" status="online"></ui-button-toggle>
+  <ui-button-toggle value="user2" label="Jordan" avatar-src="https://i.pravatar.cc/150?u=j" status="busy"></ui-button-toggle>
+  <ui-button-toggle value="user3" label="Taylor" avatar-src="https://i.pravatar.cc/150?u=t" status="offline"></ui-button-toggle>
+</ui-button-toggle-group>`;
+
+  badgesCode = `<ui-button-toggle-group value="inbox">
+  <ui-button-toggle value="inbox" label="Inbox" icon="fas fa-inbox" badge="12" tooltip="12 New Messages"></ui-button-toggle>
+  <ui-button-toggle value="sent" label="Sent" icon="fas fa-paper-plane" tooltip="View sent items"></ui-button-toggle>
+  <ui-button-toggle value="drafts" label="Drafts" icon="fas fa-file-alt" badge="3" tooltip="3 Drafts waiting"></ui-button-toggle>
+</ui-button-toggle-group>`;
+
   iconCode = `<ui-button-toggle-group
   label="Alignment"
   value="center"
@@ -122,6 +147,23 @@ export class DmButtonToggleDemoComponent extends BaseDemoComponent {
   display-mode="icon-only"
   value="grid"
   [options]="iconOnlyOptions"
+></ui-button-toggle-group>`;
+
+  multiSelectCode = `<ui-button-toggle-group
+  multi-select="true"
+  search-enabled="true"
+  batch-actions="true"
+  label="Select Categories"
+  [options]="categoryOptions"
+></ui-button-toggle-group>
+
+<ui-button-toggle-group
+  mode="dropdown"
+  multi-select="true"
+  search-enabled="true"
+  export-enabled="true"
+  label="Multi-Select Dropdown"
+  [options]="userListOptions"
 ></ui-button-toggle-group>`;
 
   orientationCode = `<ui-button-toggle-group
@@ -215,5 +257,20 @@ export class DmButtonToggleDemoComponent extends BaseDemoComponent {
   saveOptions = [
     { value: 'cloud', label: 'Save to Cloud', icon: 'fas fa-cloud' },
     { value: 'local', label: 'Save Locally', icon: 'fas fa-hard-drive' },
+  ];
+
+  categoryOptions = [
+    { value: 'tech', label: 'Technology', icon: 'fas fa-laptop' },
+    { value: 'design', label: 'Design', icon: 'fas fa-paint-brush' },
+    { value: 'business', label: 'Business', icon: 'fas fa-briefcase' },
+    { value: 'health', label: 'Health', icon: 'fas fa-heartbeat' },
+    { value: 'science', label: 'Science', icon: 'fas fa-atom' },
+  ];
+
+  userListOptions = [
+    { value: '1', label: 'Alice Cooper', avatarSrc: 'https://i.pravatar.cc/150?u=1' },
+    { value: '2', label: 'Bob Martin', avatarSrc: 'https://i.pravatar.cc/150?u=2' },
+    { value: '3', label: 'Charlie Brown', avatarSrc: 'https://i.pravatar.cc/150?u=3' },
+    { value: '4', label: 'Diana Prince', avatarSrc: 'https://i.pravatar.cc/150?u=4' },
   ];
 }

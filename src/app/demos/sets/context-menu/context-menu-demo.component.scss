@@ -84,7 +84,13 @@
     flex-shrink: 0;
     width: 24px;
     text-align: center;
+
+    &.color-primary { color: #4f46e5; }
+    &.color-warning { color: #f59e0b; }
+    &.color-pink { color: #ec4899; }
+    &.color-cyan { color: #06b6d4; }
   }
+
 
   .item-name {
     flex: 1;

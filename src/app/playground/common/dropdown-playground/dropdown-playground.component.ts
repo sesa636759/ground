@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -24,24 +24,32 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'global', title: 'Global Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance & Style', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & States', icon: 'activity', iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced Features', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['config', 'features'];
+  defaultOpen = ['global', 'appearance'];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
 
   appearanceOptions = [
-    { label: 'Dropdown', value: 'dropdown' },
+    { label: 'Standard Dropdown', value: 'dropdown' },
     { label: 'Button-like', value: 'button' },
   ];
 
   options = [
-    { label: 'Angular', value: 'ng', icon: '🅰️' },
-    { label: 'React', value: 'react', icon: '⚛️' },
-    { label: 'Vue.js', value: 'vue', icon: '🖖' },
-    { label: 'Svelte', value: 'svelte', icon: '🔥' },
-    { label: 'Stencil', value: 'stencil', icon: '💎' },
-    { label: 'Solid', value: 'solid', icon: '🧱' },
+    { label: 'Angular', value: 'ng', icon: '🅰️', subtitle: 'Modern Web Framework' },
+    { label: 'React', value: 'react', icon: '⚛️', subtitle: 'UI Library' },
+    { label: 'Vue.js', value: 'vue', icon: '🖖', subtitle: 'Progressive Framework' },
+    { label: 'Svelte', value: 'svelte', icon: '🔥', rightTag: 'Hot', rightTagColor: 'warning' },
+    { label: 'Stencil', value: 'stencil', icon: '💎', rightIcon: 'rocket' },
+    { label: 'Solid', value: 'solid', icon: '🧱', description: 'Declarative JS library' },
   ];
 
   cascadingOptions = [
@@ -81,12 +89,18 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
   getDefaultConfig() {
     return {
       placeholder: 'Select technology...',
+      value: '',
       size: 'md',
       appearance: 'dropdown',
       multiSelect: false,
-      searchable: true,
-      clearable: true,
       cascading: false,
+      searchable: true,
+      maxHeight: 300,
+      showArrow: true,
+      ignoreParentPosition: true,
+      clearable: true,
+      fullWidth: false,
+      disabled: false,
     };
   }
 
@@ -101,6 +115,10 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
       if (this.pgConfig.searchable) code += `  searchable\n`;
       if (this.pgConfig.clearable) code += `  clearable\n`;
       if (this.pgConfig.cascading) code += `  cascading\n`;
+      if (this.pgConfig.fullWidth) code += `  full-width\n`;
+      if (this.pgConfig.maxHeight !== 300) code += `  max-height="${this.pgConfig.maxHeight}"\n`;
+      if (!this.pgConfig.showArrow) code += `  [showArrow]="false"\n`;
+      if (this.pgConfig.disabled) code += `  disabled\n`;
       code += `  [options]="dropdownOptions"\n`;
       code += '></ui-dropdown>';
 
@@ -114,6 +132,3 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
     this.logEvent(`Value changed: ${JSON.stringify(this.currentValue)}`);
   }
 }
-
-
-

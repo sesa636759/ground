@@ -1,1 +1,18 @@
 @use '../../../../styles/demo-base.scss';
+
+.fixed-box {
+  position: relative;
+  height: 400px;
+  background: var(--surface-muted);
+  border: 1px dashed var(--border-subtle);
+  border-radius: 12px;
+}
+
+.dial-container {
+  padding: 64px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  position: relative;
+}

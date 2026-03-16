@@ -816,7 +816,7 @@
 }
 
 /* ============================================================
-   ?? ui-navigation Popover Alignment & Scroll Fix
+    ui-navigation Popover Alignment & Scroll Fix
    Fixes: Navigation sub-menus jumping to top and lack of scroll
    ============================================================ */
 ui-navigation,
@@ -872,7 +872,7 @@ ui-navigation ::part(arrow) {
 }
 
 /* ============================================================
-   ??  Floating Theme Switcher FAB (Global)
+    Floating Theme Switcher FAB (Global)
    ============================================================ */
 @keyframes fabOptionIn {
   from {
@@ -1081,4 +1081,65 @@ ui-navigation ::part(arrow) {
   &:nth-child(6) {
     animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 225ms both;
   }
+}
+// --- Component Specific Patches ---
+
+/* 🌲 Cascade Select: Ensure Arrow and Title are on the same line and add missing arrows */
+ui-cascade-select {
+  &::part(item-content) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  /* Global selector for web component item containers if parts are missing */
+  &,
+  * {
+    .cascade-select-item,
+    li:has(span) {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      padding-right: 8px !important;
+
+      span {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    /* Add arrow if missing in data with children */
+    li[has-children]::after,
+    li:has(.sub-menu)::after,
+    li:has(ul)::after {
+      content: '›';
+      font-size: 1.2rem;
+      font-family: serif;
+      opacity: 0.6;
+      margin-left: auto;
+    }
+  }
+}
+
+/* 🔓 Ensure dropdowns and cascade select menus are never clipped by parents */
+ui-dropdown,
+ui-cascade-select,
+ui-popover {
+  overflow: visible !important;
+  contain: none !important;
+
+  /* Higher z-index for the portal-able menus if not handled by body portaling */
+  &::part(menu-container),
+  &::part(overlay) {
+    z-index: 9999 !important;
+  }
+}
+
+/* 🎨 Theme Fab & Overlay Fixes */
+.theme-fab-container {
+  z-index: 10001 !important; // Above everything
 }

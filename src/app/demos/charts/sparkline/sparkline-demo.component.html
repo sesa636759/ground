@@ -14,34 +14,22 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section" id="inline" style="margin-top: 0">
+          <section class="demo-section mt-0" id="inline" >
             <div class="section-header">
               <h2>📉 Inline Metrics</h2>
               <p>Sparklines embedded in a metrics dashboard, showing trend at a glance.</p>
             </div>
             <div class="demo-card">
               <div
-                style="
-                  display: grid;
-                  grid-template-columns: repeat(2, 1fr);
-                  gap: 16px;
-                  padding: 12px;
-                "
+                 class="display-grid grid-cols-2 gap-16 p-12"
               >
                 <div
-                  style="
-                    background: #f8fafc;
-                    border-radius: 10px;
-                    padding: 14px 12px;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                  "
+                   class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12"
                 >
                   <div>
-                    <div style="font-size: 11px; color: #6b7280; margin-bottom: 2px">Revenue</div>
-                    <div style="font-size: 22px; font-weight: 700; color: #1f2937">$82.4k</div>
-                    <div style="font-size: 11px; color: #10b981">▲ 12%</div>
+                    <div  class="fs-11 text-gray-500 mb-2">Revenue</div>
+                    <div  class="fs-22 font-bold text-gray-800">$82.4k</div>
+                    <div  class="fs-11 text-emerald-500">▲ 12%</div>
                   </div>
                   <svg width="100" height="40">
                     <defs>
@@ -64,19 +52,12 @@
                   </svg>
                 </div>
                 <div
-                  style="
-                    background: #f8fafc;
-                    border-radius: 10px;
-                    padding: 14px 12px;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                  "
+                   class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12"
                 >
                   <div>
-                    <div style="font-size: 11px; color: #6b7280; margin-bottom: 2px">Users</div>
-                    <div style="font-size: 22px; font-weight: 700; color: #1f2937">14.2k</div>
-                    <div style="font-size: 11px; color: #10b981">▲ 8%</div>
+                    <div  class="fs-11 text-gray-500 mb-2">Users</div>
+                    <div  class="fs-22 font-bold text-gray-800">14.2k</div>
+                    <div  class="fs-11 text-emerald-500">▲ 8%</div>
                   </div>
                   <svg width="100" height="40">
                     <defs>
@@ -99,19 +80,12 @@
                   </svg>
                 </div>
                 <div
-                  style="
-                    background: #f8fafc;
-                    border-radius: 10px;
-                    padding: 14px 12px;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                  "
+                   class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12"
                 >
                   <div>
-                    <div style="font-size: 11px; color: #6b7280; margin-bottom: 2px">Orders</div>
-                    <div style="font-size: 22px; font-weight: 700; color: #1f2937">3,841</div>
-                    <div style="font-size: 11px; color: #f43f5e">▼ 3%</div>
+                    <div  class="fs-11 text-gray-500 mb-2">Orders</div>
+                    <div  class="fs-22 font-bold text-gray-800">3,841</div>
+                    <div  class="fs-11 text-rose-500">▼ 3%</div>
                   </div>
                   <svg width="100" height="40">
                     <path
@@ -124,19 +98,12 @@
                   </svg>
                 </div>
                 <div
-                  style="
-                    background: #f8fafc;
-                    border-radius: 10px;
-                    padding: 14px 12px;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                  "
+                   class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12"
                 >
                   <div>
-                    <div style="font-size: 11px; color: #6b7280; margin-bottom: 2px">Churn</div>
-                    <div style="font-size: 22px; font-weight: 700; color: #1f2937">1.2%</div>
-                    <div style="font-size: 11px; color: #10b981">▼ 0.4%</div>
+                    <div  class="fs-11 text-gray-500 mb-2">Churn</div>
+                    <div  class="fs-22 font-bold text-gray-800">1.2%</div>
+                    <div  class="fs-11 text-emerald-500">▼ 0.4%</div>
                   </div>
                   <svg width="100" height="40">
                     <path

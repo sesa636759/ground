@@ -16,12 +16,12 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section" id="basic" style="margin-top: 0">
+          <section class="demo-section mt-0" id="basic" >
             <div class="section-header">
               <h2>🧇 Basic Waffle</h2>
               <p>Show a single value-against-total metric with a fill colour and title.</p>
             </div>
-            <div class="demo-card" style="justify-content: center">
+            <div class="demo-card justify-center" >
               <chart-waffle
                 value="72"
                 total="100"
@@ -44,8 +44,8 @@
               <p>Use fill-color to match your brand palette or semantic status colours.</p>
             </div>
             <div
-              class="demo-card"
-              style="display: flex; gap: 32px; flex-wrap: wrap; justify-content: center"
+              class="demo-card display-flex gap-32 wrap justify-center"
+              
             >
               <chart-waffle
                 value="72"
@@ -87,14 +87,8 @@
               <p>Override rows and columns to create square, compact, or wide waffle layouts.</p>
             </div>
             <div
-              class="demo-card"
-              style="
-                display: flex;
-                gap: 32px;
-                flex-wrap: wrap;
-                align-items: flex-start;
-                justify-content: center;
-              "
+              class="demo-card display-flex gap-32 wrap items-start justify-center"
+              
             >
               <chart-waffle value="65" total="100" chart-title="Default (10×10)"></chart-waffle>
               <chart-waffle

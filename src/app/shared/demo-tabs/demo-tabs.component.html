@@ -12,9 +12,15 @@
       icon-library="lucide"
       show-tab-list="true"
     >
-      <ng-content select="[slot=playground]"></ng-content>
-      <ng-content select="[slot=examples]"></ng-content>
-      <ng-content select="[slot=docs]"></ng-content>
+      <div slot="playground" class="pane-playground">
+        <ng-content select="[slot=playground]"></ng-content>
+      </div>
+      <div slot="examples" class="pane-examples">
+        <ng-content select="[slot=examples]"></ng-content>
+      </div>
+      <div slot="docs" class="pane-docs">
+        <ng-content select="[slot=docs]"></ng-content>
+      </div>
     </ui-tabs>
   </div>
 </div>

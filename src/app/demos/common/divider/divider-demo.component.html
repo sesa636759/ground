@@ -1,8 +1,8 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="➖"
-    title="Divider Component"
-    description="A visual separator between content sections with support for text, icons, vertical orientation, and decorative shapes."
+    title="Divider"
+    description="Versatile separator component with support for text, icons, multiple line styles, vertical orientation, and decorative SVG shapes."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -10,108 +10,149 @@
       <dm-divider-playground></dm-divider-playground>
     </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Line Variants -->
-        <pg-example-section
-          id="variants"
-          title="Line Variants"
-          description="Visual styles for various levels of separation"
-          [code]="variantsCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-card">
-            <div class="preview-box">
-              <div class="text-group">
-                <span>Solid (Default)</span>
-                <ui-divider variant="solid"></ui-divider>
+        <div class="examples-content">
+          <!-- Line Variants -->
+          <section class="demo-section" id="variants">
+            <div class="section-header">
+              <h2>Line Variants</h2>
+              <p>Different visual styles for the separator line.</p>
+            </div>
+            <div class="demo-card divider-stack">
+              <div class="demo-row">
+                <p>Solid (Default)</p>
+                <ui-divider></ui-divider>
               </div>
-              <div class="text-group">
-                <span>Dashed</span>
-                <ui-divider variant="dashed"></ui-divider>
+              <div class="demo-row">
+                <p>Dashed & Large</p>
+                <ui-divider variant="dashed" size="lg"></ui-divider>
               </div>
-              <div class="text-group">
-                <span>Dotted</span>
-                <ui-divider variant="dotted"></ui-divider>
+              <div class="demo-row">
+                <p>Double Solid</p>
+                <ui-divider variant="double-solid" size="lg"></ui-divider>
               </div>
-              <div class="text-group">
-                <span>Gradient</span>
-                <ui-divider
-                  variant="gradient"
-                  color="linear-gradient(to right, #8b5cf6, #ec4899)"
-                ></ui-divider>
+              <div class="demo-row">
+                <p>Gradient Color</p>
+                <ui-divider variant="solid" color="linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)" thickness="4px"></ui-divider>
               </div>
             </div>
-          </div>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Text & Content -->
-        <pg-example-section
-          id="text-content"
-          title="Text & Content"
-          description="Add labels, icons, or badges to your separators"
-          [code]="textContentCode"
-        >
-          <div class="demo-card">
-            <div class="preview-box">
-              <ui-divider text="OR"></ui-divider>
-              <ui-divider text="SEE MORE" text-align="left" text-transform="uppercase"></ui-divider>
-              <ui-divider icon="⭐" variant="dashed" size="lg"></ui-divider>
-              <ui-divider badge="NEW" color="primary"></ui-divider>
+          <!-- Text & Icons -->
+          <section class="demo-section" id="content">
+            <div class="section-header">
+              <h2>Text & Icons</h2>
+              <p>Add labels, icons, or badges to provide context between sections.</p>
             </div>
-          </div>
-        </pg-example-section>
+            <div class="demo-card divider-stack">
+              <div class="demo-row">
+                <p>Centered Text</p>
+                <ui-divider text="OR"></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>Left Aligned label</p>
+                <ui-divider text="SECTION 1" text-align="left" variant="dashed"></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>Icon Placement</p>
+                <ui-divider icon="⭐" thickness="2px"></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>With Badge & Theme Color</p>
+                <ui-divider text="Comments" badge="24" color="primary"></ui-divider>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="contentCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Vertical Orientation -->
-        <pg-example-section
-          id="vertical"
-          title="Vertical Orientation"
-          description="Separate content horizontally"
-          [code]="verticalCode"
-        >
-          <div class="demo-card">
-            <div
-              class="preview-box"
-              style="
-                flex-direction: row;
-                height: 100px;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <span>Left Panel</span>
-              <ui-divider orientation="vertical" gap="2rem"></ui-divider>
-              <span>Middle Panel</span>
-              <ui-divider orientation="vertical" variant="dashed" gap="2rem"></ui-divider>
-              <span>Right Panel</span>
+          <!-- Vertical Dividers -->
+          <section class="demo-section" id="vertical">
+            <div class="section-header">
+              <h2>Vertical Dividers</h2>
+              <p>Useful for separating items in toolbars or flex containers.</p>
             </div>
-          </div>
-        </pg-example-section>
+            <div class="demo-card vertical-box">
+              <span>Item 1</span>
+              <ui-divider orientation="vertical"></ui-divider>
+              <span>Item 2</span>
+              <ui-divider orientation="vertical" variant="dashed" height="40px"></ui-divider>
+              <span>Item 3</span>
+              <ui-divider orientation="vertical" thickness="4px" color="success"></ui-divider>
+              <span>Item 4</span>
+            </div>
+            <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Decorative Shapes -->
-        <pg-example-section
-          id="shapes"
-          title="Decorative Shapes"
-          description="Use SVG shapes for unique section transitions"
-          [code]="shapesCode"
-        >
-          <div class="demo-card">
-            <div class="preview-box" style="background: #f3f4f6; padding: 0">
-              <div style="height: 100px; background: white; padding: 20px">Top Section</div>
-              <ui-divider shape="wave" shape-color="#f3f4f6"></ui-divider>
-              <div style="height: 100px; padding: 20px">Bottom Section (Grey)</div>
+          <!-- Patterns -->
+          <section class="demo-section" id="patterns">
+            <div class="section-header">
+              <h2>Visual Patterns</h2>
+              <p>Apply repeating backgrounds to the separator for a unique look.</p>
             </div>
-            <div class="preview-box" style="background: #fef2f2; padding: 0; margin-top: 2rem">
-              <div style="height: 100px; background: #fee2e2; padding: 20px">Section A</div>
-              <ui-divider shape="tilt" shape-color="#fef2f2" style="height: 50px"></ui-divider>
-              <div style="height: 100px; padding: 20px">Section B</div>
+            <div class="demo-card divider-stack">
+              <div class="demo-row">
+                <p>Dots Pattern</p>
+                <ui-divider pattern="dots" color="#94a3b8" thickness="12px"></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>Stripes Pattern</p>
+                <ui-divider pattern="stripes" size="lg" color="primary"></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>Zigzag Pattern</p>
+                <ui-divider pattern="zigzag" size="lg" color="danger"></ui-divider>
+              </div>
             </div>
-          </div>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="patternsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Shape Dividers -->
+          <section class="demo-section" id="shapes">
+            <div class="section-header">
+              <h2>Shape Dividers</h2>
+              <p>Full-width SVG shapes commonly used for section transitions.</p>
+            </div>
+            <div class="demo-card shapes-preview">
+              <div class="shape-block bg-blue">
+                <ui-divider shape="wave" shape-color="#fff"></ui-divider>
+              </div>
+              <div class="shape-block bg-green mt-40">
+                <ui-divider shape="tilt" shape-color="#fff"></ui-divider>
+              </div>
+              <div class="shape-block bg-orange mt-40">
+                <ui-divider shape="triangle" shape-color="#fff"></ui-divider>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="shapesCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Premium Effects -->
+          <section class="demo-section" id="effects">
+            <div class="section-header">
+              <h2>Premium Visual Effects</h2>
+              <p>Animations and interactivity for premium user experiences.</p>
+            </div>
+            <div class="demo-card divider-stack">
+              <div class="demo-row">
+                <p>Loading State</p>
+                <ui-divider loading></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>Clickable with Glow</p>
+                <ui-divider text="ACTION LINK" clickable glow color="primary" thickness="2px"></ui-divider>
+              </div>
+              <div class="demo-row">
+                <p>Shadow Effect</p>
+                <ui-divider shadow variant="double-solid" size="lg" color="white"></ui-divider>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="effectsCode" activeLang="html"></ui-code-preview>
+          </section>
+        </div>
       </div>
     </div>
 
@@ -120,4 +161,5 @@
     </div>
   </pg-demo-tabs>
 </div>
+
 

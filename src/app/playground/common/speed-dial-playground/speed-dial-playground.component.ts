@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -15,27 +15,55 @@ export class DmSpeedDialPlaygroundComponent extends BasePlaygroundComponent impl
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'layout', title: 'Layout Settings', icon: 'ruler', iconLibrary: 'lucide' },
-    { id: 'visuals', title: 'Visuals & Behavior', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Layout & Strategy', icon: 'move', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Main Button Visuals', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & Tooltips', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
   defaultOpen = ['layout', 'visuals'];
 
-  typeOptions = [
-    { label: 'Linear', value: 'linear' },
-    { label: 'Quarter Circle', value: 'quarter-circle' },
-    { label: 'Half Circle', value: 'half-circle' },
-    { label: 'Circle', value: 'circle' },
+  positionOptions = [
+    { label: 'Top Left', value: 'top-left' },
+    { label: 'Top Right', value: 'top-right' },
+    { label: 'Bottom Left', value: 'bottom-left' },
+    { label: 'Bottom Right', value: 'bottom-right' },
+    { label: 'Center', value: 'center' },
   ];
 
-  model = [
-    { label: 'Add', icon: '➕' },
-    { label: 'Edit', icon: '✏️' },
-    { label: 'Delete', icon: '🗑️' },
-    { label: 'Share', icon: '🔗' },
+  strategyOptions = [
+    { label: 'Fixed (Screen)', value: 'fixed' },
+    { label: 'Absolute (Container)', value: 'absolute' },
   ];
 
-  modelJson = JSON.stringify(this.model);
+  directionOptions = [
+    { label: 'Auto', value: 'auto' },
+    { label: 'Up', value: 'up' },
+    { label: 'Down', value: 'down' },
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
+
+  tooltipOptions = [
+    { label: 'Auto', value: 'auto' },
+    { label: 'Top', value: 'top' },
+    { label: 'Bottom', value: 'bottom' },
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
+
+  triggerOptions = [
+    { label: 'Click', value: 'click' },
+    { label: 'Hover', value: 'hover' },
+  ];
+
+  actions = [
+    { id: 'share', icon: 'share-2', label: 'Share', iconLibrary: 'lucide' },
+    { id: 'download', icon: 'download', label: 'Download', iconLibrary: 'lucide' },
+    { id: 'copy', icon: 'copy', label: 'Copy', iconLibrary: 'lucide' },
+    { id: 'delete', icon: 'trash-2', label: 'Delete', color: '#ef4444', iconLibrary: 'lucide' }
+  ];
+
+  actionsJson = JSON.stringify(this.actions);
 
   constructor() {
     super();
@@ -47,27 +75,39 @@ export class DmSpeedDialPlaygroundComponent extends BasePlaygroundComponent impl
 
   getDefaultConfig() {
     return {
-      direction: 'up',
-      type: 'linear',
-      radius: 80,
-      ripple: true,
-      mask: false,
+      position: 'center',
+      strategy: 'absolute',
+      icon: 'plus',
+      iconLibrary: 'lucide',
+      actionLibrary: 'lucide',
+      color: 'primary',
+      size: 'md',
+      direction: 'auto',
+      tooltipPosition: 'auto',
+      showTooltips: true,
+      trigger: 'click'
     };
   }
 
   updateConfig() {
     let code = '<ui-speed-dial\n';
+    code += `  position="${this.pgConfig.position}"\n`;
+    code += `  strategy="${this.pgConfig.strategy}"\n`;
+    code += `  icon="${this.pgConfig.icon}"\n`;
+    code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+    code += `  color="${this.pgConfig.color}"\n`;
+    code += `  size="${this.pgConfig.size}"\n`;
     code += `  direction="${this.pgConfig.direction}"\n`;
-    code += `  type="${this.pgConfig.type}"\n`;
-    if (this.pgConfig.type !== 'linear') code += `  [radius]="${this.pgConfig.radius}"\n`;
-    if (this.pgConfig.mask) code += `  mask\n`;
-    code += `  [model]="items"\n`;
+    code += `  trigger="${this.pgConfig.trigger}"\n`;
+    if (!this.pgConfig.showTooltips) code += `  [show-tooltips]="false"\n`;
+    code += `  [actions]="actions"\n`;
     code += '></ui-speed-dial>';
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
+
+  onActionClick(event: any) {
+    this.logEvent(`Action executed: ${event.detail}`);
+  }
 }
-
-
-

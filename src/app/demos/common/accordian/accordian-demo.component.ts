@@ -27,22 +27,22 @@ import { PlaygroundEventLogComponent } from '../../../shared/components/playgrou
 })
 export class DmAccordianDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
-    { id: 'forms', title: 'Forms', icon: '📋', color: '#8b5cf6' },
-    { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
-    { id: 'search', title: 'Search', icon: '🔍', color: '#f59e0b' },
-    { id: 'actions', title: 'Actions', icon: '⚡', color: '#ef4444' },
-    { id: 'nested', title: 'Nested', icon: '🌳', color: '#6366f1' },
-    { id: 'drag-drop', title: 'Drag & Drop', icon: '✋', color: '#ec4899' },
-    { id: 'persistence', title: 'Persistence', icon: '💾', color: '#14b8a6' },
-    { id: 'loading', title: 'Loading', icon: '⏳', color: '#a855f7' },
-    { id: 'rtl', title: 'RTL', icon: '🌍', color: '#06b6d4' },
-    { id: 'dense', title: 'Dense', icon: '📦', color: '#84cc16' },
-    { id: 'card', title: 'Card Variant', icon: '💳', color: '#3b82f6' },
-    { id: 'card-list', title: 'Card List', icon: '📇', color: '#6366f1' },
-    { id: 'events', title: 'Events', icon: '📣', color: '#f97316' },
-    { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
-    { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
+    { id: 'basic', title: 'Basic', icon: '📁', iconLibrary: 'emoji', color: '#3b82f6' },
+    { id: 'forms', title: 'Forms', icon: '📋', iconLibrary: 'emoji', color: '#8b5cf6' },
+    { id: 'subtitles', title: 'Subtitles', icon: '📝', iconLibrary: 'emoji', color: '#10b981' },
+    { id: 'search', title: 'Search', icon: '🔍', iconLibrary: 'emoji', color: '#f59e0b' },
+    { id: 'actions', title: 'Actions', icon: '⚡', iconLibrary: 'emoji', color: '#ef4444' },
+    { id: 'nested', title: 'Nested', icon: '🌳', iconLibrary: 'emoji', color: '#6366f1' },
+    { id: 'drag-drop', title: 'Drag & Drop', icon: '✋', iconLibrary: 'emoji', color: '#ec4899' },
+    { id: 'persistence', title: 'Persistence', icon: '💾', iconLibrary: 'emoji', color: '#14b8a6' },
+    { id: 'loading', title: 'Loading', icon: '⏳', iconLibrary: 'emoji', color: '#a855f7' },
+    { id: 'rtl', title: 'RTL', icon: '🌍', iconLibrary: 'emoji', color: '#06b6d4' },
+    { id: 'dense', title: 'Dense', icon: '📦', iconLibrary: 'emoji', color: '#84cc16' },
+    { id: 'card', title: 'Card Variant', icon: '💳', iconLibrary: 'emoji', color: '#3b82f6' },
+    { id: 'card-list', title: 'Card List', icon: '📇', iconLibrary: 'emoji', color: '#6366f1' },
+    { id: 'events', title: 'Events', icon: '📣', iconLibrary: 'emoji', color: '#f97316' },
+    { id: 'controlled', title: 'Controlled', icon: '🎮', iconLibrary: 'emoji', color: '#2563eb' },
+    { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', iconLibrary: 'emoji', color: '#7c3aed' },
   ];
 
   basicAccordionItems = [

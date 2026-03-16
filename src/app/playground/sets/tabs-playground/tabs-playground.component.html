@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Orientation</label>
       <ui-dropdown
@@ -88,7 +88,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="checkbox-grid" style="padding: 16px">
+  <div slot="content-behavior" class="checkbox-grid pg-panel-container">
     <label class="checkbox-item">
       <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
     </label>
@@ -144,7 +144,7 @@
       (tabChange)="onTabChange($event)"
       (tabAdd)="onTabAdd()"
       (tabRemove)="onTabRemove($event)"
-      style="width: 100%"
+      class="w-full h-full"
     >
       <app-tab
         *ngFor="let tab of tabs"
@@ -155,10 +155,10 @@
         [attr.badge-color]="tab.badgeColor"
         [attr.closable]="pgConfig.closable ? '' : null"
       >
-        <div style="padding: 40px; text-align: center">
-          <i [class]="tab.icon" style="font-size: 3rem; color: var(--primary); opacity: 0.2"></i>
-          <h3 style="margin-top: 20px">{{ tab.label }} Content</h3>
-          <p style="color: var(--text-tertiary)">
+        <div class="tab-content-preview">
+          <i [class]="tab.icon"></i>
+          <h3>{{ tab.label }} Content</h3>
+          <p>
             This is the view for <strong>{{ tab.value }}</strong
             >. You can drag tabs to reorder them if enabled.
           </p>

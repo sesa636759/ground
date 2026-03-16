@@ -24,7 +24,7 @@
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.gap }}px</span>
         </div>
         <div class="control-group">
           <label>Neck Width %</label>
@@ -36,7 +36,7 @@
             [(ngModel)]="cfg.neckPct"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.neckPct }}%</span>
+          <span  class="fs-08rem text-muted">{{ cfg.neckPct }}%</span>
         </div>
       </div>
       <div class="control-section">
@@ -73,10 +73,10 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
-    <svg width="420" height="380" style="display: block; font-family: inherit">
+    <svg width="420" height="380"  class="display-block font-inherit">
       <g *ngFor="let seg of segments; let i = index">
         <polygon
           [attr.points]="getPoints(i)"

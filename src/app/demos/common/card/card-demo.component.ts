@@ -7,7 +7,7 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
-import { DmCardPlaygroundComponent } from 'src/app/playground/common/card-playground/card-playground.component';
+import { DmCardPlaygroundComponent } from '../../../playground/common/card-playground/card-playground.component';
 import { CardExamplesComponent } from './components/card-examples/card-examples.component';
 
 @Component({
@@ -28,14 +28,14 @@ import { CardExamplesComponent } from './components/card-examples/card-examples.
 })
 export class DmCardDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
-    { id: 'basic', title: 'Core Structure', icon: '📋' },
-    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
-    { id: 'interactions', title: 'Rich Interactions', icon: '⚡' },
-    { id: 'variants-showcase', title: 'Design Variants', icon: '🎨' },
-    { id: 'responsive', title: 'Adaptive Layouts', icon: '📱' },
-    { id: 'states', title: 'Functional States', icon: '⏳' },
-    { id: 'advanced', title: 'Advanced Patterns', icon: '🚀' },
+    { id: 'playground-hero', title: 'Premium Showcase', icon: '✨', iconLibrary: 'emoji' },
+    { id: 'basic', title: 'Core Structure', icon: '📋', iconLibrary: 'emoji' },
+    { id: 'media', title: 'Media Enhancements', icon: '🖼️', iconLibrary: 'emoji' },
+    { id: 'interactions', title: 'Rich Interactions', icon: '⚡', iconLibrary: 'emoji' },
+    { id: 'variants-showcase', title: 'Design Variants', icon: '🎨', iconLibrary: 'emoji' },
+    { id: 'responsive', title: 'Adaptive Layouts', icon: '📱', iconLibrary: 'emoji' },
+    { id: 'states', title: 'Functional States', icon: '⏳', iconLibrary: 'emoji' },
+    { id: 'advanced', title: 'Advanced Patterns', icon: '🚀', iconLibrary: 'emoji' },
   ];
 
   playgroundCode = `<ui-card variant="elevated" hoverable width="340px">

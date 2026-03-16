@@ -129,10 +129,10 @@ export class DmAvatarDemoComponent extends BaseDemoComponent implements OnInit {
 </app-avatar-group>`;
 
   iconsCode = `<!-- Different icon types -->
-<app-avatar icon="fa fa-user"></app-avatar>
-<app-avatar icon="fa fa-star"></app-avatar>
-<app-avatar icon="fa fa-heart"></app-avatar>
-<app-avatar icon="fa fa-cog"></app-avatar>`;
+<app-avatar icon="fa fa-user" iconLibrary="fa"></app-avatar>
+<app-avatar icon="fa fa-star" iconLibrary="fa"></app-avatar>
+<app-avatar icon="fa fa-heart" iconLibrary="fa"></app-avatar>
+<app-avatar icon="fa fa-cog" iconLibrary="fa"></app-avatar>`;
 
   badgeOverlayCode = `<!-- Badge with custom positions -->
 <app-avatar name="User" badge="3" badge-position="top-right"></app-avatar>

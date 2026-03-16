@@ -91,22 +91,22 @@
             required
             autocomplete="new-password"
           >
-            <ui-button
-              slot="suffix"
-              type="button"
-              class="toggle-password"
-              (click)="togglePasswordVisibility()"
-              variant="ghost"
-              size="sm"
-              style="padding: 0 6px; min-width: 0"
-              [title]="showPassword() ? 'Hide password' : 'Show password'"
-            >
-              <ui-icon
-                [name]="showPassword() ? 'eye-off' : 'eye'"
-                library="lucide"
-                size="18px"
-              ></ui-icon>
-            </ui-button>
+            <ng-container suffix>
+              <ui-button
+                type="button"
+                class="toggle-password px-6 min-w-0"
+                (click)="togglePasswordVisibility()"
+                variant="ghost"
+                size="sm"
+                [title]="showPassword() ? 'Hide password' : 'Show password'"
+              >
+                <ui-icon
+                  [name]="showPassword() ? 'eye-off' : 'eye'"
+                  library="lucide"
+                  size="18px"
+                ></ui-icon>
+              </ui-button>
+            </ng-container>
           </ui-input>
         </div>
 
@@ -146,22 +146,22 @@
             required
             autocomplete="new-password"
           >
-            <ui-button
-              slot="suffix"
-              type="button"
-              class="toggle-password"
-              (click)="toggleConfirmPasswordVisibility()"
-              variant="ghost"
-              size="sm"
-              style="padding: 0 6px; min-width: 0"
-              [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
-            >
-              <ui-icon
-                [name]="showConfirmPassword() ? 'eye-off' : 'eye'"
-                library="lucide"
-                size="18px"
-              ></ui-icon>
-            </ui-button>
+            <ng-container suffix>
+              <ui-button
+                type="button"
+                class="toggle-password px-6 min-w-0"
+                (click)="toggleConfirmPasswordVisibility()"
+                variant="ghost"
+                size="sm"
+                [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
+              >
+                <ui-icon
+                  [name]="showConfirmPassword() ? 'eye-off' : 'eye'"
+                  library="lucide"
+                  size="18px"
+                ></ui-icon>
+              </ui-button>
+            </ng-container>
           </ui-input>
         </div>
         @if (confirmPassword) {

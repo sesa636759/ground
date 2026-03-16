@@ -85,21 +85,34 @@
       [code]="basicCode"
       id="basic"
     >
-      <ui-card width="400px">
-        <div slot="header">
-          <div class="header-content">
-            <span class="category">Documentation</span>
-            <h3 style="margin: 0">API Reference Guide</h3>
-          </div>
-        </div>
-        <div slot="content">
-          <p>
-            Learn how to integrate our core services using our well-documented RESTful API endpoints
-            and SDKs.
-          </p>
-        </div>
-        <div slot="footer"></div>
-      </ui-card>
+      <ui-card width="400px" card-title="Documentation Hub" description="Access all our product documentation and technical guides in one place. Includes SDKs and API references."></ui-card>
+    </pg-example-section>
+
+    <!-- Importance & Patterns -->
+    <pg-example-section
+      title="Importance & Patterns"
+      description="Specialized styles and importance levels for different content hierarchies."
+      [code]="patternsCode"
+      id="patterns"
+    >
+      <div class="card-grid">
+        <ui-card importance="emphasized" card-title="High Priority Task" description="This task requires immediate attention from the engineering team."></ui-card>
+        
+        <ui-card pattern="product" 
+                 card-title="Premium Headphones" 
+                 tag="Hot Selection" 
+                 cover="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+                 button-text="Add to Cart"
+                 actions="Compare,Save"
+                 width="300px">
+        </ui-card>
+
+        <ui-card pattern="shortcut" 
+                 card-title="System Settings" 
+                 avatar-icon="fas fa-sliders-h"
+                 width="200px">
+        </ui-card>
+      </div>
     </pg-example-section>
 
     <!-- Media Enhancements -->
@@ -139,17 +152,110 @@
             <p>Team Identity Card</p>
             <span class="hint">Click to flip</span>
           </div>
-          <div slot="back-content" class="flip-back">
-            <h3>Employee ID: 8829</h3>
-            <p>Access Level: Admin</p>
-            <p>Department: Engineering</p>
+          <div slot="back">
+          <div class="p-24">
+                <h3>Employee ID: 8829</h3>
+                <p>Access Level: Admin</p>
+                <p>Department: Engineering</p>
+            </div>
           </div>
         </ui-card>
 
-        <ui-card selectable width="300px">
+        <ui-card selectable width="300px" card-title="Selectable Card" description="Click this card to toggle its selection state. Great for multi-select lists."></ui-card>
+      </div>
+    </pg-example-section>
+
+    <!-- Advanced Slots -->
+    <pg-example-section
+      title="Advanced Slots (Tabs/Grid)"
+      description="Embedding complex components like tabs or grids directly into the card structure."
+      [code]="advancedSlotsCode"
+      id="advanced-slots"
+    >
+        <div class="card-grid">
+            <ui-card width="450px">
+                <div slot="tabs">
+                  <ui-tabs>
+                    <ui-tab-panel label="General" icon="info" icon-library="lucide">
+                        <div class="p-16">General system information and status overview.</div>
+                    </ui-tab-panel>
+                    <ui-tab-panel label="Performance" icon="zap" icon-library="lucide">
+                        <div class="p-16">Real-time performance metrics and resource usage.</div>
+                    </ui-tab-panel>
+                    <ui-tab-panel label="Logs" icon="list" icon-library="lucide">
+                        <div class="p-16">Recent system logs and audit trail.</div>
+                    </ui-tab-panel>
+                  </ui-tabs>
+                </div>
+                <div slot="content">
+                  This card uses the <code>tabs</code> slot to present organized information without overwhelming the user.
+                </div>
+            </ui-card>
+
+            <ui-card width="350px">
+                <div slot="header"><h3>Feature Overview</h3></div>
+                <div slot="grid" class="feature-grid">
+                  <div class="grid-item">
+                      <ui-icon name="cloud" library="lucide" size="1.5em" color="#3b82f6"></ui-icon>
+                      <span>Cloud Sync</span>
+                  </div>
+                  <div class="grid-item">
+                      <ui-icon name="shield" library="lucide" size="1.5em" color="#10b981"></ui-icon>
+                      <span>Security</span>
+                  </div>
+                  <div class="grid-item">
+                      <ui-icon name="cpu" library="lucide" size="1.5em" color="#f59e0b"></ui-icon>
+                      <span>Compute</span>
+                  </div>
+                  <div class="grid-item">
+                      <ui-icon name="database" library="lucide" size="1.5em" color="#8b5cf6"></ui-icon>
+                      <span>Storage</span>
+                  </div>
+                </div>
+            </ui-card>
+        </div>
+    </pg-example-section>
+
+    <!-- Specialized Behaviors -->
+    <pg-example-section
+      title="Specialized Behaviors"
+      description="Advanced card features like collapsibility, auto-scrolling, and nested inner cards."
+      [code]="specializedCode"
+      id="specialized"
+    >
+      <div class="card-grid">
+        <!-- Collapsible Card -->
+        <ui-card collapsible card-title="System Diagnostics" width="340px">
           <div slot="content">
-            <h3>Selectable Item</h3>
-            <p>Use for multi-selection patterns or choosing between options.</p>
+            <p>Comprehensive system logs and diagnostic information can be tucked away when not needed.</p>
+            <div class="code-preview">
+                [CPU] Usage: 12%<br>
+                [MEM] Available: 8.4GB<br>
+                [DSK] Healthy
+            </div>
+          </div>
+        </ui-card>
+
+        <!-- Auto-Scrolling Card -->
+        <ui-card auto-scroll height="200px" width="340px" card-title="Live Activity Trace">
+          <div slot="content">
+            <p class="activity-line">[21:20:01] User login: Felix</p>
+            <p class="activity-line">[21:20:05] Session started.</p>
+            <p class="activity-line">[21:20:10] Resource fetched: /api/v1/data</p>
+            <p class="activity-line">[21:20:15] Buffer overflow prevented.</p>
+            <p class="activity-line">[21:20:20] Security audit passed.</p>
+            <p class="activity-line">[21:20:25] Data sync completed.</p>
+            <p class="activity-line">[21:20:30] User logout.</p>
+            <p class="activity-line">[21:20:35] Background task scheduled.</p>
+          </div>
+        </ui-card>
+        
+        <!-- Inner Type -->
+        <ui-card card-title="Workspace Overview" width="400px">
+          <div slot="content">
+            <p>Managing nested project structures is easy with the <code>inner</code> card type.</p>
+            <ui-card type="inner" card-title="Sub-project Alpha" description="Development phase" variant="outlined"></ui-card>
+            <ui-card type="inner" card-title="Sub-project Beta" description="Planning phase" variant="outlined" class="mt-12"></ui-card>
           </div>
         </ui-card>
       </div>
@@ -165,15 +271,19 @@
       <div class="card-grid">
         <ui-card variant="elevated">
           <div slot="header"><h4>Elevated</h4></div>
-          <div slot="content">High emphasis and depth.</div>
+          <div slot="content">High emphasis and depth for prominent items.</div>
         </ui-card>
         <ui-card variant="outlined">
           <div slot="header"><h4>Outlined</h4></div>
-          <div slot="content">Subtle but defined boundaries.</div>
+          <div slot="content">Subtle but defined boundaries for secondary content.</div>
         </ui-card>
         <ui-card variant="filled">
           <div slot="header"><h4>Filled</h4></div>
-          <div slot="content">Solid background for contrast.</div>
+          <div slot="content">Solid background for high contrast in dark mode.</div>
+        </ui-card>
+        <ui-card variant="primary">
+            <div slot="header"><h4>Primary</h4></div>
+            <div slot="content">Brand-colored card for special highlights.</div>
         </ui-card>
       </div>
     </pg-example-section>
@@ -186,14 +296,14 @@
       id="responsive"
     >
       <ui-card layout="horizontal" width="100%" hoverable>
-        <div slot="cover" style="width: 260px">
+        <div slot="cover" class="horizontal-cover">
           <img
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
-            style="height: 100%; object-fit: cover"
+            class="h-full"
           />
         </div>
         <div slot="header">
-          <h3 style="margin: 0">Nature Retreat: Autumn Sale</h3>
+          <h3 class="m-0">Nature Retreat: Autumn Sale</h3>
         </div>
         <div slot="content">
           <p>
@@ -217,32 +327,7 @@
       <div class="card-grid">
         <ui-card loading width="320px"></ui-card>
         <ui-card disabled width="320px">
-          <div slot="content">This card is currently disabled.</div>
-        </ui-card>
-      </div>
-    </pg-example-section>
-
-    <!-- Advanced Patterns -->
-    <pg-example-section
-      title="Advanced Patterns"
-      description="Combining multiple features for specialized UI requirements."
-      [code]="advancedCode"
-      id="advanced"
-    >
-      <div class="card-grid">
-        <ui-card glass="true" ribbon="PREMIUM" ribbon-color="gold" hoverable width="320px">
-          <div slot="header"><h3>Glass Experience</h3></div>
-          <div slot="content">
-            Experience modern minimalism with our glassmorphism-enabled card components.
-          </div>
-        </ui-card>
-
-        <ui-card collapsible="true" width="320px">
-          <div slot="header"><h3>Accordion Card</h3></div>
-          <div slot="content" class="demo-card-content">
-            This card can collapse its content body, which is great for saving vertical space in
-            complex dashboards.
-          </div>
+          <div slot="content">This card is currently disabled and non-interactive.</div>
         </ui-card>
       </div>
     </pg-example-section>

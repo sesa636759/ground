@@ -9,6 +9,7 @@
     <!-- Playground Slot -->
     <div slot="playground">
       <ds-anchor-playground></ds-anchor-playground>
+      <!-- The playground content has been moved to the examples slot -->
     </div>
 
     <!-- Examples Slot -->
@@ -18,19 +19,27 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
+        <!-- Interactive Playground -->
+        <pg-example-section
+          id="playground"
+          title="Interactive Playground"
+          description="Configure the anchor component and explore its features in real-time."
+        >
+          <ds-anchor-playground></ds-anchor-playground>
+        </pg-example-section>
+
         <!-- Vertical Left -->
         <pg-example-section
           id="vertical-left"
           title="Vertical Navigation (Left)"
           description="Perfect for documentation sites and long articles"
           [code]="verticalLeftCode()"
-          style="margin-top: 0"
         >
           <div class="layout-wrapper vertical">
             <ui-anchor
               mode="vertical"
               position="left"
-              [links]="verticalLeftItems"
+              [items]="verticalLeftItems"
               scroll-container="#v-left-scroll"
             ></ui-anchor>
             <div id="v-left-scroll" class="scroll-area">
@@ -40,6 +49,7 @@
                   Perfect for documentation sites and long articles. The navigation stays on the
                   left side and follows you as you scroll.
                 </p>
+                <p class="mt-8 text-xs text-muted">Scroll down to see the next section become active...</p>
               </div>
               <div id="features" class="content-block">
                 <strong>Features</strong>
@@ -47,12 +57,20 @@
                   Automatic Scroll Spy, Smooth Scrolling, Vertical & Horizontal Modes, Customizable
                   Position, Sticky Navigation, Icon Support.
                 </p>
+                <p class="mt-8 text-xs text-muted">This component is designed to handle high-performance section tracking.</p>
               </div>
               <div id="api" class="content-block">
                 <strong>API Reference</strong>
                 <p>
                   Complete reference of all available properties and options for the anchor
                   component.
+                </p>
+                <p class="mt-8 text-xs text-muted">Check out the documentation tab for full details on each prop.</p>
+              </div>
+              <div id="additional" class="content-block">
+                <strong>Advanced Usage</strong>
+                <p>
+                  Learn how to integrate with various router libraries and handle complex nested navigation.
                 </p>
               </div>
             </div>
@@ -70,21 +88,32 @@
             <ui-anchor
               mode="vertical"
               position="right"
-              [links]="verticalRightItems"
+              [items]="verticalRightItems"
               scroll-container="#v-right-scroll"
             ></ui-anchor>
             <div id="v-right-scroll" class="scroll-area">
               <div id="r-intro" class="content-block">
                 <strong>Introduction</strong>
                 <p>Alternative placement for right-to-left layouts or design preferences.</p>
+                <div class="mt-16 text-xs text-muted">
+                  The anchor component is highly flexible and can be positioned on either side
+                  of your content. This is useful for complex layouts where the left side is
+                  already occupied.
+                </div>
               </div>
               <div id="r-features" class="content-block">
                 <strong>Features</strong>
                 <p>All the same great features as the left variant.</p>
+                <p class="mt-8">Everything from tooltips to badges works exactly the same.</p>
               </div>
               <div id="r-api" class="content-block">
                 <strong>API Reference</strong>
                 <p>Same API as the left variant with different positioning.</p>
+                <div class="mt-8 opacity-50">. . . additional technical details . . .</div>
+              </div>
+              <div id="r-extra" class="content-block">
+                <strong>Extra Content</strong>
+                <p>More scrolling required to see the active state change.</p>
               </div>
             </div>
           </div>
@@ -101,7 +130,7 @@
             <ui-anchor
               mode="horizontal"
               position="top"
-              [links]="horizontalTopItems"
+              [items]="horizontalTopItems"
               scroll-container="#h-top-scroll"
             ></ui-anchor>
             <div id="h-top-scroll" class="scroll-area-horizontal">
@@ -146,7 +175,7 @@
             <ui-anchor
               mode="horizontal"
               position="bottom"
-              [links]="horizontalBottomItems"
+              [items]="horizontalBottomItems"
               scroll-container="#h-bottom-scroll"
             ></ui-anchor>
           </div>
@@ -164,7 +193,7 @@
               mode="vertical"
               position="left"
               show-badge="true"
-              [links]="badgeItems"
+              [items]="badgeItems"
               scroll-container="#badge-scroll"
             ></ui-anchor>
             <div id="badge-scroll" class="scroll-area">
@@ -198,7 +227,7 @@
             <ui-anchor
               mode="horizontal"
               position="top"
-              [links]="horizontalTopItems"
+              [items]="horizontalTopItems"
               scroll-container="#event-scroll"
             ></ui-anchor>
             <div id="event-scroll" class="scroll-area-horizontal">
@@ -231,7 +260,7 @@
             <ui-anchor
               mode="vertical"
               size="small"
-              [links]="smallItems"
+              [items]="smallItems"
               scroll-container="#small-scroll"
             ></ui-anchor>
             <div id="small-scroll" class="scroll-area">
@@ -262,7 +291,7 @@
             <ui-anchor
               mode="vertical"
               size="medium"
-              [links]="mediumItems"
+              [items]="mediumItems"
               scroll-container="#medium-scroll"
             ></ui-anchor>
             <div id="medium-scroll" class="scroll-area">
@@ -293,7 +322,7 @@
             <ui-anchor
               mode="vertical"
               size="large"
-              [links]="largeItems"
+              [items]="largeItems"
               scroll-container="#large-scroll"
             ></ui-anchor>
             <div id="large-scroll" class="scroll-area">
@@ -324,7 +353,7 @@
             <ui-anchor
               mode="vertical"
               theme="light"
-              [links]="smallItems"
+              [items]="smallItems"
               scroll-container="#light-scroll"
             ></ui-anchor>
             <div id="light-scroll" class="scroll-area">
@@ -346,7 +375,7 @@
             <ui-anchor
               mode="vertical"
               theme="dark"
-              [links]="mediumItems"
+              [items]="mediumItems"
               scroll-container="#dark-scroll"
             ></ui-anchor>
             <div id="dark-scroll" class="scroll-area">
@@ -368,7 +397,7 @@
             <ui-anchor
               mode="vertical"
               theme="custom"
-              [links]="largeItems"
+              [items]="largeItems"
               scroll-container="#custom-scroll"
             ></ui-anchor>
             <div id="custom-scroll" class="scroll-area">
@@ -391,7 +420,7 @@
               mode="vertical"
               show-numbers="true"
               number-style="numeric"
-              [links]="numericItems"
+              [items]="numericItems"
               scroll-container="#numeric-scroll"
             ></ui-anchor>
             <div id="numeric-scroll" class="scroll-area">
@@ -423,7 +452,7 @@
               mode="vertical"
               show-numbers="true"
               number-style="decimal"
-              [links]="decimalItems"
+              [items]="decimalItems"
               scroll-container="#decimal-scroll"
             ></ui-anchor>
             <div id="decimal-scroll" class="scroll-area">
@@ -455,7 +484,7 @@
               mode="vertical"
               show-numbers="true"
               number-style="alpha"
-              [links]="alphaItems"
+              [items]="alphaItems"
               scroll-container="#alpha-scroll"
             ></ui-anchor>
             <div id="alpha-scroll" class="scroll-area">
@@ -487,7 +516,7 @@
               mode="vertical"
               show-numbers="true"
               number-style="roman"
-              [links]="romanItems"
+              [items]="romanItems"
               scroll-container="#roman-scroll"
             ></ui-anchor>
             <div id="roman-scroll" class="scroll-area">
@@ -518,7 +547,7 @@
             <ui-anchor
               mode="horizontal"
               align="left"
-              [links]="horizontalTopItems"
+              [items]="horizontalTopItems"
               scroll-container="#align-left-scroll"
             ></ui-anchor>
             <div id="align-left-scroll" class="scroll-area-horizontal">
@@ -540,7 +569,7 @@
             <ui-anchor
               mode="horizontal"
               align="center"
-              [links]="horizontalTopItems"
+              [items]="horizontalTopItems"
               scroll-container="#align-center-scroll"
             ></ui-anchor>
             <div id="align-center-scroll" class="scroll-area-horizontal">
@@ -562,7 +591,7 @@
             <ui-anchor
               mode="horizontal"
               align="right"
-              [links]="horizontalTopItems"
+              [items]="horizontalTopItems"
               scroll-container="#align-right-scroll"
             ></ui-anchor>
             <div id="align-right-scroll" class="scroll-area-horizontal">
@@ -585,7 +614,7 @@
               mode="vertical"
               affix
               affix-offset="50"
-              [links]="affixItems"
+              [items]="affixItems"
               scroll-container="#affix-scroll"
             ></ui-anchor>
             <div id="affix-scroll" class="scroll-area tall-scroll">
@@ -632,7 +661,7 @@
             <ui-anchor
               mode="vertical"
               show-progress="true"
-              [links]="progressItems"
+              [items]="progressItems"
               scroll-container="#progress-scroll"
             ></ui-anchor>
             <div id="progress-scroll" class="scroll-area tall-scroll">
@@ -673,7 +702,7 @@
               mode="vertical"
               update-hash="true"
               smooth-scroll="true"
-              [links]="hashItems"
+              [items]="hashItems"
               scroll-container="#hash-scroll"
             ></ui-anchor>
             <div id="hash-scroll" class="scroll-area">
@@ -722,14 +751,14 @@
             <ui-anchor
               mode="vertical"
               arrow-navigation="true"
-              [links]="keyboardItems"
+              [items]="keyboardItems"
               scroll-container="#keyboard-scroll"
             ></ui-anchor>
             <div id="keyboard-scroll" class="scroll-area">
               <div id="kb-1" class="content-block">
                 <strong>1. Setup</strong>
                 <p>
-                  Try it: Click on any anchor item above, then use your arrow keys ?? to navigate.
+                  Try it: Click on any anchor item above, then use your arrow keys ⌨️ to navigate.
                   The keyboard navigation improves accessibility and allows power users to navigate
                   quickly without using the mouse.
                 </p>
@@ -770,7 +799,7 @@
             <ui-anchor
               mode="vertical"
               collapsible="true"
-              [links]="nestedItems"
+              [items]="nestedItems"
               scroll-container="#nested-scroll"
             ></ui-anchor>
             <div id="nested-scroll" class="scroll-area tall-scroll">
@@ -827,10 +856,10 @@
           <div class="demo-container">
             <section class="demo-section">
               <div class="section-header">
-                <h2>?? Documentation</h2>
+                <h2>📚 Documentation</h2>
                 <p>Links, API references, and detailed usage notes</p>
               </div>
-              <div class="demo-card" style="padding: 24px">
+              <div class="demo-card p-24">
                 <p>
                   The documentation for this component is currently being compiled. Our technical
                   writers are working to provide comprehensive API references, accessibility
@@ -848,5 +877,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

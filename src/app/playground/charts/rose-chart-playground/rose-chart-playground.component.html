@@ -16,7 +16,7 @@
             [(ngModel)]="cfg.size"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.size }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.size }}px</span>
         </div>
         <div class="control-group">
           <label>Inner Radius</label>
@@ -28,7 +28,7 @@
             [(ngModel)]="cfg.innerR"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.innerR }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.innerR }}px</span>
         </div>
         <div class="control-group">
           <label>Dataset</label>
@@ -73,17 +73,17 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
-    <div class="chart-preview-wrapper" style="flex-direction: column; gap: 16px">
+    <div class="chart-preview-wrapper flex-col gap-16" >
       <app-chart
         chartType="polarArea"
         [showLegend]="cfg.showLegend"
         legendPosition="right"
         [responsive]="true"
         [data]="activeData"
-        style="width: 100%; max-width: 480px; height: 360px; margin: 0 auto; display: block"
+         class="w-full max-w-480 h-360 m-0-auto display-block"
       ></app-chart>
     </div>
   </div>

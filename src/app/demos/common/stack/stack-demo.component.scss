@@ -1,1 +1,63 @@
 @use '../../../../styles/demo-base.scss';
+
+.stack-wrap {
+  padding: 20px;
+  background: var(--surface-muted);
+  border-radius: 8px;
+}
+
+.stack-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 16px;
+
+  p {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+}
+
+.box {
+  width: 60px;
+  height: 40px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.box-sm {
+  width: 32px;
+  height: 32px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-card);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.bg-blue { background: #3b82f6; }
+  &.bg-soft-red { background: #ef4444; }
+  &.bg-green { background: #10b981; }
+  &.bg-orange { background: #f59e0b; }
+  &.bg-indigo { background: #6366f1; }
+}
+

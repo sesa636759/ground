@@ -1,1 +1,22 @@
 @use '../../../../styles/demo-base.scss';
+
+.pagination-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 20px;
+}
+
+.demo-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    margin: 0;
+    text-transform: uppercase;
+  }
+}

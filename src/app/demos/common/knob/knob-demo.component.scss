@@ -1,1 +1,22 @@
 @use '../../../../styles/demo-base.scss';
+
+.knob-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 32px;
+  flex-wrap: wrap;
+
+  div {
+    text-align: center;
+  }
+
+  p {
+    font-size: 11px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+  }
+}

@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Name</label>
       <ui-input
@@ -71,7 +71,7 @@
         type="color"
         [(ngModel)]="pgConfig.bgColor"
         (ngModelChange)="updateConfig()"
-        style="height: 40px; padding: 0"
+        class="h-40 p-0"
       />
     </div>
 
@@ -81,12 +81,12 @@
         type="color"
         [(ngModel)]="pgConfig.textColor"
         (ngModelChange)="updateConfig()"
-        style="height: 40px; padding: 0"
+         class="h-40 p-0"
       />
     </div>
   </div>
 
-  <div slot="content-status" class="control-grid" style="padding: 16px">
+  <div slot="content-status" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Status</label>
       <ui-dropdown
@@ -106,7 +106,7 @@
     </div>
   </div>
 
-  <div slot="content-visual" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Animation</label>
       <ui-dropdown
@@ -116,7 +116,7 @@
       ></ui-dropdown>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.showStatus" (ngModelChange)="updateConfig()" /> Show
         Status

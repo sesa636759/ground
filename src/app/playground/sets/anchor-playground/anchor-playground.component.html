@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid anchor-global-section">
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
@@ -80,7 +80,7 @@
       </div>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox
           [(ngModel)]="pgConfig.showTooltip"
@@ -127,8 +127,8 @@
     </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
-    <div class="preview-stage" style="width: 100%">
+  <div preview  class="w-full display-flex justify-center items-center">
+    <div class="preview-stage w-full" >
       <div
         class="anchor-demo-wrapper"
         [class.horizontal]="pgConfig.mode === 'horizontal'"
@@ -151,7 +151,7 @@
           [attr.smooth-scroll]="pgConfig.smoothScroll ? '' : null"
           [attr.scroll-offset]="pgConfig.scrollOffset"
           scroll-container="#playground-scroll-content"
-          [links]="anchorItems"
+          [items]="anchorItems"
           (anchorSelect)="onAnchorSelect($event)"
         ></ui-anchor>
 
