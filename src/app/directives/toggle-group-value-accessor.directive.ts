@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
   selector:
-    'ui-toggle-group[ngModel], ui-toggle-group[formControl], ui-toggle-group[formControlName]',
+    'dui-toggle-group[ngModel], dui-toggle-group[formControl], dui-toggle-group[formControlName]',
   standalone: true,
   providers: [
     {

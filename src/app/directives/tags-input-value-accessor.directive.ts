@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
   // Since selector is a list, and it seems to be app-tags-input component based on previous investigation
-  selector: 'ui-tags-input[ngModel], ui-tags-input[formControl], ui-tags-input[formControlName]',
+  selector: 'dui-tags-input[ngModel], dui-tags-input[formControl], dui-tags-input[formControlName]',
   standalone: true,
   providers: [
     {

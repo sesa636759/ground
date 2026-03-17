@@ -2,7 +2,7 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'ui-switch[ngModel], ui-switch[formControl], ui-switch[formControlName]',
+  selector: 'dui-switch[ngModel], dui-switch[formControl], dui-switch[formControlName]',
   standalone: true,
   providers: [
     {

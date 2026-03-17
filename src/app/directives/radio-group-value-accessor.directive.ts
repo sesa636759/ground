@@ -2,7 +2,8 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'ui-radio-group[ngModel], ui-radio-group[formControl], ui-radio-group[formControlName]',
+  selector:
+    'dui-radio-group[ngModel], dui-radio-group[formControl], dui-radio-group[formControlName]',
   standalone: true,
   providers: [
     {
