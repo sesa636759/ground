@@ -14,13 +14,13 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="price" >
+          <section class="demo-section mt-0" id="price">
             <div class="section-header">
               <h2>🪜 Price Steps</h2>
               <p>Visualize discrete price changes over time using a stepped line.</p>
             </div>
             <div class="demo-card">
-              <svg width="580" height="280"  class="display-block m-0-auto">
+              <svg width="580" height="280" class="display-block m-0-auto">
                 <!-- Grid -->
                 <line x1="50" y1="20" x2="50" y2="230" stroke="#e5e7eb" />
                 <line x1="50" y1="230" x2="560" y2="230" stroke="#e5e7eb" />
@@ -62,12 +62,12 @@
                 <text x="560" y="248" text-anchor="middle" font-size="10" fill="#9ca3af">Jun</text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="'<!-- Step Line Chart (SVG) -->\n<path d=\'M60,200 H160 V160 H260 V120 H360 V146 H460 V100 H560\'\n  fill=\'none\' stroke=\'#6366f1\' stroke-width=\'2.5\' stroke-linejoin=\'miter\'/>'"
               label="Price Steps"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="status">
@@ -76,7 +76,7 @@
               <p>Track system state changes (online/degraded/offline) as discrete step levels.</p>
             </div>
             <div class="demo-card">
-              <svg width="580" height="240"  class="display-block m-0-auto">
+              <svg width="580" height="240" class="display-block m-0-auto">
                 <!-- Grid -->
                 <line x1="50" y1="20" x2="50" y2="200" stroke="#e5e7eb" />
                 <line x1="50" y1="200" x2="560" y2="200" stroke="#e5e7eb" />
@@ -100,12 +100,12 @@
                 />
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="'<!-- System Status Step Line -->'"
               label="System Status"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -116,4 +116,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

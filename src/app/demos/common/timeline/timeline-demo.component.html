@@ -18,30 +18,30 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Alignments -->
-          <section class="demo-section mt-0" id="alignments" >
+          <section class="demo-section mt-0" id="alignments">
             <div class="section-header">
               <h2>📏 Alignments</h2>
               <p>Position markers and content on different sides of the timeline axis.</p>
             </div>
             <div class="demo-card">
-              <div  class="w-full max-w-500">
+              <div class="w-full max-w-500">
                 <span>Alternating:</span>
-                <ui-timeline align="alternate" [value]="events">
+                <dui-timeline align="alternate" [value]="events">
                   <ng-template let-item>
-                    <div  class="font-semibold">{{ item.status }}</div>
-                    <div slot="opposite"  class="fs-085rem opacity-70">
+                    <div class="font-semibold">{{ item.status }}</div>
+                    <div slot="opposite" class="fs-085rem opacity-70">
                       {{ item.date }}
                     </div>
                   </ng-template>
-                </ui-timeline>
+                </dui-timeline>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="alignmentsCode"
               [label]="'Alignment Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Orientations -->
@@ -51,22 +51,22 @@
               <p>Use horizontal layout for compact workflows or vertical for detailed histories.</p>
             </div>
             <div class="demo-card">
-              <div  class="w-full">
+              <div class="w-full">
                 <span>Horizontal:</span>
-                <ui-timeline orientation="horizontal" [value]="events">
+                <dui-timeline orientation="horizontal" [value]="events">
                   <ng-template let-item>
-                    <div  class="font-semibold">{{ item.status }}</div>
-                    <div  class="fs-08rem">{{ item.date }}</div>
+                    <div class="font-semibold">{{ item.status }}</div>
+                    <div class="fs-08rem">{{ item.date }}</div>
                   </ng-template>
-                </ui-timeline>
+                </dui-timeline>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="orientationsCode"
               [label]="'Orientation Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -77,4 +77,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

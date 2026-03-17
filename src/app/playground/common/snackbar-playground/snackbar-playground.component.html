@@ -7,43 +7,43 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Position</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.position"
         (ngModelChange)="updateConfig()"
         [options]="positionOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Max Visible</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.maxVisible"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 5"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Stack Mode</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.stackMode"
         (ngModelChange)="updateConfig()"
         [options]="stackModeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Open Mode</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.openMode"
         (ngModelChange)="updateConfig()"
         [options]="openModeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
-    <div class="checkbox-grid mt-12" >
+    <div class="checkbox-grid mt-12">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.cardStack"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Card Stacking
       </label>
     </div>
@@ -52,46 +52,46 @@
   <div slot="content-notification" class="control-grid p-16">
     <div class="control-group">
       <label>Type</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="notiConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Title</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="notiConfig.title"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. Success!"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Message</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="notiConfig.message"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. Action completed."
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Duration (ms)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="notiConfig.duration"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 5000"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div preview class="preview-stage">
     <div
-       class="w-full h-300 display-flex gap-16 justify-center items-center p-40 bg-surface-2 rounded-lg-token relative"
+      class="w-full h-300 display-flex gap-16 justify-center items-center p-40 bg-surface-2 rounded-lg-token relative"
     >
-      <ui-snackbar
+      <dui-snackbar
         #snackbarElement
         icon-library="lucide"
         [attr.position]="pgConfig.position"
@@ -99,10 +99,10 @@
         [attr.stack-mode]="pgConfig.stackMode"
         [attr.open-mode]="pgConfig.openMode"
         [attr.card-stack]="pgConfig.cardStack ? '' : null"
-      ></ui-snackbar>
+      ></dui-snackbar>
 
-      <ui-button variant="primary" (click)="showSnackbar()" label="Show Snackbar"></ui-button>
-      <ui-button variant="secondary" (click)="clearAll()" label="Clear All"></ui-button>
+      <dui-button variant="primary" (click)="showSnackbar()" label="Show Snackbar"></dui-button>
+      <dui-button variant="secondary" (click)="clearAll()" label="Clear All"></dui-button>
     </div>
   </div>
 

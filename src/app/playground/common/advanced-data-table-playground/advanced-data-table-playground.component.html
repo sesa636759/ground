@@ -7,66 +7,72 @@
   <div slot="content-core" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.searchable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Searchable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.sortable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.sortable"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Sortable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.filterable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Filterable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.stickyHeader"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Sticky Header
       </label>
     </div>
     <div class="control-group mt-16">
       <label>Empty Message</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.emptyMessage"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-selection" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.multiSelect"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.rangeSelection"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Range Selection
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.editable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.editable"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Editable
       </label>
     </div>
@@ -75,51 +81,51 @@
   <div slot="content-pagination" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.pagination"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Enable Pagination
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.paginationSticky"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Sticky Pagination
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.paginationAutoHide"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Auto-Hide
       </label>
     </div>
     <div class="control-grid-2">
       <div class="control-group">
         <label>Page Size</label>
-        <ui-input
+        <dui-input
           type="number"
           [(ngModel)]="pgConfig.pageSize"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
       <div class="control-group">
         <label>Theme</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.paginationTheme"
           [options]="paginationThemeOptions"
           (ngModelChange)="updateConfig()"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Shape</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.paginationShape"
           [options]="paginationShapeOptions"
           (ngModelChange)="updateConfig()"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
   </div>
@@ -128,39 +134,48 @@
     <div class="control-grid-2">
       <div class="control-group">
         <label>Row Height</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.rowHeight"
           [options]="rowHeightOptions"
           (ngModelChange)="updateConfig()"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Theme Mode</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.theme"
           [options]="themeOptions"
           (ngModelChange)="updateConfig()"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.striped" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.striped"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Striped
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.bordered" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.bordered"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Bordered
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.hoverable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Hoverable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.loading"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Loading State
       </label>
     </div>
@@ -169,94 +184,94 @@
   <div slot="content-advanced" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.virtualScroll"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Virtual Scroll
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.columnPinning"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Col Pinning
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.rowPinning"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Row Pinning
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.columnAggregation"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Aggregation
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.undoRedo"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Undo/Redo
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.rangeSelection"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Range Select
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.copyPaste"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Copy/Paste
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.conditionalFormatting"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Condit. Format
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.exportable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Exportable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.excelExport"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Excel Export
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.pdfExport"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         PDF Export
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.rowDetails"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Row Details
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showActions"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Actions
       </label>
     </div>
@@ -265,25 +280,31 @@
   <div slot="content-grouping" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.grouping" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.grouping"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Enable Grouping
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.treeData" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.treeData"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Tree Data
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showGroupingControls"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Grouping UI
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.columnGrouping"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Col Grouping
       </label>
     </div>
@@ -314,8 +335,8 @@
     preview
     class="preview-stage h-scrollable w-full display-flex justify-center items-center p-40"
   >
-    <div class="table-container w-full" >
-      <ui-advanced-data-table
+    <div class="table-container w-full">
+      <dui-advanced-data-table
         #demoElement
         [attr.data]="dataJson"
         [attr.columns]="columnsJson"
@@ -367,7 +388,7 @@
         (sortChange)="onSortChange($event)"
         (pageChange)="onPageChange($event)"
         (searchChange)="onSearchChange($event)"
-      ></ui-advanced-data-table>
+      ></dui-advanced-data-table>
     </div>
   </div>
 

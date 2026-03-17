@@ -126,11 +126,11 @@ export class CardExamplesComponent extends BaseDemoComponent {
   <app-card [loading]="isLoading" card-title="Dynamic Content">
     <p>Content is loaded and ready!</p>
   </app-card>
-  <ui-button
+  <dui-button
     (click)="toggleLoading()"
     label="Toggle Loading"
     style="margin-top: 12px; display: block"
-  ></ui-button>
+  ></dui-button>
 </div>
 <app-card card-title="Project Details" collapsible="true" bordered="true">
   <p>This content can be hidden to save vertical space.</p>

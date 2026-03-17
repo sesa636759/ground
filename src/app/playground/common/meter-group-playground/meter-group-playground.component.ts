@@ -1,9 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -88,20 +83,22 @@ export class DmMeterGroupPlaygroundComponent extends BasePlaygroundComponent imp
   }
 
   updateConfig() {
-    let code = `<ui-meter-group\n`;
+    let code = `<dui-meter-group\n`;
     code += `  [values]="meterValues"\n`;
-    if (this.pgConfig.orientation !== 'horizontal') code += `  orientation="${this.pgConfig.orientation}"\n`;
+    if (this.pgConfig.orientation !== 'horizontal')
+      code += `  orientation="${this.pgConfig.orientation}"\n`;
     if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
     if (this.pgConfig.shape !== 'line') code += `  shape="${this.pgConfig.shape}"\n`;
     if (!this.pgConfig.showLabels) code += `  [show-labels]="false"\n`;
     if (!this.pgConfig.showValues) code += `  [show-values]="false"\n`;
     if (this.pgConfig.showLegend) code += `  show-legend\n`; // Default seems false in JS but true in my config
-    if (this.pgConfig.iconLibrary !== 'default') code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+    if (this.pgConfig.iconLibrary !== 'default')
+      code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
     if (this.pgConfig.min !== 0) code += `  [min]="${this.pgConfig.min}"\n`;
     if (this.pgConfig.max !== 100) code += `  [max]="${this.pgConfig.max}"\n`;
     if (this.pgConfig.interactive) code += `  interactive\n`;
 
-    code += `></ui-meter-group>`;
+    code += `></dui-meter-group>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

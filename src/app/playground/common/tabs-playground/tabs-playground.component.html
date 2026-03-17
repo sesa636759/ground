@@ -7,47 +7,47 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="standardOrientationOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Alignment</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
         [options]="alignOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
   <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
         Scrollable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.closeable" (ngModelChange)="updateConfig()" /> Closeable
+        <dui-checkbox [(ngModel)]="pgConfig.closeable" (ngModelChange)="updateConfig()" /> Closeable
         Tabs
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <div class="tabs-container w-full" >
-      <ui-tabs
+    <div class="tabs-container w-full">
+      <dui-tabs
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
         [attr.variant]="pgConfig.variant"
@@ -56,28 +56,28 @@
         [value]="currentTab"
         (valueChange)="onTabChange($event)"
       >
-        <ui-tab label="Overview" icon="📊" value="overview">
-          <div  class="p-24">
+        <dui-tab label="Overview" icon="📊" value="overview">
+          <div class="p-24">
             <h4>Overview Content</h4>
             <p>
               Welcome to the dashboard overview. Here you can see your recent activity and system
               status.
             </p>
           </div>
-        </ui-tab>
-        <ui-tab label="Settings" icon="⚙️" value="settings">
-          <div  class="p-24">
+        </dui-tab>
+        <dui-tab label="Settings" icon="⚙️" value="settings">
+          <div class="p-24">
             <h4>Settings Content</h4>
             <p>Manage your account preferences, security settings, and notification frequency.</p>
           </div>
-        </ui-tab>
-        <ui-tab label="Profile" icon="👤" value="profile">
-          <div  class="p-24">
+        </dui-tab>
+        <dui-tab label="Profile" icon="👤" value="profile">
+          <div class="p-24">
             <h4>Profile Content</h4>
             <p>Update your personal information, bio, and social media links.</p>
           </div>
-        </ui-tab>
-      </ui-tabs>
+        </dui-tab>
+      </dui-tabs>
     </div>
   </div>
 

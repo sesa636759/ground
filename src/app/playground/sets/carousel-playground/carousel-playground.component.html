@@ -8,7 +8,7 @@
   <div slot="content-layout" class="control-grid carousel-layout-section">
     <div class="control-group">
       <label>Slides To Show</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.slidesToShow"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -17,12 +17,12 @@
           { label: '3', value: 3 },
           { label: '4', value: 4 },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Slides To Scroll</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.slidesToScroll"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -30,24 +30,24 @@
           { label: '2', value: 2 },
           { label: '3', value: 3 },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Orientation</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.vertical"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Horizontal', value: false },
           { label: 'Vertical', value: true },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="checkbox-grid carousel-layout-checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" />
         Center Mode
       </label>
     </div>
@@ -57,7 +57,7 @@
   <div slot="content-animation" class="control-grid carousel-animation-section">
     <div class="control-group">
       <label>Animation Effect</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.effect"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -66,12 +66,12 @@
           { label: 'Cube', value: 'cube' },
           { label: 'Flip', value: 'flip' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Duration (ms)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.animationDuration"
         (ngModelChange)="updateConfig()"
@@ -81,7 +81,7 @@
 
     <div class="control-group">
       <label>Autoplay Interval (ms)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.autoplayInterval"
         (ngModelChange)="updateConfig()"
@@ -91,7 +91,7 @@
 
     <div class="checkbox-grid carousel-animation-checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoplay" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.autoplay" (ngModelChange)="updateConfig()" />
         Autoplay
       </label>
     </div>
@@ -101,15 +101,15 @@
   <div slot="content-controls" class="control-grid control-grid-padded">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.arrows" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.arrows" (ngModelChange)="updateConfig()" />
         Show Arrows
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.indicators" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.indicators" (ngModelChange)="updateConfig()" />
         Show Indicators
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Progress Bar
       </label>
     </div>
@@ -119,23 +119,23 @@
   <div slot="content-behavior" class="control-grid control-grid-padded">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()" />
         Infinite Loop
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.swipe" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.swipe" (ngModelChange)="updateConfig()" />
         Touch Swipe
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
         Mouse Draggable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.keyboard" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.keyboard" (ngModelChange)="updateConfig()" />
         Keyboard Navigation
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.pauseOnHover" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.pauseOnHover" (ngModelChange)="updateConfig()" />
         Pause On Hover
       </label>
     </div>
@@ -146,7 +146,7 @@
       class="carousel-container carousel-preview-container"
       [class.vertical-mode]="pgConfig.vertical"
     >
-      <ui-carousel
+      <dui-carousel
         #carouselElement
         [attr.slides-to-show]="pgConfig.slidesToShow"
         [attr.slides-to-scroll]="pgConfig.slidesToScroll"
@@ -177,7 +177,7 @@
             <p class="slide-desc-faded">{{ slide.desc }}</p>
           </div>
         </div>
-      </ui-carousel>
+      </dui-carousel>
     </div>
   </div>
 

@@ -9,35 +9,35 @@
       <h3>Layout</h3>
       <div class="control-group">
         <label>Orientation</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.orientation"
           (ngModelChange)="updateConfig()"
           [options]="orientationOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Size</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="sizeOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Variant</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="variantOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Color Scheme</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.colorScheme"
           (ngModelChange)="updateConfig()"
           [options]="colorOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
 
@@ -45,27 +45,27 @@
       <h3>Positioning</h3>
       <div class="control-group">
         <label>Label Position</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.labelPosition"
           (ngModelChange)="updateConfig()"
           [options]="labelPositionOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Flow Type</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.flow"
           (ngModelChange)="updateConfig()"
           [options]="flowOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Icon Library</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.iconLibrary"
           (ngModelChange)="updateConfig()"
           [options]="iconLibraryOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
 
@@ -73,31 +73,31 @@
       <h3>Limits</h3>
       <div class="control-group">
         <label>Active Step (0-based)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           [max]="steps.length - 1"
           [(ngModel)]="pgConfig.activeStep"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
       <div class="control-group">
         <label>Steps Per Page (0=all)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           [(ngModel)]="pgConfig.stepsPerPage"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
       <div class="control-group">
         <label>Max Visible Steps</label>
-        <ui-input
+        <dui-input
           type="number"
           min="1"
           [(ngModel)]="pgConfig.maxVisibleSteps"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
     </div>
 
@@ -105,66 +105,66 @@
       <h3>Toggles</h3>
       <div class="checkbox-grid">
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.showNumbers"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Show Numbers
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.showDescriptions"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Show Descriptions
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.progressDot"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Progress Dot
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.showControls"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Show Controls
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.animated"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Animated
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.showProgress"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Show Progress
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.compact"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Compact
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.scrollable"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Scrollable
         </label>
         <label class="checkbox-item">
-          <ui-checkbox
+          <dui-checkbox
             [(ngModel)]="pgConfig.clickable"
             (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
+          ></dui-checkbox>
           Clickable
         </label>
       </div>
@@ -172,7 +172,7 @@
   </div>
 
   <div preview class="preview-stage stepper-preview">
-    <ui-stepper
+    <dui-stepper
       [attr.orientation]="pgConfig.orientation"
       [attr.size]="pgConfig.size"
       [attr.variant]="pgConfig.variant"
@@ -198,7 +198,7 @@
       (stepperNext)="onEvent($event, 'stepperNext')"
       (stepperFinish)="onEvent($event, 'stepperFinish')"
       (stepperFail)="onEvent($event, 'stepperFail')"
-    ></ui-stepper>
+    ></dui-stepper>
 
     <div class="step-content-preview stepper-content-preview">
       <h3>{{ steps[pgConfig.activeStep]?.label }}</h3>
@@ -210,63 +210,63 @@
   <div class="stepper-variants-section">
     <h3>All Variants & Examples</h3>
     <div class="stepper-variants-grid">
-      <ui-stepper
+      <dui-stepper
         [steps]="stepsJson"
         orientation="horizontal"
         variant="default"
         color-scheme="primary"
         show-numbers
         show-descriptions
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="vertical"
         variant="panel"
         color-scheme="success"
         show-controls
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="horizontal"
         variant="navigation"
         color-scheme="warning"
         progress-dot
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="vertical"
         variant="outlined"
         color-scheme="danger"
         animated
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="horizontal"
         variant="minimal"
         color-scheme="primary"
         compact
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="vertical"
         variant="filled"
         color-scheme="success"
         scrollable
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="horizontal"
         variant="snack"
         color-scheme="warning"
         clickable
-      ></ui-stepper>
-      <ui-stepper
+      ></dui-stepper>
+      <dui-stepper
         [steps]="stepsJson"
         orientation="vertical"
         variant="inline"
         color-scheme="danger"
         show-progress
-      ></ui-stepper>
+      ></dui-stepper>
     </div>
   </div>
 

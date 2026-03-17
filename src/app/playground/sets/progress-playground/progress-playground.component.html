@@ -8,92 +8,92 @@
   <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Type</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Line', value: 'line' },
           { label: 'Circle', value: 'circle' },
-          { label: 'Dashboard', value: 'dashboard' }
+          { label: 'Dashboard', value: 'dashboard' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Status</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.status"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Normal', value: 'normal' },
           { label: 'Active', value: 'active' },
           { label: 'Success', value: 'success' },
-          { label: 'Exception', value: 'exception' }
+          { label: 'Exception', value: 'exception' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Percent (0-100)</label>
-      <ui-input
+      <dui-input
         type="number"
         min="0"
         max="100"
         [(ngModel)]="pgConfig.percent"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Stroke Width</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.strokeWidth"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Size (Circle/Dash)</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Default', value: 'default' },
-          { label: 'Small', value: 'small' }
+          { label: 'Small', value: 'small' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Width (CSS)</label>
-      <ui-input
+      <dui-input
         [(ngModel)]="pgConfig.width"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 100%, 200px"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Steps</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.steps"
         (ngModelChange)="updateConfig()"
         placeholder="Divide into steps"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Label Position</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.labelPosition"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Outside', value: 'outside' },
-          { label: 'Top', value: 'top' }
+          { label: 'Top', value: 'top' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
@@ -101,43 +101,65 @@
   <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Stroke Color</label>
-      <ui-input type="color" [(ngModel)]="pgConfig.strokeColor" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="color"
+        [(ngModel)]="pgConfig.strokeColor"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Trail Color</label>
-      <ui-input type="color" [(ngModel)]="pgConfig.trailColor" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="color"
+        [(ngModel)]="pgConfig.trailColor"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Percentage Text Color</label>
-      <ui-input type="color" [(ngModel)]="pgConfig.percentageColor" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="color"
+        [(ngModel)]="pgConfig.percentageColor"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Decimal Precision</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.decimalPrecision" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="number"
+        [(ngModel)]="pgConfig.decimalPrecision"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showInfo" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.showInfo"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Show Info
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.indeterminate" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.indeterminate"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Indeterminate
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.liquid" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.liquid" (ngModelChange)="updateConfig()"></dui-checkbox>
         Liquid Effect
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></dui-checkbox>
         Glassmorphism
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></dui-checkbox>
         Glow Effect
       </label>
     </div>
@@ -147,57 +169,78 @@
   <div slot="content-advanced" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showBuffer" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.showBuffer"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Show Buffer
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showPauseButton" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.showPauseButton"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Show Pause
       </label>
       <label class="checkbox-item" *ngIf="pgConfig.showPauseButton">
-        <ui-checkbox [(ngModel)]="pgConfig.paused" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.paused" (ngModelChange)="updateConfig()"></dui-checkbox>
         Paused
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showTimeEstimate" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.showTimeEstimate"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Show Time Est.
       </label>
     </div>
 
     <div class="control-group" *ngIf="pgConfig.showBuffer">
       <label>Buffer Percent</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.buffer" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="number"
+        [(ngModel)]="pgConfig.buffer"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="control-group" *ngIf="pgConfig.showTimeEstimate">
       <label>Est. Time (Seconds)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.estimatedTime" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="number"
+        [(ngModel)]="pgConfig.estimatedTime"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="control-group" *ngIf="pgConfig.type !== 'line'">
       <label>Gap Degree</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.gapDegree" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="number"
+        [(ngModel)]="pgConfig.gapDegree"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
 
     <div class="control-group" *ngIf="pgConfig.type !== 'line'">
       <label>Gap Position</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.gapPosition"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Top', value: 'top' },
           { label: 'Bottom', value: 'bottom' },
           { label: 'Left', value: 'left' },
-          { label: 'Right', value: 'right' }
+          { label: 'Right', value: 'right' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
   <!-- Preview -->
   <div preview>
     <div class="preview-stage demo-preview-stage">
-      <ui-progress
+      <dui-progress
         class="w-full"
         [percent]="pgConfig.percent"
         [attr.type]="pgConfig.type"
@@ -225,7 +268,7 @@
         [attr.estimated-time]="pgConfig.estimatedTime"
         [attr.decimal-precision]="pgConfig.decimalPrecision"
         [attr.label-position]="pgConfig.labelPosition"
-      ></ui-progress>
+      ></dui-progress>
     </div>
   </div>
 </pg-playground>

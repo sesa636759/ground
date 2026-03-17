@@ -1,9 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -84,8 +79,9 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
   }
 
   updateConfig() {
-    let code = `<ui-stack\n`;
-    if (this.pgConfig.direction !== 'horizontal') code += `  direction="${this.pgConfig.direction}"\n`;
+    let code = `<dui-stack\n`;
+    if (this.pgConfig.direction !== 'horizontal')
+      code += `  direction="${this.pgConfig.direction}"\n`;
     if (this.pgConfig.wrap !== 'nowrap') code += `  wrap="${this.pgConfig.wrap}"\n`;
     if (this.pgConfig.spacing !== '8px') code += `  spacing="${this.pgConfig.spacing}"\n`;
     if (this.pgConfig.align !== 'center') code += `  align="${this.pgConfig.align}"\n`;
@@ -94,13 +90,14 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
     if (this.pgConfig.overlap) code += `  overlap\n`;
     if (this.pgConfig.showDividers) {
       code += `  show-dividers\n`;
-      if (this.pgConfig.dividerType !== 'solid') code += `  divider-type="${this.pgConfig.dividerType}"\n`;
+      if (this.pgConfig.dividerType !== 'solid')
+        code += `  divider-type="${this.pgConfig.dividerType}"\n`;
     }
-    
+
     code += `>\n`;
     code += `  <div>1</div>\n`;
     code += `  <div>2</div>\n`;
-    code += `</ui-stack>`;
+    code += `</dui-stack>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

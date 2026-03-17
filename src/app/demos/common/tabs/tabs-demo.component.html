@@ -18,7 +18,7 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Visual Variants -->
-          <section class="demo-section mt-0" id="styles" >
+          <section class="demo-section mt-0" id="styles">
             <div class="section-header">
               <h2>🎨 Visual Variants</h2>
               <p>Choose the presentation style that matches your application's design system.</p>
@@ -26,34 +26,34 @@
             <div class="demo-card">
               <div class="tab-preview-box">
                 <span>Pills Variant:</span>
-                <ui-tabs variant="pills">
-                  <ui-tab label="Analytics" icon="📈"></ui-tab>
-                  <ui-tab label="Reports" icon="📑"></ui-tab>
-                  <ui-tab label="Logs" icon="📜"></ui-tab>
-                </ui-tabs>
+                <dui-tabs variant="pills">
+                  <dui-tab label="Analytics" icon="📈"></dui-tab>
+                  <dui-tab label="Reports" icon="📑"></dui-tab>
+                  <dui-tab label="Logs" icon="📜"></dui-tab>
+                </dui-tabs>
               </div>
               <div class="tab-preview-box">
                 <span>Underline Variant:</span>
-                <ui-tabs variant="underline">
-                  <ui-tab label="Overview"></ui-tab>
-                  <ui-tab label="Advanced"></ui-tab>
-                  <ui-tab label="Dev Tools"></ui-tab>
-                </ui-tabs>
+                <dui-tabs variant="underline">
+                  <dui-tab label="Overview"></dui-tab>
+                  <dui-tab label="Advanced"></dui-tab>
+                  <dui-tab label="Dev Tools"></dui-tab>
+                </dui-tabs>
               </div>
               <div class="tab-preview-box">
                 <span>Enclosed Variant:</span>
-                <ui-tabs variant="enclosed">
-                  <ui-tab label="Code"></ui-tab>
-                  <ui-tab label="Preview"></ui-tab>
-                </ui-tabs>
+                <dui-tabs variant="enclosed">
+                  <dui-tab label="Code"></dui-tab>
+                  <dui-tab label="Preview"></dui-tab>
+                </dui-tabs>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="stylesCode"
               [label]="'Design Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Orientations & Layouts -->
@@ -63,29 +63,29 @@
               <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
             </div>
             <div class="demo-card">
-              <div class="tab-preview-box display-flex flex-col gap-20" >
+              <div class="tab-preview-box display-flex flex-col gap-20">
                 <span>Vertical Orientation:</span>
-                <ui-tabs orientation="vertical">
-                  <ui-tab label="Inbox" icon="📥"></ui-tab>
-                  <ui-tab label="Sent" icon="📤"></ui-tab>
-                  <ui-tab label="Spam" icon="🚫"></ui-tab>
-                </ui-tabs>
+                <dui-tabs orientation="vertical">
+                  <dui-tab label="Inbox" icon="📥"></dui-tab>
+                  <dui-tab label="Sent" icon="📤"></dui-tab>
+                  <dui-tab label="Spam" icon="🚫"></dui-tab>
+                </dui-tabs>
               </div>
               <div class="tab-preview-box">
                 <span>Center Alignment:</span>
-                <ui-tabs align="center">
-                  <ui-tab label="Feed"></ui-tab>
-                  <ui-tab label="Groups"></ui-tab>
-                  <ui-tab label="Events"></ui-tab>
-                </ui-tabs>
+                <dui-tabs align="center">
+                  <dui-tab label="Feed"></dui-tab>
+                  <dui-tab label="Groups"></dui-tab>
+                  <dui-tab label="Events"></dui-tab>
+                </dui-tabs>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="layoutsCode"
               [label]="'Layout Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Tab Stack -->
@@ -101,23 +101,23 @@
                 <span>Tab Stack with Multiple Features:</span>
                 <app-tab-stack active-tab="t1" variant="pills">
                   <app-tab label="Dashboard" value="t1" icon="fas fa-home">
-                    <div  class="p-20">Dashboard content</div>
+                    <div class="p-20">Dashboard content</div>
                   </app-tab>
                   <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
-                    <div  class="p-20">Analytics content</div>
+                    <div class="p-20">Analytics content</div>
                   </app-tab>
                   <app-tab label="Settings" value="t3" icon="fas fa-cog">
-                    <div  class="p-20">Settings content</div>
+                    <div class="p-20">Settings content</div>
                   </app-tab>
                 </app-tab-stack>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="tabStackCode"
               [label]="'Tab Stack Example'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -128,4 +128,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

@@ -16,29 +16,29 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section mt-0" id="basic" >
+          <section class="demo-section mt-0" id="basic">
             <div class="section-header">
               <h2>📊 Basic Bar Chart</h2>
               <p>A single-series bar chart showing monthly revenue trends.</p>
             </div>
             <div class="demo-card">
-              <div  class="h-320">
-                <ui-bar-chart
+              <div class="h-320">
+                <dui-bar-chart
                   show-legend
                   enable-animation
                   show-tooltip
                   show-grid
                   [labels]="basicLabels"
                   [datasets]="basicDatasets"
-                ></ui-bar-chart>
+                ></dui-bar-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="basicCode"
               [label]="'Basic Bar Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Multi Dataset -->
@@ -48,23 +48,23 @@
               <p>Compare multiple data series side-by-side across the same categories.</p>
             </div>
             <div class="demo-card">
-              <div  class="h-320">
-                <ui-bar-chart
+              <div class="h-320">
+                <dui-bar-chart
                   show-legend
                   enable-animation
                   show-tooltip
                   show-grid
                   [labels]="multiLabels"
                   [datasets]="multiDatasets"
-                ></ui-bar-chart>
+                ></dui-bar-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="multiCode"
               [label]="'Multi-Dataset Bar Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Stacked -->
@@ -74,8 +74,8 @@
               <p>Stack multiple datasets to show part-to-whole relationships clearly.</p>
             </div>
             <div class="demo-card">
-              <div  class="h-320">
-                <ui-bar-chart
+              <div class="h-320">
+                <dui-bar-chart
                   stacked
                   show-legend
                   enable-animation
@@ -83,15 +83,15 @@
                   show-grid
                   [labels]="stackedLabels"
                   [datasets]="stackedDatasets"
-                ></ui-bar-chart>
+                ></dui-bar-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="stackedCode"
               [label]="'Stacked Bar Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Horizontal -->
@@ -103,8 +103,8 @@
               </p>
             </div>
             <div class="demo-card">
-              <div  class="h-320">
-                <ui-bar-chart
+              <div class="h-320">
+                <dui-bar-chart
                   orientation="horizontal"
                   show-legend
                   enable-animation
@@ -112,15 +112,15 @@
                   show-grid
                   [labels]="hLabels"
                   [datasets]="hDatasets"
-                ></ui-bar-chart>
+                ></dui-bar-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="horizontalCode"
               [label]="'Horizontal Bar Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -131,4 +131,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

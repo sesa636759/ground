@@ -14,13 +14,13 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="project" >
+          <section class="demo-section mt-0" id="project">
             <div class="section-header">
               <h2>📅 Project Schedule</h2>
               <p>Show tasks and milestones over a project timeline with labeled rows.</p>
             </div>
             <div class="demo-card">
-              <svg width="640" height="280"  class="display-block m-0-auto">
+              <svg width="640" height="280" class="display-block m-0-auto">
                 <defs>
                   <linearGradient id="tr-g1" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#6366f1" />
@@ -126,12 +126,12 @@
                 <text x="590" y="308" font-size="10" fill="#9ca3af">Week 9</text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="'<!-- SVG Timeline Range Chart -->\n<svg width=\'640\' height=\'280\'>...'"
               label="Project Timeline"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="team">
@@ -140,7 +140,7 @@
               <p>Visualize team member availability and assignments side-by-side.</p>
             </div>
             <div class="demo-card">
-              <svg width="640" height="240"  class="display-block m-0-auto">
+              <svg width="640" height="240" class="display-block m-0-auto">
                 <text x="10" y="36" font-size="11" fill="#6b7280">Alice</text>
                 <rect x="120" y="20" width="200" height="26" rx="5" fill="#6366f1" opacity="0.8" />
                 <text x="220" y="37" text-anchor="middle" font-size="10" fill="white">
@@ -172,12 +172,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="'<!-- Team Schedule Timeline -->'"
               label="Team Schedule"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -188,4 +188,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

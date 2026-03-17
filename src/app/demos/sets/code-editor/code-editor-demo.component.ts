@@ -34,12 +34,12 @@ export class DmCodeEditorDemoComponent extends BaseDemoComponent implements OnIn
     return this.variants;
   }
 
-  playgroundCode = `<ui-code-editor
+  playgroundCode = `<dui-code-editor
   language="typescript"
   theme="vs-dark"
   [value]="code"
   [options]="editorOptions"
-></ui-code-editor>`;
+></dui-code-editor>`;
 
   ngOnInit() {}
 }

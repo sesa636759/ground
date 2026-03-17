@@ -82,7 +82,7 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
   }
 
   updateConfig() {
-    let code = `<ui-timer\n`;
+    let code = `<dui-timer\n`;
     if (this.pgConfig.duration > 0) code += `  [duration]="${this.pgConfig.duration}"\n`;
     if (this.pgConfig.mode !== 'countdown') code += `  mode="${this.pgConfig.mode}"\n`;
     if (this.pgConfig.format !== 'default') code += `  format="${this.pgConfig.format}"\n`;
@@ -90,8 +90,10 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
     if (this.pgConfig.loop) code += `  loop\n`;
     if (this.pgConfig.precision !== 'seconds') code += `  precision="${this.pgConfig.precision}"\n`;
     if (this.pgConfig.variant !== 'full') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.progressType !== 'circular') code += `  progress-type="${this.pgConfig.progressType}"\n`;
-    if (this.pgConfig.alertThreshold !== 10) code += `  [alert-threshold]="${this.pgConfig.alertThreshold}"\n`;
+    if (this.pgConfig.progressType !== 'circular')
+      code += `  progress-type="${this.pgConfig.progressType}"\n`;
+    if (this.pgConfig.alertThreshold !== 10)
+      code += `  [alert-threshold]="${this.pgConfig.alertThreshold}"\n`;
     if (this.pgConfig.enableNotifications) code += `  enable-notifications\n`;
     if (this.pgConfig.enableSound) code += `  enable-sound\n`;
     if (this.pgConfig.persist) code += `  persist="${this.pgConfig.persist}"\n`;
@@ -99,7 +101,7 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
     if (this.pgConfig.steps) code += `  steps='${this.pgConfig.steps}'\n`;
     if (this.pgConfig.targetDate) code += `  target-date="${this.pgConfig.targetDate}"\n`;
 
-    code += `></ui-timer>`;
+    code += `></dui-timer>`;
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -113,8 +115,20 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
   }
 
   // Control Methods
-  timerStart(el: any) { el.start?.(); this.logEvent('Started'); }
-  timerPause(el: any) { el.pause?.(); this.logEvent('Paused'); }
-  timerReset(el: any) { el.reset?.(); this.logEvent('Reset'); }
-  timerNext(el: any) { el.next?.(); this.logEvent('Next Step'); }
+  timerStart(el: any) {
+    el.start?.();
+    this.logEvent('Started');
+  }
+  timerPause(el: any) {
+    el.pause?.();
+    this.logEvent('Paused');
+  }
+  timerReset(el: any) {
+    el.reset?.();
+    this.logEvent('Reset');
+  }
+  timerNext(el: any) {
+    el.next?.();
+    this.logEvent('Next Step');
+  }
 }

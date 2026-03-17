@@ -106,7 +106,13 @@ export class DmContextMenuDemoComponent {
       description: 'Product Lead',
       badge: 'circle-dot',
     },
-    { id: 'bob', label: 'Bob Smith', avatar: 'user', description: 'Developer', badge: 'circle-dot' },
+    {
+      id: 'bob',
+      label: 'Bob Smith',
+      avatar: 'user',
+      description: 'Developer',
+      badge: 'circle-dot',
+    },
     {
       id: 'charlie',
       label: 'Charlie Brown',
@@ -174,7 +180,7 @@ export class DmContextMenuDemoComponent {
   (itemClick)="onMenuClick($event)"
 ></app-context-menu>`);
 
-  clickTriggerCode = signal(`<ui-button #menuBtn label="More Actions"></ui-button>
+  clickTriggerCode = signal(`<dui-button #menuBtn label="More Actions"></dui-button>
 
 <app-context-menu
   [triggerElement]="menuBtn"

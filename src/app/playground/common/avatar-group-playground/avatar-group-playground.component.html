@@ -7,47 +7,47 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="fullSizeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Layout</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.layout"
         (ngModelChange)="updateConfig()"
         [options]="layoutOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Max Display</label>
-      <ui-input
+      <dui-input
         type="number"
         min="1"
         max="10"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     @if (pgConfig.layout === 'stack') {
       <div class="control-group">
         <label>Overlap (px)</label>
-        <ui-input
+        <dui-input
           type="number"
           [(ngModel)]="pgConfig.overlap"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
     } @else {
       <div class="control-group">
         <label>Spacing (px)</label>
-        <ui-input
+        <dui-input
           type="number"
           [(ngModel)]="pgConfig.spacing"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
     }
   </div>
@@ -55,51 +55,50 @@
   <div slot="content-style" class="control-grid p-16">
     <div class="control-group">
       <label>Shape</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Border Color</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.borderColor"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Border Width</label>
-      <ui-input
+      <dui-input
         type="number"
         min="0"
         max="10"
         [(ngModel)]="pgConfig.borderWidth"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
-    <div class="checkbox-grid col-span-all mt-16" >
+    <div class="checkbox-grid col-span-all mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.animated"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Animated
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.enablePopover"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Enable Popover
       </label>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage w-full display-flex justify-center items-center p-40"
-    
-  >
-    <ui-avatar-group
+  <div preview class="preview-stage w-full display-flex justify-center items-center p-40">
+    <dui-avatar-group
       #avatarGroupElement
       [attr.size]="pgConfig.size"
       [attr.max]="pgConfig.max"
@@ -112,12 +111,12 @@
       [attr.border-color]="pgConfig.borderColor"
       [attr.border-width]="pgConfig.borderWidth"
     >
-      <ui-avatar label="JD" src="https://i.pravatar.cc/150?u=1"></ui-avatar>
-      <ui-avatar label="AB" src="https://i.pravatar.cc/150?u=2"></ui-avatar>
-      <ui-avatar label="CD" src="https://i.pravatar.cc/150?u=3"></ui-avatar>
-      <ui-avatar label="EF" src="https://i.pravatar.cc/150?u=4"></ui-avatar>
-      <ui-avatar label="GH" src="https://i.pravatar.cc/150?u=5"></ui-avatar>
-    </ui-avatar-group>
+      <dui-avatar label="JD" src="https://i.pravatar.cc/150?u=1"></dui-avatar>
+      <dui-avatar label="AB" src="https://i.pravatar.cc/150?u=2"></dui-avatar>
+      <dui-avatar label="CD" src="https://i.pravatar.cc/150?u=3"></dui-avatar>
+      <dui-avatar label="EF" src="https://i.pravatar.cc/150?u=4"></dui-avatar>
+      <dui-avatar label="GH" src="https://i.pravatar.cc/150?u=5"></dui-avatar>
+    </dui-avatar-group>
   </div>
 
   <pg-playground-event-log

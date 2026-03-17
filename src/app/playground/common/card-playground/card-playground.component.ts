@@ -164,7 +164,7 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
 
   updateConfig() {
     const config = this.pgConfig;
-    let code = `<ui-card`;
+    let code = `<dui-card`;
 
     // Identity & Layout
     if (config.cardId) code += `\n  card-id="${config.cardId}"`;
@@ -172,7 +172,7 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
     if (config.size !== 'default') code += `\n  size="${config.size}"`;
     if (config.layout !== 'vertical') code += `\n  layout="${config.layout}"`;
     if (config.type !== 'default') code += `\n  type="${config.type}"`;
-    
+
     // Appearance
     if (config.importance !== 'standard') code += `\n  importance="${config.importance}"`;
     if (config.pattern !== 'default') code += `\n  pattern="${config.pattern}"`;
@@ -184,11 +184,11 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
     if (config.width !== '100%') code += `\n  width="${config.width}"`;
     if (config.height !== 'auto') code += `\n  height="${config.height}"`;
     if (config.aspectRatio !== '16/9') code += `\n  aspect-ratio="${config.aspectRatio}"`;
-    
+
     // Interactions
     if (config.flippable) {
-        code += `\n  flippable`;
-        if (config.flipTrigger !== 'click') code += `\n  flip-trigger="${config.flipTrigger}"`;
+      code += `\n  flippable`;
+      if (config.flipTrigger !== 'click') code += `\n  flip-trigger="${config.flipTrigger}"`;
     }
     if (config.loading) code += `\n  loading`;
     if (config.closable) code += `\n  closable`;
@@ -196,20 +196,21 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
     if (config.collapsible) code += `\n  collapsible`;
     if (config.clickable) code += `\n  clickable`;
     if (config.href) {
-        code += `\n  href="${config.href}"`;
-        if (config.target) code += `\n  target="${config.target}"`;
+      code += `\n  href="${config.href}"`;
+      if (config.target) code += `\n  target="${config.target}"`;
     }
-    
+
     if (config.autoScroll) {
-        code += `\n  auto-scroll`;
-        if (config.scrollBehavior !== 'smooth') code += `\n  scroll-behavior="${config.scrollBehavior}"`;
+      code += `\n  auto-scroll`;
+      if (config.scrollBehavior !== 'smooth')
+        code += `\n  scroll-behavior="${config.scrollBehavior}"`;
     }
 
     // Ribbon
     if (config.ribbon) {
-        code += `\n  ribbon="${config.ribbon}"`;
-        code += `\n  ribbon-color="${config.ribbonColor}"`;
-        code += `\n  ribbon-position="${config.ribbonPosition}"`;
+      code += `\n  ribbon="${config.ribbon}"`;
+      code += `\n  ribbon-color="${config.ribbonColor}"`;
+      code += `\n  ribbon-position="${config.ribbonPosition}"`;
     }
 
     // Content Props
@@ -219,16 +220,16 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
     if (config.buttonText) code += `\n  button-text="${config.buttonText}"`;
     if (config.actions) code += `\n  actions="${config.actions}"`;
     if (config.cover) {
-        code += `\n  cover="${config.cover}"`;
-        if (config.coverAlt) code += `\n  cover-alt="${config.coverAlt}"`;
+      code += `\n  cover="${config.cover}"`;
+      if (config.coverAlt) code += `\n  cover-alt="${config.coverAlt}"`;
     }
     if (config.avatar) code += `\n  avatar="${config.avatar}"`;
     if (config.avatarIcon) code += `\n  avatar-icon="${config.avatarIcon}"`;
 
     // Menus
     if (config.showMenu) {
-        code += `\n  show-menu`;
-        code += `\n  [menuItems]="menuItems"`;
+      code += `\n  show-menu`;
+      code += `\n  [menuItems]="menuItems"`;
     }
     if (config.menuActions) code += `\n  menu-actions="${config.menuActions}"`;
     if (config.iconLibrary !== 'default') code += `\n  icon-library="${config.iconLibrary}"`;
@@ -237,7 +238,7 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
 
     // Potential Slots (only as placeholder comments if desired, or simplified)
     code += `\n  <!-- Custom content slots available: header, footer, tabs, grid, back... -->`;
-    code += `\n</ui-card>`;
+    code += `\n</dui-card>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

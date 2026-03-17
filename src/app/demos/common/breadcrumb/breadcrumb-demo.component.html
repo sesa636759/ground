@@ -17,63 +17,121 @@
         <div class="examples-content">
           <!-- Basic -->
           <section class="demo-section" id="basic">
-            <div class="section-header"><h2>Basic Usage</h2><p>A simple breadcrumb trail with default string separator.</p></div>
-            <div class="demo-card">
-              <ui-breadcrumb [attr.items]="basicItems" (breadcrumbClick)="handleBreadcrumbClick($event)"></ui-breadcrumb>
+            <div class="section-header">
+              <h2>Basic Usage</h2>
+              <p>A simple breadcrumb trail with default string separator.</p>
             </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card">
+              <dui-breadcrumb
+                [attr.items]="basicItems"
+                (breadcrumbClick)="handleBreadcrumbClick($event)"
+              ></dui-breadcrumb>
+            </div>
+            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Separators -->
           <section class="demo-section" id="separators">
-            <div class="section-header"><h2>Custom Separators</h2><p>Use custom string separators or SVG icons.</p></div>
-            <div class="demo-card breadcrumb-stack">
-              <ui-breadcrumb [attr.items]="basicItems" separator=">"></ui-breadcrumb>
-              <ui-breadcrumb [attr.items]="basicItems" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>
+            <div class="section-header">
+              <h2>Custom Separators</h2>
+              <p>Use custom string separators or SVG icons.</p>
             </div>
-            <ui-code-preview [htmlCode]="separatorsCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card breadcrumb-stack">
+              <dui-breadcrumb [attr.items]="basicItems" separator=">"></dui-breadcrumb>
+              <dui-breadcrumb
+                [attr.items]="basicItems"
+                separator-icon="chevron-right"
+                separator-icon-library="lucide"
+              ></dui-breadcrumb>
+            </div>
+            <dui-code-preview [htmlCode]="separatorsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Icons & Badges -->
           <section class="demo-section" id="icons">
-            <div class="section-header"><h2>Icons & Badges</h2><p>Include item icons, a home icon, and notification badges.</p></div>
-            <div class="demo-card">
-              <ui-breadcrumb [attr.items]="iconItems" show-home home-icon="home" home-icon-library="lucide" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>
+            <div class="section-header">
+              <h2>Icons & Badges</h2>
+              <p>Include item icons, a home icon, and notification badges.</p>
             </div>
-            <ui-code-preview [htmlCode]="iconsCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card">
+              <dui-breadcrumb
+                [attr.items]="iconItems"
+                show-home
+                home-icon="home"
+                home-icon-library="lucide"
+                separator-icon="chevron-right"
+                separator-icon-library="lucide"
+              ></dui-breadcrumb>
+            </div>
+            <dui-code-preview [htmlCode]="iconsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Smart Collapsing -->
           <section class="demo-section" id="collapsing">
-            <div class="section-header"><h2>Smart Collapsing</h2><p>Automatically collapse long breadcrumb trails into a dropdown menu using <code>max-items</code>.</p></div>
-            <div class="demo-card">
-              <ui-breadcrumb [attr.items]="collapsibleItems" max-items="3" show-home home-icon="layout-dashboard" home-icon-library="lucide" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>
+            <div class="section-header">
+              <h2>Smart Collapsing</h2>
+              <p>
+                Automatically collapse long breadcrumb trails into a dropdown menu using
+                <code>max-items</code>.
+              </p>
             </div>
-            <ui-code-preview [htmlCode]="collapsingCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card">
+              <dui-breadcrumb
+                [attr.items]="collapsibleItems"
+                max-items="3"
+                show-home
+                home-icon="layout-dashboard"
+                home-icon-library="lucide"
+                separator-icon="chevron-right"
+                separator-icon-library="lucide"
+              ></dui-breadcrumb>
+            </div>
+            <dui-code-preview [htmlCode]="collapsingCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Sizes -->
           <section class="demo-section" id="sizes">
-            <div class="section-header"><h2>Sizes</h2><p>Small, medium, and large sizing variations.</p></div>
-            <div class="demo-card breadcrumb-stack">
-              <ui-breadcrumb [attr.items]="basicItems" size="sm"></ui-breadcrumb>
-              <ui-breadcrumb [attr.items]="basicItems" size="md"></ui-breadcrumb>
-              <ui-breadcrumb [attr.items]="basicItems" size="lg"></ui-breadcrumb>
+            <div class="section-header">
+              <h2>Sizes</h2>
+              <p>Small, medium, and large sizing variations.</p>
             </div>
-            <ui-code-preview [htmlCode]="sizesCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card breadcrumb-stack">
+              <dui-breadcrumb [attr.items]="basicItems" size="sm"></dui-breadcrumb>
+              <dui-breadcrumb [attr.items]="basicItems" size="md"></dui-breadcrumb>
+              <dui-breadcrumb [attr.items]="basicItems" size="lg"></dui-breadcrumb>
+            </div>
+            <dui-code-preview [htmlCode]="sizesCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Visual Variants -->
           <section class="demo-section" id="variants">
-            <div class="section-header"><h2>Visual Variants</h2><p>Different structural appearances like pills and glassmorphism.</p></div>
+            <div class="section-header">
+              <h2>Visual Variants</h2>
+              <p>Different structural appearances like pills and glassmorphism.</p>
+            </div>
             <div class="demo-card breadcrumb-stack">
-              <ui-breadcrumb [attr.items]="basicItems" variant="default" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>
-              <ui-breadcrumb [attr.items]="basicItems" variant="pills" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>
+              <dui-breadcrumb
+                [attr.items]="basicItems"
+                variant="default"
+                separator-icon="chevron-right"
+                separator-icon-library="lucide"
+              ></dui-breadcrumb>
+              <dui-breadcrumb
+                [attr.items]="basicItems"
+                variant="pills"
+                separator-icon="chevron-right"
+                separator-icon-library="lucide"
+              ></dui-breadcrumb>
               <div class="glass-bg">
-                <ui-breadcrumb [attr.items]="basicItems" variant="glass" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>
+                <dui-breadcrumb
+                  [attr.items]="basicItems"
+                  variant="glass"
+                  separator-icon="chevron-right"
+                  separator-icon-library="lucide"
+                ></dui-breadcrumb>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="variantsCode" activeLang="html"></dui-code-preview>
           </section>
         </div>
       </div>
@@ -84,5 +142,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

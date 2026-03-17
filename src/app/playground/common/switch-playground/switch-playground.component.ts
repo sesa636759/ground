@@ -123,14 +123,15 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<ui-switch\n`;
+    let code = `<dui-switch\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     if (this.pgConfig.checked) code += `  checked\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  shape="${this.pgConfig.shape}"\n`;
 
-    if (this.pgConfig.thumbShape !== 'circle') code += `  thumb-shape="${this.pgConfig.thumbShape}"\n`;
+    if (this.pgConfig.thumbShape !== 'circle')
+      code += `  thumb-shape="${this.pgConfig.thumbShape}"\n`;
     if (this.pgConfig.disabled) code += `  disabled\n`;
     if (this.pgConfig.loading) code += `  loading\n`;
     if (this.pgConfig.readonly) code += `  readonly\n`;
@@ -138,7 +139,8 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.indeterminate) code += `  indeterminate\n`;
     if (this.pgConfig.gradient) {
       code += `  gradient\n`;
-      if (this.pgConfig.gradientColors) code += `  gradient-colors='${this.pgConfig.gradientColors}'\n`;
+      if (this.pgConfig.gradientColors)
+        code += `  gradient-colors='${this.pgConfig.gradientColors}'\n`;
     }
     if (this.pgConfig.elevation > 0) code += `  elevation="${this.pgConfig.elevation}"\n`;
     if (this.pgConfig.required) code += `  required\n`;
@@ -184,9 +186,10 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.name) code += `  name="${this.pgConfig.name}"\n`;
     if (this.pgConfig.value) code += `  value="${this.pgConfig.value}"\n`;
     if (this.pgConfig.ariaLabel) code += `  aria-label="${this.pgConfig.ariaLabel}"\n`;
-    if (this.pgConfig.switchTabIndex !== 0) code += `  switch-tab-index="${this.pgConfig.switchTabIndex}"\n`;
+    if (this.pgConfig.switchTabIndex !== 0)
+      code += `  switch-tab-index="${this.pgConfig.switchTabIndex}"\n`;
 
-    code += '></ui-switch>';
+    code += '></dui-switch>';
 
     this.generatedCode.set(code);
     this.refreshCode();

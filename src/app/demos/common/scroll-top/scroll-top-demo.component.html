@@ -18,43 +18,43 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Shapes & Icons -->
-          <section class="demo-section mt-0" id="shapes" >
+          <section class="demo-section mt-0" id="shapes">
             <div class="section-header">
               <h2>💎 Shapes & Icons</h2>
               <p>Choose between circular and square designs to match your UI style.</p>
             </div>
-            <div class="demo-card display-flex flex-row gap-40" >
+            <div class="demo-card display-flex flex-row gap-40">
               <div class="scroll-preview-box" id="box1-id">
                 <div class="long-content">
                   <p>Scroll me (Square + Text)</p>
-                  <ui-scroll-top
+                  <dui-scroll-top
                     target="#box1-id"
                     threshold="100"
                     shape="square"
                     icon="TOP"
                     speed="100"
-                  ></ui-scroll-top>
+                  ></dui-scroll-top>
                 </div>
               </div>
               <div class="scroll-preview-box" id="box2-id">
                 <div class="long-content">
                   <p>Scroll me (Circle + Icon)</p>
-                  <ui-scroll-top
+                  <dui-scroll-top
                     target="#box2-id"
                     threshold="100"
                     shape="circle"
                     icon="🚀"
                     speed="100"
-                  ></ui-scroll-top>
+                  ></dui-scroll-top>
                 </div>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="shapesCode"
               [label]="'Styling Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -65,4 +65,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

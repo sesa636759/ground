@@ -20,13 +20,13 @@
           description="Multiple buttons with single selection and gliding animation"
           [code]="segmentedCode"
         >
-          <ui-button-toggle-group
+          <dui-button-toggle-group
             mode="segmented"
             label="Select View Mode"
             value="list"
             color="primary"
             [options]="viewOptions"
-          ></ui-button-toggle-group>
+          ></dui-button-toggle-group>
         </pg-example-section>
 
         <!-- Gliding Animation -->
@@ -36,13 +36,13 @@
           description="Premium smooth animation for pill-style toggles"
           [code]="glidingCode"
         >
-          <ui-button-toggle-group
+          <dui-button-toggle-group
             mode="segmented"
             value="day"
             color="info"
             variant="soft"
             [options]="timeOptions"
-          ></ui-button-toggle-group>
+          ></dui-button-toggle-group>
         </pg-example-section>
 
         <!-- Color Variants -->
@@ -59,11 +59,11 @@
             ) {
               <div class="demo-card">
                 <h4 class="demo-sub-title">{{ color | titlecase }}</h4>
-                <ui-button-toggle-group
+                <dui-button-toggle-group
                   value="option2"
                   [attr.color]="color"
                   [options]="basicOptions"
-                ></ui-button-toggle-group>
+                ></dui-button-toggle-group>
               </div>
             }
           </div>
@@ -83,12 +83,12 @@
             ) {
               <div class="demo-card">
                 <h4 class="demo-sub-title">{{ style | titlecase }}</h4>
-                <ui-button-toggle-group
+                <dui-button-toggle-group
                   value="option2"
                   color="primary"
                   [attr.variant]="style"
                   [options]="basicOptions"
-                ></ui-button-toggle-group>
+                ></dui-button-toggle-group>
               </div>
             }
           </div>
@@ -102,10 +102,27 @@
           [code]="shapesCode"
         >
           <div class="flex-wrap gap-16">
-            <ui-button-toggle-group shape="rectangle" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
-            <ui-button-toggle-group shape="pill" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
-            <ui-button-toggle-group shape="circle" display-mode="icon-only" value="left" [options]="alignOptions"></ui-button-toggle-group>
-            <ui-button-toggle-group shape="square" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
+            <dui-button-toggle-group
+              shape="rectangle"
+              value="opt1"
+              [options]="basicOptions"
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
+              shape="pill"
+              value="opt1"
+              [options]="basicOptions"
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
+              shape="circle"
+              display-mode="icon-only"
+              value="left"
+              [options]="alignOptions"
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
+              shape="square"
+              value="opt1"
+              [options]="basicOptions"
+            ></dui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -116,11 +133,26 @@
           description="Premium avatars with status dot indicator support"
           [code]="avatarsCode"
         >
-          <ui-button-toggle-group value="user1">
-            <ui-button-toggle value="user1" label="Alex" avatar-src="https://i.pravatar.cc/150?u=a" status="online"></ui-button-toggle>
-            <ui-button-toggle value="user2" label="Jordan" avatar-src="https://i.pravatar.cc/150?u=j" status="busy"></ui-button-toggle>
-            <ui-button-toggle value="user3" label="Taylor" avatar-src="https://i.pravatar.cc/150?u=t" status="offline"></ui-button-toggle>
-          </ui-button-toggle-group>
+          <dui-button-toggle-group value="user1">
+            <dui-button-toggle
+              value="user1"
+              label="Alex"
+              avatar-src="https://i.pravatar.cc/150?u=a"
+              status="online"
+            ></dui-button-toggle>
+            <dui-button-toggle
+              value="user2"
+              label="Jordan"
+              avatar-src="https://i.pravatar.cc/150?u=j"
+              status="busy"
+            ></dui-button-toggle>
+            <dui-button-toggle
+              value="user3"
+              label="Taylor"
+              avatar-src="https://i.pravatar.cc/150?u=t"
+              status="offline"
+            ></dui-button-toggle>
+          </dui-button-toggle-group>
         </pg-example-section>
 
         <!-- Badges & Tooltips -->
@@ -130,11 +162,28 @@
           description="Enhance toggles with notifications and helpful information"
           [code]="badgesCode"
         >
-          <ui-button-toggle-group value="inbox">
-            <ui-button-toggle value="inbox" label="Inbox" icon="fas fa-inbox" badge="12" tooltip="12 New Messages"></ui-button-toggle>
-            <ui-button-toggle value="sent" label="Sent" icon="fas fa-paper-plane" tooltip="View sent items"></ui-button-toggle>
-            <ui-button-toggle value="drafts" label="Drafts" icon="fas fa-file-alt" badge="3" tooltip="3 Drafts waiting"></ui-button-toggle>
-          </ui-button-toggle-group>
+          <dui-button-toggle-group value="inbox">
+            <dui-button-toggle
+              value="inbox"
+              label="Inbox"
+              icon="fas fa-inbox"
+              badge="12"
+              tooltip="12 New Messages"
+            ></dui-button-toggle>
+            <dui-button-toggle
+              value="sent"
+              label="Sent"
+              icon="fas fa-paper-plane"
+              tooltip="View sent items"
+            ></dui-button-toggle>
+            <dui-button-toggle
+              value="drafts"
+              label="Drafts"
+              icon="fas fa-file-alt"
+              badge="3"
+              tooltip="3 Drafts waiting"
+            ></dui-button-toggle>
+          </dui-button-toggle-group>
         </pg-example-section>
 
         <!-- Sizes -->
@@ -148,11 +197,11 @@
             @for (size of ['small', 'medium', 'large']; track size) {
               <div class="demo-card">
                 <h4 class="demo-sub-title">{{ size | titlecase }}</h4>
-                <ui-button-toggle-group
+                <dui-button-toggle-group
                   value="option2"
                   [attr.size]="size"
                   [options]="basicOptions"
-                ></ui-button-toggle-group>
+                ></dui-button-toggle-group>
               </div>
             }
           </div>
@@ -166,18 +215,18 @@
           [code]="iconCode"
         >
           <div class="demo-grid col-2">
-            <ui-button-toggle-group
+            <dui-button-toggle-group
               label="View Modes"
               value="grid"
               color="primary"
               [options]="viewOptions"
-            ></ui-button-toggle-group>
-            <ui-button-toggle-group
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
               label="Text Align"
               value="center"
               color="secondary"
               [options]="alignOptions"
-            ></ui-button-toggle-group>
+            ></dui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -191,24 +240,24 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h4 class="demo-sub-title">Multi-Select with Search & Batch</h4>
-              <ui-button-toggle-group
+              <dui-button-toggle-group
                 multi-select="true"
                 search-enabled="true"
                 batch-actions="true"
                 label="Select Categories"
                 [options]="categoryOptions"
-              ></ui-button-toggle-group>
+              ></dui-button-toggle-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Multi-Select Dropdown with Export</h4>
-              <ui-button-toggle-group
+              <dui-button-toggle-group
                 mode="dropdown"
                 multi-select="true"
                 search-enabled="true"
                 export-enabled="true"
                 label="Group Permissions"
                 [options]="userListOptions"
-              ></ui-button-toggle-group>
+              ></dui-button-toggle-group>
             </div>
           </div>
         </pg-example-section>
@@ -221,18 +270,18 @@
           [code]="displayCode"
         >
           <div class="demo-grid col-2">
-            <ui-button-toggle-group
+            <dui-button-toggle-group
               label="Label Only"
               value="medium"
               display-mode="label-only"
               [options]="labelOnlyOptions"
-            ></ui-button-toggle-group>
-            <ui-button-toggle-group
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
               label="Icon Only"
               value="grid"
               display-mode="icon-only"
               [options]="iconOnlyOptions"
-            ></ui-button-toggle-group>
+            ></dui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -244,16 +293,16 @@
           [code]="orientationCode"
         >
           <div class="demo-grid col-2">
-            <ui-button-toggle-group
+            <dui-button-toggle-group
               orientation="horizontal"
               value="option2"
               [options]="basicOptions"
-            ></ui-button-toggle-group>
-            <ui-button-toggle-group
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
               orientation="vertical"
               value="option2"
               [options]="basicOptions"
-            ></ui-button-toggle-group>
+            ></dui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -264,15 +313,15 @@
           description="Render any custom HTML content inside the dropdown"
           [code]="customSlotCode"
         >
-          <ui-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
+          <dui-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
             <div slot="dropdown-content">
               <div class="p-16 min-w-220">
                 <h4 class="mt-0">Filter Content</h4>
                 <p>Custom HTML or components can be projected here.</p>
-                <ui-button class="w-full p-8">Apply Changes</ui-button>
+                <dui-button class="w-full p-8">Apply Changes</dui-button>
               </div>
             </div>
-          </ui-button-toggle-group>
+          </dui-button-toggle-group>
         </pg-example-section>
 
         <!-- Loading States -->
@@ -282,13 +331,13 @@
           description="Built-in loading indicator for asynchronous actions"
           [code]="loadingCode"
         >
-          <ui-button-toggle-group
+          <dui-button-toggle-group
             mode="dropdown"
             label="Save Document"
             value="cloud"
             [attr.loading]="true"
             [options]="saveOptions"
-          ></ui-button-toggle-group>
+          ></dui-button-toggle-group>
         </pg-example-section>
 
         <!-- States -->
@@ -299,17 +348,17 @@
           [code]="stateCode"
         >
           <div class="demo-grid col-2">
-            <ui-button-toggle-group
+            <dui-button-toggle-group
               label="Default"
               value="option2"
               [options]="basicOptions"
-            ></ui-button-toggle-group>
-            <ui-button-toggle-group
+            ></dui-button-toggle-group>
+            <dui-button-toggle-group
               label="Disabled"
               value="option2"
               [attr.disabled]="true"
               [options]="basicOptions"
-            ></ui-button-toggle-group>
+            ></dui-button-toggle-group>
           </div>
         </pg-example-section>
       </div>

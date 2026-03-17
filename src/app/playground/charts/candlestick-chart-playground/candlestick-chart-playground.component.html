@@ -8,71 +8,67 @@
         <h3>📐 Style</h3>
         <div class="control-group">
           <label>Candle Width</label>
-          <ui-input
+          <dui-input
             type="range"
             min="8"
             max="28"
             step="2"
             [(ngModel)]="cfg.candleW"
             (ngModelChange)="update()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted">{{ cfg.candleW }}px</span>
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ cfg.candleW }}px</span>
         </div>
         <div class="control-group">
           <label>Up Color</label>
-          <ui-dropdown
+          <dui-dropdown
             [(ngModel)]="cfg.upColor"
             (ngModelChange)="update()"
             [options]="upColorOpts"
-          ></ui-dropdown>
+          ></dui-dropdown>
         </div>
         <div class="control-group">
           <label>Down Color</label>
-          <ui-dropdown
+          <dui-dropdown
             [(ngModel)]="cfg.downColor"
             (ngModelChange)="update()"
             [options]="downColorOpts"
-          ></ui-dropdown>
+          ></dui-dropdown>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showGrid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showDates"
             [(ngModel)]="cfg.showDates"
             (ngModelChange)="update()"
             label="Show Dates"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="hollow"
             [(ngModel)]="cfg.hollow"
             (ngModelChange)="update()"
             label="Hollow Style"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper w-full display-flex justify-center"
-    
-  >
-    <svg width="620" height="340"  class="display-block font-inherit">
+  <div preview class="chart-preview-wrapper w-full display-flex justify-center">
+    <svg width="620" height="340" class="display-block font-inherit">
       <!-- Y Axis -->
       <g *ngFor="let t of yTicks">
         <line
@@ -139,12 +135,12 @@
     </svg>
   </div>
   @if (showCode) {
-    <ui-code-preview
+    <dui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></ui-code-preview>
+    ></dui-code-preview>
   }
 </pg-playground>

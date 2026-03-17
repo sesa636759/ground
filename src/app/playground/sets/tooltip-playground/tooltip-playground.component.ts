@@ -102,7 +102,7 @@ export class DmTooltipPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = `<ui-tooltip\n`;
+    let code = `<dui-tooltip\n`;
     code += `  content="${this.pgConfig.content}"\n`;
     if (this.pgConfig.position !== 'top') code += `  position="${this.pgConfig.position}"\n`;
     if (this.pgConfig.trigger !== 'hover') code += `  trigger="${this.pgConfig.trigger}"\n`;
@@ -140,10 +140,10 @@ export class DmTooltipPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.arrowSize !== 8) code += `  [arrowSize]="${this.pgConfig.arrowSize}"\n`;
 
     code += `>\n`;
-    code += `  <ui-button slot="target" class="btn-target">\n`;
+    code += `  <dui-button slot="target" class="btn-target">\n`;
     code += `    <i class="${this.pgConfig.targetIcon}"></i> ${this.pgConfig.targetText}\n`;
-    code += `  </ui-button>\n`;
-    code += `</ui-tooltip>`;
+    code += `  </dui-button>\n`;
+    code += `</dui-tooltip>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

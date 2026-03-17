@@ -8,7 +8,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Theme</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.theme"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -16,12 +16,12 @@
             { label: 'Light (VS Code)', value: 'vs-light' },
             { label: 'High Contrast', value: 'hc-black' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Language</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.language"
           (ngModelChange)="onLanguageChange()"
           [options]="[
@@ -30,12 +30,12 @@
             { label: 'CSS', value: 'css' },
             { label: 'JSON', value: 'json' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Label Display</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.labelDisplay"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -43,12 +43,12 @@
             { label: 'Hover', value: 'hover' },
             { label: 'Hidden', value: 'hidden' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Height</label>
-        <ui-input
+        <dui-input
           type="text"
           [(ngModel)]="pgConfig.height"
           (ngModelChange)="updateConfig()"
@@ -59,21 +59,22 @@
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.toolbar" (ngModelChange)="updateConfig()" /> Show Toolbar
+        <dui-checkbox [(ngModel)]="pgConfig.toolbar" (ngModelChange)="updateConfig()" /> Show
+        Toolbar
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.lineNumbers" (ngModelChange)="updateConfig()" /> Line
+        <dui-checkbox [(ngModel)]="pgConfig.lineNumbers" (ngModelChange)="updateConfig()" /> Line
         Numbers
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Read Only
+        <dui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Read Only
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <div class="editor-container w-full" >
-      <ui-code-editor
+    <div class="editor-container w-full">
+      <dui-code-editor
         [attr.theme]="pgConfig.theme"
         [attr.language]="pgConfig.language"
         [attr.height]="pgConfig.height"
@@ -84,7 +85,7 @@
         [value]="currentCode"
         (valueChange)="onValueChange()"
         (runCode)="onRunCode()"
-      ></ui-code-editor>
+      ></dui-code-editor>
     </div>
   </div>
 

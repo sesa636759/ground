@@ -30,7 +30,12 @@ export class DmResizablePanelDemoComponent extends BaseDemoComponent {
     { id: 'vertical', title: 'Basic Vertical Split', icon: 'rows-2', iconLibrary: 'lucide' },
     { id: 'triple', title: 'Triple Split Panel', icon: 'columns-3', iconLibrary: 'lucide' },
     { id: 'nested', title: 'Nested Resizable Panels', icon: 'layout-grid', iconLibrary: 'lucide' },
-    { id: 'collapsible', title: 'Collapsible Panels', icon: 'panel-left-close', iconLibrary: 'lucide' },
+    {
+      id: 'collapsible',
+      title: 'Collapsible Panels',
+      icon: 'panel-left-close',
+      iconLibrary: 'lucide',
+    },
     { id: 'themes', title: 'Dark Theme', icon: 'moon', iconLibrary: 'lucide' },
     { id: 'snap', title: 'Snap to Edge', icon: 'magnet', iconLibrary: 'lucide' },
   ];
@@ -74,23 +79,23 @@ export class DmResizablePanelDemoComponent extends BaseDemoComponent {
   ];
 
   // Code examples
-  horizontalCode = signal(`<ui-resizable-panel [panels]="[
+  horizontalCode = signal(`<dui-resizable-panel [panels]="[
   { id: 'p1', size: 30, minSize: 15 },
   { id: 'p2', size: 70 }
 ]" direction="horizontal">
   <div slot="p1">Left Panel</div>
   <div slot="p2">Right Panel</div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  verticalCode = signal(`<ui-resizable-panel [panels]="[
+  verticalCode = signal(`<dui-resizable-panel [panels]="[
   { id: 't1', size: 50 },
   { id: 't2', size: 50 }
 ]" direction="vertical">
   <div slot="t1">Top Panel</div>
   <div slot="t2">Bottom Panel</div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  tripleCode = signal(`<ui-resizable-panel [panels]="[
+  tripleCode = signal(`<dui-resizable-panel [panels]="[
   { id: 'p1', size: 30, minSize: 20 },
   { id: 'p2', size: 40, minSize: 20 },
   { id: 'p3', size: 30, minSize: 20 }
@@ -98,46 +103,47 @@ export class DmResizablePanelDemoComponent extends BaseDemoComponent {
   <div slot="p1">Panel 1 (30%)</div>
   <div slot="p2">Panel 2 (40%)</div>
   <div slot="p3">Panel 3 (30%)</div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  nestedCode = signal(`<ui-resizable-panel [panels]="nestedOuter" direction="horizontal">
+  nestedCode = signal(`<dui-resizable-panel [panels]="nestedOuter" direction="horizontal">
   <div slot="sidebar">Sidebar / Explorer</div>
   <div slot="main" style="height: 100%">
-    <ui-resizable-panel [panels]="nestedInner" direction="vertical">
+    <dui-resizable-panel [panels]="nestedInner" direction="vertical">
       <div slot="editor">Main Code Editor</div>
       <div slot="terminal">Build Output / Terminal</div>
-    </ui-resizable-panel>
+    </dui-resizable-panel>
   </div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  collapsibleCode = signal(`<ui-resizable-panel [panels]="[
+  collapsibleCode = signal(`<dui-resizable-panel [panels]="[
   { id: 'left', size: 30, collapsible: true, collapseDirection: 'left' },
   { id: 'main', size: 70 }
 ]" direction="horizontal">
   <div slot="left">Collapsible Panel</div>
   <div slot="main">Main Content</div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  darkThemeCode = signal(`<ui-resizable-panel [panels]="panels" direction="horizontal" theme="dark">
+  darkThemeCode =
+    signal(`<dui-resizable-panel [panels]="panels" direction="horizontal" theme="dark">
   <div slot="p1">Dark Sidebar</div>
   <div slot="p2">Dark Main</div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  snapToEdgeCode = signal(`<ui-resizable-panel 
+  snapToEdgeCode = signal(`<dui-resizable-panel 
   [panels]="panels" 
   direction="horizontal"
   snap-to-edge="true"
   [snapThreshold]="50">
   <div slot="p1">Snap Left/Right</div>
   <div slot="p2">Main Area</div>
-</ui-resizable-panel>`);
+</dui-resizable-panel>`);
 
-  playgroundCode = signal(`<ui-resizable-panel
+  playgroundCode = signal(`<dui-resizable-panel
   [panels]="panels"
   [direction]="direction"
   [theme]="theme"
   [animated]="animated"
   [snapToEdge]="snapToEdge"
   [snapThreshold]="snapThreshold"
-></ui-resizable-panel>`);
+></dui-resizable-panel>`);
 }

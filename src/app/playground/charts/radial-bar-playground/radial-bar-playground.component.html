@@ -8,82 +8,76 @@
         <h3>📐 Layout</h3>
         <div class="control-group">
           <label>Size</label>
-          <ui-input
+          <dui-input
             type="range"
             min="180"
             max="360"
             step="20"
             [(ngModel)]="cfg.size"
             (ngModelChange)="update()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted">{{ cfg.size }}px</span>
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ cfg.size }}px</span>
         </div>
         <div class="control-group">
           <label>Track Width</label>
-          <ui-input
+          <dui-input
             type="range"
             min="10"
             max="30"
             step="2"
             [(ngModel)]="cfg.trackWidth"
             (ngModelChange)="update()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted"
-            >{{ cfg.trackWidth }}px</span
-          >
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ cfg.trackWidth }}px</span>
         </div>
         <div class="control-group">
           <label>Gap</label>
-          <ui-input
+          <dui-input
             type="range"
             min="4"
             max="16"
             step="2"
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted">{{ cfg.gap }}px</span>
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ cfg.gap }}px</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showVal"
             [(ngModel)]="cfg.showValues"
             (ngModelChange)="update()"
             label="Show Values"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showLabels"
             [(ngModel)]="cfg.showLabels"
             (ngModelChange)="update()"
             label="Show Labels"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="rounded"
             [(ngModel)]="cfg.rounded"
             (ngModelChange)="update()"
             label="Rounded Caps"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper w-full display-flex justify-center"
-    
-  >
-    <div  class="relative display-inline-block">
-      <svg [attr.width]="cfg.size" [attr.height]="cfg.size"  class="display-block">
+  <div preview class="chart-preview-wrapper w-full display-flex justify-center">
+    <div class="relative display-inline-block">
+      <svg [attr.width]="cfg.size" [attr.height]="cfg.size" class="display-block">
         <g
           *ngFor="let bar of bars; let i = index"
           [attr.transform]="'translate(' + cfg.size / 2 + ',' + cfg.size / 2 + ')'"
@@ -134,12 +128,12 @@
     </div>
   </div>
   @if (showCode) {
-    <ui-code-preview
+    <dui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></ui-code-preview>
+    ></dui-code-preview>
   }
 </pg-playground>

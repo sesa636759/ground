@@ -39,7 +39,7 @@ export class DmTreeListDemoComponent extends BaseDemoComponent {
     },
   ];
 
-  playgroundCode = `<ui-tree-list [model]="data" selectable></ui-tree-list>`;
+  playgroundCode = `<dui-tree-list [model]="data" selectable></dui-tree-list>`;
 
   examplesCode = `const fileSystem = [
   {

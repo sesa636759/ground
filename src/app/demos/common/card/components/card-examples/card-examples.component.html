@@ -1,333 +1,364 @@
-    <!-- Premium Showcase -->
-    <pg-example-section
-      title="Premium Showcase"
-      description="Modern cards with high-impact visuals and rich content structures."
-      id="playground-hero"
-      [code]="premiumHeroCode"
-    >
-      <div class="card-grid">
-        <!-- Dashboard Card -->
-        <ui-card variant="elevated" hoverable width="380px" ribbon="NEW" ribbon-color="indigo">
-          <div slot="cover" class="premium-cover">
-            <img
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
-              alt="Dashboard"
-            />
-            <div class="cover-overlay">
-              <span class="badge">Live View</span>
-            </div>
-          </div>
-          <div slot="header">
-            <div class="header-with-meta">
-              <span class="meta-tag">Analytics</span>
-              <h3>Performance Overview</h3>
-            </div>
-          </div>
-          <div slot="content">
-            <p class="premium-text">
-              Real-time tracking of your cloud infrastructure performance and resource utilization.
-            </p>
-            <div class="stats-row">
-              <div class="stat-item">
-                <span class="label">Traffic</span>
-                <span class="value">12.4k</span>
-              </div>
-              <div class="stat-item">
-                <span class="label">Uptime</span>
-                <span class="value">99.9%</span>
-              </div>
-            </div>
-          </div>
-          <div slot="footer" class="footer-actions">
-            <ui-button variant="primary" label="Open Dashboard" size="md"></ui-button>
-            <ui-button
-              size="md"
-              variant="primary"
-              label="Export"
-              icon="download"
-              icon-library="lucide"
-              icon-position="left"
-            ></ui-button>
-          </div>
-        </ui-card>
-
-        <!-- Profile Card -->
-        <ui-card variant="elevated" hoverable width="320px" type="inner">
-          <div slot="header" class="profile-header">
-            <div class="avatar-container">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
-                alt="User"
-              />
-              <div class="status-indicator online"></div>
-            </div>
-          </div>
-          <div slot="content" class="text-center">
-            <h3 class="member-name">Marcus Sterling</h3>
-            <p class="member-role">Senior Product Architect</p>
-            <div class="tag-cloud">
-              <span class="mini-tag">Angular</span>
-              <span class="mini-tag">Stencil</span>
-              <span class="mini-tag">UX</span>
-            </div>
-          </div>
-          <div slot="footer">
-            <ui-button label="Connect" width="100%"></ui-button>
-          </div>
-        </ui-card>
-      </div>
-    </pg-example-section>
-
-    <!-- Core Structure -->
-    <pg-example-section
-      title="Core Structure"
-      description="The building blocks of a card component: Header, Content, and Footer."
-      [code]="basicCode"
-      id="basic"
-    >
-      <ui-card width="400px" card-title="Documentation Hub" description="Access all our product documentation and technical guides in one place. Includes SDKs and API references."></ui-card>
-    </pg-example-section>
-
-    <!-- Importance & Patterns -->
-    <pg-example-section
-      title="Importance & Patterns"
-      description="Specialized styles and importance levels for different content hierarchies."
-      [code]="patternsCode"
-      id="patterns"
-    >
-      <div class="card-grid">
-        <ui-card importance="emphasized" card-title="High Priority Task" description="This task requires immediate attention from the engineering team."></ui-card>
-        
-        <ui-card pattern="product" 
-                 card-title="Premium Headphones" 
-                 tag="Hot Selection" 
-                 cover="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
-                 button-text="Add to Cart"
-                 actions="Compare,Save"
-                 width="300px">
-        </ui-card>
-
-        <ui-card pattern="shortcut" 
-                 card-title="System Settings" 
-                 avatar-icon="fas fa-sliders-h"
-                 width="200px">
-        </ui-card>
-      </div>
-    </pg-example-section>
-
-    <!-- Media Enhancements -->
-    <pg-example-section
-      title="Media Enhancements"
-      description="Visual-first cards with cover images, icons, and dynamic media slots."
-      [code]="mediaCode"
-      id="media"
-    >
-      <div class="card-grid">
-        <ui-card hoverable width="340px">
-          <div slot="cover">
-            <img
-              src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
-              alt="Tech"
-            />
-          </div>
-          <div slot="header"><h3>Edge Computing</h3></div>
-          <div slot="content">
-            Discover the power of low-latency processing at the edge of the network.
-          </div>
-        </ui-card>
-      </div>
-    </pg-example-section>
-
-    <!-- Interactions -->
-    <pg-example-section
-      title="Rich Interactions"
-      description="Interactive behaviors like flipping, hovering, and selection states."
-      [code]="interactionCode"
-      id="interactions"
-    >
-      <div class="card-grid">
-        <ui-card flippable flip-trigger="click" width="300px">
-          <div slot="content" class="flip-preview">
-            <div class="flip-icon"><i class="fas fa-id-card"></i></div>
-            <p>Team Identity Card</p>
-            <span class="hint">Click to flip</span>
-          </div>
-          <div slot="back">
-          <div class="p-24">
-                <h3>Employee ID: 8829</h3>
-                <p>Access Level: Admin</p>
-                <p>Department: Engineering</p>
-            </div>
-          </div>
-        </ui-card>
-
-        <ui-card selectable width="300px" card-title="Selectable Card" description="Click this card to toggle its selection state. Great for multi-select lists."></ui-card>
-      </div>
-    </pg-example-section>
-
-    <!-- Advanced Slots -->
-    <pg-example-section
-      title="Advanced Slots (Tabs/Grid)"
-      description="Embedding complex components like tabs or grids directly into the card structure."
-      [code]="advancedSlotsCode"
-      id="advanced-slots"
-    >
-        <div class="card-grid">
-            <ui-card width="450px">
-                <div slot="tabs">
-                  <ui-tabs>
-                    <ui-tab-panel label="General" icon="info" icon-library="lucide">
-                        <div class="p-16">General system information and status overview.</div>
-                    </ui-tab-panel>
-                    <ui-tab-panel label="Performance" icon="zap" icon-library="lucide">
-                        <div class="p-16">Real-time performance metrics and resource usage.</div>
-                    </ui-tab-panel>
-                    <ui-tab-panel label="Logs" icon="list" icon-library="lucide">
-                        <div class="p-16">Recent system logs and audit trail.</div>
-                    </ui-tab-panel>
-                  </ui-tabs>
-                </div>
-                <div slot="content">
-                  This card uses the <code>tabs</code> slot to present organized information without overwhelming the user.
-                </div>
-            </ui-card>
-
-            <ui-card width="350px">
-                <div slot="header"><h3>Feature Overview</h3></div>
-                <div slot="grid" class="feature-grid">
-                  <div class="grid-item">
-                      <ui-icon name="cloud" library="lucide" size="1.5em" color="#3b82f6"></ui-icon>
-                      <span>Cloud Sync</span>
-                  </div>
-                  <div class="grid-item">
-                      <ui-icon name="shield" library="lucide" size="1.5em" color="#10b981"></ui-icon>
-                      <span>Security</span>
-                  </div>
-                  <div class="grid-item">
-                      <ui-icon name="cpu" library="lucide" size="1.5em" color="#f59e0b"></ui-icon>
-                      <span>Compute</span>
-                  </div>
-                  <div class="grid-item">
-                      <ui-icon name="database" library="lucide" size="1.5em" color="#8b5cf6"></ui-icon>
-                      <span>Storage</span>
-                  </div>
-                </div>
-            </ui-card>
+<!-- Premium Showcase -->
+<pg-example-section
+  title="Premium Showcase"
+  description="Modern cards with high-impact visuals and rich content structures."
+  id="playground-hero"
+  [code]="premiumHeroCode"
+>
+  <div class="card-grid">
+    <!-- Dashboard Card -->
+    <dui-card variant="elevated" hoverable width="380px" ribbon="NEW" ribbon-color="indigo">
+      <div slot="cover" class="premium-cover">
+        <img
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+          alt="Dashboard"
+        />
+        <div class="cover-overlay">
+          <span class="badge">Live View</span>
         </div>
-    </pg-example-section>
-
-    <!-- Specialized Behaviors -->
-    <pg-example-section
-      title="Specialized Behaviors"
-      description="Advanced card features like collapsibility, auto-scrolling, and nested inner cards."
-      [code]="specializedCode"
-      id="specialized"
-    >
-      <div class="card-grid">
-        <!-- Collapsible Card -->
-        <ui-card collapsible card-title="System Diagnostics" width="340px">
-          <div slot="content">
-            <p>Comprehensive system logs and diagnostic information can be tucked away when not needed.</p>
-            <div class="code-preview">
-                [CPU] Usage: 12%<br>
-                [MEM] Available: 8.4GB<br>
-                [DSK] Healthy
-            </div>
-          </div>
-        </ui-card>
-
-        <!-- Auto-Scrolling Card -->
-        <ui-card auto-scroll height="200px" width="340px" card-title="Live Activity Trace">
-          <div slot="content">
-            <p class="activity-line">[21:20:01] User login: Felix</p>
-            <p class="activity-line">[21:20:05] Session started.</p>
-            <p class="activity-line">[21:20:10] Resource fetched: /api/v1/data</p>
-            <p class="activity-line">[21:20:15] Buffer overflow prevented.</p>
-            <p class="activity-line">[21:20:20] Security audit passed.</p>
-            <p class="activity-line">[21:20:25] Data sync completed.</p>
-            <p class="activity-line">[21:20:30] User logout.</p>
-            <p class="activity-line">[21:20:35] Background task scheduled.</p>
-          </div>
-        </ui-card>
-        
-        <!-- Inner Type -->
-        <ui-card card-title="Workspace Overview" width="400px">
-          <div slot="content">
-            <p>Managing nested project structures is easy with the <code>inner</code> card type.</p>
-            <ui-card type="inner" card-title="Sub-project Alpha" description="Development phase" variant="outlined"></ui-card>
-            <ui-card type="inner" card-title="Sub-project Beta" description="Planning phase" variant="outlined" class="mt-12"></ui-card>
-          </div>
-        </ui-card>
       </div>
-    </pg-example-section>
-
-    <!-- Variants -->
-    <pg-example-section
-      title="Design Variants"
-      description="Different visual styles to match the hierarchy of your content."
-      [code]="variantsCode"
-      id="variants-showcase"
-    >
-      <div class="card-grid">
-        <ui-card variant="elevated">
-          <div slot="header"><h4>Elevated</h4></div>
-          <div slot="content">High emphasis and depth for prominent items.</div>
-        </ui-card>
-        <ui-card variant="outlined">
-          <div slot="header"><h4>Outlined</h4></div>
-          <div slot="content">Subtle but defined boundaries for secondary content.</div>
-        </ui-card>
-        <ui-card variant="filled">
-          <div slot="header"><h4>Filled</h4></div>
-          <div slot="content">Solid background for high contrast in dark mode.</div>
-        </ui-card>
-        <ui-card variant="primary">
-            <div slot="header"><h4>Primary</h4></div>
-            <div slot="content">Brand-colored card for special highlights.</div>
-        </ui-card>
+      <div slot="header">
+        <div class="header-with-meta">
+          <span class="meta-tag">Analytics</span>
+          <h3>Performance Overview</h3>
+        </div>
       </div>
-    </pg-example-section>
+      <div slot="content">
+        <p class="premium-text">
+          Real-time tracking of your cloud infrastructure performance and resource utilization.
+        </p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="label">Traffic</span>
+            <span class="value">12.4k</span>
+          </div>
+          <div class="stat-item">
+            <span class="label">Uptime</span>
+            <span class="value">99.9%</span>
+          </div>
+        </div>
+      </div>
+      <div slot="footer" class="footer-actions">
+        <dui-button variant="primary" label="Open Dashboard" size="md"></dui-button>
+        <dui-button
+          size="md"
+          variant="primary"
+          label="Export"
+          icon="download"
+          icon-library="lucide"
+          icon-position="left"
+        ></dui-button>
+      </div>
+    </dui-card>
 
-    <!-- Responsive Layouts -->
-    <pg-example-section
-      title="Adaptive Layouts"
-      description="Cards that adapt to different form factors and content strategies."
-      [code]="responsiveCode"
-      id="responsive"
-    >
-      <ui-card layout="horizontal" width="100%" hoverable>
-        <div slot="cover" class="horizontal-cover">
+    <!-- Profile Card -->
+    <dui-card variant="elevated" hoverable width="320px" type="inner">
+      <div slot="header" class="profile-header">
+        <div class="avatar-container">
           <img
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
-            class="h-full"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
+            alt="User"
           />
+          <div class="status-indicator online"></div>
         </div>
-        <div slot="header">
-          <h3 class="m-0">Nature Retreat: Autumn Sale</h3>
-        </div>
-        <div slot="content">
-          <p>
-            Book your perfect get-away with 30% discount on all bookings made this week. Luxury
-            cabins available in 12 locations across the country.
-          </p>
-        </div>
-        <div slot="footer">
-          <ui-button label="Claim Discount" size="small"></ui-button>
-        </div>
-      </ui-card>
-    </pg-example-section>
-
-    <!-- States -->
-    <pg-example-section
-      title="Functional States"
-      description="Interactive behaviors like loading states and selection."
-      [code]="statesCode"
-      id="states"
-    >
-      <div class="card-grid">
-        <ui-card loading width="320px"></ui-card>
-        <ui-card disabled width="320px">
-          <div slot="content">This card is currently disabled and non-interactive.</div>
-        </ui-card>
       </div>
-    </pg-example-section>
+      <div slot="content" class="text-center">
+        <h3 class="member-name">Marcus Sterling</h3>
+        <p class="member-role">Senior Product Architect</p>
+        <div class="tag-cloud">
+          <span class="mini-tag">Angular</span>
+          <span class="mini-tag">Stencil</span>
+          <span class="mini-tag">UX</span>
+        </div>
+      </div>
+      <div slot="footer">
+        <dui-button label="Connect" width="100%"></dui-button>
+      </div>
+    </dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Core Structure -->
+<pg-example-section
+  title="Core Structure"
+  description="The building blocks of a card component: Header, Content, and Footer."
+  [code]="basicCode"
+  id="basic"
+>
+  <dui-card
+    width="400px"
+    card-title="Documentation Hub"
+    description="Access all our product documentation and technical guides in one place. Includes SDKs and API references."
+  ></dui-card>
+</pg-example-section>
+
+<!-- Importance & Patterns -->
+<pg-example-section
+  title="Importance & Patterns"
+  description="Specialized styles and importance levels for different content hierarchies."
+  [code]="patternsCode"
+  id="patterns"
+>
+  <div class="card-grid">
+    <dui-card
+      importance="emphasized"
+      card-title="High Priority Task"
+      description="This task requires immediate attention from the engineering team."
+    ></dui-card>
+
+    <dui-card
+      pattern="product"
+      card-title="Premium Headphones"
+      tag="Hot Selection"
+      cover="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+      button-text="Add to Cart"
+      actions="Compare,Save"
+      width="300px"
+    >
+    </dui-card>
+
+    <dui-card
+      pattern="shortcut"
+      card-title="System Settings"
+      avatar-icon="fas fa-sliders-h"
+      width="200px"
+    >
+    </dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Media Enhancements -->
+<pg-example-section
+  title="Media Enhancements"
+  description="Visual-first cards with cover images, icons, and dynamic media slots."
+  [code]="mediaCode"
+  id="media"
+>
+  <div class="card-grid">
+    <dui-card hoverable width="340px">
+      <div slot="cover">
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
+          alt="Tech"
+        />
+      </div>
+      <div slot="header"><h3>Edge Computing</h3></div>
+      <div slot="content">
+        Discover the power of low-latency processing at the edge of the network.
+      </div>
+    </dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Interactions -->
+<pg-example-section
+  title="Rich Interactions"
+  description="Interactive behaviors like flipping, hovering, and selection states."
+  [code]="interactionCode"
+  id="interactions"
+>
+  <div class="card-grid">
+    <dui-card flippable flip-trigger="click" width="300px">
+      <div slot="content" class="flip-preview">
+        <div class="flip-icon"><i class="fas fa-id-card"></i></div>
+        <p>Team Identity Card</p>
+        <span class="hint">Click to flip</span>
+      </div>
+      <div slot="back">
+        <div class="p-24">
+          <h3>Employee ID: 8829</h3>
+          <p>Access Level: Admin</p>
+          <p>Department: Engineering</p>
+        </div>
+      </div>
+    </dui-card>
+
+    <dui-card
+      selectable
+      width="300px"
+      card-title="Selectable Card"
+      description="Click this card to toggle its selection state. Great for multi-select lists."
+    ></dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Advanced Slots -->
+<pg-example-section
+  title="Advanced Slots (Tabs/Grid)"
+  description="Embedding complex components like tabs or grids directly into the card structure."
+  [code]="advancedSlotsCode"
+  id="advanced-slots"
+>
+  <div class="card-grid">
+    <dui-card width="450px">
+      <div slot="tabs">
+        <dui-tabs>
+          <dui-tab-panel label="General" icon="info" icon-library="lucide">
+            <div class="p-16">General system information and status overview.</div>
+          </dui-tab-panel>
+          <dui-tab-panel label="Performance" icon="zap" icon-library="lucide">
+            <div class="p-16">Real-time performance metrics and resource usage.</div>
+          </dui-tab-panel>
+          <dui-tab-panel label="Logs" icon="list" icon-library="lucide">
+            <div class="p-16">Recent system logs and audit trail.</div>
+          </dui-tab-panel>
+        </dui-tabs>
+      </div>
+      <div slot="content">
+        This card uses the <code>tabs</code> slot to present organized information without
+        overwhelming the user.
+      </div>
+    </dui-card>
+
+    <dui-card width="350px">
+      <div slot="header"><h3>Feature Overview</h3></div>
+      <div slot="grid" class="feature-grid">
+        <div class="grid-item">
+          <dui-icon name="cloud" library="lucide" size="1.5em" color="#3b82f6"></dui-icon>
+          <span>Cloud Sync</span>
+        </div>
+        <div class="grid-item">
+          <dui-icon name="shield" library="lucide" size="1.5em" color="#10b981"></dui-icon>
+          <span>Security</span>
+        </div>
+        <div class="grid-item">
+          <dui-icon name="cpu" library="lucide" size="1.5em" color="#f59e0b"></dui-icon>
+          <span>Compute</span>
+        </div>
+        <div class="grid-item">
+          <dui-icon name="database" library="lucide" size="1.5em" color="#8b5cf6"></dui-icon>
+          <span>Storage</span>
+        </div>
+      </div>
+    </dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Specialized Behaviors -->
+<pg-example-section
+  title="Specialized Behaviors"
+  description="Advanced card features like collapsibility, auto-scrolling, and nested inner cards."
+  [code]="specializedCode"
+  id="specialized"
+>
+  <div class="card-grid">
+    <!-- Collapsible Card -->
+    <dui-card collapsible card-title="System Diagnostics" width="340px">
+      <div slot="content">
+        <p>
+          Comprehensive system logs and diagnostic information can be tucked away when not needed.
+        </p>
+        <div class="code-preview">
+          [CPU] Usage: 12%<br />
+          [MEM] Available: 8.4GB<br />
+          [DSK] Healthy
+        </div>
+      </div>
+    </dui-card>
+
+    <!-- Auto-Scrolling Card -->
+    <dui-card auto-scroll height="200px" width="340px" card-title="Live Activity Trace">
+      <div slot="content">
+        <p class="activity-line">[21:20:01] User login: Felix</p>
+        <p class="activity-line">[21:20:05] Session started.</p>
+        <p class="activity-line">[21:20:10] Resource fetched: /api/v1/data</p>
+        <p class="activity-line">[21:20:15] Buffer overflow prevented.</p>
+        <p class="activity-line">[21:20:20] Security audit passed.</p>
+        <p class="activity-line">[21:20:25] Data sync completed.</p>
+        <p class="activity-line">[21:20:30] User logout.</p>
+        <p class="activity-line">[21:20:35] Background task scheduled.</p>
+      </div>
+    </dui-card>
+
+    <!-- Inner Type -->
+    <dui-card card-title="Workspace Overview" width="400px">
+      <div slot="content">
+        <p>Managing nested project structures is easy with the <code>inner</code> card type.</p>
+        <dui-card
+          type="inner"
+          card-title="Sub-project Alpha"
+          description="Development phase"
+          variant="outlined"
+        ></dui-card>
+        <dui-card
+          type="inner"
+          card-title="Sub-project Beta"
+          description="Planning phase"
+          variant="outlined"
+          class="mt-12"
+        ></dui-card>
+      </div>
+    </dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Variants -->
+<pg-example-section
+  title="Design Variants"
+  description="Different visual styles to match the hierarchy of your content."
+  [code]="variantsCode"
+  id="variants-showcase"
+>
+  <div class="card-grid">
+    <dui-card variant="elevated">
+      <div slot="header"><h4>Elevated</h4></div>
+      <div slot="content">High emphasis and depth for prominent items.</div>
+    </dui-card>
+    <dui-card variant="outlined">
+      <div slot="header"><h4>Outlined</h4></div>
+      <div slot="content">Subtle but defined boundaries for secondary content.</div>
+    </dui-card>
+    <dui-card variant="filled">
+      <div slot="header"><h4>Filled</h4></div>
+      <div slot="content">Solid background for high contrast in dark mode.</div>
+    </dui-card>
+    <dui-card variant="primary">
+      <div slot="header"><h4>Primary</h4></div>
+      <div slot="content">Brand-colored card for special highlights.</div>
+    </dui-card>
+  </div>
+</pg-example-section>
+
+<!-- Responsive Layouts -->
+<pg-example-section
+  title="Adaptive Layouts"
+  description="Cards that adapt to different form factors and content strategies."
+  [code]="responsiveCode"
+  id="responsive"
+>
+  <dui-card layout="horizontal" width="100%" hoverable>
+    <div slot="cover" class="horizontal-cover">
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+        class="h-full"
+      />
+    </div>
+    <div slot="header">
+      <h3 class="m-0">Nature Retreat: Autumn Sale</h3>
+    </div>
+    <div slot="content">
+      <p>
+        Book your perfect get-away with 30% discount on all bookings made this week. Luxury cabins
+        available in 12 locations across the country.
+      </p>
+    </div>
+    <div slot="footer">
+      <dui-button label="Claim Discount" size="small"></dui-button>
+    </div>
+  </dui-card>
+</pg-example-section>
+
+<!-- States -->
+<pg-example-section
+  title="Functional States"
+  description="Interactive behaviors like loading states and selection."
+  [code]="statesCode"
+  id="states"
+>
+  <div class="card-grid">
+    <dui-card loading width="320px"></dui-card>
+    <dui-card disabled width="320px">
+      <div slot="content">This card is currently disabled and non-interactive.</div>
+    </dui-card>
+  </div>
+</pg-example-section>

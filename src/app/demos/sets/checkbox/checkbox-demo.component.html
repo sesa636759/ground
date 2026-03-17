@@ -21,15 +21,15 @@
           [code]="colorVariantsCode"
         >
           <div class="demo-flex-wrap">
-            <ui-checkbox label="Primary" color="primary" checked></ui-checkbox>
-            <ui-checkbox label="Secondary" color="secondary" checked></ui-checkbox>
-            <ui-checkbox label="Success" color="success" checked></ui-checkbox>
-            <ui-checkbox label="Danger" color="danger" checked></ui-checkbox>
-            <ui-checkbox label="Warning" color="warning" checked></ui-checkbox>
-            <ui-checkbox label="Info" color="info" checked></ui-checkbox>
-            <ui-checkbox label="Indigo" color="indigo" checked></ui-checkbox>
-            <ui-checkbox label="Purple" color="purple" checked></ui-checkbox>
-            <ui-checkbox label="Pink" color="pink" checked></ui-checkbox>
+            <dui-checkbox label="Primary" color="primary" checked></dui-checkbox>
+            <dui-checkbox label="Secondary" color="secondary" checked></dui-checkbox>
+            <dui-checkbox label="Success" color="success" checked></dui-checkbox>
+            <dui-checkbox label="Danger" color="danger" checked></dui-checkbox>
+            <dui-checkbox label="Warning" color="warning" checked></dui-checkbox>
+            <dui-checkbox label="Info" color="info" checked></dui-checkbox>
+            <dui-checkbox label="Indigo" color="indigo" checked></dui-checkbox>
+            <dui-checkbox label="Purple" color="purple" checked></dui-checkbox>
+            <dui-checkbox label="Pink" color="pink" checked></dui-checkbox>
           </div>
         </pg-example-section>
 
@@ -41,11 +41,21 @@
           [code]="premiumStylesCode"
         >
           <div class="demo-flex-wrap">
-            <ui-checkbox label="Filled Variant" variant="filled" color="primary" checked></ui-checkbox>
-            <ui-checkbox label="Tick Only" variant="tick" color="success" checked></ui-checkbox>
-            <ui-checkbox label="Soft Variant" variant="soft" color="info" checked></ui-checkbox>
-            <ui-checkbox label="Button Style" variant="button" color="danger" checked></ui-checkbox>
-            <ui-checkbox label="Chip Style" variant="chip" color="warning" checked></ui-checkbox>
+            <dui-checkbox
+              label="Filled Variant"
+              variant="filled"
+              color="primary"
+              checked
+            ></dui-checkbox>
+            <dui-checkbox label="Tick Only" variant="tick" color="success" checked></dui-checkbox>
+            <dui-checkbox label="Soft Variant" variant="soft" color="info" checked></dui-checkbox>
+            <dui-checkbox
+              label="Button Style"
+              variant="button"
+              color="danger"
+              checked
+            ></dui-checkbox>
+            <dui-checkbox label="Chip Style" variant="chip" color="warning" checked></dui-checkbox>
           </div>
         </pg-example-section>
 
@@ -60,17 +70,17 @@
             <div class="demo-card">
               <h4 class="demo-sub-title">Shapes</h4>
               <div class="demo-flex-wrap">
-                <ui-checkbox label="Rounded" variant="rounded" checked></ui-checkbox>
-                <ui-checkbox label="Square" variant="square" checked></ui-checkbox>
-                <ui-checkbox label="Round Color" variant="round-color" checked></ui-checkbox>
+                <dui-checkbox label="Rounded" variant="rounded" checked></dui-checkbox>
+                <dui-checkbox label="Square" variant="square" checked></dui-checkbox>
+                <dui-checkbox label="Round Color" variant="round-color" checked></dui-checkbox>
               </div>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Sizes</h4>
               <div class="demo-flex-wrap">
-                <ui-checkbox label="Small" size="small" checked></ui-checkbox>
-                <ui-checkbox label="Medium" size="medium" checked></ui-checkbox>
-                <ui-checkbox label="Large" size="large" checked></ui-checkbox>
+                <dui-checkbox label="Small" size="small" checked></dui-checkbox>
+                <dui-checkbox label="Medium" size="medium" checked></dui-checkbox>
+                <dui-checkbox label="Large" size="large" checked></dui-checkbox>
               </div>
             </div>
           </div>
@@ -84,10 +94,10 @@
           [code]="labelPositionsCode"
         >
           <div class="demo-grid col-2">
-            <ui-checkbox label="Right (Default)" label-position="right"></ui-checkbox>
-            <ui-checkbox label="Left Position" label-position="left"></ui-checkbox>
-            <ui-checkbox label="Top Position" label-position="top"></ui-checkbox>
-            <ui-checkbox label="Bottom Position" label-position="bottom"></ui-checkbox>
+            <dui-checkbox label="Right (Default)" label-position="right"></dui-checkbox>
+            <dui-checkbox label="Left Position" label-position="left"></dui-checkbox>
+            <dui-checkbox label="Top Position" label-position="top"></dui-checkbox>
+            <dui-checkbox label="Bottom Position" label-position="bottom"></dui-checkbox>
           </div>
         </pg-example-section>
 
@@ -99,10 +109,24 @@
           [code]="customIconsCode"
         >
           <div class="demo-flex-wrap">
-            <ui-checkbox label="Star Icon" custom-check-icon="star" checked></ui-checkbox>
-            <ui-checkbox label="Heart Icon" custom-check-icon="heart" color="danger" checked></ui-checkbox>
-            <ui-checkbox label="Smile Icon" custom-check-icon="smile" color="success" checked></ui-checkbox>
-            <ui-checkbox label="Custom Indeterminate" custom-indeterminate-icon="help-circle" indeterminate></ui-checkbox>
+            <dui-checkbox label="Star Icon" custom-check-icon="star" checked></dui-checkbox>
+            <dui-checkbox
+              label="Heart Icon"
+              custom-check-icon="heart"
+              color="danger"
+              checked
+            ></dui-checkbox>
+            <dui-checkbox
+              label="Smile Icon"
+              custom-check-icon="smile"
+              color="success"
+              checked
+            ></dui-checkbox>
+            <dui-checkbox
+              label="Custom Indeterminate"
+              custom-indeterminate-icon="help-circle"
+              indeterminate
+            ></dui-checkbox>
           </div>
         </pg-example-section>
 
@@ -114,10 +138,20 @@
           [code]="badgesTooltipsCode"
         >
           <div class="demo-flex-wrap">
-            <ui-checkbox label="Notifications" badge="99+" color="primary" checked></ui-checkbox>
-            <ui-checkbox label="Beta Feature" badge="New" color="success"></ui-checkbox>
-            <ui-checkbox label="With Tooltip" tooltip="This setting cannot be changed" tooltip-position="top" disabled checked></ui-checkbox>
-            <ui-checkbox label="More Info" tooltip="Click to learn more about this setting" tooltip-position="right"></ui-checkbox>
+            <dui-checkbox label="Notifications" badge="99+" color="primary" checked></dui-checkbox>
+            <dui-checkbox label="Beta Feature" badge="New" color="success"></dui-checkbox>
+            <dui-checkbox
+              label="With Tooltip"
+              tooltip="This setting cannot be changed"
+              tooltip-position="top"
+              disabled
+              checked
+            ></dui-checkbox>
+            <dui-checkbox
+              label="More Info"
+              tooltip="Click to learn more about this setting"
+              tooltip-position="right"
+            ></dui-checkbox>
           </div>
         </pg-example-section>
 
@@ -132,33 +166,33 @@
             <div class="demo-card">
               <h4 class="demo-sub-title">Basic States</h4>
               <div class="demo-flex-wrap">
-                <ui-checkbox label="Checked" checked></ui-checkbox>
-                <ui-checkbox label="Indeterminate" indeterminate></ui-checkbox>
-                <ui-checkbox label="Disabled" disabled></ui-checkbox>
-                <ui-checkbox label="Readonly" readonly checked></ui-checkbox>
+                <dui-checkbox label="Checked" checked></dui-checkbox>
+                <dui-checkbox label="Indeterminate" indeterminate></dui-checkbox>
+                <dui-checkbox label="Disabled" disabled></dui-checkbox>
+                <dui-checkbox label="Readonly" readonly checked></dui-checkbox>
               </div>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Validation</h4>
               <div class="demo-flex-wrap column">
-                <ui-checkbox
+                <dui-checkbox
                   label="With Helper"
                   helper-text="This is a helper message"
-                ></ui-checkbox>
-                <ui-checkbox
+                ></dui-checkbox>
+                <dui-checkbox
                   label="Error State"
                   invalid
                   error-message="Please accept terms"
-                ></ui-checkbox>
+                ></dui-checkbox>
               </div>
             </div>
           </div>
           <div class="demo-card mt-16">
             <h4 class="demo-sub-title">Skeleton Loading</h4>
             <div class="demo-flex-wrap">
-              <ui-checkbox skeleton size="small"></ui-checkbox>
-              <ui-checkbox skeleton size="medium"></ui-checkbox>
-              <ui-checkbox skeleton size="large"></ui-checkbox>
+              <dui-checkbox skeleton size="small"></dui-checkbox>
+              <dui-checkbox skeleton size="medium"></dui-checkbox>
+              <dui-checkbox skeleton size="large"></dui-checkbox>
             </div>
           </div>
         </pg-example-section>
@@ -171,21 +205,21 @@
           [code]="groupExampleCode"
         >
           <div class="demo-card">
-            <ui-checkbox
+            <dui-checkbox
               label="Select All Categories"
               [checked]="masterChecked"
               [indeterminate]="masterIndeterminate"
               (checkboxChange)="onMasterChange($event)"
             >
-            </ui-checkbox>
+            </dui-checkbox>
             <div class="sub-items">
-              <ui-checkbox
+              <dui-checkbox
                 *ngFor="let item of groupItems"
                 [label]="item.label"
                 [(ngModel)]="item.checked"
                 (change)="onItemChange()"
               >
-              </ui-checkbox>
+              </dui-checkbox>
             </div>
           </div>
         </pg-example-section>
@@ -199,30 +233,30 @@
         >
           <div class="demo-card">
             <div class="display-grid gap-16">
-              <ui-checkbox
+              <dui-checkbox
                 [(ngModel)]="formTerms"
                 label="I accept the Terms and Conditions"
                 required
                 [invalid]="termsInvalid"
                 error-message="Required field"
               >
-              </ui-checkbox>
-              <ui-checkbox
+              </dui-checkbox>
+              <dui-checkbox
                 [(ngModel)]="formPrivacy"
                 label="I agree to the Privacy Policy"
                 required
                 [invalid]="privacyInvalid"
                 error-message="Required field"
               >
-              </ui-checkbox>
-              <ui-checkbox
+              </dui-checkbox>
+              <dui-checkbox
                 [(ngModel)]="formNewsletter"
                 label="Subscribe to monthly newsletter"
                 color="success"
-              ></ui-checkbox>
+              ></dui-checkbox>
             </div>
             <div class="mt-24">
-              <ui-button (click)="onSubmit()" color="primary">Create Account</ui-button>
+              <dui-button (click)="onSubmit()" color="primary">Create Account</dui-button>
               <p class="mt-12 fw-600" [style.color]="formMessageColor">
                 {{ formMessage }}
               </p>

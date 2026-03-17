@@ -14,7 +14,7 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="monthly" >
+          <section class="demo-section mt-0" id="monthly">
             <div class="section-header">
               <h2>🌹 Monthly Revenue</h2>
               <p>
@@ -22,22 +22,22 @@
                 patterns.
               </p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
+            <div class="demo-card display-flex justify-center p-24">
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="right"
                 [responsive]="true"
                 [data]="monthlyData"
-                 class="w-480 h-360"
+                class="w-480 h-360"
               ></app-chart>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="monthlyCode"
               label="Monthly Revenue Rose"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="performance">
@@ -45,22 +45,22 @@
               <h2>📊 Performance Radar</h2>
               <p>Compare performance metrics across multiple dimensions using a rose chart.</p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
+            <div class="demo-card display-flex justify-center p-24">
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="bottom"
                 [responsive]="true"
                 [data]="perfData"
-                 class="w-480 h-360"
+                class="w-480 h-360"
               ></app-chart>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="monthlyCode"
               label="Performance Rose"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="wind">
@@ -68,22 +68,22 @@
               <h2>💨 Wind Direction</h2>
               <p>Classic meteorological wind rose showing frequency by compass direction.</p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
+            <div class="demo-card display-flex justify-center p-24">
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="right"
                 [responsive]="true"
                 [data]="windData"
-                 class="w-480 h-360"
+                class="w-480 h-360"
               ></app-chart>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="'<!-- Wind Rose Chart -->'"
               label="Wind Direction"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -94,4 +94,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

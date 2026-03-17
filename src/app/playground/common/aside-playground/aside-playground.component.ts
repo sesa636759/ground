@@ -62,7 +62,10 @@ export class DmAsidePlaygroundComponent extends BasePlaygroundComponent implemen
   }
 
   updateConfig() {
-    this.updateConfigFromDom(this.demoElement, 'ui-aside-panel', `
+    this.updateConfigFromDom(
+      this.demoElement,
+      'ui-aside-panel',
+      `
   <div slot="header">
     <h3 style="margin: 0">Panel Title</h3>
   </div>
@@ -70,8 +73,9 @@ export class DmAsidePlaygroundComponent extends BasePlaygroundComponent implemen
     <p>Main body content goes here...</p>
   </div>
   <div slot="footer" style="padding: 16px; border-top: 1px solid var(--border-color); display: flex; gap: 12px">
-    <ui-button variant="secondary" label="Cancel" style="flex: 1"></ui-button>
-    <ui-button variant="primary" label="Save" style="flex: 1"></ui-button>
-  </div>`);
+    <dui-button variant="secondary" label="Cancel" style="flex: 1"></dui-button>
+    <dui-button variant="primary" label="Save" style="flex: 1"></dui-button>
+  </div>`,
+    );
   }
 }

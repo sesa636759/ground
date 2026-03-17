@@ -31,7 +31,7 @@
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </i>
-          <ui-input
+          <dui-input
             type="text"
             placeholder="Search components, categories, or keywords..."
             [value]="searchQuery()"
@@ -39,26 +39,26 @@
             variant="ghost"
             size="large"
             full-width
-          ></ui-input>
+          ></dui-input>
           @if (searchQuery()) {
-            <ui-button
+            <dui-button
               variant="ghost"
               icon="lucide-x"
               [iconOnly]="true"
               (buttonClick)="clearSearch()"
-            ></ui-button>
+            ></dui-button>
           }
         </div>
 
         <div class="view-toggle">
-          <ui-button-toggle-group
+          <dui-button-toggle-group
             mode="segmented"
             display-mode="icon-only"
             variant="surface"
             [value]="viewMode()"
             [options]="viewOptions"
             (buttonToggleGroupChange)="viewMode.set($event.detail.value)"
-          ></ui-button-toggle-group>
+          ></dui-button-toggle-group>
         </div>
       </div>
     </div>
@@ -73,12 +73,12 @@
           <span class="count-badge">{{ filteredCategories().length }} Sets</span>
         </div>
         <div class="sidebar-nav-container mt-16">
-          <ui-anchor
+          <dui-anchor
             [attr.links]="overviewAnchorLinks()"
             scroll-container=".overview-content"
             type="line"
             show-progress="true"
-          ></ui-anchor>
+          ></dui-anchor>
         </div>
       </div>
     </aside>
@@ -92,11 +92,11 @@
       >
         <div class="category-header">
           <div class="category-title-wrapper">
-            <ui-icon
+            <dui-icon
               [name]="category.icon"
               [library]="category.iconLibrary"
               [size]="'2.5rem'"
-            ></ui-icon>
+            ></dui-icon>
             <h2>{{ category.label }}</h2>
           </div>
           <div class="category-divider"></div>
@@ -151,7 +151,7 @@
             >". <br />
             Try adjusting your search terms or filters.
           </p>
-          <ui-button class="reset-btn" (click)="clearSearch()">Clear Search</ui-button>
+          <dui-button class="reset-btn" (click)="clearSearch()">Clear Search</dui-button>
         </div>
       }
     </main>

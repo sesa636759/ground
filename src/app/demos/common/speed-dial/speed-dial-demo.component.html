@@ -17,52 +17,152 @@
         <div class="examples-content">
           <!-- Basic -->
           <section class="demo-section" id="basic">
-            <div class="section-header"><h2>Basic Usage</h2><p>Default fixed speed dial. Click to open.</p></div>
-            <div class="demo-card dial-container">
-              <ui-speed-dial strategy="absolute" position="center" [attr.actions]="lucideActions" icon="plus" icon-library="lucide" action-library="lucide" (actionClick)="handleActionClick($event)"></ui-speed-dial>
+            <div class="section-header">
+              <h2>Basic Usage</h2>
+              <p>Default fixed speed dial. Click to open.</p>
             </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card dial-container">
+              <dui-speed-dial
+                strategy="absolute"
+                position="center"
+                [attr.actions]="lucideActions"
+                icon="plus"
+                icon-library="lucide"
+                action-library="lucide"
+                (actionClick)="handleActionClick($event)"
+              ></dui-speed-dial>
+            </div>
+            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Positions -->
           <section class="demo-section" id="positions">
-            <div class="section-header"><h2>Positions & Direction</h2><p>Place the dial anywhere and control its expanding direction.</p></div>
-            <div class="demo-card dial-container fixed-box">
-              <ui-speed-dial strategy="absolute" position="top-left" direction="right" [attr.actions]="lucideActions" icon="arrow-right" icon-library="lucide" action-library="lucide" tooltip-position="bottom"></ui-speed-dial>
-              <ui-speed-dial strategy="absolute" position="top-right" direction="down" [attr.actions]="lucideActions" icon="arrow-down" icon-library="lucide" action-library="lucide" tooltip-position="left"></ui-speed-dial>
-              <ui-speed-dial strategy="absolute" position="bottom-left" direction="up" [attr.actions]="lucideActions" icon="arrow-up" icon-library="lucide" action-library="lucide" tooltip-position="right"></ui-speed-dial>
-              <ui-speed-dial strategy="absolute" position="bottom-right" direction="left" [attr.actions]="lucideActions" icon="arrow-left" icon-library="lucide" action-library="lucide" tooltip-position="top"></ui-speed-dial>
-              <ui-speed-dial strategy="absolute" position="center" direction="up" [attr.actions]="lucideActions" icon="target" icon-library="lucide" action-library="lucide"></ui-speed-dial>
+            <div class="section-header">
+              <h2>Positions & Direction</h2>
+              <p>Place the dial anywhere and control its expanding direction.</p>
             </div>
-            <ui-code-preview [htmlCode]="positionsCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card dial-container fixed-box">
+              <dui-speed-dial
+                strategy="absolute"
+                position="top-left"
+                direction="right"
+                [attr.actions]="lucideActions"
+                icon="arrow-right"
+                icon-library="lucide"
+                action-library="lucide"
+                tooltip-position="bottom"
+              ></dui-speed-dial>
+              <dui-speed-dial
+                strategy="absolute"
+                position="top-right"
+                direction="down"
+                [attr.actions]="lucideActions"
+                icon="arrow-down"
+                icon-library="lucide"
+                action-library="lucide"
+                tooltip-position="left"
+              ></dui-speed-dial>
+              <dui-speed-dial
+                strategy="absolute"
+                position="bottom-left"
+                direction="up"
+                [attr.actions]="lucideActions"
+                icon="arrow-up"
+                icon-library="lucide"
+                action-library="lucide"
+                tooltip-position="right"
+              ></dui-speed-dial>
+              <dui-speed-dial
+                strategy="absolute"
+                position="bottom-right"
+                direction="left"
+                [attr.actions]="lucideActions"
+                icon="arrow-left"
+                icon-library="lucide"
+                action-library="lucide"
+                tooltip-position="top"
+              ></dui-speed-dial>
+              <dui-speed-dial
+                strategy="absolute"
+                position="center"
+                direction="up"
+                [attr.actions]="lucideActions"
+                icon="target"
+                icon-library="lucide"
+                action-library="lucide"
+              ></dui-speed-dial>
+            </div>
+            <dui-code-preview [htmlCode]="positionsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Trigger -->
           <section class="demo-section" id="trigger">
-            <div class="section-header"><h2>Hover Trigger & Tooltips</h2><p>Open on hover instead of click. Explicit tooltip positioning.</p></div>
-            <div class="demo-card dial-container">
-              <ui-speed-dial strategy="absolute" position="center" trigger="hover" tooltip-position="bottom" [attr.actions]="lucideActions" icon="mouse-pointer-2" icon-library="lucide" action-library="lucide"></ui-speed-dial>
+            <div class="section-header">
+              <h2>Hover Trigger & Tooltips</h2>
+              <p>Open on hover instead of click. Explicit tooltip positioning.</p>
             </div>
-            <ui-code-preview [htmlCode]="triggerCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card dial-container">
+              <dui-speed-dial
+                strategy="absolute"
+                position="center"
+                trigger="hover"
+                tooltip-position="bottom"
+                [attr.actions]="lucideActions"
+                icon="mouse-pointer-2"
+                icon-library="lucide"
+                action-library="lucide"
+              ></dui-speed-dial>
+            </div>
+            <dui-code-preview [htmlCode]="triggerCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Styles -->
           <section class="demo-section" id="styles">
-            <div class="section-header"><h2>Sizes & Colors</h2><p>Customize the primary button's visual weight.</p></div>
-            <div class="demo-card dial-container fixed-box">
-              <ui-speed-dial strategy="absolute" position="top-left" size="sm" color="success" [attr.actions]="lucideActions" icon="check" icon-library="lucide" action-library="lucide" direction="right"></ui-speed-dial>
-              <ui-speed-dial strategy="absolute" position="bottom-right" size="lg" color="danger" [attr.actions]="lucideActions" icon="alert-circle" icon-library="lucide" action-library="lucide" direction="up"></ui-speed-dial>
+            <div class="section-header">
+              <h2>Sizes & Colors</h2>
+              <p>Customize the primary button's visual weight.</p>
             </div>
-            <ui-code-preview [htmlCode]="stylesCode" activeLang="html"></ui-code-preview>
+            <div class="demo-card dial-container fixed-box">
+              <dui-speed-dial
+                strategy="absolute"
+                position="top-left"
+                size="sm"
+                color="success"
+                [attr.actions]="lucideActions"
+                icon="check"
+                icon-library="lucide"
+                action-library="lucide"
+                direction="right"
+              ></dui-speed-dial>
+              <dui-speed-dial
+                strategy="absolute"
+                position="bottom-right"
+                size="lg"
+                color="danger"
+                [attr.actions]="lucideActions"
+                icon="alert-circle"
+                icon-library="lucide"
+                action-library="lucide"
+                direction="up"
+              ></dui-speed-dial>
+            </div>
+            <dui-code-preview [htmlCode]="stylesCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Custom Icons -->
           <section class="demo-section" id="custom-icons">
             <div class="section-header"><h2>Custom Icons & Themes</h2></div>
             <div class="demo-card dial-container">
-              <ui-speed-dial strategy="absolute" position="center" icon="menu" icon-library="lucide" [attr.actions]="lucideActions" action-library="lucide"></ui-speed-dial>
+              <dui-speed-dial
+                strategy="absolute"
+                position="center"
+                icon="menu"
+                icon-library="lucide"
+                [attr.actions]="lucideActions"
+                action-library="lucide"
+              ></dui-speed-dial>
             </div>
-            <ui-code-preview [htmlCode]="customIconsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="customIconsCode" activeLang="html"></dui-code-preview>
           </section>
         </div>
       </div>
@@ -73,5 +173,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

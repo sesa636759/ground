@@ -38,20 +38,20 @@ export class DmSplitButtonDemoComponent extends BaseDemoComponent {
     { label: 'Home', icon: '🏠' },
   ];
 
-  playgroundCode = `<ui-split-button label="Save" [model]="items"></ui-split-button>`;
+  playgroundCode = `<dui-split-button label="Save" [model]="items"></dui-split-button>`;
 
   colorsCode = `<!-- Danger Variant -->
-<ui-split-button label="Delete" variant="danger" [model]="items"></ui-split-button>
+<dui-split-button label="Delete" variant="danger" [model]="items"></dui-split-button>
 
 <!-- Success Variant -->
-<ui-split-button label="Approve" variant="success" [model]="items"></ui-split-button>
+<dui-split-button label="Approve" variant="success" [model]="items"></dui-split-button>
 
 <!-- Outline Variant -->
-<ui-split-button label="More" variant="outline" [model]="items"></ui-split-button>`;
+<dui-split-button label="More" variant="outline" [model]="items"></dui-split-button>`;
 
   statesCode = `<!-- Loading State -->
-<ui-split-button loading label="Proceed"></ui-split-button>
+<dui-split-button loading label="Proceed"></dui-split-button>
 
 <!-- Disabled State -->
-<ui-split-button disabled label="Actions"></ui-split-button>`;
+<dui-split-button disabled label="Actions"></dui-split-button>`;
 }

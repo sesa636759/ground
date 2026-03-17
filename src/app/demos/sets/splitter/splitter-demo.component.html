@@ -19,44 +19,44 @@
           <section class="demo-section" id="horizontal-basic">
             <div class="section-header"><h2>Horizontal Basic</h2></div>
             <div class="demo-card splitter-wrapper">
-              <ui-splitter direction="horizontal">
+              <dui-splitter direction="horizontal">
                 <div slot="panel-0" class="panel-box">Left</div>
                 <div slot="panel-1" class="panel-box">Right</div>
-              </ui-splitter>
+              </dui-splitter>
             </div>
-            <ui-code-preview [htmlCode]="horizontalBasicCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="horizontalBasicCode" activeLang="html"></dui-code-preview>
           </section>
 
           <section class="demo-section" id="vertical-basic">
             <div class="section-header"><h2>Vertical Basic</h2></div>
             <div class="demo-card splitter-wrapper">
-              <ui-splitter direction="vertical">
+              <dui-splitter direction="vertical">
                 <div slot="panel-0" class="panel-box">Top</div>
                 <div slot="panel-1" class="panel-box">Bottom</div>
-              </ui-splitter>
+              </dui-splitter>
             </div>
-            <ui-code-preview [htmlCode]="verticalBasicCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="verticalBasicCode" activeLang="html"></dui-code-preview>
           </section>
 
           <section class="demo-section" id="two-panels">
             <div class="section-header"><h2>Two Panels</h2></div>
             <div class="demo-card splitter-wrapper">
-              <ui-splitter [attr.panels]="basicPanels | json">
+              <dui-splitter [attr.panels]="basicPanels | json">
                 <div slot="panel-0" class="panel-box">Panel 1</div>
                 <div slot="panel-1" class="panel-box">Panel 2</div>
-              </ui-splitter>
+              </dui-splitter>
             </div>
-            <ui-code-preview [htmlCode]="panelsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="panelsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Interaction Examples Simplified for clean output -->
           <section class="demo-section" id="snap-threshold">
             <div class="section-header"><h2>Snap to Threshold</h2></div>
             <div class="demo-card splitter-wrapper">
-              <ui-splitter snap-threshold="30">
+              <dui-splitter snap-threshold="30">
                 <div slot="panel-0" class="panel-box">Snap Zone</div>
                 <div slot="panel-1" class="panel-box">Content</div>
-              </ui-splitter>
+              </dui-splitter>
             </div>
           </section>
 
@@ -64,26 +64,26 @@
           <section class="demo-section" id="nested-ide-layout">
             <div class="section-header"><h2>IDE-Style Layout</h2></div>
             <div class="demo-card h-400 border-subtle rounded-8 overflow-hidden">
-              <ui-splitter direction="horizontal">
+              <dui-splitter direction="horizontal">
                 <div slot="panel-0" class="panel-box fixed-150">Files</div>
                 <div slot="panel-1">
-                  <ui-splitter direction="vertical" class="h-full">
+                  <dui-splitter direction="vertical" class="h-full">
                     <div slot="panel-0" class="panel-box">Editor.ts</div>
                     <div slot="panel-1" class="panel-box">Terminal</div>
-                  </ui-splitter>
+                  </dui-splitter>
                 </div>
-              </ui-splitter>
+              </dui-splitter>
             </div>
           </section>
 
           <section class="demo-section" id="header-body-footer">
             <div class="section-header"><h2>Header-Body-Footer</h2></div>
             <div class="demo-card h-300 border-subtle rounded-8 overflow-hidden">
-              <ui-splitter direction="vertical">
+              <dui-splitter direction="vertical">
                 <div slot="panel-0" class="panel-box fixed-50">HEADER</div>
                 <div slot="panel-1" class="panel-box">BODY CONTENT</div>
                 <div slot="panel-2" class="panel-box fixed-40">FOOTER</div>
-              </ui-splitter>
+              </dui-splitter>
             </div>
           </section>
         </div>

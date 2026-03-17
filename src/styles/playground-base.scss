@@ -37,13 +37,13 @@
   select,
   input[type='text'],
   input[type='number'],
-  ui-input,
+  dui-input,
   ui-dropdown {
     width: 100%;
     display: block;
   }
 
-  ui-input {
+  dui-input {
     min-height: 40px;
     box-sizing: border-box;
   }
@@ -128,7 +128,7 @@
     font-size: 0.95rem;
   }
 
-  ui-input {
+  dui-input {
     width: 100%;
   }
 

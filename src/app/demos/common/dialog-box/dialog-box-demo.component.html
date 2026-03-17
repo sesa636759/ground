@@ -24,13 +24,13 @@
           [code]="basicCode"
         >
           <div class="demo-card">
-            <ui-button
+            <dui-button
               label="Open Basic Dialog"
               variant="primary"
               (click)="toggle('basic')"
-            ></ui-button>
+            ></dui-button>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['basic']"
               (dialogClosed)="toggle('basic', false)"
               icon-library="lucide"
@@ -38,18 +38,18 @@
               <h3 slot="header">Welcome</h3>
               <div><p>This is a basic dialog with header, content, and footer sections.</p></div>
               <div slot="footer">
-                <ui-button
+                <dui-button
                   label="Close"
                   variant="secondary"
                   (click)="toggle('basic', false)"
-                ></ui-button>
-                <ui-button
+                ></dui-button>
+                <dui-button
                   label="Confirm"
                   variant="primary"
                   (click)="toggle('basic', false)"
-                ></ui-button>
+                ></dui-button>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -61,61 +61,56 @@
           [code]="slotsCode"
         >
           <div class="demo-card">
-            <ui-button
+            <dui-button
               label="Open Custom Slots"
               variant="success"
               (click)="toggle('slots')"
-            ></ui-button>
-            <ui-dialog-box
+            ></dui-button>
+            <dui-dialog-box
               [open]="dialogVisible['slots']"
               (dialogClosed)="toggle('slots', false)"
               width="500px"
               icon-library="lucide"
             >
-              <div slot="header"  class="display-flex items-center gap-8">
-                <ui-icon
+              <div slot="header" class="display-flex items-center gap-8">
+                <dui-icon
                   name="palette"
                   library="lucide"
                   size="24px"
-                   class="text-emerald-500"
-                ></ui-icon>
+                  class="text-emerald-500"
+                ></dui-icon>
                 <div>
-                  <h3  class="m-0 text-emerald-500 fs-18">Custom Header</h3>
-                  <span  class="fs-12 text-gray-600-alt">With subtitle</span>
+                  <h3 class="m-0 text-emerald-500 fs-18">Custom Header</h3>
+                  <span class="fs-12 text-gray-600-alt">With subtitle</span>
                 </div>
               </div>
-              <ui-button
+              <dui-button
                 slot="header-actions"
                 title="Star"
-                 class="bg-transparent border-none cursor-pointer"
+                class="bg-transparent border-none cursor-pointer"
               >
-                <ui-icon name="star" library="lucide" size="16px"></ui-icon>
-              </ui-button>
-              <div
-                 class="p-16 bg-success-soft border-success-dashed rounded-6"
-              >
-                <h4  class="mt-0">Slot Content Area</h4>
+                <dui-icon name="star" library="lucide" size="16px"></dui-icon>
+              </dui-button>
+              <div class="p-16 bg-success-soft border-success-dashed rounded-6">
+                <h4 class="mt-0">Slot Content Area</h4>
                 <p>This content is injected via the default slot. It is fully customizable.</p>
               </div>
-              <div
-                slot="footer"
-                 class="display-flex justify-between w-full items-center"
-              >
-                <span  class="fs-12 text-gray-500">Auto-saved: 2m ago</span>
-                <div  class="display-flex gap-8">
-                  <ui-button
+              <div slot="footer" class="display-flex justify-between w-full items-center">
+                <span class="fs-12 text-gray-500">Auto-saved: 2m ago</span>
+                <div class="display-flex gap-8">
+                  <dui-button
                     label="Cancel"
                     variant="secondary"
                     (click)="toggle('slots', false)"
-                  ></ui-button>
-                  <ui-button
+                  ></dui-button>
+                  <dui-button
                     label="Save"
                     variant="success"
                     (click)="toggle('slots', false)"
-                  ></ui-button>
+                  ></dui-button>
                 </div>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -127,60 +122,60 @@
           [code]="sizesCode"
         >
           <div class="demo-card">
-            <div  class="display-flex gap-12 wrap">
-              <ui-button label="XS" variant="secondary" (click)="toggle('sXS')"></ui-button>
-              <ui-button label="SM" variant="primary" (click)="toggle('sSM')"></ui-button>
-              <ui-button label="MD" variant="success" (click)="toggle('sMD')"></ui-button>
-              <ui-button label="LG" variant="warning" (click)="toggle('sLG')"></ui-button>
-              <ui-button label="XL" variant="danger" (click)="toggle('sXL')"></ui-button>
-              <ui-button
+            <div class="display-flex gap-12 wrap">
+              <dui-button label="XS" variant="secondary" (click)="toggle('sXS')"></dui-button>
+              <dui-button label="SM" variant="primary" (click)="toggle('sSM')"></dui-button>
+              <dui-button label="MD" variant="success" (click)="toggle('sMD')"></dui-button>
+              <dui-button label="LG" variant="warning" (click)="toggle('sLG')"></dui-button>
+              <dui-button label="XL" variant="danger" (click)="toggle('sXL')"></dui-button>
+              <dui-button
                 label="Fill (90%)"
-                 class="bg-violet-500"
+                class="bg-violet-500"
                 (click)="toggle('sFill')"
-              ></ui-button>
+              ></dui-button>
             </div>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sXS']"
               (dialogClosed)="toggle('sXS', false)"
               size="xs"
               dialog-title="Size XS (320px)"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sSM']"
               (dialogClosed)="toggle('sSM', false)"
               size="sm"
               dialog-title="Size SM (480px)"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sMD']"
               (dialogClosed)="toggle('sMD', false)"
               size="md"
               dialog-title="Size MD (768px)"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sLG']"
               (dialogClosed)="toggle('sLG', false)"
               size="lg"
               dialog-title="Size LG (1024px)"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sXL']"
               (dialogClosed)="toggle('sXL', false)"
               size="xl"
               dialog-title="Size XL (1280px)"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sFill']"
               (dialogClosed)="toggle('sFill', false)"
               size="fill"
               dialog-title="Fill (90% viewport)"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
           </div>
         </pg-example-section>
@@ -193,41 +188,41 @@
           [code]="formCode"
         >
           <div class="demo-card">
-            <ui-button
+            <dui-button
               label="Open Registration Form"
               variant="primary"
-               class="bg-gradient-violet-pink border-none"
+              class="bg-gradient-violet-pink border-none"
               (click)="toggle('form')"
-            ></ui-button>
+            ></dui-button>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['form']"
               (dialogClosed)="toggle('form', false)"
               dialog-title="Complete Form Registration"
               width="550px"
               icon-library="lucide"
             >
-              <div  class="display-flex flex-col gap-24 p-8">
-                <div  class="display-grid grid-cols-2 gap-16">
-                  <ui-input
+              <div class="display-flex flex-col gap-24 p-8">
+                <div class="display-grid grid-cols-2 gap-16">
+                  <dui-input
                     label="First Name"
                     placeholder="John"
                     icon="user"
                     icon-library="lucide"
-                  ></ui-input>
-                  <ui-input label="Last Name" placeholder="Doe"></ui-input>
+                  ></dui-input>
+                  <dui-input label="Last Name" placeholder="Doe"></dui-input>
                 </div>
 
-                <ui-input
+                <dui-input
                   label="Email Address"
                   type="email"
                   placeholder="john.doe@example.com"
                   icon="mail"
                   icon-library="lucide"
-                ></ui-input>
+                ></dui-input>
 
-                <div  class="display-grid grid-cols-2 gap-16">
-                  <ui-dropdown
+                <div class="display-grid grid-cols-2 gap-16">
+                  <dui-dropdown
                     label="Department"
                     placeholder="Select Department"
                     [options]="[
@@ -236,58 +231,58 @@
                       { label: 'Design', value: 'dsgn' },
                       { label: 'Sales', value: 'sls' },
                     ]"
-                  ></ui-dropdown>
+                  ></dui-dropdown>
 
-                  <ui-input label="Joining Date" type="date"></ui-input>
+                  <dui-input label="Joining Date" type="date"></dui-input>
                 </div>
 
-                <div  class="display-flex flex-col gap-12">
-                  <label  class="fs-14 font-medium text-gray-700"
-                    >Preferences & Settings</label
-                  >
-                  <div  class="display-flex items-center gap-32">
-                    <ui-checkbox label="Subscribe to Newsletter" checked="true"></ui-checkbox>
-                    <ui-switch label="Dark Mode" checked="false"></ui-switch>
+                <div class="display-flex flex-col gap-12">
+                  <label class="fs-14 font-medium text-gray-700">Preferences & Settings</label>
+                  <div class="display-flex items-center gap-32">
+                    <dui-checkbox label="Subscribe to Newsletter" checked="true"></dui-checkbox>
+                    <dui-switch label="Dark Mode" checked="false"></dui-switch>
                   </div>
-                  <div  class="display-flex items-center gap-32">
-                    <ui-toggle label="Enable Notifications" checked="true"></ui-toggle>
-                    <div  class="display-flex items-center gap-8">
-                      <span  class="fs-14 text-gray-600">Experience Level:</span>
-                      <ui-rating value="4" max="5"></ui-rating>
+                  <div class="display-flex items-center gap-32">
+                    <dui-toggle label="Enable Notifications" checked="true"></dui-toggle>
+                    <div class="display-flex items-center gap-8">
+                      <span class="fs-14 text-gray-600">Experience Level:</span>
+                      <dui-rating value="4" max="5"></dui-rating>
                     </div>
                   </div>
                 </div>
 
-                <div  class="display-flex flex-col gap-8">
-                  <label  class="fs-14 font-medium text-gray-700"
-                    >Account Type</label
-                  >
-                  <div  class="display-flex gap-24">
-                    <ui-radio
+                <div class="display-flex flex-col gap-8">
+                  <label class="fs-14 font-medium text-gray-700">Account Type</label>
+                  <div class="display-flex gap-24">
+                    <dui-radio
                       name="account-type"
                       label="Personal"
                       value="personal"
                       checked="true"
-                    ></ui-radio>
-                    <ui-radio name="account-type" label="Business" value="business"></ui-radio>
-                    <ui-radio name="account-type" label="Enterprise" value="enterprise"></ui-radio>
+                    ></dui-radio>
+                    <dui-radio name="account-type" label="Business" value="business"></dui-radio>
+                    <dui-radio
+                      name="account-type"
+                      label="Enterprise"
+                      value="enterprise"
+                    ></dui-radio>
                   </div>
                 </div>
               </div>
 
               <div slot="footer">
-                <ui-button
+                <dui-button
                   label="Cancel"
                   variant="secondary"
                   (click)="toggle('form', false)"
-                ></ui-button>
-                <ui-button
+                ></dui-button>
+                <dui-button
                   label="Submit Registration"
                   variant="primary"
                   (click)="toggle('form', false)"
-                ></ui-button>
+                ></dui-button>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -299,43 +294,51 @@
           [code]="variantsCode"
         >
           <div class="demo-card">
-            <div  class="display-flex gap-12 wrap">
-              <ui-button label="Info" variant="primary" (click)="toggle('vInfo')"></ui-button>
-              <ui-button label="Success" variant="success" (click)="toggle('vSuccess')"></ui-button>
-              <ui-button label="Warning" variant="warning" (click)="toggle('vWarning')"></ui-button>
-              <ui-button label="Error" variant="danger" (click)="toggle('vError')"></ui-button>
+            <div class="display-flex gap-12 wrap">
+              <dui-button label="Info" variant="primary" (click)="toggle('vInfo')"></dui-button>
+              <dui-button
+                label="Success"
+                variant="success"
+                (click)="toggle('vSuccess')"
+              ></dui-button>
+              <dui-button
+                label="Warning"
+                variant="warning"
+                (click)="toggle('vWarning')"
+              ></dui-button>
+              <dui-button label="Error" variant="danger" (click)="toggle('vError')"></dui-button>
             </div>
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['vInfo']"
               (dialogClosed)="toggle('vInfo', false)"
               variant="filled"
               status="info"
               dialog-title="Info"
-              ><div><p>Info content</p></div></ui-dialog-box
+              ><div><p>Info content</p></div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['vSuccess']"
               (dialogClosed)="toggle('vSuccess', false)"
               variant="filled"
               status="success"
               dialog-title="Success"
-              ><div><p>Success content</p></div></ui-dialog-box
+              ><div><p>Success content</p></div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['vWarning']"
               (dialogClosed)="toggle('vWarning', false)"
               variant="filled"
               status="warning"
               dialog-title="Warning"
-              ><div><p>Warning content</p></div></ui-dialog-box
+              ><div><p>Warning content</p></div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['vError']"
               (dialogClosed)="toggle('vError', false)"
               variant="filled"
               status="error"
               dialog-title="Error"
-              ><div><p>Error content</p></div></ui-dialog-box
+              ><div><p>Error content</p></div></dui-dialog-box
             >
           </div>
         </pg-example-section>
@@ -348,53 +351,65 @@
           [code]="positionsCode"
         >
           <div class="demo-card">
-            <div  class="display-flex gap-12 wrap">
-              <ui-button label="Center" variant="secondary" (click)="toggle('pCenter')"></ui-button>
-              <ui-button label="Top" variant="secondary" (click)="toggle('pTop')"></ui-button>
-              <ui-button label="Bottom" variant="secondary" (click)="toggle('pBottom')"></ui-button>
-              <ui-button label="Right" variant="secondary" (click)="toggle('pRight')"></ui-button>
-              <ui-button label="Top Right" variant="secondary" (click)="toggle('pTR')"></ui-button>
+            <div class="display-flex gap-12 wrap">
+              <dui-button
+                label="Center"
+                variant="secondary"
+                (click)="toggle('pCenter')"
+              ></dui-button>
+              <dui-button label="Top" variant="secondary" (click)="toggle('pTop')"></dui-button>
+              <dui-button
+                label="Bottom"
+                variant="secondary"
+                (click)="toggle('pBottom')"
+              ></dui-button>
+              <dui-button label="Right" variant="secondary" (click)="toggle('pRight')"></dui-button>
+              <dui-button
+                label="Top Right"
+                variant="secondary"
+                (click)="toggle('pTR')"
+              ></dui-button>
             </div>
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['pCenter']"
               (dialogClosed)="toggle('pCenter', false)"
               position="center"
               dialog-title="Center"
               width="400px"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['pTop']"
               (dialogClosed)="toggle('pTop', false)"
               position="top"
               dialog-title="Top"
               width="400px"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['pBottom']"
               (dialogClosed)="toggle('pBottom', false)"
               position="bottom"
               dialog-title="Bottom"
               width="400px"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['pRight']"
               (dialogClosed)="toggle('pRight', false)"
               position="right"
               dialog-title="Right Side"
               width="400px"
               height="100vh"
-              ><div>Side Panel Style</div></ui-dialog-box
+              ><div>Side Panel Style</div></dui-dialog-box
             >
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['pTR']"
               (dialogClosed)="toggle('pTR', false)"
               position="top-right"
               dialog-title="Top Right"
               width="400px"
-              ><div>Content</div></ui-dialog-box
+              ><div>Content</div></dui-dialog-box
             >
           </div>
         </pg-example-section>
@@ -407,20 +422,20 @@
           [code]="scrollCode"
         >
           <div class="demo-card">
-            <div  class="display-flex gap-12">
-              <ui-button
+            <div class="display-flex gap-12">
+              <dui-button
                 label="Scroll Paper"
                 variant="primary"
                 (click)="toggle('sPaper')"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 label="Scroll Body"
                 variant="success"
                 (click)="toggle('sWindow')"
-              ></ui-button>
+              ></dui-button>
             </div>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sPaper']"
               (dialogClosed)="toggle('sPaper', false)"
               scroll-behavior="paper"
@@ -434,9 +449,9 @@
                   the footer sticky.
                 </p>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['sWindow']"
               (dialogClosed)="toggle('sWindow', false)"
               scroll-behavior="body"
@@ -449,7 +464,7 @@
                   dictates page flow length.
                 </p>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -461,30 +476,30 @@
           [code]="advancedCode"
         >
           <div class="demo-card">
-            <div  class="display-flex gap-12 wrap">
-              <ui-button
+            <div class="display-flex gap-12 wrap">
+              <dui-button
                 label="Static Backdrop"
                 variant="warning"
                 (click)="toggle('aStatic')"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 label="Draggable"
-                 class="bg-violet-500"
+                class="bg-violet-500"
                 (click)="toggle('aDrag')"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 label="Resizable"
-                 class="bg-pink-500"
+                class="bg-pink-500"
                 (click)="toggle('aResize')"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 label="Drag & Resize"
                 variant="primary"
                 (click)="toggle('aCombo')"
-              ></ui-button>
+              ></dui-button>
             </div>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['aStatic']"
               (dialogClosed)="toggle('aStatic', false)"
               backdrop="static"
@@ -492,20 +507,20 @@
             >
               <div><p>Try clicking outside the border. I won't close automatically!</p></div>
               <div slot="footer">
-                <ui-button label="Understood" (click)="toggle('aStatic', false)"></ui-button>
+                <dui-button label="Understood" (click)="toggle('aStatic', false)"></dui-button>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['aDrag']"
               (dialogClosed)="toggle('aDrag', false)"
               is-draggable
               dialog-title="Draggable Dialog"
             >
               <div><p>Grab my header to drag me inside the viewport bounds!</p></div>
-            </ui-dialog-box>
+            </dui-dialog-box>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['aResize']"
               (dialogClosed)="toggle('aResize', false)"
               resizable
@@ -514,9 +529,9 @@
               <div>
                 <p>Use the bottom edge container bracket to resize the width/height manually.</p>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['aCombo']"
               (dialogClosed)="toggle('aCombo', false)"
               is-draggable
@@ -524,7 +539,7 @@
               dialog-title="Power User Dialog"
             >
               <div><p>I can be moved around completely AND resized all you want.</p></div>
-            </ui-dialog-box>
+            </dui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -536,27 +551,27 @@
           [code]="premiumCode"
         >
           <div class="demo-card">
-            <h4  class="mt-0 text-purple-700">✨ Animation Gallery</h4>
+            <h4 class="mt-0 text-purple-700">✨ Animation Gallery</h4>
             <br />
-            <div  class="display-flex gap-12 wrap mb-24">
-              <ui-button
+            <div class="display-flex gap-12 wrap mb-24">
+              <dui-button
                 label="Scale (Default)"
-                 class="bg-white border-purple-300 text-purple-700"
+                class="bg-white border-purple-300 text-purple-700"
                 (click)="toggle('anScale')"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 label="Fade"
-                 class="bg-white border-purple-300 text-purple-700"
+                class="bg-white border-purple-300 text-purple-700"
                 (click)="toggle('anFade')"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 label="Slide Right (Drawer)"
-                 class="bg-white border-purple-300 text-purple-700"
+                class="bg-white border-purple-300 text-purple-700"
                 (click)="toggle('anSlideR')"
-              ></ui-button>
+              ></dui-button>
             </div>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['anScale']"
               (dialogClosed)="toggle('anScale', false)"
               animation="scale"
@@ -564,8 +579,8 @@
               width="400px"
             >
               <div>Standard modern dialog entrance scale spring effect.</div>
-            </ui-dialog-box>
-            <ui-dialog-box
+            </dui-dialog-box>
+            <dui-dialog-box
               [open]="dialogVisible['anFade']"
               (dialogClosed)="toggle('anFade', false)"
               animation="fade"
@@ -573,8 +588,8 @@
               width="400px"
             >
               <div>Linear opacity transition fade-in effect.</div>
-            </ui-dialog-box>
-            <ui-dialog-box
+            </dui-dialog-box>
+            <dui-dialog-box
               [open]="dialogVisible['anSlideR']"
               (dialogClosed)="toggle('anSlideR', false)"
               animation="slide-right"
@@ -585,17 +600,17 @@
               <div>
                 Ideal for dashboard menus and filtering parameters lists! Moves in gracefully.
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
 
-            <h4  class="mt-0 text-emerald-700">🪟 Persistent Dashboard Widgets</h4>
+            <h4 class="mt-0 text-emerald-700">🪟 Persistent Dashboard Widgets</h4>
             <br />
-            <ui-button
+            <dui-button
               label="Open Main Sticky Note Widget"
               variant="success"
               (click)="toggle('wNote')"
-            ></ui-button>
+            ></dui-button>
 
-            <ui-dialog-box
+            <dui-dialog-box
               [open]="dialogVisible['wNote']"
               (dialogClosed)="toggle('wNote', false)"
               dialog-title="📝 Sticky Notes Widget"
@@ -606,13 +621,13 @@
               width="300px"
               height="300px"
             >
-              <div  class="h-full display-flex flex-col">
+              <div class="h-full display-flex flex-col">
                 <textarea
                   placeholder="Type your notes here... Even if you close this dialog, thanks to 'keep-mounted' my DOM is preserved! Open it again and your text is still here without a backend save."
-                   class="flex-1 border-none outline-none resize-none w-full h-full p-4 font-sans"
+                  class="flex-1 border-none outline-none resize-none w-full h-full p-4 font-sans"
                 ></textarea>
               </div>
-            </ui-dialog-box>
+            </dui-dialog-box>
           </div>
         </pg-example-section>
       </div>

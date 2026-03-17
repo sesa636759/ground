@@ -34,28 +34,28 @@ export class DmTabsDemoComponent {
     return this.variants.filter((v) => v.id !== 'playground');
   }
 
-  playgroundCode = `<ui-tabs variant="default">
-  <ui-tab label="Home" value="h"> Content </ui-tab>
-  <ui-tab label="About" value="a"> Content </ui-tab>
-</ui-tabs>`;
+  playgroundCode = `<dui-tabs variant="default">
+  <dui-tab label="Home" value="h"> Content </dui-tab>
+  <dui-tab label="About" value="a"> Content </dui-tab>
+</dui-tabs>`;
 
   stylesCode = `<!-- Pills Style -->
-<ui-tabs variant="pills">...</ui-tabs>
+<dui-tabs variant="pills">...</dui-tabs>
 
 <!-- Underline Style -->
-<ui-tabs variant="underline">...</ui-tabs>
+<dui-tabs variant="underline">...</dui-tabs>
 
 <!-- Enclosed Style -->
-<ui-tabs variant="enclosed">...</ui-tabs>`;
+<dui-tabs variant="enclosed">...</dui-tabs>`;
 
   layoutsCode = `<!-- Vertical Alignment -->
-<ui-tabs orientation="vertical">
-  <ui-tab label="Menu 1">...</ui-tab>
-  <ui-tab label="Menu 2">...</ui-tab>
-</ui-tabs>
+<dui-tabs orientation="vertical">
+  <dui-tab label="Menu 1">...</dui-tab>
+  <dui-tab label="Menu 2">...</dui-tab>
+</dui-tabs>
 
 <!-- Center Aligned Tabs -->
-<ui-tabs align="center">...</ui-tabs>`;
+<dui-tabs align="center">...</dui-tabs>`;
 
   tabStackCode = `<!-- Advanced Tab Stack -->
 <app-tab-stack active-tab="t1" variant="pills">

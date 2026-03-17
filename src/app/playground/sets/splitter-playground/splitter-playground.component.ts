@@ -59,10 +59,12 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent imple
   }
 
   updateConfig() {
-    let code = `<ui-splitter\n`;
-    if (this.pgConfig.direction !== 'horizontal') code += `  direction="${this.pgConfig.direction}"\n`;
+    let code = `<dui-splitter\n`;
+    if (this.pgConfig.direction !== 'horizontal')
+      code += `  direction="${this.pgConfig.direction}"\n`;
     if (this.pgConfig.gutterSize !== 8) code += `  [gutter-size]="${this.pgConfig.gutterSize}"\n`;
-    if (this.pgConfig.snapThreshold !== 20) code += `  [snap-threshold]="${this.pgConfig.snapThreshold}"\n`;
+    if (this.pgConfig.snapThreshold !== 20)
+      code += `  [snap-threshold]="${this.pgConfig.snapThreshold}"\n`;
     if (this.pgConfig.theme !== 'auto') code += `  theme="${this.pgConfig.theme}"\n`;
     if (!this.pgConfig.animated) code += `  [animated]="false"\n`;
     if (this.pgConfig.rounded) code += `  rounded\n`;
@@ -72,13 +74,15 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent imple
     if (!this.pgConfig.keyboardNavigation) code += `  [keyboard-navigation]="false"\n`;
     if (this.pgConfig.persistState) code += `  persist-state\n`;
     if (this.pgConfig.rtl) code += `  rtl\n`;
-    if (this.pgConfig.gutterColor !== '#e5e7eb') code += `  gutter-color="${this.pgConfig.gutterColor}"\n`;
-    if (this.pgConfig.gutterHoverColor !== '#3b82f6') code += `  gutter-hover-color="${this.pgConfig.gutterHoverColor}"\n`;
+    if (this.pgConfig.gutterColor !== '#e5e7eb')
+      code += `  gutter-color="${this.pgConfig.gutterColor}"\n`;
+    if (this.pgConfig.gutterHoverColor !== '#3b82f6')
+      code += `  gutter-hover-color="${this.pgConfig.gutterHoverColor}"\n`;
 
     code += `>\n`;
     code += `  <div slot="panel-0">Left Panel</div>\n`;
     code += `  <div slot="panel-1">Right Panel</div>\n`;
-    code += `</ui-splitter>`;
+    code += `</dui-splitter>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

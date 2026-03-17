@@ -14,17 +14,13 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="org" >
+          <section class="demo-section mt-0" id="org">
             <div class="section-header">
               <h2>🏢 Org Chart</h2>
               <p>Organizational hierarchy showing reporting structure from CEO to team members.</p>
             </div>
-            <div class="demo-card overflow-x-auto p-16" >
-              <svg
-                width="620"
-                height="400"
-                 class="display-block min-w-580 m-0-auto"
-              >
+            <div class="demo-card overflow-x-auto p-16">
+              <svg width="620" height="400" class="display-block min-w-580 m-0-auto">
                 <!-- Edges -->
                 <path
                   d="M310,60 C310,90 180,90 180,120"
@@ -227,12 +223,12 @@
                 <text x="290" y="329" text-anchor="middle" font-size="9" fill="#0369a1">Cloud</text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="orgCode"
               label="Org Chart Tree"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="filesystem">
@@ -240,12 +236,8 @@
               <h2>📁 File System Tree</h2>
               <p>Represent directory and file hierarchies in a top-down tree layout.</p>
             </div>
-            <div class="demo-card overflow-x-auto p-16" >
-              <svg
-                width="620"
-                height="360"
-                 class="display-block min-w-580 m-0-auto"
-              >
+            <div class="demo-card overflow-x-auto p-16">
+              <svg width="620" height="360" class="display-block min-w-580 m-0-auto">
                 <!-- Root edges -->
                 <path
                   d="M310,48 C310,80 180,80 180,100"
@@ -360,12 +352,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="filesystemCode"
               label="File System Tree"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -376,4 +368,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

@@ -7,60 +7,60 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Placeholder</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.placeholder"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Expand Trigger</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.expandTrigger"
         (ngModelChange)="updateConfig()"
         [options]="triggerOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Separator</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.separator"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-states" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showFullPath"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Full Path
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.changeOnSelect"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Change On Select
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage">
-    <div  class="w-full display-flex flex-col items-center">
-      <ui-cascade-select
+    <div class="w-full display-flex flex-col items-center">
+      <dui-cascade-select
         #demoElement
         [attr.placeholder]="pgConfig.placeholder"
         [attr.size]="pgConfig.size"
@@ -70,12 +70,10 @@
         [attr.change-on-select]="pgConfig.changeOnSelect ? '' : null"
         [options]="options"
         (cascadeChange)="onValueChange($event)"
-      ></ui-cascade-select>
+      ></dui-cascade-select>
 
       @if (currentValue) {
-        <div
-           class="mt-40 p-12 bg-surface-2 border rounded-8 font-mono-var fs-08rem"
-        >
+        <div class="mt-40 p-12 bg-surface-2 border rounded-8 font-mono-var fs-08rem">
           Selection Value: {{ currentValue | json }}
         </div>
       }

@@ -8,7 +8,7 @@
   <div slot="content-core" class="control-grid context-menu-core-section">
     <div class="control-group">
       <label>Trigger</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.trigger"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -16,41 +16,41 @@
           { label: 'Click', value: 'click' },
           { label: 'Hover', value: 'hover' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Min Width</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.minWidth"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 200px"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Max Height</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.maxHeight"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 400px"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="checkbox-group context-menu-core-checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="searchable"
         [(ngModel)]="pgConfig.searchable"
         (ngModelChange)="updateConfig()"
         label="Searchable"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="closeOnSelect"
         [(ngModel)]="pgConfig.closeOnSelect"
         (ngModelChange)="updateConfig()"
         label="Close On Select"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
   </div>
 
@@ -58,18 +58,18 @@
   <div slot="content-visuals" class="control-grid context-menu-visuals-section">
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Default', value: 'default' },
           { label: 'Glass', value: 'glass' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Animation Type</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.animationType"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -77,83 +77,83 @@
           { label: 'Zoom', value: 'zoom' },
           { label: 'Fade', value: 'fade' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-group context-menu-visuals-checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="animated"
         [(ngModel)]="pgConfig.animated"
         (ngModelChange)="updateConfig()"
         label="Animated"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="staggered"
         [(ngModel)]="pgConfig.staggered"
         (ngModelChange)="updateConfig()"
         label="Staggered"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="reflection"
         [(ngModel)]="pgConfig.reflection"
         (ngModelChange)="updateConfig()"
         label="Reflection"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
   </div>
 
   <!-- Advanced Behavior Slot -->
   <div slot="content-behavior" class="control-grid context-menu-behavior-section">
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="backdrop"
         [(ngModel)]="pgConfig.backdrop"
         (ngModelChange)="updateConfig()"
         label="Enable Backdrop"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="multiSelect"
         [(ngModel)]="pgConfig.multiSelect"
         (ngModelChange)="updateConfig()"
         label="Multi-Select Mode"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="commandPalette"
         [(ngModel)]="pgConfig.commandPalette"
         (ngModelChange)="updateConfig()"
         label="Command Palette Mode"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="showGroups"
         [(ngModel)]="pgConfig.showGroups"
         (ngModelChange)="updateConfig()"
         label="Show Item Groups"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="highlightSearch"
         [(ngModel)]="pgConfig.highlightSearch"
         (ngModelChange)="updateConfig()"
         label="Highlight Search Matched"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
     <div class="checkbox-group">
-      <ui-checkbox
+      <dui-checkbox
         id="keyboardNav"
         [(ngModel)]="pgConfig.keyboardNavigation"
         (ngModelChange)="updateConfig()"
         label="Keyboard Navigation"
-      ></ui-checkbox>
+      ></dui-checkbox>
     </div>
   </div>
 
@@ -164,12 +164,12 @@
       id="playgroundTrigger"
       [style.cursor]="pgConfig.trigger === 'hover' ? 'pointer' : 'default'"
     >
-      <ui-button
+      <dui-button
         class="btn-demo"
         *ngIf="pgConfig.trigger === 'click'"
         label="Open Menu"
         variant="primary"
-      ></ui-button>
+      ></dui-button>
       <span *ngIf="pgConfig.trigger === 'rightClick'">Right-click anywhere here</span>
       <span *ngIf="pgConfig.trigger === 'hover'">Hover here</span>
     </div>

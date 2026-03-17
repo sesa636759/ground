@@ -83,13 +83,14 @@ export class DmPillPlaygroundComponent extends BasePlaygroundComponent implement
   }
 
   updateConfig() {
-    let code = '<ui-pill\n';
+    let code = '<dui-pill\n';
     code += `  label="${this.pgConfig.label}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  color="${this.pgConfig.color}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
-    
-    if (this.pgConfig.orientation !== 'horizontal') code += `  orientation="${this.pgConfig.orientation}"\n`;
+
+    if (this.pgConfig.orientation !== 'horizontal')
+      code += `  orientation="${this.pgConfig.orientation}"\n`;
     if (this.pgConfig.selected) code += `  selected\n`;
     if (this.pgConfig.removable) code += `  removable\n`;
     if (this.pgConfig.clickable) code += `  clickable\n`;
@@ -107,8 +108,8 @@ export class DmPillPlaygroundComponent extends BasePlaygroundComponent implement
     if (this.pgConfig.variant === 'gradient' && this.pgConfig.gradient) {
       code += `  gradient="${this.pgConfig.gradient}"\n`;
     }
-    
-    code += '></ui-pill>';
+
+    code += '></dui-pill>';
 
     this.generatedCode.set(code);
     this.refreshCode();

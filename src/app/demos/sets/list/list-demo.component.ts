@@ -29,26 +29,31 @@ export class DmListDemoComponent extends BaseDemoComponent {
     { id: 'nesting', title: 'Nesting & Tree', icon: 'list-tree', iconLibrary: 'lucide' },
     { id: 'selection', title: 'Selection Modes', icon: 'check-square', iconLibrary: 'lucide' },
     { id: 'headers', title: 'Headers & Groups', icon: 'layers', iconLibrary: 'lucide' },
-    { id: 'interactive', title: 'Interactive Features', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    {
+      id: 'interactive',
+      title: 'Interactive Features',
+      icon: 'mouse-pointer-2',
+      iconLibrary: 'lucide',
+    },
     { id: 'performance', title: 'Performance & Data', icon: 'zap', iconLibrary: 'lucide' },
     { id: 'states', title: 'Loading & Empty', icon: 'ghost', iconLibrary: 'lucide' },
     { id: 'sizes', title: 'Sizes & Spacing', icon: 'move-vertical', iconLibrary: 'lucide' },
   ];
 
-  basicCode = `<ui-list variant="filled" color="primary">
-  <ui-list-item label="Item 1" icon="lucide-star"></ui-list-item>
-  <ui-list-item label="Item 2" icon="lucide-heart"></ui-list-item>
-</ui-list>`;
+  basicCode = `<dui-list variant="filled" color="primary">
+  <dui-list-item label="Item 1" icon="lucide-star"></dui-list-item>
+  <dui-list-item label="Item 2" icon="lucide-heart"></dui-list-item>
+</dui-list>`;
 
-  layoutCode = `<ui-list horizontal>...</ui-list>\n<ui-list numbered>...</ui-list>`;
+  layoutCode = `<dui-list horizontal>...</dui-list>\n<dui-list numbered>...</dui-list>`;
 
-  nestingCode = `<ui-list-item label="Parent" collapsible expanded>
+  nestingCode = `<dui-list-item label="Parent" collapsible expanded>
   <div slot="children">
-    <ui-list-item label="Child" level="1"></ui-list-item>
+    <dui-list-item label="Child" level="1"></dui-list-item>
   </div>
-</ui-list-item>`;
+</dui-list-item>`;
 
-  selectionCode = `<ui-list selectable multi-select checkbox-selection>...</ui-list>`;
+  selectionCode = `<dui-list selectable multi-select checkbox-selection>...</dui-list>`;
 
-  performanceCode = `<ui-list virtual-scroll [attr.items]="largeData"></ui-list>`;
+  performanceCode = `<dui-list virtual-scroll [attr.items]="largeData"></dui-list>`;
 }

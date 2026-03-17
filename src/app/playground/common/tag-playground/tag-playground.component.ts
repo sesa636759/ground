@@ -30,17 +30,14 @@ export class DmTagPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<ui-tag\n';
+    let code = '<dui-tag\n';
     code += `  value="${this.pgConfig.value}"\n`;
     code += `  severity="${this.pgConfig.severity}"\n`;
     if (this.pgConfig.rounded) code += `  rounded\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
-    code += '></ui-tag>';
+    code += '></dui-tag>';
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
 }
-
-
-

@@ -18,14 +18,14 @@
           description="Standard list-based transfer with search and select-all capabilities."
           [code]="basicCode()"
         >
-          <div class="demo-box max-w-800" >
-            <ui-transfer-list 
-              [attr.source-items]="sourceData | json" 
+          <div class="demo-box max-w-800">
+            <dui-transfer-list
+              [attr.source-items]="sourceData | json"
               [attr.target-items]="targetData | json"
               [attr.titles]="'[&quot;Available Features&quot;, &quot;Assigned Features&quot;]'"
               searchable
               (transferChange)="onTransferChange($event)"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -36,23 +36,23 @@
           description="Switch between List, Table (for multi-column data), and Tree (for hierarchical data)."
           [code]="modesCode()"
         >
-          <div class="demo-grid col-1 gap-48" >
+          <div class="demo-grid col-1 gap-48">
             <div>
               <p class="demo-label">Table Mode (with Columns)</p>
-              <ui-transfer-list 
-                mode="table" 
+              <dui-transfer-list
+                mode="table"
                 [attr.columns]="tableColumns | json"
                 [attr.source-items]="sourceData | json"
                 height="300px"
-              ></ui-transfer-list>
+              ></dui-transfer-list>
             </div>
             <div>
               <p class="demo-label">Tree Mode (Hierarchical Selection)</p>
-              <ui-transfer-list 
-                mode="tree" 
+              <dui-transfer-list
+                mode="tree"
                 [attr.source-items]="treeData | json"
                 height="300px"
-              ></ui-transfer-list>
+              ></dui-transfer-list>
             </div>
           </div>
         </pg-example-section>
@@ -65,12 +65,12 @@
           [code]="reorderCode()"
         >
           <div class="demo-box">
-            <ui-transfer-list 
-              enable-drag 
-              allow-reorder 
+            <dui-transfer-list
+              enable-drag
+              allow-reorder
               [attr.source-items]="sourceData | json"
               [attr.titles]="'[&quot;Bank&quot;, &quot;Priority Queue&quot;]'"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -82,11 +82,11 @@
           [code]="onewayCode()"
         >
           <div class="demo-box">
-            <ui-transfer-list 
-              one-way 
+            <dui-transfer-list
+              one-way
               [attr.source-items]="sourceData | json"
               [attr.titles]="'[&quot;Selectable Template&quot;, &quot;Instance Config&quot;]'"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -98,12 +98,12 @@
           [code]="paginationCode()"
         >
           <div class="demo-box">
-            <ui-transfer-list 
-              pagination 
+            <dui-transfer-list
+              pagination
               [attr.page-size]="3"
               [attr.source-items]="sourceData | json"
               [attr.titles]="'[&quot;Total Inventory&quot;, &quot;Order Batch&quot;]'"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -115,11 +115,14 @@
           [code]="customRenderCode()"
         >
           <div class="demo-box">
-            <p  class="fs-13 text-muted mb-16">This example demonstrates items with badges and rich metadata via custom HTML injection.</p>
-            <ui-transfer-list 
+            <p class="fs-13 text-muted mb-16">
+              This example demonstrates items with badges and rich metadata via custom HTML
+              injection.
+            </p>
+            <dui-transfer-list
               [attr.source-items]="'[{&quot;key&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Urgent Fix&quot;,&quot;priority&quot;:&quot;High&quot;},{&quot;key&quot;:&quot;2&quot;,&quot;label&quot;:&quot;UI Polish&quot;,&quot;priority&quot;:&quot;Low&quot;}]'"
               [attr.item-renderer]="'(item) => \`<div><div>\${item.label}</div><small style=&quot;color:var(--text-tertiary)&quot;>\${item.priority} Priority</small></div>\`'"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -131,10 +134,10 @@
           [code]="localeCode()"
         >
           <div class="demo-box">
-            <ui-transfer-list 
+            <dui-transfer-list
               [attr.source-items]="sourceData | json"
               [attr.locale]="'{&quot;itemUnit&quot;:&quot;member&quot;,&quot;itemsUnit&quot;:&quot;members&quot;,&quot;searchPlaceholder&quot;:&quot;Rechercher des membres...&quot;,&quot;notFoundContent&quot;:&quot;Aucun résultat&quot;}'"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -146,11 +149,14 @@
           [code]="filterCode()"
         >
           <div class="demo-box">
-             <p  class="fs-13 text-muted mb-16">This component is configured to match against both label and description simultaneously.</p>
-            <ui-transfer-list 
+            <p class="fs-13 text-muted mb-16">
+              This component is configured to match against both label and description
+              simultaneously.
+            </p>
+            <dui-transfer-list
               [attr.source-items]="sourceData | json"
               [attr.filter-option]="'(input, item) => item.label.toLowerCase().includes(input) || (item.description && item.description.toLowerCase().includes(input))'"
-            ></ui-transfer-list>
+            ></dui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -162,7 +168,7 @@
           [code]="skeletonCode()"
         >
           <div class="demo-box">
-            <ui-transfer-list loading></ui-transfer-list>
+            <dui-transfer-list loading></dui-transfer-list>
           </div>
         </pg-example-section>
       </div>

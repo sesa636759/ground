@@ -16,9 +16,24 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'global', title: 'Global & Identity', icon: 'settings', iconLibrary: 'lucide' },
     { id: 'appearance', title: 'Aesthetics & Style', icon: 'palette', iconLibrary: 'lucide' },
     { id: 'decorators', title: 'Prefix, Suffix & Slots', icon: 'tags', iconLibrary: 'lucide' },
-    { id: 'behavior', title: 'Behavior & Interaction', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
-    { id: 'validation', title: 'Validation & Constraints', icon: 'check-circle', iconLibrary: 'lucide' },
-    { id: 'special', title: 'Special Types (File/Color/...)', icon: 'sparkles', iconLibrary: 'lucide' },
+    {
+      id: 'behavior',
+      title: 'Behavior & Interaction',
+      icon: 'mouse-pointer-2',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'validation',
+      title: 'Validation & Constraints',
+      icon: 'check-circle',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'special',
+      title: 'Special Types (File/Color/...)',
+      icon: 'sparkles',
+      iconLibrary: 'lucide',
+    },
   ];
 
   typeOptions = [
@@ -138,7 +153,7 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = `<ui-input\n`;
+    let code = `<dui-input\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     if (this.pgConfig.type !== 'text') code += `  type="${this.pgConfig.type}"\n`;
     if (this.pgConfig.variant !== 'outlined') code += `  variant="${this.pgConfig.variant}"\n`;
@@ -162,7 +177,8 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
     if (!this.pgConfig.rippleEffect) code += `  [ripple-effect]="false"\n`;
 
     // Validation
-    if (this.pgConfig.validationState !== 'none') code += `  validation-state="${this.pgConfig.validationState}"\n`;
+    if (this.pgConfig.validationState !== 'none')
+      code += `  validation-state="${this.pgConfig.validationState}"\n`;
     if (this.pgConfig.helperText) code += `  helper-text="${this.pgConfig.helperText}"\n`;
     if (this.pgConfig.errorText) code += `  error-text="${this.pgConfig.errorText}"\n`;
     if (this.pgConfig.successText) code += `  success-text="${this.pgConfig.successText}"\n`;
@@ -187,7 +203,7 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
       if (this.pgConfig.rows !== 3) code += `  rows="${this.pgConfig.rows}"\n`;
     }
 
-    code += `></ui-input>`;
+    code += `></dui-input>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

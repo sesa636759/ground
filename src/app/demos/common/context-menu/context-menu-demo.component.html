@@ -26,16 +26,10 @@
         >
           <div class="demo-card">
             <div class="image-target" #imgTarget>Image Target</div>
-            <ui-context-menu [model]="fileItems" [target]="imgTarget"></ui-context-menu>
+            <dui-context-menu [model]="fileItems" [target]="imgTarget"></dui-context-menu>
 
-            <div
-              class="image-target bg-gradient-pink"
-              #cardTarget
-              
-            >
-              Card Target
-            </div>
-            <ui-context-menu [model]="fileItems" [target]="cardTarget"></ui-context-menu>
+            <div class="image-target bg-gradient-pink" #cardTarget>Card Target</div>
+            <dui-context-menu [model]="fileItems" [target]="cardTarget"></dui-context-menu>
           </div>
         </pg-example-section>
       </div>
@@ -46,4 +40,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

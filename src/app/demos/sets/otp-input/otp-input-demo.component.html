@@ -21,9 +21,9 @@
           [code]="basicCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input label="4-Digit Code" length="4" full-width></ui-otp-input>
-            <ui-otp-input label="6-Digit Code" length="6" full-width></ui-otp-input>
-            <ui-otp-input label="8-Digit Code" length="8" full-width></ui-otp-input>
+            <dui-otp-input label="4-Digit Code" length="4" full-width></dui-otp-input>
+            <dui-otp-input label="6-Digit Code" length="6" full-width></dui-otp-input>
+            <dui-otp-input label="8-Digit Code" length="8" full-width></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -35,10 +35,18 @@
           [code]="variantsCode()"
         >
           <div class="demo-grid col-2">
-            <ui-otp-input variant="default" label="Boxed (Default)" full-width></ui-otp-input>
-            <ui-otp-input variant="underlined" label="Underlined" full-width></ui-otp-input>
-            <ui-otp-input variant="flushed" label="Flushed / Borderless" full-width></ui-otp-input>
-            <ui-otp-input variant="separated" label="Separated (Gapped)" full-width></ui-otp-input>
+            <dui-otp-input variant="default" label="Boxed (Default)" full-width></dui-otp-input>
+            <dui-otp-input variant="underlined" label="Underlined" full-width></dui-otp-input>
+            <dui-otp-input
+              variant="flushed"
+              label="Flushed / Borderless"
+              full-width
+            ></dui-otp-input>
+            <dui-otp-input
+              variant="separated"
+              label="Separated (Gapped)"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -50,9 +58,9 @@
           [code]="sizesCode()"
         >
           <div class="demo-flex-wrap flex-items-end">
-            <ui-otp-input size="small" label="Compact" length="4"></ui-otp-input>
-            <ui-otp-input size="medium" label="Standard" length="4"></ui-otp-input>
-            <ui-otp-input size="large" label="Prominent" length="4"></ui-otp-input>
+            <dui-otp-input size="small" label="Compact" length="4"></dui-otp-input>
+            <dui-otp-input size="medium" label="Standard" length="4"></dui-otp-input>
+            <dui-otp-input size="large" label="Prominent" length="4"></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -64,12 +72,12 @@
           [code]="colorsCode()"
         >
           <div class="demo-grid col-3">
-            <ui-otp-input color="primary" label="Primary" length="4"></ui-otp-input>
-            <ui-otp-input color="secondary" label="Secondary" length="4"></ui-otp-input>
-            <ui-otp-input color="success" label="Success" length="4"></ui-otp-input>
-            <ui-otp-input color="danger" label="Danger" length="4"></ui-otp-input>
-            <ui-otp-input color="warning" label="Warning" length="4"></ui-otp-input>
-            <ui-otp-input color="info" label="Info" length="4"></ui-otp-input>
+            <dui-otp-input color="primary" label="Primary" length="4"></dui-otp-input>
+            <dui-otp-input color="secondary" label="Secondary" length="4"></dui-otp-input>
+            <dui-otp-input color="success" label="Success" length="4"></dui-otp-input>
+            <dui-otp-input color="danger" label="Danger" length="4"></dui-otp-input>
+            <dui-otp-input color="warning" label="Warning" length="4"></dui-otp-input>
+            <dui-otp-input color="info" label="Info" length="4"></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -81,9 +89,24 @@
           [code]="groupingCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input length="6" group-size="3" label="Grouped (3-3)" full-width></ui-otp-input>
-            <ui-otp-input length="8" group-size="2" label="Grouped (2-2-2-2)" full-width></ui-otp-input>
-            <ui-otp-input length="4" group-size="2" label="Grouped (2-2)" full-width></ui-otp-input>
+            <dui-otp-input
+              length="6"
+              group-size="3"
+              label="Grouped (3-3)"
+              full-width
+            ></dui-otp-input>
+            <dui-otp-input
+              length="8"
+              group-size="2"
+              label="Grouped (2-2-2-2)"
+              full-width
+            ></dui-otp-input>
+            <dui-otp-input
+              length="4"
+              group-size="2"
+              label="Grouped (2-2)"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -95,7 +118,7 @@
           [code]="secureCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input secure label="Secure Masked Entry" length="4" full-width></ui-otp-input>
+            <dui-otp-input secure label="Secure Masked Entry" length="4" full-width></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -107,7 +130,12 @@
           [code]="numericCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input type="number" label="Numeric Numbers" length="6" full-width></ui-otp-input>
+            <dui-otp-input
+              type="number"
+              label="Numeric Numbers"
+              length="6"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -119,7 +147,12 @@
           [code]="alphanumericCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input type="alphanumeric" label="Letters & Numbers" length="6" full-width></ui-otp-input>
+            <dui-otp-input
+              type="alphanumeric"
+              label="Letters & Numbers"
+              length="6"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -131,9 +164,9 @@
           [code]="placeholderCode()"
         >
           <div class="demo-grid col-3">
-            <ui-otp-input placeholder="-" label="Dash Hint" length="4"></ui-otp-input>
-            <ui-otp-input placeholder="•" label="Bullet Hint" length="4"></ui-otp-input>
-            <ui-otp-input placeholder="*" label="Star Hint" length="4"></ui-otp-input>
+            <dui-otp-input placeholder="-" label="Dash Hint" length="4"></dui-otp-input>
+            <dui-otp-input placeholder="•" label="Bullet Hint" length="4"></dui-otp-input>
+            <dui-otp-input placeholder="*" label="Star Hint" length="4"></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -145,7 +178,12 @@
           [code]="invalidCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input invalid error-text="The code entered is incorrect" label="Failed Entry" full-width></ui-otp-input>
+            <dui-otp-input
+              invalid
+              error-text="The code entered is incorrect"
+              label="Failed Entry"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -157,7 +195,11 @@
           [code]="feedbackCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input helper-text="Enter the 6-digit code sent to +1 234 *** 78" label="SMS Verification" full-width></ui-otp-input>
+            <dui-otp-input
+              helper-text="Enter the 6-digit code sent to +1 234 *** 78"
+              label="SMS Verification"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -169,8 +211,8 @@
           [code]="behaviorsCode()"
         >
           <div class="demo-grid col-2">
-            <ui-otp-input auto-focus label="Auto-Focused Field" full-width></ui-otp-input>
-            <ui-otp-input auto-submit label="Submits on Completion" full-width></ui-otp-input>
+            <dui-otp-input auto-focus label="Auto-Focused Field" full-width></dui-otp-input>
+            <dui-otp-input auto-submit label="Submits on Completion" full-width></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -182,7 +224,13 @@
           [code]="disabledCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input disabled value="1234" label="Disabled Input" length="4" full-width></ui-otp-input>
+            <dui-otp-input
+              disabled
+              value="1234"
+              label="Disabled Input"
+              length="4"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -194,7 +242,13 @@
           [code]="readonlyCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input readonly value="5678" label="Read-only PIN" length="4" full-width></ui-otp-input>
+            <dui-otp-input
+              readonly
+              value="5678"
+              label="Read-only PIN"
+              length="4"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -206,7 +260,7 @@
           [code]="skeletonCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input skeleton label="Loading Component" length="6" full-width></ui-otp-input>
+            <dui-otp-input skeleton label="Loading Component" length="6" full-width></dui-otp-input>
           </div>
         </pg-example-section>
 
@@ -218,7 +272,12 @@
           [code]="prefilledCode()"
         >
           <div class="demo-grid col-1">
-            <ui-otp-input value="123456" label="Existing Verification PIN" length="6" full-width></ui-otp-input>
+            <dui-otp-input
+              value="123456"
+              label="Existing Verification PIN"
+              length="6"
+              full-width
+            ></dui-otp-input>
           </div>
         </pg-example-section>
       </div>

@@ -166,7 +166,7 @@ export class DmAdvancedDataTablePlaygroundComponent
   }
 
   generateSnippet() {
-    let code = '<ui-advanced-data-table\n';
+    let code = '<dui-advanced-data-table\n';
     code += `  [data]="tableData"\n`;
     code += `  [columns]="tableCols"\n`;
 
@@ -208,7 +208,7 @@ export class DmAdvancedDataTablePlaygroundComponent
     if (this.pgConfig.showActions) code += `  show-actions\n`;
     if (this.pgConfig.columnGrouping) code += `  column-grouping\n`;
 
-    code += '></ui-advanced-data-table>';
+    code += '></dui-advanced-data-table>';
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -239,7 +239,9 @@ export class DmAdvancedDataTablePlaygroundComponent
   }
 
   onCellEdit(event: any) {
-    this.logEvent(`Cell Edited: Row ${event.detail.rowId}, Field ${event.detail.field}, Value: ${event.detail.value}`);
+    this.logEvent(
+      `Cell Edited: Row ${event.detail.rowId}, Field ${event.detail.field}, Value: ${event.detail.value}`,
+    );
   }
 
   onSortChange(event: any) {
@@ -254,6 +256,3 @@ export class DmAdvancedDataTablePlaygroundComponent
     this.logEvent(`Search Query: ${event.detail.query}`);
   }
 }
-
-
-

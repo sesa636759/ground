@@ -48,12 +48,12 @@ export class DmMasonryDemoComponent extends BaseDemoComponent {
     { key: 'Tech', label: 'Technology' },
   ]);
 
-  masonryCode = `<ui-masonry layout-type="masonry" [columns]="3" [items]="items"></ui-masonry>`;
-  gridCode = `<ui-masonry layout-type="grid" [columns]="4" [items]="items"></ui-masonry>`;
-  columnsCode = `<ui-masonry layout-type="columns" [columns]="3" [items]="items"></ui-masonry>`;
-  responsiveCode = `<ui-masonry [breakpoints]='{"640":2, "768":3, "1024":4}' [items]="items"></ui-masonry>`;
-  filteringCode = `<ui-masonry show-filters [filter-options]="options" [items]="items"></ui-masonry>`;
-  selectionCode = `<ui-masonry selectable multi-select show-batch-actions [items]="items"></ui-masonry>`;
-  lightboxCode = `<ui-masonry lightbox [items]="items"></ui-masonry>`;
-  skeletonCode = `<ui-masonry loading-state [columns]="3"></ui-masonry>`;
+  masonryCode = `<dui-masonry layout-type="masonry" [columns]="3" [items]="items"></dui-masonry>`;
+  gridCode = `<dui-masonry layout-type="grid" [columns]="4" [items]="items"></dui-masonry>`;
+  columnsCode = `<dui-masonry layout-type="columns" [columns]="3" [items]="items"></dui-masonry>`;
+  responsiveCode = `<dui-masonry [breakpoints]='{"640":2, "768":3, "1024":4}' [items]="items"></dui-masonry>`;
+  filteringCode = `<dui-masonry show-filters [filter-options]="options" [items]="items"></dui-masonry>`;
+  selectionCode = `<dui-masonry selectable multi-select show-batch-actions [items]="items"></dui-masonry>`;
+  lightboxCode = `<dui-masonry lightbox [items]="items"></dui-masonry>`;
+  skeletonCode = `<dui-masonry loading-state [columns]="3"></dui-masonry>`;
 }

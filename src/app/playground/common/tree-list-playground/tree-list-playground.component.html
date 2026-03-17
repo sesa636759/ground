@@ -7,17 +7,17 @@
   <div slot="content-features" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showIcons"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Icons
       </label>
     </div>
@@ -26,29 +26,24 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.expandAll"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Expand All
       </label>
     </div>
   </div>
 
-  <div
-    preview
-     class="w-full display-flex justify-center items-start p-40"
-  >
-    <div
-       class="w-full max-w-400 bg-surface-1 rounded-12 border p-16"
-    >
-      <ui-tree-list
+  <div preview class="w-full display-flex justify-center items-start p-40">
+    <div class="w-full max-w-400 bg-surface-1 rounded-12 border p-16">
+      <dui-tree-list
         #demoElement
         [attr.selectable]="pgConfig.selectable ? '' : null"
         [model]="modelJson"
         (selectionChange)="onTreeSelection($event)"
       >
-      </ui-tree-list>
+      </dui-tree-list>
     </div>
   </div>
 

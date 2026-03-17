@@ -3,7 +3,7 @@
   <div slot="content-general" class="control-grid empty-general-section">
     <div class="control-group">
       <label>Type</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -18,12 +18,12 @@
           { label: 'Maintenance', value: 'maintenance' },
           { label: 'Custom', value: 'custom' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -34,12 +34,12 @@
           { label: 'Glass', value: 'glass' },
           { label: 'Minimalistic', value: 'minimalistic' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -47,12 +47,12 @@
           { label: 'Medium', value: 'medium' },
           { label: 'Large', value: 'large' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Alignment</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -60,7 +60,7 @@
           { label: 'Center', value: 'center' },
           { label: 'Right', value: 'right' },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
@@ -68,7 +68,7 @@
   <div slot="content-content" class="control-grid empty-content-section">
     <div class="control-group full-width">
       <label>Heading</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.heading"
         (ngModelChange)="updateConfig()"
@@ -90,7 +90,7 @@
 
     <div class="control-group full-width">
       <label>Illustration URL</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.illustration"
         (ngModelChange)="updateConfig()"
@@ -103,11 +103,15 @@
   <div slot="content-actions" class="control-grid empty-actions-section">
     <div class="control-group">
       <label>Primary Action</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.primaryAction" (ngModelChange)="updateConfig()" />
+      <dui-input
+        type="text"
+        [(ngModel)]="pgConfig.primaryAction"
+        (ngModelChange)="updateConfig()"
+      />
     </div>
     <div class="control-group">
       <label>Primary Icon</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.primaryActionIcon"
         (ngModelChange)="updateConfig()"
@@ -116,7 +120,7 @@
 
     <div class="control-group">
       <label>Secondary Action</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.secondaryAction"
         (ngModelChange)="updateConfig()"
@@ -124,20 +128,20 @@
     </div>
     <div class="control-group">
       <label>Secondary Icon</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.secondaryActionIcon"
         (ngModelChange)="updateConfig()"
       />
     </div>
 
-    <div class="checkbox-grid full-width mt-8" >
+    <div class="checkbox-grid full-width mt-8">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
         Show Back Button
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
         Loading State
       </label>
     </div>
@@ -147,22 +151,22 @@
   <div slot="content-visuals" class="control-grid empty-visuals-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
+        <dui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
+        <dui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
+        <dui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
+        <dui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
     </div>
   </div>
 
   <div preview class="empty-preview">
-    <ui-empty-state
+    <dui-empty-state
       #emptyStateElement
       [attr.type]="pgConfig.type"
       [attr.variant]="pgConfig.variant"
@@ -183,7 +187,7 @@
       [attr.loading-action]="pgConfig.loadingAction ? 'primary' : null"
       (actionClick)="onActionClick($event)"
       (backClick)="onBackClick($event)"
-    ></ui-empty-state>
+    ></dui-empty-state>
   </div>
 
   <div events>
@@ -194,13 +198,13 @@
   </div>
 
   @if (showCode) {
-    <ui-code-preview
+    <dui-code-preview
       code
       [htmlCode]="generatedCode()"
       label="Generated Code"
       activeLang="html"
       [expanded]="true"
-    ></ui-code-preview>
+    ></dui-code-preview>
   }
 </pg-playground>
 
@@ -208,7 +212,7 @@
 <div class="empty-variants-section">
   <h3>All Variants & Examples</h3>
   <div class="empty-variants-grid">
-    <ui-empty-state
+    <dui-empty-state
       type="no-data"
       variant="default"
       size="medium"
@@ -216,8 +220,8 @@
       heading="No Data"
       message="No data available."
       rounded
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="no-results"
       variant="outlined"
       size="large"
@@ -225,8 +229,8 @@
       heading="No Results"
       message="Try another search."
       elevated
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="empty-cart"
       variant="filled"
       size="small"
@@ -234,8 +238,8 @@
       heading="Empty Cart"
       message="Your cart is empty."
       compact
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="error"
       variant="glass"
       size="medium"
@@ -243,8 +247,8 @@
       heading="Error"
       message="Something went wrong."
       animated
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="404"
       variant="minimal"
       size="large"
@@ -252,8 +256,8 @@
       heading="404 Not Found"
       message="Page not found."
       show-back-button
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="coming-soon"
       variant="minimalistic"
       size="medium"
@@ -262,8 +266,8 @@
       message="Stay tuned!"
       primary-action="Notify Me"
       primary-action-icon="fas fa-bell"
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="maintenance"
       variant="default"
       size="medium"
@@ -272,8 +276,8 @@
       message="We'll be back soon."
       secondary-action="Learn More"
       secondary-action-icon="fas fa-book"
-    ></ui-empty-state>
-    <ui-empty-state
+    ></dui-empty-state>
+    <dui-empty-state
       type="custom"
       variant="glass"
       size="large"
@@ -281,6 +285,6 @@
       heading="Custom State"
       message="Custom illustration."
       illustration="https://via.placeholder.com/150"
-    ></ui-empty-state>
+    ></dui-empty-state>
   </div>
 </div>

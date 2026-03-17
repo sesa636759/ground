@@ -1,9 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -112,20 +107,22 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
   }
 
   updateConfig() {
-    let code = `<ui-masonry\n`;
+    let code = `<dui-masonry\n`;
     code += `  [items]="items"\n`;
-    if (this.pgConfig.layoutType !== 'masonry') code += `  layout-type="${this.pgConfig.layoutType}"\n`;
+    if (this.pgConfig.layoutType !== 'masonry')
+      code += `  layout-type="${this.pgConfig.layoutType}"\n`;
     if (this.pgConfig.columns !== 3) code += `  [columns]="${this.pgConfig.columns}"\n`;
     if (this.pgConfig.gap !== 16) code += `  [gap]="${this.pgConfig.gap}"\n`;
-    if (this.pgConfig.itemMinWidth !== 200) code += `  [item-min-width]="${this.pgConfig.itemMinWidth}"\n`;
+    if (this.pgConfig.itemMinWidth !== 200)
+      code += `  [item-min-width]="${this.pgConfig.itemMinWidth}"\n`;
     if (this.pgConfig.showFilters) code += `  show-filters\n`;
     if (this.pgConfig.selectable) code += `  selectable\n`;
     if (this.pgConfig.multiSelect) code += `  multi-select\n`;
     if (this.pgConfig.lightbox) code += `  lightbox\n`;
     if (this.pgConfig.infiniteScroll) code += `  infinite-scroll\n`;
     if (this.pgConfig.loadingState) code += `  loading-state\n`;
-    
-    code += `></ui-masonry>`;
+
+    code += `></dui-masonry>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

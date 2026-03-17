@@ -14,27 +14,27 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="skills" >
+          <section class="demo-section mt-0" id="skills">
             <div class="section-header">
               <h2>🌐 Skills Assessment</h2>
               <p>Compare proficiency levels across technical skill categories.</p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
+            <div class="demo-card display-flex justify-center p-24">
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="right"
                 [responsive]="true"
                 [data]="skillsData"
-                 class="w-520 h-380"
+                class="w-520 h-380"
               ></app-chart>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="skillsCode"
               label="Skills Polar Area"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="sales">
@@ -42,22 +42,22 @@
               <h2>🗺️ Sales by Region</h2>
               <p>Visualize regional sales distribution in a polar area format.</p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
+            <div class="demo-card display-flex justify-center p-24">
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="bottom"
                 [responsive]="true"
                 [data]="salesData"
-                 class="w-520 h-380"
+                class="w-520 h-380"
               ></app-chart>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="salesCode"
               label="Sales Polar Area"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -68,4 +68,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

@@ -7,38 +7,64 @@
   <div slot="content-layout" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Direction</label>
-      <ui-dropdown [options]="directionOptions" [(ngModel)]="pgConfig.direction" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <dui-dropdown
+        [options]="directionOptions"
+        [(ngModel)]="pgConfig.direction"
+        (ngModelChange)="updateConfig()"
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Wrap</label>
-      <ui-dropdown [options]="wrapOptions" [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <dui-dropdown
+        [options]="wrapOptions"
+        [(ngModel)]="pgConfig.wrap"
+        (ngModelChange)="updateConfig()"
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Alignment (Cross)</label>
-      <ui-dropdown [options]="alignOptions" [(ngModel)]="pgConfig.align" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <dui-dropdown
+        [options]="alignOptions"
+        [(ngModel)]="pgConfig.align"
+        (ngModelChange)="updateConfig()"
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Justify (Main)</label>
-      <ui-dropdown [options]="justifyOptions" [(ngModel)]="pgConfig.justify" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <dui-dropdown
+        [options]="justifyOptions"
+        [(ngModel)]="pgConfig.justify"
+        (ngModelChange)="updateConfig()"
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Spacing (px/css)</label>
-      <ui-input [(ngModel)]="pgConfig.spacing" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input [(ngModel)]="pgConfig.spacing" (ngModelChange)="updateConfig()"></dui-input>
     </div>
   </div>
 
   <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Divider Style</label>
-      <ui-dropdown [options]="dividerOptions" [(ngModel)]="pgConfig.dividerType" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <dui-dropdown
+        [options]="dividerOptions"
+        [(ngModel)]="pgConfig.dividerType"
+        (ngModelChange)="updateConfig()"
+      ></dui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showDividers" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.showDividers"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Show Dividers
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.overlap" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.overlap"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Overlap Mode
       </label>
     </div>
@@ -47,17 +73,21 @@
   <div slot="content-content" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Max Visible Items</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="number"
+        [(ngModel)]="pgConfig.max"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Total Item Count</label>
-      <ui-input type="number" [(ngModel)]="numBoxes" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input type="number" [(ngModel)]="numBoxes" (ngModelChange)="updateConfig()"></dui-input>
     </div>
   </div>
 
   <div preview>
     <div class="preview-stage p-32 min-h-200 bg-white w-full rounded-8 border border-dashed">
-      <ui-stack
+      <dui-stack
         [attr.direction]="pgConfig.direction"
         [attr.wrap]="pgConfig.wrap"
         [attr.spacing]="pgConfig.spacing"
@@ -71,9 +101,7 @@
         <div *ngFor="let i of boxes" class="box-item">
           {{ i }}
         </div>
-      </ui-stack>
+      </dui-stack>
     </div>
   </div>
 </pg-playground>
-
-

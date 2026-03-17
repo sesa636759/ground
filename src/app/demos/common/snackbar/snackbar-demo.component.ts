@@ -46,15 +46,15 @@ snackbar.add({ type: 'warning', title: 'Warning', message: 'Memory usage is high
 snackbar.add({ type: 'info',    title: 'Info', message: 'You have a new invite.' });`;
 
   positionsCode = `<!-- Six position options -->
-<ui-snackbar position="top-right"></ui-snackbar>
-<ui-snackbar position="top-center"></ui-snackbar>
-<ui-snackbar position="top-left"></ui-snackbar>
-<ui-snackbar position="bottom-right"></ui-snackbar>
-<ui-snackbar position="bottom-center"></ui-snackbar>
-<ui-snackbar position="bottom-left"></ui-snackbar>`;
+<dui-snackbar position="top-right"></dui-snackbar>
+<dui-snackbar position="top-center"></dui-snackbar>
+<dui-snackbar position="top-left"></dui-snackbar>
+<dui-snackbar position="bottom-right"></dui-snackbar>
+<dui-snackbar position="bottom-center"></dui-snackbar>
+<dui-snackbar position="bottom-left"></dui-snackbar>`;
 
   cardStackCode = `<!-- Enable visual stack mode -->
-<ui-snackbar card-stack position="bottom-right" max-visible="5"></ui-snackbar>`;
+<dui-snackbar card-stack position="bottom-right" max-visible="5"></dui-snackbar>`;
 
   async notify(type: string) {
     await this.notifyAt(type, 'top-right');

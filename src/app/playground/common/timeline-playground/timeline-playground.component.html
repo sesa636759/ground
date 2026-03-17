@@ -7,66 +7,60 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="standardOrientationOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Alignment</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
         [options]="alignOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
   <div slot="content-content" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showOpposite"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Opposite Side
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.customMarker"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Custom Markers
       </label>
     </div>
   </div>
 
-  <div
-    preview
-     class="w-full display-flex justify-center items-start p-40"
-  >
-    <div
-      class="timeline-container w-full max-w-600 bg-surface-1 p-24 rounded-12 border"
-      
-    >
-      <ui-timeline
+  <div preview class="w-full display-flex justify-center items-start p-40">
+    <div class="timeline-container w-full max-w-600 bg-surface-1 p-24 rounded-12 border">
+      <dui-timeline
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
         [value]="valueJson"
       >
         <ng-template let-item>
-          <div  class="font-semibold">{{ item.status }}</div>
-          <div  class="fs-085rem text-muted">{{ item.date }}</div>
+          <div class="font-semibold">{{ item.status }}</div>
+          <div class="fs-085rem text-muted">{{ item.date }}</div>
           <div *ngIf="pgConfig.showOpposite" slot="opposite">{{ item.description }}</div>
           <div
             *ngIf="pgConfig.customMarker"
             slot="marker"
             [style.background]="item.color"
-             class="w-12 h-12 rounded-50"
+            class="w-12 h-12 rounded-50"
           ></div>
         </ng-template>
-      </ui-timeline>
+      </dui-timeline>
     </div>
   </div>
 

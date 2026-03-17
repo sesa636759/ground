@@ -36,19 +36,19 @@ export class DmTimelineDemoComponent extends BaseDemoComponent {
     { status: 'Approved', date: 'Oct 5th', color: '#10b981' },
   ];
 
-  playgroundCode = `<ui-timeline [value]="events" align="left">
+  playgroundCode = `<dui-timeline [value]="events" align="left">
   <ng-template let-item>
     <strong>{{ item.status }}</strong>
     <span>{{ item.date }}</span>
   </ng-template>
-</ui-timeline>`;
+</dui-timeline>`;
 
   alignmentsCode = `<!-- Alternating Sides -->
-<ui-timeline align="alternate" [value]="events"></ui-timeline>
+<dui-timeline align="alternate" [value]="events"></dui-timeline>
 
 <!-- Right Aligned -->
-<ui-timeline align="right" [value]="events"></ui-timeline>`;
+<dui-timeline align="right" [value]="events"></dui-timeline>`;
 
   orientationsCode = `<!-- Horizontal Flow -->
-<ui-timeline orientation="horizontal" [value]="events"></ui-timeline>`;
+<dui-timeline orientation="horizontal" [value]="events"></dui-timeline>`;
 }

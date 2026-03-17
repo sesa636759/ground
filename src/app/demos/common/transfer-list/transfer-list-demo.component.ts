@@ -50,68 +50,70 @@ export class DmTransferListDemoComponent extends BaseDemoComponent {
 
   tableColumns = [
     { title: 'Feature', dataIndex: 'label' },
-    { title: 'Description', dataIndex: 'description' }
+    { title: 'Description', dataIndex: 'description' },
   ];
 
   treeData = [
     {
-      key: 'hr', label: 'HR Dept', 
+      key: 'hr',
+      label: 'HR Dept',
       children: [
         { key: 'hr1', label: 'Payroll' },
-        { key: 'hr2', label: 'Recruitment' }
-      ]
+        { key: 'hr2', label: 'Recruitment' },
+      ],
     },
     {
-      key: 'it', label: 'IT Dept',
+      key: 'it',
+      label: 'IT Dept',
       children: [
         { key: 'it1', label: 'Infrastructure' },
-        { key: 'it2', label: 'Security' }
-      ]
-    }
+        { key: 'it2', label: 'Security' },
+      ],
+    },
   ];
 
-  basicCode = signal(`<ui-transfer-list 
+  basicCode = signal(`<dui-transfer-list 
   [source]="sourceItems" 
   [target]="targetItems"
   [titles]="['Available', 'Assigned']"
   searchable
-></ui-transfer-list>`);
+></dui-transfer-list>`);
 
   modesCode = signal(`<!-- Table Mode -->
-<ui-transfer-list 
+<dui-transfer-list 
   mode="table" 
   [columns]="columns" 
   [source]="items"
-></ui-transfer-list>
+></dui-transfer-list>
 
 <!-- Tree Mode -->
-<ui-transfer-list 
+<dui-transfer-list 
   mode="tree" 
   [source]="nestedItems"
-></ui-transfer-list>`);
+></dui-transfer-list>`);
 
-  reorderCode = signal(`<ui-transfer-list 
+  reorderCode = signal(`<dui-transfer-list 
   enable-drag 
   allow-reorder 
   [source]="items"
-></ui-transfer-list>`);
+></dui-transfer-list>`);
 
-  onewayCode = signal(`<ui-transfer-list 
+  onewayCode = signal(`<dui-transfer-list 
   one-way 
   [source]="items" 
   [titles]="['Options', 'Chosen']"
-></ui-transfer-list>`);
+></dui-transfer-list>`);
 
-  paginationCode = signal(`<ui-transfer-list 
+  paginationCode = signal(`<dui-transfer-list 
   pagination 
   [page-size]="5" 
   [source]="manyItems"
-></ui-transfer-list>`);
+></dui-transfer-list>`);
 
-  customRenderCode = signal(`<ui-transfer-list 
+  customRenderCode = signal(`<dui-transfer-list 
   [source]="items" 
   [item-renderer]="myRenderer"
-></ui-transfer-list>
+></dui-transfer-list>
 
 // In Component:
 myRenderer = (item) => \`
@@ -121,16 +123,16 @@ myRenderer = (item) => \`
   </div>
 \`;`);
 
-  filterCode = signal(`<ui-transfer-list 
+  filterCode = signal(`<dui-transfer-list 
   [source]="items" 
   [filter-option]="myFilter"
-></ui-transfer-list>
+></dui-transfer-list>
 
 // In Component:
 myFilter = (input, item) => 
   item.label.includes(input) || item.tag.includes(input);`);
 
-  localeCode = signal(`<ui-transfer-list 
+  localeCode = signal(`<dui-transfer-list 
   [source]="items" 
   [locale]="{
     itemUnit: 'member',
@@ -138,9 +140,9 @@ myFilter = (input, item) =>
     notFoundContent: 'No matches found',
     searchPlaceholder: 'Search team members...'
   }"
-></ui-transfer-list>`);
+></dui-transfer-list>`);
 
-  skeletonCode = signal(`<ui-transfer-list loading></ui-transfer-list>`);
+  skeletonCode = signal(`<dui-transfer-list loading></dui-transfer-list>`);
 
   onTransferChange(event: any) {
     console.log('Transfer event:', event.detail);

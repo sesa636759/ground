@@ -44,54 +44,61 @@ export class DmOtpInputDemoComponent extends BaseDemoComponent {
     { id: 'prefilled', title: 'Initial Values', icon: 'key-round', iconLibrary: 'lucide' },
   ];
 
-  basicCode = signal(`<ui-otp-input label="4-Digit Code" length="4"></ui-otp-input>
-<ui-otp-input label="6-Digit Code" length="6"></ui-otp-input>
-<ui-otp-input label="8-Digit Code" length="8"></ui-otp-input>`);
+  basicCode = signal(`<dui-otp-input label="4-Digit Code" length="4"></dui-otp-input>
+<dui-otp-input label="6-Digit Code" length="6"></dui-otp-input>
+<dui-otp-input label="8-Digit Code" length="8"></dui-otp-input>`);
 
-  variantsCode = signal(`<ui-otp-input variant="default" label="Default"></ui-otp-input>
-<ui-otp-input variant="underlined" label="Underlined"></ui-otp-input>
-<ui-otp-input variant="flushed" label="Flushed"></ui-otp-input>
-<ui-otp-input variant="separated" label="Separated"></ui-otp-input>`);
+  variantsCode = signal(`<dui-otp-input variant="default" label="Default"></dui-otp-input>
+<dui-otp-input variant="underlined" label="Underlined"></dui-otp-input>
+<dui-otp-input variant="flushed" label="Flushed"></dui-otp-input>
+<dui-otp-input variant="separated" label="Separated"></dui-otp-input>`);
 
-  sizesCode = signal(`<ui-otp-input size="small" label="Small"></ui-otp-input>
-<ui-otp-input size="medium" label="Medium"></ui-otp-input>
-<ui-otp-input size="large" label="Large"></ui-otp-input>`);
+  sizesCode = signal(`<dui-otp-input size="small" label="Small"></dui-otp-input>
+<dui-otp-input size="medium" label="Medium"></dui-otp-input>
+<dui-otp-input size="large" label="Large"></dui-otp-input>`);
 
-  colorsCode = signal(`<ui-otp-input color="primary" label="Primary"></ui-otp-input>
-<ui-otp-input color="secondary" label="Secondary"></ui-otp-input>
-<ui-otp-input color="success" label="Success"></ui-otp-input>
-<ui-otp-input color="danger" label="Danger"></ui-otp-input>
-<ui-otp-input color="warning" label="Warning"></ui-otp-input>
-<ui-otp-input color="info" label="Info"></ui-otp-input>`);
+  colorsCode = signal(`<dui-otp-input color="primary" label="Primary"></dui-otp-input>
+<dui-otp-input color="secondary" label="Secondary"></dui-otp-input>
+<dui-otp-input color="success" label="Success"></dui-otp-input>
+<dui-otp-input color="danger" label="Danger"></dui-otp-input>
+<dui-otp-input color="warning" label="Warning"></dui-otp-input>
+<dui-otp-input color="info" label="Info"></dui-otp-input>`);
 
-  groupingCode = signal(`<ui-otp-input length="6" group-size="3" label="Grouped (3-3)"></ui-otp-input>
-<ui-otp-input length="8" group-size="2" label="Grouped (2-2-2-2)"></ui-otp-input>
-<ui-otp-input length="4" group-size="2" label="Grouped (2-2)"></ui-otp-input>`);
+  groupingCode =
+    signal(`<dui-otp-input length="6" group-size="3" label="Grouped (3-3)"></dui-otp-input>
+<dui-otp-input length="8" group-size="2" label="Grouped (2-2-2-2)"></dui-otp-input>
+<dui-otp-input length="4" group-size="2" label="Grouped (2-2)"></dui-otp-input>`);
 
-  secureCode = signal(`<ui-otp-input secure label="Masked Entry" length="4"></ui-otp-input>`);
+  secureCode = signal(`<dui-otp-input secure label="Masked Entry" length="4"></dui-otp-input>`);
 
-  numericCode = signal(`<ui-otp-input type="number" label="Strict Numeric"></ui-otp-input>`);
+  numericCode = signal(`<dui-otp-input type="number" label="Strict Numeric"></dui-otp-input>`);
 
-  alphanumericCode = signal(`<ui-otp-input type="alphanumeric" label="Alphanumeric"></ui-otp-input>`);
+  alphanumericCode = signal(
+    `<dui-otp-input type="alphanumeric" label="Alphanumeric"></dui-otp-input>`,
+  );
 
-  placeholderCode = signal(`<ui-otp-input placeholder="-" label="Dash"></ui-otp-input>
-<ui-otp-input placeholder="•" label="Bullet"></ui-otp-input>
-<ui-otp-input placeholder="*" label="Star"></ui-otp-input>`);
+  placeholderCode = signal(`<dui-otp-input placeholder="-" label="Dash"></dui-otp-input>
+<dui-otp-input placeholder="•" label="Bullet"></dui-otp-input>
+<dui-otp-input placeholder="*" label="Star"></dui-otp-input>`);
 
-  invalidCode = signal(`<ui-otp-input invalid error-text="Verification failed" label="Error State"></ui-otp-input>`);
+  invalidCode = signal(
+    `<dui-otp-input invalid error-text="Verification failed" label="Error State"></dui-otp-input>`,
+  );
 
-  feedbackCode = signal(`<ui-otp-input helper-text="Check your registration email" label="Helper Text"></ui-otp-input>`);
+  feedbackCode = signal(
+    `<dui-otp-input helper-text="Check your registration email" label="Helper Text"></dui-otp-input>`,
+  );
 
-  behaviorsCode = signal(`<ui-otp-input auto-focus label="Auto Focused"></ui-otp-input>
-<ui-otp-input auto-submit label="Auto Submit on Complete"></ui-otp-input>`);
+  behaviorsCode = signal(`<dui-otp-input auto-focus label="Auto Focused"></dui-otp-input>
+<dui-otp-input auto-submit label="Auto Submit on Complete"></dui-otp-input>`);
 
-  disabledCode = signal(`<ui-otp-input disabled value="1234" label="Disabled"></ui-otp-input>`);
+  disabledCode = signal(`<dui-otp-input disabled value="1234" label="Disabled"></dui-otp-input>`);
 
-  readonlyCode = signal(`<ui-otp-input readonly value="5678" label="Read-only"></ui-otp-input>`);
+  readonlyCode = signal(`<dui-otp-input readonly value="5678" label="Read-only"></dui-otp-input>`);
 
-  skeletonCode = signal(`<ui-otp-input skeleton label="Loading..."></ui-otp-input>`);
+  skeletonCode = signal(`<dui-otp-input skeleton label="Loading..."></dui-otp-input>`);
 
-  prefilledCode = signal(`<ui-otp-input value="123456" label="Pre-filled PIN"></ui-otp-input>`);
+  prefilledCode = signal(`<dui-otp-input value="123456" label="Pre-filled PIN"></dui-otp-input>`);
 
   onOtpChange(event: any) {
     console.log('OTP Changed:', event.detail);

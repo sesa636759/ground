@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 export interface ComponentProp {
   name: string;
@@ -42,7 +42,7 @@ export class ComponentDocsService {
         detailedDescription:
           'The Accordion component provides a vertically stacked list of collapsible panels for organizing content. It supports advanced features like search, drag-and-drop, nested structures, persistence, and lazy loading. Perfect for FAQs, settings panels, and hierarchical content.',
         usage: `
-          <ui-accordion [items]="accordionItems"></ui-accordion>
+          <dui-accordion [items]="accordionItems"></dui-accordion>
           
           // Component
           accordionItems = [
@@ -181,30 +181,30 @@ export class ComponentDocsService {
         ],
         examples: [
           `<!-- Search Example -->
-<ui-accordion 
+<dui-accordion 
   [items]="items" 
   enable-search 
   search-placeholder="Search items...">
-</ui-accordion>`,
+</dui-accordion>`,
           `<!-- Drag & Drop with Persistence -->
-<ui-accordion 
+<dui-accordion 
   [items]="items" 
   enable-drag-drop 
   enable-persistence 
   persistence-key="my-accordion-v1"
   (accordionReorder)="handleReorder($event)">
-</ui-accordion>`,
+</dui-accordion>`,
           `<!-- Nested Accordion -->
-<ui-accordion 
+<dui-accordion 
   [items]="nestedItems" 
   enable-nested>
-</ui-accordion>`,
+</dui-accordion>`,
           `<!-- With Actions and Events -->
-<ui-accordion 
+<dui-accordion 
   [items]="items" 
   (accordionAction)="handleAction($event)"
   (afterOpen)="onItemOpen($event)">
-</ui-accordion>`,
+</dui-accordion>`,
         ],
       },
     ],
@@ -216,7 +216,7 @@ export class ComponentDocsService {
         shortDescription: 'Interactive component for triggering actions or navigation',
         detailedDescription:
           'A versatile button component featuring multiple visual styles (primary, secondary, outline, ghost, success, danger, warning, info), flexible sizing from extra small to extra large, and comprehensive state management including loading, disabled, and active states. Supports icons, badges, pill styling, and full-width layouts.',
-        usage: `<ui-button label="Click Me" variant="primary"></ui-button>`,
+        usage: `<dui-button label="Click Me" variant="primary"></dui-button>`,
         props: [
           {
             name: 'label',
@@ -316,10 +316,10 @@ export class ComponentDocsService {
           'Icon-only buttons require explicit aria-label for accessibility',
         ],
         examples: [
-          '<ui-button label="Primary" variant="primary"></ui-button>',
-          '<ui-button label="Loading" loading variant="secondary"></ui-button>',
-          '<ui-button icon="⚙️" label="Settings" icon-position="right"></ui-button>',
-          '<ui-button label="Notifications" icon="🔔" badge="9" variant="warning"></ui-button>',
+          '<dui-button label="Primary" variant="primary"></dui-button>',
+          '<dui-button label="Loading" loading variant="secondary"></dui-button>',
+          '<dui-button icon="⚙️" label="Settings" icon-position="right"></dui-button>',
+          '<dui-button label="Notifications" icon="🔔" badge="9" variant="warning"></dui-button>',
         ],
       },
     ],
@@ -332,7 +332,7 @@ export class ComponentDocsService {
           'Configurable interactive button groups for single and multiple selections',
         detailedDescription:
           'The Button Toggle component (ui-button-toggle-group) handles mutually exclusive (or multiple) choices through an intuitive row of buttons. It supports segmented controls, animated gliding indicators, split buttons, comprehensive custom styling, dropdown modes, and custom slots.',
-        usage: `<ui-button-toggle-group
+        usage: `<dui-button-toggle-group
   mode="segmented"
   value="list"
   color="primary"
@@ -340,7 +340,7 @@ export class ComponentDocsService {
     { value: 'list', label: 'List', icon: 'fas fa-list' },
     { value: 'grid', label: 'Grid', icon: 'fas fa-th' }
   ]"
-></ui-button-toggle-group>`,
+></dui-button-toggle-group>`,
         props: [
           {
             name: 'value',
@@ -434,8 +434,8 @@ export class ComponentDocsService {
           'Responsive collapsing into dropdowns must be handled manually or by using mode="dropdown".',
         ],
         examples: [
-          `<ui-button-toggle-group mode="segmented" value="list" color="primary" [options]="viewOptions"></ui-button-toggle-group>`,
-          `<ui-button-toggle-group value="option2" color="success" variant="soft" [options]="basicOptions"></ui-button-toggle-group>`,
+          `<dui-button-toggle-group mode="segmented" value="list" color="primary" [options]="viewOptions"></dui-button-toggle-group>`,
+          `<dui-button-toggle-group value="option2" color="success" variant="soft" [options]="basicOptions"></dui-button-toggle-group>`,
         ],
       },
     ],
@@ -448,13 +448,13 @@ export class ComponentDocsService {
         detailedDescription:
           'The Card component is used to group related content together. It provides a clean container with optional header, footer, and shadow effects. Supports elevation levels and hover effects.',
         usage: `
-          <ui-card>
-            <ui-card-header>Card Title</ui-card-header>
-            <ui-card-content>
+          <dui-card>
+            <div slot="header">Card Title</div>
+            <div slot="content">
               Card content goes here
-            </ui-card-content>
-            <ui-card-footer>Card footer</ui-card-footer>
-          </ui-card>
+            </div>
+            <div slot="footer">Card footer</div>
+          </dui-card>
         `,
         props: [
           {
@@ -504,12 +504,12 @@ export class ComponentDocsService {
         detailedDescription:
           'The Input component provides a user-friendly text input field with support for validation, error messages, labels, placeholders, and various input types. It integrates with Angular forms and includes accessibility features.',
         usage: `
-          <ui-input 
+          <dui-input 
             placeholder="Enter text"
             [(ngModel)]="inputValue"
             [error]="isInvalid"
             errorMessage="Invalid input">
-          </ui-input>
+          </dui-input>
         `,
         props: [
           {
@@ -584,16 +584,16 @@ export class ComponentDocsService {
         detailedDescription:
           'The Dialog component displays content in a modal overlay. It can be used for confirmations, forms, alerts, or complex interactions. Supports custom sizes, animation, and backdrop interaction control.',
         usage: `
-          <ui-dialog 
+          <dui-dialog 
             [open]="isDialogOpen"
             title="Confirm Action"
             (close)="closeDialog()">
             <p>Are you sure you want to proceed?</p>
-            <ui-dialog-footer>
-              <ui-button (click)="closeDialog()">Cancel</ui-button>
-              <ui-button variant="primary" (click)="confirm()">Confirm</ui-button>
-            </ui-dialog-footer>
-          </ui-dialog>
+            <dui-dialog-footer>
+              <dui-button (click)="closeDialog()">Cancel</dui-button>
+              <dui-button variant="primary" (click)="confirm()">Confirm</dui-button>
+            </dui-dialog-footer>
+          </dui-dialog>
         `,
         props: [
           {
@@ -652,7 +652,7 @@ export class ComponentDocsService {
         shortDescription: 'Selection control for binary or multiple choices',
         detailedDescription:
           'Versatile checkbox component with color variants (primary, secondary, success, danger, warning, info), premium styles (button, chip), multiple sizes, shape variants (default, rounded, square), indeterminate state support, validation states, helper text, and skeleton loading states.',
-        usage: `<ui-checkbox label="Accept terms" checked></ui-checkbox>`,
+        usage: `<dui-checkbox label="Accept terms" checked></dui-checkbox>`,
         props: [
           {
             name: 'label',
@@ -766,10 +766,10 @@ export class ComponentDocsService {
           'Button and chip variants work best in groups',
         ],
         examples: [
-          '<ui-checkbox label="Subscribe" color="primary" checked></ui-checkbox>',
-          '<ui-checkbox label="Frontend" variant="button" color="info"></ui-checkbox>',
-          '<ui-checkbox label="React" variant="chip" color="success" checked></ui-checkbox>',
-          '<ui-checkbox label="Agree to terms" required invalid error-message="Required field"></ui-checkbox>',
+          '<dui-checkbox label="Subscribe" color="primary" checked></dui-checkbox>',
+          '<dui-checkbox label="Frontend" variant="button" color="info"></dui-checkbox>',
+          '<dui-checkbox label="React" variant="chip" color="success" checked></dui-checkbox>',
+          '<dui-checkbox label="Agree to terms" required invalid error-message="Required field"></dui-checkbox>',
         ],
       },
     ],
@@ -782,7 +782,7 @@ export class ComponentDocsService {
           'Flexible radio group component for selecting a single option from a list',
         detailedDescription:
           'A robust radio group and radio component implementation supporting multiple visual styles (default, bordered, underlined, card), layouts (vertical, horizontal, grid), button group modes, color variations, validation states, and detailed option configuration (icons, badges, descriptions).',
-        usage: `<ui-radio-group
+        usage: `<dui-radio-group
   name="payment-method"
   [(ngModel)]="payment"
   variant="card"
@@ -792,7 +792,7 @@ export class ComponentDocsService {
     { value: 'card', label: 'Credit Card', icon: 'fas fa-credit-card' },
     { value: 'paypal', label: 'PayPal', icon: 'fab fa-paypal' }
   ]"
-></ui-radio-group>`,
+></dui-radio-group>`,
         props: [
           {
             name: 'name',
@@ -954,13 +954,13 @@ export class ComponentDocsService {
           },
         ],
         limitations: [
-          'If you use [options] property instead of slotting child <ui-radio> tags, custom HTML projections inside items are not directly supported.',
+          'If you use [options] property instead of slotting child <dui-radio> tags, custom HTML projections inside items are not directly supported.',
           'Button Group layout relies on HTML flexbox behaviors, and may not play nice with external grid systems if not wrapped correctly.',
         ],
         examples: [
-          `<ui-radio-group layout="horizontal" [options]="basicOptions"></ui-radio-group>`,
-          `<ui-radio-group variant="card" layout="grid" columns="2" [options]="planOptions"></ui-radio-group>`,
-          `<ui-radio-group button-group="true" color="danger">\n  <ui-radio value="yes" label="Yes"></ui-radio>\n  <ui-radio value="no" label="No"></ui-radio>\n</ui-radio-group>`,
+          `<dui-radio-group layout="horizontal" [options]="basicOptions"></dui-radio-group>`,
+          `<dui-radio-group variant="card" layout="grid" columns="2" [options]="planOptions"></dui-radio-group>`,
+          `<dui-radio-group button-group="true" color="danger">\n  <dui-radio value="yes" label="Yes"></dui-radio>\n  <dui-radio value="no" label="No"></dui-radio>\n</dui-radio-group>`,
         ],
       },
     ],
@@ -1079,7 +1079,7 @@ export class ComponentDocsService {
         shortDescription: 'Display user profiles or entities with multiple shapes and indicators',
         detailedDescription:
           'Versatile avatar component supporting multiple shapes (circle, square, hexagon, squircle), content types (image, initials, text, icons), status indicators (online, away, busy, offline), badge overlays for notifications, and avatar groups with overflow management.',
-        usage: `<ui-avatar name="John Doe" size="64px"></ui-avatar>`,
+        usage: `<dui-avatar name="John Doe" size="64px"></dui-avatar>`,
         props: [
           {
             name: 'name',
@@ -1158,9 +1158,9 @@ export class ComponentDocsService {
           'Status indicators have fixed positions',
         ],
         examples: [
-          '<ui-avatar src="https://i.pravatar.cc/150" name="User" size="64px"></ui-avatar>',
-          '<ui-avatar name="John Doe" status="online" size="64px"></ui-avatar>',
-          '<ui-avatar icon="⭐" shape="hexagon" size="64px"></ui-avatar>',
+          '<dui-avatar src="https://i.pravatar.cc/150" name="User" size="64px"></dui-avatar>',
+          '<dui-avatar name="John Doe" status="online" size="64px"></dui-avatar>',
+          '<dui-avatar icon="⭐" shape="hexagon" size="64px"></dui-avatar>',
         ],
       },
     ],
@@ -1172,7 +1172,7 @@ export class ComponentDocsService {
         shortDescription: 'Small status indicator for numerical values or notifications',
         detailedDescription:
           'Compact badge component for displaying counts, status updates, or highlighting UI elements. Supports semantic colors (primary, success, warning, danger, info), visual variants (standard, soft, outlined, dot), flexible positioning, value caps, pulse animations, glow effects, and icon support.',
-        usage: `<ui-badge value="5" color="danger"><div>Icon</div></ui-badge>`,
+        usage: `<dui-badge value="5" color="danger"><div>Icon</div></dui-badge>`,
         props: [
           {
             name: 'value',
@@ -1237,9 +1237,9 @@ export class ComponentDocsService {
           'Dot variant ignores value prop',
         ],
         examples: [
-          '<ui-badge value="1" color="primary"><div class="icon">👤</div></ui-badge>',
-          '<ui-badge value="999" max="99" color="danger"><div class="icon">📧</div></ui-badge>',
-          '<ui-badge dot color="success"><div class="icon">🟢</div></ui-badge>',
+          '<dui-badge value="1" color="primary"><div class="icon">👤</div></dui-badge>',
+          '<dui-badge value="999" max="99" color="danger"><div class="icon">📧</div></dui-badge>',
+          '<dui-badge dot color="success"><div class="icon">🟢</div></dui-badge>',
         ],
       },
     ],
@@ -1251,7 +1251,7 @@ export class ComponentDocsService {
         shortDescription: 'Compact element for tags, filters, or attributes',
         detailedDescription:
           'Versatile chip component for representing input, attributes, selections, or actions. Supports style variants (filled, outlined, soft, gradient, text), shapes (pill, rounded, square, circle), sizes, avatars, icons, badges, counters, interactive states (clickable, removable, selected), loading states, and disabled states.',
-        usage: `<ui-chip label="JavaScript" icon="js" color="warning"></ui-chip>`,
+        usage: `<dui-chip label="JavaScript" icon="js" color="warning"></dui-chip>`,
         props: [
           {
             name: 'label',
@@ -1343,9 +1343,9 @@ export class ComponentDocsService {
           'Avatar and icon props are mutually exclusive',
         ],
         examples: [
-          '<ui-chip label="Filled" variant="filled" color="primary"></ui-chip>',
-          '<ui-chip label="Vue.js" icon="🟢" color="success"></ui-chip>',
-          '<ui-chip label="Removable" removable variant="soft" color="danger"></ui-chip>',
+          '<dui-chip label="Filled" variant="filled" color="primary"></dui-chip>',
+          '<dui-chip label="Vue.js" icon="🟢" color="success"></dui-chip>',
+          '<dui-chip label="Removable" removable variant="soft" color="danger"></dui-chip>',
         ],
       },
     ],
@@ -1357,7 +1357,7 @@ export class ComponentDocsService {
         shortDescription: 'Selection component with search and hierarchy support',
         detailedDescription:
           'Robust dropdown selector supporting single and multi-select modes, searchable filtering, hierarchical cascading data structures, size variants, placeholder text, disabled state, and screen-reader optimizations. Perfect for complex selection scenarios.',
-        usage: `<ui-dropdown [options]="options" placeholder="Select option"></ui-dropdown>`,
+        usage: `<dui-dropdown [options]="options" placeholder="Select option"></dui-dropdown>`,
         props: [
           {
             name: 'options',
@@ -1428,9 +1428,9 @@ export class ComponentDocsService {
           'Multi-select shows checkboxes automatically',
         ],
         examples: [
-          '<ui-dropdown [options]="basicOptions" placeholder="Select item"></ui-dropdown>',
-          '<ui-dropdown multi-select [options]="options" placeholder="Select multiple"></ui-dropdown>',
-          '<ui-dropdown cascading [options]="cascadingOptions" placeholder="Explore"></ui-dropdown>',
+          '<dui-dropdown [options]="basicOptions" placeholder="Select item"></dui-dropdown>',
+          '<dui-dropdown multi-select [options]="options" placeholder="Select multiple"></dui-dropdown>',
+          '<dui-dropdown cascading [options]="cascadingOptions" placeholder="Explore"></dui-dropdown>',
         ],
       },
     ],
@@ -1442,9 +1442,9 @@ export class ComponentDocsService {
         shortDescription: 'Contextual information overlay on hover or focus',
         detailedDescription:
           'Rich tooltip component with 8 positioning options (top, bottom, left, right, and corners), multiple variants (dark, light, glass, success, warning, error), shape options (default, pill), animations (fade, bounce, scale), and trigger customization. Perfect for providing contextual help and additional information.',
-        usage: `<ui-tooltip content="Helpful text" position="top">
-  <ui-button slot="target" label="Hover Me"></ui-button>
-</ui-tooltip>`,
+        usage: `<dui-tooltip content="Helpful text" position="top">
+  <dui-button slot="target" label="Hover Me"></dui-button>
+</dui-tooltip>`,
         props: [
           {
             name: 'content',
@@ -1508,9 +1508,9 @@ export class ComponentDocsService {
           'Glass variant needs background context',
         ],
         examples: [
-          '<ui-tooltip content="Dark Theme" variant="dark"><ui-button label="Dark"></ui-button></ui-tooltip>',
-          '<ui-tooltip content="Light Theme" variant="light"><ui-button label="Light"></ui-button></ui-tooltip>',
-          '<ui-tooltip content="Glass Effect" variant="glass"><ui-button label="Glass"></ui-button></ui-tooltip>',
+          '<dui-tooltip content="Dark Theme" variant="dark"><dui-button label="Dark"></dui-button></dui-tooltip>',
+          '<dui-tooltip content="Light Theme" variant="light"><dui-button label="Light"></dui-button></dui-tooltip>',
+          '<dui-tooltip content="Glass Effect" variant="glass"><dui-button label="Glass"></dui-button></dui-tooltip>',
         ],
       },
     ],
@@ -1522,7 +1522,7 @@ export class ComponentDocsService {
         shortDescription: 'Multi-step workflow with progress indication',
         detailedDescription:
           'Guide users through multi-step processes with clear visual feedback. Supports horizontal and vertical orientations, linear and non-linear flows, progress dots or numbered indicators, validation states (completed, error, warning), step descriptions, navigation controls, and customizable styling.',
-        usage: `<ui-stepper [steps]="steps" active-step="1" orientation="horizontal"></ui-stepper>`,
+        usage: `<dui-stepper [steps]="steps" active-step="1" orientation="horizontal"></dui-stepper>`,
         props: [
           {
             name: 'steps',
@@ -1593,9 +1593,9 @@ export class ComponentDocsService {
           'Non-linear flow allows skipping validation',
         ],
         examples: [
-          '<ui-stepper orientation="horizontal" [steps]="steps" active-step="1"></ui-stepper>',
-          '<ui-stepper orientation="vertical" [steps]="steps" active-step="1" show-descriptions></ui-stepper>',
-          '<ui-stepper progress-dot [steps]="steps" active-step="1"></ui-stepper>',
+          '<dui-stepper orientation="horizontal" [steps]="steps" active-step="1"></dui-stepper>',
+          '<dui-stepper orientation="vertical" [steps]="steps" active-step="1" show-descriptions></dui-stepper>',
+          '<dui-stepper progress-dot [steps]="steps" active-step="1"></dui-stepper>',
         ],
       },
     ],
@@ -1607,7 +1607,7 @@ export class ComponentDocsService {
         shortDescription: 'Visual indicator for task completion or loading',
         detailedDescription:
           'Comprehensive progress component supporting line, circle, and dashboard types. Features status states (active, success, exception), buffer support, multiple stacked bars, time estimation, milestone markers, and premium visual effects.',
-        usage: `<ui-progress [percent]="70" status="active"></ui-progress>`,
+        usage: `<dui-progress [percent]="70" status="active"></dui-progress>`,
         props: [
           {
             name: 'percent',
@@ -1781,10 +1781,10 @@ export class ComponentDocsService {
           'MultiProgress overrides the primary percent property',
         ],
         examples: [
-          '<ui-progress [percent]="30"></ui-progress>',
-          '<ui-progress type="circle" [percent]="75" size="small"></ui-progress>',
-          '<ui-progress [multiProgress]="[{percent: 20, color: \'#f50\'}, {percent: 30}]"></ui-progress>',
-          '<ui-progress [percent]="50" [buffer]="80" [showBuffer]="true"></ui-progress>',
+          '<dui-progress [percent]="30"></dui-progress>',
+          '<dui-progress type="circle" [percent]="75" size="small"></dui-progress>',
+          '<dui-progress [multiProgress]="[{percent: 20, color: \'#f50\'}, {percent: 30}]"></dui-progress>',
+          '<dui-progress [percent]="50" [buffer]="80" [showBuffer]="true"></dui-progress>',
         ],
       },
     ],
@@ -1797,7 +1797,7 @@ export class ComponentDocsService {
         shortDescription: 'Segmented control with gliding indicator animation',
         detailedDescription:
           'Premium toggle button group with smooth gliding pill indicator, avatar support, status indicators, multiple color variants, style variants (filled, outlined, text, soft, classic, solid, surface), and support for both horizontal and vertical orientations. Perfect for modern segmented controls.',
-        usage: `<ui-button-toggle-group value="option1" color="primary" [attr.options]="jsonOptions(options)"></ui-button-toggle-group>`,
+        usage: `<dui-button-toggle-group value="option1" color="primary" [attr.options]="jsonOptions(options)"></dui-button-toggle-group>`,
         props: [
           {
             name: 'value',
@@ -1855,9 +1855,9 @@ export class ComponentDocsService {
           'Avatar options require avatar URLs in data',
         ],
         examples: [
-          '<ui-button-toggle-group value="day" color="info" variant="soft" [attr.options]="timeOptions"></ui-button-toggle-group>',
-          '<ui-button-toggle-group value="user1" color="primary" [attr.options]="avatarOptions"></ui-button-toggle-group>',
-          '<ui-button-toggle-group value="high" color="danger" orientation="vertical" [attr.options]="priorityOptions"></ui-button-toggle-group>',
+          '<dui-button-toggle-group value="day" color="info" variant="soft" [attr.options]="timeOptions"></dui-button-toggle-group>',
+          '<dui-button-toggle-group value="user1" color="primary" [attr.options]="avatarOptions"></dui-button-toggle-group>',
+          '<dui-button-toggle-group value="high" color="danger" orientation="vertical" [attr.options]="priorityOptions"></dui-button-toggle-group>',
         ],
       },
     ],
@@ -1869,7 +1869,7 @@ export class ComponentDocsService {
         shortDescription: 'Navigation aid showing hierarchical location',
         detailedDescription:
           'Essential navigation component for displaying user location within hierarchical structures. Features custom separators (characters or icons), smart collapsing with ellipsis dropdowns for deep paths, visual variants (standard, pills, glass), home icon option, and configurable max items display.',
-        usage: `<ui-breadcrumb [items]="items" separator=">>"></ui-breadcrumb>`,
+        usage: `<dui-breadcrumb [items]="items" separator=">>"></dui-breadcrumb>`,
         props: [
           {
             name: 'items',
@@ -1927,9 +1927,9 @@ export class ComponentDocsService {
           'Collapsed items shown in dropdown on ellipsis click',
         ],
         examples: [
-          '<ui-breadcrumb [items]="items" separator=">>"></ui-breadcrumb>',
-          '<ui-breadcrumb [items]="collapsibleItems" max-items="4"></ui-breadcrumb>',
-          '<ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>',
+          '<dui-breadcrumb [items]="items" separator=">>"></dui-breadcrumb>',
+          '<dui-breadcrumb [items]="collapsibleItems" max-items="4"></dui-breadcrumb>',
+          '<dui-breadcrumb [items]="items" variant="pills" show-home></dui-breadcrumb>',
         ],
       },
     ],
@@ -1941,7 +1941,7 @@ export class ComponentDocsService {
         shortDescription: 'Navigate through paginated data sets',
         detailedDescription:
           'Flexible pagination component for breaking large datasets into manageable pages. Features visual variants (modern, compact), configurable controls (jump to first/last, page info report), customizable rows per page, and total record tracking.',
-        usage: `<ui-pagination [total-records]="100" [rows]="10" show-report></ui-pagination>`,
+        usage: `<dui-pagination [total-records]="100" [rows]="10" show-report></dui-pagination>`,
         props: [
           {
             name: 'total-records',
@@ -1998,9 +1998,9 @@ export class ComponentDocsService {
           'Compact variant may hide some controls on mobile',
         ],
         examples: [
-          '<ui-pagination variant="modern" [total-records]="50" [rows]="10" show-report></ui-pagination>',
-          '<ui-pagination variant="compact" [total-records]="100" [rows]="10"></ui-pagination>',
-          '<ui-pagination [show-jump-controls]="false" [total-records]="100" [rows]="10"></ui-pagination>',
+          '<dui-pagination variant="modern" [total-records]="50" [rows]="10" show-report></dui-pagination>',
+          '<dui-pagination variant="compact" [total-records]="100" [rows]="10"></dui-pagination>',
+          '<dui-pagination [show-jump-controls]="false" [total-records]="100" [rows]="10"></dui-pagination>',
         ],
       },
     ],
@@ -2012,9 +2012,9 @@ export class ComponentDocsService {
         shortDescription: 'Rich content overlay triggered by target element',
         detailedDescription:
           'Flexible popover component for displaying complex content or interactive elements. Supports multiple triggers (click, hover, focus), smart positioning with collision detection (top, bottom, left, right), visual themes (light, dark, glass), backdrop dimming, close button, and customizable content.',
-        usage: `<ui-popover trigger="click" heading="Title" content="Description">
-  <ui-button slot="target" label="Click Me"></ui-button>
-</ui-popover>`,
+        usage: `<dui-popover trigger="click" heading="Title" content="Description">
+  <dui-button slot="target" label="Click Me"></dui-button>
+</dui-popover>`,
         props: [
           {
             name: 'trigger',
@@ -2085,9 +2085,9 @@ export class ComponentDocsService {
           'Hover trigger may conflict with touch devices',
         ],
         examples: [
-          '<ui-popover trigger="click" heading="Info" content="Details"><ui-button label="Click"></ui-button></ui-popover>',
-          '<ui-popover trigger="hover" content="Quick info"><ui-button label="Hover"></ui-button></ui-popover>',
-          '<ui-popover variant="dark" heading="Dark" content="Content"><ui-button label="Dark"></ui-button></ui-popover>',
+          '<dui-popover trigger="click" heading="Info" content="Details"><dui-button label="Click"></dui-button></dui-popover>',
+          '<dui-popover trigger="hover" content="Quick info"><dui-button label="Hover"></dui-button></dui-popover>',
+          '<dui-popover variant="dark" heading="Dark" content="Content"><dui-button label="Dark"></dui-button></dui-popover>',
         ],
       },
     ],
@@ -2099,7 +2099,7 @@ export class ComponentDocsService {
         shortDescription: 'Interactive feedback component with multiple visual metaphors',
         detailedDescription:
           'Intuitive rating component supporting multiple visual types (star, smiley, thumb), color themes, sizes (sm, md, lg), custom descriptive labels for each rating level, value display, and readonly mode. Perfect for collecting user feedback or displaying evaluations.',
-        usage: `<ui-rating type="star" [value]="4"></ui-rating>`,
+        usage: `<dui-rating type="star" [value]="4"></dui-rating>`,
         props: [
           {
             name: 'type',
@@ -2171,9 +2171,9 @@ export class ComponentDocsService {
           'Labels array should match max value',
         ],
         examples: [
-          '<ui-rating type="star" [value]="4" color="warning"></ui-rating>',
-          '<ui-rating type="smiley" [value]="4" size="lg"></ui-rating>',
-          '<ui-rating type="thumb" [value]="1" color="success"></ui-rating>',
+          '<dui-rating type="star" [value]="4" color="warning"></dui-rating>',
+          '<dui-rating type="smiley" [value]="4" size="lg"></dui-rating>',
+          '<dui-rating type="thumb" [value]="1" color="success"></dui-rating>',
         ],
       },
     ],
@@ -2185,7 +2185,7 @@ export class ComponentDocsService {
         shortDescription: 'Toggle control for binary state changes',
         detailedDescription:
           'Modern toggle switch component for immediate binary actions. Features color variants (primary, success, warning, danger, info, secondary), sizes (xs, sm, md, lg, xl), icon support (custom on/off icons or default checkmarks), loading state, shape variants (rounded, pill), label positioning, and required field indicators.',
-        usage: `<ui-switch label="Dark Mode" checked></ui-switch>`,
+        usage: `<dui-switch label="Dark Mode" checked></dui-switch>`,
         props: [
           {
             name: 'label',
@@ -2285,9 +2285,9 @@ export class ComponentDocsService {
           'Icons work best with small emoji or icon fonts',
         ],
         examples: [
-          '<ui-switch label="Primary" variant="primary" checked></ui-switch>',
-          '<ui-switch label="Dark Mode" icon-on="🌙" icon-off="☀️" checked></ui-switch>',
-          '<ui-switch label="Sound" icon-on="🔊" icon-off="🔇" checked variant="info"></ui-switch>',
+          '<dui-switch label="Primary" variant="primary" checked></dui-switch>',
+          '<dui-switch label="Dark Mode" icon-on="🌙" icon-off="☀️" checked></dui-switch>',
+          '<dui-switch label="Sound" icon-on="🔊" icon-off="🔇" checked variant="info"></dui-switch>',
         ],
       },
     ],
@@ -2299,7 +2299,7 @@ export class ComponentDocsService {
         shortDescription: 'Visual label for categorization and status',
         detailedDescription:
           'Compact tag component for labeling and categorization. Supports severity levels (info, success, warning, danger) for status indication, size variants (default, large), rounded styling, and icon support. Perfect for status badges, category labels, and metadata display.',
-        usage: `<ui-tag severity="info" value="Information"></ui-tag>`,
+        usage: `<dui-tag severity="info" value="Information"></dui-tag>`,
         props: [
           {
             name: 'value',
@@ -2347,10 +2347,10 @@ export class ComponentDocsService {
         ],
         limitations: ['Severity determines color automatically', 'Icons appear before text'],
         examples: [
-          '<ui-tag severity="info" value="Information"></ui-tag>',
-          '<ui-tag severity="success" value="Completed"></ui-tag>',
-          '<ui-tag severity="warning" value="Pending"></ui-tag>',
-          '<ui-tag severity="danger" value="Error" icon="⚠"></ui-tag>',
+          '<dui-tag severity="info" value="Information"></dui-tag>',
+          '<dui-tag severity="success" value="Completed"></dui-tag>',
+          '<dui-tag severity="warning" value="Pending"></dui-tag>',
+          '<dui-tag severity="danger" value="Error" icon="⚠"></dui-tag>',
         ],
       },
     ],
@@ -2362,11 +2362,11 @@ export class ComponentDocsService {
         shortDescription: 'Chronological visualization of events',
         detailedDescription:
           'Display a series of events in chronological order with flexible layouts. Supports horizontal and vertical orientations, alternating or left/right content alignment, custom markers (colors, icons, images), opposite slot for timestamps or metadata, and templated content areas.',
-        usage: `<ui-timeline align="alternate" [value]="events">
+        usage: `<dui-timeline align="alternate" [value]="events">
   <ng-template let-item>
     <div>{{ item.status }}</div>
   </ng-template>
-</ui-timeline>`,
+</dui-timeline>`,
         props: [
           {
             name: 'value',
@@ -2410,8 +2410,8 @@ export class ComponentDocsService {
           'Alternating alignment only works in vertical mode',
         ],
         examples: [
-          '<ui-timeline align="alternate" [value]="events"><ng-template let-item><div>{{ item.status }}</div></ng-template></ui-timeline>',
-          '<ui-timeline orientation="horizontal" [value]="events"><ng-template let-item><div>{{ item.status }}</div></ng-template></ui-timeline>',
+          '<dui-timeline align="alternate" [value]="events"><ng-template let-item><div>{{ item.status }}</div></ng-template></dui-timeline>',
+          '<dui-timeline orientation="horizontal" [value]="events"><ng-template let-item><div>{{ item.status }}</div></ng-template></dui-timeline>',
         ],
       },
     ],
@@ -2521,10 +2521,10 @@ export class ComponentDocsService {
         shortDescription: 'Interactive slideshow for cycling through content',
         detailedDescription:
           'Versatile carousel component for displaying images, cards, or custom content. Features multiple transition effects (slide, fade), center mode with partial visibility, responsive multi-slide display, infinite loop, autoplay with configurable intervals, navigation arrows, indicators (dots), and touch/swipe support.',
-        usage: `<ui-carousel autoplay="true" show-progress="true">
+        usage: `<dui-carousel autoplay="true" show-progress="true">
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
-</ui-carousel>`,
+</dui-carousel>`,
         props: [
           {
             name: 'effect',
@@ -2609,8 +2609,8 @@ export class ComponentDocsService {
           'Autoplay pauses on user interaction',
         ],
         examples: [
-          '<ui-carousel effect="fade" autoplay="true" autoplay-interval="4000"><div class="slide">1</div></ui-carousel>',
-          '<ui-carousel center-mode="true" slides-to-show="1" center-padding="20%"><div class="slide">1</div></ui-carousel>',
+          '<dui-carousel effect="fade" autoplay="true" autoplay-interval="4000"><div class="slide">1</div></dui-carousel>',
+          '<dui-carousel center-mode="true" slides-to-show="1" center-padding="20%"><div class="slide">1</div></dui-carousel>',
         ],
       },
     ],
@@ -2622,7 +2622,7 @@ export class ComponentDocsService {
         shortDescription: 'Single selection from a group of options',
         detailedDescription:
           'Flexible radio button component with premium variants (card, bordered, underlined), button group styling, multiple layouts (vertical, horizontal, grid), color themes, size options, state management (disabled, readonly, error), helper text, skeleton loading, and both options array or slotted children support.',
-        usage: `<ui-radio-group name="choice" [options]="options" value="option1"></ui-radio-group>`,
+        usage: `<dui-radio-group name="choice" [options]="options" value="option1"></dui-radio-group>`,
         props: [
           {
             name: 'name',
@@ -2702,9 +2702,9 @@ export class ComponentDocsService {
           'Button group requires layout horizontal or vertical',
         ],
         examples: [
-          '<ui-radio-group name="size" value="medium" [options]="sizeOptions"></ui-radio-group>',
-          '<ui-radio-group name="plan" variant="card" layout="grid" columns="2" [options]="planOptions"></ui-radio-group>',
-          '<ui-radio-group name="priority" button-group layout="horizontal" value="medium" [options]="priorityOptions"></ui-radio-group>',
+          '<dui-radio-group name="size" value="medium" [options]="sizeOptions"></dui-radio-group>',
+          '<dui-radio-group name="plan" variant="card" layout="grid" columns="2" [options]="planOptions"></dui-radio-group>',
+          '<dui-radio-group name="priority" button-group layout="horizontal" value="medium" [options]="priorityOptions"></dui-radio-group>',
         ],
       },
     ],
@@ -2999,7 +2999,7 @@ export class ComponentDocsService {
         shortDescription: 'Circular charts for proportional data — pie, doughnut and polar area',
         detailedDescription:
           'Powered by Chart.js, the Pie Chart component renders pie, doughnut, and polar area variants from a single API. Ideal for showing part-to-whole relationships with up to 6 segments.',
-        usage: `<ui-app-chart chartType="pie" showLegend="true" [data]="chartData"></ui-app-chart>`,
+        usage: `<dui-app-chart chartType="pie" showLegend="true" [data]="chartData"></dui-app-chart>`,
         props: [
           {
             name: 'chartType',
@@ -3055,8 +3055,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Maximum 6 segments recommended for readability', 'Requires Chart.js'],
         examples: [
-          '<ui-app-chart chartType="pie" showLegend="true" legendPosition="right" [data]="salesData"></ui-app-chart>',
-          '<ui-app-chart chartType="doughnut" showLegend="true" [data]="budgetData" [options]="{ cutout: \'60%\' }"></ui-app-chart>',
+          '<dui-app-chart chartType="pie" showLegend="true" legendPosition="right" [data]="salesData"></dui-app-chart>',
+          '<dui-app-chart chartType="doughnut" showLegend="true" [data]="budgetData" [options]="{ cutout: \'60%\' }"></dui-app-chart>',
         ],
       },
     ],
@@ -3386,7 +3386,7 @@ export class ComponentDocsService {
         shortDescription: 'Advanced code editor with syntax highlighting and multi-file tabs',
         detailedDescription:
           'Feature-rich code editor supporting JS, HTML, CSS, JSON, Python, and more. Includes multi-tab file management, syntax highlighting, line numbers, code folding, minimap, integrated terminal/output panels, and ribbon-style toolbars.',
-        usage: `<ui-code-editor [files]="projectFiles" language="javascript" theme="vs-dark"></ui-code-editor>`,
+        usage: `<dui-code-editor [files]="projectFiles" language="javascript" theme="vs-dark"></dui-code-editor>`,
         props: [
           {
             name: 'files',
@@ -3442,8 +3442,8 @@ export class ComponentDocsService {
           'Minimap requires accurate character measurement for sync',
         ],
         examples: [
-          '<ui-code-editor [files]="myScript" theme="vs-dark" showSidebar></ui-code-editor>',
-          '<ui-code-editor language="json" [value]="configJson" [toolbar]="false"></ui-code-editor>',
+          '<dui-code-editor [files]="myScript" theme="vs-dark" showSidebar></dui-code-editor>',
+          '<dui-code-editor language="json" [value]="configJson" [toolbar]="false"></dui-code-editor>',
         ],
       },
     ],
@@ -3455,7 +3455,7 @@ export class ComponentDocsService {
         shortDescription: 'Drag-and-drop grid system for interactive widget boards',
         detailedDescription:
           'Premium grid container for arranging widgets and cards. Supports interactive dragging/resizing, configurable columns, theme variations (glassmorphism, vibrant), and responsive layout adaptation.',
-        usage: `<ui-dashboard [columns]="12" [widgets]="widgetList"></ui-dashboard>`,
+        usage: `<dui-dashboard [columns]="12" [widgets]="widgetList"></dui-dashboard>`,
         props: [
           { name: 'columns', type: 'number', description: 'Grid column count', defaultValue: '12' },
           {
@@ -3494,8 +3494,8 @@ export class ComponentDocsService {
           'Glass theme requires high-contrast background for readability',
         ],
         examples: [
-          '<ui-dashboard [widgets]="myStats" [isEditable]="true" theme="glass"></ui-dashboard>',
-          '<ui-dashboard [columns]="4" [widgets]="miniCards" theme="dark"></ui-dashboard>',
+          '<dui-dashboard [widgets]="myStats" [isEditable]="true" theme="glass"></dui-dashboard>',
+          '<dui-dashboard [columns]="4" [widgets]="miniCards" theme="dark"></dui-dashboard>',
         ],
       },
     ],
@@ -3507,7 +3507,7 @@ export class ComponentDocsService {
         shortDescription: 'Multi-level selection from a hierarchical data structure',
         detailedDescription:
           'Specialized dropdown for selecting items from nested hierarchies (e.g., Category > Subcategory). Supports hover/click expansion, breadcrumb-style path display, custom separators, and clearable selection.',
-        usage: `<ui-cascade-select [options]="treeData" placeholder="Select category"></ui-cascade-select>`,
+        usage: `<dui-cascade-select [options]="treeData" placeholder="Select category"></dui-cascade-select>`,
         props: [
           {
             name: 'options',
@@ -3567,8 +3567,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Requires correctly formatted recursive children arrays'],
         examples: [
-          '<ui-cascade-select [options]="categories" showFullPath="false"></ui-cascade-select>',
-          '<ui-cascade-select [options]="locations" expandTrigger="hover"></ui-cascade-select>',
+          '<dui-cascade-select [options]="categories" showFullPath="false"></dui-cascade-select>',
+          '<dui-cascade-select [options]="locations" expandTrigger="hover"></dui-cascade-select>',
         ],
       },
     ],
@@ -3580,7 +3580,7 @@ export class ComponentDocsService {
         shortDescription: 'Dual-pane selector for moving items between two sets',
         detailedDescription:
           'Advanced dual-list component for selecting multiple items from a large source set. Supports search, sorting, drag-and-drop, multi-select, tree/table modes, and one-way copy mode.',
-        usage: `<ui-transfer-list [sourceItems]="all" [targetItems]="selected"></ui-transfer-list>`,
+        usage: `<dui-transfer-list [sourceItems]="all" [targetItems]="selected"></dui-transfer-list>`,
         props: [
           {
             name: 'sourceItems',
@@ -3641,8 +3641,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Drag-and-drop requires browser DragEvent support'],
         examples: [
-          '<ui-transfer-list [sourceItems]="users" searchable mode="table"></ui-transfer-list>',
-          '<ui-transfer-list [sourceItems]="files" mode="tree" oneWay></ui-transfer-list>',
+          '<dui-transfer-list [sourceItems]="users" searchable mode="table"></dui-transfer-list>',
+          '<dui-transfer-list [sourceItems]="files" mode="tree" oneWay></dui-transfer-list>',
         ],
       },
     ],
@@ -3654,7 +3654,7 @@ export class ComponentDocsService {
         shortDescription: 'Advanced dropdown with search, reordering, and multi-selection tags',
         detailedDescription:
           'A premium alternative to standard dropdowns, optimized for larger lists and complex selections. Features built-in search, tag-based multi-selection, drag-and-drop reordering, and option grouping.',
-        usage: `<ui-picklist [options]="data" mode="multi" searchable></ui-picklist>`,
+        usage: `<dui-picklist [options]="data" mode="multi" searchable></dui-picklist>`,
         props: [
           {
             name: 'options',
@@ -3704,8 +3704,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Reordering is only available in multi-select mode'],
         examples: [
-          '<ui-picklist [options]="tags" mode="multi" reorderable></ui-picklist>',
-          '<ui-picklist [options]="users" searchable loading="true"></ui-picklist>',
+          '<dui-picklist [options]="tags" mode="multi" reorderable></dui-picklist>',
+          '<dui-picklist [options]="users" searchable loading="true"></dui-picklist>',
         ],
       },
     ],
@@ -3717,7 +3717,7 @@ export class ComponentDocsService {
         shortDescription: 'Non-disruptive feedback messages with stacking capabilities',
         detailedDescription:
           'Dynamic toast notification system supporting auto-dismiss, progress bars, stack/queue behaviors, action buttons, and card stacking visual effects.',
-        usage: `<ui-snackbar position="top-right" maxVisible="3"></ui-snackbar>`,
+        usage: `<dui-snackbar position="top-right" maxVisible="3"></dui-snackbar>`,
         props: [
           {
             name: 'position',
@@ -3763,7 +3763,7 @@ export class ComponentDocsService {
           },
         ],
         limitations: ['Use only one snackbar host per application typically'],
-        examples: ['<ui-snackbar position="top-center" openMode="slide-down"></ui-snackbar>'],
+        examples: ['<dui-snackbar position="top-center" openMode="slide-down"></dui-snackbar>'],
       },
     ],
     [
@@ -3774,7 +3774,7 @@ export class ComponentDocsService {
         shortDescription: 'Highly configurable modal window with advanced window features',
         detailedDescription:
           'Comprehensive modal component supporting dragging, resizing, maximizing, minimizing to tray, glassmorphism backdrops, and confetti celebrations. Features focus trapping and keyboard accessibility.',
-        usage: `<ui-dialog-box [open]="isModalOpen" dialogTitle="Confirm Action" size="md"></ui-dialog-box>`,
+        usage: `<dui-dialog-box [open]="isModalOpen" dialogTitle="Confirm Action" size="md"></dui-dialog-box>`,
         props: [
           {
             name: 'open',
@@ -3835,8 +3835,8 @@ export class ComponentDocsService {
           'Maximize/Minimize requires the component to be direct child of body or relative parent',
         ],
         examples: [
-          '<ui-dialog-box [open]="true" dialogTitle="Settings" isDraggable resizable></ui-dialog-box>',
-          '<ui-dialog-box [open]="show" status="success" confetti okText="Finish"></ui-dialog-box>',
+          '<dui-dialog-box [open]="true" dialogTitle="Settings" isDraggable resizable></dui-dialog-box>',
+          '<dui-dialog-box [open]="show" status="success" confetti okText="Finish"></dui-dialog-box>',
         ],
       },
     ],
@@ -3848,7 +3848,7 @@ export class ComponentDocsService {
         shortDescription: 'Interactive slider for selecting single values or ranges',
         detailedDescription:
           'Versatile slider component supporting single-handle and dual-handle modes. Features custom marks, restricted values, non-linear steps, vertical orientation, and real-time tooltips.',
-        usage: `<ui-range-slider min="0" max="100" [value]="50"></ui-range-slider>`,
+        usage: `<dui-range-slider min="0" max="100" [value]="50"></dui-range-slider>`,
         props: [
           { name: 'min', type: 'number', description: 'Minimum scale value', defaultValue: '0' },
           { name: 'max', type: 'number', description: 'Maximum scale value', defaultValue: '100' },
@@ -3909,8 +3909,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Vertical mode requires a defined container height'],
         examples: [
-          '<ui-range-slider range="true" [startValue]="20" [endValue]="80" showMarks="true"></ui-range-slider>',
-          '<ui-range-slider vertical="true" [min]="0" [max]="10" size="lg"></ui-range-slider>',
+          '<dui-range-slider range="true" [startValue]="20" [endValue]="80" showMarks="true"></dui-range-slider>',
+          '<dui-range-slider vertical="true" [min]="0" [max]="10" size="lg"></dui-range-slider>',
         ],
       },
     ],
@@ -3922,7 +3922,7 @@ export class ComponentDocsService {
         shortDescription: 'Multi-segmented bar or circle for measuring relative distributions',
         detailedDescription:
           'Visual indicator for displaying multiple values as segments of a whole. Supports linear and circular visualizations, interactive segments, and semantic labeling.',
-        usage: `<ui-meter-group [values]="data" shape="line"></ui-meter-group>`,
+        usage: `<dui-meter-group [values]="data" shape="line"></dui-meter-group>`,
         props: [
           {
             name: 'values',
@@ -3965,8 +3965,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Total values exceeding max will overflow the visual representation'],
         examples: [
-          '<ui-meter-group [values]="storageStats" showLegend="true"></ui-meter-group>',
-          '<ui-meter-group shape="circle" [values]="usageData" size="lg"></ui-meter-group>',
+          '<dui-meter-group [values]="storageStats" showLegend="true"></dui-meter-group>',
+          '<dui-meter-group shape="circle" [values]="usageData" size="lg"></dui-meter-group>',
         ],
       },
     ],
@@ -3978,7 +3978,7 @@ export class ComponentDocsService {
         shortDescription: 'Floating action button that unfolds into multiple secondary actions',
         detailedDescription:
           'High-visibility action trigger typically anchored at corners. Expands on click or hover to reveal a series of related tasks or navigational shortcuts.',
-        usage: `<ui-speed-dial [actions]="myActions" position="bottom-right"></ui-speed-dial>`,
+        usage: `<dui-speed-dial [actions]="myActions" position="bottom-right"></dui-speed-dial>`,
         props: [
           {
             name: 'actions',
@@ -4026,8 +4026,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Absolute positioning requires a relative parent container'],
         examples: [
-          '<ui-speed-dial [actions]="fileOps" direction="up" color="primary"></ui-speed-dial>',
-          '<ui-speed-dial trigger="hover" [actions]="socialLinks" position="top-left"></ui-speed-dial>',
+          '<dui-speed-dial [actions]="fileOps" direction="up" color="primary"></dui-speed-dial>',
+          '<dui-speed-dial trigger="hover" [actions]="socialLinks" position="top-left"></dui-speed-dial>',
         ],
       },
     ],
@@ -4039,7 +4039,7 @@ export class ComponentDocsService {
         shortDescription: 'Dual-action button combining a primary task with a dropdown menu',
         detailedDescription:
           'Interactive component with a dominant main button and a secondary chevron for alternate actions. Ideal for "Save" vs "Save and Close" operations.',
-        usage: `<ui-split-button label="Save" [options]="moreOptions"></ui-split-button>`,
+        usage: `<dui-split-button label="Save" [options]="moreOptions"></dui-split-button>`,
         props: [
           { name: 'label', type: 'string', description: 'Main button text', defaultValue: "'" },
           { name: 'icon', type: 'string', description: 'Main button icon', defaultValue: "'" },
@@ -4070,7 +4070,7 @@ export class ComponentDocsService {
         ],
         limitations: ['Chevron and main button are strictly segmented'],
         examples: [
-          '<ui-split-button label="Submit" [options]="submitOptions" (mainClick)="doSubmit()"></ui-split-button>',
+          '<dui-split-button label="Submit" [options]="submitOptions" (mainClick)="doSubmit()"></dui-split-button>',
         ],
       },
     ],
@@ -4082,7 +4082,7 @@ export class ComponentDocsService {
         shortDescription: 'Masked input field for formatted data like phones or serials',
         detailedDescription:
           'Advanced text input with built-in masking, auto-formatting, and validation. Perfect for phone numbers, CC numbers, or custom ID strings where formatting is required as the user types.',
-        usage: `<ui-pattern-input pattern="(###) ###-####" label="Phone"></ui-pattern-input>`,
+        usage: `<dui-pattern-input pattern="(###) ###-####" label="Phone"></dui-pattern-input>`,
         props: [
           {
             name: 'pattern',
@@ -4129,8 +4129,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Ensure validationRegex aligns with the visual pattern'],
         examples: [
-          '<ui-pattern-input pattern="####-####-####-####" label="Credit Card"></ui-pattern-input>',
-          '<ui-pattern-input inputType="numeric" pattern="## / ## / ####" placeholder="DD / MM / YYYY"></ui-pattern-input>',
+          '<dui-pattern-input pattern="####-####-####-####" label="Credit Card"></dui-pattern-input>',
+          '<dui-pattern-input inputType="numeric" pattern="## / ## / ####" placeholder="DD / MM / YYYY"></dui-pattern-input>',
         ],
       },
     ],
@@ -4142,7 +4142,7 @@ export class ComponentDocsService {
         shortDescription: 'Multi-stage timer system with progress visualization',
         detailedDescription:
           'Industrial-strength timer supporting countdowns, stopwatches, multi-stage "flows", sound alerts, and browser notifications. Includes persistable state and complex progress rendering.',
-        usage: `<ui-timer mode="countdown" [steps]="intervals"></ui-timer>`,
+        usage: `<dui-timer mode="countdown" [steps]="intervals"></dui-timer>`,
         props: [
           {
             name: 'mode',
@@ -4200,8 +4200,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Browser notifications require explicit user permission'],
         examples: [
-          '<ui-timer mode="stopwatch" progressType="circle" size="lg"></ui-timer>',
-          '<ui-timer [steps]="workoutFlow" autoStart="true" enableSound="true"></ui-timer>',
+          '<dui-timer mode="stopwatch" progressType="circle" size="lg"></dui-timer>',
+          '<dui-timer [steps]="workoutFlow" autoStart="true" enableSound="true"></dui-timer>',
         ],
       },
     ],
@@ -4213,7 +4213,7 @@ export class ComponentDocsService {
         shortDescription: 'Slide-out container for auxiliary content or configuration',
         detailedDescription:
           'Versatile drawer component that slides in from any screen edge. Supports resizable widths, glassmorphism effects, focus trapping, and state persistence to keep panels open across page reloads.',
-        usage: `<ui-aside-panel [open]="isOpen" direction="right" size="400px"></ui-aside-panel>`,
+        usage: `<dui-aside-panel [open]="isOpen" direction="right" size="400px"></dui-aside-panel>`,
         props: [
           {
             name: 'open',
@@ -4278,8 +4278,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Resizing in top/bottom directions targets height instead of width'],
         examples: [
-          '<ui-aside-panel [open]="showSettings" direction="left" resizable size="25%"></ui-aside-panel>',
-          '<ui-aside-panel [open]="showLogs" direction="bottom" variant="glass" [closeOnOverlayClick]="true"></ui-aside-panel>',
+          '<dui-aside-panel [open]="showSettings" direction="left" resizable size="25%"></dui-aside-panel>',
+          '<dui-aside-panel [open]="showLogs" direction="bottom" variant="glass" [closeOnOverlayClick]="true"></dui-aside-panel>',
         ],
       },
     ],
@@ -4291,7 +4291,7 @@ export class ComponentDocsService {
         shortDescription: 'Intelligent multi-level menu with automatic overflow positioning',
         detailedDescription:
           'Advanced navigational menu supporting nested submenus, custom icons, and smart positioning that prevents menus from opening outside the viewport.',
-        usage: `<ui-smart-menu [items]="menuConfig" [visible]="true"></ui-smart-menu>`,
+        usage: `<dui-smart-menu [items]="menuConfig" [visible]="true"></dui-smart-menu>`,
         props: [
           {
             name: 'items',
@@ -4321,7 +4321,7 @@ export class ComponentDocsService {
           },
         ],
         limitations: ['Target must be present in DOM when menu initializes'],
-        examples: ['<ui-smart-menu [items]="myNav" target="#nav-trigger"></ui-smart-menu>'],
+        examples: ['<dui-smart-menu [items]="myNav" target="#nav-trigger"></dui-smart-menu>'],
       },
     ],
     [
@@ -4332,7 +4332,7 @@ export class ComponentDocsService {
         shortDescription: 'Slot-based wizard for multi-step workflows',
         detailedDescription:
           'Interactive stepper that manages child component visibility. Users can transition between steps programmatically or via navigation controls.',
-        usage: `<ui-smart-stepper [activeStep]="0"></ui-smart-stepper>`,
+        usage: `<dui-smart-stepper [activeStep]="0"></dui-smart-stepper>`,
         props: [
           {
             name: 'activeStep',
@@ -4362,7 +4362,7 @@ export class ComponentDocsService {
         ],
         limitations: ['Steps must be direct children of the component'],
         examples: [
-          '<ui-smart-stepper orientation="vertical" [activeStep]="currentStep">...</ui-smart-stepper>',
+          '<dui-smart-stepper orientation="vertical" [activeStep]="currentStep">...</dui-smart-stepper>',
         ],
       },
     ],
@@ -4374,7 +4374,7 @@ export class ComponentDocsService {
         shortDescription: 'Magnification-enabled action dock for quick application switching',
         detailedDescription:
           'Visual taskbar mimicking the macOS dock. Features magnification on hover, notification badges, drag-and-drop reordering, and blur backdrop effects.',
-        usage: `<ui-dock [items]="dockConfig" position="bottom"></ui-dock>`,
+        usage: `<dui-dock [items]="dockConfig" position="bottom"></dui-dock>`,
         props: [
           {
             name: 'items',
@@ -4422,8 +4422,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Recommended for desktop layouts where screen real estate permits'],
         examples: [
-          '<ui-dock [items]="apps" magnify="true" size="lg"></ui-dock>',
-          '<ui-dock [items]="tools" position="left" [blurEffect]="false"></ui-dock>',
+          '<dui-dock [items]="apps" magnify="true" size="lg"></dui-dock>',
+          '<dui-dock [items]="tools" position="left" [blurEffect]="false"></dui-dock>',
         ],
       },
     ],
@@ -4435,7 +4435,7 @@ export class ComponentDocsService {
         shortDescription: 'Rounded indicator with advanced styling and orientation support',
         detailedDescription:
           'Advanced label component with support for vertical text, gradients, avatars, loading states, and removable behaviors. More feature-rich than a standard badge.',
-        usage: `<ui-pill label="New Status" color="success" variant="soft"></ui-pill>`,
+        usage: `<dui-pill label="New Status" color="success" variant="soft"></dui-pill>`,
         props: [
           {
             name: 'label',
@@ -4491,8 +4491,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Vertical-text orientation might clip in containers without overflow'],
         examples: [
-          '<ui-pill label="Admin" [avatar]="photoUrl" color="info"></ui-pill>',
-          '<ui-pill label="Priority" variant="gradient" gradient="linear-gradient(#f00, #00f)"></ui-pill>',
+          '<dui-pill label="Admin" [avatar]="photoUrl" color="info"></dui-pill>',
+          '<dui-pill label="Priority" variant="gradient" gradient="linear-gradient(#f00, #00f)"></dui-pill>',
         ],
       },
     ],
@@ -4504,7 +4504,7 @@ export class ComponentDocsService {
         shortDescription: 'Flexible right-click or trigger-based popup menu',
         detailedDescription:
           'Universal context menu that can attach to any target or global right-clicks. Supports shortcuts, checkboxes, radio selections, and nested submenus.',
-        usage: `<ui-context-menu [items]="menuData" target="#my-area"></ui-context-menu>`,
+        usage: `<dui-context-menu [items]="menuData" target="#my-area"></dui-context-menu>`,
         props: [
           {
             name: 'items',
@@ -4552,8 +4552,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Requires absolute positioning relative to the document body'],
         examples: [
-          '<ui-context-menu [items]="fileActions" target=".file-row"></ui-context-menu>',
-          '<ui-context-menu [items]="viewOps" openOn="click" placement="right"></ui-context-menu>',
+          '<dui-context-menu [items]="fileActions" target=".file-row"></dui-context-menu>',
+          '<dui-context-menu [items]="viewOps" openOn="click" placement="right"></dui-context-menu>',
         ],
       },
     ],
@@ -4565,7 +4565,7 @@ export class ComponentDocsService {
         shortDescription: 'Interactive button to quickly scroll back to the top of the page',
         detailedDescription:
           'Sticky button that appears after scrolling a certain distance. Features progress indicators, auto-hide, multiple positions, and smooth scroll behaviors.',
-        usage: `<ui-scroll-top threshold="400" behavior="smooth" position="bottom-right"></ui-scroll-top>`,
+        usage: `<dui-scroll-top threshold="400" behavior="smooth" position="bottom-right"></dui-scroll-top>`,
         props: [
           {
             name: 'threshold',
@@ -4607,8 +4607,8 @@ export class ComponentDocsService {
         events: [],
         limitations: ['Requires the parent container or window to have scrollable content'],
         examples: [
-          '<ui-scroll-top showProgress="true" color="primary"></ui-scroll-top>',
-          '<ui-scroll-top position="bottom-center" label="Back to Top"></ui-scroll-top>',
+          '<dui-scroll-top showProgress="true" color="primary"></dui-scroll-top>',
+          '<dui-scroll-top position="bottom-center" label="Back to Top"></dui-scroll-top>',
         ],
       },
     ],
@@ -4620,7 +4620,7 @@ export class ComponentDocsService {
         shortDescription: 'Sequential list of user avatars with overlap or grid layouts',
         detailedDescription:
           'Container for managing multiple user avatars. Features automatic grouping for overflow (+N), hover tooltips, and integrated roster lists for hidden members.',
-        usage: `<ui-avatar-group [avatars]="users" [maxVisible]="5"></ui-avatar-group>`,
+        usage: `<dui-avatar-group [avatars]="users" [maxVisible]="5"></dui-avatar-group>`,
         props: [
           {
             name: 'avatars',
@@ -4657,8 +4657,8 @@ export class ComponentDocsService {
         events: [],
         limitations: ['Custom size values might require manual adjustment for stack overlapping'],
         examples: [
-          '<ui-avatar-group [avatars]="team" maxVisible="3" layout="stack"></ui-avatar-group>',
-          '<ui-avatar-group [avatars]="list" shape="hexagon" size="lg"></ui-avatar-group>',
+          '<dui-avatar-group [avatars]="team" maxVisible="3" layout="stack"></dui-avatar-group>',
+          '<dui-avatar-group [avatars]="list" shape="hexagon" size="lg"></dui-avatar-group>',
         ],
       },
     ],
@@ -4670,7 +4670,7 @@ export class ComponentDocsService {
         shortDescription: 'Management container for related tags or filter chips',
         detailedDescription:
           'Layout component for grouping tags. Supports selection modes (single/multiple), bulk styling, collapsible overflow, and integrated search filtering.',
-        usage: `<ui-tag-group [max]="10" selectionMode="multiple"></ui-tag-group>`,
+        usage: `<dui-tag-group [max]="10" selectionMode="multiple"></dui-tag-group>`,
         props: [
           {
             name: 'max',
@@ -4712,8 +4712,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Creatable mode requires handling persistency in the parent app'],
         examples: [
-          '<ui-tag-group color="info" [max]="5" collapsible="true"></ui-tag-group>',
-          '<ui-tag-group creatable="true" selectionMode="multiple"></ui-tag-group>',
+          '<dui-tag-group color="info" [max]="5" collapsible="true"></dui-tag-group>',
+          '<dui-tag-group creatable="true" selectionMode="multiple"></dui-tag-group>',
         ],
       },
     ],
@@ -4725,7 +4725,7 @@ export class ComponentDocsService {
         shortDescription: 'Interactive stars, smileys, or thumbs for user feedback',
         detailedDescription:
           'Input component for collecting numeric reviews. Supports star icons, sentiment-based smileys, or binary thumbs. Includes half-rating support and read-only modes.',
-        usage: `<ui-rating type="star" [value]="3.5" allowHalf></ui-rating>`,
+        usage: `<dui-rating type="star" [value]="3.5" allowHalf></dui-rating>`,
         props: [
           {
             name: 'type',
@@ -4762,8 +4762,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Half-ratings are strictly visual for smileys and thumbs'],
         examples: [
-          '<ui-rating type="smiley" color="success" size="lg"></ui-rating>',
-          '<ui-rating type="thumb" [value]="1" color="primary"></ui-rating>',
+          '<dui-rating type="smiley" color="success" size="lg"></dui-rating>',
+          '<dui-rating type="thumb" [value]="1" color="primary"></dui-rating>',
         ],
       },
     ],
@@ -4775,7 +4775,7 @@ export class ComponentDocsService {
         shortDescription: 'Empty state placeholder for async data loading',
         detailedDescription:
           'Visual placeholder mimicking the structure of UI components. Supports multiple shapes (circle, rect), animation types (pulse, wave), and semantic presets (avatar, post, list).',
-        usage: `<ui-skeleton shape="card" animated></ui-skeleton>`,
+        usage: `<dui-skeleton shape="card" animated></dui-skeleton>`,
         props: [
           {
             name: 'shape',
@@ -4813,8 +4813,8 @@ export class ComponentDocsService {
           'Static sizes from semantic shapes (avatar, button) override width/height props',
         ],
         examples: [
-          '<ui-skeleton shape="circle" size="xl"></ui-skeleton>',
-          '<ui-skeleton shape="text" [width]="\'60%\'"></ui-skeleton>',
+          '<dui-skeleton shape="circle" size="xl"></dui-skeleton>',
+          '<dui-skeleton shape="text" [width]="\'60%\'"></dui-skeleton>',
         ],
       },
     ],
@@ -4826,7 +4826,7 @@ export class ComponentDocsService {
         shortDescription: 'Advanced page navigation with multiple modes and URL syncing',
         detailedDescription:
           'Universal pagination system. Supports basic buttons, compact dropdowns, input-based jumping, infinite scroll triggers, and automatic URL parameter synchronization.',
-        usage: `<ui-pagination [totalItems]="200" [itemsPerPage]="10"></ui-pagination>`,
+        usage: `<dui-pagination [totalItems]="200" [itemsPerPage]="10"></dui-pagination>`,
         props: [
           {
             name: 'type',
@@ -4874,8 +4874,8 @@ export class ComponentDocsService {
         ],
         limitations: ['URL Sync requires a routing-enabled application'],
         examples: [
-          '<ui-pagination type="detailed" [totalItems]="500" [pageSizes]="[10, 50, 100]"></ui-pagination>',
-          '<ui-pagination type="input" [totalItems]="1000" theme="primary"></ui-pagination>',
+          '<dui-pagination type="detailed" [totalItems]="500" [pageSizes]="[10, 50, 100]"></dui-pagination>',
+          '<dui-pagination type="input" [totalItems]="1000" theme="primary"></dui-pagination>',
         ],
       },
     ],
@@ -4887,7 +4887,7 @@ export class ComponentDocsService {
         shortDescription: 'Floating container for interactive content or rich tooltips',
         detailedDescription:
           'Interactive overlay that anchors to elements. More robust than tooltips, supporting HTML content, headings, close buttons, and multiple trigger modes.',
-        usage: `<ui-popover heading="Details" content="<b>Bold</b> content here"></ui-popover>`,
+        usage: `<dui-popover heading="Details" content="<b>Bold</b> content here"></dui-popover>`,
         props: [
           {
             name: 'heading',
@@ -4928,7 +4928,9 @@ export class ComponentDocsService {
           },
         ],
         limitations: ['Slotted content not supported; use rich HTML in content prop'],
-        examples: ['<ui-popover heading="Help" trigger="hover" placement="right">...</ui-popover>'],
+        examples: [
+          '<dui-popover heading="Help" trigger="hover" placement="right">...</dui-popover>',
+        ],
       },
     ],
     [
@@ -4939,7 +4941,7 @@ export class ComponentDocsService {
         shortDescription: 'Segmented text fields for secure code verification',
         detailedDescription:
           'Specialized input for 2FA or PIN entry. Features auto-focus management, numeric-only validation, masking for password codes, and completion callbacks.',
-        usage: `<ui-otp-input [length]="6" (otpComplete)="onVerify($event)"></ui-otp-input>`,
+        usage: `<dui-otp-input [length]="6" (otpComplete)="onVerify($event)"></dui-otp-input>`,
         props: [
           {
             name: 'length',
@@ -4986,8 +4988,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Pasting is limited to digits if numericOnly is enabled'],
         examples: [
-          '<ui-otp-input [length]="4" size="lg" (otpComplete)="checkPin($event)"></ui-otp-input>',
-          '<ui-otp-input [length]="6" separator="3" masked="true"></ui-otp-input>',
+          '<dui-otp-input [length]="4" size="lg" (otpComplete)="checkPin($event)"></dui-otp-input>',
+          '<dui-otp-input [length]="6" separator="3" masked="true"></dui-otp-input>',
         ],
       },
     ],
@@ -4999,7 +5001,7 @@ export class ComponentDocsService {
         shortDescription: 'Vertical or horizontal sequence of historical events',
         detailedDescription:
           'Visual record container with support for icons, panels, alternate alignments, and pending states. Features premium search filtering and interactive item clicks.',
-        usage: `<ui-timeline [events]="myHistory" mode="vertical" align="alternate"></ui-timeline>`,
+        usage: `<dui-timeline [events]="myHistory" mode="vertical" align="alternate"></dui-timeline>`,
         props: [
           {
             name: 'events',
@@ -5042,8 +5044,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Horizontal mode requires wrapping container width management'],
         examples: [
-          '<ui-timeline [events]="logs" marker="icon" pending="true"></ui-timeline>',
-          '<ui-timeline [events]="roadmap" mode="horizontal" variant="panel"></ui-timeline>',
+          '<dui-timeline [events]="logs" marker="icon" pending="true"></dui-timeline>',
+          '<dui-timeline [events]="roadmap" mode="horizontal" variant="panel"></dui-timeline>',
         ],
       },
     ],
@@ -5055,7 +5057,7 @@ export class ComponentDocsService {
         shortDescription: 'Hierarchical data viewer with checkboxes and drag-drop reordering',
         detailedDescription:
           'Advanced tree component supporting lazy loading, checkbox cascading, search filtering, and drag-and-drop hierarchy management. Ideal for file explorers or org charts.',
-        usage: `<ui-tree-list [data]="orgData" showCheckbox cascade></ui-tree-list>`,
+        usage: `<dui-tree-list [data]="orgData" showCheckbox cascade></dui-tree-list>`,
         props: [
           {
             name: 'data',
@@ -5116,8 +5118,8 @@ export class ComponentDocsService {
           'Lazy loading requires explicitly calling finishLoading() after data arrives',
         ],
         examples: [
-          '<ui-tree-list [data]="files" showLines="true" enableDragDrop="true"></ui-tree-list>',
-          '<ui-tree-list [data]="config" showCheckbox="true" [cascade]="false"></ui-tree-list>',
+          '<dui-tree-list [data]="files" showLines="true" enableDragDrop="true"></dui-tree-list>',
+          '<dui-tree-list [data]="config" showCheckbox="true" [cascade]="false"></dui-tree-list>',
         ],
       },
     ],
@@ -5129,7 +5131,7 @@ export class ComponentDocsService {
         shortDescription: 'Small numeric or status indicator for icons and buttons',
         detailedDescription:
           'Versatile overlay component for displaying counts, status dots, or micro-icons. Features multiple positions, animation styles (bounce, pulse), glow effects, and gradient support.',
-        usage: `<ui-button icon="notifications"><ui-badge value="5" color="danger"></ui-badge></ui-button>`,
+        usage: `<dui-button icon="notifications"><dui-badge value="5" color="danger"></dui-badge></dui-button>`,
         props: [
           {
             name: 'value',
@@ -5176,8 +5178,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Requires relative positioning on the parent element for accurate anchoring'],
         examples: [
-          '<ui-badge dot color="success" glow="true"></ui-badge>',
-          '<ui-badge value="New" variant="soft" animation="pulse"></ui-badge>',
+          '<dui-badge dot color="success" glow="true"></dui-badge>',
+          '<dui-badge value="New" variant="soft" animation="pulse"></dui-badge>',
         ],
       },
     ],
@@ -5189,7 +5191,7 @@ export class ComponentDocsService {
         shortDescription: 'Hierarchical path indicators for site navigation',
         detailedDescription:
           "Navigational aid that shows the user's current location. Supports custom separators, home icons, collapsible overflow for long paths, and interactive items with badges.",
-        usage: `<ui-breadcrumb [items]="navPath" separator=">"></ui-breadcrumb>`,
+        usage: `<dui-breadcrumb [items]="navPath" separator=">"></dui-breadcrumb>`,
         props: [
           {
             name: 'items',
@@ -5232,7 +5234,7 @@ export class ComponentDocsService {
         ],
         limitations: ['Automatic collapsing calculates based on item count, not pixel width'],
         examples: [
-          '<ui-breadcrumb [items]="myPath" variant="pills" showHome="true"></ui-breadcrumb>',
+          '<dui-breadcrumb [items]="myPath" variant="pills" showHome="true"></dui-breadcrumb>',
         ],
       },
     ],
@@ -5244,7 +5246,7 @@ export class ComponentDocsService {
         shortDescription: 'Interactive tag-like component with avatars and selection states',
         detailedDescription:
           'Premium label component that can act as a selection filter, action trigger, or data entity. Features vertical text support, integrated counters, selection indicators, and advanced entry/exit animations.',
-        usage: `<ui-chip label="Electronics" variant="soft" clickable></ui-chip>`,
+        usage: `<dui-chip label="Electronics" variant="soft" clickable></dui-chip>`,
         props: [
           { name: 'label', type: 'string', description: 'Main text content', required: true },
           {
@@ -5290,8 +5292,8 @@ export class ComponentDocsService {
           'Vertical-rotated chips may require custom container padding for the text angle',
         ],
         examples: [
-          '<ui-chip label="User" [userAvatar]="imgUrl" color="primary"></ui-chip>',
-          '<ui-chip label="Count" [counter]="42" variant="outlined"></ui-chip>',
+          '<dui-chip label="User" [userAvatar]="imgUrl" color="primary"></dui-chip>',
+          '<dui-chip label="Count" [counter]="42" variant="outlined"></dui-chip>',
         ],
       },
     ],
@@ -5303,7 +5305,7 @@ export class ComponentDocsService {
         shortDescription: 'Layout separator with support for labels, icons, and shapes',
         detailedDescription:
           'Multi-functional separator for visual grouping. Supports text/icon centers, vertical orientation, gradient lines, animated entrances, and unique shape bridges (wave, zigzag, curve).',
-        usage: `<ui-divider text="OR" textAlign="center" variant="dashed"></ui-divider>`,
+        usage: `<dui-divider text="OR" textAlign="center" variant="dashed"></dui-divider>`,
         props: [
           { name: 'text', type: 'string', description: 'Segment label text', defaultValue: "'" },
           {
@@ -5334,8 +5336,8 @@ export class ComponentDocsService {
         events: [],
         limitations: ['Vertical dividers require the parent layout to use Flexbox or Grid'],
         examples: [
-          '<ui-divider icon="⭐" textAlign="left" color="info"></ui-divider>',
-          '<ui-divider shape="wave" variant="gradient"></ui-divider>',
+          '<dui-divider icon="⭐" textAlign="left" color="info"></dui-divider>',
+          '<dui-divider shape="wave" variant="gradient"></dui-divider>',
         ],
       },
     ],
@@ -5347,7 +5349,7 @@ export class ComponentDocsService {
         shortDescription: 'Flexible content block with headers, footers, and window controls',
         detailedDescription:
           'Industrial-strength container component. Features window management (minimize, maximize, close), persistence, resizable edges, draggable headers, glassmorphism, and modal overlays.',
-        usage: `<ui-panel panelTitle="Settings" toggleable maximizable></ui-panel>`,
+        usage: `<dui-panel panelTitle="Settings" toggleable maximizable></dui-panel>`,
         props: [
           {
             name: 'panelTitle',
@@ -5396,8 +5398,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Draggable mode requires absolute positioning if used outside normal flow'],
         examples: [
-          '<ui-panel panelTitle="Logs" variant="elevated" toggleable="true"></ui-panel>',
-          '<ui-panel panelTitle="Workspace" [resizable]="true" glass="true"></ui-panel>',
+          '<dui-panel panelTitle="Logs" variant="elevated" toggleable="true"></dui-panel>',
+          '<dui-panel panelTitle="Workspace" [resizable]="true" glass="true"></dui-panel>',
         ],
       },
     ],
@@ -5409,7 +5411,7 @@ export class ComponentDocsService {
         shortDescription: 'Modern binary selection control with integrated icons and states',
         detailedDescription:
           'Versatile boolean toggle. Supports five size variants, multiple shapes (pill, square), integrated icons for ON/OFF states, loading spinners, and validation markers.',
-        usage: `<ui-switch label="Enable Notifications" [checked]="true"></ui-switch>`,
+        usage: `<dui-switch label="Enable Notifications" [checked]="true"></dui-switch>`,
         props: [
           {
             name: 'checked',
@@ -5451,8 +5453,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Requires specific label placement padding in absolute-labeled layouts'],
         examples: [
-          '<ui-switch [checked]="true" color="success" iconOn="✔"></ui-switch>',
-          '<ui-switch loading variant="info" size="xl"></ui-switch>',
+          '<dui-switch [checked]="true" color="success" iconOn="✔"></dui-switch>',
+          '<dui-switch loading variant="info" size="xl"></dui-switch>',
         ],
       },
     ],
@@ -5464,7 +5466,7 @@ export class ComponentDocsService {
         shortDescription: 'Indicator label with images, icons, and automated coloring',
         detailedDescription:
           'Visual label for categorization. Supports semantic variants, image/avatar prefixing, checkable states, elevation shadows, pulse animations for attention, and automated color generation via label hashes.',
-        usage: `<ui-tag label="Bug" color="danger" [rounded]="true"></ui-tag>`,
+        usage: `<dui-tag label="Bug" color="danger" [rounded]="true"></dui-tag>`,
         props: [
           { name: 'label', type: 'string', description: 'Tag text content', required: true },
           {
@@ -5510,8 +5512,8 @@ export class ComponentDocsService {
           'Dot variant is designed for status indicators and minimizes label visibility',
         ],
         examples: [
-          '<ui-tag label="Verified" [userAvatar]="userImg" color="success"></ui-tag>',
-          '<ui-tag label="Hot" pulse="true" variant="dot" color="danger"></ui-tag>',
+          '<dui-tag label="Verified" [userAvatar]="userImg" color="success"></dui-tag>',
+          '<dui-tag label="Hot" pulse="true" variant="dot" color="danger"></dui-tag>',
         ],
       },
     ],
@@ -5523,7 +5525,7 @@ export class ComponentDocsService {
         shortDescription: 'Circular input for numeric values and hardware-like control',
         detailedDescription:
           'Precision numeric input mimicking hardware knobs. Supports mouse dragging, wheel rotation, numeric labels, tick marks, status arcs, and manual value override via double-click input.',
-        usage: `<ui-knob [value]="50" [min]="0" [max]="100" color="primary"></ui-knob>`,
+        usage: `<dui-knob [value]="50" [min]="0" [max]="100" color="primary"></dui-knob>`,
         props: [
           {
             name: 'value',
@@ -5576,8 +5578,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Best for high-precision inputs like audio volume or brightness settings'],
         examples: [
-          '<ui-knob [value]="75" showTicks="true" color="#f00"></ui-knob>',
-          '<ui-knob [value]="10" size="200" [showLabels]="true" [step]="5"></ui-knob>',
+          '<dui-knob [value]="75" showTicks="true" color="#f00"></dui-knob>',
+          '<dui-knob [value]="10" size="200" [showLabels]="true" [step]="5"></dui-knob>',
         ],
       },
     ],
@@ -5589,7 +5591,7 @@ export class ComponentDocsService {
         shortDescription: 'Industrial-grade speedometer for real-time telemetry display',
         detailedDescription:
           'Advanced data visualization gauge. Features dual-needle поддержкой (comparison), customizable color zones, interactive needle dragging, image exporting (PNG/SVG), and animated value transitions.',
-        usage: `<ui-speedometer [value]="80" [minValue]="0" [maxValue]="240" unit="km/h"></ui-speedometer>`,
+        usage: `<dui-speedometer [value]="80" [minValue]="0" [maxValue]="240" unit="km/h"></dui-speedometer>`,
         props: [
           {
             name: 'value',
@@ -5633,8 +5635,8 @@ export class ComponentDocsService {
         ],
         limitations: ['Rich custom ranges must be passed as double-quoted JSON strings'],
         examples: [
-          '<ui-speedometer [value]="160" [maxValue]="300" unit="km/h" color="warning"></ui-speedometer>',
-          '<ui-speedometer [value]="45" label="Load" showPercentage="true" ranges=\'[{"min":0, "max":40, "color": "green"}]\'></ui-speedometer>',
+          '<dui-speedometer [value]="160" [maxValue]="300" unit="km/h" color="warning"></dui-speedometer>',
+          '<dui-speedometer [value]="45" label="Load" showPercentage="true" ranges=\'[{"min":0, "max":40, "color": "green"}]\'></dui-speedometer>',
         ],
       },
     ],
@@ -5648,7 +5650,7 @@ export class ComponentDocsService {
         detailedDescription:
           'The Resizable Panel component provides a powerful split-pane layout system with draggable dividers. It supports horizontal and vertical splits, triple or nested panes, collapsible panels, snap-to-edge behaviour, min/max size constraints on each panel, and dark/light themes. Content is projected via named slots matching the panel id defined in the panels array.',
         usage: `<!-- Horizontal two-panel split -->
-<ui-resizable-panel
+<dui-resizable-panel
   [panels]="[
     { id: 'p1', size: 30, minSize: 15 },
     { id: 'p2', size: 70 }
@@ -5657,7 +5659,7 @@ export class ComponentDocsService {
 >
   <div slot="p1">Left Panel</div>
   <div slot="p2">Right Panel</div>
-</ui-resizable-panel>`,
+</dui-resizable-panel>`,
         props: [
           {
             name: 'panels',
@@ -5764,12 +5766,12 @@ export class ComponentDocsService {
         ],
         examples: [
           `<!-- Vertical split -->
-<ui-resizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
+<dui-resizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
   <div slot="t1">Top Panel</div>
   <div slot="t2">Bottom Panel</div>
-</ui-resizable-panel>`,
+</dui-resizable-panel>`,
           `<!-- Triple horizontal split -->
-<ui-resizable-panel [panels]="[
+<dui-resizable-panel [panels]="[
   {id:'p1',size:30,minSize:20},
   {id:'p2',size:40,minSize:20},
   {id:'p3',size:30,minSize:20}
@@ -5777,19 +5779,19 @@ export class ComponentDocsService {
   <div slot="p1">Left</div>
   <div slot="p2">Centre</div>
   <div slot="p3">Right</div>
-</ui-resizable-panel>`,
+</dui-resizable-panel>`,
           `<!-- Nested panels (IDE layout) -->
-<ui-resizable-panel [panels]="nestedOuter" direction="horizontal">
+<dui-resizable-panel [panels]="nestedOuter" direction="horizontal">
   <div slot="sidebar">Sidebar</div>
   <div slot="main" style="height:100%">
-    <ui-resizable-panel [panels]="nestedInner" direction="vertical">
+    <dui-resizable-panel [panels]="nestedInner" direction="vertical">
       <div slot="editor">Editor</div>
       <div slot="terminal">Terminal</div>
-    </ui-resizable-panel>
+    </dui-resizable-panel>
   </div>
-</ui-resizable-panel>`,
+</dui-resizable-panel>`,
           `<!-- Collapsible + snap -->
-<ui-resizable-panel
+<dui-resizable-panel
   [panels]="[{id:'left',size:30,collapsible:true,collapseDirection:'left'},{id:'main',size:70}]"
   direction="horizontal"
   snap-to-edge="true"
@@ -5798,7 +5800,7 @@ export class ComponentDocsService {
 >
   <div slot="left">Collapsible Sidebar</div>
   <div slot="main">Main Content</div>
-</ui-resizable-panel>`,
+</dui-resizable-panel>`,
         ],
       },
     ],
@@ -5819,6 +5821,3 @@ export class ComponentDocsService {
     }));
   }
 }
-
-
-

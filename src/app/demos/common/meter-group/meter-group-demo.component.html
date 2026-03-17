@@ -19,17 +19,26 @@
           <section class="demo-section" id="basic">
             <div class="section-header"><h2>Basic Layouts</h2></div>
             <div class="demo-card meter-panel">
-              <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
+              <dui-meter-group [attr.values]="diskValues"></dui-meter-group>
             </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Shapes -->
           <section class="demo-section" id="shapes">
-            <div class="section-header"><h2>Line vs Circle</h2><p>Switch between a linear bar and a radial gauge.</p></div>
+            <div class="section-header">
+              <h2>Line vs Circle</h2>
+              <p>Switch between a linear bar and a radial gauge.</p>
+            </div>
             <div class="demo-card meter-grid">
-              <div><p>Linear Bar</p><ui-meter-group [attr.values]="diskValues"></ui-meter-group></div>
-              <div><p>Radial Circle</p><ui-meter-group shape="circle" [attr.values]="diskValues"></ui-meter-group></div>
+              <div>
+                <p>Linear Bar</p>
+                <dui-meter-group [attr.values]="diskValues"></dui-meter-group>
+              </div>
+              <div>
+                <p>Radial Circle</p>
+                <dui-meter-group shape="circle" [attr.values]="diskValues"></dui-meter-group>
+              </div>
             </div>
           </section>
 
@@ -37,18 +46,27 @@
           <section class="demo-section" id="vertical">
             <div class="section-header"><h2>Vertical Orientation</h2></div>
             <div class="demo-card meter-panel h-300">
-              <ui-meter-group orientation="vertical" [attr.values]="diskValues"></ui-meter-group>
+              <dui-meter-group orientation="vertical" [attr.values]="diskValues"></dui-meter-group>
             </div>
-            <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="verticalCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Sizing -->
           <section class="demo-section" id="sizing">
             <div class="section-header"><h2>Sizes & Thickness</h2></div>
             <div class="demo-card meter-stack">
-              <div><p>Small (SM)</p><ui-meter-group size="sm" [attr.values]="diskValues"></ui-meter-group></div>
-              <div><p>Medium (MD)</p><ui-meter-group size="md" [attr.values]="diskValues"></ui-meter-group></div>
-              <div><p>Large (LG)</p><ui-meter-group size="lg" [attr.values]="diskValues"></ui-meter-group></div>
+              <div>
+                <p>Small (SM)</p>
+                <dui-meter-group size="sm" [attr.values]="diskValues"></dui-meter-group>
+              </div>
+              <div>
+                <p>Medium (MD)</p>
+                <dui-meter-group size="md" [attr.values]="diskValues"></dui-meter-group>
+              </div>
+              <div>
+                <p>Large (LG)</p>
+                <dui-meter-group size="lg" [attr.values]="diskValues"></dui-meter-group>
+              </div>
             </div>
           </section>
 
@@ -56,7 +74,7 @@
           <section class="demo-section" id="legend">
             <div class="section-header"><h2>Legends & Labels</h2></div>
             <div class="demo-card meter-panel">
-              <ui-meter-group show-legend [attr.values]="diskValues"></ui-meter-group>
+              <dui-meter-group show-legend [attr.values]="diskValues"></dui-meter-group>
             </div>
           </section>
 
@@ -64,15 +82,26 @@
           <section class="demo-section" id="icons">
             <div class="section-header"><h2>Icons & Libraries</h2></div>
             <div class="demo-card meter-panel">
-              <ui-meter-group icon-library="lucide" show-legend [attr.values]="diskValues"></ui-meter-group>
+              <dui-meter-group
+                icon-library="lucide"
+                show-legend
+                [attr.values]="diskValues"
+              ></dui-meter-group>
             </div>
           </section>
 
           <!-- Interactive -->
           <section class="demo-section" id="interactive">
-            <div class="section-header"><h2>Interactive Mode</h2><p>Segments and legend items respond to hover and click events.</p></div>
+            <div class="section-header">
+              <h2>Interactive Mode</h2>
+              <p>Segments and legend items respond to hover and click events.</p>
+            </div>
             <div class="demo-card meter-panel">
-              <ui-meter-group interactive [attr.values]="diskValues" (meterClick)="handleMeterClick($event)"></ui-meter-group>
+              <dui-meter-group
+                interactive
+                [attr.values]="diskValues"
+                (meterClick)="handleMeterClick($event)"
+              ></dui-meter-group>
             </div>
           </section>
         </div>
@@ -84,5 +113,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

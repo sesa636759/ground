@@ -85,7 +85,7 @@ export class DmTreeListPlaygroundComponent extends BasePlaygroundComponent imple
       if (!this.demoElement) return;
       let code = this.getCleanFormattedDom(this.demoElement, 'ui-tree-list');
       // Add model prop to code manually inside the bracket if needed, actually it should be captured by DOM if bound as attr, but it's bound as property.
-      code = code.replace('></ui-tree-list>', '\n  [model]="treeData"\n></ui-tree-list>');
+      code = code.replace('></dui-tree-list>', '\n  [model]="treeData"\n></dui-tree-list>');
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
@@ -97,6 +97,3 @@ export class DmTreeListPlaygroundComponent extends BasePlaygroundComponent imple
     );
   }
 }
-
-
-

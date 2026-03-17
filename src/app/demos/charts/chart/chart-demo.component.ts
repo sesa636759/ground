@@ -31,14 +31,14 @@ export class DmChartDemoComponent extends BaseDemoComponent {
     datasets: [{ label: 'Data', data: [10, 20, 30, 40] }],
   };
 
-  playgroundCode = `<ui-chart-line [data]="data" responsive></ui-chart-line>`;
+  playgroundCode = `<dui-chart-line [data]="data" responsive></dui-chart-line>`;
 
   typesCode = `<!-- Line Chart -->
-<ui-chart-line [data]="data"></ui-chart-line>
+<dui-chart-line [data]="data"></dui-chart-line>
 
 <!-- Bar Chart -->
-<ui-chart type="bar" [data]="data"></ui-chart>
+<dui-chart type="bar" [data]="data"></dui-chart>
 
 <!-- Pie Chart -->
-<ui-chart type="pie" [data]="data"></ui-chart>`;
+<dui-chart type="pie" [data]="data"></dui-chart>`;
 }

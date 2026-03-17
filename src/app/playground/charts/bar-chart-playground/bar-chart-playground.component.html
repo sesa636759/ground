@@ -10,108 +10,101 @@
         <h3>📐 Layout</h3>
         <div class="control-group">
           <label>Orientation</label>
-          <ui-dropdown
+          <dui-dropdown
             [(ngModel)]="pgConfig.orientation"
             (ngModelChange)="updateConfig()"
             [options]="standardOrientationOptions"
-          ></ui-dropdown>
+          ></dui-dropdown>
         </div>
         <div class="control-group">
           <label>Dataset Mode</label>
-          <ui-dropdown
+          <dui-dropdown
             [(ngModel)]="pgConfig.mode"
             (ngModelChange)="onModeChange()"
             [options]="modeOptions"
-          ></ui-dropdown>
+          ></dui-dropdown>
         </div>
         <div class="control-group">
           <label>Bar Width %</label>
-          <ui-input
+          <dui-input
             type="range"
             min="20"
             max="90"
             step="5"
             [(ngModel)]="pgConfig.barWidth"
             (ngModelChange)="updateConfig()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted"
-            >{{ pgConfig.barWidth }}%</span
-          >
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ pgConfig.barWidth }}%</span>
         </div>
         <div class="control-group">
           <label>Border Radius</label>
-          <ui-input
+          <dui-input
             type="range"
             min="0"
             max="16"
             step="2"
             [(ngModel)]="pgConfig.borderRadius"
             (ngModelChange)="updateConfig()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted"
-            >{{ pgConfig.borderRadius }}px</span
-          >
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ pgConfig.borderRadius }}px</span>
         </div>
       </div>
 
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showGrid"
             [(ngModel)]="pgConfig.showGrid"
             (ngModelChange)="updateConfig()"
             label="Show Grid"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showValues"
             [(ngModel)]="pgConfig.showValues"
             (ngModelChange)="updateConfig()"
             label="Show Values"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="stacked"
             [(ngModel)]="pgConfig.stacked"
             (ngModelChange)="updateConfig()"
             label="Stacked"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="enableAnimation"
             [(ngModel)]="pgConfig.enableAnimation"
             (ngModelChange)="updateConfig()"
             label="Animate on Load"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showTooltip"
             [(ngModel)]="pgConfig.showTooltip"
             (ngModelChange)="updateConfig()"
             label="Show Tooltip"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
       </div>
     </div>
   </div>
-  <div
-    preview
-     class="w-full display-flex flex-col gap-16 justify-center items-center"
-  >
-    <ui-bar-chart
+  <div preview class="w-full display-flex flex-col gap-16 justify-center items-center">
+    <dui-bar-chart
       [attr.orientation]="pgConfig.orientation"
       [attr.bar-width]="pgConfig.barWidth"
       [attr.border-radius]="pgConfig.borderRadius"
@@ -123,7 +116,7 @@
       [attr.show-tooltip]="pgConfig.showTooltip ? '' : null"
       [labels]="labelsJson"
       [datasets]="datasetsJson"
-       class="w-full h-380"
-    ></ui-bar-chart>
+      class="w-full h-380"
+    ></dui-bar-chart>
   </div>
 </pg-playground>

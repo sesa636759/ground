@@ -87,7 +87,7 @@ export class DmAnimateOnScrollPlaygroundComponent implements OnInit {
   }
 
   updateConfig() {
-    let code = `<ui-animate-on-scroll\n`;
+    let code = `<dui-animate-on-scroll\n`;
     code += `  animation="${this.pgConfig.animation}"\n`;
     if (this.pgConfig.direction !== 'up') code += `  direction="${this.pgConfig.direction}"\n`;
     code += `  duration="${this.pgConfig.duration}"\n`;
@@ -111,7 +111,7 @@ export class DmAnimateOnScrollPlaygroundComponent implements OnInit {
     if (this.pgConfig.scrub) code += `  scrub="true"\n`;
     if (this.pgConfig.textMode !== 'none') code += `  text-mode="${this.pgConfig.textMode}"\n`;
 
-    code += `>\n  <div>Your content here</div>\n</ui-animate-on-scroll>`;
+    code += `>\n  <div>Your content here</div>\n</dui-animate-on-scroll>`;
 
     this.generatedCode.set(code);
   }

@@ -73,7 +73,7 @@ export class DsCardPlaygroundComponent extends BasePlaygroundComponent {
       aspectRatio: '16/9',
       clickable: false,
       href: '',
-      target: '_blank'
+      target: '_blank',
     };
   }
 

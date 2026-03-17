@@ -66,13 +66,13 @@ export class DmAvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
       el.borderWidth = this.pgConfig.borderWidth;
 
       const innerContent = `
-  <ui-avatar label="JD" src="https://i.pravatar.cc/150?u=1"></ui-avatar>
-  <ui-avatar label="AB" src="https://i.pravatar.cc/150?u=2"></ui-avatar>
-  <ui-avatar label="CD" src="https://i.pravatar.cc/150?u=3"></ui-avatar>
-  <ui-avatar label="EF" src="https://i.pravatar.cc/150?u=4"></ui-avatar>
-  <ui-avatar label="GH" src="https://i.pravatar.cc/150?u=5"></ui-avatar>`;
+  <dui-avatar label="JD" src="https://i.pravatar.cc/150?u=1"></dui-avatar>
+  <dui-avatar label="AB" src="https://i.pravatar.cc/150?u=2"></dui-avatar>
+  <dui-avatar label="CD" src="https://i.pravatar.cc/150?u=3"></dui-avatar>
+  <dui-avatar label="EF" src="https://i.pravatar.cc/150?u=4"></dui-avatar>
+  <dui-avatar label="GH" src="https://i.pravatar.cc/150?u=5"></dui-avatar>`;
 
-      let code = `<ui-avatar-group
+      let code = `<dui-avatar-group
   size="${this.pgConfig.size}"
   max="${this.pgConfig.max}"
   shape="${this.pgConfig.shape}"
@@ -87,13 +87,10 @@ export class DmAvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
       if (this.pgConfig.borderWidth !== 2)
         code += `\n  border-width="${this.pgConfig.borderWidth}"`;
 
-      code += `\n>${innerContent}\n</ui-avatar-group>`;
+      code += `\n>${innerContent}\n</dui-avatar-group>`;
 
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 }
-
-
-

@@ -12,14 +12,14 @@
     <!-- Success Message -->
     @if (success()) {
       <div class="alert alert-success">
-        <ui-icon name="check-circle" library="lucide" size="18px" class="alert-icon"></ui-icon>
+        <dui-icon name="check-circle" library="lucide" size="18px" class="alert-icon"></dui-icon>
         <span>{{ success() }}</span>
       </div>
     }
     <!-- Error Message -->
     @if (error()) {
       <div class="alert alert-error">
-        <ui-icon name="alert-triangle" library="lucide" size="18px" class="alert-icon"></ui-icon>
+        <dui-icon name="alert-triangle" library="lucide" size="18px" class="alert-icon"></dui-icon>
         <span>{{ error() }}</span>
       </div>
     }
@@ -29,8 +29,8 @@
       <div class="form-group">
         <label for="fullName">Full Name <span class="required">*</span></label>
         <div class="input-wrapper">
-          <ui-icon name="user" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <ui-input
+          <dui-icon name="user" library="lucide" size="18px" class="input-icon"></dui-icon>
+          <dui-input
             type="text"
             id="fullName"
             name="fullName"
@@ -38,7 +38,7 @@
             placeholder="Enter your full name"
             required
             autocomplete="name"
-          ></ui-input>
+          ></dui-input>
         </div>
       </div>
 
@@ -46,8 +46,8 @@
       <div class="form-group">
         <label for="username">Username <span class="required">*</span></label>
         <div class="input-wrapper">
-          <ui-icon name="at-sign" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <ui-input
+          <dui-icon name="at-sign" library="lucide" size="18px" class="input-icon"></dui-icon>
+          <dui-input
             type="text"
             id="username"
             name="username"
@@ -55,7 +55,7 @@
             placeholder="Choose a username"
             required
             autocomplete="username"
-          ></ui-input>
+          ></dui-input>
         </div>
       </div>
 
@@ -63,8 +63,8 @@
       <div class="form-group">
         <label for="email">Email Address <span class="required">*</span></label>
         <div class="input-wrapper">
-          <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <ui-input
+          <dui-icon name="mail" library="lucide" size="18px" class="input-icon"></dui-icon>
+          <dui-input
             type="email"
             id="email"
             name="email"
@@ -72,7 +72,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          ></ui-input>
+          ></dui-input>
         </div>
       </div>
 
@@ -80,8 +80,8 @@
       <div class="form-group">
         <label for="password">Password <span class="required">*</span></label>
         <div class="input-wrapper">
-          <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <ui-input
+          <dui-icon name="lock" library="lucide" size="18px" class="input-icon"></dui-icon>
+          <dui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -92,7 +92,7 @@
             autocomplete="new-password"
           >
             <ng-container suffix>
-              <ui-button
+              <dui-button
                 type="button"
                 class="toggle-password px-6 min-w-0"
                 (click)="togglePasswordVisibility()"
@@ -100,14 +100,14 @@
                 size="sm"
                 [title]="showPassword() ? 'Hide password' : 'Show password'"
               >
-                <ui-icon
+                <dui-icon
                   [name]="showPassword() ? 'eye-off' : 'eye'"
                   library="lucide"
                   size="18px"
-                ></ui-icon>
-              </ui-button>
+                ></dui-icon>
+              </dui-button>
             </ng-container>
-          </ui-input>
+          </dui-input>
         </div>
 
         <!-- Password Strength Indicator -->
@@ -136,8 +136,8 @@
       <div class="form-group">
         <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
         <div class="input-wrapper">
-          <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <ui-input
+          <dui-icon name="lock" library="lucide" size="18px" class="input-icon"></dui-icon>
+          <dui-input
             [type]="showConfirmPassword() ? 'text' : 'password'"
             id="confirmPassword"
             name="confirmPassword"
@@ -147,7 +147,7 @@
             autocomplete="new-password"
           >
             <ng-container suffix>
-              <ui-button
+              <dui-button
                 type="button"
                 class="toggle-password px-6 min-w-0"
                 (click)="toggleConfirmPasswordVisibility()"
@@ -155,14 +155,14 @@
                 size="sm"
                 [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
               >
-                <ui-icon
+                <dui-icon
                   [name]="showConfirmPassword() ? 'eye-off' : 'eye'"
                   library="lucide"
                   size="18px"
-                ></ui-icon>
-              </ui-button>
+                ></dui-icon>
+              </dui-button>
             </ng-container>
-          </ui-input>
+          </dui-input>
         </div>
         @if (confirmPassword) {
           <div class="password-match">
@@ -179,7 +179,11 @@
       <!-- Terms and Conditions -->
       <div class="form-group">
         <label class="checkbox-label">
-          <ui-checkbox name="acceptTerms" [(ngModel)]="formData.acceptTerms" required></ui-checkbox>
+          <dui-checkbox
+            name="acceptTerms"
+            [(ngModel)]="formData.acceptTerms"
+            required
+          ></dui-checkbox>
           <span>
             I agree to the
             <a href="#" class="link">Terms & Conditions</a>
@@ -190,7 +194,7 @@
       </div>
 
       <!-- Submit Button -->
-      <ui-button
+      <dui-button
         type="submit"
         [label]="!loading() ? 'Create Account' : 'Creating account...'"
         size="xl"
@@ -198,7 +202,7 @@
         full-width
         [disabled]="loading()"
       >
-      </ui-button>
+      </dui-button>
     </form>
 
     <!-- Divider -->
@@ -208,7 +212,7 @@
 
     <!-- Social Registration Options -->
     <div class="social-login">
-      <ui-button
+      <dui-button
         type="button"
         size="xxl"
         label="Google"
@@ -218,8 +222,8 @@
         variant="outline"
         full-width
       >
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         type="button"
         size="xxl"
         label="GitHub"
@@ -229,8 +233,8 @@
         variant="outline"
         full-width
       >
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         type="button"
         size="xxl"
         label="Microsoft"
@@ -240,7 +244,7 @@
         variant="outline"
         full-width
       >
-      </ui-button>
+      </dui-button>
     </div>
 
     <!-- Login Link -->

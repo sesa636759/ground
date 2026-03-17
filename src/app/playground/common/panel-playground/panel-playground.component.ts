@@ -66,7 +66,7 @@ export class DmPanelPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<ui-panel\n';
+    let code = '<dui-panel\n';
     code += `  panel-title="${this.pgConfig.panelTitle}"\n`;
     code += `  panel-subtitle="${this.pgConfig.panelSubtitle}"\n`;
     if (this.pgConfig.badge) code += `  badge="${this.pgConfig.badge}"\n`;
@@ -85,7 +85,7 @@ export class DmPanelPlaygroundComponent extends BasePlaygroundComponent {
     code += '>\n';
     code += '  <div slot="content">Panel content here...</div>\n';
     code += '  <div slot="footer">Panel footer here...</div>\n';
-    code += '</ui-panel>';
+    code += '</dui-panel>';
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -95,6 +95,3 @@ export class DmPanelPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Panel event: ${event}`);
   }
 }
-
-
-

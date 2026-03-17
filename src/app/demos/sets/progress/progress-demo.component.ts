@@ -40,32 +40,36 @@ export class DmProgressDemoComponent extends BaseDemoComponent {
   multiProgressValues = [
     { percent: 30, color: '#3b82f6', label: 'Apps' },
     { percent: 20, color: '#ef4444', label: 'System' },
-    { percent: 15, color: '#10b981', label: 'Media' }
+    { percent: 15, color: '#10b981', label: 'Media' },
   ];
 
-  lineCode = `<ui-progress percent="50"></ui-progress>
-<ui-progress percent="100" status="success"></ui-progress>`;
+  lineCode = `<dui-progress percent="50"></dui-progress>
+<dui-progress percent="100" status="success"></dui-progress>`;
 
-  circleCode = `<ui-progress type="circle" percent="75"></ui-progress>
-<ui-progress type="circle" percent="50" size="small"></ui-progress>`;
+  circleCode = `<dui-progress type="circle" percent="75"></dui-progress>
+<dui-progress type="circle" percent="50" size="small"></dui-progress>`;
 
-  dashboardCode = `<ui-progress type="dashboard" percent="75"></ui-progress>
-<ui-progress type="dashboard" percent="50" gap-degree="120" gap-position="bottom"></ui-progress>`;
+  dashboardCode = `<dui-progress type="dashboard" percent="75"></dui-progress>
+<dui-progress type="dashboard" percent="50" gap-degree="120" gap-position="bottom"></dui-progress>`;
 
-  statusCode = `<ui-progress percent="50" status="exception"></ui-progress>
-<ui-progress percent="80" status="active"></ui-progress>`;
+  statusCode = `<dui-progress percent="50" status="exception"></dui-progress>
+<dui-progress percent="80" status="active"></dui-progress>`;
 
-  bufferCode = `<ui-progress percent="40" show-buffer buffer="70"></ui-progress>`;
+  bufferCode = `<dui-progress percent="40" show-buffer buffer="70"></dui-progress>`;
 
-  multiCode = `<ui-progress [multi-progress]='[{"percent":30,"color":"#blue"},{"percent":20,"color":"#red"}]'></ui-progress>`;
+  multiCode = `<dui-progress [multi-progress]='[{"percent":30,"color":"#blue"},{"percent":20,"color":"#red"}]'></dui-progress>`;
 
-  premiumCode = `<ui-progress percent="65" liquid stroke-color="#3DCD58"></ui-progress>
-<ui-progress percent="50" glass glow stroke-color="#fff"></ui-progress>`;
+  premiumCode = `<dui-progress percent="65" liquid stroke-color="#3DCD58"></dui-progress>
+<dui-progress percent="50" glass glow stroke-color="#fff"></dui-progress>`;
 
-  controlsCode = `<ui-progress percent="45" show-pause-button show-time-estimate estimated-time="120"></ui-progress>`;
+  controlsCode = `<dui-progress percent="45" show-pause-button show-time-estimate estimated-time="120"></dui-progress>`;
 
-  labelsCode = `<ui-progress percent="75" label-position="top" percentage-color="#ff4d4f"></ui-progress>`;
+  labelsCode = `<dui-progress percent="75" label-position="top" percentage-color="#ff4d4f"></dui-progress>`;
 
-  increaseProgress() { this.progressValue = Math.min(100, this.progressValue + 10); }
-  decreaseProgress() { this.progressValue = Math.max(0, this.progressValue - 10); }
+  increaseProgress() {
+    this.progressValue = Math.min(100, this.progressValue + 10);
+  }
+  decreaseProgress() {
+    this.progressValue = Math.max(0, this.progressValue - 10);
+  }
 }

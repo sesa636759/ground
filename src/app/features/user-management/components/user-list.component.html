@@ -7,24 +7,24 @@
     </div>
 
     <div class="header-actions">
-      <ui-button
+      <dui-button
         variant="primary"
         icon="➕"
         label="Add User"
         (click)="openCreateDialog()"
-      ></ui-button>
-      <ui-button
+      ></dui-button>
+      <dui-button
         variant="secondary"
         icon="📥"
         label="Import"
         (click)="showImportDialog = true"
-      ></ui-button>
-      <ui-button
+      ></dui-button>
+      <dui-button
         variant="secondary"
         icon="📤"
         label="Export"
         (click)="exportUsers('csv')"
-      ></ui-button>
+      ></dui-button>
     </div>
   </div>
 
@@ -66,72 +66,72 @@
   <!-- Filters and Search -->
   <div class="filters-section">
     <div class="search-box">
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="searchTerm"
         (keyup.enter)="onSearch()"
         placeholder="Search users by name, email, username..."
         class="search-input"
       />
-      <ui-button icon="🔍" icon-only variant="ghost" (click)="onSearch()"></ui-button>
+      <dui-button icon="🔍" icon-only variant="ghost" (click)="onSearch()"></dui-button>
     </div>
 
     <div class="filter-controls">
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="selectedRole"
         (ngModelChange)="onFilterChange()"
         [options]="roleOptions"
         class="filter-select"
-      ></ui-dropdown>
+      ></dui-dropdown>
 
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="selectedStatus"
         (ngModelChange)="onFilterChange()"
         [options]="statusOptions"
         class="filter-select"
-      ></ui-dropdown>
+      ></dui-dropdown>
 
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="selectedDepartment"
         (ngModelChange)="onFilterChange()"
         [options]="departmentOptions"
         class="filter-select"
-      ></ui-dropdown>
+      ></dui-dropdown>
 
-      <ui-button
+      <dui-button
         variant="ghost"
         label="Clear Filters"
         (click)="clearFilters()"
         *ngIf="searchTerm || selectedRole || selectedStatus || selectedDepartment"
       >
-      </ui-button>
+      </dui-button>
     </div>
 
     <div class="view-controls">
-      <ui-button
+      <dui-button
         [variant]="viewMode === 'table' ? 'primary' : 'ghost'"
         icon="📊"
         icon-only
         (click)="setViewMode('table')"
         title="Table View"
         label=""
-      ></ui-button>
-      <ui-button
+      ></dui-button>
+      <dui-button
         [variant]="viewMode === 'grid' ? 'primary' : 'ghost'"
         icon="⊞"
         icon-only
         (click)="setViewMode('grid')"
         title="Grid View"
         label=""
-      ></ui-button>
-      <ui-button
+      ></dui-button>
+      <dui-button
         [variant]="viewMode === 'list' ? 'primary' : 'ghost'"
         icon="☰"
         icon-only
         (click)="setViewMode('list')"
         title="List View"
         label=""
-      ></ui-button>
+      ></dui-button>
     </div>
   </div>
 
@@ -139,34 +139,34 @@
   <div class="bulk-actions-bar" *ngIf="selectedUsers.size > 0">
     <div class="selected-count">{{ selectedUsers.size }} user(s) selected</div>
     <div class="bulk-buttons">
-      <ui-button
+      <dui-button
         size="sm"
         icon="✅"
         label="Activate"
         (click)="bulkOperation = 'activate'; executeBulkOperation()"
       >
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         size="sm"
         icon="⏸️"
         label="Deactivate"
         (click)="bulkOperation = 'deactivate'; executeBulkOperation()"
       >
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         size="sm"
         icon="🔒"
         label="Lock"
         (click)="bulkOperation = 'lock'; executeBulkOperation()"
       >
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         size="sm"
         variant="danger"
         icon="🗑️"
         label="Delete"
         (click)="openBulkDialog()"
-      ></ui-button>
+      ></dui-button>
     </div>
   </div>
 
@@ -182,10 +182,10 @@
       <thead>
         <tr>
           <th width="40">
-            <ui-checkbox
+            <dui-checkbox
               [checked]="selectedUsers.size === users.length && users.length > 0"
               (change)="toggleSelectAll()"
-            ></ui-checkbox>
+            ></dui-checkbox>
           </th>
           <th>User</th>
           <th>Email</th>
@@ -199,10 +199,10 @@
       <tbody>
         <tr *ngFor="let user of users" [class.selected]="isSelected(user.id)">
           <td>
-            <ui-checkbox
+            <dui-checkbox
               [checked]="isSelected(user.id)"
               (change)="toggleSelectUser(user.id)"
-            ></ui-checkbox>
+            ></dui-checkbox>
           </td>
           <td>
             <div class="user-cell">
@@ -238,22 +238,22 @@
           <td>{{ user.createdAt | date: 'short' }}</td>
           <td>
             <div class="action-buttons">
-              <ui-button
+              <dui-button
                 icon="✏️"
                 icon-only
                 variant="ghost"
                 (click)="openEditDialog(user)"
                 title="Edit"
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 icon="🔑"
                 icon-only
                 variant="ghost"
                 (click)="resetPassword(user)"
                 title="Reset Password"
                 label=""
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 icon="🔒"
                 icon-only
                 variant="ghost"
@@ -261,8 +261,8 @@
                 (click)="lockUser(user)"
                 title="Lock"
                 label=""
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 icon="🔓"
                 icon-only
                 variant="ghost"
@@ -270,15 +270,15 @@
                 (click)="unlockUser(user)"
                 title="Unlock"
                 label=""
-              ></ui-button>
-              <ui-button
+              ></dui-button>
+              <dui-button
                 icon="🗑️"
                 icon-only
                 variant="danger"
                 (click)="openDeleteDialog(user)"
                 title="Delete"
                 label=""
-              ></ui-button>
+              ></dui-button>
             </div>
           </td>
         </tr>
@@ -296,11 +296,11 @@
   <div class="users-grid" *ngIf="viewMode === 'grid' && !loading">
     <div class="user-card" *ngFor="let user of users" [class.selected]="isSelected(user.id)">
       <div class="card-header">
-        <ui-checkbox
+        <dui-checkbox
           [checked]="isSelected(user.id)"
           (change)="toggleSelectUser(user.id)"
           class="card-checkbox"
-        ></ui-checkbox>
+        ></dui-checkbox>
         <span class="badge" [ngClass]="getStatusBadgeClass(user.status)">{{ user.status }}</span>
       </div>
 
@@ -320,13 +320,13 @@
       </div>
 
       <div class="card-actions">
-        <ui-button size="sm" label="Edit" (click)="openEditDialog(user)"></ui-button>
-        <ui-button
+        <dui-button size="sm" label="Edit" (click)="openEditDialog(user)"></dui-button>
+        <dui-button
           size="sm"
           variant="danger"
           label="Delete"
           (click)="openDeleteDialog(user)"
-        ></ui-button>
+        ></dui-button>
       </div>
     </div>
   </div>
@@ -339,32 +339,32 @@
     </div>
 
     <div class="pagination-controls">
-      <ui-button
+      <dui-button
         label="Previous"
         [disabled]="currentPage === 1"
         (click)="goToPage(currentPage - 1)"
       >
-      </ui-button>
+      </dui-button>
 
-      <ui-button
+      <dui-button
         *ngFor="let page of getPageNumbers()"
         [label]="page"
         [variant]="page === currentPage ? 'primary' : 'ghost'"
         (click)="goToPage(page)"
         label=""
-      ></ui-button>
+      ></dui-button>
 
-      <ui-button
+      <dui-button
         label="Next"
         [disabled]="currentPage === totalPages"
         (click)="goToPage(currentPage + 1)"
       >
-      </ui-button>
+      </dui-button>
     </div>
 
     <div class="page-size-selector">
       <label>Per page:</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pageSize"
         (ngModelChange)="changePageSize(pageSize)"
         [options]="[
@@ -373,7 +373,7 @@
           { label: '50', value: 50 },
           { label: '100', value: 100 },
         ]"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 </div>

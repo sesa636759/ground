@@ -128,14 +128,11 @@ export class DmDialogBoxPlaygroundComponent extends BasePlaygroundComponent impl
     <p>This is the content of the dialog.</p>
   </div>`;
       const code = this.getCleanFormattedDom(this.demoElement, 'ui-dialog-box').replace(
-        '></ui-dialog-box>',
-        `>\n${innerContent}\n</ui-dialog-box>`,
+        '></dui-dialog-box>',
+        `>\n${innerContent}\n</dui-dialog-box>`,
       );
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 }
-
-
-

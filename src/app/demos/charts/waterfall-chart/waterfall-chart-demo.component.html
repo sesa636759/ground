@@ -14,13 +14,13 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="revenue" >
+          <section class="demo-section mt-0" id="revenue">
             <div class="section-header">
               <h2>💰 Revenue Waterfall</h2>
               <p>Show how individual revenue contributions build up to a total figure.</p>
             </div>
             <div class="demo-card">
-              <svg width="620" height="320"  class="display-block m-0-auto">
+              <svg width="620" height="320" class="display-block m-0-auto">
                 <!-- X-axis -->
                 <line x1="30" y1="270" x2="600" y2="270" stroke="#e5e7eb" />
                 <!-- Y grid lines -->
@@ -141,12 +141,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="revenueCode"
               label="Revenue Waterfall"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="pl">
@@ -155,7 +155,7 @@
               <p>Break down a profit &amp; loss statement from gross revenue to net profit.</p>
             </div>
             <div class="demo-card">
-              <svg width="620" height="280"  class="display-block m-0-auto">
+              <svg width="620" height="280" class="display-block m-0-auto">
                 <line x1="30" y1="250" x2="590" y2="250" stroke="#e5e7eb" />
                 <rect x="40" y="100" width="56" height="150" rx="4" fill="#6366f1" />
                 <text x="68" y="92" text-anchor="middle" font-size="10" fill="#4338ca">$200k</text>
@@ -200,12 +200,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="plCode"
               label="P&L Waterfall"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -216,4 +216,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

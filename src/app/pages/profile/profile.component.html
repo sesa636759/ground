@@ -12,7 +12,7 @@
               class="avatar"
             />
             <label class="avatar-upload" title="Change avatar">
-              <ui-input type="file" accept="image/*" (change)="onAvatarChange($event)" hidden />
+              <dui-input type="file" accept="image/*" (change)="onAvatarChange($event)" hidden />
               <span class="upload-icon">📷</span>
             </label>
           </div>
@@ -40,53 +40,53 @@
 
         <div class="header-actions">
           @if (!editMode()) {
-            <ui-button class="btn btn-secondary" (click)="startEdit()">
+            <dui-button class="btn btn-secondary" (click)="startEdit()">
               <span class="icon">✏️</span>
               Edit Profile
-            </ui-button>
+            </dui-button>
           }
-          <ui-button class="btn btn-danger" (click)="logout()">
+          <dui-button class="btn btn-danger" (click)="logout()">
             <span class="icon">🚪</span>
             Logout
-          </ui-button>
+          </dui-button>
         </div>
       </div>
     </div>
 
     <!-- Tabs Navigation -->
     <div class="tabs-navigation">
-      <ui-button
+      <dui-button
         class="tab-button"
         [class.active]="activeTab() === 'overview'"
         (click)="setActiveTab('overview')"
       >
         <span class="tab-icon">👤</span>
         Overview
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         class="tab-button"
         [class.active]="activeTab() === 'settings'"
         (click)="setActiveTab('settings')"
       >
         <span class="tab-icon">⚙️</span>
         Settings
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         class="tab-button"
         [class.active]="activeTab() === 'security'"
         (click)="setActiveTab('security')"
       >
         <span class="tab-icon">🔒</span>
         Security
-      </ui-button>
-      <ui-button
+      </dui-button>
+      <dui-button
         class="tab-button"
         [class.active]="activeTab() === 'activity'"
         (click)="setActiveTab('activity')"
       >
         <span class="tab-icon">📊</span>
         Activity
-      </ui-button>
+      </dui-button>
     </div>
 
     <!-- Message Alert -->
@@ -207,7 +207,9 @@
             <div class="card-header">
               <h2>Profile Settings</h2>
               @if (!editMode()) {
-                <ui-button class="btn btn-secondary btn-sm" (click)="startEdit()"> Edit </ui-button>
+                <dui-button class="btn btn-secondary btn-sm" (click)="startEdit()">
+                  Edit
+                </dui-button>
               }
             </div>
 
@@ -216,7 +218,7 @@
                 <form class="settings-form">
                   <div class="form-group">
                     <label for="fullName">Full Name</label>
-                    <ui-input
+                    <dui-input
                       type="text"
                       id="fullName"
                       [(ngModel)]="editForm().fullName"
@@ -240,7 +242,7 @@
                   <div class="form-row">
                     <div class="form-group">
                       <label for="phone">Phone</label>
-                      <ui-input
+                      <dui-input
                         type="tel"
                         id="phone"
                         [(ngModel)]="editForm().phone"
@@ -252,7 +254,7 @@
 
                     <div class="form-group">
                       <label for="location">Location</label>
-                      <ui-input
+                      <dui-input
                         type="text"
                         id="location"
                         [(ngModel)]="editForm().location"
@@ -266,7 +268,7 @@
                   <div class="form-row">
                     <div class="form-group">
                       <label for="website">Website</label>
-                      <ui-input
+                      <dui-input
                         type="url"
                         id="website"
                         [(ngModel)]="editForm().website"
@@ -278,7 +280,7 @@
 
                     <div class="form-group">
                       <label for="department">Department</label>
-                      <ui-input
+                      <dui-input
                         type="text"
                         id="department"
                         [(ngModel)]="editForm().department"
@@ -290,10 +292,10 @@
                   </div>
 
                   <div class="form-actions">
-                    <ui-button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+                    <dui-button type="button" class="btn btn-secondary" (click)="cancelEdit()">
                       Cancel
-                    </ui-button>
-                    <ui-button
+                    </dui-button>
+                    <dui-button
                       type="button"
                       class="btn btn-primary"
                       (click)="saveProfile()"
@@ -304,7 +306,7 @@
                         <span class="spinner"></span>
                         Saving...
                       </span>
-                    </ui-button>
+                    </dui-button>
                   </div>
                 </form>
               }
@@ -353,65 +355,65 @@
                 <div class="form-group">
                   <label for="currentPassword">Current Password</label>
                   <div class="password-input">
-                    <ui-input
+                    <dui-input
                       [type]="showCurrentPassword() ? 'text' : 'password'"
                       id="currentPassword"
                       [(ngModel)]="passwordForm.currentPassword"
                       name="currentPassword"
                       class="form-input"
                     />
-                    <ui-button
+                    <dui-button
                       type="button"
                       class="toggle-password"
                       (click)="showCurrentPassword.set(!showCurrentPassword())"
                     >
                       {{ showCurrentPassword() ? '👁️' : '👁️‍🗨️' }}
-                    </ui-button>
+                    </dui-button>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="newPassword">New Password</label>
                   <div class="password-input">
-                    <ui-input
+                    <dui-input
                       [type]="showNewPassword() ? 'text' : 'password'"
                       id="newPassword"
                       [(ngModel)]="passwordForm.newPassword"
                       name="newPassword"
                       class="form-input"
                     />
-                    <ui-button
+                    <dui-button
                       type="button"
                       class="toggle-password"
                       (click)="showNewPassword.set(!showNewPassword())"
                     >
                       {{ showNewPassword() ? '👁️' : '👁️‍🗨️' }}
-                    </ui-button>
+                    </dui-button>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="confirmPassword">Confirm New Password</label>
                   <div class="password-input">
-                    <ui-input
+                    <dui-input
                       [type]="showConfirmPassword() ? 'text' : 'password'"
                       id="confirmPassword"
                       [(ngModel)]="passwordForm.confirmPassword"
                       name="confirmPassword"
                       class="form-input"
                     />
-                    <ui-button
+                    <dui-button
                       type="button"
                       class="toggle-password"
                       (click)="showConfirmPassword.set(!showConfirmPassword())"
                     >
                       {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
-                    </ui-button>
+                    </dui-button>
                   </div>
                 </div>
 
                 <div class="form-actions">
-                  <ui-button
+                  <dui-button
                     type="button"
                     class="btn btn-primary"
                     (click)="changePassword()"
@@ -422,7 +424,7 @@
                       <span class="spinner"></span>
                       Updating...
                     </span>
-                  </ui-button>
+                  </dui-button>
                 </div>
               </form>
             </div>
@@ -437,10 +439,10 @@
                 Add an extra layer of security to your account by enabling two-factor
                 authentication.
               </p>
-              <ui-button class="btn btn-secondary">
+              <dui-button class="btn btn-secondary">
                 <span class="icon">🔐</span>
                 Enable 2FA
-              </ui-button>
+              </dui-button>
             </div>
           </div>
         </div>

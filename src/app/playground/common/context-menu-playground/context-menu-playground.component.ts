@@ -69,8 +69,8 @@ export class DmContextMenuPlaygroundComponent extends BasePlaygroundComponent im
       if (!this.demoElement) return;
       let code = this.getCleanFormattedDom(this.demoElement, 'ui-context-menu');
       code = code.replace(
-        '></ui-context-menu>',
-        '\n  [items]="menuItems"\n  [target]="myTargetElement"\n></ui-context-menu>',
+        '></dui-context-menu>',
+        '\n  [items]="menuItems"\n  [target]="myTargetElement"\n></dui-context-menu>',
       );
       this.generatedCode.set(code);
       this.refreshCode();
@@ -82,6 +82,3 @@ export class DmContextMenuPlaygroundComponent extends BasePlaygroundComponent im
     this.logEvent(`Menu action: ${action}`);
   }
 }
-
-
-

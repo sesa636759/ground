@@ -24,22 +24,26 @@
             <div class="demo-card divider-stack">
               <div class="demo-row">
                 <p>Solid (Default)</p>
-                <ui-divider></ui-divider>
+                <dui-divider></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Dashed & Large</p>
-                <ui-divider variant="dashed" size="lg"></ui-divider>
+                <dui-divider variant="dashed" size="lg"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Double Solid</p>
-                <ui-divider variant="double-solid" size="lg"></ui-divider>
+                <dui-divider variant="double-solid" size="lg"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Gradient Color</p>
-                <ui-divider variant="solid" color="linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)" thickness="4px"></ui-divider>
+                <dui-divider
+                  variant="solid"
+                  color="linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)"
+                  thickness="4px"
+                ></dui-divider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="variantsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Text & Icons -->
@@ -51,22 +55,22 @@
             <div class="demo-card divider-stack">
               <div class="demo-row">
                 <p>Centered Text</p>
-                <ui-divider text="OR"></ui-divider>
+                <dui-divider text="OR"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Left Aligned label</p>
-                <ui-divider text="SECTION 1" text-align="left" variant="dashed"></ui-divider>
+                <dui-divider text="SECTION 1" text-align="left" variant="dashed"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Icon Placement</p>
-                <ui-divider icon="⭐" thickness="2px"></ui-divider>
+                <dui-divider icon="⭐" thickness="2px"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>With Badge & Theme Color</p>
-                <ui-divider text="Comments" badge="24" color="primary"></ui-divider>
+                <dui-divider text="Comments" badge="24" color="primary"></dui-divider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="contentCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="contentCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Vertical Dividers -->
@@ -77,14 +81,14 @@
             </div>
             <div class="demo-card vertical-box">
               <span>Item 1</span>
-              <ui-divider orientation="vertical"></ui-divider>
+              <dui-divider orientation="vertical"></dui-divider>
               <span>Item 2</span>
-              <ui-divider orientation="vertical" variant="dashed" height="40px"></ui-divider>
+              <dui-divider orientation="vertical" variant="dashed" height="40px"></dui-divider>
               <span>Item 3</span>
-              <ui-divider orientation="vertical" thickness="4px" color="success"></ui-divider>
+              <dui-divider orientation="vertical" thickness="4px" color="success"></dui-divider>
               <span>Item 4</span>
             </div>
-            <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="verticalCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Patterns -->
@@ -96,18 +100,18 @@
             <div class="demo-card divider-stack">
               <div class="demo-row">
                 <p>Dots Pattern</p>
-                <ui-divider pattern="dots" color="#94a3b8" thickness="12px"></ui-divider>
+                <dui-divider pattern="dots" color="#94a3b8" thickness="12px"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Stripes Pattern</p>
-                <ui-divider pattern="stripes" size="lg" color="primary"></ui-divider>
+                <dui-divider pattern="stripes" size="lg" color="primary"></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Zigzag Pattern</p>
-                <ui-divider pattern="zigzag" size="lg" color="danger"></ui-divider>
+                <dui-divider pattern="zigzag" size="lg" color="danger"></dui-divider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="patternsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="patternsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Shape Dividers -->
@@ -118,16 +122,16 @@
             </div>
             <div class="demo-card shapes-preview">
               <div class="shape-block bg-blue">
-                <ui-divider shape="wave" shape-color="#fff"></ui-divider>
+                <dui-divider shape="wave" shape-color="#fff"></dui-divider>
               </div>
               <div class="shape-block bg-green mt-40">
-                <ui-divider shape="tilt" shape-color="#fff"></ui-divider>
+                <dui-divider shape="tilt" shape-color="#fff"></dui-divider>
               </div>
               <div class="shape-block bg-orange mt-40">
-                <ui-divider shape="triangle" shape-color="#fff"></ui-divider>
+                <dui-divider shape="triangle" shape-color="#fff"></dui-divider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="shapesCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="shapesCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Premium Effects -->
@@ -139,18 +143,24 @@
             <div class="demo-card divider-stack">
               <div class="demo-row">
                 <p>Loading State</p>
-                <ui-divider loading></ui-divider>
+                <dui-divider loading></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Clickable with Glow</p>
-                <ui-divider text="ACTION LINK" clickable glow color="primary" thickness="2px"></ui-divider>
+                <dui-divider
+                  text="ACTION LINK"
+                  clickable
+                  glow
+                  color="primary"
+                  thickness="2px"
+                ></dui-divider>
               </div>
               <div class="demo-row">
                 <p>Shadow Effect</p>
-                <ui-divider shadow variant="double-solid" size="lg" color="white"></ui-divider>
+                <dui-divider shadow variant="double-solid" size="lg" color="white"></dui-divider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="effectsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="effectsCode" activeLang="html"></dui-code-preview>
           </section>
         </div>
       </div>
@@ -161,5 +171,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

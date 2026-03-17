@@ -128,7 +128,7 @@ export class DmButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = `<ui-button-toggle-group\n`;
+    let code = `<dui-button-toggle-group\n`;
     if (this.pgConfig.mode !== 'segmented') code += `  mode="${this.pgConfig.mode}"\n`;
     if (this.pgConfig.orientation !== 'horizontal')
       code += `  orientation="${this.pgConfig.orientation}"\n`;
@@ -170,7 +170,7 @@ export class DmButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
       code += `    <p>Custom Playground Content</p>\n`;
       code += `  </div>\n`;
     }
-    code += `</ui-button-toggle-group>`;
+    code += `</dui-button-toggle-group>`;
     this.generatedCode.set(code);
     this.refreshCode();
   }

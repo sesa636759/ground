@@ -48,19 +48,16 @@ export class DmLayoutManagerPlaygroundComponent extends BasePlaygroundComponent 
   }
 
   updateConfig() {
-    let code = '<ui-layout-manager\n';
+    let code = '<dui-layout-manager\n';
     code += `  mode="${this.pgConfig.mode}"\n`;
     if (this.pgConfig.resizable) code += `  resizable\n`;
     if (this.pgConfig.closable) code += `  closable\n`;
     code += '>\n';
     code += '  <div slot="panel-1">Content 1</div>\n';
     code += '  <div slot="panel-2">Content 2</div>\n';
-    code += '</ui-layout-manager>';
+    code += '</dui-layout-manager>';
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
 }
-
-
-

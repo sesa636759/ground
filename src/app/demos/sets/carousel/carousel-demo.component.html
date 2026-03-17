@@ -19,81 +19,147 @@
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Fade Transition -->
-        <pg-example-section id="fade-transition" title="Fade Transition" description="Smooth cross-fade effect" [code]="fadeTransitionCode" class="mt-0">
-          <ui-carousel effect="fade" autoplay="true" show-progress="true">
-            <div class="slide bg-gradient-nature p-60 text-center"><h3>Nature</h3><p>Breathtaking landscapes</p></div>
-            <div class="slide bg-gradient-forest p-60 text-center"><h3>Forest</h3><p>Into the wild</p></div>
-            <div class="slide bg-gradient-mountain p-60 text-center"><h3>Mountains</h3><p>Peak experience</p></div>
-          </ui-carousel>
+        <pg-example-section
+          id="fade-transition"
+          title="Fade Transition"
+          description="Smooth cross-fade effect"
+          [code]="fadeTransitionCode"
+          class="mt-0"
+        >
+          <dui-carousel effect="fade" autoplay="true" show-progress="true">
+            <div class="slide bg-gradient-nature p-60 text-center">
+              <h3>Nature</h3>
+              <p>Breathtaking landscapes</p>
+            </div>
+            <div class="slide bg-gradient-forest p-60 text-center">
+              <h3>Forest</h3>
+              <p>Into the wild</p>
+            </div>
+            <div class="slide bg-gradient-mountain p-60 text-center">
+              <h3>Mountains</h3>
+              <p>Peak experience</p>
+            </div>
+          </dui-carousel>
         </pg-example-section>
 
         <!-- Slide Transition -->
-        <pg-example-section id="slide-transition" title="Slide Transition" description="Classic sliding animation" [code]="slideTransitionCode">
-          <ui-carousel effect="slide" autoplay="true" arrows="true" indicators="true">
-            <div class="slide bg-gradient-purple p-60 text-center"><h3>Innovation</h3><p>Building the future</p></div>
-            <div class="slide bg-gradient-pink p-60 text-center"><h3>Design</h3><p>Pixel perfect details</p></div>
-            <div class="slide bg-gradient-blue p-60 text-center"><h3>Speed</h3><p>Lightning fast performance</p></div>
-          </ui-carousel>
+        <pg-example-section
+          id="slide-transition"
+          title="Slide Transition"
+          description="Classic sliding animation"
+          [code]="slideTransitionCode"
+        >
+          <dui-carousel effect="slide" autoplay="true" arrows="true" indicators="true">
+            <div class="slide bg-gradient-purple p-60 text-center">
+              <h3>Innovation</h3>
+              <p>Building the future</p>
+            </div>
+            <div class="slide bg-gradient-pink p-60 text-center">
+              <h3>Design</h3>
+              <p>Pixel perfect details</p>
+            </div>
+            <div class="slide bg-gradient-blue p-60 text-center">
+              <h3>Speed</h3>
+              <p>Lightning fast performance</p>
+            </div>
+          </dui-carousel>
         </pg-example-section>
 
         <!-- Center Mode -->
-        <pg-example-section id="center-mode" title="Center Mode" description="Highlight active slide" [code]="centerModeCode">
-          <ui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
+        <pg-example-section
+          id="center-mode"
+          title="Center Mode"
+          description="Highlight active slide"
+          [code]="centerModeCode"
+        >
+          <dui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
             <div class="slide bg-gradient-blue p-40 text-center border-subtle mx-10">Item 1</div>
             <div class="slide bg-gradient-pink p-40 text-center border-subtle mx-10">Item 2</div>
             <div class="slide bg-gradient-purple p-40 text-center border-subtle mx-10">Item 3</div>
-          </ui-carousel>
+          </dui-carousel>
         </pg-example-section>
 
         <!-- Multiple Slides -->
-        <pg-example-section id="multiple-slides" title="Multiple Slides" description="Show multiple items" [code]="multipleItemsCode">
-          <ui-carousel slides-to-show="3" infinite="true" arrows="true" indicators="true">
+        <pg-example-section
+          id="multiple-slides"
+          title="Multiple Slides"
+          description="Show multiple items"
+          [code]="multipleItemsCode"
+        >
+          <dui-carousel slides-to-show="3" infinite="true" arrows="true" indicators="true">
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 1</h4></div>
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 2</h4></div>
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 3</h4></div>
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 4</h4></div>
-          </ui-carousel>
+          </dui-carousel>
         </pg-example-section>
 
         <!-- Vertical Carousel -->
-        <pg-example-section id="vertical" title="Vertical Layout" description="Vertical sliding orientation" [code]="verticalCode">
+        <pg-example-section
+          id="vertical"
+          title="Vertical Layout"
+          description="Vertical sliding orientation"
+          [code]="verticalCode"
+        >
           <div class="h-300">
-            <ui-carousel vertical="true" arrows="true" indicators="true">
+            <dui-carousel vertical="true" arrows="true" indicators="true">
               <div class="slide bg-gradient-nature p-40 text-center">Vertical 1</div>
               <div class="slide bg-gradient-forest p-40 text-center">Vertical 2</div>
               <div class="slide bg-gradient-mountain p-40 text-center">Vertical 3</div>
-            </ui-carousel>
+            </dui-carousel>
           </div>
         </pg-example-section>
 
         <!-- Responsive -->
-        <pg-example-section id="responsive" title="Responsive Design" description="Adaptive layouts" [code]="responsiveCode">
-          <ui-carousel slides-to-show="4" [responsive]="[{breakpoint: 1024, settings: {slidesToShow: 3}}, {breakpoint: 768, settings: {slidesToShow: 2}}, {breakpoint: 480, settings: {slidesToShow: 1}}]" arrows="true">
+        <pg-example-section
+          id="responsive"
+          title="Responsive Design"
+          description="Adaptive layouts"
+          [code]="responsiveCode"
+        >
+          <dui-carousel
+            slides-to-show="4"
+            [responsive]="[
+              { breakpoint: 1024, settings: { slidesToShow: 3 } },
+              { breakpoint: 768, settings: { slidesToShow: 2 } },
+              { breakpoint: 480, settings: { slidesToShow: 1 } },
+            ]"
+            arrows="true"
+          >
             <div class="slide p-16 text-center border-subtle">Panel 1</div>
             <div class="slide p-16 text-center border-subtle">Panel 2</div>
             <div class="slide p-16 text-center border-subtle">Panel 3</div>
             <div class="slide p-16 text-center border-subtle">Panel 4</div>
-          </ui-carousel>
+          </dui-carousel>
         </pg-example-section>
 
         <!-- Animation Easing -->
-        <pg-example-section id="easing" title="Animation Easing" description="Custom transition timing" [code]="easingCode">
-          <ui-carousel css-ease="cubic-bezier(0.77, 0, 0.175, 1)" speed="800" arrows="true">
+        <pg-example-section
+          id="easing"
+          title="Animation Easing"
+          description="Custom transition timing"
+          [code]="easingCode"
+        >
+          <dui-carousel css-ease="cubic-bezier(0.77, 0, 0.175, 1)" speed="800" arrows="true">
             <div class="slide bg-gradient-purple p-60 text-center">Smooth Easing</div>
             <div class="slide bg-gradient-blue p-60 text-center">Fluid Motion</div>
-          </ui-carousel>
+          </dui-carousel>
         </pg-example-section>
 
         <!-- Interactive Actions -->
-        <pg-example-section id="interactive" title="Interactions" description="Event handling and methods">
+        <pg-example-section
+          id="interactive"
+          title="Interactions"
+          description="Event handling and methods"
+        >
           <div class="flex-column gap-12">
-            <ui-carousel #carouselObj arrows="true">
+            <dui-carousel #carouselObj arrows="true">
               <div class="slide bg-gradient-nature p-40 text-center">Manual Control</div>
               <div class="slide bg-gradient-forest p-40 text-center">Programmatic API</div>
-            </ui-carousel>
+            </dui-carousel>
             <div class="flex-center gap-24 mt-16">
-              <ui-button (click)="carouselObj.prev()">Previous</ui-button>
-              <ui-button (click)="carouselObj.next()">Next</ui-button>
+              <dui-button (click)="carouselObj.prev()">Previous</dui-button>
+              <dui-button (click)="carouselObj.next()">Next</dui-button>
             </div>
           </div>
         </pg-example-section>
@@ -105,5 +171,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

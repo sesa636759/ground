@@ -34,32 +34,32 @@ export class DmSpeedDialDemoComponent extends BaseDemoComponent {
   actions = JSON.stringify([
     { id: 'copy', icon: 'copy', label: 'Copy Link' },
     { id: 'edit', icon: 'edit-2', label: 'Edit Post' },
-    { id: 'delete', icon: 'trash-2', label: 'Delete', color: '#ef4444' }
+    { id: 'delete', icon: 'trash-2', label: 'Delete', color: '#ef4444' },
   ]);
 
   lucideActions = JSON.stringify([
     { id: 'share', icon: 'share-2', label: 'Share', iconLibrary: 'lucide' },
     { id: 'download', icon: 'download', label: 'Download', iconLibrary: 'lucide' },
-    { id: 'flag', icon: 'flag', label: 'Report', color: '#ef4444', iconLibrary: 'lucide' }
+    { id: 'flag', icon: 'flag', label: 'Report', color: '#ef4444', iconLibrary: 'lucide' },
   ]);
 
-  basicCode = `<ui-speed-dial [actions]="actions" icon="plus" icon-library="lucide"></ui-speed-dial>`;
-  
+  basicCode = `<dui-speed-dial [actions]="actions" icon="plus" icon-library="lucide"></dui-speed-dial>`;
+
   positionsCode = `<div style="position: relative; height: 300px;">
   <!-- Render absolute speed dials inside container -->
-  <ui-speed-dial strategy="absolute" position="top-left" direction="right" [actions]="actions"></ui-speed-dial>
-  <ui-speed-dial strategy="absolute" position="top-right" direction="down" [actions]="actions"></ui-speed-dial>
-  <ui-speed-dial strategy="absolute" position="bottom-left" direction="up" [actions]="actions"></ui-speed-dial>
-  <ui-speed-dial strategy="absolute" position="bottom-right" direction="left" [actions]="actions"></ui-speed-dial>
-  <ui-speed-dial strategy="absolute" position="center" direction="up" [actions]="actions"></ui-speed-dial>
+  <dui-speed-dial strategy="absolute" position="top-left" direction="right" [actions]="actions"></dui-speed-dial>
+  <dui-speed-dial strategy="absolute" position="top-right" direction="down" [actions]="actions"></dui-speed-dial>
+  <dui-speed-dial strategy="absolute" position="bottom-left" direction="up" [actions]="actions"></dui-speed-dial>
+  <dui-speed-dial strategy="absolute" position="bottom-right" direction="left" [actions]="actions"></dui-speed-dial>
+  <dui-speed-dial strategy="absolute" position="center" direction="up" [actions]="actions"></dui-speed-dial>
 </div>`;
 
-  triggerCode = `<ui-speed-dial strategy="absolute" position="center" trigger="hover" tooltip-position="bottom" [actions]="actions"></ui-speed-dial>`;
+  triggerCode = `<dui-speed-dial strategy="absolute" position="center" trigger="hover" tooltip-position="bottom" [actions]="actions"></dui-speed-dial>`;
 
-  stylesCode = `<ui-speed-dial strategy="absolute" position="top-left" size="sm" color="success" [actions]="actions"></ui-speed-dial>
-<ui-speed-dial strategy="absolute" position="bottom-right" size="lg" color="danger" [actions]="actions"></ui-speed-dial>`;
+  stylesCode = `<dui-speed-dial strategy="absolute" position="top-left" size="sm" color="success" [actions]="actions"></dui-speed-dial>
+<dui-speed-dial strategy="absolute" position="bottom-right" size="lg" color="danger" [actions]="actions"></dui-speed-dial>`;
 
-  customIconsCode = `<ui-speed-dial strategy="absolute" position="center" icon="menu" icon-library="lucide" [actions]="lucideActions"></ui-speed-dial>`;
+  customIconsCode = `<dui-speed-dial strategy="absolute" position="center" icon="menu" icon-library="lucide" [actions]="lucideActions"></dui-speed-dial>`;
 
   handleActionClick(ev: any) {
     console.log(`Action Clicked: ${ev.detail}`);

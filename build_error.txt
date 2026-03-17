@@ -29,7 +29,7 @@
 [32mchunk-KX27PHA7.js[39m    [2m | [22m[2mui-workspace-manager-entry[22m      [2m | [22m [36m53.88 kB[39m[2m | [22m                [36m9.65 kB[39m
 [32mchunk-G4TSN3KE.js[39m    [2m | [22m[2manimate-on-scroll-demo-component[22m[2m | [22m [36m51.17 kB[39m[2m | [22m                [36m9.57 kB[39m
 [32mchunk-OBGSPJ5G.js[39m    [2m | [22m[2mhome-component[22m                  [2m | [22m [36m50.76 kB[39m[2m | [22m               [36m10.38 kB[39m
-[32mchunk-IWGNCHJU.js[39m    [2m | [22m[2mui-input-entry[22m                  [2m | [22m [36m49.72 kB[39m[2m | [22m               [36m10.02 kB[39m
+[32mchunk-IWGNCHJU.js[39m    [2m | [22m[2mdui-input-entry[22m                  [2m | [22m [36m49.72 kB[39m[2m | [22m               [36m10.02 kB[39m
 [32mchunk-ABZHFSPY.js[39m    [2m | [22m[2mui-code-editor-entry[22m            [2m | [22m [36m49.61 kB[39m[2m | [22m               [36m11.52 kB[39m
 [32mchunk-RNQHXC3D.js[39m    [2m | [22m[2mavatar-demo-component[22m           [2m | [22m [36m49.59 kB[39m[2m | [22m                [36m9.62 kB[39m
 [32mchunk-RCVA3YMS.js[39m    [2m | [22m[2mtooltip-demo-component[22m          [2m | [22m [36m47.82 kB[39m[2m | [22m                [36m9.21 kB[39m

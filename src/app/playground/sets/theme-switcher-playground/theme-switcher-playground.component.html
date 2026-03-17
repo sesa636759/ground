@@ -8,7 +8,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -17,12 +17,12 @@
             { label: 'Dropdown', value: 'dropdown' },
             { label: 'Glass', value: 'glass' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -30,12 +30,12 @@
             { label: 'Medium', value: 'medium' },
             { label: 'Large', value: 'large' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Position</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.position"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -43,12 +43,12 @@
             { label: 'Fixed Top', value: 'fixed-top' },
             { label: 'Fixed Bottom', value: 'fixed-bottom' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Animation Duration (ms)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           max="1000"
@@ -61,14 +61,15 @@
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show Icons
+        <dui-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show
+        Icons
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show
+        <dui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show
         Labels
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()" />
         Enable Animation
       </label>
     </div>

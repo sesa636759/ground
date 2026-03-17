@@ -81,41 +81,42 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
       gradient: '',
       interactive: false,
       closeable: false,
-      showZero: false
+      showZero: false,
     };
   }
 
   updateConfig() {
-    let code = '<ui-badge\n';
+    let code = '<dui-badge\n';
     if (!this.pgConfig.dot) code += `  value="${this.pgConfig.value}"\n`;
     if (this.pgConfig.max !== 99) code += `  [max]="${this.pgConfig.max}"\n`;
-    
+
     code += `  color="${this.pgConfig.color}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  shape="${this.pgConfig.shape}"\n`;
     code += `  position="${this.pgConfig.position}"\n`;
-    
+
     if (this.pgConfig.animation !== 'none') code += `  animation="${this.pgConfig.animation}"\n`;
     if (this.pgConfig.dot) code += `  dot\n`;
     if (this.pgConfig.glow) code += `  glow\n`;
     if (this.pgConfig.interactive) code += `  interactive\n`;
     if (this.pgConfig.closeable) code += `  closeable\n`;
     if (this.pgConfig.showZero) code += `  show-zero\n`;
-    
+
     if (this.pgConfig.icon) {
       code += `  icon="${this.pgConfig.icon}"\n`;
       code += `  icon-position="${this.pgConfig.iconPosition}"\n`;
       code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
     }
-    
+
     if (this.pgConfig.gradient) code += `  gradient="${this.pgConfig.gradient}"\n`;
     if (this.pgConfig.offsetX !== 0) code += `  [offset-x]="${this.pgConfig.offsetX}"\n`;
     if (this.pgConfig.offsetY !== 0) code += `  [offset-y]="${this.pgConfig.offsetY}"\n`;
-    
+
     code += '>\n';
-    code += '  <div style="width: 48px; height: 48px; background: var(--surface-2); border-radius: 8px;"></div>\n';
-    code += '</ui-badge>';
+    code +=
+      '  <div style="width: 48px; height: 48px; background: var(--surface-2); border-radius: 8px;"></div>\n';
+    code += '</dui-badge>';
 
     this.generatedCode.set(code);
     this.refreshCode();

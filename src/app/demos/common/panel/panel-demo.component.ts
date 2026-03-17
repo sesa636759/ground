@@ -29,40 +29,45 @@ export class DmPanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'visual-styles', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
     { id: 'themes', title: 'Themes', icon: 'swatch-book', iconLibrary: 'lucide' },
-    { id: 'interactivity', title: 'Interactive', icon: 'mouse-pointer-click', iconLibrary: 'lucide' },
+    {
+      id: 'interactivity',
+      title: 'Interactive',
+      icon: 'mouse-pointer-click',
+      iconLibrary: 'lucide',
+    },
     { id: 'glassmorphism', title: 'Glassmorphism', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">
+  playgroundCode = `<dui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>
-</ui-panel>`;
+</dui-panel>`;
 
   stylesCode = `<!-- Elevated (default) -->
-<ui-panel variant="elevated" panel-title="Elevated Panel">
+<dui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>
-</ui-panel>
+</dui-panel>
 
 <!-- Outlined -->
-<ui-panel variant="outlined" panel-title="Outlined Panel">
+<dui-panel variant="outlined" panel-title="Outlined Panel">
   <div slot="content">Clean border without shadow.</div>
-</ui-panel>
+</dui-panel>
 
 <!-- Filled -->
-<ui-panel variant="filled" panel-title="Filled Panel">
+<dui-panel variant="filled" panel-title="Filled Panel">
   <div slot="content">Subtle background fill.</div>
-</ui-panel>
+</dui-panel>
 
 <!-- Flat -->
-<ui-panel variant="flat" panel-title="Flat Panel">
+<dui-panel variant="flat" panel-title="Flat Panel">
   <div slot="content">No border or shadow.</div>
-</ui-panel>`;
+</dui-panel>`;
 
-  themesCode = `<ui-panel theme="primary" panel-title="Primary Theme"><div slot="content">Blue accent.</div></ui-panel>
-<ui-panel theme="success" panel-title="Success Theme"><div slot="content">Green accent.</div></ui-panel>
-<ui-panel theme="warning" panel-title="Warning Theme"><div slot="content">Orange accent.</div></ui-panel>
-<ui-panel theme="danger"  panel-title="Danger Theme"><div slot="content">Red accent.</div></ui-panel>`;
+  themesCode = `<dui-panel theme="primary" panel-title="Primary Theme"><div slot="content">Blue accent.</div></dui-panel>
+<dui-panel theme="success" panel-title="Success Theme"><div slot="content">Green accent.</div></dui-panel>
+<dui-panel theme="warning" panel-title="Warning Theme"><div slot="content">Orange accent.</div></dui-panel>
+<dui-panel theme="danger"  panel-title="Danger Theme"><div slot="content">Red accent.</div></dui-panel>`;
 
-  interactiveCode = `<ui-panel
+  interactiveCode = `<dui-panel
   toggleable
   minimizable
   maximizable
@@ -71,12 +76,12 @@ export class DmPanelDemoComponent extends BaseDemoComponent {
   panel-title="Full Interactive Panel"
 >
   <div slot="content">Drag, resize, minimize, maximize me!</div>
-</ui-panel>`;
+</dui-panel>`;
 
   glassCode = `<!-- Wrap in a gradient/image background -->
 <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 32px; border-radius: 12px">
-  <ui-panel glass panel-title="Glass Panel">
+  <dui-panel glass panel-title="Glass Panel">
     <div slot="content">Translucent blur effect.</div>
-  </ui-panel>
+  </dui-panel>
 </div>`;
 }

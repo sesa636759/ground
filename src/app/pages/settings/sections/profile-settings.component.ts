@@ -21,21 +21,21 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
           <div class="avatar-edit-section">
             <div class="avatar-wrapper">
               <img src="https://i.pravatar.cc/150?img=12" alt="Avatar" />
-              <ui-button
+              <dui-button
                 class="change-avatar-btn"
                 variant="ghost"
                 size="sm"
                 style="padding: 4px 8px; min-width: 0;"
               >
-                <ui-icon name="camera" library="lucide" size="16px"></ui-icon>
-              </ui-button>
+                <dui-icon name="camera" library="lucide" size="16px"></dui-icon>
+              </dui-button>
             </div>
             <div class="avatar-info">
               <h3>Profile Picture</h3>
               <p>JPG, GIF or PNG. Max size of 800K</p>
               <div class="avatar-actions">
-                <ui-button label="Upload New" variant="primary" size="sm"></ui-button>
-                <ui-button label="Remove" variant="secondary" size="sm"></ui-button>
+                <dui-button label="Upload New" variant="primary" size="sm"></dui-button>
+                <dui-button label="Remove" variant="secondary" size="sm"></dui-button>
               </div>
             </div>
           </div>
@@ -44,26 +44,26 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
             <div class="form-group">
               <label for="displayName">Display Name</label>
               <div class="input-wrapper">
-                <ui-icon name="user" library="lucide" size="18px" class="input-icon"></ui-icon>
-                <ui-input
+                <dui-icon name="user" library="lucide" size="18px" class="input-icon"></dui-icon>
+                <dui-input
                   type="text"
                   id="displayName"
                   [(ngModel)]="displayName"
                   placeholder="Enter your display name"
-                ></ui-input>
+                ></dui-input>
               </div>
             </div>
 
             <div class="form-group">
               <label for="email">Email Address</label>
               <div class="input-wrapper">
-                <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
-                <ui-input
+                <dui-icon name="mail" library="lucide" size="18px" class="input-icon"></dui-icon>
+                <dui-input
                   type="email"
                   id="email"
                   [(ngModel)]="email"
                   placeholder="your.email@example.com"
-                ></ui-input>
+                ></dui-input>
               </div>
             </div>
 
@@ -101,8 +101,8 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
           </div>
 
           <div class="form-actions">
-            <ui-button label="Discard" variant="secondary" (click)="cancel()"></ui-button>
-            <ui-button label="Save Changes" variant="primary" (click)="save()"></ui-button>
+            <dui-button label="Discard" variant="secondary" (click)="cancel()"></dui-button>
+            <dui-button label="Save Changes" variant="primary" (click)="save()"></dui-button>
           </div>
         </div>
       </div>
@@ -323,6 +323,3 @@ export class ProfileSettingsSectionComponent {
   save(): void {}
   cancel(): void {}
 }
-
-
-

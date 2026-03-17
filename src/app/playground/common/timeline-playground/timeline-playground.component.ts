@@ -80,7 +80,7 @@ export class DmTimelinePlaygroundComponent extends BasePlaygroundComponent imple
   }
 
   updateConfig() {
-    let code = '<ui-timeline\n';
+    let code = '<dui-timeline\n';
     code += `  orientation="${this.pgConfig.orientation}"\n`;
     code += `  align="${this.pgConfig.align}"\n`;
     code += `  [value]="events"\n`;
@@ -89,12 +89,9 @@ export class DmTimelinePlaygroundComponent extends BasePlaygroundComponent imple
     code += '    <div>{{ item.status }}</div>\n';
     if (this.pgConfig.showOpposite) code += '    <div slot="opposite">{{ item.date }}</div>\n';
     code += '  </ng-template>\n';
-    code += '</ui-timeline>';
+    code += '</dui-timeline>';
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
 }
-
-
-

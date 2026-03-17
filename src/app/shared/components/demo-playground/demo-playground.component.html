@@ -1,11 +1,11 @@
 <div class="playground-layout" [class.layout-col]="layout === 'column'">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple variant="card">
+    <dui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple variant="card">
       <ng-content></ng-content>
-    </ui-accordion>
+    </dui-accordion>
     <div class="playground-controls-actions">
-      <ui-button
+      <dui-button
         class="reset-btn"
         icon="rotate-ccw"
         icon-position="left"
@@ -13,7 +13,7 @@
         variant="secondary"
         (click)="reset.emit()"
         label="Reset Configuration"
-      ></ui-button>
+      ></dui-button>
     </div>
   </div>
 
@@ -30,13 +30,13 @@
     <div class="code-preview-area">
       <ng-content select="[code]"></ng-content>
       @if (code && showCodePreview) {
-        <ui-code-preview
+        <dui-code-preview
           [htmlCode]="code"
           label="Generated Code"
           activeLang="html"
           [attr.expanded]="isExpanded"
           (expandedChange)="handleExpandedChange($event)"
-        ></ui-code-preview>
+        ></dui-code-preview>
       }
     </div>
 

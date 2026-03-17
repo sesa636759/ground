@@ -18,35 +18,35 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Triggers & Display -->
-          <section class="demo-section mt-0" id="triggers" >
+          <section class="demo-section mt-0" id="triggers">
             <div class="section-header">
               <h2>⚡ Triggers & Display</h2>
               <p>Control how columns expand and how the selected path is rendered.</p>
             </div>
             <div class="demo-card">
-              <div  class="w-300">
+              <div class="w-300">
                 <span>Expand on Click:</span>
-                <ui-cascade-select
+                <dui-cascade-select
                   expand-trigger="click"
                   [options]="fileSystemOptions"
                   placeholder="Click to expand"
-                ></ui-cascade-select>
+                ></dui-cascade-select>
               </div>
-              <div  class="w-300">
+              <div class="w-300">
                 <span>Leaf Only Display:</span>
-                <ui-cascade-select
+                <dui-cascade-select
                   [show-full-path]="false"
                   [options]="fileSystemOptions"
                   placeholder="Documents / Work / ..."
-                ></ui-cascade-select>
+                ></dui-cascade-select>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="triggersCode"
               [label]="'Configuration Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Selection Logic -->
@@ -56,21 +56,21 @@
               <p>Choose whether to allow selecting intermediate nodes or only leaf nodes.</p>
             </div>
             <div class="demo-card">
-              <div  class="w-300">
+              <div class="w-300">
                 <span>Change on Select (Any level):</span>
-                <ui-cascade-select
+                <dui-cascade-select
                   change-on-select
                   [options]="fileSystemOptions"
                   placeholder="Select any folder or file"
-                ></ui-cascade-select>
+                ></dui-cascade-select>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="selectionCode"
               [label]="'Selection Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -81,4 +81,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

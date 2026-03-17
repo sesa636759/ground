@@ -8,18 +8,18 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Orientation</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.orientation"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Horizontal', value: 'horizontal' },
             { label: 'Vertical', value: 'vertical' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Variant</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -28,11 +28,11 @@
             { label: 'Underline', value: 'underline' },
             { label: 'Glass', value: 'glass' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Size</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -40,24 +40,24 @@
             { label: 'Medium', value: 'medium' },
             { label: 'Large', value: 'large' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" />
         Closable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
         Draggable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
         Scrollable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" />
         Grouped
       </label>
     </div>

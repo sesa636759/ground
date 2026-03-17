@@ -1,9 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -166,17 +161,20 @@ export class DmDividerPlaygroundComponent extends BasePlaygroundComponent implem
   }
 
   updateConfig() {
-    let code = `<ui-divider\n`;
+    let code = `<dui-divider\n`;
     if (this.pgConfig.text) code += `  text="${this.pgConfig.text}"\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     if (this.pgConfig.badge) code += `  badge="${this.pgConfig.badge}"\n`;
     if (this.pgConfig.image) code += `  image="${this.pgConfig.image}"\n`;
-    if (this.pgConfig.orientation !== 'horizontal') code += `  orientation="${this.pgConfig.orientation}"\n`;
+    if (this.pgConfig.orientation !== 'horizontal')
+      code += `  orientation="${this.pgConfig.orientation}"\n`;
     if (this.pgConfig.variant !== 'solid') code += `  variant="${this.pgConfig.variant}"\n`;
     if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
     if (this.pgConfig.textAlign !== 'center') code += `  text-align="${this.pgConfig.textAlign}"\n`;
-    if (this.pgConfig.verticalAlign !== 'center') code += `  vertical-align="${this.pgConfig.verticalAlign}"\n`;
-    if (this.pgConfig.textTransform !== 'capitalize') code += `  text-transform="${this.pgConfig.textTransform}"\n`;
+    if (this.pgConfig.verticalAlign !== 'center')
+      code += `  vertical-align="${this.pgConfig.verticalAlign}"\n`;
+    if (this.pgConfig.textTransform !== 'capitalize')
+      code += `  text-transform="${this.pgConfig.textTransform}"\n`;
     if (this.pgConfig.color) code += `  color="${this.pgConfig.color}"\n`;
     if (this.pgConfig.textColor) code += `  text-color="${this.pgConfig.textColor}"\n`;
     if (this.pgConfig.gap) code += `  gap="${this.pgConfig.gap}"\n`;
@@ -202,7 +200,7 @@ export class DmDividerPlaygroundComponent extends BasePlaygroundComponent implem
       if (this.pgConfig.shapeColor) code += `  shape-color="${this.pgConfig.shapeColor}"\n`;
     }
 
-    code += `></ui-divider>`;
+    code += `></dui-divider>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

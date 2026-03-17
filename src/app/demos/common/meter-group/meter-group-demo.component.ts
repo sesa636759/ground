@@ -30,7 +30,12 @@ export class DmMeterGroupDemoComponent extends BaseDemoComponent {
     { id: 'sizing', title: 'Sizes & Thickness', icon: 'maximize-2', iconLibrary: 'lucide' },
     { id: 'legend', title: 'Legends & Labels', icon: 'list', iconLibrary: 'lucide' },
     { id: 'icons', title: 'Icons & Libraries', icon: 'sparkles', iconLibrary: 'lucide' },
-    { id: 'interactive', title: 'Interactive Mode', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    {
+      id: 'interactive',
+      title: 'Interactive Mode',
+      icon: 'mouse-pointer-2',
+      iconLibrary: 'lucide',
+    },
   ];
 
   diskValues = JSON.stringify([
@@ -38,12 +43,12 @@ export class DmMeterGroupDemoComponent extends BaseDemoComponent {
     { label: 'System', value: 20, color: '#94a3b8', icon: 'settings' },
     { label: 'Media', value: 15, color: '#f59e0b', icon: 'video' },
     { label: 'Documents', value: 10, color: '#10b981', icon: 'file' },
-    { label: 'Free', value: 10, color: '#e2e8f0', icon: 'cloud' }
+    { label: 'Free', value: 10, color: '#e2e8f0', icon: 'cloud' },
   ]);
 
-  basicCode = `<ui-meter-group [values]="diskValues"></ui-meter-group>`;
-  shapeCode = `<ui-meter-group shape="circle" [values]="diskValues"></ui-meter-group>`;
-  verticalCode = `<ui-meter-group orientation="vertical" [values]="diskValues" height="200px"></ui-meter-group>`;
+  basicCode = `<dui-meter-group [values]="diskValues"></dui-meter-group>`;
+  shapeCode = `<dui-meter-group shape="circle" [values]="diskValues"></dui-meter-group>`;
+  verticalCode = `<dui-meter-group orientation="vertical" [values]="diskValues" height="200px"></dui-meter-group>`;
 
   handleMeterClick(ev: any) {
     console.log(`Meter Clicked: ${ev.detail.label} (${ev.detail.value})`);

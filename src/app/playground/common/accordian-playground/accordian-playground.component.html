@@ -7,64 +7,65 @@
   <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Icon Position</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.iconPosition"
         (ngModelChange)="updateConfig()"
         [options]="iconPositionOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Selected Header Color</label>
-      <ui-input
+      <dui-input
         type="color"
         [(ngModel)]="pgConfig.selectedHeaderColor"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="control-group">
       <label>Header Level (1-6)</label>
-      <ui-input
+      <dui-input
         type="number"
         min="1"
         max="6"
         [(ngModel)]="pgConfig.headerLevel"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.hideArrow" (ngModelChange)="updateConfig()" /> Hide Arrow
+        <dui-checkbox [(ngModel)]="pgConfig.hideArrow" (ngModelChange)="updateConfig()" /> Hide
+        Arrow
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showNumbers" (ngModelChange)="updateConfig()" /> Show
+        <dui-checkbox [(ngModel)]="pgConfig.showNumbers" (ngModelChange)="updateConfig()" /> Show
         Numbers
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()" /> RTL
+        <dui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()" /> RTL
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()" /> Dense
+        <dui-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()" /> Dense
       </label>
     </div>
   </div>
@@ -72,46 +73,46 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Expansion Mode</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.multiple"
         (ngModelChange)="updateConfig()"
         [options]="expansionModeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group mt-16">
       <label>Default Open (IDs, comma-separated)</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.defaultOpen"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. p1, p2"
-      ></ui-input>
+      ></dui-input>
     </div>
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+        <dui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableSearch" (ngModelChange)="updateConfig()" /> Search
+        <dui-checkbox [(ngModel)]="pgConfig.enableSearch" (ngModelChange)="updateConfig()" /> Search
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.enableExpandCollapseAll"
           (ngModelChange)="updateConfig()"
         />
         Expand/Collapse All
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableDragDrop" (ngModelChange)="updateConfig()" /> Drag
+        <dui-checkbox [(ngModel)]="pgConfig.enableDragDrop" (ngModelChange)="updateConfig()" /> Drag
         & Drop
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableNested" (ngModelChange)="updateConfig()" /> Nested
+        <dui-checkbox [(ngModel)]="pgConfig.enableNested" (ngModelChange)="updateConfig()" /> Nested
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+        <dui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
       </label>
     </div>
   </div>
@@ -119,29 +120,29 @@
   <div slot="content-animation" class="control-grid p-16">
     <div class="control-group">
       <label>Duration (ms)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.animationDuration"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Timing Function</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.animationTiming"
         (ngModelChange)="updateConfig()"
         [options]="timingOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.lazy" (ngModelChange)="updateConfig()" /> Lazy Load
+        <dui-checkbox [(ngModel)]="pgConfig.lazy" (ngModelChange)="updateConfig()" /> Lazy Load
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <ui-accordion
+    <dui-accordion
       #demoElement
       [items]="playgroundItems"
       [multiple]="pgConfig.multiple"
@@ -164,10 +165,10 @@
       [attr.animation-timing]="pgConfig.animationTiming"
       [attr.lazy]="pgConfig.lazy ? '' : null"
       [attr.header-level]="pgConfig.headerLevel"
-       class="w-full"
+      class="w-full"
       (accordionChange)="onAccordionChange($event)"
     >
-    </ui-accordion>
+    </dui-accordion>
   </div>
 
   <pg-playground-event-log

@@ -8,31 +8,31 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Direction</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.direction"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Horizontal', value: 'horizontal' },
             { label: 'Vertical', value: 'vertical' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.theme"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Handle Size (px)</label>
-        <ui-input
+        <dui-input
           type="number"
           [(ngModel)]="pgConfig.handleSize"
           (ngModelChange)="updateConfig()"
@@ -41,7 +41,7 @@
 
       <div class="control-group">
         <label>Snap Threshold (px)</label>
-        <ui-input
+        <dui-input
           type="number"
           [(ngModel)]="pgConfig.snapThreshold"
           (ngModelChange)="updateConfig()"
@@ -51,29 +51,29 @@
 
     <div class="checkbox-grid resizable-checkbox-section">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
+        <dui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showHandleIcon" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.showHandleIcon" (ngModelChange)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.snapToEdge" (ngModelChange)="updateConfig()" /> Snap to
+        <dui-checkbox [(ngModel)]="pgConfig.snapToEdge" (ngModelChange)="updateConfig()" /> Snap to
         Edge
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.collapsible1" (ngModelChange)="updateConfig()" /> P1
+        <dui-checkbox [(ngModel)]="pgConfig.collapsible1" (ngModelChange)="updateConfig()" /> P1
         Collapsible
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.collapsible3" (ngModelChange)="updateConfig()" /> P3
+        <dui-checkbox [(ngModel)]="pgConfig.collapsible3" (ngModelChange)="updateConfig()" /> P3
         Collapsible
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <ui-resizable-panel
+    <dui-resizable-panel
       [attr.direction]="pgConfig.direction"
       [attr.theme]="pgConfig.theme"
       [handleSize]="pgConfig.handleSize"
@@ -98,7 +98,7 @@
         <h3 class="panel-title">Right Panel</h3>
         <p>Responsive area.</p>
       </div>
-    </ui-resizable-panel>
+    </dui-resizable-panel>
   </div>
 
   <pg-playground-event-log

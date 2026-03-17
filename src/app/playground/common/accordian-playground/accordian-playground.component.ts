@@ -130,14 +130,16 @@ export class DmAccordianPlaygroundComponent extends BasePlaygroundComponent impl
     setTimeout(() => {
       if (!this.demoElement) return;
       let code = this.getCleanFormattedDom(this.demoElement, 'ui-accordion');
-      code = code.replace('></ui-accordion>', '\n  [items]="items"\n></ui-accordion>');
+      code = code.replace('></dui-accordion>', '\n  [items]="items"\n></dui-accordion>');
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 
   getParsedDefaultOpen() {
-    return this.pgConfig.defaultOpen ? this.pgConfig.defaultOpen.split(',').map(id => id.trim()) : [];
+    return this.pgConfig.defaultOpen
+      ? this.pgConfig.defaultOpen.split(',').map((id) => id.trim())
+      : [];
   }
 
   onAccordionChange(event: any) {

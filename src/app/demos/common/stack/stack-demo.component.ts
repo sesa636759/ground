@@ -29,7 +29,12 @@ export class DmStackDemoComponent extends BaseDemoComponent {
     { id: 'wrap', title: 'Flow Wrapping', icon: 'wrap-text', iconLibrary: 'lucide' },
     { id: 'spacing', title: 'Variable Spacing', icon: 'ruler', iconLibrary: 'lucide' },
     { id: 'alignment', title: 'Align & Justify', icon: 'align-center', iconLibrary: 'lucide' },
-    { id: 'dividers', title: 'Dividers & Borders', icon: 'separator-horizontal', iconLibrary: 'lucide' },
+    {
+      id: 'dividers',
+      title: 'Dividers & Borders',
+      icon: 'separator-horizontal',
+      iconLibrary: 'lucide',
+    },
     { id: 'overlap', title: 'Overlapping Items', icon: 'layers', iconLibrary: 'lucide' },
     { id: 'avatars', title: 'Avatar Facepile', icon: 'users', iconLibrary: 'lucide' },
     { id: 'max', title: 'Overflow (+N)', icon: 'plus-circle', iconLibrary: 'lucide' },
@@ -38,10 +43,10 @@ export class DmStackDemoComponent extends BaseDemoComponent {
   boxes = [1, 2, 3, 4, 5];
   avatars = ['JD', 'AS', 'MK', 'TH', 'BW', 'CL'];
 
-  directionCode = `<ui-stack direction="horizontal">...</ui-stack>
-<ui-stack direction="vertical">...</ui-stack>`;
-  wrapCode = `<ui-stack wrap="wrap" spacing="12px">...</ui-stack>`;
-  dividersCode = `<ui-stack show-dividers divider-type="dashed" spacing="24px">...</ui-stack>`;
-  overlapCode = `<ui-stack overlap spacing="-15px">...</ui-stack>`;
-  maxCode = `<ui-stack [max]="4">...</ui-stack>`;
+  directionCode = `<dui-stack direction="horizontal">...</dui-stack>
+<dui-stack direction="vertical">...</dui-stack>`;
+  wrapCode = `<dui-stack wrap="wrap" spacing="12px">...</dui-stack>`;
+  dividersCode = `<dui-stack show-dividers divider-type="dashed" spacing="24px">...</dui-stack>`;
+  overlapCode = `<dui-stack overlap spacing="-15px">...</dui-stack>`;
+  maxCode = `<dui-stack [max]="4">...</dui-stack>`;
 }

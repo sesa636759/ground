@@ -31,12 +31,17 @@ export class DmKnobDemoComponent extends BaseDemoComponent {
     { id: 'labels', title: 'Custom Labels', icon: 'type', iconLibrary: 'lucide' },
     { id: 'snap', title: 'Snapping & Steps', icon: 'magnet', iconLibrary: 'lucide' },
     { id: 'rotation', title: 'Rotation Range', icon: 'rotate-cw', iconLibrary: 'lucide' },
-    { id: 'interaction', title: 'Wheel & Keyboard', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    {
+      id: 'interaction',
+      title: 'Wheel & Keyboard',
+      icon: 'mouse-pointer-2',
+      iconLibrary: 'lucide',
+    },
     { id: 'states', title: 'Disabled & Readonly', icon: 'ban', iconLibrary: 'lucide' },
   ];
 
-  sizeCode = `<ui-knob size="60"></ui-knob>\n<ui-knob size="150"></ui-knob>`;
-  colorsCode = `<ui-knob color="#ef4444" track-color="#fee2e2" thumb-color="#b91c1c"></ui-knob>`;
-  ticksCode = `<ui-knob show-ticks tick-count="12" sub-ticks="4"></ui-knob>`;
-  snapCode = `<ui-knob snap [snap-step]="10"></ui-knob>`;
+  sizeCode = `<dui-knob size="60"></dui-knob>\n<dui-knob size="150"></dui-knob>`;
+  colorsCode = `<dui-knob color="#ef4444" track-color="#fee2e2" thumb-color="#b91c1c"></dui-knob>`;
+  ticksCode = `<dui-knob show-ticks tick-count="12" sub-ticks="4"></dui-knob>`;
+  snapCode = `<dui-knob snap [snap-step]="10"></dui-knob>`;
 }

@@ -7,25 +7,28 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Mode</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.mode"
         (ngModelChange)="updateConfig()"
         [options]="modeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
   <div slot="content-features" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.resizable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Resizable Panels
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.closable"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Closable Panels
       </label>
     </div>
@@ -34,28 +37,27 @@
   <div
     preview
     class="preview-stage h-scrollable w-full display-flex justify-center items-center p-40"
-    
   >
-    <div class="layout-wrapper w-full" >
-      <ui-layout-manager
+    <div class="layout-wrapper w-full">
+      <dui-layout-manager
         #demoElement
         [attr.mode]="pgConfig.mode"
         [attr.resizable]="pgConfig.resizable ? '' : null"
         [attr.closable]="pgConfig.closable ? '' : null"
       >
-        <div slot="panel-1"  class="p-20 bg-sky-50">
+        <div slot="panel-1" class="p-20 bg-sky-50">
           <h3>Panel 1</h3>
           <p>Main content area</p>
         </div>
-        <div slot="panel-2"  class="p-20 bg-amber-100">
+        <div slot="panel-2" class="p-20 bg-amber-100">
           <h3>Panel 2</h3>
           <p>Secondary content</p>
         </div>
-        <div slot="panel-3"  class="p-20 bg-pink-100">
+        <div slot="panel-3" class="p-20 bg-pink-100">
           <h3>Panel 3</h3>
           <p>Sidebar content</p>
         </div>
-      </ui-layout-manager>
+      </dui-layout-manager>
     </div>
   </div>
 

@@ -48,7 +48,13 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
     { value: 'apple', label: 'Apple', icon: 'apple', description: 'Fresh red apple' },
     { value: 'banana', label: 'Banana', icon: 'banana', description: 'Sweet yellow banana' },
     { value: 'cherry', label: 'Cherry', icon: 'cherry', description: 'Small red cherry' },
-    { value: 'date', label: 'Date', icon: 'calendar', description: 'Sweet brown date', disabled: true },
+    {
+      value: 'date',
+      label: 'Date',
+      icon: 'calendar',
+      description: 'Sweet brown date',
+      disabled: true,
+    },
     { value: 'elderberry', label: 'Elderberry', icon: 'grape', description: 'Dark purple berry' },
   ];
 
@@ -57,16 +63,16 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
       group: 'Fruits',
       items: [
         { value: 'apple', label: 'Apple' },
-        { value: 'banana', label: 'Banana' }
-      ]
+        { value: 'banana', label: 'Banana' },
+      ],
     },
     {
       group: 'Vegetables',
       items: [
         { value: 'carrot', label: 'Carrot' },
-        { value: 'broccoli', label: 'Broccoli' }
-      ]
-    }
+        { value: 'broccoli', label: 'Broccoli' },
+      ],
+    },
   ];
 
   pgConfig = this.getDefaultConfig();
@@ -93,7 +99,7 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
       creatable: false,
       showSelectAll: false,
       reorderable: false,
-      maxOptions: 100
+      maxOptions: 100,
     };
   }
 
@@ -108,14 +114,14 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
     // Sync options based on grouped toggle
     this.pgConfig.options = this.pgConfig.grouped ? this.groupedOptions : this.standardOptions;
 
-    let code = `<ui-picklist\n`;
+    let code = `<dui-picklist\n`;
     code += `  [options]="options"\n`;
     if (this.pgConfig.value) code += `  [value]="value"\n`;
     if (this.pgConfig.mode !== 'single') code += `  mode="${this.pgConfig.mode}"\n`;
     if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
     if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
     code += `  placeholder="${this.pgConfig.placeholder}"\n`;
-    
+
     if (this.pgConfig.searchable) code += `  searchable\n`;
     if (this.pgConfig.searchable && this.pgConfig.searchPlaceholder !== 'Search...') {
       code += `  search-placeholder="${this.pgConfig.searchPlaceholder}"\n`;
@@ -124,15 +130,16 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.grouped) code += `  grouped\n`;
     if (this.pgConfig.disabled) code += `  disabled\n`;
     if (this.pgConfig.loading) code += `  loading\n`;
-    if (this.pgConfig.iconLibrary !== 'lucide') code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
-    
+    if (this.pgConfig.iconLibrary !== 'lucide')
+      code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+
     // Premium features
     if (this.pgConfig.creatable) code += `  creatable\n`;
     if (this.pgConfig.showSelectAll) code += `  show-select-all\n`;
     if (this.pgConfig.reorderable) code += `  reorderable\n`;
 
     code += `  (picklistChange)="onChange($event)"\n`;
-    code += `></ui-picklist>`;
+    code += `></dui-picklist>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

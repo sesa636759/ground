@@ -8,84 +8,78 @@
         <h3>📐 Style</h3>
         <div class="control-group">
           <label>Dataset</label>
-          <ui-dropdown
+          <dui-dropdown
             [(ngModel)]="cfg.dataset"
             (ngModelChange)="onDataset()"
             [options]="datasetOpts"
-          ></ui-dropdown>
+          ></dui-dropdown>
         </div>
         <div class="control-group">
           <label>Stroke Width</label>
-          <ui-input
+          <dui-input
             type="range"
             min="1"
             max="5"
             step="0.5"
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted"
-            >{{ cfg.strokeWidth }}px</span
-          >
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ cfg.strokeWidth }}px</span>
         </div>
         <div class="control-group">
           <label>Opacity</label>
-          <ui-input
+          <dui-input
             type="range"
             min="0.1"
             max="0.7"
             step="0.05"
             [(ngModel)]="cfg.fillOpacity"
             (ngModelChange)="update()"
-          ></ui-input>
-          <span  class="fs-08rem text-muted">{{ cfg.fillOpacity }}</span>
+          ></dui-input>
+          <span class="fs-08rem text-muted">{{ cfg.fillOpacity }}</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="smooth"
             [(ngModel)]="cfg.smooth"
             (ngModelChange)="update()"
             label="Smooth Curve"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="grid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="dots"
             [(ngModel)]="cfg.showDots"
             (ngModelChange)="update()"
             label="Show Points"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="stacked"
             [(ngModel)]="cfg.stacked"
             (ngModelChange)="update()"
             label="Stacked"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper w-full display-flex justify-center"
-    
-  >
+  <div preview class="chart-preview-wrapper w-full display-flex justify-center">
     <chart-line
       [data]="activeData"
       chart-title=""
@@ -98,12 +92,12 @@
     ></chart-line>
   </div>
   @if (showCode) {
-    <ui-code-preview
+    <dui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></ui-code-preview>
+    ></dui-code-preview>
   }
 </pg-playground>

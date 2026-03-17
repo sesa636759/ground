@@ -30,54 +30,59 @@ export class DmChipDemoComponent extends BaseDemoComponent {
     { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: 'ruler', iconLibrary: 'lucide' },
     { id: 'media', title: 'Icons, Avatars & Media', icon: 'image', iconLibrary: 'lucide' },
     { id: 'indicators', title: 'Badges & Counters', icon: 'alert-circle', iconLibrary: 'lucide' },
-    { id: 'orientations', title: 'Vertical & Rotated', icon: 'move-vertical', iconLibrary: 'lucide' },
+    {
+      id: 'orientations',
+      title: 'Vertical & Rotated',
+      icon: 'move-vertical',
+      iconLibrary: 'lucide',
+    },
     { id: 'actions', title: 'Actions & States', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
     { id: 'animations', title: 'Animations', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<ui-chip label="Web Development" color="primary" removable></ui-chip>`;
+  playgroundCode = `<dui-chip label="Web Development" color="primary" removable></dui-chip>`;
 
-  variantsCode = `<ui-chip label="Filled" variant="filled"></ui-chip>
-<ui-chip label="Outlined" variant="outlined"></ui-chip>
-<ui-chip label="Soft" variant="soft" color="success"></ui-chip>
-<ui-chip label="Gradient" variant="gradient" color="primary"></ui-chip>
-<ui-chip label="Text Only" variant="text"></ui-chip>`;
+  variantsCode = `<dui-chip label="Filled" variant="filled"></dui-chip>
+<dui-chip label="Outlined" variant="outlined"></dui-chip>
+<dui-chip label="Soft" variant="soft" color="success"></dui-chip>
+<dui-chip label="Gradient" variant="gradient" color="primary"></dui-chip>
+<dui-chip label="Text Only" variant="text"></dui-chip>`;
 
-  shapesSizesCode = `<ui-chip label="Pill (Default)" shape="pill"></ui-chip>
-<ui-chip label="Rounded" shape="rounded"></ui-chip>
-<ui-chip label="Square" shape="square"></ui-chip>
-<ui-chip label="Circle" shape="circle" icon="star" icon-library="lucide"></ui-chip>
+  shapesSizesCode = `<dui-chip label="Pill (Default)" shape="pill"></dui-chip>
+<dui-chip label="Rounded" shape="rounded"></dui-chip>
+<dui-chip label="Square" shape="square"></dui-chip>
+<dui-chip label="Circle" shape="circle" icon="star" icon-library="lucide"></dui-chip>
 
-<ui-chip label="Small" size="sm"></ui-chip>
-<ui-chip label="Medium" size="md"></ui-chip>
-<ui-chip label="Large" size="lg"></ui-chip>`;
+<dui-chip label="Small" size="sm"></dui-chip>
+<dui-chip label="Medium" size="md"></dui-chip>
+<dui-chip label="Large" size="lg"></dui-chip>`;
 
-  mediaCode = `<ui-chip label="Lucide Icon" icon="github" icon-library="lucide"></ui-chip>
-<ui-chip label="Avatar" user-avatar="https://i.pravatar.cc/150?u=1"></ui-chip>
-<ui-chip label="Image" image="https://picsum.photos/20/20"></ui-chip>`;
+  mediaCode = `<dui-chip label="Lucide Icon" icon="github" icon-library="lucide"></dui-chip>
+<dui-chip label="Avatar" user-avatar="https://i.pravatar.cc/150?u=1"></dui-chip>
+<dui-chip label="Image" image="https://picsum.photos/20/20"></dui-chip>`;
 
-  indicatorsCode = `<ui-chip label="With Badge" badge="99" color="danger"></ui-chip>
-<ui-chip label="With Counter" counter="5" color="warning"></ui-chip>
-<ui-chip label="Messages" counter="New" variant="soft" color="info"></ui-chip>`;
+  indicatorsCode = `<dui-chip label="With Badge" badge="99" color="danger"></dui-chip>
+<dui-chip label="With Counter" counter="5" color="warning"></dui-chip>
+<dui-chip label="Messages" counter="New" variant="soft" color="info"></dui-chip>`;
 
-  orientationsCode = `<ui-chip label="Horizontal" orientation="horizontal"></ui-chip>
-<ui-chip label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></ui-chip>
-<ui-chip label="Vertical Text" orientation="vertical-text"></ui-chip>
-<ui-chip label="Vertical Rotated" orientation="vertical-rotated"></ui-chip>`;
+  orientationsCode = `<dui-chip label="Horizontal" orientation="horizontal"></dui-chip>
+<dui-chip label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></dui-chip>
+<dui-chip label="Vertical Text" orientation="vertical-text"></dui-chip>
+<dui-chip label="Vertical Rotated" orientation="vertical-rotated"></dui-chip>`;
 
-  actionsCode = `<ui-chip label="Clickable" clickable color="info" (chipClick)="onChipClick()"></ui-chip>
-<ui-chip label="Removable" removable variant="soft" (chipRemove)="onChipRemove()"></ui-chip>
-<ui-chip label="Custom Close" removable close-icon="close" (chipRemove)="onChipRemove()"></ui-chip>
-<ui-chip label="Selectable" clickable selected color="primary" (chipSelect)="onChipSelect($event)"></ui-chip>
-<ui-chip label="Loading" loading></ui-chip>
-<ui-chip label="Disabled" disabled></ui-chip>
-<ui-chip label="With Tooltip" tooltip="This is a helpful tooltip"></ui-chip>`;
+  actionsCode = `<dui-chip label="Clickable" clickable color="info" (chipClick)="onChipClick()"></dui-chip>
+<dui-chip label="Removable" removable variant="soft" (chipRemove)="onChipRemove()"></dui-chip>
+<dui-chip label="Custom Close" removable close-icon="close" (chipRemove)="onChipRemove()"></dui-chip>
+<dui-chip label="Selectable" clickable selected color="primary" (chipSelect)="onChipSelect($event)"></dui-chip>
+<dui-chip label="Loading" loading></dui-chip>
+<dui-chip label="Disabled" disabled></dui-chip>
+<dui-chip label="With Tooltip" tooltip="This is a helpful tooltip"></dui-chip>`;
 
-  animationsCode = `<ui-chip label="Scale (Default)" animation="scale"></ui-chip>
-<ui-chip label="Fade" animation="fade"></ui-chip>
-<ui-chip label="Slide" animation="slide"></ui-chip>
-<ui-chip label="Bounce" animation="bounce"></ui-chip>
-<ui-chip label="None" animation="none"></ui-chip>`;
+  animationsCode = `<dui-chip label="Scale (Default)" animation="scale"></dui-chip>
+<dui-chip label="Fade" animation="fade"></dui-chip>
+<dui-chip label="Slide" animation="slide"></dui-chip>
+<dui-chip label="Bounce" animation="bounce"></dui-chip>
+<dui-chip label="None" animation="none"></dui-chip>`;
 
   onChipClick() {
     console.log('Chip clicked');

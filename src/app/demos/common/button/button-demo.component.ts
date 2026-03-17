@@ -36,75 +36,75 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
     { id: 'link-extra', title: 'Link & Extra', icon: 'external-link', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;
+  playgroundCode = `<dui-button label="Submit" variant="primary" size="md"></dui-button>`;
 
   variantsCode = `<!-- Core Variants -->
-<ui-button label="Primary" variant="primary"></ui-button>
-<ui-button label="Secondary" variant="secondary"></ui-button>
-<ui-button label="Outline" variant="outline"></ui-button>
-<ui-button label="Ghost" variant="ghost"></ui-button>
+<dui-button label="Primary" variant="primary"></dui-button>
+<dui-button label="Secondary" variant="secondary"></dui-button>
+<dui-button label="Outline" variant="outline"></dui-button>
+<dui-button label="Ghost" variant="ghost"></dui-button>
 
 <!-- Semantic Variants -->
-<ui-button label="Success" variant="success"></ui-button>
-<ui-button label="Danger" variant="danger"></ui-button>
-<ui-button label="Warning" variant="warning"></ui-button>`;
+<dui-button label="Success" variant="success"></dui-button>
+<dui-button label="Danger" variant="danger"></dui-button>
+<dui-button label="Warning" variant="warning"></dui-button>`;
 
-  sizesCode = `<ui-button label="Extra Small" size="xs"></ui-button>
-<ui-button label="Small" size="sm"></ui-button>
-<ui-button label="Medium" size="md"></ui-button>
-<ui-button label="Large" size="lg"></ui-button>
-<ui-button label="Extra Large" size="xl"></ui-button>`;
+  sizesCode = `<dui-button label="Extra Small" size="xs"></dui-button>
+<dui-button label="Small" size="sm"></dui-button>
+<dui-button label="Medium" size="md"></dui-button>
+<dui-button label="Large" size="lg"></dui-button>
+<dui-button label="Extra Large" size="xl"></dui-button>`;
 
-  iconsBadgesCode = `<ui-button label="Settings" icon="⚙️"></ui-button>
-<ui-button label="Cart" icon="🛒" badge="5" variant="success"></ui-button>
-<ui-button icon="🔍" icon-only pill></ui-button>
-<ui-button label="Profile" icon="👤" icon-position="right"></ui-button>`;
+  iconsBadgesCode = `<dui-button label="Settings" icon="⚙️"></dui-button>
+<dui-button label="Cart" icon="🛒" badge="5" variant="success"></dui-button>
+<dui-button icon="🔍" icon-only pill></dui-button>
+<dui-button label="Profile" icon="👤" icon-position="right"></dui-button>`;
 
   badgePositionsCode = `<!-- Absolute Positions -->
-<ui-button label="Notifications" icon="🔔" badge="9" badge-position="top-right"></ui-button>
-<ui-button label="Messages" icon="✉️" badge="5" badge-position="top-left"></ui-button>
-<ui-button label="Alerts" icon="⚠️" badge="!" badge-position="bottom-right"></ui-button>
+<dui-button label="Notifications" icon="🔔" badge="9" badge-position="top-right"></dui-button>
+<dui-button label="Messages" icon="✉️" badge="5" badge-position="top-left"></dui-button>
+<dui-button label="Alerts" icon="⚠️" badge="!" badge-position="bottom-right"></dui-button>
 
 <!-- Inline Positions -->
-<ui-button label="Inbox" badge="12" badge-position="inline-right" variant="outline"></ui-button>
-<ui-button label="Tasks" badge="4" badge-position="inline-left" variant="outline"></ui-button>`;
+<dui-button label="Inbox" badge="12" badge-position="inline-right" variant="outline"></dui-button>
+<dui-button label="Tasks" badge="4" badge-position="inline-left" variant="outline"></dui-button>`;
 
   iconLibrariesCode = `<!-- SVG Path -->
-<ui-button label="SVG Path" icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" icon-library="default" variant="primary"></ui-button>
+<dui-button label="SVG Path" icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" icon-library="default" variant="primary"></dui-button>
 
 <!-- Material Icons -->
-<ui-button label="Material" icon="face" icon-library="default"></ui-button>
+<dui-button label="Material" icon="face" icon-library="default"></dui-button>
 
 <!-- Lucide Icons -->
-<ui-button label="Lucide" icon="search" icon-library="lucide" variant="success"></ui-button>
+<dui-button label="Lucide" icon="search" icon-library="lucide" variant="success"></dui-button>
 
 <!-- Ionicons -->
-<ui-button label="Ionicons" icon="heart" icon-library="ionicons" variant="danger"></ui-button>
+<dui-button label="Ionicons" icon="heart" icon-library="ionicons" variant="danger"></dui-button>
 
 <!-- Bootstrap (via SVG Path) -->
-<ui-button label="Bootstrap" icon="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" variant="warning"></ui-button>
+<dui-button label="Bootstrap" icon="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" variant="warning"></dui-button>
 
 <!-- Emoji -->
-<ui-button label="Emoji" icon="🚀" variant="info"></ui-button>`;
+<dui-button label="Emoji" icon="🚀" variant="info"></dui-button>`;
 
-  statesCode = `<ui-button label="Normal"></ui-button>
-<ui-button label="Disabled" disabled></ui-button>
-<ui-button label="Loading" loading></ui-button>
-<ui-button label="Full Width" full-width></ui-button>`;
+  statesCode = `<dui-button label="Normal"></dui-button>
+<dui-button label="Disabled" disabled></dui-button>
+<dui-button label="Loading" loading></dui-button>
+<dui-button label="Full Width" full-width></dui-button>`;
 
-  elevationsCode = `<ui-button label="Elevation 1" elevation="1"></ui-button>
-<ui-button label="Elevation 2" elevation="2"></ui-button>
-<ui-button label="Elevation 3" elevation="3"></ui-button>
-<ui-button label="Elevation 4" elevation="4"></ui-button>
-<ui-button label="Elevation 5" elevation="5"></ui-button>`;
+  elevationsCode = `<dui-button label="Elevation 1" elevation="1"></dui-button>
+<dui-button label="Elevation 2" elevation="2"></dui-button>
+<dui-button label="Elevation 3" elevation="3"></dui-button>
+<dui-button label="Elevation 4" elevation="4"></dui-button>
+<dui-button label="Elevation 5" elevation="5"></dui-button>`;
 
   linkExtraCode = `<!-- Link Button -->
-<ui-button label="Go to Google" href="https://google.com" target="_blank"></ui-button>
+<dui-button label="Go to Google" href="https://google.com" target="_blank"></dui-button>
 
 <!-- RTL Support -->
-<ui-button label="RTL Button" icon="🚀" rtl></ui-button>
+<dui-button label="RTL Button" icon="🚀" rtl></dui-button>
 
 <!-- Loading Positions -->
-<ui-button label="Loading Top" loading loading-position="top"></ui-button>
-<ui-button label="Loading Right" loading loading-position="right"></ui-button>`;
+<dui-button label="Loading Top" loading loading-position="top"></dui-button>
+<dui-button label="Loading Right" loading loading-position="right"></dui-button>`;
 }

@@ -195,7 +195,7 @@
   align-items: center;
 }
 
-.search-box ui-input {
+.search-box dui-input {
   flex: 1;
   width: 100%;
   font-size: 1.05rem;
@@ -206,12 +206,12 @@
   --input-border-focus: transparent;
 }
 
-.search-box ui-input::part(input) {
+.search-box dui-input::part(input) {
   padding: 12px 0;
   font-size: 1.05rem;
 }
 
-.search-box ui-input::part(input)::placeholder {
+.search-box dui-input::part(input)::placeholder {
   color: var(--text-muted);
   opacity: 1;
   /* Ensure overriding standard placeholder opacity */

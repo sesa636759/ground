@@ -18,9 +18,14 @@
           description="Standard slider for selecting a single numeric value."
           [code]="basicCode()"
         >
-          <div class="demo-grid col-1 max-w-500 gap-40" >
-            <ui-range-slider value="30" label="Select Intensity"></ui-range-slider>
-            <ui-range-slider step="10" show-marks value="50" label="Stepped Input (Increments of 10)"></ui-range-slider>
+          <div class="demo-grid col-1 max-w-500 gap-40">
+            <dui-range-slider value="30" label="Select Intensity"></dui-range-slider>
+            <dui-range-slider
+              step="10"
+              show-marks
+              value="50"
+              label="Stepped Input (Increments of 10)"
+            ></dui-range-slider>
           </div>
         </pg-example-section>
 
@@ -31,9 +36,20 @@
           description="Enables two thumbs for selecting a range of values (min and max)."
           [code]="rangeCode()"
         >
-          <div class="demo-grid col-1 max-w-500 gap-40" >
-            <ui-range-slider range start-value="20" end-value="80" label="Price Range"></ui-range-slider>
-            <ui-range-slider range start-value="40" end-value="60" color="#10b981" label="Operating Window"></ui-range-slider>
+          <div class="demo-grid col-1 max-w-500 gap-40">
+            <dui-range-slider
+              range
+              start-value="20"
+              end-value="80"
+              label="Price Range"
+            ></dui-range-slider>
+            <dui-range-slider
+              range
+              start-value="40"
+              end-value="60"
+              color="#10b981"
+              label="Operating Window"
+            ></dui-range-slider>
           </div>
         </pg-example-section>
 
@@ -44,10 +60,19 @@
           description="Customize size, color, and tooltip behavior."
           [code]="visualsCode()"
         >
-          <div class="demo-grid col-1 max-w-500 gap-40" >
-            <ui-range-slider size="sm" label="Small Tier Slider"></ui-range-slider>
-            <ui-range-slider size="lg" color="#8b5cf6" value="70" label="Large Tier with Custom Purple"></ui-range-slider>
-            <ui-range-slider tooltip-always-visible value="45" label="Tooltip Stays Visible"></ui-range-slider>
+          <div class="demo-grid col-1 max-w-500 gap-40">
+            <dui-range-slider size="sm" label="Small Tier Slider"></dui-range-slider>
+            <dui-range-slider
+              size="lg"
+              color="#8b5cf6"
+              value="70"
+              label="Large Tier with Custom Purple"
+            ></dui-range-slider>
+            <dui-range-slider
+              tooltip-always-visible
+              value="45"
+              label="Tooltip Stays Visible"
+            ></dui-range-slider>
           </div>
         </pg-example-section>
 
@@ -58,13 +83,13 @@
           description="Display visual indicators for steps or specific values across the track."
           [code]="marksCode()"
         >
-          <div class="demo-grid col-1 max-w-500 gap-40" >
-            <ui-range-slider show-marks step="25" label="Quarterly Benchmarks"></ui-range-slider>
-            <ui-range-slider 
-                show-marks 
-                [attr.marks]="'[{&quot;value&quot;: 0, &quot;label&quot;: &quot;Low&quot;}, {&quot;value&quot;: 50, &quot;label&quot;: &quot;Medium&quot;}, {&quot;value&quot;: 100, &quot;label&quot;: &quot;High&quot;}]'"
-                label="Named Marks"
-            ></ui-range-slider>
+          <div class="demo-grid col-1 max-w-500 gap-40">
+            <dui-range-slider show-marks step="25" label="Quarterly Benchmarks"></dui-range-slider>
+            <dui-range-slider
+              show-marks
+              [attr.marks]="'[{&quot;value&quot;: 0, &quot;label&quot;: &quot;Low&quot;}, {&quot;value&quot;: 50, &quot;label&quot;: &quot;Medium&quot;}, {&quot;value&quot;: 100, &quot;label&quot;: &quot;High&quot;}]'"
+              label="Named Marks"
+            ></dui-range-slider>
           </div>
         </pg-example-section>
 
@@ -75,23 +100,23 @@
           description="Control value snapping and use non-linear coordinate mapping."
           [code]="advancedCode()"
         >
-          <div class="demo-grid col-1 max-w-500 gap-40" >
+          <div class="demo-grid col-1 max-w-500 gap-40">
             <div>
-              <p  class="mb-8 font-medium">Restricted Values (Only specific points allowed)</p>
-              <ui-range-slider 
-                [attr.restricted-values]="'[0, 25, 50, 75, 100]'" 
-                show-marks 
+              <p class="mb-8 font-medium">Restricted Values (Only specific points allowed)</p>
+              <dui-range-slider
+                [attr.restricted-values]="'[0, 25, 50, 75, 100]'"
+                show-marks
                 value="25"
-              ></ui-range-slider>
+              ></dui-range-slider>
             </div>
             <div>
-              <p  class="mb-8 font-medium">Custom Steps (Non-linear distribution)</p>
-              <ui-range-slider 
-                [attr.custom-steps]="'[0, 10, 20, 50, 100, 200, 500]'" 
+              <p class="mb-8 font-medium">Custom Steps (Non-linear distribution)</p>
+              <dui-range-slider
+                [attr.custom-steps]="'[0, 10, 20, 50, 100, 200, 500]'"
                 [attr.max]="500"
-                show-marks 
+                show-marks
                 value="50"
-              ></ui-range-slider>
+              ></dui-range-slider>
             </div>
           </div>
         </pg-example-section>
@@ -103,10 +128,22 @@
           description="Sliders can be oriented vertically for UI layouts like audio mixers."
           [code]="verticalCode()"
         >
-          <div class="demo-flex h-300 gap-60 justify-center p-20" >
-            <ui-range-slider vertical value="60"></ui-range-slider>
-            <ui-range-slider vertical range start-value="30" end-value="70" color="#ef4444"></ui-range-slider>
-            <ui-range-slider vertical show-marks step="20" value="40" color="#f59e0b"></ui-range-slider>
+          <div class="demo-flex h-300 gap-60 justify-center p-20">
+            <dui-range-slider vertical value="60"></dui-range-slider>
+            <dui-range-slider
+              vertical
+              range
+              start-value="30"
+              end-value="70"
+              color="#ef4444"
+            ></dui-range-slider>
+            <dui-range-slider
+              vertical
+              show-marks
+              step="20"
+              value="40"
+              color="#f59e0b"
+            ></dui-range-slider>
           </div>
         </pg-example-section>
 
@@ -117,20 +154,20 @@
           description="Add context by placing icons at the start and end of the track."
           [code]="iconsCode()"
         >
-          <div class="demo-grid col-1 max-w-500 gap-40" >
-            <ui-range-slider 
-              start-icon="volume-X" 
-              end-icon="volume-2" 
+          <div class="demo-grid col-1 max-w-500 gap-40">
+            <dui-range-slider
+              start-icon="volume-X"
+              end-icon="volume-2"
               value="60"
               label="Audio Control"
-            ></ui-range-slider>
-            <ui-range-slider 
-              start-icon="sun" 
-              end-icon="moon" 
-              value="30" 
+            ></dui-range-slider>
+            <dui-range-slider
+              start-icon="sun"
+              end-icon="moon"
+              value="30"
               color="#f59e0b"
               label="Brightness/Gamma"
-            ></ui-range-slider>
+            ></dui-range-slider>
           </div>
         </pg-example-section>
       </div>

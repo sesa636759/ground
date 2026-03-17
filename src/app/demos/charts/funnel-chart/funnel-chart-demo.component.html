@@ -14,13 +14,13 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="sales" >
+          <section class="demo-section mt-0" id="sales">
             <div class="section-header">
               <h2>🔽 Sales Funnel</h2>
               <p>Track acquisition from visitors to paying customers through each stage.</p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
-              <svg width="400" height="360"  class="display-block">
+            <div class="demo-card display-flex justify-center p-24">
+              <svg width="400" height="360" class="display-block">
                 <defs>
                   <linearGradient id="fn-g1" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#6366f1" stop-opacity="0.9" />
@@ -139,12 +139,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="salesCode"
               label="Sales Funnel"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="marketing">
@@ -152,8 +152,8 @@
               <h2>📣 Marketing Funnel</h2>
               <p>Awareness → Interest → Consideration → Intent → Purchase.</p>
             </div>
-            <div class="demo-card display-flex justify-center p-24" >
-              <svg width="400" height="360"  class="display-block">
+            <div class="demo-card display-flex justify-center p-24">
+              <svg width="400" height="360" class="display-block">
                 <polygon points="20,0 380,0 356,68 44,68" fill="#6366f1" opacity="0.85" />
                 <text
                   x="200"
@@ -211,12 +211,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="marketingCode"
               label="Marketing Funnel"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -227,4 +227,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

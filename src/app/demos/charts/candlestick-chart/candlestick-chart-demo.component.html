@@ -14,19 +14,15 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="daily" >
+          <section class="demo-section mt-0" id="daily">
             <div class="section-header">
               <h2>📈 Daily Candlesticks</h2>
               <p>
                 Daily OHLC data showing price action with bullish (green) and bearish (red) candles.
               </p>
             </div>
-            <div class="demo-card overflow-x-auto" >
-              <svg
-                width="620"
-                height="320"
-                 class="display-block min-w-580 m-0-auto"
-              >
+            <div class="demo-card overflow-x-auto">
+              <svg width="620" height="320" class="display-block min-w-580 m-0-auto">
                 <!-- Grid -->
                 <line x1="50" y1="20" x2="50" y2="270" stroke="#e5e7eb" />
                 <line x1="50" y1="270" x2="600" y2="270" stroke="#e5e7eb" />
@@ -77,12 +73,12 @@
                 </text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="dailyCode"
               label="Daily Candlesticks"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <section class="demo-section" id="hollow">
@@ -93,12 +89,8 @@
                 are filled.
               </p>
             </div>
-            <div class="demo-card overflow-x-auto" >
-              <svg
-                width="620"
-                height="280"
-                 class="display-block min-w-580 m-0-auto"
-              >
+            <div class="demo-card overflow-x-auto">
+              <svg width="620" height="280" class="display-block min-w-580 m-0-auto">
                 <line x1="50" y1="20" x2="50" y2="240" stroke="#e5e7eb" />
                 <line x1="50" y1="240" x2="600" y2="240" stroke="#e5e7eb" />
                 <!-- Hollow bullish candle -->
@@ -154,12 +146,12 @@
                 <text x="540" y="255" text-anchor="middle" font-size="9" fill="#9ca3af">Jan 7</text>
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="hollowCode"
               label="Hollow Candlesticks"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -170,4 +162,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

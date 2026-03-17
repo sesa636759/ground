@@ -20,8 +20,11 @@
           description="Standard single selection dropdown with customizable placeholder"
           [code]="basicCode"
         >
-          <div  class="max-w-320">
-            <ui-dropdown [options]="jsonOptions(basicOptions)" placeholder="Select one..."></ui-dropdown>
+          <div class="max-w-320">
+            <dui-dropdown
+              [options]="jsonOptions(basicOptions)"
+              placeholder="Select one..."
+            ></dui-dropdown>
           </div>
         </pg-example-section>
 
@@ -32,11 +35,11 @@
           description="Options with icons, subtitles, metadata tags, and right-hand decorators"
           [code]="premiumCode"
         >
-          <div  class="max-w-320">
-            <ui-dropdown 
-              [options]="jsonOptions(premiumOptions)" 
+          <div class="max-w-320">
+            <dui-dropdown
+              [options]="jsonOptions(premiumOptions)"
               placeholder="Infrastructure types"
-            ></ui-dropdown>
+            ></dui-dropdown>
           </div>
         </pg-example-section>
 
@@ -50,19 +53,19 @@
           <div class="demo-grid col-2">
             <div class="demo-card">
               <h4 class="demo-sub-title">Multi-Select</h4>
-              <ui-dropdown 
-                multi-select 
-                [options]="jsonOptions(basicOptions)" 
+              <dui-dropdown
+                multi-select
+                [options]="jsonOptions(basicOptions)"
                 placeholder="Pick multiple"
-              ></ui-dropdown>
+              ></dui-dropdown>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Hierarchical (Cascading)</h4>
-              <ui-dropdown 
-                cascading 
-                [options]="jsonOptions(cascadingOptions)" 
+              <dui-dropdown
+                cascading
+                [options]="jsonOptions(cascadingOptions)"
                 placeholder="Drill down categories"
-              ></ui-dropdown>
+              ></dui-dropdown>
             </div>
           </div>
         </pg-example-section>
@@ -74,12 +77,12 @@
           description="Integrated search bar with fuzzy filtering for large lists"
           [code]="searchCode"
         >
-          <div  class="max-w-320">
-            <ui-dropdown 
-              searchable 
-              [options]="jsonOptions(premiumOptions)" 
+          <div class="max-w-320">
+            <dui-dropdown
+              searchable
+              [options]="jsonOptions(premiumOptions)"
               placeholder="Start typing..."
-            ></ui-dropdown>
+            ></dui-dropdown>
           </div>
         </pg-example-section>
 
@@ -91,17 +94,17 @@
           [code]="appearanceCode"
         >
           <div class="demo-flex-wrap">
-            <ui-dropdown 
-              appearance="dropdown" 
-              [options]="jsonOptions(basicOptions)" 
+            <dui-dropdown
+              appearance="dropdown"
+              [options]="jsonOptions(basicOptions)"
               placeholder="Standard Mode"
-            ></ui-dropdown>
+            ></dui-dropdown>
 
-            <ui-dropdown 
-              appearance="button" 
-              [options]="jsonOptions(basicOptions)" 
+            <dui-dropdown
+              appearance="button"
+              [options]="jsonOptions(basicOptions)"
               placeholder="Action Overflow"
-            ></ui-dropdown>
+            ></dui-dropdown>
           </div>
         </pg-example-section>
 
@@ -112,10 +115,22 @@
           description="Three standard sizes to fit any UI density"
           [code]="sizesCode"
         >
-          <div class="demo-flex-wrap items-end" >
-            <ui-dropdown size="sm" [options]="jsonOptions(basicOptions)" placeholder="Small"></ui-dropdown>
-            <ui-dropdown size="md" [options]="jsonOptions(basicOptions)" placeholder="Medium"></ui-dropdown>
-            <ui-dropdown size="lg" [options]="jsonOptions(basicOptions)" placeholder="Large"></ui-dropdown>
+          <div class="demo-flex-wrap items-end">
+            <dui-dropdown
+              size="sm"
+              [options]="jsonOptions(basicOptions)"
+              placeholder="Small"
+            ></dui-dropdown>
+            <dui-dropdown
+              size="md"
+              [options]="jsonOptions(basicOptions)"
+              placeholder="Medium"
+            ></dui-dropdown>
+            <dui-dropdown
+              size="lg"
+              [options]="jsonOptions(basicOptions)"
+              placeholder="Large"
+            ></dui-dropdown>
           </div>
         </pg-example-section>
 
@@ -129,15 +144,23 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h4 class="demo-sub-title">Pre-selected Value</h4>
-              <ui-dropdown value="2" [options]="jsonOptions(basicOptions)"></ui-dropdown>
+              <dui-dropdown value="2" [options]="jsonOptions(basicOptions)"></dui-dropdown>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Disabled State</h4>
-              <ui-dropdown disabled [options]="jsonOptions(basicOptions)" placeholder="Offline"></ui-dropdown>
+              <dui-dropdown
+                disabled
+                [options]="jsonOptions(basicOptions)"
+                placeholder="Offline"
+              ></dui-dropdown>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Full Width</h4>
-              <ui-dropdown full-width [options]="jsonOptions(basicOptions)" placeholder="Expanding to container"></ui-dropdown>
+              <dui-dropdown
+                full-width
+                [options]="jsonOptions(basicOptions)"
+                placeholder="Expanding to container"
+              ></dui-dropdown>
             </div>
           </div>
         </pg-example-section>

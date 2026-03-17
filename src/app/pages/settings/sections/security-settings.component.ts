@@ -27,53 +27,58 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
             <div class="form-group">
               <label for="currentPassword">Current Password</label>
               <div class="input-wrapper">
-                <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
-                <ui-input
+                <dui-icon name="lock" library="lucide" size="18px" class="input-icon"></dui-icon>
+                <dui-input
                   type="password"
                   id="currentPassword"
                   [(ngModel)]="currentPassword"
                   placeholder="••••••••"
-                ></ui-input>
+                ></dui-input>
               </div>
             </div>
 
             <div class="form-group">
               <label for="newPassword">New Password</label>
               <div class="input-wrapper">
-                <ui-icon name="key-round" library="lucide" size="18px" class="input-icon"></ui-icon>
-                <ui-input
+                <dui-icon
+                  name="key-round"
+                  library="lucide"
+                  size="18px"
+                  class="input-icon"
+                ></dui-icon>
+                <dui-input
                   type="password"
                   id="newPassword"
                   [(ngModel)]="newPassword"
                   placeholder="New password"
-                ></ui-input>
+                ></dui-input>
               </div>
             </div>
 
             <div class="form-group">
               <label for="confirmPassword">Confirm Password</label>
               <div class="input-wrapper">
-                <ui-icon
+                <dui-icon
                   name="check-circle"
                   library="lucide"
                   size="18px"
                   class="input-icon"
-                ></ui-icon>
-                <ui-input
+                ></dui-icon>
+                <dui-input
                   type="password"
                   id="confirmPassword"
                   [(ngModel)]="confirmPassword"
                   placeholder="Confirm new password"
-                ></ui-input>
+                ></dui-input>
               </div>
             </div>
 
             <div class="form-actions-inline">
-              <ui-button
+              <dui-button
                 label="Change Password"
                 variant="primary"
                 (click)="changePassword()"
-              ></ui-button>
+              ></dui-button>
             </div>
           </div>
         </div>
@@ -90,11 +95,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Two-Factor Authentication (2FA)</span>
                 <span class="desc">A verification code will be required during login</span>
               </div>
-              <ui-switch
+              <dui-switch
                 [checked]="twoFactorEnabled()"
                 variant="success"
                 (switchChange)="twoFactorEnabled.set($any($event).detail.checked)"
-              ></ui-switch>
+              ></dui-switch>
             </div>
 
             <div role="separator" class="row-divider"></div>
@@ -104,11 +109,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Profile Privacy</span>
                 <span class="desc">Control who can see your profile and activity</span>
               </div>
-              <ui-switch
+              <dui-switch
                 [checked]="profileVisibility()"
                 variant="primary"
                 (switchChange)="profileVisibility.set($any($event).detail.checked)"
-              ></ui-switch>
+              ></dui-switch>
             </div>
 
             <div class="setting-row">
@@ -116,11 +121,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Online Status</span>
                 <span class="desc">Show your active status to your connections</span>
               </div>
-              <ui-switch
+              <dui-switch
                 [checked]="activityStatus()"
                 variant="primary"
                 (switchChange)="activityStatus.set($any($event).detail.checked)"
-              ></ui-switch>
+              ></dui-switch>
             </div>
 
             <div class="setting-row">
@@ -128,11 +133,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Search Indexing</span>
                 <span class="desc">Allow search engines to index your public content</span>
               </div>
-              <ui-switch
+              <dui-switch
                 [checked]="searchIndexing()"
                 variant="warning"
                 (switchChange)="searchIndexing.set($any($event).detail.checked)"
-              ></ui-switch>
+              ></dui-switch>
             </div>
           </div>
         </div>
@@ -144,13 +149,13 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
               <h3>Active Sessions</h3>
               <p>Where you're currently logged in across all devices</p>
             </div>
-            <ui-button
+            <dui-button
               label="Log out of all other sessions"
               variant="secondary"
               size="sm"
               icon="log-out"
               iconLibrary="lucide"
-            ></ui-button>
+            ></dui-button>
           </div>
           <div class="card-body">
             <div class="session-list">
@@ -159,11 +164,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   class="session-icon-container"
                   [class.current]="session.lastActive === 'Active now'"
                 >
-                  <ui-icon
+                  <dui-icon
                     [name]="session.device.includes('iPhone') ? 'smartphone' : 'monitor'"
                     library="lucide"
                     size="24px"
-                  ></ui-icon>
+                  ></dui-icon>
                 </div>
                 <div class="session-details">
                   <div class="session-device">
@@ -178,14 +183,14 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                     <span class="time">{{ session.lastActive }}</span>
                   </div>
                 </div>
-                <ui-button
+                <dui-button
                   label="Revoke"
                   variant="danger"
                   size="sm"
                   outline
                   (click)="revokeSession(session.id)"
                   *ngIf="session.lastActive !== 'Active now'"
-                ></ui-button>
+                ></dui-button>
               </div>
             </div>
           </div>

@@ -7,42 +7,45 @@
   <div slot="content-config" class="control-grid p-16">
     <div class="control-group">
       <label>Separator Text</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.separator"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Max Items (Collapse)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.maxItems"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showHome" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.showHome"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Show Home
       </label>
     </div>
@@ -51,43 +54,39 @@
   <div slot="content-icons" class="control-grid p-16">
     <div class="control-group">
       <label>Separator Icon</label>
-      <ui-input
+      <dui-input
         type="text"
         placeholder="e.g., chevron-right"
         [(ngModel)]="pgConfig.separatorIcon"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Home Icon</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.homeIcon"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Icon Library</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
         [options]="iconLibraryOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage w-full display-flex justify-center items-center p-40"
-    
-  >
+  <div preview class="preview-stage w-full display-flex justify-center items-center p-40">
     <div
-       class="bg-surface-1 p-16-24 rounded-8 border min-w-300"
+      class="bg-surface-1 p-16-24 rounded-8 border min-w-300"
       [style.background]="
         pgConfig.variant === 'glass' ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' : ''
       "
     >
-      <ui-breadcrumb
+      <dui-breadcrumb
         #demoElement
         [attr.separator]="pgConfig.separator"
         [attr.separator-icon]="pgConfig.separatorIcon"
@@ -101,7 +100,7 @@
         [attr.icon-library]="pgConfig.iconLibrary"
         [items]="itemsJson"
         (breadcrumbClick)="onBreadcrumbClick($event)"
-      ></ui-breadcrumb>
+      ></dui-breadcrumb>
     </div>
   </div>
 

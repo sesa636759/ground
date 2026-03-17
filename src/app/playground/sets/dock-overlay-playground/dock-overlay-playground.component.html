@@ -6,7 +6,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Position</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.position"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -15,11 +15,11 @@
             { label: 'Left', value: 'left' },
             { label: 'Right', value: 'right' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Mode</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.mode"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -27,31 +27,31 @@
             { label: 'Floating', value: 'floating' },
             { label: 'Modal', value: 'modal' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
       <div class="control-group">
         <label>Variant</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Glass', value: 'glass' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.resizable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.resizable" (ngModelChange)="updateConfig()" />
         Resizable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
         Draggable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />0
+        <dui-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />0
         Collapsible
       </label>
     </div>
@@ -79,13 +79,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button
+        <dui-button
           class="copy-btn"
           variant="secondary"
           size="sm"
           (click)="copyCode()"
           label="Copy"
-        ></ui-button>
+        ></dui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

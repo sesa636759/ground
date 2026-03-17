@@ -14,13 +14,13 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="project" >
+          <section class="demo-section mt-0" id="project">
             <div class="section-header">
               <h2>📋 Project Timeline</h2>
               <p>Multi-phase project with task dependencies and milestone markers.</p>
             </div>
-            <div class="demo-card overflow-x-auto" >
-              <svg width="660" height="320"  class="display-block min-w-600">
+            <div class="demo-card overflow-x-auto">
+              <svg width="660" height="320" class="display-block min-w-600">
                 <!-- Header row -->
                 <rect x="0" y="0" width="660" height="30" fill="#f9fafb" />
                 <text x="8" y="20" font-size="11" font-weight="600" fill="#374151">Task</text>
@@ -109,12 +109,12 @@
                 />
               </svg>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="'<!-- Gantt Chart SVG -->\n<svg width=\'660\' height=\'320\'>\n  <!-- Task bar -->\n  <rect x=\'136\' y=\'36\' width=\'120\' height=\'24\' rx=\'5\' fill=\'#6366f1\'/>\n  <text x=\'196\' y=\'52\' text-anchor=\'middle\' font-size=\'10\' fill=\'white\'>Requirements</text>\n  <!-- Dependency line -->\n  <line x1=\'256\' y1=\'48\' x2=\'196\' y2=\'72\' stroke=\'#9ca3af\' stroke-dasharray=\'3,2\'/>\n</svg>'"
               label="Project Gantt Chart"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -125,4 +125,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

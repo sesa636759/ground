@@ -24,14 +24,14 @@
             <div class="demo-card timer-grid">
               <div class="timer-item">
                 <p>Simple 1min Countdown</p>
-                <ui-timer [duration]="60"></ui-timer>
+                <dui-timer [duration]="60"></dui-timer>
               </div>
               <div class="timer-item">
                 <p>Standard Stopwatch</p>
-                <ui-timer mode="stopwatch"></ui-timer>
+                <dui-timer mode="stopwatch"></dui-timer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Modes & Precision -->
@@ -43,14 +43,14 @@
             <div class="demo-card timer-grid">
               <div class="timer-item">
                 <p>High Precision (MS)</p>
-                <ui-timer mode="stopwatch" precision="milliseconds"></ui-timer>
+                <dui-timer mode="stopwatch" precision="milliseconds"></dui-timer>
               </div>
               <div class="timer-item">
                 <p>Human Readable</p>
-                <ui-timer mode="countdown" format="human" [duration]="3665"></ui-timer>
+                <dui-timer mode="countdown" format="human" [duration]="3665"></dui-timer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="modesCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="modesCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Multi-Step Flow -->
@@ -62,10 +62,10 @@
             <div class="demo-card">
               <div class="timer-item w-full">
                 <p>Pomodoro Flow (Work / Break / Repeat)</p>
-                <ui-timer [attr.steps]="pomodoroSteps" loop></ui-timer>
+                <dui-timer [attr.steps]="pomodoroSteps" loop></dui-timer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="stepsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="stepsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Visualization -->
@@ -77,14 +77,14 @@
             <div class="demo-card timer-grid">
               <div class="timer-item">
                 <p>Compact Variant</p>
-                <ui-timer variant="compact" [duration]="300"></ui-timer>
+                <dui-timer variant="compact" [duration]="300"></dui-timer>
               </div>
               <div class="timer-item">
                 <p>Linear Progress Type</p>
-                <ui-timer progress-type="linear" [duration]="120"></ui-timer>
+                <dui-timer progress-type="linear" [duration]="120"></dui-timer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="displayCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="displayCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Alerts & Sounds -->
@@ -96,14 +96,14 @@
             <div class="demo-card timer-grid">
               <div class="timer-item">
                 <p>Alert at 20% Remaining</p>
-                <ui-timer [alert-threshold]="20" [duration]="30" auto-start></ui-timer>
+                <dui-timer [alert-threshold]="20" [duration]="30" auto-start></dui-timer>
               </div>
               <div class="timer-item">
                 <p>Interactive Controls</p>
-                <ui-timer enable-sound enable-notifications [duration]="10"></ui-timer>
+                <dui-timer enable-sound enable-notifications [duration]="10"></dui-timer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="alertsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="alertsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Persistence & Behavior -->
@@ -115,14 +115,14 @@
             <div class="demo-card timer-stack">
               <div class="demo-row">
                 <p>Persistent Timer (Retains state after refresh)</p>
-                <ui-timer persist="demo-timer" [duration]="1000"></ui-timer>
+                <dui-timer persist="demo-timer" [duration]="1000"></dui-timer>
               </div>
               <div class="demo-row">
                 <p>New Year Countdown (Dynamic Target)</p>
-                <ui-timer target-date="2027-01-01T00:00:00"></ui-timer>
+                <dui-timer target-date="2027-01-01T00:00:00"></dui-timer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="behaviorCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="behaviorCode" activeLang="html"></dui-code-preview>
           </section>
         </div>
       </div>
@@ -133,5 +133,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

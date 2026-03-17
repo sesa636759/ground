@@ -13,9 +13,9 @@
       <header class="docs-header" *ngIf="!isEmbedded">
         <div class="header-inner">
           <div class="breadcrumb-mini">
-            <ui-button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
+            <dui-button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
               <i class="fas fa-arrow-left"></i> Back
-            </ui-button>
+            </dui-button>
             <span class="breadcrumb-separator">/</span>
             <span>Components</span>
             <span class="breadcrumb-separator">/</span>
@@ -54,12 +54,12 @@
               <p>Basic implementation and markup</p>
             </div>
           </div>
-          <ui-code-preview
+          <dui-code-preview
             [htmlCode]="componentDoc.usage"
             [label]="componentDoc.name + ' Basic Implementation'"
             activeLang="html"
             expanded="true"
-          ></ui-code-preview>
+          ></dui-code-preview>
         </section>
 
         <!-- Props Section -->
@@ -79,7 +79,7 @@
           <div class="table-controls" *ngIf="componentDoc.props.length > 5">
             <div class="search-box">
               <i class="fas fa-search"></i>
-              <ui-input
+              <dui-input
                 type="text"
                 placeholder="Filter properties..."
                 (input)="filterText.set($any($event.target).value)"
@@ -99,13 +99,13 @@
                 <div class="col-prop">
                   <div class="prop-id-group">
                     <span class="prop-name">{{ prop.name }}</span>
-                    <ui-button
+                    <dui-button
                       class="copy-tiny"
                       (click)="copyText(prop.name)"
                       title="Copy property name"
                     >
                       <i class="far fa-copy"></i>
-                    </ui-button>
+                    </dui-button>
                   </div>
                   <span class="required-indicator" *ngIf="prop.required">Required</span>
                 </div>
@@ -203,12 +203,12 @@
                 <span class="pattern-number">0{{ i + 1 }}</span>
                 <h3>Pattern Variation</h3>
               </div>
-              <ui-code-preview
+              <dui-code-preview
                 [htmlCode]="example"
                 [label]="'Composition Example ' + (i + 1)"
                 activeLang="html"
                 expanded="true"
-              ></ui-code-preview>
+              ></dui-code-preview>
             </div>
           </div>
         </section>
@@ -226,12 +226,12 @@
         <strong>{{ componentId || 'unknown' }}</strong
         >.
       </p>
-      <ui-button (click)="goBack()" class="btn-primary">Return to Library</ui-button>
+      <dui-button (click)="goBack()" class="btn-primary">Return to Library</dui-button>
     </div>
   </div>
 
   <!-- Back to Top -->
-  <ui-button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
+  <dui-button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
-  </ui-button>
+  </dui-button>
 </div>

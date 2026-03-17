@@ -63,80 +63,80 @@ export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit
 
   // Code snippets
   colorVariantsCode = `<!-- Diverse color palette -->
-<ui-checkbox label="Primary" color="primary" checked></ui-checkbox>
-<ui-checkbox label="Success" color="success" checked></ui-checkbox>
-<ui-checkbox label="Danger" color="danger" checked></ui-checkbox>
-<ui-checkbox label="Indigo" color="indigo" checked></ui-checkbox>`;
+<dui-checkbox label="Primary" color="primary" checked></dui-checkbox>
+<dui-checkbox label="Success" color="success" checked></dui-checkbox>
+<dui-checkbox label="Danger" color="danger" checked></dui-checkbox>
+<dui-checkbox label="Indigo" color="indigo" checked></dui-checkbox>`;
 
-  premiumStylesCode = `<ui-checkbox label="Filled Variant" variant="filled" color="primary" checked></ui-checkbox>
-<ui-checkbox label="Tick Only" variant="tick" color="success" checked></ui-checkbox>
-<ui-checkbox label="Soft Variant" variant="soft" color="info" checked></ui-checkbox>
-<ui-checkbox label="Button Style" variant="button" color="danger" checked></ui-checkbox>
-<ui-checkbox label="Chip Style" variant="chip" color="warning" checked></ui-checkbox>`;
+  premiumStylesCode = `<dui-checkbox label="Filled Variant" variant="filled" color="primary" checked></dui-checkbox>
+<dui-checkbox label="Tick Only" variant="tick" color="success" checked></dui-checkbox>
+<dui-checkbox label="Soft Variant" variant="soft" color="info" checked></dui-checkbox>
+<dui-checkbox label="Button Style" variant="button" color="danger" checked></dui-checkbox>
+<dui-checkbox label="Chip Style" variant="chip" color="warning" checked></dui-checkbox>`;
 
-  shapesSizesCode = `<ui-checkbox label="Rounded" variant="rounded" checked></ui-checkbox>
-<ui-checkbox label="Square" variant="square" checked></ui-checkbox>
-<ui-checkbox label="Round Color" variant="round-color" checked></ui-checkbox>
+  shapesSizesCode = `<dui-checkbox label="Rounded" variant="rounded" checked></dui-checkbox>
+<dui-checkbox label="Square" variant="square" checked></dui-checkbox>
+<dui-checkbox label="Round Color" variant="round-color" checked></dui-checkbox>
 
-<ui-checkbox label="Small" size="small" checked></ui-checkbox>
-<ui-checkbox label="Medium" size="medium" checked></ui-checkbox>
-<ui-checkbox label="Large" size="large" checked></ui-checkbox>`;
+<dui-checkbox label="Small" size="small" checked></dui-checkbox>
+<dui-checkbox label="Medium" size="medium" checked></dui-checkbox>
+<dui-checkbox label="Large" size="large" checked></dui-checkbox>`;
 
-  labelPositionsCode = `<ui-checkbox label="Right (Default)" label-position="right"></ui-checkbox>
-<ui-checkbox label="Left Position" label-position="left"></ui-checkbox>
-<ui-checkbox label="Top Position" label-position="top"></ui-checkbox>
-<ui-checkbox label="Bottom Position" label-position="bottom"></ui-checkbox>`;
+  labelPositionsCode = `<dui-checkbox label="Right (Default)" label-position="right"></dui-checkbox>
+<dui-checkbox label="Left Position" label-position="left"></dui-checkbox>
+<dui-checkbox label="Top Position" label-position="top"></dui-checkbox>
+<dui-checkbox label="Bottom Position" label-position="bottom"></dui-checkbox>`;
 
-  customIconsCode = `<ui-checkbox 
+  customIconsCode = `<dui-checkbox 
   label="Star Icon" 
   custom-check-icon="star" 
   checked
-></ui-checkbox>
+></dui-checkbox>
 
-<ui-checkbox 
+<dui-checkbox 
   label="Heart Icon" 
   custom-check-icon="heart" 
   color="danger" 
   checked
-></ui-checkbox>
+></dui-checkbox>
 
-<ui-checkbox 
+<dui-checkbox 
   label="Custom Indeterminate" 
   custom-indeterminate-icon="help-circle" 
   indeterminate
-></ui-checkbox>`;
+></dui-checkbox>`;
 
-  badgesTooltipsCode = `<ui-checkbox 
+  badgesTooltipsCode = `<dui-checkbox 
   label="With Badge" 
   badge="New" 
   color="primary"
-></ui-checkbox>
+></dui-checkbox>
 
-<ui-checkbox 
+<dui-checkbox 
   label="With Tooltip" 
   tooltip="Extra helpful information" 
   tooltip-position="right"
-></ui-checkbox>`;
+></dui-checkbox>`;
 
-  statesCode = `<ui-checkbox label="Checked" checked></ui-checkbox>
-<ui-checkbox label="Indeterminate" indeterminate></ui-checkbox>
-<ui-checkbox label="Disabled" disabled></ui-checkbox>
-<ui-checkbox label="Error State" invalid error-message="Required"></ui-checkbox>`;
+  statesCode = `<dui-checkbox label="Checked" checked></dui-checkbox>
+<dui-checkbox label="Indeterminate" indeterminate></dui-checkbox>
+<dui-checkbox label="Disabled" disabled></dui-checkbox>
+<dui-checkbox label="Error State" invalid error-message="Required"></dui-checkbox>`;
 
   groupExampleCode = `<!-- Master checkbox logic -->
-<ui-checkbox 
+<dui-checkbox 
   label="Select All" 
   [checked]="masterChecked" 
   [indeterminate]="masterIndeterminate"
   (checkboxChange)="onMasterChange($event)">
-</ui-checkbox>`;
+</dui-checkbox>`;
 
-  formExampleCode = `<ui-checkbox
+  formExampleCode = `<dui-checkbox
   [(ngModel)]="formTerms"
   label="Accept Terms"
   [invalid]="termsInvalid"
   error-message="Required"
-></ui-checkbox>`;
+></dui-checkbox>`;
 
   ngOnInit() {
     this.updateMasterState();

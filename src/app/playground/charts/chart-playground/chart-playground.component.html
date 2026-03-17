@@ -10,48 +10,48 @@
         <h3>Chart Type</h3>
         <div class="control-group">
           <label>Type</label>
-          <ui-dropdown
+          <dui-dropdown
             name="type"
             [(ngModel)]="pgConfig.type"
             (ngModelChange)="updateConfig()"
             [options]="typeOptions"
-          ></ui-dropdown>
+          ></dui-dropdown>
         </div>
       </div>
 
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="showLegend"
             name="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
         <div class="checkbox-group">
-          <ui-checkbox
+          <dui-checkbox
             id="responsive"
             name="responsive"
             [(ngModel)]="pgConfig.responsive"
             (ngModelChange)="updateConfig()"
             label="Responsive"
-          ></ui-checkbox>
+          ></dui-checkbox>
         </div>
       </div>
     </div>
   </div>
 
-  <div preview  class="w-full display-flex justify-center items-center">
-    <ui-chart
+  <div preview class="w-full display-flex justify-center items-center">
+    <dui-chart
       #chart
       [attr.type]="pgConfig.type"
       [attr.show-legend]="pgConfig.showLegend ? '' : null"
       [attr.responsive]="pgConfig.responsive ? '' : null"
       [data]="chartDataJson"
-       class="w-full h-350"
+      class="w-full h-350"
     >
-    </ui-chart>
+    </dui-chart>
   </div>
 </pg-playground>

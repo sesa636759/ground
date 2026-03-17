@@ -60,7 +60,7 @@ export class DmBarChartPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<ui-bar-chart\n';
+    let code = '<dui-bar-chart\n';
     code += `  orientation="${this.pgConfig.orientation}"\n`;
     code += `  bar-width="${this.pgConfig.barWidth}"\n`;
     code += `  border-radius="${this.pgConfig.borderRadius}"\n`;
@@ -72,11 +72,8 @@ export class DmBarChartPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.showTooltip) code += `  show-tooltip\n`;
     code += `  [labels]="labels"\n`;
     code += `  [datasets]="datasets"\n`;
-    code += '></ui-bar-chart>';
+    code += '></dui-bar-chart>';
     this.generatedCode.set(code);
     this.refreshCode();
   }
 }
-
-
-

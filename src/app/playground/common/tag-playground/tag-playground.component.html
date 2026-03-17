@@ -7,51 +7,55 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Value / Text</label>
-      <ui-input
+      <dui-input
         type="text"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Icon</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="text"
+        [(ngModel)]="pgConfig.icon"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Severity</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.severity"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="fullSizeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.rounded"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Rounded Corners
       </label>
     </div>
   </div>
 
-  <div
-    preview
-     class="w-full display-flex justify-center items-center p-40"
-  >
-    <ui-tag
+  <div preview class="w-full display-flex justify-center items-center p-40">
+    <dui-tag
       [attr.value]="pgConfig.value"
       [attr.icon]="pgConfig.icon"
       [attr.severity]="pgConfig.severity"
       [attr.rounded]="pgConfig.rounded ? '' : null"
       [attr.size]="pgConfig.size"
-    ></ui-tag>
+    ></dui-tag>
   </div>
 
   <pg-playground-event-log

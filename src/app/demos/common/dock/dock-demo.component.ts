@@ -58,11 +58,11 @@ export class DmDockDemoComponent extends BaseDemoComponent {
     { id: 'trash', label: 'Trash', icon: '🗑️', iconLibrary: 'emoji' },
   ];
 
-  basicCode = `<ui-dock [items]="items"></ui-dock>`;
-  positionsCode = `<ui-dock position="left" [items]="items"></ui-dock>`;
-  magnifyCode = `<ui-dock magnify [items]="items"></ui-dock>`;
-  blurCode = `<ui-dock blur-effect [items]="items"></ui-dock>`;
-  osCode = `<ui-dock [items]="osItems" magnify blur-effect></ui-dock>`;
+  basicCode = `<dui-dock [items]="items"></dui-dock>`;
+  positionsCode = `<dui-dock position="left" [items]="items"></dui-dock>`;
+  magnifyCode = `<dui-dock magnify [items]="items"></dui-dock>`;
+  blurCode = `<dui-dock blur-effect [items]="items"></dui-dock>`;
+  osCode = `<dui-dock [items]="osItems" magnify blur-effect></dui-dock>`;
 
   handleItemClick(ev: any) {
     console.log(`Dock Item Clicked: ${ev.detail.itemId}`);

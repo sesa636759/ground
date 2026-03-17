@@ -35,22 +35,22 @@ export class DmTagDemoComponent extends BaseDemoComponent implements OnInit {
     return this.variants;
   }
 
-  playgroundCode = `<ui-tag value="New" severity="info" rounded></ui-tag>`;
+  playgroundCode = `<dui-tag value="New" severity="info" rounded></dui-tag>`;
 
-  severitiesCode = `<ui-tag severity="primary" value="Primary"></ui-tag>
-<ui-tag severity="success" value="Success"></ui-tag>
-<ui-tag severity="info" value="Info"></ui-tag>
-<ui-tag severity="warning" value="Warning"></ui-tag>
-<ui-tag severity="danger" value="Danger"></ui-tag>`;
+  severitiesCode = `<dui-tag severity="primary" value="Primary"></dui-tag>
+<dui-tag severity="success" value="Success"></dui-tag>
+<dui-tag severity="info" value="Info"></dui-tag>
+<dui-tag severity="warning" value="Warning"></dui-tag>
+<dui-tag severity="danger" value="Danger"></dui-tag>`;
 
-  stylesCode = `<ui-tag value="Square" [rounded]="false"></ui-tag>
-<ui-tag value="Rounded" rounded></ui-tag>
-<ui-tag value="Small" size="small"></ui-tag>
-<ui-tag value="Large" size="large"></ui-tag>`;
+  stylesCode = `<dui-tag value="Square" [rounded]="false"></dui-tag>
+<dui-tag value="Rounded" rounded></dui-tag>
+<dui-tag value="Small" size="small"></dui-tag>
+<dui-tag value="Large" size="large"></dui-tag>`;
 
-  visualsCode = `<ui-tag icon="⭐" value="Starred"></ui-tag>
-<ui-tag value="Tag with Counter" counter="5"></ui-tag>
-<ui-tag value="Removable" removable></ui-tag>`;
+  visualsCode = `<dui-tag icon="⭐" value="Starred"></dui-tag>
+<dui-tag value="Tag with Counter" counter="5"></dui-tag>
+<dui-tag value="Removable" removable></dui-tag>`;
 
   ngOnInit() {}
 }

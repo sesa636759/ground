@@ -16,29 +16,29 @@
 
         <div class="examples-content">
           <!-- Pie -->
-          <section class="demo-section mt-0" id="pie" >
+          <section class="demo-section mt-0" id="pie">
             <div class="section-header">
               <h2>🥧 Pie Chart</h2>
               <p>Classic pie chart showing proportional distribution of categorical values.</p>
             </div>
             <div class="demo-card">
-              <div  class="h-340 display-flex justify-center">
+              <div class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="pie"
                   [showLegend]="true"
                   legendPosition="right"
                   [responsive]="true"
                   [data]="pieData"
-                   class="w-full max-w-520"
+                  class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="pieCode"
               [label]="'Pie Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Doughnut -->
@@ -50,7 +50,7 @@
               </p>
             </div>
             <div class="demo-card">
-              <div  class="h-340 display-flex justify-center">
+              <div class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="doughnut"
                   [showLegend]="true"
@@ -58,16 +58,16 @@
                   [responsive]="true"
                   [data]="doughnutData"
                   [options]="doughnutOptions"
-                   class="w-full max-w-520"
+                  class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="doughnutCode"
               [label]="'Doughnut Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Polar Area -->
@@ -80,23 +80,23 @@
               </p>
             </div>
             <div class="demo-card">
-              <div  class="h-340 display-flex justify-center">
+              <div class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="polarArea"
                   [showLegend]="true"
                   legendPosition="right"
                   [responsive]="true"
                   [data]="polarData"
-                   class="w-full max-w-520"
+                  class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="polarCode"
               [label]="'Polar Area Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Multi Ring -->
@@ -108,7 +108,7 @@
               </p>
             </div>
             <div class="demo-card">
-              <div  class="h-340 display-flex justify-center">
+              <div class="h-340 display-flex justify-center">
                 <app-chart
                   chartType="doughnut"
                   [showLegend]="true"
@@ -116,16 +116,16 @@
                   [responsive]="true"
                   [data]="multiRingData"
                   [options]="multiRingOptions"
-                   class="w-full max-w-520"
+                  class="w-full max-w-520"
                 ></app-chart>
               </div>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="multiRingCode"
               [label]="'Multi-Ring Doughnut'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -136,4 +136,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

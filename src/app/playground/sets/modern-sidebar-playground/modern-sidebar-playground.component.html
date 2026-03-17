@@ -8,48 +8,48 @@
   <div slot="content-brand" class="control-grid brand-section">
     <div class="control-group">
       <label>Brand Name</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
   <div slot="content-user" class="control-grid user-section">
     <div class="control-group">
       <label>User Name</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>User Role</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>User Avatar URL</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
   <div slot="content-style" class="control-grid style-section">
     <div class="control-group">
       <label>Theme</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
         [options]="themeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Accent Color</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.accentColor"
         (ngModelChange)="updateConfig()"
         [options]="accentColorOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-group style-checkbox-group">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.collapsed"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Collapsed
       </label>
     </div>

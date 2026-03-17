@@ -75,7 +75,7 @@ console.log(user.greet());`,
   }
 
   updateConfig() {
-    let code = `<ui-code-editor\n`;
+    let code = `<dui-code-editor\n`;
     code += `  theme="${this.pgConfig.theme}"\n`;
     code += `  language="${this.pgConfig.language}"\n`;
     if (this.pgConfig.height !== '400px') code += `  height="${this.pgConfig.height}"\n`;
@@ -86,7 +86,7 @@ console.log(user.greet());`,
       code += `  toolbar-label-display="${this.pgConfig.labelDisplay}"\n`;
 
     code += '  value="${yourCodeString}"\n';
-    code += `></ui-code-editor>`;
+    code += `></dui-code-editor>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

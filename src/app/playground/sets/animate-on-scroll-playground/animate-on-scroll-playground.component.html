@@ -15,25 +15,25 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Animation</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.animation"
           (ngModelChange)="updateConfig()"
           [options]="animationOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Direction</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.direction"
           (ngModelChange)="updateConfig()"
           [options]="directionOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Duration (ms)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="100"
           max="3000"
@@ -45,7 +45,7 @@
 
       <div class="control-group">
         <label>Delay (ms)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           max="2000"
@@ -57,7 +57,7 @@
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           max="500"
@@ -69,16 +69,16 @@
 
       <div class="control-group">
         <label>Easing</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.easing"
           (ngModelChange)="updateConfig()"
           [options]="easingOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Threshold</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           max="1"
@@ -93,7 +93,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Blur Amount</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           max="50"
@@ -105,7 +105,7 @@
 
       <div class="control-group">
         <label>Perspective</label>
-        <ui-input
+        <dui-input
           type="number"
           min="500"
           max="2000"
@@ -117,7 +117,7 @@
 
       <div class="control-group">
         <label>Rotate X (deg)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="-180"
           max="180"
@@ -129,7 +129,7 @@
 
       <div class="control-group">
         <label>Rotate Y (deg)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="-180"
           max="180"
@@ -141,7 +141,7 @@
 
       <div class="control-group">
         <label>Rotate Z (deg)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="-360"
           max="360"
@@ -153,7 +153,7 @@
 
       <div class="control-group">
         <label>Scale</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0.1"
           max="3"
@@ -165,7 +165,7 @@
 
       <div class="control-group">
         <label>Stagger (ms)</label>
-        <ui-input
+        <dui-input
           type="number"
           min="0"
           max="500"
@@ -177,47 +177,47 @@
 
       <div class="control-group">
         <label>Text Mode</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.textMode"
           (ngModelChange)="updateConfig()"
           [options]="textModeOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
 
     <h4 class="section-title">Options</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.repeat"
           (ngModelChange)="updateConfig()"
           label="Repeat"
-        ></ui-checkbox>
+        ></dui-checkbox>
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.once"
           (ngModelChange)="updateConfig()"
           label="Once"
-        ></ui-checkbox>
+        ></dui-checkbox>
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.mirror"
           (ngModelChange)="updateConfig()"
           label="Mirror"
-        ></ui-checkbox>
+        ></dui-checkbox>
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.scrub"
           (ngModelChange)="updateConfig()"
           label="Scrub"
-        ></ui-checkbox>
+        ></dui-checkbox>
       </label>
     </div>
   </div>
-  <div preview  class="w-full display-flex justify-center items-center">
+  <div preview class="w-full display-flex justify-center items-center">
     <div class="event-log-container">
       <strong>Event Log</strong>
       <div class="log-items">
@@ -227,7 +227,7 @@
 
     <div class="preview-stage scrollable-stage">
       <div class="spacer"></div>
-      <ui-animate-on-scroll
+      <dui-animate-on-scroll
         [attr.animation]="pgConfig.animation"
         [attr.direction]="pgConfig.direction"
         [attr.duration]="pgConfig.duration"
@@ -253,15 +253,15 @@
           <h3>Scroll to Animate</h3>
           <p>This content will animate when scrolled into view</p>
         </div>
-      </ui-animate-on-scroll>
+      </dui-animate-on-scroll>
       <div class="spacer"></div>
     </div>
 
-    <ui-code-preview
+    <dui-code-preview
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></ui-code-preview>
+    ></dui-code-preview>
   </div>
 </pg-playground>

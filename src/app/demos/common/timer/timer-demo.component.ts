@@ -36,22 +36,22 @@ export class DmTimerDemoComponent extends BaseDemoComponent {
     { label: 'Work', duration: 1500, color: '#ef4444' },
     { label: 'Short Break', duration: 300, color: '#10b981' },
     { label: 'Work', duration: 1500, color: '#ef4444' },
-    { label: 'Long Break', duration: 900, color: '#3b82f6' }
+    { label: 'Long Break', duration: 900, color: '#3b82f6' },
   ]);
 
-  basicCode = `<ui-timer [duration]="60"></ui-timer>`;
+  basicCode = `<dui-timer [duration]="60"></dui-timer>`;
 
-  modesCode = `<ui-timer mode="stopwatch" precision="milliseconds"></ui-timer>
-<ui-timer mode="countdown" format="human" [duration]="3600"></ui-timer>`;
+  modesCode = `<dui-timer mode="stopwatch" precision="milliseconds"></dui-timer>
+<dui-timer mode="countdown" format="human" [duration]="3600"></dui-timer>`;
 
-  stepsCode = `<ui-timer [steps]='[{"label":"Exercise","duration":45},{"label":"Rest","duration":15}]' loop auto-start></ui-timer>`;
+  stepsCode = `<dui-timer [steps]='[{"label":"Exercise","duration":45},{"label":"Rest","duration":15}]' loop auto-start></dui-timer>`;
 
-  displayCode = `<ui-timer variant="compact"></ui-timer>
-<ui-timer progress-type="linear" [duration]="120"></ui-timer>`;
+  displayCode = `<dui-timer variant="compact"></dui-timer>
+<dui-timer progress-type="linear" [duration]="120"></dui-timer>`;
 
-  alertsCode = `<ui-timer enable-sound enable-notifications [alert-threshold]="20"></ui-timer>`;
+  alertsCode = `<dui-timer enable-sound enable-notifications [alert-threshold]="20"></dui-timer>`;
 
-  targetDateCode = `<ui-timer target-date="2025-01-01T00:00:00"></ui-timer>`;
+  targetDateCode = `<dui-timer target-date="2025-01-01T00:00:00"></dui-timer>`;
 
-  behaviorCode = `<ui-timer persist="my-timer-key" auto-start></ui-timer>`;
+  behaviorCode = `<dui-timer persist="my-timer-key" auto-start></dui-timer>`;
 }

@@ -16,12 +16,12 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section mt-0" id="basic" >
+          <section class="demo-section mt-0" id="basic">
             <div class="section-header">
               <h2>🧇 Basic Waffle</h2>
               <p>Show a single value-against-total metric with a fill colour and title.</p>
             </div>
-            <div class="demo-card justify-center" >
+            <div class="demo-card justify-center">
               <chart-waffle
                 value="72"
                 total="100"
@@ -29,12 +29,12 @@
                 fill-color="#6366f1"
               ></chart-waffle>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="basicCode"
               [label]="'Basic Waffle Chart'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Colors -->
@@ -43,10 +43,7 @@
               <h2>🎨 Color Variants</h2>
               <p>Use fill-color to match your brand palette or semantic status colours.</p>
             </div>
-            <div
-              class="demo-card display-flex gap-32 wrap justify-center"
-              
-            >
+            <div class="demo-card display-flex gap-32 wrap justify-center">
               <chart-waffle
                 value="72"
                 total="100"
@@ -72,12 +69,12 @@
                 chart-title="HR"
               ></chart-waffle>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="colorsCode"
               [label]="'Color Variants'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Grid Sizes -->
@@ -86,10 +83,7 @@
               <h2>📐 Grid Sizes</h2>
               <p>Override rows and columns to create square, compact, or wide waffle layouts.</p>
             </div>
-            <div
-              class="demo-card display-flex gap-32 wrap items-start justify-center"
-              
-            >
+            <div class="demo-card display-flex gap-32 wrap items-start justify-center">
               <chart-waffle value="65" total="100" chart-title="Default (10×10)"></chart-waffle>
               <chart-waffle
                 value="65"
@@ -108,12 +102,12 @@
                 chart-title="Wide (5×20)"
               ></chart-waffle>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="gridCode"
               [label]="'Grid Size Variants'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -124,4 +118,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

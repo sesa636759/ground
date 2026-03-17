@@ -53,12 +53,12 @@ export class DmScrollTopPlaygroundComponent extends BasePlaygroundComponent impl
   }
 
   updateConfig() {
-    let code = '<ui-scroll-top\n';
+    let code = '<dui-scroll-top\n';
     code += `  target="#scroll-container"\n`;
     code += `  threshold="${this.pgConfig.threshold}"\n`;
     code += `  icon="${this.pgConfig.icon}"\n`;
     code += `  shape="${this.pgConfig.shape}"\n`;
-    code += '></ui-scroll-top>';
+    code += '></dui-scroll-top>';
 
     this.generatedCode.set(code);
     this.refreshCode();

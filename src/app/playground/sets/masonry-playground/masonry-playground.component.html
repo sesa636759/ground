@@ -8,43 +8,43 @@
   <div slot="content-layout" class="control-grid masonry-layout-section">
     <div class="control-group">
       <label>Layout Strategy</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="layoutTypeOptions"
         [(ngModel)]="pgConfig.layoutType"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Base Columns</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.columns"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Gap (px)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.gap"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Min Item Width</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.itemMinWidth"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Max Item Width</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.itemMaxWidth"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
@@ -52,34 +52,34 @@
   <div slot="content-data" class="control-grid masonry-data-section">
     <div class="control-group">
       <label>Filter By Category</label>
-      <ui-input
+      <dui-input
         [(ngModel)]="pgConfig.filterBy"
         (ngModelChange)="updateConfig()"
         placeholder="category:nature"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Sort By</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="sortByOptions"
         [(ngModel)]="pgConfig.sortBy"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Sort Order</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="sortOrderOptions"
         [(ngModel)]="pgConfig.sortOrder"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showFilters"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Built-in Filters
       </label>
     </div>
@@ -89,48 +89,51 @@
   <div slot="content-behavior" class="control-grid masonry-behavior-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.enableAnimation"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Enable Animation
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.multiSelect"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showBatchActions"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Batch Actions
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.lightbox" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.lightbox"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Lightbox Mode
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.loadingState"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Loading State (Skeleton)
       </label>
     </div>
     <div class="control-group">
       <label>Empty Message</label>
-      <ui-input [(ngModel)]="pgConfig.emptyMessage" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input [(ngModel)]="pgConfig.emptyMessage" (ngModelChange)="updateConfig()"></dui-input>
     </div>
   </div>
 
@@ -138,31 +141,34 @@
   <div slot="content-advanced" class="control-grid masonry-advanced-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.lazyLoad" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox
+          [(ngModel)]="pgConfig.lazyLoad"
+          (ngModelChange)="updateConfig()"
+        ></dui-checkbox>
         Lazy Load Images
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.infiniteScroll"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Infinite Scroll
       </label>
     </div>
     <div class="control-group">
       <label>Infinite Scroll Distance</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.infiniteScrollDistance"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <!-- Preview -->
   <div preview>
     <div class="preview-stage masonry-preview">
-      <ui-masonry
+      <dui-masonry
         [attr.items]="playgroundItems | json"
         [attr.columns]="pgConfig.columns"
         [attr.gap]="pgConfig.gap"
@@ -187,7 +193,7 @@
         [attr.lightbox]="pgConfig.lightbox ? '' : null"
         (itemClick)="onItemClick($event)"
         (itemSelectionChange)="onSelectionChange($event)"
-      ></ui-masonry>
+      ></dui-masonry>
     </div>
   </div>
 </pg-playground>

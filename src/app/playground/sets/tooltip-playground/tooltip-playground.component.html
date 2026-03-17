@@ -7,87 +7,87 @@
   <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Content</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Position</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.position"
         (ngModelChange)="updateConfig()"
         [options]="standardPlacementOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Trigger</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.trigger"
         (ngModelChange)="updateConfig()"
         [options]="customTriggerOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Shape</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Animation</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.animation"
         (ngModelChange)="updateConfig()"
         [options]="animationOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Max Width (px)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.maxWidth" (ngModelChange)="updateConfig()" />
+      <dui-input type="number" [(ngModel)]="pgConfig.maxWidth" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Offset (px)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
+      <dui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Elevation (0-5)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()" />
+      <dui-input type="number" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Arrow Size (px)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.arrowSize" (ngModelChange)="updateConfig()" />
+      <dui-input type="number" [(ngModel)]="pgConfig.arrowSize" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Show Delay (ms)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.showDelay" (ngModelChange)="updateConfig()" />
+      <dui-input type="number" [(ngModel)]="pgConfig.showDelay" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Hide Delay (ms)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.hideDelay" (ngModelChange)="updateConfig()" />
+      <dui-input type="number" [(ngModel)]="pgConfig.hideDelay" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Transition Duration (ms)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.transitionDuration"
         (ngModelChange)="updateConfig()"
@@ -96,101 +96,102 @@
 
     <div class="control-group">
       <label>Transition Timing</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.transitionTiming"
         (ngModelChange)="updateConfig()"
         [options]="timingOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Target Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.targetText" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.targetText" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Target Icon Class</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.targetIcon" (ngModelChange)="updateConfig()" />
+      <dui-input type="text" [(ngModel)]="pgConfig.targetIcon" (ngModelChange)="updateConfig()" />
     </div>
 
     @if (pgConfig.useCustomColor) {
       <div class="control-group">
         <label>Custom BG Color</label>
-        <ui-input
+        <dui-input
           type="color"
           [(ngModel)]="pgConfig.customColor"
           (ngModelChange)="updateConfig()"
           class="h-40 w-full cursor-pointer"
-        ></ui-input>
+        ></dui-input>
       </div>
       <div class="control-group">
         <label>Custom Text Color</label>
-        <ui-input
+        <dui-input
           type="color"
           [(ngModel)]="pgConfig.textColor"
           (ngModelChange)="updateConfig()"
           class="h-40 w-full cursor-pointer"
-        ></ui-input>
+        ></dui-input>
       </div>
     }
   </div>
 
   <div slot="content-behavior" class="checkbox-grid pg-panel-container">
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.arrow" (ngModelChange)="updateConfig()" /> Show Arrow
+      <dui-checkbox [(ngModel)]="pgConfig.arrow" (ngModelChange)="updateConfig()" /> Show Arrow
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()" />
+      <dui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()" />
       Interactive
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.followCursor" (ngModelChange)="updateConfig()" />
+      <dui-checkbox [(ngModel)]="pgConfig.followCursor" (ngModelChange)="updateConfig()" />
       Follow Cursor
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
+      <dui-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow Effect
+      <dui-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow Effect
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track Mouse
+      <dui-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track
+      Mouse
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
+      <dui-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
       Open at Mouse
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.visible" (ngModelChange)="updateConfig()" /> Force Show
+      <dui-checkbox [(ngModel)]="pgConfig.visible" (ngModelChange)="updateConfig()" /> Force Show
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
+      <dui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
+      <dui-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
+      <dui-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
     </label>
     <label class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
+      <dui-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
       Custom Colors
     </label>
   </div>
 
   <div preview class="preview-stage">
     <div class="playground-actions">
-      <ui-button
+      <dui-button
         variant="ghost"
         size="sm"
         [label]="pgConfig.visible ? 'Hide Tooltip' : 'Show Tooltip'"
         icon="lucide/eye"
         (click)="pgConfig.visible = !pgConfig.visible; updateConfig()"
-      ></ui-button>
+      ></dui-button>
     </div>
 
     <div class="tooltip-target-wrapper">
-      <ui-tooltip
+      <dui-tooltip
         [attr.content]="pgConfig.content"
         [attr.position]="pgConfig.position"
         [attr.trigger]="pgConfig.trigger"
@@ -219,11 +220,11 @@
         [attr.visible]="pgConfig.visible ? '' : null"
         [attr.closable]="pgConfig.closable ? '' : null"
       >
-        <ui-button slot="target" class="playground-target-btn" variant="primary">
+        <dui-button slot="target" class="playground-target-btn" variant="primary">
           <i [class]="pgConfig.targetIcon"></i>
           {{ pgConfig.targetText }}
-        </ui-button>
-      </ui-tooltip>
+        </dui-button>
+      </dui-tooltip>
     </div>
   </div>
 

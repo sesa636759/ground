@@ -87,7 +87,7 @@ export class DmListPlaygroundComponent extends BasePlaygroundComponent implement
 
   updateConfig() {
     const config = this.pgConfig;
-    let code = `<ui-list\n`;
+    let code = `<dui-list\n`;
     code += `  variant="${config.variant}"\n`;
     code += `  color="${config.color}"\n`;
     code += `  size="${config.size}"\n`;
@@ -116,21 +116,20 @@ export class DmListPlaygroundComponent extends BasePlaygroundComponent implement
 
     // Sample items
     for (let i = 1; i <= 3; i++) {
-      code += `  <ui-list-item\n`;
+      code += `  <dui-list-item\n`;
       code += `    label="${config.itemLabel} ${i}"\n`;
       if (config.itemSublabel) code += `    sublabel="${config.itemSublabel}"\n`;
       if (config.itemIcon) code += `    icon="${config.itemIcon}"\n`;
       if (config.itemActionIcon) code += `    action-icon="${config.itemActionIcon}"\n`;
       if (i === 1 && config.itemBadge)
         code += `    badge="${config.itemBadge}" badge-color="${config.itemBadgeColor}"\n`;
-      if (i === 2 && config.itemCounter)
-        code += `    counter="${config.itemCounter}"\n`;
+      if (i === 2 && config.itemCounter) code += `    counter="${config.itemCounter}"\n`;
       if (i === 3 && config.itemDisabled) code += `    disabled\n`;
       if (config.showCheckbox) code += `    show-checkbox\n`;
-      code += `  ></ui-list-item>\n`;
+      code += `  ></dui-list-item>\n`;
     }
 
-    code += `</ui-list>`;
+    code += `</dui-list>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

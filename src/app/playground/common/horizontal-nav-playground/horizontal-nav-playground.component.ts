@@ -63,17 +63,14 @@ export class DmHorizontalNavPlaygroundComponent extends BasePlaygroundComponent 
 
   updateConfig() {
     setTimeout(() => {
-      let code = '<ui-horizontal-nav\n';
+      let code = '<dui-horizontal-nav\n';
       code += `  theme="${this.pgConfig.theme}"\n`;
       if (this.pgConfig.sticky) code += `  sticky\n`;
       code += `  [model]="navItems"\n`;
-      code += '></ui-horizontal-nav>';
+      code += '></dui-horizontal-nav>';
 
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 }
-
-
-

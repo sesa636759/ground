@@ -28,32 +28,38 @@ export class DmSpeedometerPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<ui-speedometer\n`;
+    let code = `<dui-speedometer\n`;
     code += `  [value]="${this.pgConfig.value}"\n`;
-    if (this.pgConfig.secondaryValue !== undefined) code += `  [secondary-value]="${this.pgConfig.secondaryValue}"\n`;
+    if (this.pgConfig.secondaryValue !== undefined)
+      code += `  [secondary-value]="${this.pgConfig.secondaryValue}"\n`;
     if (this.pgConfig.minValue !== 0) code += `  [min-value]="${this.pgConfig.minValue}"\n`;
     if (this.pgConfig.maxValue !== 100) code += `  [max-value]="${this.pgConfig.maxValue}"\n`;
     if (this.pgConfig.size !== 250) code += `  [size]="${this.pgConfig.size}"\n`;
     if (this.pgConfig.label) code += `  label="${this.pgConfig.label}"\n`;
     if (this.pgConfig.unit) code += `  unit="${this.pgConfig.unit}"\n`;
     if (this.pgConfig.showPercentage) code += `  show-percentage\n`;
-    
-    if (this.pgConfig.needleColor !== '#1f2937') code += `  needle-color="${this.pgConfig.needleColor}"\n`;
+
+    if (this.pgConfig.needleColor !== '#1f2937')
+      code += `  needle-color="${this.pgConfig.needleColor}"\n`;
     if (!this.pgConfig.showTicks) code += `  [show-ticks]="false"\n`;
     if (this.pgConfig.tickCount !== 10) code += `  [tick-count]="${this.pgConfig.tickCount}"\n`;
-    if (this.pgConfig.animationDuration !== 1000) code += `  [animation-duration]="${this.pgConfig.animationDuration}"\n`;
-    
-    if (this.pgConfig.startAngle !== -135) code += `  [start-angle]="${this.pgConfig.startAngle}"\n`;
+    if (this.pgConfig.animationDuration !== 1000)
+      code += `  [animation-duration]="${this.pgConfig.animationDuration}"\n`;
+
+    if (this.pgConfig.startAngle !== -135)
+      code += `  [start-angle]="${this.pgConfig.startAngle}"\n`;
     if (this.pgConfig.endAngle !== 135) code += `  [end-angle]="${this.pgConfig.endAngle}"\n`;
-    if (this.pgConfig.needleShape !== 'triangle') code += `  needle-shape="${this.pgConfig.needleShape}"\n`;
-    
+    if (this.pgConfig.needleShape !== 'triangle')
+      code += `  needle-shape="${this.pgConfig.needleShape}"\n`;
+
     if (this.pgConfig.interactive) code += `  interactive\n`;
-    
+
     if (this.pgConfig.ranges) code += `  ranges='${this.pgConfig.ranges}'\n`;
     if (this.pgConfig.customLabels) code += `  custom-labels='${this.pgConfig.customLabels}'\n`;
-    if (this.pgConfig.gradientColors) code += `  gradient-colors="${this.pgConfig.gradientColors}"\n`;
+    if (this.pgConfig.gradientColors)
+      code += `  gradient-colors="${this.pgConfig.gradientColors}"\n`;
 
-    code += `></ui-speedometer>`;
+    code += `></dui-speedometer>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -18,39 +18,39 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Color Themes -->
-          <section class="demo-section mt-0" id="colors" >
+          <section class="demo-section mt-0" id="colors">
             <div class="section-header">
               <h2>🎨 Color Themes</h2>
               <p>Apply different visual weights using standard color variants.</p>
             </div>
             <div class="demo-card">
-              <ui-split-button
+              <dui-split-button
                 label="Delete All"
                 variant="danger"
                 [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
+              ></dui-split-button>
+              <dui-split-button
                 label="Publish"
                 variant="success"
                 [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
+              ></dui-split-button>
+              <dui-split-button
                 label="Secondary"
                 variant="secondary"
                 [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
+              ></dui-split-button>
+              <dui-split-button
                 label="Outline Only"
                 variant="outline"
                 [model]="menuItems"
-              ></ui-split-button>
+              ></dui-split-button>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="colorsCode"
               [label]="'Theme Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
 
           <!-- Visual States -->
@@ -60,15 +60,19 @@
               <p>Communicate ongoing processes or restricted access.</p>
             </div>
             <div class="demo-card">
-              <ui-split-button loading label="Processing..." [model]="menuItems"></ui-split-button>
-              <ui-split-button disabled label="Locked" [model]="menuItems"></ui-split-button>
+              <dui-split-button
+                loading
+                label="Processing..."
+                [model]="menuItems"
+              ></dui-split-button>
+              <dui-split-button disabled label="Locked" [model]="menuItems"></dui-split-button>
             </div>
-            <ui-code-preview
+            <dui-code-preview
               [htmlCode]="statesCode"
               [label]="'State Examples'"
               activeLang="html"
               expanded="true"
-            ></ui-code-preview>
+            ></dui-code-preview>
           </section>
         </div>
       </div>
@@ -79,4 +83,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

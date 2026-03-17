@@ -9,7 +9,7 @@
   <ng-container
     *ngIf="isAuthenticated() && currentRoute() !== 'login' && currentRoute() !== 'register'"
   >
-    <ui-navigation-bar
+    <dui-navigation-bar
       class="main-nav"
       [orientation]="themeService.navigationLayout() === 'topbar' ? 'horizontal' : 'vertical'"
       [categories]="topItems"
@@ -27,7 +27,7 @@
         <img src="assets/images/components.png" alt="Component Hub" class="nav-brand-logo" />
         <span class="nav-brand-name">Component Hub</span>
       </div>
-    </ui-navigation-bar>
+    </dui-navigation-bar>
   </ng-container>
 
   <!-- Main Content with Router Outlet -->

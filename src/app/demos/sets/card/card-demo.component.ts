@@ -23,13 +23,13 @@ import { DsCardPlaygroundComponent } from '../../../playground/sets/card-playgro
   styleUrl: './card-demo.component.scss',
 })
 export class DmCardDemoComponent implements OnInit {
-  playgroundCode = `<ui-card
+  playgroundCode = `<dui-card
   variant="elevated"
   [hoverable]="true"
 >
   <h3>Card Title</h3>
   <p>Card content goes here</p>
-</ui-card>`;
+</dui-card>`;
 
   ngOnInit() {}
 }

@@ -19,11 +19,11 @@
           [code]="basicCode()"
         >
           <div class="demo-box">
-            <ui-radio-group label="Subscription Plan" value="pro">
-              <ui-radio value="free" label="Free Tier"></ui-radio>
-              <ui-radio value="pro" label="Pro Monthly"></ui-radio>
-              <ui-radio value="ent" label="Enterprise"></ui-radio>
-            </ui-radio-group>
+            <dui-radio-group label="Subscription Plan" value="pro">
+              <dui-radio value="free" label="Free Tier"></dui-radio>
+              <dui-radio value="pro" label="Pro Monthly"></dui-radio>
+              <dui-radio value="ent" label="Enterprise"></dui-radio>
+            </dui-radio-group>
           </div>
         </pg-example-section>
 
@@ -37,20 +37,20 @@
           <div class="demo-grid col-1 gap-32">
             <div>
               <p class="mb-8 font-semibold">Horizontal Layout</p>
-              <ui-radio-group layout="horizontal" value="m">
-                <ui-radio value="m" label="Male"></ui-radio>
-                <ui-radio value="f" label="Female"></ui-radio>
-                <ui-radio value="o" label="Other"></ui-radio>
-              </ui-radio-group>
+              <dui-radio-group layout="horizontal" value="m">
+                <dui-radio value="m" label="Male"></dui-radio>
+                <dui-radio value="f" label="Female"></dui-radio>
+                <dui-radio value="o" label="Other"></dui-radio>
+              </dui-radio-group>
             </div>
             <div>
               <p class="mb-8 font-semibold">Grid Layout (2 Columns)</p>
-              <ui-radio-group layout="grid" columns="2" value="mon">
-                <ui-radio value="mon" label="Monday"></ui-radio>
-                <ui-radio value="tue" label="Tuesday"></ui-radio>
-                <ui-radio value="wed" label="Wednesday"></ui-radio>
-                <ui-radio value="thu" label="Thursday"></ui-radio>
-              </ui-radio-group>
+              <dui-radio-group layout="grid" columns="2" value="mon">
+                <dui-radio value="mon" label="Monday"></dui-radio>
+                <dui-radio value="tue" label="Tuesday"></dui-radio>
+                <dui-radio value="wed" label="Wednesday"></dui-radio>
+                <dui-radio value="thu" label="Thursday"></dui-radio>
+              </dui-radio-group>
             </div>
           </div>
         </pg-example-section>
@@ -63,14 +63,14 @@
           [code]="variantsCode()"
         >
           <div class="demo-grid col-2">
-            <ui-radio-group variant="bordered" label="Bordered Style" value="a">
-              <ui-radio value="a" label="Standard"></ui-radio>
-              <ui-radio value="b" label="Premium"></ui-radio>
-            </ui-radio-group>
-            <ui-radio-group variant="underlined" label="Underlined Style" value="1">
-              <ui-radio value="1" label="Lightweight"></ui-radio>
-              <ui-radio value="2" label="Modern"></ui-radio>
-            </ui-radio-group>
+            <dui-radio-group variant="bordered" label="Bordered Style" value="a">
+              <dui-radio value="a" label="Standard"></dui-radio>
+              <dui-radio value="b" label="Premium"></dui-radio>
+            </dui-radio-group>
+            <dui-radio-group variant="underlined" label="Underlined Style" value="1">
+              <dui-radio value="1" label="Lightweight"></dui-radio>
+              <dui-radio value="2" label="Modern"></dui-radio>
+            </dui-radio-group>
           </div>
         </pg-example-section>
 
@@ -82,27 +82,27 @@
           [code]="richCode()"
         >
           <div class="demo-box">
-            <ui-radio-group label="Shipping Logistics" value="express">
-              <ui-radio 
-                value="standard" 
-                label="Standard Delivery" 
+            <dui-radio-group label="Shipping Logistics" value="express">
+              <dui-radio
+                value="standard"
+                label="Standard Delivery"
                 description="Estimated 3-5 days delivery time"
                 badge="Free"
-              ></ui-radio>
-              <ui-radio 
-                value="express" 
-                label="Express Overnight" 
+              ></dui-radio>
+              <dui-radio
+                value="express"
+                label="Express Overnight"
                 description="Next day morning guaranteed"
                 badge="$19.99"
                 custom-icon="zap"
-              ></ui-radio>
-              <ui-radio 
-                value="pickup" 
-                label="Store Pickup" 
+              ></dui-radio>
+              <dui-radio
+                value="pickup"
+                label="Store Pickup"
                 description="Available at your local branch"
                 custom-icon="store"
-              ></ui-radio>
-            </ui-radio-group>
+              ></dui-radio>
+            </dui-radio-group>
           </div>
         </pg-example-section>
 
@@ -114,16 +114,31 @@
           [code]="buttonsCode()"
         >
           <div class="demo-grid col-1">
-             <ui-radio-group button-group label="Workspace Permissions" value="view" color="secondary">
-              <ui-radio value="view" label="View Content"></ui-radio>
-              <ui-radio value="edit" label="Modify Content"></ui-radio>
-              <ui-radio value="admin" label="Full Control"></ui-radio>
-            </ui-radio-group>
-            
-            <ui-radio-group button-group variant="card" label="Card Variant Mode" value="light" class="mt-24">
-              <ui-radio value="light" label="Light Theme" description="Optimized for day time"></ui-radio>
-              <ui-radio value="dark" label="Dark Theme" description="Easy on the eyes"></ui-radio>
-            </ui-radio-group>
+            <dui-radio-group
+              button-group
+              label="Workspace Permissions"
+              value="view"
+              color="secondary"
+            >
+              <dui-radio value="view" label="View Content"></dui-radio>
+              <dui-radio value="edit" label="Modify Content"></dui-radio>
+              <dui-radio value="admin" label="Full Control"></dui-radio>
+            </dui-radio-group>
+
+            <dui-radio-group
+              button-group
+              variant="card"
+              label="Card Variant Mode"
+              value="light"
+              class="mt-24"
+            >
+              <dui-radio
+                value="light"
+                label="Light Theme"
+                description="Optimized for day time"
+              ></dui-radio>
+              <dui-radio value="dark" label="Dark Theme" description="Easy on the eyes"></dui-radio>
+            </dui-radio-group>
           </div>
         </pg-example-section>
 
@@ -135,16 +150,16 @@
           [code]="validationCode()"
         >
           <div class="demo-grid col-1">
-            <ui-radio-group 
-              required 
-              invalid 
+            <dui-radio-group
+              required
+              invalid
               label="Legal Agreement"
               error-message="You must select a choice to continue."
               helper-text="Read the terms carefully before selecting."
             >
-              <ui-radio value="1" label="I Accept the Privacy Policy"></ui-radio>
-              <ui-radio value="0" label="I Decline"></ui-radio>
-            </ui-radio-group>
+              <dui-radio value="1" label="I Accept the Privacy Policy"></dui-radio>
+              <dui-radio value="0" label="I Decline"></dui-radio>
+            </dui-radio-group>
           </div>
         </pg-example-section>
 
@@ -156,10 +171,10 @@
           [code]="optionsPropCode()"
         >
           <div class="demo-box max-w-400">
-            <ui-radio-group 
-              label="Priority Selection" 
+            <dui-radio-group
+              label="Priority Selection"
               [attr.options]="'[{&quot;value&quot;: &quot;low&quot;, &quot;label&quot;: &quot;Low Priority&quot;}, {&quot;value&quot;: &quot;med&quot;, &quot;label&quot;: &quot;Medium Priority&quot;}, {&quot;value&quot;: &quot;high&quot;, &quot;label&quot;: &quot;High Priority&quot;}]'"
-            ></ui-radio-group>
+            ></dui-radio-group>
           </div>
         </pg-example-section>
 
@@ -173,36 +188,35 @@
           <div class="demo-grid col-1 gap-40">
             <div>
               <p class="mb-8 font-semibold">Allow Empty (Deselectable)</p>
-              <ui-radio-group [attr.allow-empty]="''" value="X">
-                <ui-radio value="X" label="Selection (Click again to clear)"></ui-radio>
-              </ui-radio-group>
+              <dui-radio-group [attr.allow-empty]="''" value="X">
+                <dui-radio value="X" label="Selection (Click again to clear)"></dui-radio>
+              </dui-radio-group>
             </div>
 
             <div>
               <p class="mb-8 font-semibold">No Dot Indicator (Custom Button Look)</p>
-              <ui-radio-group [attr.show-dot]="'false'" layout="horizontal" value="A">
-                <ui-radio value="A" label="Choice A"></ui-radio>
-                <ui-radio value="B" label="Choice B"></ui-radio>
-              </ui-radio-group>
+              <dui-radio-group [attr.show-dot]="'false'" layout="horizontal" value="A">
+                <dui-radio value="A" label="Choice A"></dui-radio>
+                <dui-radio value="B" label="Choice B"></dui-radio>
+              </dui-radio-group>
             </div>
 
             <div>
               <p class="mb-8 font-semibold">Label Position (Left)</p>
-              <ui-radio-group label-position="left" value="1">
-                <ui-radio value="1" label="Option with Left Label"></ui-radio>
-              </ui-radio-group>
+              <dui-radio-group label-position="left" value="1">
+                <dui-radio value="1" label="Option with Left Label"></dui-radio>
+              </dui-radio-group>
             </div>
 
             <div>
               <p class="mb-8 font-semibold">Skeleton (Loading State)</p>
-              <ui-radio-group [attr.skeleton]="''">
-                <ui-radio label="Hidden"></ui-radio>
-                <ui-radio label="Hidden"></ui-radio>
-              </ui-radio-group>
+              <dui-radio-group [attr.skeleton]="''">
+                <dui-radio label="Hidden"></dui-radio>
+                <dui-radio label="Hidden"></dui-radio>
+              </dui-radio-group>
             </div>
           </div>
         </pg-example-section>
-
       </div>
     </div>
 

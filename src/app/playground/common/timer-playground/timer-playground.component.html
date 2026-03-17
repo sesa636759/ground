@@ -7,135 +7,134 @@
   <div slot="content-settings" class="control-grid p-16">
     <div class="control-group">
       <label>Mode</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="modeOptions"
         [(ngModel)]="pgConfig.mode"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Duration (sec)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.duration"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Precision</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="precisionOptions"
         [(ngModel)]="pgConfig.precision"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Flow</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="flowOptions"
         [(ngModel)]="pgConfig.flow"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Target Date (ISO)</label>
-      <ui-input
+      <dui-input
         [(ngModel)]="pgConfig.targetDate"
         (ngModelChange)="updateConfig()"
         placeholder="2024-12-31T23:59:59"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="variantOptions"
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Format</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="formatOptions"
         [(ngModel)]="pgConfig.format"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Progress Type</label>
-      <ui-dropdown
+      <dui-dropdown
         [options]="progressTypeOptions"
         [(ngModel)]="pgConfig.progressType"
         (ngModelChange)="updateConfig()"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Alert Threshold (%)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.alertThreshold"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.autoStart"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Auto Start
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loop" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.loop" (ngModelChange)="updateConfig()"></dui-checkbox>
         Loop
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.enableNotifications"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Notify
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.enableSound"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Sound
       </label>
     </div>
     <div class="control-group">
       <label>Persist Key</label>
-      <ui-input
+      <dui-input
         [(ngModel)]="pgConfig.persist"
         (ngModelChange)="updateConfig()"
         placeholder="storage-key"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group full-width">
       <label>Steps (JSON)</label>
-      <ui-input
+      <dui-input
         type="textarea"
         [(ngModel)]="pgConfig.steps"
         (ngModelChange)="onStepsChange()"
         placeholder='[{"label":"Work","duration":25}]'
         [rows]="3"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div preview>
     <div
       class="preview-stage p-40 display-flex flex-col items-center justify-center min-h-400 bg-white w-full"
-      
     >
-      <ui-timer
+      <dui-timer
         #timer
         [attr.duration]="pgConfig.duration"
         [attr.mode]="pgConfig.mode"
@@ -152,14 +151,14 @@
         [attr.flow]="pgConfig.flow"
         [attr.steps]="pgConfig.steps"
         [attr.target-date]="pgConfig.targetDate"
-      ></ui-timer>
+      ></dui-timer>
 
-      <div class="control-buttons mt-32 display-flex gap-12" >
-        <ui-button (click)="timerStart(timer)" variant="filled" theme="primary">Start</ui-button>
-        <ui-button (click)="timerPause(timer)" variant="outlined">Pause</ui-button>
-        <ui-button (click)="timerReset(timer)" variant="ghost">Reset</ui-button>
-        <ui-button (click)="timerNext(timer)" variant="ghost" *ngIf="pgConfig.steps"
-          >Next</ui-button
+      <div class="control-buttons mt-32 display-flex gap-12">
+        <dui-button (click)="timerStart(timer)" variant="filled" theme="primary">Start</dui-button>
+        <dui-button (click)="timerPause(timer)" variant="outlined">Pause</dui-button>
+        <dui-button (click)="timerReset(timer)" variant="ghost">Reset</dui-button>
+        <dui-button (click)="timerNext(timer)" variant="ghost" *ngIf="pgConfig.steps"
+          >Next</dui-button
         >
       </div>
     </div>

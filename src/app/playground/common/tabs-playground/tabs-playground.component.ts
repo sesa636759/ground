@@ -54,16 +54,16 @@ export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<ui-tabs\n';
+    let code = '<dui-tabs\n';
     code += `  orientation="${this.pgConfig.orientation}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  align="${this.pgConfig.align}"\n`;
     if (this.pgConfig.scrollable) code += `  scrollable="true"\n`;
     if (this.pgConfig.closeable) code += `  closeable="true"\n`;
     code += '>\n';
-    code += '  <ui-tab label="Overview" value="overview"> Content 1 </ui-tab>\n';
-    code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui-tab>\n';
-    code += '</ui-tabs>';
+    code += '  <dui-tab label="Overview" value="overview"> Content 1 </dui-tab>\n';
+    code += '  <dui-tab label="Settings" value="settings"> Content 2 </dui-tab>\n';
+    code += '</dui-tabs>';
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -74,6 +74,3 @@ export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Tab changed to: ${this.currentTab}`);
   }
 }
-
-
-

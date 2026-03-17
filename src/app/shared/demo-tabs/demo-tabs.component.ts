@@ -13,7 +13,7 @@ export class DemoTabsComponent {
   active = signal('playground');
   @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  /** Tab definitions passed to <ui-tabs [items]="tabItems"> */
+  /** Tab definitions passed to <dui-tabs [items]="tabItems"> */
   readonly tabItems = [
     {
       id: 'playground',

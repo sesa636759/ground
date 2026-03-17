@@ -6,19 +6,19 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Orientation</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.orientation"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Vertical', value: 'vertical' },
             { label: 'Horizontal', value: 'horizontal' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Align</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.align"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -27,12 +27,12 @@
             { label: 'Center', value: 'center' },
             { label: 'Alternate', value: 'alternate' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Icon Position</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.iconPosition"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -40,12 +40,12 @@
             { label: 'Center', value: 'center' },
             { label: 'Bottom', value: 'bottom' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -55,44 +55,44 @@
             { label: 'Minimal', value: 'minimal' },
             { label: 'Dots Only', value: 'dots-only' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.theme"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Line Color</label>
-        <ui-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
+        <dui-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.animateOnScroll" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.animateOnScroll" (ngModelChange)="updateConfig()" />
         Animate on Scroll
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
+        <dui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
         Clickable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showLine" (ngModelChange)="updateConfig()" /> Show Line
+        <dui-checkbox [(ngModel)]="pgConfig.showLine" (ngModelChange)="updateConfig()" /> Show Line
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake
+        <dui-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake
         Layout)
       </label>
     </div>
@@ -124,11 +124,11 @@
     (clear)="eventLog.set([])"
   ></pg-playground-event-log>
 
-  <ui-code-preview
+  <dui-code-preview
     code
     [htmlCode]="generatedCode()"
     [label]="'Generated Code'"
     activeLang="html"
     expanded="true"
-  ></ui-code-preview>
+  ></dui-code-preview>
 </pg-playground>

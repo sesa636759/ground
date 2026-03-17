@@ -63,18 +63,15 @@ export class DmNavBarPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<ui-nav-bar\n';
+    let code = '<dui-nav-bar\n';
     code += `  theme="${this.pgConfig.theme}"\n`;
     if (this.pgConfig.collapsed) code += `  collapsed\n`;
     code += `  [model]="navItems"\n`;
     code += '>\n';
     code += '  <div slot="header"> Logo </div>\n';
-    code += '</ui-nav-bar>';
+    code += '</dui-nav-bar>';
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
 }
-
-
-

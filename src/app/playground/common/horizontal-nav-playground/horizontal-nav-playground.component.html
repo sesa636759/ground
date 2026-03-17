@@ -7,15 +7,15 @@
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Theme</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
         [options]="themeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></dui-checkbox>
         Sticky Position
       </label>
     </div>
@@ -24,27 +24,23 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showIcons"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Icons
       </label>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage w-full display-flex justify-center items-center p-40"
-    
-  >
-    <div class="nav-wrapper w-full" >
-      <ui-horizontal-nav
+  <div preview class="preview-stage w-full display-flex justify-center items-center p-40">
+    <div class="nav-wrapper w-full">
+      <dui-horizontal-nav
         #demoElement
         [attr.theme]="pgConfig.theme"
         [attr.sticky]="pgConfig.sticky ? '' : null"
         [model]="modelJson"
-      ></ui-horizontal-nav>
+      ></dui-horizontal-nav>
     </div>
   </div>
 

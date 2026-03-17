@@ -7,26 +7,26 @@
   <div slot="content-settings" class="control-grid p-16">
     <div class="control-group">
       <label>Base Z-Index</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.baseZIndex"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Breakpoint</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.breakpoint"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
-    <div class="checkbox-grid mt-12" >
+    <div class="checkbox-grid mt-12">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.autoZIndex"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Auto Z-Index
       </label>
     </div>
@@ -35,27 +35,26 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Theme</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
         [options]="themeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
   <div preview class="preview-stage">
     <div
-       class="w-full h-300 display-flex flex-col justify-center items-center p-40 bg-surface-2 rounded-lg-token relative"
+      class="w-full h-300 display-flex flex-col justify-center items-center p-40 bg-surface-2 rounded-lg-token relative"
     >
       <div
         class="context-target p-40-60 border-2 border-dashed border rounded-md-token text-muted font-medium cursor-context-menu user-select-none transition-all-03"
         #targetElement
-        
       >
         Right click me to see the menu
       </div>
 
-      <ui-context-menu
+      <dui-context-menu
         #demoElement
         [attr.theme]="pgConfig.theme"
         [attr.breakpoint]="pgConfig.breakpoint"
@@ -63,7 +62,7 @@
         [attr.base-z-index]="pgConfig.baseZIndex"
         [items]="model"
         [target]="targetElement"
-      ></ui-context-menu>
+      ></dui-context-menu>
     </div>
   </div>
 

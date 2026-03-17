@@ -28,22 +28,42 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
   ];
 
   sourceItems = [
-    { key: '1', label: 'Admin Panel', description: 'Full access to system features', icon: 'shield' },
-    { key: '2', label: 'User Dashboard', description: 'Personal overview and stats', icon: 'layout' },
-    { key: '3', label: 'Settings', description: 'Configure application preferences', icon: 'settings' },
+    {
+      key: '1',
+      label: 'Admin Panel',
+      description: 'Full access to system features',
+      icon: 'shield',
+    },
+    {
+      key: '2',
+      label: 'User Dashboard',
+      description: 'Personal overview and stats',
+      icon: 'layout',
+    },
+    {
+      key: '3',
+      label: 'Settings',
+      description: 'Configure application preferences',
+      icon: 'settings',
+    },
     { key: '4', label: 'Reports', description: 'Generate and export data', icon: 'file-text' },
     { key: '5', label: 'Messages', description: 'Internal communication hub', icon: 'mail' },
-    { key: '6', label: 'Billing', description: 'Manage subscriptions and invoices', icon: 'credit-card' },
+    {
+      key: '6',
+      label: 'Billing',
+      description: 'Manage subscriptions and invoices',
+      icon: 'credit-card',
+    },
   ];
 
   targetItems = [
-    { key: '7', label: 'Support', description: 'Customer help desk', icon: 'help-circle' }
+    { key: '7', label: 'Support', description: 'Customer help desk', icon: 'help-circle' },
   ];
 
   // For Table Mode
   columns = [
     { title: 'Feature', dataIndex: 'label' },
-    { title: 'Module', dataIndex: 'description' }
+    { title: 'Module', dataIndex: 'description' },
   ];
 
   // For Tree Mode
@@ -54,7 +74,7 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
       children: [
         { key: '1-1', label: 'HR Portal' },
         { key: '1-2', label: 'Finance' },
-      ]
+      ],
     },
     {
       key: 'root-2',
@@ -62,8 +82,8 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
       children: [
         { key: '2-1', label: 'Slack' },
         { key: '2-2', label: 'Jira' },
-      ]
-    }
+      ],
+    },
   ];
 
   constructor() {
@@ -110,7 +130,7 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
   }
 
   updateConfig() {
-    let code = `<ui-transfer-list\n`;
+    let code = `<dui-transfer-list\n`;
     code += `  [source]="${this.pgConfig.mode === 'tree' ? 'treeData' : 'sourceData'}"\n`;
     code += `  [target]="targetData"\n`;
     code += `  [titles]='${this.pgConfig.titles}'\n`;
@@ -119,7 +139,7 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
     if (this.pgConfig.sortable) code += `  sortable\n`;
     if (this.pgConfig.allowReorder) code += `  allow-reorder\n`;
     if (this.pgConfig.max !== 10) code += `  max="${this.pgConfig.max}"\n`;
-    if (this.pgConfig.searchPlaceholder !== 'Search features...') 
+    if (this.pgConfig.searchPlaceholder !== 'Search features...')
       code += `  search-placeholder="${this.pgConfig.searchPlaceholder}"\n`;
     if (!this.pgConfig.showSelectAll) code += `  [show-select-all]="false"\n`;
     if (this.pgConfig.disabled) code += `  disabled\n`;
@@ -132,18 +152,22 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
     }
     if (this.pgConfig.loading) code += `  loading\n`;
     if (this.pgConfig.mode === 'table') code += `  [columns]='${this.columnsJson}'\n`;
-    
-    code += `></ui-transfer-list>`;
+
+    code += `></dui-transfer-list>`;
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
 
   onTransferChange(event: any) {
-    this.logEvent(`Transfer: ${event.detail.source.length} available, ${event.detail.target.length} selected`);
+    this.logEvent(
+      `Transfer: ${event.detail.source.length} available, ${event.detail.target.length} selected`,
+    );
   }
 
   onSelectionChanged(event: any) {
-    this.logEvent(`Selection: ${event.detail.sourceSelected.length} left, ${event.detail.targetSelected.length} right`);
+    this.logEvent(
+      `Selection: ${event.detail.sourceSelected.length} left, ${event.detail.targetSelected.length} right`,
+    );
   }
 }

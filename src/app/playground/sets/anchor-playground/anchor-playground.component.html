@@ -8,133 +8,133 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
-        <ui-dropdown
+        <dui-dropdown
           name="mode"
           [(ngModel)]="pgConfig.mode"
           (ngModelChange)="updateConfig()"
           [options]="standardOrientationOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Position</label>
-        <ui-dropdown
+        <dui-dropdown
           name="position"
           [(ngModel)]="pgConfig.position"
           (ngModelChange)="updateConfig()"
           [options]="standardDirectionOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Alignment</label>
-        <ui-dropdown
+        <dui-dropdown
           name="alignment"
           [(ngModel)]="pgConfig.alignment"
           (ngModelChange)="updateConfig()"
           [options]="standardAlignmentOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <ui-dropdown
+        <dui-dropdown
           name="size"
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="fullSizeOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <ui-dropdown
+        <dui-dropdown
           name="theme"
           [(ngModel)]="pgConfig.theme"
           (ngModelChange)="updateConfig()"
           [options]="standardColorOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
 
     <div class="control-grid">
       <div class="control-group">
         <label>Scroll Offset</label>
-        <ui-input
+        <dui-input
           name="scrollOffset"
           type="number"
           [(ngModel)]="pgConfig.scrollOffset"
           (ngModelChange)="updateConfig()"
-        ></ui-input>
+        ></dui-input>
       </div>
 
       <div class="control-group">
         <label>Number Style</label>
-        <ui-dropdown
+        <dui-dropdown
           name="numberStyle"
           [(ngModel)]="pgConfig.numberStyle"
           (ngModelChange)="updateConfig()"
           [disabled]="!pgConfig.showNumbers"
           [options]="numberStyleOptions"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
     </div>
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showTooltip"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Tooltip
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showIndicator"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Indicator
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showProgress"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Progress
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showNumbers"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Numbers
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></dui-checkbox>
         Sticky
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.smoothScroll"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Smooth Scroll
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></dui-checkbox>
         Affix
       </label>
     </div>
   </div>
 
-  <div preview  class="w-full display-flex justify-center items-center">
-    <div class="preview-stage w-full" >
+  <div preview class="w-full display-flex justify-center items-center">
+    <div class="preview-stage w-full">
       <div
         class="anchor-demo-wrapper"
         [class.horizontal]="pgConfig.mode === 'horizontal'"
         id="playground-wrapper"
       >
-        <ui-anchor
+        <dui-anchor
           #anchor
           [attr.mode]="pgConfig.mode"
           [attr.position]="pgConfig.position"
@@ -153,7 +153,7 @@
           scroll-container="#playground-scroll-content"
           [items]="anchorItems"
           (anchorSelect)="onAnchorSelect($event)"
-        ></ui-anchor>
+        ></dui-anchor>
 
         <div id="playground-scroll-content" class="scroll-content">
           <section id="section-1" class="content-section">

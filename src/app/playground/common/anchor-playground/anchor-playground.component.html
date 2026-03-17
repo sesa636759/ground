@@ -7,60 +7,56 @@
   <div slot="content-config" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="orientationOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Style Type</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
     <div class="control-group">
       <label>Scroll Offset (px)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.scrollOffset"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-visuals" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showIndicator"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Indicator
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
+        <dui-checkbox
           [(ngModel)]="pgConfig.showProgress"
           (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        ></dui-checkbox>
         Show Progress
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <dui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></dui-checkbox>
         Enable Affix
       </label>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage display-flex gap-32 h-full rounded-8 p-12 h-500"
-    
-  >
-    <div  class="flex-1 max-w-250">
-      <ui-anchor
+  <div preview class="preview-stage display-flex gap-32 h-full rounded-8 p-12 h-500">
+    <div class="flex-1 max-w-250">
+      <dui-anchor
         #anchor
         [attr.orientation]="pgConfig.orientation"
         [attr.type]="pgConfig.type"
@@ -71,30 +67,30 @@
         scroll-container="#pg-scroll-container"
         [links]="linksJson"
         (anchorChange)="logEvent('Anchor changed')"
-      ></ui-anchor>
+      ></dui-anchor>
     </div>
 
     <div
       id="pg-scroll-container"
-       class="flex-1 h-full overflow-y-auto p-20 border rounded-8 bg-surface-1"
+      class="flex-1 h-full overflow-y-auto p-20 border rounded-8 bg-surface-1"
     >
-      <div id="basics-pg"  class="h-400 py-20">
-        <h2  class="m-0-0-16 text-color">Basics</h2>
-        <p  class="text-muted">
+      <div id="basics-pg" class="h-400 py-20">
+        <h2 class="m-0-0-16 text-color">Basics</h2>
+        <p class="text-muted">
           This is the first segment of the anchor content container. Scrolling down will trigger the
           anchor active state automatically.
         </p>
       </div>
-      <div id="api-pg"  class="h-400 py-20">
-        <h2  class="m-0-0-16 text-color">API Reference</h2>
-        <p  class="text-muted">
+      <div id="api-pg" class="h-400 py-20">
+        <h2 class="m-0-0-16 text-color">API Reference</h2>
+        <p class="text-muted">
           This is the middle section. Try adjusting the scroll offset on the left to see how it
           affects the trigger points.
         </p>
       </div>
-      <div id="theming-pg"  class="h-600 py-20">
-        <h2  class="m-0-0-16 text-color">Theming</h2>
-        <p  class="text-muted">
+      <div id="theming-pg" class="h-600 py-20">
+        <h2 class="m-0-0-16 text-color">Theming</h2>
+        <p class="text-muted">
           Last segment to allow full scrolling. The progress indicator (if enabled) will stretch up
           to this point.
         </p>

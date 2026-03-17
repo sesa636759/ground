@@ -7,62 +7,59 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Threshold (px)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.threshold"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Scroll Speed (ms)</label>
-      <ui-input
+      <dui-input
         type="number"
         [(ngModel)]="pgConfig.speed"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+      ></dui-input>
     </div>
   </div>
 
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Icon</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
+      <dui-input
+        type="text"
+        [(ngModel)]="pgConfig.icon"
+        (ngModelChange)="updateConfig()"
+      ></dui-input>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <ui-dropdown
+      <dui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></ui-dropdown>
+      ></dui-dropdown>
     </div>
   </div>
 
-  <div
-    preview
-     class="w-full display-flex justify-center items-center p-40"
-  >
+  <div preview class="w-full display-flex justify-center items-center p-40">
     <div
       class="scroll-content h-300 overflow-y-auto w-full border p-16 rounded-8"
       id="pg-scroll-target"
-      
     >
       <h3>Scroll down to see the button!</h3>
-      <p
-        *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
-         class="mb-24"
-      >
+      <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]" class="mb-24">
         More content segment {{ i }}...
       </p>
 
-      <ui-scroll-top
+      <dui-scroll-top
         #demoElement
         target="#pg-scroll-target"
         [attr.threshold]="pgConfig.threshold"
         [attr.icon]="pgConfig.icon"
         [attr.shape]="pgConfig.shape"
         [attr.speed]="pgConfig.speed"
-      ></ui-scroll-top>
+      ></dui-scroll-top>
     </div>
   </div>
 

@@ -21,10 +21,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './dashboard-demo.component.scss',
 })
 export class DmDashboardDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'features', title: 'Key Features', icon: 'layout-dashboard', iconLibrary: 'lucide' }];
+  exampleVariants = [
+    { id: 'features', title: 'Key Features', icon: 'layout-dashboard', iconLibrary: 'lucide' },
+  ];
 
   // Code examples
-  playgroundCode = `<ui-dashboard
+  playgroundCode = `<dui-dashboard
   [cols]="12"
   [rowHeight]="60"
   [draggable]="true"
@@ -32,7 +34,7 @@ export class DmDashboardDemoComponent extends BaseDemoComponent {
   [compactType]="'vertical'"
 >
   <!-- Add your dashboard widgets here -->
-</ui-dashboard>`;
+</dui-dashboard>`;
 
   featuresCode = `<!-- Dashboard Key Features:
 

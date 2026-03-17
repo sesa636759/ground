@@ -11,11 +11,11 @@
         <!-- Boolean Control -->
         @if (control.type === 'boolean') {
           <label class="checkbox-control">
-            <ui-checkbox
+            <dui-checkbox
               [(ngModel)]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
               [label]="control.label"
-            ></ui-checkbox>
+            ></dui-checkbox>
           </label>
         }
 
@@ -23,11 +23,11 @@
         @if (control.type === 'text') {
           <label class="text-control">
             <span class="control-label">{{ control.label }}</span>
-            <ui-input
+            <dui-input
               type="text"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
-            ></ui-input>
+            ></dui-input>
           </label>
         }
 
@@ -35,14 +35,14 @@
         @if (control.type === 'number') {
           <label class="number-control">
             <span class="control-label">{{ control.label }}</span>
-            <ui-input
+            <dui-input
               type="number"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
               [min]="control.min ?? null"
               [max]="control.max ?? null"
               [step]="control.step ?? null"
-            ></ui-input>
+            ></dui-input>
           </label>
         }
 
@@ -50,11 +50,11 @@
         @if (control.type === 'select') {
           <label class="select-control">
             <span class="control-label">{{ control.label }}</span>
-            <ui-dropdown
+            <dui-dropdown
               [(ngModel)]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
               [options]="control.options"
-            ></ui-dropdown>
+            ></dui-dropdown>
           </label>
         }
 
@@ -62,11 +62,11 @@
         @if (control.type === 'color') {
           <label class="color-control">
             <span class="control-label">{{ control.label }}</span>
-            <ui-input
+            <dui-input
               type="color"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
-            ></ui-input>
+            ></dui-input>
           </label>
         }
 
@@ -74,21 +74,21 @@
         @if (control.type === 'range') {
           <label class="range-control">
             <span class="control-label">{{ control.label }}: {{ values[control.name] }}</span>
-            <ui-input
+            <dui-input
               type="range"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
               [min]="control.min"
               [max]="control.max"
               [step]="control.step"
-            ></ui-input>
+            ></dui-input>
           </label>
         }
       </div>
     </div>
 
     <div class="controls-footer Playground-controls-actions">
-      <ui-button
+      <dui-button
         class="reset-btn"
         icon="rotate-ccw"
         icon-position="left"
@@ -96,7 +96,7 @@
         variant="secondary"
         (click)="resetValues()"
         label="Reset Configuration"
-      ></ui-button>
+      ></dui-button>
     </div>
   </div>
 

@@ -8,17 +8,21 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Label</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+        <dui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Placeholder</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
+        <dui-input
+          type="text"
+          [(ngModel)]="pgConfig.placeholder"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -26,12 +30,12 @@
             { label: 'Medium', value: 'medium' },
             { label: 'Large', value: 'large' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Color</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.color"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -42,12 +46,12 @@
             { label: 'Warning', value: 'warning' },
             { label: 'Info', value: 'info' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <ui-dropdown
+        <dui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -55,12 +59,12 @@
             { label: 'Outlined', value: 'outlined' },
             { label: 'Filled', value: 'filled' },
           ]"
-        ></ui-dropdown>
+        ></dui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Max Tags</label>
-        <ui-input
+        <dui-input
           type="number"
           min="1"
           max="20"
@@ -72,28 +76,28 @@
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableAutocomplete" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.enableAutocomplete" (ngModelChange)="updateConfig()" />
         Autocomplete
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.allowDuplicates" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.allowDuplicates" (ngModelChange)="updateConfig()" />
         Allow Duplicates
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.caseSensitive" (ngModelChange)="updateConfig()" />
+        <dui-checkbox [(ngModel)]="pgConfig.caseSensitive" (ngModelChange)="updateConfig()" />
         Case Sensitive
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+        <dui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
+        <dui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
+        <dui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+        <dui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
       </label>
     </div>
   </div>

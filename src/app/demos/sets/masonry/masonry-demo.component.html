@@ -19,24 +19,35 @@
           <section class="demo-section" id="masonry">
             <div class="section-header">
               <h2>Classic Masonry</h2>
-              <p>Items with variable heights are packed into columns without gaps. Best for image galleries.</p>
+              <p>
+                Items with variable heights are packed into columns without gaps. Best for image
+                galleries.
+              </p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry [attr.items]="sampleItems | json" [columns]="3" [gap]="16"></ui-masonry>
+              <dui-masonry [attr.items]="sampleItems | json" [columns]="3" [gap]="16"></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="masonryCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="masonryCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Fixed Grid -->
           <section class="demo-section" id="grid">
             <div class="section-header">
               <h2>Fixed Grid</h2>
-              <p>Standard CSS grid behavior where items have consistent cell sizes. Best for product listings.</p>
+              <p>
+                Standard CSS grid behavior where items have consistent cell sizes. Best for product
+                listings.
+              </p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry [attr.items]="sampleItems | json" layout-type="grid" [columns]="4" [gap]="12"></ui-masonry>
+              <dui-masonry
+                [attr.items]="sampleItems | json"
+                layout-type="grid"
+                [columns]="4"
+                [gap]="12"
+              ></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="gridCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="gridCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Columns Layout -->
@@ -46,25 +57,33 @@
               <p>Traditional flex-based columns. Useful for newspaper-style layouts.</p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry [attr.items]="sampleItems | json" layout-type="columns" [columns]="3" [gap]="24"></ui-masonry>
+              <dui-masonry
+                [attr.items]="sampleItems | json"
+                layout-type="columns"
+                [columns]="3"
+                [gap]="24"
+              ></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="columnsCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="columnsCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Responsive Design -->
           <section class="demo-section" id="responsive">
             <div class="section-header">
               <h2>Responsive Design</h2>
-              <p>Define different column counts for specific screen widths using the breakpoints property.</p>
+              <p>
+                Define different column counts for specific screen widths using the breakpoints
+                property.
+              </p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry 
-                [attr.items]="sampleItems | json" 
-                [attr.breakpoints]='{"640":2, "768":3, "1024":4}'
+              <dui-masonry
+                [attr.items]="sampleItems | json"
+                [attr.breakpoints]="{ '640': 2, '768': 3, '1024': 4 }"
                 [gap]="16"
-              ></ui-masonry>
+              ></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="responsiveCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="responsiveCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Filtering -->
@@ -74,14 +93,14 @@
               <p>Built-in UI for filtering by categories and sorting by title or date.</p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry 
-                [attr.items]="sampleItems | json" 
-                show-filters 
+              <dui-masonry
+                [attr.items]="sampleItems | json"
+                show-filters
                 [attr.filter-options]="filterOptions"
                 [columns]="3"
-              ></ui-masonry>
+              ></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="filteringCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="filteringCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Selection -->
@@ -91,15 +110,15 @@
               <p>Enable checkboxes and batch actions for managing collections.</p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry 
-                [attr.items]="sampleItems | json" 
-                selectable 
-                multi-select 
-                show-batch-actions 
+              <dui-masonry
+                [attr.items]="sampleItems | json"
+                selectable
+                multi-select
+                show-batch-actions
                 [columns]="3"
-              ></ui-masonry>
+              ></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="selectionCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="selectionCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Gallery Lightbox -->
@@ -109,9 +128,9 @@
               <p>Click any item to view it in a full-screen optimized browser gallery.</p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry [attr.items]="sampleItems | json" lightbox [columns]="4"></ui-masonry>
+              <dui-masonry [attr.items]="sampleItems | json" lightbox [columns]="4"></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="lightboxCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="lightboxCode" activeLang="html"></dui-code-preview>
           </section>
 
           <!-- Skeleton Loading -->
@@ -121,9 +140,9 @@
               <p>Use skeleton screens to improve perceived performance while loading data.</p>
             </div>
             <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry loading-state [columns]="3" [gap]="16"></ui-masonry>
+              <dui-masonry loading-state [columns]="3" [gap]="16"></dui-masonry>
             </div>
-            <ui-code-preview [htmlCode]="skeletonCode" activeLang="html"></ui-code-preview>
+            <dui-code-preview [htmlCode]="skeletonCode" activeLang="html"></dui-code-preview>
           </section>
         </div>
       </div>
@@ -134,5 +153,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

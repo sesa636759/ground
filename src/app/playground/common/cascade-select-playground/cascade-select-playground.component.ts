@@ -83,7 +83,7 @@ export class DmCascadeSelectPlaygroundComponent extends BasePlaygroundComponent 
 
   updateConfig() {
     setTimeout(() => {
-      let code = '<ui-cascade-select\n';
+      let code = '<dui-cascade-select\n';
       code += `  placeholder="${this.pgConfig.placeholder}"\n`;
       code += `  size="${this.pgConfig.size}"\n`;
       code += `  expand-trigger="${this.pgConfig.expandTrigger}"\n`;
@@ -91,7 +91,7 @@ export class DmCascadeSelectPlaygroundComponent extends BasePlaygroundComponent 
       code += `  separator="${this.pgConfig.separator}"\n`;
       if (this.pgConfig.changeOnSelect) code += `  change-on-select\n`;
       code += `  [options]="locations"\n`;
-      code += '></ui-cascade-select>';
+      code += '></dui-cascade-select>';
 
       this.generatedCode.set(code);
       this.refreshCode();
@@ -103,6 +103,3 @@ export class DmCascadeSelectPlaygroundComponent extends BasePlaygroundComponent 
     this.logEvent(`Selected value: ${JSON.stringify(this.currentValue)}`);
   }
 }
-
-
-

@@ -46,7 +46,7 @@ export class DmResizablePanelPlaygroundComponent extends BasePlaygroundComponent
     this.panelsData[1].collapsible = this.pgConfig.collapsible2;
     this.panelsData[2].collapsible = this.pgConfig.collapsible3;
 
-    let code = `<ui-resizable-panel\n`;
+    let code = `<dui-resizable-panel\n`;
     code += `  direction="${this.pgConfig.direction}"\n`;
     code += `  theme="${this.pgConfig.theme}"\n`;
     if (this.pgConfig.handleSize !== 8) code += `  [handleSize]="${this.pgConfig.handleSize}"\n`;
@@ -58,7 +58,7 @@ export class DmResizablePanelPlaygroundComponent extends BasePlaygroundComponent
     code += `  <div slot="panel-1">Panel 1 Content</div>\n`;
     code += `  <div slot="panel-2">Panel 2 Content</div>\n`;
     code += `  <div slot="panel-3">Panel 3 Content</div>\n`;
-    code += `</ui-resizable-panel>`;
+    code += `</dui-resizable-panel>`;
 
     this.generatedCode.set(code);
     // Recreate array to trigger change detection

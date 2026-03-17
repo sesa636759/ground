@@ -2,12 +2,12 @@
   <aside class="examples-sidebar">
     <div class="sidebar-title">Sections</div>
     <div class="sidebar-nav">
-      <ui-anchor
+      <dui-anchor
         [links]="anchorLinks"
         scroll-container=".examples-content"
         type="line"
         show-progress
-      ></ui-anchor>
+      ></dui-anchor>
     </div>
   </aside>
 
@@ -20,15 +20,15 @@
       [code]="basicCardsCode"
     >
       <div class="demo-grid col-3">
-        <ui-card card-title="Project Alpha">
+        <dui-card card-title="Project Alpha">
           <p>This is a standard card with a title and multi-line content.</p>
-        </ui-card>
-        <ui-card card-title="Settings" extra="<a href='#' class='text-primary'>Edit</a>">
+        </dui-card>
+        <dui-card card-title="Settings" extra="<a href='#' class='text-primary'>Edit</a>">
           <p>Header can include extra HTML content like links or icons.</p>
-        </ui-card>
-        <ui-card>
+        </dui-card>
+        <dui-card>
           <p>Simple card without a header for minimal layouts.</p>
-        </ui-card>
+        </dui-card>
       </div>
     </pg-example-section>
 
@@ -40,28 +40,28 @@
       [code]="mediaCoversCode"
     >
       <div class="demo-grid col-3">
-        <ui-card
+        <dui-card
           card-title="Nature Peaks"
           cover="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop"
           hoverable="true"
         >
           <p>Discover the beauty of high altitudes with our latest travel guides.</p>
-        </ui-card>
-        <ui-card
+        </dui-card>
+        <dui-card
           card-title="User Profile"
           avatar="https://i.pravatar.cc/150?img=1"
           extra="Developer"
         >
           <p>Full-stack developer passionate about building beautiful interfaces.</p>
-        </ui-card>
-        <ui-card
+        </dui-card>
+        <dui-card
           card-title="Tokyo Night"
           cover="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=400&h=200&fit=crop"
           ribbon="FEATURED"
           ribbon-color="#f5222d"
         >
           <p>Modern architecture meets vibrant nightlife in this stunning city view.</p>
-        </ui-card>
+        </dui-card>
       </div>
     </pg-example-section>
 
@@ -73,7 +73,7 @@
       [code]="flippableCardsCode"
     >
       <div class="demo-grid col-2">
-        <ui-card card-title="Click to Flip" flippable="true" flip-trigger="click" hoverable="true">
+        <dui-card card-title="Click to Flip" flippable="true" flip-trigger="click" hoverable="true">
           <div class="quiz-front">
             <p>What is the capital of France?</p>
             <p class="helper-text">(Click to reveal)</p>
@@ -82,14 +82,14 @@
             <h3>Paris</h3>
             <p>Commonly known as the 'City of Light'.</p>
           </div>
-        </ui-card>
-        <ui-card card-title="Quick Tip" flippable="true" flip-trigger="hover" hoverable="true">
+        </dui-card>
+        <dui-card card-title="Quick Tip" flippable="true" flip-trigger="hover" hoverable="true">
           <p>Hover over this card to see a useful development tip.</p>
           <div slot="back" class="quiz-back">
             <h3>Pro Tip</h3>
             <p>Always use early returns for cleaner code!</p>
           </div>
-        </ui-card>
+        </dui-card>
       </div>
     </pg-example-section>
 
@@ -101,7 +101,7 @@
       [code]="premiumLayoutsCode"
     >
       <h4 class="demo-sub-title">Horizontal Media Card</h4>
-      <ui-card
+      <dui-card
         layout="horizontal"
         card-title="New Office Opening"
         cover="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
@@ -112,19 +112,19 @@
           We are thrilled to announce the opening of our new headquarters featuring sustainable
           design.
         </p>
-      </ui-card>
+      </dui-card>
 
       <h4 class="demo-sub-title mt-32">Glassmorphism Effect</h4>
       <div class="demo-grid col-2">
-        <ui-card glass="true" card-title="Glass Card" extra="Premium" bordered="false">
+        <dui-card glass="true" card-title="Glass Card" extra="Premium" bordered="false">
           <p>Stunning frosted glass effect using backdrop-filter.</p>
-        </ui-card>
-        <ui-card glass="true" card-title="System Monitor" bordered="false" variant="info">
+        </dui-card>
+        <dui-card glass="true" card-title="System Monitor" bordered="false" variant="info">
           <div class="monitor-display">
             <div class="value">98%</div>
             <div class="label">System Health</div>
           </div>
-        </ui-card>
+        </dui-card>
       </div>
     </pg-example-section>
 
@@ -137,24 +137,22 @@
     >
       <div class="demo-grid col-3">
         <div class="state-demo-card">
-          <ui-card [loading]="isLoading" card-title="Dynamic Content">
+          <dui-card [loading]="isLoading" card-title="Dynamic Content">
             <p>Content is loaded and ready!</p>
-          </ui-card>
-          <ui-button
+          </dui-card>
+          <dui-button
             (click)="toggleLoading()"
             label="Toggle Loading"
             class="mt-12 display-block"
-          ></ui-button>
+          ></dui-button>
         </div>
-        <ui-card card-title="Project Details" collapsible="true" bordered="true">
+        <dui-card card-title="Project Details" collapsible="true" bordered="true">
           <p>This content can be hidden to save vertical space.</p>
-        </ui-card>
-        <ui-card card-title="Plan Choice" selectable="true" bordered="true" hoverable="true">
+        </dui-card>
+        <dui-card card-title="Plan Choice" selectable="true" bordered="true" hoverable="true">
           <p>Click this card to select this option.</p>
-        </ui-card>
+        </dui-card>
       </div>
     </pg-example-section>
   </div>
 </div>
-
-
