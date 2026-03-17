@@ -8,6 +8,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'presentation',
+    loadComponent: () =>
+      import('./pages/presentation/presentation.component').then((m) => m.PresentationComponent),
+  },
+  {
     path: 'home',
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
     canActivate: [AuthGuard],

@@ -13,7 +13,7 @@ export type AnimationType =
   | 'rotate-in';
 
 @Directive({
-  selector: '[uiAnimateOnScroll]',
+  selector: '[dui-AnimateOnScroll]',
   standalone: true,
 })
 export class AnimateOnScrollDirective implements OnInit, OnDestroy {
