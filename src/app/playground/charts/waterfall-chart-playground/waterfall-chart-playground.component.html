@@ -8,63 +8,63 @@
         <h3>🎨 Colors</h3>
         <div class="control-group">
           <label>Positive Color</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.posColor"
             (ngModelChange)="update()"
             [options]="colorOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Negative Color</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.negColor"
             (ngModelChange)="update()"
             [options]="negColorOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Bar Gap</label>
-          <dui-input
+          <ui-input
             type="range"
             min="4"
             max="20"
             step="2"
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="waterfall-gap-label">{{ cfg.gap }}px</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showVals"
             [(ngModel)]="cfg.showValues"
             (ngModelChange)="update()"
             label="Show Values"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showConn"
             [(ngModel)]="cfg.showConnectors"
             (ngModelChange)="update()"
             label="Connectors"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="rounded"
             [(ngModel)]="cfg.rounded"
             (ngModelChange)="update()"
             label="Rounded Tops"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper waterfall-chart-preview">
@@ -147,12 +147,12 @@
     </div>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

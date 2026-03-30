@@ -3,55 +3,55 @@
   <div slot="content-global" class="control-grid otp-global-section">
     <div class="control-group">
       <label>Label</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Length</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.length"
         (ngModelChange)="updateConfig()"
         min="1"
         max="10"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Placeholder</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.placeholder"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Initial Value</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Group Size (0 for none)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.groupSize"
         (ngModelChange)="updateConfig()"
         min="0"
         max="5"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Input Type</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -59,38 +59,35 @@
   <div slot="content-appearance" class="control-grid otp-appearance-section">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="colorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()"></ui-checkbox>
         Secure (Masked)
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.skeleton"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></ui-checkbox>
         Skeleton Loader
       </label>
     </div>
@@ -99,59 +96,50 @@
   <!-- Behavioral States -->
   <div slot="content-states" class="control-grid otp-states-section">
     <div class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></dui-checkbox>
+      <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox>
       Invalid State
     </div>
     <div class="control-group">
       <label>Helper Text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.helperText"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group" *ngIf="pgConfig.invalid">
       <label>Error Text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.errorText"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.readonly"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
         Readonsly
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.required"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.autoFocus"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Auto Focus
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.autoSubmit"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Auto Submit
       </label>
     </div>
@@ -160,7 +148,7 @@
   <!-- Preview Area -->
   <div preview class="preview-stage otp-preview">
     <div class="otp-preview-inner">
-      <dui-otp-input
+      <ui-otp-input
         #demoElement
         [attr.length]="pgConfig.length"
         [attr.value]="pgConfig.value"
@@ -183,7 +171,7 @@
         [attr.placeholder]="pgConfig.placeholder"
         (otpChange)="onOtpChange($event)"
         (otpComplete)="onOtpComplete($event)"
-      ></dui-otp-input>
+      ></ui-otp-input>
     </div>
   </div>
 

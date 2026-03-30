@@ -8,49 +8,49 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Label</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.label"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Icon (Home/Save/etc)</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.icon"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Variant</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="variantOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Size</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="standardSizeOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
       </label>
     </div>
   </div>
 
   <div preview class="w-full display-flex flex-col justify-center items-center p-40">
-    <dui-split-button
+    <ui-split-button
       [attr.label]="pgConfig.label"
       [attr.icon]="pgConfig.icon"
       [attr.variant]="pgConfig.variant"
@@ -59,7 +59,7 @@
       [attr.loading]="pgConfig.loading ? '' : null"
       [model]="menuItems"
       (uiClick)="onPrimaryClick()"
-    ></dui-split-button>
+    ></ui-split-button>
   </div>
 
   <pg-playground-event-log

@@ -3,34 +3,34 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>List Titles (JSON Array)</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.titles"
         (ngModelChange)="updateConfig()"
         placeholder='["Left", "Right"]'
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Search Placeholder</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.searchPlaceholder"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>List Height</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.height"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 300px"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Selected Items</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -38,19 +38,19 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Display Mode</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.mode"
         (ngModelChange)="updateConfig()"
         [options]="modeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group" *ngIf="pgConfig.pagination">
       <label>Page Size</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.pageSize"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -58,63 +58,54 @@
   <div slot="content-behavior" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.searchable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Searchable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.sortable"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.sortable" (ngModelChange)="updateConfig()"></ui-checkbox>
         Sortable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.allowReorder"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Target Reordering
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showSelectAll"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Select All
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.enableDrag"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Drag & Drop
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.oneWay" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.oneWay" (ngModelChange)="updateConfig()"></ui-checkbox>
         One-Way (Copy)
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.pagination"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Pagination
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading Skeleton
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled State
       </label>
     </div>
@@ -125,18 +116,18 @@
     <p class="fs-13 text-muted mb-8">Table mode uses static columns: Feature | Module</p>
     <div class="control-group">
       <label>Icon Library</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
         placeholder="lucide, ionicons..."
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <!-- Preview Area -->
   <div preview class="preview-stage w-full p-32 h-500">
     <div class="w-full max-w-900 m-0-auto">
-      <dui-transfer-list
+      <ui-transfer-list
         #demoElement
         [attr.titles]="pgConfig.titles"
         [attr.search-placeholder]="pgConfig.searchPlaceholder"
@@ -160,7 +151,7 @@
         (transferChange)="onTransferChange($event)"
         (selectionChanged)="onSelectionChanged($event)"
       >
-      </dui-transfer-list>
+      </ui-transfer-list>
 
       <div class="mt-24 display-grid grid-cols-2 gap-16">
         <div class="p-12 bg-surface-low rounded-8 border-subtle-dashed">

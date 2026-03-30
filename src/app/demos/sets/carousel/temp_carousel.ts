@@ -236,7 +236,7 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   ];
 
   // Code examples
-  fadeTransitionCode = `<dui-carousel
+  fadeTransitionCode = `<ui-carousel
   effect="fade"
   autoplay="true"
   autoplay-interval="3000"
@@ -254,9 +254,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
     <h3>Mountains</h3>
     <p>Peak experience</p>
   </div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  slideTransitionCode = `<dui-carousel
+  slideTransitionCode = `<ui-carousel
   effect="slide"
   autoplay="true"
   autoplay-interval="3000"
@@ -267,9 +267,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
   <div class="slide">Slide 4</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  centerModeCode = `<dui-carousel
+  centerModeCode = `<ui-carousel
   center-mode="true"
   slides-to-show="1"
   center-padding="20%"
@@ -281,9 +281,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Item 3</div>
   <div class="slide">Item 4</div>
   <div class="slide">Item 5</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  multipleItemsCode = `<dui-carousel
+  multipleItemsCode = `<ui-carousel
   slides-to-show="3"
   slides-to-scroll="1"
   infinite="true"
@@ -296,9 +296,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Item 4</div>
   <div class="slide">Item 5</div>
   <div class="slide">Item 6</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  verticalCode = `<dui-carousel
+  verticalCode = `<ui-carousel
   direction="vertical"
   slides-to-show="1"
   autoplay="true"
@@ -307,9 +307,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  infiniteLoopCode = `<dui-carousel
+  infiniteLoopCode = `<ui-carousel
   infinite="true"
   loop="true"
   autoplay="true"
@@ -318,9 +318,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Repeating Item 1</div>
   <div class="slide">Repeating Item 2</div>
   <div class="slide">Repeating Item 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  swipeGestureCode = `<dui-carousel
+  swipeGestureCode = `<ui-carousel
   swipe="true"
   drag="true"
   mouse-drag="true"
@@ -330,9 +330,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Swipeable 1</div>
   <div class="slide">Swipeable 2</div>
   <div class="slide">Swipeable 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  scrollAutoplayCode = `<dui-carousel
+  scrollAutoplayCode = `<ui-carousel
   autoplay="true"
   autoplay-interval="3000"
   pause-on-hover="true"
@@ -341,9 +341,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Auto Slide 1</div>
   <div class="slide">Auto Slide 2</div>
   <div class="slide">Auto Slide 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  dotsIndicatorsCode = `<dui-carousel
+  dotsIndicatorsCode = `<ui-carousel
   indicators="true"
   indicator-type="dots"
   indicator-position="bottom"
@@ -352,9 +352,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  numberIndicatorsCode = `<dui-carousel
+  numberIndicatorsCode = `<ui-carousel
   indicators="true"
   indicator-type="numbers"
   indicator-position="bottom"
@@ -362,9 +362,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  progressBarCode = `<dui-carousel
+  progressBarCode = `<ui-carousel
   show-progress="true"
   autoplay="true"
   autoplay-interval="3000"
@@ -372,9 +372,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Progress 1</div>
   <div class="slide">Progress 2</div>
   <div class="slide">Progress 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  thresholdCode = `<dui-carousel
+  thresholdCode = `<ui-carousel
   drag="true"
   swipe="true"
   drag-threshold="10"
@@ -383,9 +383,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Drag Me 1</div>
   <div class="slide">Drag Me 2</div>
   <div class="slide">Drag Me 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  easingCode = `<dui-carousel
+  easingCode = `<ui-carousel
   animation-duration="800"
   animation-easing="ease-in-out"
   autoplay="true"
@@ -393,36 +393,36 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Eased 1</div>
   <div class="slide">Eased 2</div>
   <div class="slide">Eased 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  sizeSmallCode = `<dui-carousel
+  sizeSmallCode = `<ui-carousel
   height="200px"
   slides-to-show="1"
 >
   <div class="slide">Small 1</div>
   <div class="slide">Small 2</div>
   <div class="slide">Small 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  sizeMediumCode = `<dui-carousel
+  sizeMediumCode = `<ui-carousel
   height="400px"
   slides-to-show="2"
 >
   <div class="slide">Medium 1</div>
   <div class="slide">Medium 2</div>
   <div class="slide">Medium 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  sizeLargeCode = `<dui-carousel
+  sizeLargeCode = `<ui-carousel
   height="600px"
   slides-to-show="3"
 >
   <div class="slide">Large 1</div>
   <div class="slide">Large 2</div>
   <div class="slide">Large 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  speedFastCode = `<dui-carousel
+  speedFastCode = `<ui-carousel
   animation-duration="300"
   autoplay-interval="2000"
   autoplay="true"
@@ -430,9 +430,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Fast 1</div>
   <div class="slide">Fast 2</div>
   <div class="slide">Fast 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  speedNormalCode = `<dui-carousel
+  speedNormalCode = `<ui-carousel
   animation-duration="500"
   autoplay-interval="3000"
   autoplay="true"
@@ -440,9 +440,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Normal 1</div>
   <div class="slide">Normal 2</div>
   <div class="slide">Normal 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  speedSlowCode = `<dui-carousel
+  speedSlowCode = `<ui-carousel
   animation-duration="1000"
   autoplay-interval="5000"
   autoplay="true"
@@ -450,9 +450,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slow 1</div>
   <div class="slide">Slow 2</div>
   <div class="slide">Slow 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  responsiveCode = `<dui-carousel
+  responsiveCode = `<ui-carousel
   slides-to-show="3"
   responsive=[
     { breakpoint: 1024, settings: { slides-to-show: 2 } },
@@ -462,9 +462,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Responsive 1</div>
   <div class="slide">Responsive 2</div>
   <div class="slide">Responsive 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  customControlsCode = `<dui-carousel
+  customControlsCode = `<ui-carousel
   arrows="true"
   indicators="true"
   show-progress="true"
@@ -474,9 +474,9 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
-  playgroundCode = `<dui-carousel
+  playgroundCode = `<ui-carousel
   autoplay="true"
   autoplay-interval="3000"
   slides-to-show="1"
@@ -486,7 +486,7 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</dui-carousel>`;
+</ui-carousel>`;
 
   ngOnInit() {}
 }

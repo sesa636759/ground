@@ -82,7 +82,7 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
   }
 
   updateConfig() {
-    let code = `<dui-timer\n`;
+    let code = `<ui-timer\n`;
     if (this.pgConfig.duration > 0) code += `  [duration]="${this.pgConfig.duration}"\n`;
     if (this.pgConfig.mode !== 'countdown') code += `  mode="${this.pgConfig.mode}"\n`;
     if (this.pgConfig.format !== 'default') code += `  format="${this.pgConfig.format}"\n`;
@@ -101,7 +101,7 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
     if (this.pgConfig.steps) code += `  steps='${this.pgConfig.steps}'\n`;
     if (this.pgConfig.targetDate) code += `  target-date="${this.pgConfig.targetDate}"\n`;
 
-    code += `></dui-timer>`;
+    code += `></ui--timer>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

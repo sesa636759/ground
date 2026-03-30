@@ -7,64 +7,61 @@
   <div slot="content-layout" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Direction</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="directionOptions"
         [(ngModel)]="pgConfig.direction"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Wrap</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="wrapOptions"
         [(ngModel)]="pgConfig.wrap"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Alignment (Cross)</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="alignOptions"
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Justify (Main)</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="justifyOptions"
         [(ngModel)]="pgConfig.justify"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Spacing (px/css)</label>
-      <dui-input [(ngModel)]="pgConfig.spacing" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.spacing" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
   <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Divider Style</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="dividerOptions"
         [(ngModel)]="pgConfig.dividerType"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showDividers"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Dividers
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.overlap"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.overlap" (ngModelChange)="updateConfig()"></ui-checkbox>
         Overlap Mode
       </label>
     </div>
@@ -73,21 +70,21 @@
   <div slot="content-content" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Max Visible Items</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Total Item Count</label>
-      <dui-input type="number" [(ngModel)]="numBoxes" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input type="number" [(ngModel)]="numBoxes" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
   <div preview>
     <div class="preview-stage p-32 min-h-200 bg-white w-full rounded-8 border border-dashed">
-      <dui-stack
+      <ui-stack
         [attr.direction]="pgConfig.direction"
         [attr.wrap]="pgConfig.wrap"
         [attr.spacing]="pgConfig.spacing"
@@ -101,7 +98,7 @@
         <div *ngFor="let i of boxes" class="box-item">
           {{ i }}
         </div>
-      </dui-stack>
+      </ui-stack>
     </div>
   </div>
 </pg-playground>

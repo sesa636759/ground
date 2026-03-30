@@ -26,18 +26,18 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 export class DmLayoutManagerDemoComponent extends BaseDemoComponent {
   exampleVariants = [{ id: 'modes', title: 'Layout Modes', icon: '🗂️', color: '#3b82f6' }];
 
-  playgroundCode = `<dui-layout-manager mode="docking" resizable closable>
+  playgroundCode = `<ui-layout-manager mode="docking" resizable closable>
   <div slot="panel-1">Main Content</div>
   <div slot="panel-2">Sidebar</div>
-</dui-layout-manager>`;
+</ui-layout-manager>`;
 
   modesCode = `<!-- Docking Mode -->
-<dui-layout-manager mode="docking">
+<ui-layout-manager mode="docking">
   <!-- Panels can be docked and rearranged -->
-</dui-layout-manager>
+</ui-layout-manager>
 
 <!-- Grid Mode -->
-<dui-layout-manager mode="grid">
+<ui-layout-manager mode="grid">
   <!-- Panels arranged in a grid -->
-</dui-layout-manager>`;
+</ui-layout-manager>`;
 }

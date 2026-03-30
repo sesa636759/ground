@@ -46,9 +46,9 @@ export class DmMeterGroupDemoComponent extends BaseDemoComponent {
     { label: 'Free', value: 10, color: '#e2e8f0', icon: 'cloud' },
   ]);
 
-  basicCode = `<dui-meter-group [values]="diskValues"></dui-meter-group>`;
-  shapeCode = `<dui-meter-group shape="circle" [values]="diskValues"></dui-meter-group>`;
-  verticalCode = `<dui-meter-group orientation="vertical" [values]="diskValues" height="200px"></dui-meter-group>`;
+  basicCode = `<ui-meter-group [values]="diskValues"></ui-meter-group>`;
+  shapeCode = `<ui-meter-group shape="circle" [values]="diskValues"></ui-meter-group>`;
+  verticalCode = `<ui-meter-group orientation="vertical" [values]="diskValues" height="200px"></ui-meter-group>`;
 
   handleMeterClick(ev: any) {
     console.log(`Meter Clicked: ${ev.detail.label} (${ev.detail.value})`);

@@ -79,7 +79,7 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
   }
 
   updateConfig() {
-    let code = `<dui-stack\n`;
+    let code = `<ui-stack\n`;
     if (this.pgConfig.direction !== 'horizontal')
       code += `  direction="${this.pgConfig.direction}"\n`;
     if (this.pgConfig.wrap !== 'nowrap') code += `  wrap="${this.pgConfig.wrap}"\n`;
@@ -97,7 +97,7 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
     code += `>\n`;
     code += `  <div>1</div>\n`;
     code += `  <div>2</div>\n`;
-    code += `</dui-stack>`;
+    code += `</ui--stack>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

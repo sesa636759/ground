@@ -7,18 +7,18 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Theme</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
         [options]="themeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.collapsed"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Collapsed
       </label>
     </div>
@@ -27,10 +27,10 @@
   <div slot="content-structure" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showFooter"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Footer
       </label>
     </div>
@@ -41,7 +41,7 @@
       class="nav-container h-full border-right"
       [style.width]="pgConfig.collapsed ? '80px' : '280px'"
     >
-      <dui-nav-bar
+      <ui-nav-bar
         #demoElement
         [attr.theme]="pgConfig.theme"
         [attr.collapsed]="pgConfig.collapsed ? '' : null"
@@ -65,7 +65,7 @@
             <div *ngIf="!pgConfig.collapsed" class="font-medium">User Name</div>
           </div>
         </div>
-      </dui-nav-bar>
+      </ui-nav-bar>
     </div>
     <div class="content-area flex-1 p-40 bg-secondary">
       <h1 class="m-0-0-16 text-color">Page Content</h1>

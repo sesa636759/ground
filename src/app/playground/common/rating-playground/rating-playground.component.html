@@ -3,37 +3,37 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Rating Type</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group" *ngIf="pgConfig.type !== 'thumb'">
       <label>Max Rating</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
         [min]="1"
         [max]="10"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Size tier</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Rating Labels (JSON Array)</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.labels"
         (ngModelChange)="updateConfig()"
         placeholder='["Poor", "Fair", "Good"...]'
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -41,28 +41,28 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Active Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="ratingColorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label class="checkbox-item mt-24">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.allowHalf"
           (ngModelChange)="updateConfig()"
           [disabled]="pgConfig.type !== 'star'"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Allow Half-Stars
       </label>
     </div>
     <div class="control-group">
       <label class="checkbox-item mt-24">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Value/Label
       </label>
     </div>
@@ -72,17 +72,11 @@
   <div slot="content-states" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.readonly"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
         Read-only
       </label>
     </div>
@@ -91,7 +85,7 @@
   <!-- Preview -->
   <div preview class="preview-stage w-full display-flex justify-center items-center p-40">
     <div class="text-center">
-      <dui-rating
+      <ui-rating
         #ratingElement
         [attr.type]="pgConfig.type"
         [attr.max]="pgConfig.max"
@@ -104,7 +98,7 @@
         [attr.show-value]="pgConfig.showValue ? '' : null"
         [attr.labels]="pgConfig.labels || null"
         (ratingChange)="onRatingChange($event)"
-      ></dui-rating>
+      ></ui-rating>
 
       <div class="mt-24 text-muted fs-14">
         Submitted Rating:

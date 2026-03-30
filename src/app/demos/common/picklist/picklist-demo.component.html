@@ -21,16 +21,12 @@
           [code]="basicCode()"
         >
           <div class="demo-grid col-2">
-            <dui-picklist
+            <ui-picklist
               [options]="fruitOptions"
               placeholder="Pick a fruit"
               (picklistChange)="onChange($event)"
-            ></dui-picklist>
-            <dui-picklist
-              [options]="fruitOptions"
-              value="cherry"
-              label="Pre-selected"
-            ></dui-picklist>
+            ></ui-picklist>
+            <ui-picklist [options]="fruitOptions" value="cherry" label="Pre-selected"></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -42,21 +38,17 @@
           [code]="variantsCode()"
         >
           <div class="demo-grid col-3">
-            <dui-picklist
+            <ui-picklist
               variant="default"
               [options]="fruitOptions"
               placeholder="Default"
-            ></dui-picklist>
-            <dui-picklist
+            ></ui-picklist>
+            <ui-picklist
               variant="bordered"
               [options]="fruitOptions"
               placeholder="Bordered"
-            ></dui-picklist>
-            <dui-picklist
-              variant="ghost"
-              [options]="fruitOptions"
-              placeholder="Ghost"
-            ></dui-picklist>
+            ></ui-picklist>
+            <ui-picklist variant="ghost" [options]="fruitOptions" placeholder="Ghost"></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -68,9 +60,9 @@
           [code]="sizesCode()"
         >
           <div class="demo-flex-wrap items-end">
-            <dui-picklist size="sm" [options]="fruitOptions" placeholder="Small"></dui-picklist>
-            <dui-picklist size="md" [options]="fruitOptions" placeholder="Medium"></dui-picklist>
-            <dui-picklist size="lg" [options]="fruitOptions" placeholder="Large"></dui-picklist>
+            <ui-picklist size="sm" [options]="fruitOptions" placeholder="Small"></ui-picklist>
+            <ui-picklist size="md" [options]="fruitOptions" placeholder="Medium"></ui-picklist>
+            <ui-picklist size="lg" [options]="fruitOptions" placeholder="Large"></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -82,19 +74,19 @@
           [code]="multiCode()"
         >
           <div class="demo-grid col-2">
-            <dui-picklist
+            <ui-picklist
               mode="multi"
               [options]="fruitOptions"
               placeholder="Multiple Selection"
               full-width
-            ></dui-picklist>
-            <dui-picklist
+            ></ui-picklist>
+            <ui-picklist
               mode="multi"
               show-select-all
               [options]="fruitOptions"
               placeholder="With Select All"
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -106,12 +98,12 @@
           [code]="searchCode()"
         >
           <div class="demo-grid col-1">
-            <dui-picklist
+            <ui-picklist
               searchable
               search-placeholder="Filter fruits..."
               [options]="fruitOptions"
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -123,12 +115,12 @@
           [code]="groupedCode()"
         >
           <div class="demo-grid col-1">
-            <dui-picklist
+            <ui-picklist
               grouped
               [options]="groupedData"
               placeholder="Categorized Systems"
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -140,18 +132,18 @@
           [code]="iconsCode()"
         >
           <div class="demo-grid col-2">
-            <dui-picklist
+            <ui-picklist
               [options]="richOptions"
               icon-library="ionicons"
               placeholder="Ionicons Support"
               full-width
-            ></dui-picklist>
-            <dui-picklist
+            ></ui-picklist>
+            <ui-picklist
               [options]="fruitOptions"
               icon-library="lucide"
               placeholder="Lucide Icons"
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -163,12 +155,12 @@
           [code]="triggerCode()"
         >
           <div class="demo-grid col-1">
-            <dui-picklist custom-trigger [options]="fruitOptions">
-              <dui-button slot="trigger" variant="outline" color="secondary" size="md">
-                <dui-icon name="plus" library="lucide"></dui-icon>
+            <ui-picklist custom-trigger [options]="fruitOptions">
+              <ui-button slot="trigger" variant="outline" color="secondary" size="md">
+                <ui-icon name="plus" library="lucide"></ui-icon>
                 Custom Trigger Button
-              </dui-button>
-            </dui-picklist>
+              </ui-button>
+            </ui-picklist>
           </div>
         </pg-example-section>
 
@@ -180,13 +172,13 @@
           [code]="clearableCode()"
         >
           <div class="demo-grid col-2">
-            <dui-picklist clearable [options]="fruitOptions" value="apple"></dui-picklist>
-            <dui-picklist
+            <ui-picklist clearable [options]="fruitOptions" value="apple"></ui-picklist>
+            <ui-picklist
               clearable
               mode="multi"
               [options]="fruitOptions"
               [value]="['banana', 'cherry']"
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -198,8 +190,8 @@
           [code]="loadingCode()"
         >
           <div class="demo-grid col-2">
-            <dui-picklist loading placeholder="Fetching data..."></dui-picklist>
-            <dui-picklist disabled value="banana" [options]="fruitOptions"></dui-picklist>
+            <ui-picklist loading placeholder="Fetching data..."></ui-picklist>
+            <ui-picklist disabled value="banana" [options]="fruitOptions"></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -211,7 +203,7 @@
           [code]="premiumCode()"
         >
           <div class="demo-grid col-1">
-            <dui-picklist
+            <ui-picklist
               mode="multi"
               reorderable
               creatable
@@ -219,7 +211,7 @@
               searchable
               [options]="fruitOptions"
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -231,13 +223,13 @@
           [code]="reorderCode()"
         >
           <div class="demo-grid col-1">
-            <dui-picklist
+            <ui-picklist
               mode="multi"
               reorderable
               [options]="fruitOptions"
               [value]="['apple', 'banana', 'cherry']"
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
 
@@ -249,12 +241,12 @@
           [code]="creatableCode()"
         >
           <div class="demo-grid col-1">
-            <dui-picklist
+            <ui-picklist
               creatable
               searchable
               placeholder="Search or type new option..."
               full-width
-            ></dui-picklist>
+            ></ui-picklist>
           </div>
         </pg-example-section>
       </div>

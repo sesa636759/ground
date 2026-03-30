@@ -34,32 +34,32 @@ export class DmPopoverDemoComponent extends BaseDemoComponent {
   ];
 
   triggersCode = `<!-- Click trigger (default) -->
-<dui-popover trigger="click" heading="Click Trigger" content="Stays open until clicked outside">
-  <dui-button label="Click Me"></dui-button>
-</dui-popover>
+<ui-popover trigger="click" heading="Click Trigger" content="Stays open until clicked outside">
+  <ui-button label="Click Me"></ui-button>
+</ui-popover>
 
 <!-- Hover trigger -->
-<dui-popover trigger="hover" heading="Hover Trigger" content="Visible on mouse enter">
-  <dui-button label="Hover Me"></dui-button>
-</dui-popover>
+<ui-popover trigger="hover" heading="Hover Trigger" content="Visible on mouse enter">
+  <ui-button label="Hover Me"></ui-button>
+</ui-popover>
 
 <!-- Focus trigger -->
-<dui-popover trigger="focus" heading="Focus Trigger" content="Visible on focus">
-  <dui-input type="text" placeholder="Focus Me" ></dui-input>
-</dui-popover>`;
+<ui-popover trigger="focus" heading="Focus Trigger" content="Visible on focus">
+  <ui-input type="text" placeholder="Focus Me" ></ui-input>
+</ui-popover>`;
 
-  placementsCode = `<dui-popover placement="top"    content="Top Popover">...<dui-popover>
-<dui-popover placement="bottom" content="Bottom Popover">...<dui-popover>
-<dui-popover placement="left"   content="Left Popover">...<dui-popover>
-<dui-popover placement="right"  content="Right Popover">...<dui-popover>`;
+  placementsCode = `<ui-popover placement="top"    content="Top Popover">...<ui-popover>
+<ui-popover placement="bottom" content="Bottom Popover">...<ui-popover>
+<ui-popover placement="left"   content="Left Popover">...<ui-popover>
+<ui-popover placement="right"  content="Right Popover">...<ui-popover>`;
 
-  stylesCode = `<dui-popover variant="light" heading="Light Theme" content="Clean light style">...</dui-popover>
-<dui-popover variant="dark"  heading="Dark Theme"  content="Rich dark style">...</dui-popover>
-<dui-popover backdrop heading="With Backdrop" content="Dims background">...</dui-popover>
-<dui-popover show-close-button heading="Close Button" content="Has dismiss X">...</dui-popover>`;
+  stylesCode = `<ui-popover variant="light" heading="Light Theme" content="Clean light style">...</ui-popover>
+<ui-popover variant="dark"  heading="Dark Theme"  content="Rich dark style">...</ui-popover>
+<ui-popover backdrop heading="With Backdrop" content="Dims background">...</ui-popover>
+<ui-popover show-close-button heading="Close Button" content="Has dismiss X">...</ui-popover>`;
 
-  richContentCode = `<dui-popover heading="User Profile" interactive>
-  <dui-button label="View Profile"></dui-button>
+  richContentCode = `<ui-popover heading="User Profile" interactive>
+  <ui-button label="View Profile"></ui-button>
   <div slot="content" style="display:flex;gap:12px;align-items:center;padding:4px">
     <img src="..." style="width:40px;height:40px;border-radius:50%" />
     <div>
@@ -67,5 +67,5 @@ export class DmPopoverDemoComponent extends BaseDemoComponent {
       <span style="display:block;font-size:12px;color:#6b7280">Lead Architect</span>
     </div>
   </div>
-</dui-popover>`;
+</ui-popover>`;
 }

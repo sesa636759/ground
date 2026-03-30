@@ -130,7 +130,7 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
   }
 
   updateConfig() {
-    let code = `<dui-transfer-list\n`;
+    let code = `<ui-transfer-list\n`;
     code += `  [source]="${this.pgConfig.mode === 'tree' ? 'treeData' : 'sourceData'}"\n`;
     code += `  [target]="targetData"\n`;
     code += `  [titles]='${this.pgConfig.titles}'\n`;
@@ -153,7 +153,7 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
     if (this.pgConfig.loading) code += `  loading\n`;
     if (this.pgConfig.mode === 'table') code += `  [columns]='${this.columnsJson}'\n`;
 
-    code += `></dui-transfer-list>`;
+    code += `></ui--transfer-list>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

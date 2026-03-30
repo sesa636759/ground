@@ -3,35 +3,35 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Minimum Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Maximum Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Step Increment</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.step"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Display Format</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.displayFormat"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. {value}%"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -39,35 +39,35 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Size tier</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Active Track Color</label>
-      <dui-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Base Track Color</label>
-      <dui-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.trackColor"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Start Icon (Lucide)</label>
-      <dui-input [(ngModel)]="pgConfig.startIcon" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.startIcon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>End Icon (Lucide)</label>
-      <dui-input [(ngModel)]="pgConfig.endIcon" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.endIcon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
@@ -75,49 +75,43 @@
   <div slot="content-states" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></ui-checkbox>
         Dual Range Mode
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.vertical"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.vertical" (ngModelChange)="updateConfig()"></ui-checkbox>
         Vertical Orient
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showTooltip"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Tooltip
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.tooltipAlwaysVisible"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Tooltip Static
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showMarks"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Step Marks
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Value Label
       </label>
     </div>
@@ -130,7 +124,7 @@
     [style.height]="pgConfig.vertical ? '400px' : 'auto'"
   >
     <div class="w-full max-w-500">
-      <dui-range-slider
+      <ui-range-slider
         #demoElement
         [attr.min]="pgConfig.min"
         [attr.max]="pgConfig.max"
@@ -152,7 +146,7 @@
         [attr.end-icon]="pgConfig.endIcon || null"
         [attr.display-format]="pgConfig.displayFormat || null"
         (sliderChange)="onSliderChange($event)"
-      ></dui-range-slider>
+      ></ui-range-slider>
 
       <div class="mt-32 text-muted fs-14 text-center">
         Computed Output:

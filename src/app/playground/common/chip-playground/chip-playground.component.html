@@ -7,117 +7,111 @@
   <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Label</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Icon</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.icon"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. ⭐"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Avatar URL</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.userAvatar"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Counter</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.counter"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Badge</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.badge"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-style" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.removable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Removable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.clickable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Clickable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.selected"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.selected" (ngModelChange)="updateConfig()"></ui-checkbox>
         Selected
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage w-full display-flex justify-center items-center p-32">
-    <dui-chip
+    <ui-chip
       #demoElement
       [attr.label]="pgConfig.label"
       [attr.icon]="pgConfig.icon"
@@ -134,7 +128,7 @@
       [attr.loading]="pgConfig.loading ? '' : null"
       (chipClick)="logEvent('Chip Clicked')"
       (chipRemove)="logEvent('Chip Removed')"
-    ></dui-chip>
+    ></ui-chip>
   </div>
 
   <pg-playground-event-log

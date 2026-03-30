@@ -7,38 +7,34 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Threshold (px)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.threshold"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Scroll Speed (ms)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.speed"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Icon</label>
-      <dui-input
-        type="text"
-        [(ngModel)]="pgConfig.icon"
-        (ngModelChange)="updateConfig()"
-      ></dui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -52,14 +48,14 @@
         More content segment {{ i }}...
       </p>
 
-      <dui-scroll-top
+      <ui-scroll-top
         #demoElement
         target="#pg-scroll-target"
         [attr.threshold]="pgConfig.threshold"
         [attr.icon]="pgConfig.icon"
         [attr.shape]="pgConfig.shape"
         [attr.speed]="pgConfig.speed"
-      ></dui-scroll-top>
+      ></ui-scroll-top>
     </div>
   </div>
 

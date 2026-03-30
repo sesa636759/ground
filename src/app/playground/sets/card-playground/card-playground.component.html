@@ -8,27 +8,27 @@
   <div slot="content-layout" class="control-grid card-layout-section">
     <div class="control-group">
       <label>Title</label>
-      <dui-input
+      <ui-input
         name="title"
         type="text"
         [(ngModel)]="pgConfig.title"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Extra (Header)</label>
-      <dui-input
+      <ui-input
         name="extra"
         type="text"
         [(ngModel)]="pgConfig.extra"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Layout</label>
-      <dui-dropdown
+      <ui-dropdown
         name="layout"
         [(ngModel)]="pgConfig.layout"
         (ngModelChange)="updateConfig()"
@@ -36,12 +36,12 @@
           { label: 'Vertical', value: 'vertical' },
           { label: 'Horizontal', value: 'horizontal' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         name="size"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
@@ -50,7 +50,7 @@
           { label: 'Small', value: 'small' },
           { label: 'Large', value: 'large' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -58,7 +58,7 @@
   <div slot="content-animation" class="control-grid card-animation-section">
     <div class="control-group">
       <label>Hoverable</label>
-      <dui-checkbox
+      <ui-checkbox
         name="hoverable"
         [(ngModel)]="pgConfig.hoverable"
         (ngModelChange)="updateConfig()"
@@ -66,7 +66,7 @@
     </div>
     <div class="control-group">
       <label>Bordered</label>
-      <dui-checkbox
+      <ui-checkbox
         name="bordered"
         [(ngModel)]="pgConfig.bordered"
         (ngModelChange)="updateConfig()"
@@ -74,15 +74,11 @@
     </div>
     <div class="control-group">
       <label>Loading</label>
-      <dui-checkbox
-        name="loading"
-        [(ngModel)]="pgConfig.loading"
-        (ngModelChange)="updateConfig()"
-      />
+      <ui-checkbox name="loading" [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Flippable</label>
-      <dui-checkbox
+      <ui-checkbox
         name="flippable"
         [(ngModel)]="pgConfig.flippable"
         (ngModelChange)="updateConfig()"
@@ -90,7 +86,7 @@
     </div>
     <div class="control-group">
       <label>Closable</label>
-      <dui-checkbox
+      <ui-checkbox
         name="closable"
         [(ngModel)]="pgConfig.closable"
         (ngModelChange)="updateConfig()"
@@ -98,11 +94,11 @@
     </div>
     <div class="control-group">
       <label>Glass</label>
-      <dui-checkbox name="glass" [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" />
+      <ui-checkbox name="glass" [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Collapsible</label>
-      <dui-checkbox
+      <ui-checkbox
         name="collapsible"
         [(ngModel)]="pgConfig.collapsible"
         (ngModelChange)="updateConfig()"
@@ -110,7 +106,7 @@
     </div>
     <div class="control-group">
       <label>Selectable</label>
-      <dui-checkbox
+      <ui-checkbox
         name="selectable"
         [(ngModel)]="pgConfig.selectable"
         (ngModelChange)="updateConfig()"
@@ -118,7 +114,7 @@
     </div>
     <div class="control-group">
       <label>Clickable</label>
-      <dui-checkbox
+      <ui-checkbox
         name="clickable"
         [(ngModel)]="pgConfig.clickable"
         (ngModelChange)="updateConfig()"
@@ -130,7 +126,7 @@
   <div slot="content-style" class="control-grid card-style-section">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         name="variant"
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
@@ -145,11 +141,11 @@
           { label: 'Danger', value: 'danger' },
           { label: 'Info', value: 'info' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Importance</label>
-      <dui-dropdown
+      <ui-dropdown
         name="importance"
         [(ngModel)]="pgConfig.importance"
         (ngModelChange)="updateConfig()"
@@ -157,11 +153,11 @@
           { label: 'Standard', value: 'standard' },
           { label: 'Emphasized', value: 'emphasized' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Pattern</label>
-      <dui-dropdown
+      <ui-dropdown
         name="pattern"
         [(ngModel)]="pgConfig.pattern"
         (ngModelChange)="updateConfig()"
@@ -170,21 +166,21 @@
           { label: 'Product', value: 'product' },
           { label: 'Shortcut', value: 'shortcut' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Ribbon Text</label>
-      <dui-input
+      <ui-input
         name="ribbon"
         type="text"
         [(ngModel)]="pgConfig.ribbon"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div preview class="preview-stage card-preview">
-    <dui-card
+    <ui-card
       #cardSet
       [attr.card-title]="pgConfig.title"
       [attr.extra]="pgConfig.extra"
@@ -233,7 +229,7 @@
           <p>Custom content in the <code>back</code> slot.</p>
         </div>
       </div>
-    </dui-card>
+    </ui-card>
   </div>
 
   <pg-playground-event-log

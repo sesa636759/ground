@@ -114,7 +114,7 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
     // Sync options based on grouped toggle
     this.pgConfig.options = this.pgConfig.grouped ? this.groupedOptions : this.standardOptions;
 
-    let code = `<dui-picklist\n`;
+    let code = `<ui-picklist\n`;
     code += `  [options]="options"\n`;
     if (this.pgConfig.value) code += `  [value]="value"\n`;
     if (this.pgConfig.mode !== 'single') code += `  mode="${this.pgConfig.mode}"\n`;
@@ -139,7 +139,7 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.reorderable) code += `  reorderable\n`;
 
     code += `  (picklistChange)="onChange($event)"\n`;
-    code += `></dui-picklist>`;
+    code += `></ui--picklist>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

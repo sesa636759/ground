@@ -29,16 +29,16 @@
       <div class="menu-section">
         <h4 class="menu-label">MENU</h4>
         <nav class="sidebar-nav">
-          <dui-button class="nav-btn active"><i class="fas fa-home"></i> Component Hub</dui-button>
-          <dui-button class="nav-btn"><i class="fas fa-chart-pie"></i> Analytics</dui-button>
-          <dui-button class="nav-btn"><i class="fas fa-cog"></i> Settings</dui-button>
+          <ui-button class="nav-btn active"><i class="fas fa-home"></i> Component Hub</ui-button>
+          <ui-button class="nav-btn"><i class="fas fa-chart-pie"></i> Analytics</ui-button>
+          <ui-button class="nav-btn"><i class="fas fa-cog"></i> Settings</ui-button>
         </nav>
       </div>
 
       <div class="menu-section">
         <h4 class="menu-label">CATEGORIES</h4>
         <nav class="sidebar-nav">
-          <dui-button
+          <ui-button
             variant="ghost"
             *ngFor="let cat of categories; let i = index"
             class="nav-btn"
@@ -50,7 +50,7 @@
             @if (cat.children && cat.children.length) {
               <span class="badge">{{ cat.children.length }}</span>
             }
-          </dui-button>
+          </ui-button>
         </nav>
       </div>
 
@@ -59,7 +59,7 @@
           <div class="cta-glow"></div>
           <h5>Premium Available</h5>
           <p>Unlock all components</p>
-          <dui-button>Upgrade Pro</dui-button>
+          <ui-button>Upgrade Pro</ui-button>
         </div>
       </div>
     </aside>
@@ -76,15 +76,15 @@
         <div class="topbar-right">
           <div class="search-box">
             <i class="fas fa-search"></i>
-            <dui-input
+            <ui-input
               type="text"
               placeholder="Search resources..."
               (input)="onSearch($event)"
-            ></dui-input>
+            ></ui-input>
           </div>
-          <dui-button class="icon-btn">
+          <ui-button class="icon-btn">
             <i class="fas fa-bell"></i><span class="dot-indicator"></span>
-          </dui-button>
+          </ui-button>
           <div class="avatar-profile">
             <img src="https://i.pravatar.cc/150?u=groundui" alt="User" />
           </div>

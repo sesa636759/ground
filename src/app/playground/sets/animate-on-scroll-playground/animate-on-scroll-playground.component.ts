@@ -6,11 +6,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
+import { AnimateOnScrollComponent } from '../../../directives/animate-on-scroll.component';
 
 @Component({
   selector: 'ds-animate-on-scroll-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
+  imports: [...PLAYGROUND_IMPORTS, AnimateOnScrollComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './animate-on-scroll-playground.component.html',
@@ -87,7 +88,7 @@ export class DmAnimateOnScrollPlaygroundComponent implements OnInit {
   }
 
   updateConfig() {
-    let code = `<dui-animate-on-scroll\n`;
+    let code = `<ui-animate-on-scroll\n`;
     code += `  animation="${this.pgConfig.animation}"\n`;
     if (this.pgConfig.direction !== 'up') code += `  direction="${this.pgConfig.direction}"\n`;
     code += `  duration="${this.pgConfig.duration}"\n`;
@@ -111,7 +112,7 @@ export class DmAnimateOnScrollPlaygroundComponent implements OnInit {
     if (this.pgConfig.scrub) code += `  scrub="true"\n`;
     if (this.pgConfig.textMode !== 'none') code += `  text-mode="${this.pgConfig.textMode}"\n`;
 
-    code += `>\n  <div>Your content here</div>\n</dui-animate-on-scroll>`;
+    code += `>\n  <div>Your content here</div>\n</ui-animate-on-scroll>`;
 
     this.generatedCode.set(code);
   }

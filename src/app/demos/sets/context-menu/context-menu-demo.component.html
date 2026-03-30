@@ -26,12 +26,12 @@
               trigger="rightClick"
               [items]="basicItems"
             ></app-context-menu>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="rightClickCode()"
               [label]="'Right Click Code'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </div>
         </section>
 
@@ -44,18 +44,18 @@
           <div class="demo-grid">
             <div class="demo-card">
               <h3>Click Button Trigger</h3>
-              <dui-button #clickTrigger class="btn-trigger" label="More Actions"></dui-button>
+              <ui-button #clickTrigger class="btn-trigger" label="More Actions"></ui-button>
               <app-context-menu
                 [triggerElement]="clickTrigger"
                 trigger="click"
                 [items]="basicItems"
               ></app-context-menu>
-              <dui-code-preview
+              <ui-code-preview
                 [htmlCode]="clickTriggerCode()"
                 [label]="'Click Trigger Code'"
                 activeLang="html"
                 expanded="true"
-              ></dui-code-preview>
+              ></ui-code-preview>
             </div>
             <div class="demo-card">
               <h3>Hover Trigger</h3>
@@ -84,12 +84,12 @@
               [items]="nestedItems"
               [animated]="true"
             ></app-context-menu>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="nestedCode()"
               [label]="'Nested Menu Code'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </div>
         </section>
 
@@ -158,12 +158,12 @@
                 [items]="basicItems"
               ></app-context-menu>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="listContextCode()"
               [label]="'List Context Code'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </div>
         </section>
 
@@ -178,11 +178,11 @@
             <div class="palette-info">
               <p>Press <kbd>Ctrl+K</kbd> or click the button to open command palette</p>
             </div>
-            <dui-button
+            <ui-button
               #paletteTrigger
               class="btn-trigger"
               label="Open Command Palette (Ctrl+K)"
-            ></dui-button>
+            ></ui-button>
             <app-context-menu
               [triggerElement]="paletteTrigger"
               trigger="click"
@@ -191,12 +191,12 @@
               searchable="true"
               searchPlaceholder="Search commands..."
             ></app-context-menu>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="commandPaletteCode()"
               [label]="'Command Palette Code'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </div>
         </section>
 
@@ -209,7 +209,7 @@
           <div class="demo-grid">
             <div class="demo-card">
               <h3>Checkbox Items</h3>
-              <dui-button #settingsTrigger class="btn-trigger" label="Settings"></dui-button>
+              <ui-button #settingsTrigger class="btn-trigger" label="Settings"></ui-button>
               <app-context-menu
                 [triggerElement]="settingsTrigger"
                 trigger="click"
@@ -218,7 +218,7 @@
             </div>
             <div class="demo-card">
               <h3>Grouped Items</h3>
-              <dui-button #fileMenuTrigger class="btn-trigger" label="File Menu"></dui-button>
+              <ui-button #fileMenuTrigger class="btn-trigger" label="File Menu"></ui-button>
               <app-context-menu
                 [triggerElement]="fileMenuTrigger"
                 trigger="click"
@@ -226,12 +226,12 @@
               ></app-context-menu>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="checkboxRadioCode()"
             [label]="'Item Types Code'"
             activeLang="html"
             expanded="true"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Themes & Effects -->
@@ -243,7 +243,7 @@
           <div class="demo-grid">
             <div class="demo-card">
               <h3>Animated Menu</h3>
-              <dui-button #animTrigger class="btn-trigger" label="Staggered Entry"></dui-button>
+              <ui-button #animTrigger class="btn-trigger" label="Staggered Entry"></ui-button>
               <app-context-menu
                 [triggerElement]="animTrigger"
                 trigger="click"
@@ -254,7 +254,7 @@
             </div>
             <div class="demo-card">
               <h3>Dark Theme</h3>
-              <dui-button #darkTrigger class="btn-trigger" label="Dark Menu"></dui-button>
+              <ui-button #darkTrigger class="btn-trigger" label="Dark Menu"></ui-button>
               <app-context-menu
                 [triggerElement]="darkTrigger"
                 trigger="click"
@@ -266,11 +266,11 @@
             <div class="demo-card">
               <h3>Glassmorphism</h3>
               <div class="glass-context-bg">
-                <dui-button
+                <ui-button
                   #glassTrigger
                   class="btn-trigger glass-btn"
                   label="Glass Effect"
-                ></dui-button>
+                ></ui-button>
               </div>
               <app-context-menu
                 [triggerElement]="glassTrigger"
@@ -281,12 +281,12 @@
               ></app-context-menu>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="darkThemeCode()"
             [label]="'Themes Code'"
             activeLang="html"
             expanded="true"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Advanced Features -->
@@ -319,12 +319,12 @@
               </ul>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="advancedCode()"
             [label]="'Advanced Features Code'"
             activeLang="html"
             expanded="true"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
       </div>
     </div>

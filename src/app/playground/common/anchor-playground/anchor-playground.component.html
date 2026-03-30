@@ -7,48 +7,48 @@
   <div slot="content-config" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="orientationOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Style Type</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Scroll Offset (px)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.scrollOffset"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-visuals" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showIndicator"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Indicator
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showProgress"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Progress
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></ui-checkbox>
         Enable Affix
       </label>
     </div>
@@ -56,7 +56,7 @@
 
   <div preview class="preview-stage display-flex gap-32 h-full rounded-8 p-12 h-500">
     <div class="flex-1 max-w-250">
-      <dui-anchor
+      <ui-anchor
         #anchor
         [attr.orientation]="pgConfig.orientation"
         [attr.type]="pgConfig.type"
@@ -67,7 +67,7 @@
         scroll-container="#pg-scroll-container"
         [links]="linksJson"
         (anchorChange)="logEvent('Anchor changed')"
-      ></dui-anchor>
+      ></ui-anchor>
     </div>
 
     <div

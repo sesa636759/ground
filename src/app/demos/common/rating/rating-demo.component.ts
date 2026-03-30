@@ -36,27 +36,27 @@ export class DmRatingDemoComponent extends BaseDemoComponent {
     { id: 'states', title: 'States & Labels', icon: '🔘', iconLibrary: 'emoji' },
   ];
 
-  basicCode = signal(`<dui-rating value="3"></dui-rating>
-<dui-rating max="10" value="7" color="primary"></dui-rating>`);
+  basicCode = signal(`<ui-rating value="3"></ui-rating>
+<ui-rating max="10" value="7" color="primary"></ui-rating>`);
 
-  halfCode = signal(`<dui-rating allow-half value="3.5" show-value></dui-rating>
-<dui-rating allow-half value="4.5" color="success" size="lg"></dui-rating>`);
+  halfCode = signal(`<ui-rating allow-half value="3.5" show-value></ui-rating>
+<ui-rating allow-half value="4.5" color="success" size="lg"></ui-rating>`);
 
-  smileysCode = signal(`<dui-rating type="smiley" max="5" value="4"></dui-rating>
-<dui-rating 
+  smileysCode = signal(`<ui-rating type="smiley" max="5" value="4"></ui-rating>
+<ui-rating 
   type="smiley" 
   [labels]="['Very Poor', 'Poor', 'Neutral', 'Good', 'Excellent']" 
   show-value
-></dui-rating>`);
+></ui-rating>`);
 
-  thumbsCode = signal(`<dui-rating type="thumb" value="1"></dui-rating>
-<dui-rating type="thumb" value="-1" show-value></dui-rating>`);
+  thumbsCode = signal(`<ui-rating type="thumb" value="1"></ui-rating>
+<ui-rating type="thumb" value="-1" show-value></ui-rating>`);
 
-  visualsCode = signal(`<dui-rating size="sm" value="4"></dui-rating>
-<dui-rating size="lg" color="danger" value="2"></dui-rating>`);
+  visualsCode = signal(`<ui-rating size="sm" value="4"></ui-rating>
+<ui-rating size="lg" color="danger" value="2"></ui-rating>`);
 
-  statesCode = signal(`<dui-rating readonly value="4" show-value></dui-rating>
-<dui-rating disabled value="3"></dui-rating>`);
+  statesCode = signal(`<ui-rating readonly value="4" show-value></ui-rating>
+<ui-rating disabled value="3"></ui-rating>`);
 
   onRatingChange(event: any) {
     console.log('Rating event:', event.detail);

@@ -7,11 +7,11 @@
   <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Heading</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.heading"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Body Content (HTML)</label>
@@ -27,59 +27,56 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Trigger</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.trigger"
         (ngModelChange)="updateConfig()"
         [options]="triggerOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Placement</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.placement"
         (ngModelChange)="updateConfig()"
         [options]="placementOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Width</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.width"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showArrow"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Arrow
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showCloseButton"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Close Button
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.backdrop"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.backdrop" (ngModelChange)="updateConfig()"></ui-checkbox>
         Backdrop
       </label>
     </div>
@@ -87,7 +84,7 @@
 
   <div preview class="preview-stage">
     <div class="w-full display-flex justify-center items-center">
-      <dui-popover
+      <ui-popover
         #popover
         [attr.heading]="pgConfig.heading"
         [attr.content]="pgConfig.content"
@@ -99,8 +96,8 @@
         [attr.show-close-button]="pgConfig.showCloseButton ? '' : null"
         [attr.backdrop]="pgConfig.backdrop ? '' : null"
       >
-        <dui-button slot="target" variant="primary" label="Target Element"></dui-button>
-      </dui-popover>
+        <ui-button slot="target" variant="primary" label="Target Element"></ui-button>
+      </ui-popover>
     </div>
   </div>
 

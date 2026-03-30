@@ -8,38 +8,38 @@
         <h3>📐 Size</h3>
         <div class="control-group">
           <label>Width</label>
-          <dui-input
+          <ui-input
             type="range"
             min="80"
             max="240"
             step="10"
             [(ngModel)]="cfg.width"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="sparkline-width-label">{{ cfg.width }}px</span>
         </div>
         <div class="control-group">
           <label>Height</label>
-          <dui-input
+          <ui-input
             type="range"
             min="30"
             max="100"
             step="5"
             [(ngModel)]="cfg.height"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="sparkline-height-label">{{ cfg.height }}px</span>
         </div>
         <div class="control-group">
           <label>Stroke Width</label>
-          <dui-input
+          <ui-input
             type="range"
             min="1"
             max="4"
             step="0.5"
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="sparkline-stroke-label">{{ cfg.strokeWidth }}</span>
         </div>
       </div>
@@ -47,32 +47,32 @@
         <h3>🎨 Style</h3>
         <div class="control-group">
           <label>Color</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.color"
             (ngModelChange)="update()"
             [options]="colorOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="fill"
             [(ngModel)]="cfg.fill"
             (ngModelChange)="update()"
             label="Fill Area"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showDot"
             [(ngModel)]="cfg.showDot"
             (ngModelChange)="update()"
             label="Show Last Point"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper sparkline-preview">
@@ -116,12 +116,12 @@
     </div>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

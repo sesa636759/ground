@@ -72,48 +72,48 @@ export class DmTransferListDemoComponent extends BaseDemoComponent {
     },
   ];
 
-  basicCode = signal(`<dui-transfer-list 
+  basicCode = signal(`<ui-transfer-list 
   [source]="sourceItems" 
   [target]="targetItems"
   [titles]="['Available', 'Assigned']"
   searchable
-></dui-transfer-list>`);
+></ui-transfer-list>`);
 
   modesCode = signal(`<!-- Table Mode -->
-<dui-transfer-list 
+<ui-transfer-list 
   mode="table" 
   [columns]="columns" 
   [source]="items"
-></dui-transfer-list>
+></ui-transfer-list>
 
 <!-- Tree Mode -->
-<dui-transfer-list 
+<ui-transfer-list 
   mode="tree" 
   [source]="nestedItems"
-></dui-transfer-list>`);
+></ui-transfer-list>`);
 
-  reorderCode = signal(`<dui-transfer-list 
+  reorderCode = signal(`<ui-transfer-list 
   enable-drag 
   allow-reorder 
   [source]="items"
-></dui-transfer-list>`);
+></ui-transfer-list>`);
 
-  onewayCode = signal(`<dui-transfer-list 
+  onewayCode = signal(`<ui-transfer-list 
   one-way 
   [source]="items" 
   [titles]="['Options', 'Chosen']"
-></dui-transfer-list>`);
+></ui-transfer-list>`);
 
-  paginationCode = signal(`<dui-transfer-list 
+  paginationCode = signal(`<ui-transfer-list 
   pagination 
   [page-size]="5" 
   [source]="manyItems"
-></dui-transfer-list>`);
+></ui-transfer-list>`);
 
-  customRenderCode = signal(`<dui-transfer-list 
+  customRenderCode = signal(`<ui-transfer-list 
   [source]="items" 
   [item-renderer]="myRenderer"
-></dui-transfer-list>
+></ui-transfer-list>
 
 // In Component:
 myRenderer = (item) => \`
@@ -123,16 +123,16 @@ myRenderer = (item) => \`
   </div>
 \`;`);
 
-  filterCode = signal(`<dui-transfer-list 
+  filterCode = signal(`<ui-transfer-list 
   [source]="items" 
   [filter-option]="myFilter"
-></dui-transfer-list>
+></ui-transfer-list>
 
 // In Component:
 myFilter = (input, item) => 
   item.label.includes(input) || item.tag.includes(input);`);
 
-  localeCode = signal(`<dui-transfer-list 
+  localeCode = signal(`<ui-transfer-list 
   [source]="items" 
   [locale]="{
     itemUnit: 'member',
@@ -140,9 +140,9 @@ myFilter = (input, item) =>
     notFoundContent: 'No matches found',
     searchPlaceholder: 'Search team members...'
   }"
-></dui-transfer-list>`);
+></ui-transfer-list>`);
 
-  skeletonCode = signal(`<dui-transfer-list loading></dui-transfer-list>`);
+  skeletonCode = signal(`<ui-transfer-list loading></ui-transfer-list>`);
 
   onTransferChange(event: any) {
     console.log('Transfer event:', event.detail);

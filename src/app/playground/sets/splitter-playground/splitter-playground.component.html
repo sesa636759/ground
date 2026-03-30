@@ -7,38 +7,38 @@
   <div slot="content-layout" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="directionOptions"
         [(ngModel)]="pgConfig.direction"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Gutter Size (px)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.gutterSize"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Snap Threshold</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.snapThreshold"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showGutterIcon"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Gutter Handle
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></ui-checkbox>
         Right-to-Left
       </label>
     </div>
@@ -47,41 +47,35 @@
   <div slot="content-style" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Theme</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="themeOptions"
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Gutter Base Color</label>
-      <dui-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.gutterColor"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Gutter Hover Color</label>
-      <dui-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.gutterHoverColor"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.rounded"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()"></ui-checkbox>
         Rounded Gutter
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.elevated"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()"></ui-checkbox>
         Elevated
       </label>
     </div>
@@ -90,31 +84,28 @@
   <div slot="content-behavior" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.animated"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()"></ui-checkbox>
         Animated Transitions
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.doubleClickCollapse"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Double Click to Collapse
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.keyboardNavigation"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Keyboard Navigation
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.persistState"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Persist State (Local Storage)
       </label>
     </div>
@@ -122,7 +113,7 @@
 
   <div preview>
     <div class="preview-stage splitter-demo-container flex-stretch">
-      <dui-splitter
+      <ui-splitter
         [attr.direction]="pgConfig.direction"
         [attr.gutter-size]="pgConfig.gutterSize"
         [attr.gutter-color]="pgConfig.gutterColor"
@@ -156,7 +147,7 @@
   title = 'AngularGround';
 &#125;</code></pre>
         </div>
-      </dui-splitter>
+      </ui-splitter>
     </div>
   </div>
 </pg-playground>

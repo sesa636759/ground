@@ -7,71 +7,71 @@
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOpts"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Animation Type</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.animationType"
         (ngModelChange)="updateConfig()"
         [options]="animTypeOpts"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Animated</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.animated"
         (ngModelChange)="updateConfig()"
         [options]="boolOpts"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-sizing" class="control-grid p-16">
     <div class="control-group">
       <label>Size (Predefined)</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOpts"
-      ></dui-dropdown>
+      ></ui-dropdown>
       <span class="control-hint">Overrides width/height for most shapes</span>
     </div>
 
     <div class="control-group">
       <label>Width</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.width"
         (ngModelChange)="updateConfig()"
         placeholder="100%"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Height</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.height"
         (ngModelChange)="updateConfig()"
         placeholder="20px"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Border Radius</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.borderRadius"
         (ngModelChange)="updateConfig()"
         placeholder="4px"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 

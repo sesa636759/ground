@@ -90,7 +90,7 @@ export class DmSpeedDialPlaygroundComponent extends BasePlaygroundComponent impl
   }
 
   updateConfig() {
-    let code = '<dui-speed-dial\n';
+    let code = '<ui-speed-dial\n';
     code += `  position="${this.pgConfig.position}"\n`;
     code += `  strategy="${this.pgConfig.strategy}"\n`;
     code += `  icon="${this.pgConfig.icon}"\n`;
@@ -101,7 +101,7 @@ export class DmSpeedDialPlaygroundComponent extends BasePlaygroundComponent impl
     code += `  trigger="${this.pgConfig.trigger}"\n`;
     if (!this.pgConfig.showTooltips) code += `  [show-tooltips]="false"\n`;
     code += `  [actions]="actions"\n`;
-    code += '></dui-speed-dial>';
+    code += '></ui--speed-dial>';
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -26,22 +26,22 @@
             <div class="demo-card">
               <div class="w-full max-w-500">
                 <span>Alternating:</span>
-                <dui-timeline align="alternate" [value]="events">
+                <ui-timeline align="alternate" [value]="events">
                   <ng-template let-item>
                     <div class="font-semibold">{{ item.status }}</div>
                     <div slot="opposite" class="fs-085rem opacity-70">
                       {{ item.date }}
                     </div>
                   </ng-template>
-                </dui-timeline>
+                </ui-timeline>
               </div>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="alignmentsCode"
               [label]="'Alignment Examples'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </section>
 
           <!-- Orientations -->
@@ -53,20 +53,20 @@
             <div class="demo-card">
               <div class="w-full">
                 <span>Horizontal:</span>
-                <dui-timeline orientation="horizontal" [value]="events">
+                <ui-timeline orientation="horizontal" [value]="events">
                   <ng-template let-item>
                     <div class="font-semibold">{{ item.status }}</div>
                     <div class="fs-08rem">{{ item.date }}</div>
                   </ng-template>
-                </dui-timeline>
+                </ui-timeline>
               </div>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="orientationsCode"
               [label]="'Orientation Examples'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </section>
         </div>
       </div>

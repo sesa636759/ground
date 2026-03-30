@@ -7,48 +7,45 @@
   <div slot="content-settings" class="control-grid control-grid-padded">
     <div class="control-group">
       <label>Position</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="positionOptions"
         [(ngModel)]="pgConfig.position"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="sizeOptions"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Icon Library</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="iconLibraryOptions"
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.magnify"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.magnify" (ngModelChange)="updateConfig()"></ui-checkbox>
         Magnify Effect
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.blurEffect"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Glass/Blur Effect
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showLabels"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Labels
       </label>
     </div>
@@ -57,13 +54,13 @@
   <div slot="content-style" class="control-grid p-16">
     <div class="control-group full-width">
       <label>Items (JSON Array)</label>
-      <dui-input
+      <ui-input
         type="textarea"
         [(ngModel)]="pgConfig.items"
         (ngModelChange)="onJsonChange()"
         placeholder='[{"label":"App","icon":"app"}]'
         [rows]="8"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -72,7 +69,7 @@
       <!-- Mimic a desktop background -->
       <div class="dock-time-overlay">Friday, Oct 25 10:45 AM</div>
 
-      <dui-dock
+      <ui-dock
         [attr.items]="pgConfig.items"
         [attr.position]="pgConfig.position"
         [attr.size]="pgConfig.size"
@@ -82,7 +79,7 @@
         [attr.icon-library]="pgConfig.iconLibrary"
         (dockItemClick)="onDockItemClick($event)"
         (itemsOrderChange)="onOrderChange($event)"
-      ></dui-dock>
+      ></ui-dock>
     </div>
   </div>
 </pg-playground>

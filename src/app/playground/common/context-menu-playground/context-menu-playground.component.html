@@ -7,26 +7,26 @@
   <div slot="content-settings" class="control-grid p-16">
     <div class="control-group">
       <label>Base Z-Index</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.baseZIndex"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Breakpoint</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.breakpoint"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid mt-12">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.autoZIndex"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Auto Z-Index
       </label>
     </div>
@@ -35,11 +35,11 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Theme</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
         [options]="themeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
         Right click me to see the menu
       </div>
 
-      <dui-context-menu
+      <ui-context-menu
         #demoElement
         [attr.theme]="pgConfig.theme"
         [attr.breakpoint]="pgConfig.breakpoint"
@@ -62,7 +62,7 @@
         [attr.base-z-index]="pgConfig.baseZIndex"
         [items]="model"
         [target]="targetElement"
-      ></dui-context-menu>
+      ></ui-context-menu>
     </div>
   </div>
 

@@ -86,7 +86,7 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<dui-badge\n';
+    let code = '<ui-badge\n';
     if (!this.pgConfig.dot) code += `  value="${this.pgConfig.value}"\n`;
     if (this.pgConfig.max !== 99) code += `  [max]="${this.pgConfig.max}"\n`;
 
@@ -116,7 +116,7 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
     code += '>\n';
     code +=
       '  <div style="width: 48px; height: 48px; background: var(--surface-2); border-radius: 8px;"></div>\n';
-    code += '</dui-badge>';
+    code += '</ui--badge>';
 
     this.generatedCode.set(code);
     this.refreshCode();

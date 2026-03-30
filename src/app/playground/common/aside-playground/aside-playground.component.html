@@ -7,105 +7,98 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Direction</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.direction"
         (ngModelChange)="updateConfig()"
         [options]="standardDirectionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size (px/%/rem)</label>
-      <dui-input
-        type="text"
-        [(ngModel)]="pgConfig.size"
-        (ngModelChange)="updateConfig()"
-      ></dui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Backdrop Blur</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.backdropBlur"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 8px"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-states" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.closeable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Closeable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.closeOnOverlayClick"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Close on Overlay Click
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.closeOnEscape"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Close on Escape
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.resizable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Resizable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading State
       </label>
     </div>
 
-    <dui-divider></dui-divider>
+    <ui-divider></ui-divider>
 
     <div class="control-grid mt-16">
       <div class="control-group">
         <label>Min Size (px)</label>
-        <dui-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.minSize"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Max Size (px)</label>
-        <dui-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.maxSize"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Persist Key</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.persistKey"
           (ngModelChange)="updateConfig()"
           placeholder="e.g. settings-panel"
-        ></dui-input>
+        ></ui-input>
       </div>
     </div>
   </div>
@@ -113,14 +106,14 @@
   <div preview class="preview-stage">
     <div class="preview-content p-40 text-center">
       <p class="mb-20">Click the button below to trigger the Aside Panel.</p>
-      <dui-button
+      <ui-button
         variant="primary"
         (buttonClick)="pgConfig.open = true; logEvent('Opening panel'); updateConfig()"
         label="Open Panel"
-      ></dui-button>
+      ></ui-button>
     </div>
 
-    <dui-aside-panel
+    <ui-aside-panel
       #demoElement
       [attr.open]="pgConfig.open ? '' : null"
       [direction]="pgConfig.direction"
@@ -155,7 +148,7 @@
           </p>
         </div>
 
-        <dui-divider></dui-divider>
+        <ui-divider></ui-divider>
 
         <div class="mt-20">
           <label class="display-block mb-8">Quick Note</label>
@@ -167,20 +160,20 @@
         </div>
       </div>
       <div slot="footer" class="aside-footer-demo p-16 border-top display-flex gap-12">
-        <dui-button
+        <ui-button
           variant="secondary"
           (buttonClick)="pgConfig.open = false"
           label="Cancel"
           class="flex-1"
-        ></dui-button>
-        <dui-button
+        ></ui-button>
+        <ui-button
           variant="primary"
           (buttonClick)="pgConfig.open = false; logEvent('Changes saved')"
           label="Save"
           class="flex-1"
-        ></dui-button>
+        ></ui-button>
       </div>
-    </dui-aside-panel>
+    </ui-aside-panel>
   </div>
 
   <pg-playground-event-log

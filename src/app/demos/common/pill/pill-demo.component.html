@@ -23,14 +23,14 @@
             </div>
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-pill label="Filled" variant="filled" color="primary"></dui-pill>
-                <dui-pill label="Outlined" variant="outlined" color="primary"></dui-pill>
-                <dui-pill label="Soft" variant="soft" color="success"></dui-pill>
-                <dui-pill label="Bordered" variant="bordered" color="danger"></dui-pill>
-                <dui-pill label="Gradient" variant="gradient" gradient="blue-purple"></dui-pill>
+                <ui-pill label="Filled" variant="filled" color="primary"></ui-pill>
+                <ui-pill label="Outlined" variant="outlined" color="primary"></ui-pill>
+                <ui-pill label="Soft" variant="soft" color="success"></ui-pill>
+                <ui-pill label="Bordered" variant="bordered" color="danger"></ui-pill>
+                <ui-pill label="Gradient" variant="gradient" gradient="blue-purple"></ui-pill>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="variantsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Colors -->
@@ -41,32 +41,28 @@
             </div>
             <div class="demo-card pill-stack">
               <div class="demo-flex">
-                <dui-pill label="Primary" color="primary"></dui-pill>
-                <dui-pill label="Secondary" color="secondary"></dui-pill>
-                <dui-pill label="Success" color="success"></dui-pill>
-                <dui-pill label="Warning" color="warning"></dui-pill>
-                <dui-pill label="Danger" color="danger"></dui-pill>
-                <dui-pill label="Info" color="info"></dui-pill>
+                <ui-pill label="Primary" color="primary"></ui-pill>
+                <ui-pill label="Secondary" color="secondary"></ui-pill>
+                <ui-pill label="Success" color="success"></ui-pill>
+                <ui-pill label="Warning" color="warning"></ui-pill>
+                <ui-pill label="Danger" color="danger"></ui-pill>
+                <ui-pill label="Info" color="info"></ui-pill>
               </div>
               <div class="demo-flex mt-24">
-                <dui-pill
+                <ui-pill
                   label="Custom"
                   custom-color="#6366f1"
                   custom-text-color="#ffffff"
-                ></dui-pill>
-                <dui-pill
-                  label="Neon"
-                  custom-color="#00ff00"
-                  custom-text-color="#000000"
-                ></dui-pill>
+                ></ui-pill>
+                <ui-pill label="Neon" custom-color="#00ff00" custom-text-color="#000000"></ui-pill>
               </div>
               <div class="demo-flex mt-24">
-                <dui-pill label="Small" size="sm" color="default"></dui-pill>
-                <dui-pill label="Medium" size="md" color="default"></dui-pill>
-                <dui-pill label="Large" size="lg" color="default"></dui-pill>
+                <ui-pill label="Small" size="sm" color="default"></ui-pill>
+                <ui-pill label="Medium" size="md" color="default"></ui-pill>
+                <ui-pill label="Large" size="lg" color="default"></ui-pill>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="colorsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="colorsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Media -->
@@ -77,24 +73,24 @@
             </div>
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-pill label="Start Icon" icon="star" icon-library="lucide"></dui-pill>
-                <dui-pill
+                <ui-pill label="Start Icon" icon="star" icon-library="lucide"></ui-pill>
+                <ui-pill
                   label="End Icon"
                   icon="chevron-right"
                   icon-library="lucide"
                   icon-position="end"
-                ></dui-pill>
-                <dui-pill label="John Doe" avatar="https://i.pravatar.cc/150?u=1"></dui-pill>
-                <dui-pill
+                ></ui-pill>
+                <ui-pill label="John Doe" avatar="https://i.pravatar.cc/150?u=1"></ui-pill>
+                <ui-pill
                   label="Messages"
                   icon="mail"
                   icon-library="lucide"
                   counter="12"
                   color="warning"
-                ></dui-pill>
+                ></ui-pill>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="mediaCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="mediaCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Orientations -->
@@ -105,18 +101,18 @@
             </div>
             <div class="demo-card">
               <div class="demo-flex h-120 flex-items-center">
-                <dui-pill label="Horizontal" orientation="horizontal"></dui-pill>
-                <dui-pill
+                <ui-pill label="Horizontal" orientation="horizontal"></ui-pill>
+                <ui-pill
                   label="Vertical"
                   orientation="vertical"
                   icon="move-vertical"
                   icon-library="lucide"
-                ></dui-pill>
-                <dui-pill label="Vertical Text" orientation="vertical-text"></dui-pill>
-                <dui-pill label="Vertical Rotated" orientation="vertical-rotated"></dui-pill>
+                ></ui-pill>
+                <ui-pill label="Vertical Text" orientation="vertical-text"></ui-pill>
+                <ui-pill label="Vertical Rotated" orientation="vertical-rotated"></ui-pill>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="orientationsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="orientationsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Actions -->
@@ -127,27 +123,27 @@
             </div>
             <div class="demo-card pill-stack">
               <div class="demo-flex">
-                <dui-pill label="Clickable" clickable (pillClick)="onPillClick()"></dui-pill>
-                <dui-pill
+                <ui-pill label="Clickable" clickable (pillClick)="onPillClick()"></ui-pill>
+                <ui-pill
                   label="Toggleable"
                   clickable
                   selected
                   (pillSelect)="onPillSelect($event)"
-                ></dui-pill>
-                <dui-pill
+                ></ui-pill>
+                <ui-pill
                   label="Removable"
                   removable
                   color="danger"
                   (pillRemove)="onPillRemove()"
-                ></dui-pill>
+                ></ui-pill>
               </div>
               <div class="demo-flex mt-24">
-                <dui-pill label="Loading" loading color="info"></dui-pill>
-                <dui-pill label="Disabled" disabled></dui-pill>
-                <dui-pill label="Hover me" color="success" tooltip="Click to explore!"></dui-pill>
+                <ui-pill label="Loading" loading color="info"></ui-pill>
+                <ui-pill label="Disabled" disabled></ui-pill>
+                <ui-pill label="Hover me" color="success" tooltip="Click to explore!"></ui-pill>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="actionsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="actionsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Animations -->
@@ -158,12 +154,12 @@
             </div>
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-pill label="Scale" animation="scale" color="primary"></dui-pill>
-                <dui-pill label="Fade" animation="fade" color="success"></dui-pill>
-                <dui-pill label="Slide" animation="slide" color="warning"></dui-pill>
+                <ui-pill label="Scale" animation="scale" color="primary"></ui-pill>
+                <ui-pill label="Fade" animation="fade" color="success"></ui-pill>
+                <ui-pill label="Slide" animation="slide" color="warning"></ui-pill>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="animationsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="animationsCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>

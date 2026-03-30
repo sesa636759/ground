@@ -8,63 +8,63 @@
         <h3>📐 Style</h3>
         <div class="control-group">
           <label>Candle Width</label>
-          <dui-input
+          <ui-input
             type="range"
             min="8"
             max="28"
             step="2"
             [(ngModel)]="cfg.candleW"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="fs-08rem text-muted">{{ cfg.candleW }}px</span>
         </div>
         <div class="control-group">
           <label>Up Color</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.upColor"
             (ngModelChange)="update()"
             [options]="upColorOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Down Color</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.downColor"
             (ngModelChange)="update()"
             [options]="downColorOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showDates"
             [(ngModel)]="cfg.showDates"
             (ngModelChange)="update()"
             label="Show Dates"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="hollow"
             [(ngModel)]="cfg.hollow"
             (ngModelChange)="update()"
             label="Hollow Style"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper w-full display-flex justify-center">
@@ -135,12 +135,12 @@
     </svg>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

@@ -240,7 +240,7 @@ export class DmDashboardPlaygroundComponent
   }
 
   updateCode() {
-    let code = `<dui-dashboard\n`;
+    let code = `<ui-dashboard\n`;
     code += `  id="dashboard"\n`;
     if (this.pgConfig.theme !== 'light') code += `  theme="${this.pgConfig.theme}"\n`;
 
@@ -253,7 +253,7 @@ export class DmDashboardPlaygroundComponent
     // Properties that are usually attributes
     code += `  breakpoints='${this.pgConfig.breakpoints}'\n`;
 
-    code += `></dui-dashboard>\n\n`;
+    code += `></ui--dashboard>\n\n`;
 
     code += `// JavaScript initialization\n`;
     code += `const dashboard = document.getElementById('dashboard');\n`;

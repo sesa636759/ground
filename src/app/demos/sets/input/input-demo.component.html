@@ -21,25 +21,20 @@
           [code]="basicCode"
         >
           <div class="demo-grid col-2">
-            <dui-input label="Full Name" placeholder="John Doe" full-width></dui-input>
-            <dui-input
+            <ui-input label="Full Name" placeholder="John Doe" full-width></ui-input>
+            <ui-input
               type="email"
               label="Email Address"
               placeholder="john@example.com"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               type="search"
               label="Search"
               placeholder="Search product..."
               full-width
-            ></dui-input>
-            <dui-input
-              type="tel"
-              label="Telephone"
-              placeholder="+1 (234) 567"
-              full-width
-            ></dui-input>
+            ></ui-input>
+            <ui-input type="tel" label="Telephone" placeholder="+1 (234) 567" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -51,14 +46,14 @@
           [code]="passwordsCode"
         >
           <div class="demo-grid col-2">
-            <dui-input type="password" label="Basic Password" full-width></dui-input>
-            <dui-input
+            <ui-input type="password" label="Basic Password" full-width></ui-input>
+            <ui-input
               type="password"
               label="Secured Entry"
               show-password-toggle
               value="Secret123!"
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -70,21 +65,21 @@
           [code]="numbersCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
+            <ui-input
               type="number"
               label="Quantity Selection"
               show-steppers
               value="10"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               type="number"
               label="Percentage Range"
               min="0"
               max="100"
               placeholder="0-100"
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -96,11 +91,11 @@
           [code]="variantsCode"
         >
           <div class="demo-grid col-2">
-            <dui-input variant="outlined" label="Outlined (Default)" full-width></dui-input>
-            <dui-input variant="filled" label="Filled" full-width></dui-input>
-            <dui-input variant="soft" label="Soft / Secondary" full-width></dui-input>
-            <dui-input variant="underlined" label="Underlined" full-width></dui-input>
-            <dui-input variant="ghost" label="Ghost / Minimal" full-width></dui-input>
+            <ui-input variant="outlined" label="Outlined (Default)" full-width></ui-input>
+            <ui-input variant="filled" label="Filled" full-width></ui-input>
+            <ui-input variant="soft" label="Soft / Secondary" full-width></ui-input>
+            <ui-input variant="underlined" label="Underlined" full-width></ui-input>
+            <ui-input variant="ghost" label="Ghost / Minimal" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -112,9 +107,9 @@
           [code]="sizesCode"
         >
           <div class="demo-flex-wrap flex-items-end">
-            <dui-input size="small" label="Compact" full-width></dui-input>
-            <dui-input size="medium" label="Standard" full-width></dui-input>
-            <dui-input size="large" label="Prominent" full-width></dui-input>
+            <ui-input size="small" label="Compact" full-width></ui-input>
+            <ui-input size="medium" label="Standard" full-width></ui-input>
+            <ui-input size="large" label="Prominent" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -126,19 +121,14 @@
           [code]="floatingCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
-              floating-label
-              label="Quick Search"
-              variant="outlined"
-              full-width
-            ></dui-input>
-            <dui-input
+            <ui-input floating-label label="Quick Search" variant="outlined" full-width></ui-input>
+            <ui-input
               floating-label
               label="Email Address"
               variant="filled"
               prefix-icon="mail"
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -150,15 +140,15 @@
           [code]="decoratorsCode"
         >
           <div class="demo-grid col-2">
-            <dui-input prefix-text="https://" label="Website URL" full-width></dui-input>
-            <dui-input suffix-text=".com" label="Domain Name" full-width></dui-input>
-            <dui-input
+            <ui-input prefix-text="https://" label="Website URL" full-width></ui-input>
+            <ui-input suffix-text=".com" label="Domain Name" full-width></ui-input>
+            <ui-input
               prefix-icon="search"
               suffix-icon="mic"
               placeholder="Speak to search"
               full-width
-            ></dui-input>
-            <dui-input badge="99+" label="Inbound Tasks" suffix-icon="bell" full-width></dui-input>
+            ></ui-input>
+            <ui-input badge="99+" label="Inbound Tasks" suffix-icon="bell" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -170,14 +160,14 @@
           [code]="multilineCode"
         >
           <div class="demo-grid col-1">
-            <dui-input multiline rows="3" label="Fixed Text Area" full-width></dui-input>
-            <dui-input
+            <ui-input multiline rows="3" label="Fixed Text Area" full-width></ui-input>
+            <ui-input
               multiline
               auto-resize
               label="Auto-expanding thoughts"
               placeholder="Type a long story..."
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -189,31 +179,31 @@
           [code]="validationCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
+            <ui-input
               validation-state="error"
               error-text="Username already taken"
               label="Username"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               validation-state="success"
               success-text="Strong password"
               type="password"
               label="Password"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               validation-state="warning"
               warning-text="Database connection is slow"
               label="Search"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               validation-state="info"
               info-text="Last synced 5m ago"
               label="Status"
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -225,17 +215,12 @@
           [code]="constraintsCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
-              max-length="20"
-              show-counter
-              label="Bio (Max 20 chars)"
-              full-width
-            ></dui-input>
-            <dui-input
+            <ui-input max-length="20" show-counter label="Bio (Max 20 chars)" full-width></ui-input>
+            <ui-input
               min-length-indicator="10"
               label="Comment (Min 10 chars)"
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -247,25 +232,15 @@
           [code]="maskingCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
-              mask="phone"
-              label="Phone"
-              placeholder="(000) 000-0000"
-              full-width
-            ></dui-input>
-            <dui-input
+            <ui-input mask="phone" label="Phone" placeholder="(000) 000-0000" full-width></ui-input>
+            <ui-input
               mask="credit-card"
               label="Credit Card"
               prefix-icon="credit-card"
               full-width
-            ></dui-input>
-            <dui-input mask="currency" label="Monthly Budget" value="5000" full-width></dui-input>
-            <dui-input
-              mask="date"
-              label="Birth Date"
-              placeholder="MM/DD/YYYY"
-              full-width
-            ></dui-input>
+            ></ui-input>
+            <ui-input mask="currency" label="Monthly Budget" value="5000" full-width></ui-input>
+            <ui-input mask="date" label="Birth Date" placeholder="MM/DD/YYYY" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -277,21 +252,21 @@
           [code]="multimediaCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
+            <ui-input
               type="color"
               value="#4f46e5"
               label="Primary Theme Color"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               type="range"
               label="Master Volume"
               min="0"
               max="100"
               value="75"
               full-width
-            ></dui-input>
-            <dui-input type="date" label="Project Deadline" full-width></dui-input>
+            ></ui-input>
+            <ui-input type="date" label="Project Deadline" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -303,14 +278,14 @@
           [code]="filesCode"
         >
           <div class="demo-grid col-2">
-            <dui-input type="file" label="Standard Document" full-width></dui-input>
-            <dui-input
+            <ui-input type="file" label="Standard Document" full-width></ui-input>
+            <ui-input
               type="file"
               multiple
               label="Batch Gallery"
               accept="image/*"
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -322,26 +297,26 @@
           [code]="interactionCode"
         >
           <div class="demo-grid col-2">
-            <dui-input
+            <ui-input
               show-clear
               placeholder="Type to clear"
               label="Clearable Entry"
               value="Initial text"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               show-copy
               value="API_KEY_SECURE_123"
               label="Access Token"
               full-width
-            ></dui-input>
-            <dui-input
+            ></ui-input>
+            <ui-input
               loading
               label="Data Pipeline"
               placeholder="Processing records..."
               full-width
-            ></dui-input>
-            <dui-input skeleton label="Loading Component" full-width></dui-input>
+            ></ui-input>
+            <ui-input skeleton label="Loading Component" full-width></ui-input>
           </div>
         </pg-example-section>
 
@@ -353,12 +328,12 @@
           [code]="suggestionsCode"
         >
           <div class="max-w-400">
-            <dui-input
+            <ui-input
               label="Framework"
               [attr.suggestions]="'Angular,React,Vue,Svelte,Solid,Stencil'"
               placeholder="Search library..."
               full-width
-            ></dui-input>
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -370,14 +345,9 @@
           [code]="statesCode"
         >
           <div class="demo-grid col-2">
-            <dui-input disabled value="Not editable" label="Disabled State" full-width></dui-input>
-            <dui-input
-              readonly
-              value="View only data"
-              label="Readonly State"
-              full-width
-            ></dui-input>
-            <dui-input rtl value="امتحان نص مكتوب للعرب" label="RTL Mode" full-width></dui-input>
+            <ui-input disabled value="Not editable" label="Disabled State" full-width></ui-input>
+            <ui-input readonly value="View only data" label="Readonly State" full-width></ui-input>
+            <ui-input rtl value="امتحان نص مكتوب للعرب" label="RTL Mode" full-width></ui-input>
           </div>
         </pg-example-section>
       </div>

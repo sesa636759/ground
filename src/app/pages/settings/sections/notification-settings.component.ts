@@ -29,11 +29,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">Product Updates</span>
                 <span class="desc">New features, improvements, and bug fixes</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="emailProductUpdates()"
                 variant="success"
                 (switchChange)="emailProductUpdates.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -41,11 +41,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">Security Alerts</span>
                 <span class="desc">Account logins, password changes, and security tips</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="emailSecurityAlerts()"
                 variant="success"
                 (switchChange)="emailSecurityAlerts.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -53,11 +53,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">Marketing Discovery</span>
                 <span class="desc">Personalized offers, newsletters, and surveys</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="emailMarketing()"
                 variant="success"
                 (switchChange)="emailMarketing.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
         </div>
@@ -74,11 +74,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">Browser Notifications</span>
                 <span class="desc">Show desktop notifications while you're active</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="pushBrowser()"
                 variant="primary"
                 (switchChange)="pushBrowser.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -86,11 +86,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">Focus Mode</span>
                 <span class="desc">Only receive notifications for critical system updates</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="pushImportantOnly()"
                 variant="primary"
                 (switchChange)="pushImportantOnly.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
         </div>
@@ -107,11 +107,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">Activity Feed</span>
                 <span class="desc">Likes, comments, and mentions on your posts</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="inAppActivity()"
                 variant="info"
                 (switchChange)="inAppActivity.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -119,11 +119,11 @@ import { CommonModule } from '@angular/common';
                 <span class="label">System Maintenance</span>
                 <span class="desc">Scheduled maintenance and service health alerts</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="inAppSystem()"
                 variant="info"
                 (switchChange)="inAppSystem.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
         </div>

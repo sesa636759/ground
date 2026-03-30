@@ -8,74 +8,62 @@
   <div slot="content-global" class="control-grid list-global-section">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         [options]="variantOptions"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         [options]="colorOptions"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         [options]="sizeOptions"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Subheader</label>
-      <dui-input [(ngModel)]="pgConfig.subheader" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.subheader" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()"></ui-checkbox>
         Dense
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.dividers"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.dividers" (ngModelChange)="updateConfig()"></ui-checkbox>
         Dividers
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.flush" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.flush" (ngModelChange)="updateConfig()"></ui-checkbox>
         Flush
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.rounded"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()"></ui-checkbox>
         Rounded
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.elevated"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()"></ui-checkbox>
         Elevated
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.horizontal"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Horizontal
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.numbered"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.numbered" (ngModelChange)="updateConfig()"></ui-checkbox>
         Numbered
       </label>
     </div>
@@ -85,41 +73,41 @@
   <div slot="content-item" class="control-grid list-item-section">
     <div class="control-group">
       <label>Item Label</label>
-      <dui-input [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Item Sublabel</label>
-      <dui-input [(ngModel)]="pgConfig.itemSublabel" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.itemSublabel" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Icon Class</label>
-      <dui-input [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Action Icon</label>
-      <dui-input [(ngModel)]="pgConfig.itemActionIcon" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.itemActionIcon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Badge Text</label>
-      <dui-input [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Counter</label>
-      <dui-input [(ngModel)]="pgConfig.itemCounter" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.itemCounter" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showCheckbox"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Checkbox
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.itemDisabled"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Third Item Disabled
       </label>
     </div>
@@ -129,76 +117,73 @@
   <div slot="content-features" class="control-grid list-features-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.multiSelect"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Multi Select
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.checkboxSelection"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Checkbox Selection Mode
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.searchable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Searchable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading State
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.paginated"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Paginated
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.isDraggable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Draggable
       </label>
     </div>
     <div class="control-group" *ngIf="pgConfig.searchable">
       <label>Search Placeholder</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.searchPlaceholder"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group" *ngIf="pgConfig.paginated">
       <label>Items Per Page</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.itemsPerPage"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <!-- Preview Area -->
   <div preview class="preview-stage list-preview">
     <div class="list-preview-inner">
-      <dui-list
+      <ui-list
         [attr.variant]="pgConfig.variant"
         [attr.color]="pgConfig.color"
         [attr.size]="pgConfig.size"
@@ -220,7 +205,7 @@
         [attr.is-draggable]="pgConfig.isDraggable ? '' : null"
         [attr.checkbox-selection]="pgConfig.checkboxSelection ? '' : null"
       >
-        <dui-list-item
+        <ui-list-item
           [attr.label]="pgConfig.itemLabel + ' 1'"
           [attr.sublabel]="pgConfig.itemSublabel"
           [attr.icon]="pgConfig.itemIcon"
@@ -228,24 +213,24 @@
           [attr.badge]="pgConfig.itemBadge"
           [attr.badge-color]="pgConfig.itemBadgeColor"
           [attr.show-checkbox]="pgConfig.showCheckbox ? '' : null"
-        ></dui-list-item>
-        <dui-list-item
+        ></ui-list-item>
+        <ui-list-item
           [attr.label]="pgConfig.itemLabel + ' 2'"
           [attr.sublabel]="pgConfig.itemSublabel"
           [attr.icon]="pgConfig.itemIcon"
           [attr.action-icon]="pgConfig.itemActionIcon"
           [attr.counter]="pgConfig.itemCounter"
           [attr.show-checkbox]="pgConfig.showCheckbox ? '' : null"
-        ></dui-list-item>
-        <dui-list-item
+        ></ui-list-item>
+        <ui-list-item
           [attr.label]="pgConfig.itemLabel + ' 3'"
           [attr.sublabel]="pgConfig.itemSublabel"
           [attr.icon]="pgConfig.itemIcon"
           [attr.action-icon]="pgConfig.itemActionIcon"
           [attr.disabled]="pgConfig.itemDisabled ? '' : null"
           [attr.show-checkbox]="pgConfig.showCheckbox ? '' : null"
-        ></dui-list-item>
-      </dui-list>
+        ></ui-list-item>
+      </ui-list>
     </div>
   </div>
 

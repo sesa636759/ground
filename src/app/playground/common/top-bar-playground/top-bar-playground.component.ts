@@ -38,13 +38,13 @@ export class DmTopBarPlaygroundComponent extends BasePlaygroundComponent impleme
   }
 
   updateConfig() {
-    let code = '<dui-top-bar\n';
+    let code = '<ui-top-bar\n';
     if (this.pgConfig.sticky) code += `  sticky\n`;
     code += `  style="height: ${this.pgConfig.height}px"\n`;
     code += '>\n';
     code += `  <div slot="start"> ${this.pgConfig.logoText} </div>\n`;
     code += '  <div slot="end"> Actions </div>\n';
-    code += '</dui-top-bar>';
+    code += '</ui--top-bar>';
 
     this.generatedCode.set(code);
     this.refreshCode();

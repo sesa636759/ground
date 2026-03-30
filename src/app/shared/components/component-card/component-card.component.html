@@ -8,7 +8,7 @@
   <div class="card-header">
     <div class="comp-avatar">
       @if (icon) {
-        <dui-icon [name]="icon" [library]="iconLibrary" size="22" color="white"></dui-icon>
+        <ui-icon [name]="icon" [library]="iconLibrary" size="22" color="white"></ui-icon>
       }
       @if (!icon) {
         <span>{{ label.charAt(0) }}</span>
@@ -35,7 +35,7 @@
       }
       <div class="preview-overlay">
         <div class="overlay-actions">
-          <dui-button class="explore-btn" (click)="onDemoClick($event)" label="Demo">
+          <ui-button class="explore-btn" (click)="onDemoClick($event)" label="Demo">
             <svg
               width="16"
               height="16"
@@ -47,9 +47,9 @@
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-          </dui-button>
+          </ui-button>
 
-          <dui-button class="docs-btn" (click)="onDocsClick($event)" label="API" variant="ghost">
+          <ui-button class="docs-btn" (click)="onDocsClick($event)" label="API" variant="ghost">
             <svg
               width="16"
               height="16"
@@ -61,7 +61,7 @@
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
             </svg>
-          </dui-button>
+          </ui-button>
         </div>
       </div>
     </div>

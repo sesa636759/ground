@@ -5,6 +5,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmAnimateOnScrollPlaygroundComponent } from '../../../playground/sets/animate-on-scroll-playground/animate-on-scroll-playground.component';
+import { AnimateOnScrollComponent } from '../../../directives/animate-on-scroll.component';
 
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -14,6 +15,7 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    AnimateOnScrollComponent,
     DmAnimateOnScrollPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -91,7 +93,7 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
   ];
 
   // Basic Animations
-  fadeInBasicCode = signal(`<dui-animate-on-scroll
+  fadeInBasicCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   duration="600"
 >
@@ -99,9 +101,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Fade In</h3>
     <p>Smooth fade entrance</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  fadeOutBasicCode = signal(`<dui-animate-on-scroll
+  fadeOutBasicCode = signal(`<ui-animate-on-scroll
   animation="fade-out"
   duration="600"
 >
@@ -109,9 +111,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Fade Out</h3>
     <p>Fade out on scroll</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  slideUpCode = signal(`<dui-animate-on-scroll
+  slideUpCode = signal(`<ui-animate-on-scroll
   animation="slide-up"
   duration="800"
   offset="100"
@@ -120,9 +122,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Slide Up</h3>
     <p>Slide up from bottom</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  slideDownCode = signal(`<dui-animate-on-scroll
+  slideDownCode = signal(`<ui-animate-on-scroll
   animation="slide-down"
   duration="800"
 >
@@ -130,9 +132,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Slide Down</h3>
     <p>Slide down from top</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  slideLeftCode = signal(`<dui-animate-on-scroll
+  slideLeftCode = signal(`<ui-animate-on-scroll
   animation="slide-left"
   duration="800"
 >
@@ -140,9 +142,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Slide Left</h3>
     <p>Slide from right to left</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  slideRightCode = signal(`<dui-animate-on-scroll
+  slideRightCode = signal(`<ui-animate-on-scroll
   animation="slide-right"
   duration="800"
 >
@@ -150,9 +152,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Slide Right</h3>
     <p>Slide from left to right</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  zoomInCode = signal(`<dui-animate-on-scroll
+  zoomInCode = signal(`<ui-animate-on-scroll
   animation="zoom-in"
   duration="700"
   scale="0.5"
@@ -161,9 +163,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Zoom In</h3>
     <p>Scale up entrance</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  zoomOutCode = signal(`<dui-animate-on-scroll
+  zoomOutCode = signal(`<ui-animate-on-scroll
   animation="zoom-out"
   duration="700"
   scale="1.5"
@@ -172,9 +174,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Zoom Out</h3>
     <p>Scale down entrance</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  bounceCode = signal(`<dui-animate-on-scroll
+  bounceCode = signal(`<ui-animate-on-scroll
   animation="bounce"
   duration="1000"
 >
@@ -182,9 +184,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Bounce</h3>
     <p>Bouncy entrance effect</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  flipCode = signal(`<dui-animate-on-scroll
+  flipCode = signal(`<ui-animate-on-scroll
   animation="flip"
   duration="900"
 >
@@ -192,10 +194,10 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Flip</h3>
     <p>Flip animation</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
   // Cinematic Effects
-  blurEntranceCode = signal(`<dui-animate-on-scroll
+  blurEntranceCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   blur-amount="10"
   duration="1000"
@@ -205,9 +207,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Blur Entrance</h3>
     <p>Starts blurry, becomes sharp</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  glassmorphicBlurCode = signal(`<dui-animate-on-scroll
+  glassmorphicBlurCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   blur-amount="20"
   easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
@@ -217,9 +219,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Premium Content</h3>
     <p>Glassmorphic blur with elastic easing</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  elasticEasingCode = signal(`<dui-animate-on-scroll
+  elasticEasingCode = signal(`<ui-animate-on-scroll
   animation="slide-up"
   easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
   duration="1000"
@@ -228,10 +230,10 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Elastic Easing</h3>
     <p>Bouncy, playful animation curve</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
   // 3D Transforms
-  flipIn3dCode = signal(`<dui-animate-on-scroll
+  flipIn3dCode = signal(`<ui-animate-on-scroll
   animation="flip-in"
   perspective="1000"
   rotate-x="90"
@@ -241,9 +243,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Flip In 3D</h3>
     <p>Rotates along X-axis with perspective</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  rotate3dCode = signal(`<dui-animate-on-scroll
+  rotate3dCode = signal(`<ui-animate-on-scroll
   animation="rotate-3d"
   perspective="1500"
   rotate-y="180"
@@ -253,9 +255,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Rotate 3D</h3>
     <p>Complex 3D rotation from center</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  perspectiveDepthCode = signal(`<dui-animate-on-scroll
+  perspectiveDepthCode = signal(`<ui-animate-on-scroll
   animation="zoom-in"
   perspective="2000"
   rotate-x="45"
@@ -266,10 +268,10 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Perspective Depth</h3>
     <p>Deep 3D perspective with multiple axes</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
   // Stagger Effects
-  staggerChildrenCode = signal(`<dui-animate-on-scroll
+  staggerChildrenCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   stagger="100"
 >
@@ -277,9 +279,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
   <div class="stagger-item">Security</div>
   <div class="stagger-item">Speed</div>
   <div class="stagger-item">Cloud</div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  staggerFastCode = signal(`<dui-animate-on-scroll
+  staggerFastCode = signal(`<ui-animate-on-scroll
   animation="slide-up"
   stagger="50"
 >
@@ -288,34 +290,34 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
   <div class="stagger-item">Item 3</div>
   <div class="stagger-item">Item 4</div>
   <div class="stagger-item">Item 5</div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  staggerSlowCode = signal(`<dui-animate-on-scroll
+  staggerSlowCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   stagger="200"
 >
   <div class="stagger-item">Step 1</div>
   <div class="stagger-item">Step 2</div>
   <div class="stagger-item">Step 3</div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
   // Scroll Interactions
   scrollTriggerCode = signal(`<!-- Element to animate -->
-<dui-animate-on-scroll
+<ui-animate-on-scroll
   animation="shake"
   trigger="#trigger-zone"
 >
   <div class="sidebar">
     I shake when you scroll to the trigger!
   </div>
-</dui-animate-on-scroll>
+</ui-animate-on-scroll>
 
 <!-- Trigger element -->
 <div id="trigger-zone" class="trigger-area">
   Trigger Zone - Scroll here
 </div>`);
 
-  scrollScrubbingCode = signal(`<dui-animate-on-scroll
+  scrollScrubbingCode = signal(`<ui-animate-on-scroll
   animation="scrub"
   scrub="true"
   rotate-z="360"
@@ -324,9 +326,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
   <div class="scrub-element">
     Scroll to rotate and zoom!
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  scrubRotateCode = signal(`<dui-animate-on-scroll
+  scrubRotateCode = signal(`<ui-animate-on-scroll
   animation="scrub"
   scrub="true"
   rotate-z="720"
@@ -334,9 +336,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
   <div class="scrub-element">
     Double rotation on scroll
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  scrubScaleCode = signal(`<dui-animate-on-scroll
+  scrubScaleCode = signal(`<ui-animate-on-scroll
   animation="scrub"
   scrub="true"
   scale="2"
@@ -344,36 +346,36 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
   <div class="scrub-element">
     Scale 2x on scroll
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
   // Text Animations
-  textCharCode = signal(`<dui-animate-on-scroll
+  textCharCode = signal(`<ui-animate-on-scroll
   animation="text-reveal"
   text-mode="char"
   stagger="50"
 >
   <h2>Start Building</h2>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  textWordCode = signal(`<dui-animate-on-scroll
+  textWordCode = signal(`<ui-animate-on-scroll
   animation="text-reveal"
   text-mode="word"
   stagger="100"
 >
   <p>Create amazing scroll experiences today</p>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  textStaggerCode = signal(`<dui-animate-on-scroll
+  textStaggerCode = signal(`<ui-animate-on-scroll
   animation="text-reveal"
   text-mode="char"
   stagger="30"
   duration="50"
 >
   <h1>Fast Character Reveal</h1>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
   // Advanced Features
-  shakeAnimationCode = signal(`<dui-animate-on-scroll
+  shakeAnimationCode = signal(`<ui-animate-on-scroll
   animation="shake"
   duration="500"
 >
@@ -381,9 +383,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Shake</h3>
     <p>Attention-grabbing shake effect</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  repeatAnimationCode = signal(`<dui-animate-on-scroll
+  repeatAnimationCode = signal(`<ui-animate-on-scroll
   animation="bounce"
   repeat="true"
   duration="1000"
@@ -392,9 +394,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Repeat</h3>
     <p>Animation repeats on every scroll</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  mirrorEffectCode = signal(`<dui-animate-on-scroll
+  mirrorEffectCode = signal(`<ui-animate-on-scroll
   animation="slide-up"
   mirror="true"
   duration="800"
@@ -403,9 +405,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Mirror</h3>
     <p>Reverses when scrolling up</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  customThresholdCode = signal(`<dui-animate-on-scroll
+  customThresholdCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   threshold="0.5"
   duration="600"
@@ -414,9 +416,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Custom Threshold</h3>
     <p>Triggers at 50% visibility</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  delayTimingCode = signal(`<dui-animate-on-scroll
+  delayTimingCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   delay="500"
   duration="800"
@@ -425,9 +427,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Delayed</h3>
     <p>500ms delay before animation</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  durationControlCode = signal(`<dui-animate-on-scroll
+  durationControlCode = signal(`<ui-animate-on-scroll
   animation="slide-up"
   duration="2000"
 >
@@ -435,9 +437,9 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Slow Motion</h3>
     <p>2 second duration for dramatic effect</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 
-  combinedEffectsCode = signal(`<dui-animate-on-scroll
+  combinedEffectsCode = signal(`<ui-animate-on-scroll
   animation="fade-in"
   blur-amount="15"
   perspective="1000"
@@ -450,5 +452,5 @@ export class DmAnimateOnScrollDemoComponent extends BaseDemoComponent {
     <h3>Combined Effects</h3>
     <p>Blur + 3D + Scale + Elastic Easing</p>
   </div>
-</dui-animate-on-scroll>`);
+</ui-animate-on-scroll>`);
 }

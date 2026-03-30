@@ -8,67 +8,67 @@
         <h3>📐 Style</h3>
         <div class="control-group">
           <label>Stroke Width</label>
-          <dui-input
+          <ui-input
             type="range"
             min="1"
             max="5"
             step="0.5"
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="step-line-stroke-label">{{ cfg.strokeWidth }}px</span>
         </div>
         <div class="control-group">
           <label>Point Radius</label>
-          <dui-input
+          <ui-input
             type="range"
             min="0"
             max="8"
             step="1"
             [(ngModel)]="cfg.pointR"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="step-line-point-label">{{ cfg.pointR }}px</span>
         </div>
         <div class="control-group">
           <label>Color</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.color"
             (ngModelChange)="update()"
             [options]="colorOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="fill"
             [(ngModel)]="cfg.fill"
             (ngModelChange)="update()"
             label="Fill Area"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showAxes"
             [(ngModel)]="cfg.showAxes"
             (ngModelChange)="update()"
             label="Show Axes"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper step-line-preview">
@@ -150,12 +150,12 @@
     </div>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

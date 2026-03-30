@@ -41,14 +41,14 @@ export class DmCascadeSelectDemoComponent extends BaseDemoComponent {
     { label: 'Images', value: 'img', children: [{ label: 'Nature.jpg', value: 'nature' }] },
   ];
 
-  playgroundCode = `<dui-cascade-select [options]="options" placeholder="Select item"></dui-cascade-select>`;
+  playgroundCode = `<ui-cascade-select [options]="options" placeholder="Select item"></ui-cascade-select>`;
 
   triggersCode = `<!-- Expand on Click -->
-<dui-cascade-select expand-trigger="click" [options]="options"></dui-cascade-select>
+<ui-cascade-select expand-trigger="click" [options]="options"></ui-cascade-select>
 
 <!-- Show only leaf label (No path) -->
-<dui-cascade-select [show-full-path]="false" [options]="options"></dui-cascade-select>`;
+<ui-cascade-select [show-full-path]="false" [options]="options"></ui-cascade-select>`;
 
   selectionCode = `<!-- Select path at any level -->
-<dui-cascade-select change-on-select [options]="options"></dui-cascade-select>`;
+<ui-cascade-select change-on-select [options]="options"></ui-cascade-select>`;
 }

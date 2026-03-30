@@ -82,7 +82,7 @@ export class DmAvatarPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = '<dui-avatar\n';
+    let code = '<ui-avatar\n';
     if (this.pgConfig.name) code += `  name="${this.pgConfig.name}"\n`;
     if (this.pgConfig.src) code += `  src="${this.pgConfig.src}"\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
@@ -116,7 +116,7 @@ export class DmAvatarPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.gradient) code += `  gradient\n`;
     if (this.pgConfig.autoColor) code += `  auto-color\n`;
 
-    code += '></dui-avatar>';
+    code += '></ui--avatar>';
 
     this.generatedCode.set(code);
     this.refreshCode();

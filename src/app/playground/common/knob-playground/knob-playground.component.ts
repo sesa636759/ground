@@ -79,7 +79,7 @@ export class DmKnobPlaygroundComponent extends BasePlaygroundComponent implement
 
   updateConfig() {
     const config = this.pgConfig;
-    let code = `<dui-knob\n`;
+    let code = `<ui-knob\n`;
     code += `  [value]="${config.value}"\n`;
     if (config.min !== 0) code += `  [min]="${config.min}"\n`;
     if (config.max !== 100) code += `  [max]="${config.max}"\n`;
@@ -106,7 +106,7 @@ export class DmKnobPlaygroundComponent extends BasePlaygroundComponent implement
     if (config.snap) code += `  snap\n`;
     if (config.allowInput) code += `  allow-input\n`;
     code += `  (knobChange)="onValueChange($event)"\n`;
-    code += `></dui-knob>`;
+    code += `></ui--knob>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

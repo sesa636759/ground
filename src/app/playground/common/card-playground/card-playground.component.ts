@@ -164,7 +164,7 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
 
   updateConfig() {
     const config = this.pgConfig;
-    let code = `<dui-card`;
+    let code = `<ui-card`;
 
     // Identity & Layout
     if (config.cardId) code += `\n  card-id="${config.cardId}"`;
@@ -238,7 +238,7 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
 
     // Potential Slots (only as placeholder comments if desired, or simplified)
     code += `\n  <!-- Custom content slots available: header, footer, tabs, grid, back... -->`;
-    code += `\n</dui-card>`;
+    code += `\n</ui--card>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

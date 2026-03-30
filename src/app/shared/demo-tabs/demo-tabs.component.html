@@ -1,6 +1,6 @@
 <div class="demo-page-container">
   <div class="demo-master-container">
-    <dui-tabs
+    <ui-tabs
       [items]="tabItems"
       [defaultActive]="active()"
       (tabChange)="onTabChange($event)"
@@ -21,6 +21,6 @@
       <div slot="docs" class="pane-docs">
         <ng-content select="[slot=docs]"></ng-content>
       </div>
-    </dui-tabs>
+    </ui-tabs>
   </div>
 </div>

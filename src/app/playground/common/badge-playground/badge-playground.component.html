@@ -7,153 +7,146 @@
   <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Value</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
         [disabled]="pgConfig.dot"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Icon Name</label>
-      <dui-input
-        type="text"
-        [(ngModel)]="pgConfig.icon"
-        (ngModelChange)="updateConfig()"
-      ></dui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Icon Library</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
         [options]="iconLibraryOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Gradient</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.gradient"
         (ngModelChange)="updateConfig()"
         [options]="gradientOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Position</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.position"
         (ngModelChange)="updateConfig()"
         [options]="positionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Offset X</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.offsetX"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Offset Y</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.offsetY"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Animation</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.animation"
         (ngModelChange)="updateConfig()"
         [options]="animationOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.dot" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.dot" (ngModelChange)="updateConfig()"></ui-checkbox>
         Dot Mode
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></ui-checkbox>
         Glow Effect
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.interactive"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Interactive
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.closeable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Closeable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.showZero"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.showZero" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Zero
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage w-full display-flex justify-center items-center p-60">
-    <dui-badge
+    <ui-badge
       [attr.value]="pgConfig.value"
       [attr.max]="pgConfig.max"
       [attr.color]="pgConfig.color"
@@ -179,9 +172,9 @@
       <div
         class="w-60 h-60 bg-gradient-surface border rounded-12 display-flex items-center justify-center fs-24"
       >
-        <dui-icon name="bell" library="lucide"></dui-icon>
+        <ui-icon name="bell" library="lucide"></ui-icon>
       </div>
-    </dui-badge>
+    </ui-badge>
   </div>
 
   <pg-playground-event-log

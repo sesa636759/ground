@@ -7,19 +7,19 @@
   <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Horizontal', value: 'horizontal' },
           { label: 'Vertical', value: 'vertical' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -29,12 +29,12 @@
           { label: 'Enclosed', value: 'enclosed' },
           { label: 'Buttons', value: 'buttons' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -42,12 +42,12 @@
           { label: 'Medium', value: 'medium' },
           { label: 'Large', value: 'large' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -58,12 +58,12 @@
           { label: 'Warning', value: 'warning' },
           { label: 'Info', value: 'info' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Align</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -72,49 +72,49 @@
           { label: 'End', value: 'end' },
           { label: 'Stretch', value: 'stretch' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Indicator Pos</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.indicatorPosition"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Bottom', value: 'bottom' },
           { label: 'Top', value: 'top' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-behavior" class="checkbox-grid pg-panel-container">
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
+      <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
+      <ui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
       Scrollable
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.showAddButton" (ngModelChange)="updateConfig()" /> Add Btn
+      <ui-checkbox [(ngModel)]="pgConfig.showAddButton" (ngModelChange)="updateConfig()" /> Add Btn
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
+      <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.showCloseAllButton" (ngModelChange)="updateConfig()" />
+      <ui-checkbox [(ngModel)]="pgConfig.showCloseAllButton" (ngModelChange)="updateConfig()" />
       Close All
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.editableLabels" (ngModelChange)="updateConfig()" />
+      <ui-checkbox [(ngModel)]="pgConfig.editableLabels" (ngModelChange)="updateConfig()" />
       Editable
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.dragEnabled" (ngModelChange)="updateConfig()" /> Drag
+      <ui-checkbox [(ngModel)]="pgConfig.dragEnabled" (ngModelChange)="updateConfig()" /> Drag
     </label>
     <label class="checkbox-item">
-      <dui-checkbox [(ngModel)]="pgConfig.showOverflowButton" (ngModelChange)="updateConfig()" />
+      <ui-checkbox [(ngModel)]="pgConfig.showOverflowButton" (ngModelChange)="updateConfig()" />
       Overflow
     </label>
   </div>

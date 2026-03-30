@@ -1,9 +1,9 @@
-﻿import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimateOnScrollDirective, AnimationType } from './animate-on-scroll.directive';
 
 @Component({
-  selector: 'ui-animate-on-scroll',
+  selector: 'dui-animate-on-scroll',
   standalone: true,
   imports: [CommonModule, AnimateOnScrollDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

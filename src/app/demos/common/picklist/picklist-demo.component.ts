@@ -100,60 +100,60 @@ export class DmPicklistDemoComponent extends BaseDemoComponent {
   ];
 
   basicCode = signal(
-    `<dui-picklist [options]="fruitOptions" placeholder="Pick a fruit"></dui-picklist>`,
+    `<ui-picklist [options]="fruitOptions" placeholder="Pick a fruit"></ui-picklist>`,
   );
 
-  variantsCode = signal(`<dui-picklist variant="default" placeholder="Default"></dui-picklist>
-<dui-picklist variant="bordered" placeholder="Bordered"></dui-picklist>
-<dui-picklist variant="ghost" placeholder="Ghost"></dui-picklist>`);
+  variantsCode = signal(`<ui-picklist variant="default" placeholder="Default"></ui-picklist>
+<ui-picklist variant="bordered" placeholder="Bordered"></ui-picklist>
+<ui-picklist variant="ghost" placeholder="Ghost"></ui-picklist>`);
 
-  sizesCode = signal(`<dui-picklist size="sm" placeholder="Small"></dui-picklist>
-<dui-picklist size="md" placeholder="Medium"></dui-picklist>
-<dui-picklist size="lg" placeholder="Large"></dui-picklist>`);
+  sizesCode = signal(`<ui-picklist size="sm" placeholder="Small"></ui-picklist>
+<ui-picklist size="md" placeholder="Medium"></ui-picklist>
+<ui-picklist size="lg" placeholder="Large"></ui-picklist>`);
 
   multiCode =
-    signal(`<dui-picklist mode="multi" [options]="fruitOptions" placeholder="Select multiple"></dui-picklist>
-<dui-picklist mode="multi" show-select-all [options]="fruitOptions" label="Select All Example"></dui-picklist>`);
+    signal(`<ui-picklist mode="multi" [options]="fruitOptions" placeholder="Select multiple"></ui-picklist>
+<ui-picklist mode="multi" show-select-all [options]="fruitOptions" label="Select All Example"></ui-picklist>`);
 
   searchCode = signal(
-    `<dui-picklist searchable search-placeholder="Filter fruits..." [options]="fruitOptions"></dui-picklist>`,
+    `<ui-picklist searchable search-placeholder="Filter fruits..." [options]="fruitOptions"></ui-picklist>`,
   );
 
   groupedCode = signal(
-    `<dui-picklist grouped [options]="groupedData" placeholder="Select OS"></dui-picklist>`,
+    `<ui-picklist grouped [options]="groupedData" placeholder="Select OS"></ui-picklist>`,
   );
 
-  iconsCode = signal(`<dui-picklist [options]="richOptions" icon-library="ionicons"></dui-picklist>
-<dui-picklist [options]="fruitOptions" icon-library="lucide"></dui-picklist>`);
+  iconsCode = signal(`<ui-picklist [options]="richOptions" icon-library="ionicons"></ui-picklist>
+<ui-picklist [options]="fruitOptions" icon-library="lucide"></ui-picklist>`);
 
-  triggerCode = signal(`<dui-picklist custom-trigger [options]="fruitOptions">
-  <dui-button slot="trigger" variant="outline" size="sm">
-    <dui-icon name="filter" library="lucide"></dui-icon>
+  triggerCode = signal(`<ui-picklist custom-trigger [options]="fruitOptions">
+  <ui-button slot="trigger" variant="outline" size="sm">
+    <ui-icon name="filter" library="lucide"></ui-icon>
     Custom Launch Button
-  </dui-button>
-</dui-picklist>`);
+  </ui-button>
+</ui-picklist>`);
 
   clearableCode = signal(
-    `<dui-picklist clearable [options]="fruitOptions" value="apple"></dui-picklist>`,
+    `<ui-picklist clearable [options]="fruitOptions" value="apple"></ui-picklist>`,
   );
 
-  loadingCode = signal(`<dui-picklist loading placeholder="Loading data..."></dui-picklist>
-<dui-picklist disabled value="banana" [options]="fruitOptions"></dui-picklist>`);
+  loadingCode = signal(`<ui-picklist loading placeholder="Loading data..."></ui-picklist>
+<ui-picklist disabled value="banana" [options]="fruitOptions"></ui-picklist>`);
 
-  premiumCode = signal(`<dui-picklist 
+  premiumCode = signal(`<ui-picklist 
   mode="multi" 
   reorderable 
   creatable 
   show-select-all 
   [options]="fruitOptions"
-></dui-picklist>`);
+></ui-picklist>`);
 
   creatableCode = signal(
-    `<dui-picklist creatable searchable placeholder="Type to create..."></dui-picklist>`,
+    `<ui-picklist creatable searchable placeholder="Type to create..."></ui-picklist>`,
   );
 
   reorderCode = signal(
-    `<dui-picklist mode="multi" reorderable [options]="fruitOptions" [value]="['apple', 'banana']"></dui-picklist>`,
+    `<ui-picklist mode="multi" reorderable [options]="fruitOptions" [value]="['apple', 'banana']"></ui-picklist>`,
   );
 
   onChange(event: any) {

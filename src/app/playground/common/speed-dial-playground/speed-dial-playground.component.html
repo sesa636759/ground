@@ -7,88 +7,84 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Position</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.position"
         (ngModelChange)="updateConfig()"
         [options]="positionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Strategy</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.strategy"
         (ngModelChange)="updateConfig()"
         [options]="strategyOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Direction</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.direction"
         (ngModelChange)="updateConfig()"
         [options]="directionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Main Icon</label>
-      <dui-input
-        type="text"
-        [(ngModel)]="pgConfig.icon"
-        (ngModelChange)="updateConfig()"
-      ></dui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Icon Library</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
         [options]="iconLibraryOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Trigger</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.trigger"
         (ngModelChange)="updateConfig()"
         [options]="triggerOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Tooltip Position</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.tooltipPosition"
         (ngModelChange)="updateConfig()"
         [options]="tooltipOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showTooltips"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Tooltips
       </label>
     </div>
@@ -100,7 +96,7 @@
   >
     <div class="bg-pattern absolute inset-0 opacity-10 pointer-events-none"></div>
 
-    <dui-speed-dial
+    <ui-speed-dial
       [attr.position]="pgConfig.position"
       [attr.strategy]="pgConfig.strategy"
       [attr.icon]="pgConfig.icon"
@@ -114,7 +110,7 @@
       [attr.trigger]="pgConfig.trigger"
       [actions]="actionsJson"
       (actionClick)="onActionClick($event)"
-    ></dui-speed-dial>
+    ></ui-speed-dial>
   </div>
 
   <pg-playground-event-log

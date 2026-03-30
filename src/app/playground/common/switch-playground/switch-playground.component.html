@@ -8,59 +8,59 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Label</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Thumb Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.thumbShape"
         (ngModelChange)="updateConfig()"
         [options]="thumbShapeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Label Position</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.labelPosition"
         (ngModelChange)="updateConfig()"
         [options]="labelPositionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="orientationOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -68,52 +68,34 @@
   <div slot="content-states" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.checked"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
         Checked
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.readonly"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
         Readonly
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.invalid"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox>
         Invalid
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.required"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.indeterminate"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Indeterminate
       </label>
     </div>
@@ -121,19 +103,19 @@
     <div class="control-grid mt-16">
       <div class="control-group">
         <label>Helper Text</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.helperText"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.invalid">
         <label>Error Message</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.errorMessage"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
     </div>
   </div>
@@ -142,52 +124,49 @@
   <div slot="content-visual" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showIcons"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Icons
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showDefaultIcons"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Default Icons
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showTrackText"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Track Text
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.gradient"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.gradient" (ngModelChange)="updateConfig()"></ui-checkbox>
         Gradient
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.enableAnimation"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Animation
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showTooltip"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Tooltip
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showSuccessFeedback"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Success Feedback
       </label>
     </div>
@@ -195,71 +174,71 @@
     <div class="control-grid mt-16">
       <div class="control-group" *ngIf="pgConfig.showIcons">
         <label>Icon Library</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.iconLibrary"
           (ngModelChange)="updateConfig()"
           [options]="iconLibraryOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
       <div class="control-group" *ngIf="pgConfig.showIcons">
         <label>Icon On</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.iconOn"
           (ngModelChange)="updateConfig()"
           placeholder="e.g. check"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.showIcons">
         <label>Icon Off</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.iconOff"
           (ngModelChange)="updateConfig()"
           placeholder="e.g. x"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.showTrackText">
         <label>Checked Text</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.checkedText"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.showTrackText">
         <label>Unchecked Text</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.uncheckedText"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.gradient">
         <label>Gradient Colors (JSON)</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.gradientColors"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Elevation (0-5)</label>
-        <dui-input
+        <ui-input
           type="number"
           min="0"
           max="5"
           [(ngModel)]="pgConfig.elevation"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.showTooltip">
         <label>Tooltip Text</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.tooltipText"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
     </div>
   </div>
@@ -268,17 +247,17 @@
   <div slot="content-advanced" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.requireConfirmation"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Confirm Before Change
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.autoSubmit"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Auto Submit Form
       </label>
     </div>
@@ -286,58 +265,58 @@
     <div class="control-grid mt-16">
       <div class="control-group" *ngIf="pgConfig.requireConfirmation">
         <label>Confirmation Message</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.confirmationMessage"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Aria Label</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.ariaLabel"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Form ID</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.formId"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Name (Form Attribute)</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.name"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Value</label>
-        <dui-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.value"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Tab Index</label>
-        <dui-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.switchTabIndex"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
     </div>
   </div>
 
   <div preview class="preview-stage">
     <div class="w-full display-flex justify-center items-center">
-      <dui-switch
+      <ui-switch
         #demoElement
         [attr.label]="pgConfig.label"
         [attr.checked]="pgConfig.checked ? '' : null"
@@ -385,7 +364,7 @@
         (switchBlur)="onSwitchBlur()"
         (switchConfirm)="onSwitchConfirm($event)"
         (switchSuccess)="onSwitchSuccess()"
-      ></dui-switch>
+      ></ui-switch>
     </div>
   </div>
 

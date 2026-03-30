@@ -81,7 +81,7 @@ export class DmOtpInputPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = `<dui-otp-input\n`;
+    let code = `<ui-otp-input\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     code += `  length="${this.pgConfig.length}"\n`;
 
@@ -108,7 +108,7 @@ export class DmOtpInputPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.invalid && this.pgConfig.errorText)
       code += `  error-text="${this.pgConfig.errorText}"\n`;
 
-    code += `></dui-otp-input>`;
+    code += `></ui-otp-input>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

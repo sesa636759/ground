@@ -18,7 +18,7 @@
         <!-- 🔍 High-Performance Hub Search -->
         <div class="hub-search-vessel animate-slide-up delay-200">
           <div class="search-input-group" [class.focused]="isSearchFocused()">
-            <dui-input
+            <ui-input
               class="w-full"
               type="search"
               size="xxl"
@@ -28,14 +28,14 @@
               (focus)="isSearchFocused.set(true)"
               (blur)="isSearchFocused.set(false)"
               #searchInput
-            ></dui-input>
+            ></ui-input>
             <div class="search-kbd" *ngIf="!searchText()">⌘K</div>
-            <dui-button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
+            <ui-button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
               <i class="fas fa-times"></i>
-            </dui-button>
+            </ui-button>
           </div>
           <div class="search-kbd" *ngIf="!searchText()"></div>
-          <dui-button
+          <ui-button
             label="⌘K"
             variant="outline"
             class="clear-btn"
@@ -43,14 +43,14 @@
             (click)="clearSearch(searchInput)"
           >
             <i class="fas fa-times"></i>
-          </dui-button>
+          </ui-button>
 
           <div class="popular-searches" *ngIf="!searchText()">
             <span>Popular:</span>
-            <dui-button (click)="searchText.set('table')">Table</dui-button>
-            <dui-button (click)="searchText.set('form')">Forms</dui-button>
-            <dui-button (click)="searchText.set('navigation')">Navigation</dui-button>
-            <dui-button (click)="searchText.set('overlay')">Overlays</dui-button>
+            <ui-button (click)="searchText.set('table')">Table</ui-button>
+            <ui-button (click)="searchText.set('form')">Forms</ui-button>
+            <ui-button (click)="searchText.set('navigation')">Navigation</ui-button>
+            <ui-button (click)="searchText.set('overlay')">Overlays</ui-button>
           </div>
         </div>
 
@@ -84,9 +84,9 @@
     <!-- 📄 Page Title for Sub Routes -->
     <div class="sub-hero-header animate-slide-up" *ngIf="!isHubArea()">
       <div class="breadcrumb">
-        <dui-button class="back-link" (click)="navigateTo('all')">
+        <ui-button class="back-link" (click)="navigateTo('all')">
           <i class="fas fa-arrow-left"></i> Back to Hub
-        </dui-button>
+        </ui-button>
       </div>
       <h1 class="subpage-title" *ngIf="activeTab() === 'components'">Components Registry</h1>
       <h1 class="subpage-title" *ngIf="activeTab() === 'guides'">Guides & Documentation</h1>
@@ -175,7 +175,7 @@
       <div class="features-grid">
         <div class="feature-card glass-panel">
           <div class="feature-icon-box cyan-glow">
-            <dui-icon name="zap" library="lucide"></dui-icon>
+            <ui-icon name="zap" library="lucide"></ui-icon>
           </div>
           <h3>Elite Performance</h3>
           <p>
@@ -186,7 +186,7 @@
 
         <div class="feature-card glass-panel">
           <div class="feature-icon-box purple-glow">
-            <dui-icon name="palette" library="lucide"></dui-icon>
+            <ui-icon name="palette" library="lucide"></ui-icon>
           </div>
           <h3>Theming Engine</h3>
           <p>
@@ -197,7 +197,7 @@
 
         <div class="feature-card glass-panel">
           <div class="feature-icon-box green-glow">
-            <dui-icon name="accessibility" library="lucide"></dui-icon>
+            <ui-icon name="accessibility" library="lucide"></ui-icon>
           </div>
           <h3>A11y Compliant</h3>
           <p>
@@ -229,7 +229,7 @@
         </div>
 
         <div class="workflow-arrow">
-          <dui-icon name="chevron-right" library="lucide"></dui-icon>
+          <ui-icon name="chevron-right" library="lucide"></ui-icon>
         </div>
 
         <div class="workflow-card glass-panel">
@@ -247,7 +247,7 @@
         </div>
 
         <div class="workflow-arrow">
-          <dui-icon name="chevron-right" library="lucide"></dui-icon>
+          <ui-icon name="chevron-right" library="lucide"></ui-icon>
         </div>
 
         <div class="workflow-card glass-panel">
@@ -281,21 +281,21 @@
           </p>
           <ul class="arch-list">
             <li>
-              <dui-icon name="check-circle" library="lucide"></dui-icon>
+              <ui-icon name="check-circle" library="lucide"></ui-icon>
               <div>
                 <strong>Strict Type Safety:</strong> Full TypeScript coverage across all properties,
                 events, and methods to eradicate runtime errors.
               </div>
             </li>
             <li>
-              <dui-icon name="check-circle" library="lucide"></dui-icon>
+              <ui-icon name="check-circle" library="lucide"></ui-icon>
               <div>
                 <strong>Shadow DOM Encapsulation:</strong> Complete style isolation ensures
                 components look perfect regardless of the host environment's CSS.
               </div>
             </li>
             <li>
-              <dui-icon name="check-circle" library="lucide"></dui-icon>
+              <ui-icon name="check-circle" library="lucide"></ui-icon>
               <div>
                 <strong>SSR Ready:</strong> Hydration-friendly architecture natively supporting
                 Angular Universal, Next.js, and Nuxt.
@@ -333,10 +333,10 @@
           <p>Join thousands of developers building enterprise-grade applications with Ground.</p>
         </div>
         <div class="cta-actions">
-          <dui-button variant="primary" size="xxl" (click)="navigateTo('guides')">
+          <ui-button variant="primary" size="xxl" (click)="navigateTo('guides')">
             Get Started Free
-            <dui-icon name="arrow-right" library="lucide" slot="suffix"></dui-icon>
-          </dui-button>
+            <ui-icon name="arrow-right" library="lucide" slot="suffix"></ui-icon>
+          </ui-button>
         </div>
       </div>
     </section>
@@ -349,7 +349,7 @@
         *ngIf="activeTab() === 'guides' || (searchText() && filteredGuides().length > 0)"
       >
         <div class="section-heading" *ngIf="isHubArea() || searchText()">Guides</div>
-        <dui-accordion
+        <ui-accordion
           variant="card-list"
           selected-header-color="#10b981"
           [items]="flatGuideitems()"
@@ -397,11 +397,11 @@
                 <div class="step-num-ring">01</div>
                 <div class="step-detail">
                   <h3>Install Core Package</h3>
-                  <dui-code-preview
+                  <ui-code-preview
                     active-lang="html"
                     html-code="npm install @enterprise/ui-ground"
                     label="Terminal"
-                  ></dui-code-preview>
+                  ></ui-code-preview>
                 </div>
               </div>
               <div class="step-vessel">
@@ -409,11 +409,11 @@
                 <div class="step-detail">
                   <h3>Setup Styles</h3>
                   <p>Add the following to your global <code>styles.scss</code> file:</p>
-                  <dui-code-preview
+                  <ui-code-preview
                     active-lang="css"
                     css-code='@use "@enterprise/ui-ground/theme";'
                     label="styles.scss"
-                  ></dui-code-preview>
+                  ></ui-code-preview>
                 </div>
               </div>
               <div class="step-vessel">
@@ -432,7 +432,7 @@
                         Import <code>CUSTOM_ELEMENTS_SCHEMA</code> and initialize the component
                         loader in your main entry file.
                       </p>
-                      <dui-code-preview
+                      <ui-code-preview
                         active-lang="ts"
                         ts-code="import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { defineCustomElements } from '@enterprise/ui-ground/loader';
@@ -443,10 +443,10 @@ defineCustomElements();
   selector: 'app-root',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `<dui-button variant='primary'>Click Me</dui-button>`
+  template: `<ui-button variant='primary'>Click Me</ui-button>`
 })"
                         label="app.component.ts"
-                      ></dui-code-preview>
+                      ></ui-code-preview>
                     </div>
 
                     <div class="fw-block">
@@ -455,7 +455,7 @@ defineCustomElements();
                         We provide first-class React wrapper components so you don't have to
                         manually bind custom DOM events.
                       </p>
-                      <dui-code-preview
+                      <ui-code-preview
                         active-lang="tsx"
                         ts-code="import { UiButton } from '@enterprise/ui-ground-react';
 
@@ -467,7 +467,7 @@ export default function App() {
   );
 }"
                         label="App.tsx"
-                      ></dui-code-preview>
+                      ></ui-code-preview>
                     </div>
 
                     <div class="fw-block">
@@ -475,7 +475,7 @@ export default function App() {
                       <p>
                         Vue 3 supports custom elements natively. Just call the web component loader.
                       </p>
-                      <dui-code-preview
+                      <ui-code-preview
                         active-lang="html"
                         html-code="<script setup>
 import { defineCustomElements } from '@enterprise/ui-ground/loader';
@@ -483,10 +483,10 @@ defineCustomElements();
 </script>
 
 <template>
-  <dui-button variant='success'>Vue Integration</dui-button>
+  <ui-button variant='success'>Vue Integration</ui-button>
 </template>"
                         label="App.vue"
-                      ></dui-code-preview>
+                      ></ui-code-preview>
                     </div>
                   </div>
                 </div>
@@ -505,7 +505,7 @@ defineCustomElements();
                   GROUND components are standalone. Import only what you need to keep your bundles
                   lean.
                 </p>
-                <dui-code-preview
+                <ui-code-preview
                   active-lang="ts"
                   ts-code="import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
 
@@ -513,15 +513,15 @@ defineCustomElements();
   selector: 'app-home',
   standalone: true,
   imports: [UiButton],
-  template: `<dui-button variant='primary'>Action</dui-button>`
+  template: `<ui-button variant='primary'>Action</ui-button>`
 {{ '}' }})"
                   label="App Component"
                   expanded="true"
-                ></dui-code-preview>
+                ></ui-code-preview>
               </div>
             </article>
           </div>
-        </dui-accordion>
+        </ui-accordion>
       </div>
 
       <!-- 💎 Component Grid Logic -->
@@ -557,9 +557,7 @@ defineCustomElements();
           <div class="empty-icon"><i class="fas fa-ghost"></i></div>
           <h3>No components found</h3>
           <p>Try adjusting your search query or browse categories.</p>
-          <dui-button class="btn-reset" (click)="searchText.set('')"
-            >View All Components</dui-button
-          >
+          <ui-button class="btn-reset" (click)="searchText.set('')">View All Components</ui-button>
         </div>
       </div>
 

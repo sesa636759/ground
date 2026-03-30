@@ -8,22 +8,22 @@
         <h3>📋 Dataset</h3>
         <div class="control-group">
           <label>Category</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.dataset"
             (ngModelChange)="update()"
             [options]="datasetOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Row Height</label>
-          <dui-input
+          <ui-input
             type="range"
             min="24"
             max="56"
             step="4"
             [(ngModel)]="cfg.rowHeight"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="timeline-range-row-label">{{ cfg.rowHeight }}px</span>
         </div>
       </div>
@@ -31,36 +31,36 @@
         <h3>🎨 Style</h3>
         <div class="control-group">
           <label>Corner Radius</label>
-          <dui-input
+          <ui-input
             type="range"
             min="0"
             max="12"
             step="2"
             [(ngModel)]="cfg.radius"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="timeline-range-radius-label">{{ cfg.radius }}px</span>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showTooltip"
             [(ngModel)]="cfg.showTooltip"
             (ngModelChange)="update()"
             label="Show Tooltip"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showLabels"
             [(ngModel)]="cfg.showLabels"
             (ngModelChange)="update()"
             label="Show Labels"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper timeline-range-preview">
@@ -133,12 +133,12 @@
     </div>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

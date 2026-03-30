@@ -10,45 +10,45 @@
       <div class="control-grid">
         <div class="control-group">
           <label>Theme</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="pgConfig.theme"
             (ngModelChange)="onConfigChange('theme', $event)"
             [options]="[
               { label: 'Light', value: 'light' },
               { label: 'Dark', value: 'dark' },
             ]"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showGrid"
             (ngModelChange)="onConfigChange('showGrid', $event)"
           />
           Show Grid
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.autoSave"
             (ngModelChange)="onConfigChange('autoSave', $event)"
           />
           Auto Save
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.batchActions"
             (ngModelChange)="onConfigChange('batchActions', $event)"
           />
           Batch Actions
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.loadingState"
             (ngModelChange)="onConfigChange('loadingState', $event)"
           />
           Loading State
         </label>
         <label class="checkbox-item">
-          <dui-checkbox [(ngModel)]="pgConfig.showAddButton" /> Show Add Button
+          <ui-checkbox [(ngModel)]="pgConfig.showAddButton" /> Show Add Button
         </label>
       </div>
     </div>
@@ -58,7 +58,7 @@
       <div class="control-grid">
         <div class="control-group">
           <label>Columns ({{ pgConfig.columns }})</label>
-          <dui-input
+          <ui-input
             type="range"
             min="2"
             max="24"
@@ -68,7 +68,7 @@
         </div>
         <div class="control-group">
           <label>Row Height ({{ pgConfig.rowHeight }}px)</label>
-          <dui-input
+          <ui-input
             type="range"
             min="50"
             max="300"
@@ -78,7 +78,7 @@
         </div>
         <div class="control-group">
           <label>Gap ({{ pgConfig.gap }}px)</label>
-          <dui-input
+          <ui-input
             type="range"
             min="0"
             max="50"
@@ -93,21 +93,21 @@
       <h3>Interaction</h3>
       <div class="checkbox-grid">
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.enableDrag"
             (ngModelChange)="onConfigChange('enableDrag', $event)"
             label="Enable Drag"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.enableResize"
             (ngModelChange)="onConfigChange('enableResize', $event)"
             label="Enable Resize"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.compact"
             (ngModelChange)="onConfigChange('compact', $event)"
           />
@@ -121,40 +121,40 @@
       <div class="control-grid">
         <div class="control-group">
           <label>Selection Mode</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="pgConfig.widgetSelectionMode"
             (ngModelChange)="onConfigChange('widgetSelectionMode', $event)"
             [options]="[
               { label: 'Single', value: 'single' },
               { label: 'Multi', value: 'multi' },
             ]"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
       </div>
       <div class="checkbox-grid">
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showWidgetHeader"
             (ngModelChange)="onConfigChange('showWidgetHeader', $event)"
           />
           Header
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showWidgetFooter"
             (ngModelChange)="onConfigChange('showWidgetFooter', $event)"
           />
           Footer
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.widgetDrag"
             (ngModelChange)="onConfigChange('widgetDrag', $event)"
           />
           Widget Drag
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.widgetResize"
             (ngModelChange)="onConfigChange('widgetResize', $event)"
           />
@@ -165,15 +165,15 @@
   </div>
   <div preview class="dashboard-preview">
     <div class="toolbar">
-      <dui-button (click)="triggerAction('undo')" label="Undo"></dui-button>
-      <dui-button (click)="triggerAction('redo')" label="Redo"></dui-button>
-      <dui-button (click)="triggerAction('save')" label="Save Layout"></dui-button>
-      <dui-button (click)="triggerAction('load')" label="Load Layout"></dui-button>
-      <dui-button (click)="triggerAction('reset')" class="danger" label="Reset"></dui-button>
+      <ui-button (click)="triggerAction('undo')" label="Undo"></ui-button>
+      <ui-button (click)="triggerAction('redo')" label="Redo"></ui-button>
+      <ui-button (click)="triggerAction('save')" label="Save Layout"></ui-button>
+      <ui-button (click)="triggerAction('load')" label="Load Layout"></ui-button>
+      <ui-button (click)="triggerAction('reset')" class="danger" label="Reset"></ui-button>
     </div>
 
     <div class="preview-stage" [class.dark-theme]="pgConfig.theme === 'dark'">
-      <dui-dashboard
+      <ui-dashboard
         #dashboard
         id="dashboard"
         enable-search="true"
@@ -183,7 +183,7 @@
         [attr.show-add-button]="pgConfig.showAddButton"
         [attr.breakpoints]="pgConfig.breakpoints"
         [attr.theme]="pgConfig.theme"
-      ></dui-dashboard>
+      ></ui-dashboard>
     </div>
 
     <div class="event-log-container" *ngIf="eventLog().length > 0">
@@ -192,12 +192,12 @@
         <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
       </div>
     </div>
-    <dui-code-preview
+    <ui-code-preview
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   </div>
 </pg-playground>
 
@@ -205,47 +205,47 @@
 <div class="dashboard-variants-section">
   <h3>All Variants & Examples</h3>
   <div class="dashboard-variants-grid">
-    <dui-dashboard
+    <ui-dashboard
       [widgets]="initialWidgets"
       theme="light"
       columns="12"
       show-add-button
-    ></dui-dashboard>
-    <dui-dashboard
+    ></ui-dashboard>
+    <ui-dashboard
       [widgets]="initialWidgets"
       theme="dark"
       columns="6"
       show-add-button
-    ></dui-dashboard>
-    <dui-dashboard
+    ></ui-dashboard>
+    <ui-dashboard
       [widgets]="initialWidgets"
       theme="glass"
       columns="4"
       show-add-button
-    ></dui-dashboard>
-    <dui-dashboard
+    ></ui-dashboard>
+    <ui-dashboard
       [widgets]="initialWidgets"
       theme="light"
       columns="8"
       enable-drag
       enable-resize
-    ></dui-dashboard>
-    <dui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" compact></dui-dashboard>
-    <dui-dashboard
+    ></ui-dashboard>
+    <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" compact></ui-dashboard>
+    <ui-dashboard
       [widgets]="initialWidgets"
       theme="glass"
       columns="6"
       enable-drag
       enable-resize
       compact
-    ></dui-dashboard>
-    <dui-dashboard
+    ></ui-dashboard>
+    <ui-dashboard
       [widgets]="initialWidgets"
       theme="light"
       columns="12"
       batch-actions
       loading-state
-    ></dui-dashboard>
-    <dui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" auto-save></dui-dashboard>
+    ></ui-dashboard>
+    <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" auto-save></ui-dashboard>
   </div>
 </div>

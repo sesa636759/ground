@@ -7,50 +7,50 @@
   <div slot="content-settings" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="orientationOptions"
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="shapeOptions"
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="sizeOptions"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Min Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.interactive"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Interactive
       </label>
     </div>
@@ -59,44 +59,44 @@
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Icon Library</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="iconLibraryOptions"
         [(ngModel)]="pgConfig.iconLibrary"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showLabels"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Labels
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValues"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Values
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showLegend"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Legend
       </label>
     </div>
     <div class="control-group full-width">
       <label>Values (JSON Array)</label>
-      <dui-input
+      <ui-input
         type="textarea"
         [(ngModel)]="pgConfig.values"
         (ngModelChange)="onJsonChange()"
         placeholder='[{"label":"A","value":10}]'
         [rows]="5"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -104,7 +104,7 @@
     <div
       class="preview-stage p-40 display-flex items-center justify-center min-h-400 bg-white w-full"
     >
-      <dui-meter-group
+      <ui-meter-group
         class="w-full max-w-600"
         [attr.values]="pgConfig.values"
         [attr.orientation]="pgConfig.orientation"
@@ -117,7 +117,7 @@
         [attr.min]="pgConfig.min"
         [attr.max]="pgConfig.max"
         [attr.interactive]="pgConfig.interactive ? '' : null"
-      ></dui-meter-group>
+      ></ui-meter-group>
     </div>
   </div>
 </pg-playground>

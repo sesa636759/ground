@@ -26,7 +26,7 @@ export class DmDashboardDemoComponent extends BaseDemoComponent {
   ];
 
   // Code examples
-  playgroundCode = `<dui-dashboard
+  playgroundCode = `<ui-dashboard
   [cols]="12"
   [rowHeight]="60"
   [draggable]="true"
@@ -34,7 +34,7 @@ export class DmDashboardDemoComponent extends BaseDemoComponent {
   [compactType]="'vertical'"
 >
   <!-- Add your dashboard widgets here -->
-</dui-dashboard>`;
+</ui-dashboard>`;
 
   featuresCode = `<!-- Dashboard Key Features:
 

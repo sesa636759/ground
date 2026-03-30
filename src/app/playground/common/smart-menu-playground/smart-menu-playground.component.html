@@ -8,20 +8,20 @@
     <div class="control-section">
       <div class="control-group">
         <label>icon-library</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.iconLibrary"
           (ngModelChange)="updateConfig()"
           [options]="iconLibraryOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
         <span class="control-hint">Changes how item icons are resolved</span>
       </div>
       <div class="control-group">
         <label>target / trigger mode</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.triggerMode"
           (ngModelChange)="updateConfig()"
           [options]="triggerModeOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
         <span class="control-hint">
           "right-click zone" binds target="#pg-zone"<br />
           "button click" calls show(x,y) programmatically<br />
@@ -35,54 +35,54 @@
     <div class="control-section">
       <div class="control-group">
         <label>Preset</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.preset"
           (ngModelChange)="updateConfig()"
           [options]="presetOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
 
       <div class="checkbox-grid mt-16">
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showIcons"
             (ngModelChange)="updateConfig()"
-          ></dui-checkbox>
+          ></ui-checkbox>
           Show Icons
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showDescriptions"
             (ngModelChange)="updateConfig()"
-          ></dui-checkbox>
+          ></ui-checkbox>
           Show Descriptions
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showNested"
             (ngModelChange)="updateConfig()"
-          ></dui-checkbox>
+          ></ui-checkbox>
           Show Nested
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showDividers"
             (ngModelChange)="updateConfig()"
-          ></dui-checkbox>
+          ></ui-checkbox>
           Show Dividers
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showDisabled"
             (ngModelChange)="updateConfig()"
-          ></dui-checkbox>
+          ></ui-checkbox>
           Show Disabled Option
         </label>
         <label class="checkbox-item">
-          <dui-checkbox
+          <ui-checkbox
             [(ngModel)]="pgConfig.showAction"
             (ngModelChange)="updateConfig()"
-          ></dui-checkbox>
+          ></ui-checkbox>
           Mock actions
         </label>
       </div>
@@ -111,18 +111,18 @@
         <p class="m-0 text-muted fs-0875rem">
           Click the button to open the menu at its position via <code>el.show(x, y)</code>
         </p>
-        <dui-button
+        <ui-button
           id="pg-open-btn"
           label="Open Context Menu"
           icon="menu"
           icon-library="lucide"
           (click)="openViaButton($event)"
-        ></dui-button>
+        ></ui-button>
       </div>
     }
 
     <!-- The context menu element -->
-    <dui-smart-context-menu
+    <ui-smart-context-menu
       #smartMenu
       [attr.target]="
         pgConfig.triggerMode === 'zone'
@@ -134,7 +134,7 @@
       icon-library="{{ pgConfig.iconLibrary }}"
       [items]="menuJson"
       (menuItemClick)="onItemClick($event)"
-    ></dui-smart-context-menu>
+    ></ui-smart-context-menu>
   </div>
 
   <pg-playground-event-log

@@ -22,7 +22,7 @@
               <p>Default fixed speed dial. Click to open.</p>
             </div>
             <div class="demo-card dial-container">
-              <dui-speed-dial
+              <ui-speed-dial
                 strategy="absolute"
                 position="center"
                 [attr.actions]="lucideActions"
@@ -30,9 +30,9 @@
                 icon-library="lucide"
                 action-library="lucide"
                 (actionClick)="handleActionClick($event)"
-              ></dui-speed-dial>
+              ></ui-speed-dial>
             </div>
-            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Positions -->
@@ -42,7 +42,7 @@
               <p>Place the dial anywhere and control its expanding direction.</p>
             </div>
             <div class="demo-card dial-container fixed-box">
-              <dui-speed-dial
+              <ui-speed-dial
                 strategy="absolute"
                 position="top-left"
                 direction="right"
@@ -51,8 +51,8 @@
                 icon-library="lucide"
                 action-library="lucide"
                 tooltip-position="bottom"
-              ></dui-speed-dial>
-              <dui-speed-dial
+              ></ui-speed-dial>
+              <ui-speed-dial
                 strategy="absolute"
                 position="top-right"
                 direction="down"
@@ -61,8 +61,8 @@
                 icon-library="lucide"
                 action-library="lucide"
                 tooltip-position="left"
-              ></dui-speed-dial>
-              <dui-speed-dial
+              ></ui-speed-dial>
+              <ui-speed-dial
                 strategy="absolute"
                 position="bottom-left"
                 direction="up"
@@ -71,8 +71,8 @@
                 icon-library="lucide"
                 action-library="lucide"
                 tooltip-position="right"
-              ></dui-speed-dial>
-              <dui-speed-dial
+              ></ui-speed-dial>
+              <ui-speed-dial
                 strategy="absolute"
                 position="bottom-right"
                 direction="left"
@@ -81,8 +81,8 @@
                 icon-library="lucide"
                 action-library="lucide"
                 tooltip-position="top"
-              ></dui-speed-dial>
-              <dui-speed-dial
+              ></ui-speed-dial>
+              <ui-speed-dial
                 strategy="absolute"
                 position="center"
                 direction="up"
@@ -90,9 +90,9 @@
                 icon="target"
                 icon-library="lucide"
                 action-library="lucide"
-              ></dui-speed-dial>
+              ></ui-speed-dial>
             </div>
-            <dui-code-preview [htmlCode]="positionsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="positionsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Trigger -->
@@ -102,7 +102,7 @@
               <p>Open on hover instead of click. Explicit tooltip positioning.</p>
             </div>
             <div class="demo-card dial-container">
-              <dui-speed-dial
+              <ui-speed-dial
                 strategy="absolute"
                 position="center"
                 trigger="hover"
@@ -111,9 +111,9 @@
                 icon="mouse-pointer-2"
                 icon-library="lucide"
                 action-library="lucide"
-              ></dui-speed-dial>
+              ></ui-speed-dial>
             </div>
-            <dui-code-preview [htmlCode]="triggerCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="triggerCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Styles -->
@@ -123,7 +123,7 @@
               <p>Customize the primary button's visual weight.</p>
             </div>
             <div class="demo-card dial-container fixed-box">
-              <dui-speed-dial
+              <ui-speed-dial
                 strategy="absolute"
                 position="top-left"
                 size="sm"
@@ -133,8 +133,8 @@
                 icon-library="lucide"
                 action-library="lucide"
                 direction="right"
-              ></dui-speed-dial>
-              <dui-speed-dial
+              ></ui-speed-dial>
+              <ui-speed-dial
                 strategy="absolute"
                 position="bottom-right"
                 size="lg"
@@ -144,25 +144,25 @@
                 icon-library="lucide"
                 action-library="lucide"
                 direction="up"
-              ></dui-speed-dial>
+              ></ui-speed-dial>
             </div>
-            <dui-code-preview [htmlCode]="stylesCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="stylesCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Custom Icons -->
           <section class="demo-section" id="custom-icons">
             <div class="section-header"><h2>Custom Icons & Themes</h2></div>
             <div class="demo-card dial-container">
-              <dui-speed-dial
+              <ui-speed-dial
                 strategy="absolute"
                 position="center"
                 icon="menu"
                 icon-library="lucide"
                 [attr.actions]="lucideActions"
                 action-library="lucide"
-              ></dui-speed-dial>
+              ></ui-speed-dial>
             </div>
-            <dui-code-preview [htmlCode]="customIconsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="customIconsCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>

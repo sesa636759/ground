@@ -12,21 +12,21 @@
       <div class="hero-main-layout">
         <!-- 📝 Left: Text & Stats -->
         <div class="hero-text-content">
-          <dui-animate-on-scroll animation="slide-up" [delay]="100">
+          <ui-animate-on-scroll animation="slide-up" [delay]="100">
             <h1 class="hero-promo-title">
               The Absolute Best <br />
               <span class="cyan-gradient-text">UI Component Hub</span>
             </h1>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-up" [delay]="200">
+          <ui-animate-on-scroll animation="slide-up" [delay]="200">
             <p class="hero-promo-lead">
               A premium collection of framework-agnostic UI components designed for building
               professional, high-performance web applications with ease.
             </p>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="zoom-in" [delay]="300">
+          <ui-animate-on-scroll animation="zoom-in" [delay]="300">
             <div class="promo-stats-grid">
               @for (stat of statsCards; track stat.label) {
                 <div class="stat-flip-card">
@@ -46,74 +46,74 @@
                 </div>
               }
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-up" [delay]="400">
+          <ui-animate-on-scroll animation="slide-up" [delay]="400">
             <div class="hero-promo-actions">
-              <dui-button
+              <ui-button
                 variant="primary"
                 size="xxl"
                 class="explore-glow-btn"
                 (click)="navigateTo('overview')"
               >
                 Explore Gallery
-                <dui-icon name="arrow-right" library="lucide" slot="suffix"></dui-icon>
-              </dui-button>
-              <dui-button
+                <ui-icon name="arrow-right" library="lucide" slot="suffix"></ui-icon>
+              </ui-button>
+              <ui-button
                 variant="outline"
                 size="xxl"
                 class="docs-outline-btn"
                 (click)="navigateTo('documentation')"
               >
                 View Documentation
-              </dui-button>
+              </ui-button>
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
         </div>
 
         <!-- 📊 Right: Visual Stack (As it was - Overlapping) -->
         <div class="hero-visual-stack">
-          <dui-animate-on-scroll animation="slide-left" [delay]="400" class="stack-card card-1">
+          <ui-animate-on-scroll animation="slide-left" [delay]="400" class="stack-card card-1">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Premium Login Card</div>
               <img src="assets/images/login-ui.png" alt="Login UI" />
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-left" [delay]="500" class="stack-card card-2">
+          <ui-animate-on-scroll animation="slide-left" [delay]="500" class="stack-card card-2">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Smart Widget</div>
               <img src="assets/images/dashboard-ui.png" alt="Dashboard UI" />
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-left" [delay]="600" class="stack-card card-3">
+          <ui-animate-on-scroll animation="slide-left" [delay]="600" class="stack-card card-3">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Modern Inputs</div>
               <img src="assets/images/ui-stack.png" alt="UI Stack" />
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-left" [delay]="700" class="stack-card card-4">
+          <ui-animate-on-scroll animation="slide-left" [delay]="700" class="stack-card card-4">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Settings Panel</div>
               <img src="assets/images/settings-ui.png" alt="Settings UI" />
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-left" [delay]="800" class="stack-card card-5">
+          <ui-animate-on-scroll animation="slide-left" [delay]="800" class="stack-card card-5">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Enterprise Grid</div>
               <img src="assets/images/data-grid-ui.png" alt="Data Grid UI" />
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
 
-          <dui-animate-on-scroll animation="slide-left" [delay]="900" class="stack-card card-6">
+          <ui-animate-on-scroll animation="slide-left" [delay]="900" class="stack-card card-6">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Smart Analytics</div>
               <img src="assets/images/analytics-ui.png" alt="Analytics UI" />
             </div>
-          </dui-animate-on-scroll>
+          </ui-animate-on-scroll>
         </div>
       </div>
     </div>
@@ -127,9 +127,9 @@
       <p>Take a closer look at our high-fidelity component designs</p>
     </div>
 
-    <dui-animate-on-scroll animation="zoom-in" delay="200">
+    <ui-animate-on-scroll animation="zoom-in" delay="200">
       <div class="carousel-vessel-container">
-        <dui-carousel
+        <ui-carousel
           class="premium-carousel"
           loop="true"
           autoplay="true"
@@ -148,87 +148,87 @@
               </div>
             </div>
           }
-        </dui-carousel>
+        </ui-carousel>
       </div>
-    </dui-animate-on-scroll>
+    </ui-animate-on-scroll>
   </section>
 
   <!-- Features Grid -->
   <section class="features-section">
-    <dui-animate-on-scroll animation="slide-down" [delay]="0">
+    <ui-animate-on-scroll animation="slide-down" [delay]="0">
       <div class="section-header">
         <h2>Why Choose Our Component Library</h2>
         <p>Enterprise-grade features built for scale and performance</p>
       </div>
-    </dui-animate-on-scroll>
+    </ui-animate-on-scroll>
 
     <div class="features-grid">
-      <dui-animate-on-scroll animation="flip-up" [delay]="0">
+      <ui-animate-on-scroll animation="flip-up" [delay]="0">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo cyan-glow">
-            <dui-icon name="layers" library="lucide"></dui-icon>
+            <ui-icon name="layers" library="lucide"></ui-icon>
           </div>
           <h3>Modular Architecture</h3>
           <p>
             Tree-shakeable components that keep your bundle size minimal. Import only what you need.
           </p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="50">
+      <ui-animate-on-scroll animation="flip-up" [delay]="50">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo purple-glow">
-            <dui-icon name="package-x" library="lucide"></dui-icon>
+            <ui-icon name="package-x" library="lucide"></ui-icon>
           </div>
           <h3>Zero Dependencies</h3>
           <p>Built with pure web standards. No bloating third-party libraries required.</p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="100">
+      <ui-animate-on-scroll animation="flip-up" [delay]="100">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo purple-glow">
-            <dui-icon name="zap" library="lucide"></dui-icon>
+            <ui-icon name="zap" library="lucide"></ui-icon>
           </div>
           <h3>Performance First</h3>
           <p>Optimized for speed with lazy loading, virtual scrolling, and efficient rendering.</p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="200">
+      <ui-animate-on-scroll animation="flip-up" [delay]="200">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo green-glow">
-            <dui-icon name="book-open" library="lucide"></dui-icon>
+            <ui-icon name="book-open" library="lucide"></ui-icon>
           </div>
           <h3>Comprehensive Docs</h3>
           <p>Detailed documentation with live examples, API references, and best practices.</p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="300">
+      <ui-animate-on-scroll animation="flip-up" [delay]="300">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo cyan-glow">
-            <dui-icon name="accessibility" library="lucide"></dui-icon>
+            <ui-icon name="accessibility" library="lucide"></ui-icon>
           </div>
           <h3>Accessibility Built-in</h3>
           <p>WCAG 2.1 AA compliant with full keyboard navigation and screen reader support.</p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="400">
+      <ui-animate-on-scroll animation="flip-up" [delay]="400">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo green-glow">
-            <dui-icon name="palette" library="lucide"></dui-icon>
+            <ui-icon name="palette" library="lucide"></ui-icon>
           </div>
           <h3>Customizable Themes</h3>
           <p>Light, dark, and custom themes with CSS variables for complete design control.</p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="500">
+      <ui-animate-on-scroll animation="flip-up" [delay]="500">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo cyan-glow">
-            <dui-icon name="shield-check" library="lucide"></dui-icon>
+            <ui-icon name="shield-check" library="lucide"></ui-icon>
           </div>
           <h3>Enterprise Security</h3>
           <p>
@@ -236,12 +236,12 @@
             audited.
           </p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
 
-      <dui-animate-on-scroll animation="flip-up" [delay]="600">
+      <ui-animate-on-scroll animation="flip-up" [delay]="600">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo yellow-glow">
-            <dui-icon name="sparkles" library="lucide"></dui-icon>
+            <ui-icon name="sparkles" library="lucide"></ui-icon>
           </div>
           <h3>Universal Icon Support</h3>
           <p>
@@ -249,23 +249,23 @@
             10,000+ icons.
           </p>
         </div>
-      </dui-animate-on-scroll>
+      </ui-animate-on-scroll>
     </div>
   </section>
 
   <!-- 💎 Elite Components Showcase -->
   <section class="featured-section">
-    <dui-animate-on-scroll animation="slide-right" [delay]="0">
+    <ui-animate-on-scroll animation="slide-right" [delay]="0">
       <div class="section-header">
         <div class="section-badge-tiny">Featured Elements</div>
         <h2>Elite UI Components</h2>
         <p>A glimpse into our high-performance component collection</p>
       </div>
-    </dui-animate-on-scroll>
+    </ui-animate-on-scroll>
 
     <div class="cover-cards-grid">
       @for (comp of featuredComponents; track comp.id; let i = $index) {
-        <dui-animate-on-scroll animation="zoom-in" [delay]="i * 60">
+        <ui-animate-on-scroll animation="zoom-in" [delay]="i * 60">
           <div class="cover-card" (click)="navigateTo('playground')">
             <!-- Background Image -->
             <div class="cover-card__bg">
@@ -287,7 +287,7 @@
             <!-- Bottom Content -->
             <div class="cover-card__content">
               <div class="cover-card__icon-wrap">
-                <dui-icon [name]="comp.icon" library="lucide" size="18" color="white"></dui-icon>
+                <ui-icon [name]="comp.icon" library="lucide" size="18" color="white"></ui-icon>
               </div>
               <h3 class="cover-card__title">{{ comp.label }}</h3>
               <p class="cover-card__desc">{{ comp.description }}</p>
@@ -310,31 +310,31 @@
             <!-- Shine Effect -->
             <div class="cover-card__shine"></div>
           </div>
-        </dui-animate-on-scroll>
+        </ui-animate-on-scroll>
       }
     </div>
   </section>
 
   <!-- 🎨 Design Categories Sections -->
   <section class="categories-section">
-    <dui-animate-on-scroll animation="fade-in" [delay]="0">
+    <ui-animate-on-scroll animation="fade-in" [delay]="0">
       <div class="section-header">
         <div class="section-badge-tiny">System Architecture</div>
         <h2>Powerful Categories</h2>
         <p>Expertly organized elements to accelerate your design-to-code workflow</p>
       </div>
-    </dui-animate-on-scroll>
+    </ui-animate-on-scroll>
 
     <div class="categories-grid">
       @for (category of categories; track category.id; let i = $index) {
-        <dui-animate-on-scroll animation="slide-up" [delay]="i * 100">
+        <ui-animate-on-scroll animation="slide-up" [delay]="i * 100">
           <div class="category-card glass-panel" (click)="navigateTo('playground')">
             <div class="category-header">
               <div class="category-icon cyan-glow">
-                <dui-icon
+                <ui-icon
                   [name]="category.icon || 'folder'"
                   [library]="category.iconLibrary || 'lucide'"
-                ></dui-icon>
+                ></ui-icon>
               </div>
               <span class="component-count">{{ category.children?.length || 0 }}</span>
             </div>
@@ -342,28 +342,28 @@
             <p>{{ getCategoryDescription(category.id) }}</p>
             <div class="category-footer">
               <span class="explore-link"
-                >Explore Gallery <dui-icon name="chevron-right" library="lucide"></dui-icon
+                >Explore Gallery <ui-icon name="chevron-right" library="lucide"></ui-icon
               ></span>
             </div>
           </div>
-        </dui-animate-on-scroll>
+        </ui-animate-on-scroll>
       }
     </div>
   </section>
 
   <!-- Premium Icon Support Section -->
   <section class="icons-section">
-    <dui-animate-on-scroll animation="rotate-in" [delay]="0">
+    <ui-animate-on-scroll animation="rotate-in" [delay]="0">
       <div class="section-header">
         <div class="section-badge-tiny">Icon Infrastructure</div>
         <h2>Premium Icon Support</h2>
         <p>Native integration for the world's most popular icon libraries</p>
       </div>
-    </dui-animate-on-scroll>
+    </ui-animate-on-scroll>
 
     <div class="libraries-grid">
       @for (lib of iconLibraries; track lib.name; let i = $index) {
-        <dui-animate-on-scroll animation="slide-left" [delay]="i * 100">
+        <ui-animate-on-scroll animation="slide-left" [delay]="i * 100">
           <div class="library-card">
             <div class="library-header">
               <div class="library-info">
@@ -371,19 +371,19 @@
                 <span class="icon-count">{{ lib.count }} Icons</span>
               </div>
               <div class="category-icon" [ngClass]="lib.color">
-                <dui-icon [name]="lib.sampleIcons[0]" [library]="lib.library"></dui-icon>
+                <ui-icon [name]="lib.sampleIcons[0]" [library]="lib.library"></ui-icon>
               </div>
             </div>
             <p class="library-description">{{ lib.description }}</p>
             <div class="sample-icons-grid">
               @for (icon of lib.sampleIcons; track icon) {
                 <div class="sample-icon-box" [attr.title]="icon">
-                  <dui-icon [name]="icon" [library]="lib.library"></dui-icon>
+                  <ui-icon [name]="icon" [library]="lib.library"></ui-icon>
                 </div>
               }
             </div>
           </div>
-        </dui-animate-on-scroll>
+        </ui-animate-on-scroll>
       }
     </div>
   </section>
@@ -398,7 +398,7 @@
         @for (update of recentUpdates; track update.title) {
           <div class="update-mini-card glass-panel">
             <div class="update-icon">
-              <dui-icon [name]="update.icon" library="lucide"></dui-icon>
+              <ui-icon [name]="update.icon" library="lucide"></ui-icon>
             </div>
             <div class="update-info">
               <span class="update-type">{{ update.type }}</span>
@@ -416,15 +416,15 @@
     <div class="cta-content" uiAnimateOnScroll animation="zoom-in">
       <h2>Ready to Build Something Amazing?</h2>
       <p>Start exploring our component library and accelerate your development workflow</p>
-      <dui-button
+      <ui-button
         variant="primary"
         size="xxl"
         class="explore-glow-btn"
         (click)="navigateTo('overview')"
       >
         Get Started Now
-        <dui-icon name="arrow-right" library="lucide" slot="suffix"></dui-icon>
-      </dui-button>
+        <ui-icon name="arrow-right" library="lucide" slot="suffix"></ui-icon>
+      </ui-button>
     </div>
   </section>
 </div>

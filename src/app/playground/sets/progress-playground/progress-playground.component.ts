@@ -49,7 +49,7 @@ export class DmProgressPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<dui-progress\n`;
+    let code = `<ui-progress\n`;
     code += `  [percent]="${this.pgConfig.percent}"\n`;
     if (this.pgConfig.type !== 'line') code += `  type="${this.pgConfig.type}"\n`;
     if (this.pgConfig.status !== 'normal') code += `  status="${this.pgConfig.status}"\n`;
@@ -101,7 +101,7 @@ export class DmProgressPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.labelPosition !== 'outside')
       code += `  label-position="${this.pgConfig.labelPosition}"\n`;
 
-    code += `></dui-progress>`;
+    code += `></ui-progress>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

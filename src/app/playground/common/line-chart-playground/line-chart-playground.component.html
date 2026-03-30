@@ -7,11 +7,11 @@
   <div slot="content-data" class="control-grid p-16">
     <div class="control-group">
       <label>Dataset</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.dataset"
         (ngModelChange)="onDatasetChange()"
         [options]="datasetOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -20,71 +20,68 @@
       <label
         >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
       >
-      <dui-input
+      <ui-input
         type="range"
         min="1"
         max="6"
         step="1"
         [(ngModel)]="pgConfig.strokeWidth"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label
         >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
       >
-      <dui-input
+      <ui-input
         type="range"
         min="300"
         max="800"
         step="50"
         [(ngModel)]="pgConfig.width"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label
         >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
       >
-      <dui-input
+      <ui-input
         type="range"
         min="200"
         max="500"
         step="50"
         [(ngModel)]="pgConfig.height"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-features" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showLegend"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Legend
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.showGrid"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.showGrid" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Grid
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showMarkers"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Markers
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.enableAnimation"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Enable Animation
       </label>
     </div>

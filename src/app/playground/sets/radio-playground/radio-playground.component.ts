@@ -114,7 +114,7 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
   updateConfig() {
     let innerContent = '';
     this.radioOptions.forEach((opt) => {
-      innerContent += `  <dui-radio\n`;
+      innerContent += `  <ui-radio\n`;
       innerContent += `    value="${opt.value}"\n`;
       innerContent += `    label="${opt.label}"\n`;
       if (opt.description) innerContent += `    description="${opt.description}"\n`;
@@ -124,7 +124,7 @@ export class DmRadioPlaygroundComponent extends BasePlaygroundComponent {
       if (opt.color) innerContent += `    color="${opt.color}"\n`;
       if (opt.size) innerContent += `    size="${opt.size}"\n`;
       if (opt.disabled) innerContent += `    disabled\n`;
-      innerContent += `  ></dui-radio>\n`;
+      innerContent += `  ></ui-radio>\n`;
     });
 
     this.updateConfigFromDom(this.radioGroup, 'ui-radio-group', innerContent);

@@ -24,19 +24,19 @@
           </div>
           <div class="demo-card">
             <div class="preview-box">
-              <dui-switch label="Primary" variant="primary" checked></dui-switch>
-              <dui-switch label="Secondary" variant="secondary" checked></dui-switch>
-              <dui-switch label="Success" variant="success" checked></dui-switch>
-              <dui-switch label="Warning" variant="warning" checked></dui-switch>
-              <dui-switch label="Danger" variant="danger" checked></dui-switch>
-              <dui-switch label="Info" variant="info" checked></dui-switch>
+              <ui-switch label="Primary" variant="primary" checked></ui-switch>
+              <ui-switch label="Secondary" variant="secondary" checked></ui-switch>
+              <ui-switch label="Success" variant="success" checked></ui-switch>
+              <ui-switch label="Warning" variant="warning" checked></ui-switch>
+              <ui-switch label="Danger" variant="danger" checked></ui-switch>
+              <ui-switch label="Info" variant="info" checked></ui-switch>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="colorsCode"
             [label]="'Colors Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Sizes -->
@@ -47,20 +47,20 @@
           </div>
           <div class="demo-card">
             <div class="preview-box">
-              <dui-switch label="XXXS" size="xxxs" checked></dui-switch>
-              <dui-switch label="XS" size="xs" checked></dui-switch>
-              <dui-switch label="Small" size="small" checked></dui-switch>
-              <dui-switch label="Medium" size="medium" checked></dui-switch>
-              <dui-switch label="Large" size="large" checked></dui-switch>
-              <dui-switch label="XL" size="xl" checked></dui-switch>
-              <dui-switch label="XXXL" size="xxxl" checked></dui-switch>
+              <ui-switch label="XXXS" size="xxxs" checked></ui-switch>
+              <ui-switch label="XS" size="xs" checked></ui-switch>
+              <ui-switch label="Small" size="small" checked></ui-switch>
+              <ui-switch label="Medium" size="medium" checked></ui-switch>
+              <ui-switch label="Large" size="large" checked></ui-switch>
+              <ui-switch label="XL" size="xl" checked></ui-switch>
+              <ui-switch label="XXXL" size="xxxl" checked></ui-switch>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="sizesCode"
             [label]="'Sizes Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Shapes -->
@@ -71,25 +71,25 @@
           </div>
           <div class="demo-card">
             <div class="preview-box">
-              <dui-switch label="Default" shape="default" checked></dui-switch>
-              <dui-switch label="Rounded" shape="rounded" checked></dui-switch>
-              <dui-switch label="Pill" shape="pill" checked></dui-switch>
-              <dui-switch label="Square" shape="square" checked></dui-switch>
+              <ui-switch label="Default" shape="default" checked></ui-switch>
+              <ui-switch label="Rounded" shape="rounded" checked></ui-switch>
+              <ui-switch label="Pill" shape="pill" checked></ui-switch>
+              <ui-switch label="Square" shape="square" checked></ui-switch>
               <div class="w-full border-top mt-16 pt-16">
-                <dui-switch
+                <ui-switch
                   label="Square Thumb"
                   thumb-shape="square"
                   checked
                   variant="info"
-                ></dui-switch>
+                ></ui-switch>
               </div>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="shapesCode"
             [label]="'Shapes Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Icon Support -->
@@ -100,36 +100,36 @@
           </div>
           <div class="demo-card">
             <div class="preview-box">
-              <dui-switch
+              <ui-switch
                 show-icons
                 icon-on="moon"
                 icon-off="sun"
                 checked
                 icon-library="lucide"
-              ></dui-switch>
-              <dui-switch
+              ></ui-switch>
+              <ui-switch
                 show-icons
                 icon-on="volume-2"
                 icon-off="volume-x"
                 checked
                 variant="success"
                 icon-library="lucide"
-              ></dui-switch>
-              <dui-switch show-default-icons checked variant="danger"></dui-switch>
-              <dui-switch
+              ></ui-switch>
+              <ui-switch show-default-icons checked variant="danger"></ui-switch>
+              <ui-switch
                 show-track-text
                 checked-text="ON"
                 unchecked-text="OFF"
                 checked
                 variant="warning"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="iconsCode"
             [label]="'Icons Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- States -->
@@ -140,24 +140,24 @@
           </div>
           <div class="demo-card">
             <div class="preview-box flex-col items-start gap-16">
-              <dui-switch label="Disabled" disabled checked></dui-switch>
-              <dui-switch label="Readonly" readonly checked variant="secondary"></dui-switch>
-              <dui-switch label="Loading State" loading checked variant="info"></dui-switch>
-              <dui-switch label="Indeterminate" indeterminate variant="warning"></dui-switch>
-              <dui-switch label="Required Field" required></dui-switch>
-              <dui-switch
+              <ui-switch label="Disabled" disabled checked></ui-switch>
+              <ui-switch label="Readonly" readonly checked variant="secondary"></ui-switch>
+              <ui-switch label="Loading State" loading checked variant="info"></ui-switch>
+              <ui-switch label="Indeterminate" indeterminate variant="warning"></ui-switch>
+              <ui-switch label="Required Field" required></ui-switch>
+              <ui-switch
                 label="Invalid State"
                 invalid
                 error-message="This setting is required"
                 variant="danger"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="statesCode"
             [label]="'States Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Visuals -->
@@ -168,38 +168,34 @@
           </div>
           <div class="demo-card">
             <div class="preview-box flex-col items-start gap-20">
-              <dui-switch label="Elevation Level 3" elevation="3" checked></dui-switch>
-              <dui-switch label="Gradient Track" gradient checked></dui-switch>
-              <dui-switch
+              <ui-switch label="Elevation Level 3" elevation="3" checked></ui-switch>
+              <ui-switch label="Gradient Track" gradient checked></ui-switch>
+              <ui-switch
                 label="Custom Gradient"
                 gradient
                 gradient-colors='["#f43f5e", "#fb923c"]'
                 checked
-              ></dui-switch>
-              <dui-switch
+              ></ui-switch>
+              <ui-switch
                 label="Tooltip Interaction"
                 show-tooltip
                 tooltip-text="Configuration changes apply immediately"
                 variant="success"
-              ></dui-switch>
-              <dui-switch
-                label="Success Feedback"
-                show-success-feedback
-                variant="info"
-              ></dui-switch>
-              <dui-switch
+              ></ui-switch>
+              <ui-switch label="Success Feedback" show-success-feedback variant="info"></ui-switch>
+              <ui-switch
                 label="Requires Confirmation"
                 require-confirmation
                 confirmation-message="Changing this affects system security. Proceed?"
                 variant="danger"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="visualsCode"
             [label]="'Visual Enhancements Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
 
         <!-- Form Integration -->
@@ -214,32 +210,32 @@
           <div class="demo-card">
             <div class="preview-box flex-col items-start gap-20">
               <div class="w-full bg-surface-low p-16 rounded-8 border-subtle-dashed">
-                <dui-switch
+                <ui-switch
                   name="marketing"
                   value="opt-in"
                   label="Subscribe to Product Updates"
                   checked
                   variant="primary"
-                ></dui-switch>
+                ></ui-switch>
               </div>
               <div class="w-full bg-surface-low p-16 rounded-8 border-subtle-dashed">
                 <p class="fs-12 text-muted mb-8">
                   Auto-submit sends the form contents instantly when the state changes.
                 </p>
-                <dui-switch
+                <ui-switch
                   name="save_mode"
                   label="Auto-save Settings"
                   auto-submit
                   variant="success"
-                ></dui-switch>
+                ></ui-switch>
               </div>
             </div>
           </div>
-          <dui-code-preview
+          <ui-code-preview
             [htmlCode]="formsCode"
             [label]="'Form Integration Example'"
             activeLang="html"
-          ></dui-code-preview>
+          ></ui-code-preview>
         </section>
       </div>
     </div>

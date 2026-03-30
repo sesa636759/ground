@@ -36,53 +36,52 @@ export class DmRangeSliderDemoComponent extends BaseDemoComponent {
     { id: 'icons', title: 'With Icons', icon: 'image', iconLibrary: 'lucide' },
   ];
 
-  basicCode = signal(`<dui-range-slider value="30" min="0" max="100"></dui-range-slider>
-<dui-range-slider step="10" show-marks value="50"></dui-range-slider>`);
+  basicCode = signal(`<ui-range-slider value="30" min="0" max="100"></ui-range-slider>
+<ui-range-slider step="10" show-marks value="50"></ui-range-slider>`);
 
-  rangeCode = signal(`<dui-range-slider range start-value="20" end-value="80"></dui-range-slider>
-<dui-range-slider range start-value="40" end-value="60" color="success"></dui-range-slider>`);
+  rangeCode = signal(`<ui-range-slider range start-value="20" end-value="80"></ui-range-slider>
+<ui-range-slider range start-value="40" end-value="60" color="success"></ui-range-slider>`);
 
-  visualsCode = signal(`<dui-range-slider size="sm" label="Small"></dui-range-slider>
-<dui-range-slider size="lg" color="#8b5cf6" label="Custom Color"></dui-range-slider>
-<dui-range-slider tooltip-always-visible label="Always Visible Tooltip"></dui-range-slider>`);
+  visualsCode = signal(`<ui-range-slider size="sm" label="Small"></ui-range-slider>
+<ui-range-slider size="lg" color="#8b5cf6" label="Custom Color"></ui-range-slider>
+<ui-range-slider tooltip-always-visible label="Always Visible Tooltip"></ui-range-slider>`);
 
-  marksCode =
-    signal(`<dui-range-slider show-marks step="25" label="Quarter Steps"></dui-range-slider>
-<dui-range-slider 
+  marksCode = signal(`<ui-range-slider show-marks step="25" label="Quarter Steps"></ui-range-slider>
+<ui-range-slider 
   show-marks 
   [marks]="[{value: 0, label: 'Min'}, {value: 50, label: 'Mid'}, {value: 100, label: 'Max'}]"
-></dui-range-slider>`);
+></ui-range-slider>`);
 
   advancedCode = signal(`<!-- Restricted Values -->
-<dui-range-slider 
+<ui-range-slider 
   [restricted-values]="[0, 25, 50, 75, 100]" 
   show-marks 
   label="Restricted to Specific Steps"
-></dui-range-slider>
+></ui-range-slider>
 
 <!-- Custom/Non-linear Steps -->
-<dui-range-slider 
+<ui-range-slider 
   [custom-steps]="[0, 10, 20, 50, 100, 200, 500]" 
   show-marks 
   label="Non-linear Scale (Logarithmic style)"
-></dui-range-slider>`);
+></ui-range-slider>`);
 
   verticalCode = signal(`<div style="height: 300px;">
-  <dui-range-slider vertical value="50"></dui-range-slider>
-  <dui-range-slider vertical range start-value="25" end-value="75" color="danger"></dui-range-slider>
+  <ui-range-slider vertical value="50"></ui-range-slider>
+  <ui-range-slider vertical range start-value="25" end-value="75" color="danger"></ui-range-slider>
 </div>`);
 
-  iconsCode = signal(`<dui-range-slider 
+  iconsCode = signal(`<ui-range-slider 
   start-icon="volume-X" 
   end-icon="volume-2" 
   value="60"
-></dui-range-slider>
-<dui-range-slider 
+></ui-range-slider>
+<ui-range-slider 
   start-icon="sun" 
   end-icon="moon" 
   value="30" 
   color="warning"
-></dui-range-slider>`);
+></ui-range-slider>`);
 
   onSliderChange(event: any) {
     console.log('Slider event:', event.detail);

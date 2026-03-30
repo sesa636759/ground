@@ -36,12 +36,12 @@ export class DmContextMenuDemoComponent extends BaseDemoComponent {
   ];
 
   playgroundCode = `<div #trigger> Right Click Me </div>
-<dui-context-menu [model]="items" [target]="trigger"></dui-context-menu>`;
+<ui-context-menu [model]="items" [target]="trigger"></ui-context-menu>`;
 
   targetsCode = `<!-- Global Menu -->
-<dui-context-menu [model]="items" global></dui-context-menu>
+<ui-context-menu [model]="items" global></ui-context-menu>
 
 <!-- Specific Target -->
 <img #img src="..." />
-<dui-context-menu [model]="imgItems" [target]="img"></dui-context-menu>`;
+<ui-context-menu [model]="imgItems" [target]="img"></ui-context-menu>`;
 }

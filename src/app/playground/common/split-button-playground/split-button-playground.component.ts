@@ -48,14 +48,14 @@ export class DmSplitButtonPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<dui-split-button\n';
+    let code = '<ui-split-button\n';
     code += `  label="${this.pgConfig.label}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     if (this.pgConfig.disabled) code += `  disabled="true"\n`;
     if (this.pgConfig.loading) code += `  loading="true"\n`;
     code += `  [model]="menuItems"\n`;
-    code += '></dui-split-button>';
+    code += '></ui--split-button>';
 
     this.generatedCode.set(code);
     this.refreshCode();

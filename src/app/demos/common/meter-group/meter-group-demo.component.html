@@ -19,9 +19,9 @@
           <section class="demo-section" id="basic">
             <div class="section-header"><h2>Basic Layouts</h2></div>
             <div class="demo-card meter-panel">
-              <dui-meter-group [attr.values]="diskValues"></dui-meter-group>
+              <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
             </div>
-            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Shapes -->
@@ -33,11 +33,11 @@
             <div class="demo-card meter-grid">
               <div>
                 <p>Linear Bar</p>
-                <dui-meter-group [attr.values]="diskValues"></dui-meter-group>
+                <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
               </div>
               <div>
                 <p>Radial Circle</p>
-                <dui-meter-group shape="circle" [attr.values]="diskValues"></dui-meter-group>
+                <ui-meter-group shape="circle" [attr.values]="diskValues"></ui-meter-group>
               </div>
             </div>
           </section>
@@ -46,9 +46,9 @@
           <section class="demo-section" id="vertical">
             <div class="section-header"><h2>Vertical Orientation</h2></div>
             <div class="demo-card meter-panel h-300">
-              <dui-meter-group orientation="vertical" [attr.values]="diskValues"></dui-meter-group>
+              <ui-meter-group orientation="vertical" [attr.values]="diskValues"></ui-meter-group>
             </div>
-            <dui-code-preview [htmlCode]="verticalCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Sizing -->
@@ -57,15 +57,15 @@
             <div class="demo-card meter-stack">
               <div>
                 <p>Small (SM)</p>
-                <dui-meter-group size="sm" [attr.values]="diskValues"></dui-meter-group>
+                <ui-meter-group size="sm" [attr.values]="diskValues"></ui-meter-group>
               </div>
               <div>
                 <p>Medium (MD)</p>
-                <dui-meter-group size="md" [attr.values]="diskValues"></dui-meter-group>
+                <ui-meter-group size="md" [attr.values]="diskValues"></ui-meter-group>
               </div>
               <div>
                 <p>Large (LG)</p>
-                <dui-meter-group size="lg" [attr.values]="diskValues"></dui-meter-group>
+                <ui-meter-group size="lg" [attr.values]="diskValues"></ui-meter-group>
               </div>
             </div>
           </section>
@@ -74,7 +74,7 @@
           <section class="demo-section" id="legend">
             <div class="section-header"><h2>Legends & Labels</h2></div>
             <div class="demo-card meter-panel">
-              <dui-meter-group show-legend [attr.values]="diskValues"></dui-meter-group>
+              <ui-meter-group show-legend [attr.values]="diskValues"></ui-meter-group>
             </div>
           </section>
 
@@ -82,11 +82,11 @@
           <section class="demo-section" id="icons">
             <div class="section-header"><h2>Icons & Libraries</h2></div>
             <div class="demo-card meter-panel">
-              <dui-meter-group
+              <ui-meter-group
                 icon-library="lucide"
                 show-legend
                 [attr.values]="diskValues"
-              ></dui-meter-group>
+              ></ui-meter-group>
             </div>
           </section>
 
@@ -97,11 +97,11 @@
               <p>Segments and legend items respond to hover and click events.</p>
             </div>
             <div class="demo-card meter-panel">
-              <dui-meter-group
+              <ui-meter-group
                 interactive
                 [attr.values]="diskValues"
                 (meterClick)="handleMeterClick($event)"
-              ></dui-meter-group>
+              ></ui-meter-group>
             </div>
           </section>
         </div>

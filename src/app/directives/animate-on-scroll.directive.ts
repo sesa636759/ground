@@ -1,4 +1,4 @@
-﻿import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 
 export type AnimationType =
   | 'fade-in'
@@ -13,7 +13,7 @@ export type AnimationType =
   | 'rotate-in';
 
 @Directive({
-  selector: '[dui-AnimateOnScroll]',
+  selector: '[uiAnimateOnScroll]',
   standalone: true,
 })
 export class AnimateOnScrollDirective implements OnInit, OnDestroy {

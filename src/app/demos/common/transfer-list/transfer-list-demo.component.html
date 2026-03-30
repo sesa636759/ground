@@ -19,13 +19,13 @@
           [code]="basicCode()"
         >
           <div class="demo-box max-w-800">
-            <dui-transfer-list
+            <ui-transfer-list
               [attr.source-items]="sourceData | json"
               [attr.target-items]="targetData | json"
               [attr.titles]="'[&quot;Available Features&quot;, &quot;Assigned Features&quot;]'"
               searchable
               (transferChange)="onTransferChange($event)"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -39,20 +39,20 @@
           <div class="demo-grid col-1 gap-48">
             <div>
               <p class="demo-label">Table Mode (with Columns)</p>
-              <dui-transfer-list
+              <ui-transfer-list
                 mode="table"
                 [attr.columns]="tableColumns | json"
                 [attr.source-items]="sourceData | json"
                 height="300px"
-              ></dui-transfer-list>
+              ></ui-transfer-list>
             </div>
             <div>
               <p class="demo-label">Tree Mode (Hierarchical Selection)</p>
-              <dui-transfer-list
+              <ui-transfer-list
                 mode="tree"
                 [attr.source-items]="treeData | json"
                 height="300px"
-              ></dui-transfer-list>
+              ></ui-transfer-list>
             </div>
           </div>
         </pg-example-section>
@@ -65,12 +65,12 @@
           [code]="reorderCode()"
         >
           <div class="demo-box">
-            <dui-transfer-list
+            <ui-transfer-list
               enable-drag
               allow-reorder
               [attr.source-items]="sourceData | json"
               [attr.titles]="'[&quot;Bank&quot;, &quot;Priority Queue&quot;]'"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -82,11 +82,11 @@
           [code]="onewayCode()"
         >
           <div class="demo-box">
-            <dui-transfer-list
+            <ui-transfer-list
               one-way
               [attr.source-items]="sourceData | json"
               [attr.titles]="'[&quot;Selectable Template&quot;, &quot;Instance Config&quot;]'"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -98,12 +98,12 @@
           [code]="paginationCode()"
         >
           <div class="demo-box">
-            <dui-transfer-list
+            <ui-transfer-list
               pagination
               [attr.page-size]="3"
               [attr.source-items]="sourceData | json"
               [attr.titles]="'[&quot;Total Inventory&quot;, &quot;Order Batch&quot;]'"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -119,10 +119,10 @@
               This example demonstrates items with badges and rich metadata via custom HTML
               injection.
             </p>
-            <dui-transfer-list
+            <ui-transfer-list
               [attr.source-items]="'[{&quot;key&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Urgent Fix&quot;,&quot;priority&quot;:&quot;High&quot;},{&quot;key&quot;:&quot;2&quot;,&quot;label&quot;:&quot;UI Polish&quot;,&quot;priority&quot;:&quot;Low&quot;}]'"
               [attr.item-renderer]="'(item) => \`<div><div>\${item.label}</div><small style=&quot;color:var(--text-tertiary)&quot;>\${item.priority} Priority</small></div>\`'"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -134,10 +134,10 @@
           [code]="localeCode()"
         >
           <div class="demo-box">
-            <dui-transfer-list
+            <ui-transfer-list
               [attr.source-items]="sourceData | json"
               [attr.locale]="'{&quot;itemUnit&quot;:&quot;member&quot;,&quot;itemsUnit&quot;:&quot;members&quot;,&quot;searchPlaceholder&quot;:&quot;Rechercher des membres...&quot;,&quot;notFoundContent&quot;:&quot;Aucun résultat&quot;}'"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -153,10 +153,10 @@
               This component is configured to match against both label and description
               simultaneously.
             </p>
-            <dui-transfer-list
+            <ui-transfer-list
               [attr.source-items]="sourceData | json"
               [attr.filter-option]="'(input, item) => item.label.toLowerCase().includes(input) || (item.description && item.description.toLowerCase().includes(input))'"
-            ></dui-transfer-list>
+            ></ui-transfer-list>
           </div>
         </pg-example-section>
 
@@ -168,7 +168,7 @@
           [code]="skeletonCode()"
         >
           <div class="demo-box">
-            <dui-transfer-list loading></dui-transfer-list>
+            <ui-transfer-list loading></ui-transfer-list>
           </div>
         </pg-example-section>
       </div>

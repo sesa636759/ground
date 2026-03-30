@@ -7,39 +7,39 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="standardOrientationOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Alignment</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
         [options]="alignOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
         Scrollable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.closeable" (ngModelChange)="updateConfig()" /> Closeable
+        <ui-checkbox [(ngModel)]="pgConfig.closeable" (ngModelChange)="updateConfig()" /> Closeable
         Tabs
       </label>
     </div>
@@ -47,7 +47,7 @@
 
   <div preview class="preview-stage h-scrollable">
     <div class="tabs-container w-full">
-      <dui-tabs
+      <ui-tabs
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
         [attr.variant]="pgConfig.variant"
@@ -56,7 +56,7 @@
         [value]="currentTab"
         (valueChange)="onTabChange($event)"
       >
-        <dui-tab label="Overview" icon="📊" value="overview">
+        <ui-tab label="Overview" icon="📊" value="overview">
           <div class="p-24">
             <h4>Overview Content</h4>
             <p>
@@ -64,20 +64,20 @@
               status.
             </p>
           </div>
-        </dui-tab>
-        <dui-tab label="Settings" icon="⚙️" value="settings">
+        </ui-tab>
+        <ui-tab label="Settings" icon="⚙️" value="settings">
           <div class="p-24">
             <h4>Settings Content</h4>
             <p>Manage your account preferences, security settings, and notification frequency.</p>
           </div>
-        </dui-tab>
-        <dui-tab label="Profile" icon="👤" value="profile">
+        </ui-tab>
+        <ui-tab label="Profile" icon="👤" value="profile">
           <div class="p-24">
             <h4>Profile Content</h4>
             <p>Update your personal information, bio, and social media links.</p>
           </div>
-        </dui-tab>
-      </dui-tabs>
+        </ui-tab>
+      </ui-tabs>
     </div>
   </div>
 

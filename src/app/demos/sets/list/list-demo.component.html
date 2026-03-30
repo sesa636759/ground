@@ -24,62 +24,58 @@
             <div class="demo-card grid-2">
               <div class="list-example">
                 <p>Filled Primary</p>
-                <dui-list variant="filled" color="primary">
-                  <dui-list-item
+                <ui-list variant="filled" color="primary">
+                  <ui-list-item
                     label="Dashboard"
                     icon="layout"
                     icon-library="lucide"
-                  ></dui-list-item>
-                  <dui-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Analytics"
                     icon="bar-chart"
                     icon-library="lucide"
-                  ></dui-list-item>
-                </dui-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
               <div class="list-example">
                 <p>Soft Success</p>
-                <dui-list variant="soft" color="success">
-                  <dui-list-item
+                <ui-list variant="soft" color="success">
+                  <ui-list-item
                     label="Approved"
                     icon="check-circle"
                     icon-library="lucide"
-                  ></dui-list-item>
-                  <dui-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Verified"
                     icon="shield-check"
                     icon-library="lucide"
-                  ></dui-list-item>
-                </dui-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
               <div class="list-example">
                 <p>Outlined info</p>
-                <dui-list variant="outlined" color="info">
-                  <dui-list-item
+                <ui-list variant="outlined" color="info">
+                  <ui-list-item
                     label="Instructions"
                     icon="info"
                     icon-library="lucide"
-                  ></dui-list-item>
-                  <dui-list-item
-                    label="Guide"
-                    icon="book-open"
-                    icon-library="lucide"
-                  ></dui-list-item>
-                </dui-list>
+                  ></ui-list-item>
+                  <ui-list-item label="Guide" icon="book-open" icon-library="lucide"></ui-list-item>
+                </ui-list>
               </div>
               <div class="list-example">
                 <p>Text Only (Ghost)</p>
-                <dui-list variant="text" color="secondary">
-                  <dui-list-item
+                <ui-list variant="text" color="secondary">
+                  <ui-list-item
                     label="Settings"
                     icon="settings"
                     icon-library="lucide"
-                  ></dui-list-item>
-                  <dui-list-item label="Profile" icon="user" icon-library="lucide"></dui-list-item>
-                </dui-list>
+                  ></ui-list-item>
+                  <ui-list-item label="Profile" icon="user" icon-library="lucide"></ui-list-item>
+                </ui-list>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Layout Orientations -->
@@ -91,19 +87,19 @@
             <div class="demo-card list-stack">
               <div>
                 <p>Horizontal List</p>
-                <dui-list horizontal variant="soft" color="primary">
-                  <dui-list-item label="Home" icon="home" icon-library="lucide"></dui-list-item>
-                  <dui-list-item label="Search" icon="search" icon-library="lucide"></dui-list-item>
-                  <dui-list-item label="Profile" icon="user" icon-library="lucide"></dui-list-item>
-                </dui-list>
+                <ui-list horizontal variant="soft" color="primary">
+                  <ui-list-item label="Home" icon="home" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Search" icon="search" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Profile" icon="user" icon-library="lucide"></ui-list-item>
+                </ui-list>
               </div>
               <div>
                 <p>Numbered (Steps)</p>
-                <dui-list numbered variant="outlined">
-                  <dui-list-item label="Review Contract"></dui-list-item>
-                  <dui-list-item label="Sign Electronically"></dui-list-item>
-                  <dui-list-item label="Verify Payment"></dui-list-item>
-                </dui-list>
+                <ui-list numbered variant="outlined">
+                  <ui-list-item label="Review Contract"></ui-list-item>
+                  <ui-list-item label="Sign Electronically"></ui-list-item>
+                  <ui-list-item label="Verify Payment"></ui-list-item>
+                </ui-list>
               </div>
             </div>
           </section>
@@ -115,8 +111,8 @@
               <p>Infinite nesting with collapsible groups and indentation levels.</p>
             </div>
             <div class="demo-card">
-              <dui-list variant="soft" class="max-w-400">
-                <dui-list-item
+              <ui-list variant="soft" class="max-w-400">
+                <ui-list-item
                   label="Personal Files"
                   icon="folder"
                   icon-library="lucide"
@@ -124,7 +120,7 @@
                   expanded
                 >
                   <div slot="children">
-                    <dui-list-item
+                    <ui-list-item
                       label="Documents"
                       icon="file-text"
                       icon-library="lucide"
@@ -132,21 +128,21 @@
                       collapsible
                     >
                       <div slot="children">
-                        <dui-list-item label="Resume.pdf" level="2"></dui-list-item>
-                        <dui-list-item label="Budget.xlsx" level="2"></dui-list-item>
+                        <ui-list-item label="Resume.pdf" level="2"></ui-list-item>
+                        <ui-list-item label="Budget.xlsx" level="2"></ui-list-item>
                       </div>
-                    </dui-list-item>
-                    <dui-list-item
+                    </ui-list-item>
+                    <ui-list-item
                       label="Photos"
                       icon="image"
                       icon-library="lucide"
                       level="1"
-                    ></dui-list-item>
+                    ></ui-list-item>
                   </div>
-                </dui-list-item>
-              </dui-list>
+                </ui-list-item>
+              </ui-list>
             </div>
-            <dui-code-preview [htmlCode]="nestingCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="nestingCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Selection Modes -->
@@ -158,23 +154,23 @@
             <div class="demo-card grid-2">
               <div>
                 <p>Single Select (Highlight Only)</p>
-                <dui-list selectable variant="soft">
-                  <dui-list-item label="Option A"></dui-list-item>
-                  <dui-list-item label="Option B"></dui-list-item>
-                </dui-list>
+                <ui-list selectable variant="soft">
+                  <ui-list-item label="Option A"></ui-list-item>
+                  <ui-list-item label="Option B"></ui-list-item>
+                </ui-list>
               </div>
               <div>
                 <p>Multi Select + Checkboxes</p>
-                <dui-list
+                <ui-list
                   selectable
                   multi-select
                   checkbox-selection
                   variant="filled"
                   color="primary"
                 >
-                  <dui-list-item label="Task #1"></dui-list-item>
-                  <dui-list-item label="Task #2"></dui-list-item>
-                </dui-list>
+                  <ui-list-item label="Task #1"></ui-list-item>
+                  <ui-list-item label="Task #2"></ui-list-item>
+                </ui-list>
               </div>
             </div>
           </section>
@@ -185,21 +181,17 @@
               <h2>Headers & Groups</h2>
             </div>
             <div class="demo-card">
-              <dui-list subheader="ORGANIZATION" variant="text" dividers>
-                <dui-list-item label="Users" icon="users" icon-library="lucide"></dui-list-item>
-                <dui-list-item
-                  label="Permissions"
-                  icon="lock"
-                  icon-library="lucide"
-                ></dui-list-item>
-              </dui-list>
+              <ui-list subheader="ORGANIZATION" variant="text" dividers>
+                <ui-list-item label="Users" icon="users" icon-library="lucide"></ui-list-item>
+                <ui-list-item label="Permissions" icon="lock" icon-library="lucide"></ui-list-item>
+              </ui-list>
               <br />
-              <dui-list grouped variant="soft" color="info">
-                <dui-list-group label="RECENT DOCUMENTS">
-                  <dui-list-item label="Annual_Report_2023.doc"></dui-list-item>
-                  <dui-list-item label="Meeting_Notes.txt"></dui-list-item>
-                </dui-list-group>
-              </dui-list>
+              <ui-list grouped variant="soft" color="info">
+                <ui-list-group label="RECENT DOCUMENTS">
+                  <ui-list-item label="Annual_Report_2023.doc"></ui-list-item>
+                  <ui-list-item label="Meeting_Notes.txt"></ui-list-item>
+                </ui-list-group>
+              </ui-list>
             </div>
           </section>
 
@@ -212,8 +204,8 @@
             <div class="demo-card list-stack">
               <div>
                 <p>Context Menu (Dropdown Style)</p>
-                <dui-list variant="soft">
-                  <dui-list-item
+                <ui-list variant="soft">
+                  <ui-list-item
                     label="Right-click or Click Menu"
                     context-menu
                     icon="more-vertical"
@@ -223,23 +215,23 @@
                       <div class="menu-item">Edit Item</div>
                       <div class="menu-item delete">Delete Item</div>
                     </div>
-                  </dui-list-item>
-                </dui-list>
+                  </ui-list-item>
+                </ui-list>
               </div>
               <div>
                 <p>Draggable Reordering</p>
-                <dui-list is-draggable variant="outlined">
-                  <dui-list-item
+                <ui-list is-draggable variant="outlined">
+                  <ui-list-item
                     label="Draggable One"
                     icon="grip-vertical"
                     icon-library="lucide"
-                  ></dui-list-item>
-                  <dui-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Draggable Two"
                     icon="grip-vertical"
                     icon-library="lucide"
-                  ></dui-list-item>
-                </dui-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
             </div>
           </section>
@@ -251,19 +243,19 @@
               <p>Virtual scrolling and Pagination for thousands of items.</p>
             </div>
             <div class="demo-card">
-              <dui-list
+              <ui-list
                 searchable
                 paginated
                 [attr.items-per-page]="3"
                 variant="soft"
                 color="primary"
               >
-                <dui-list-item label="Index Item 1"></dui-list-item>
-                <dui-list-item label="Index Item 2"></dui-list-item>
-                <dui-list-item label="Index Item 3"></dui-list-item>
-                <dui-list-item label="Index Item 4"></dui-list-item>
-                <dui-list-item label="Index Item 5"></dui-list-item>
-              </dui-list>
+                <ui-list-item label="Index Item 1"></ui-list-item>
+                <ui-list-item label="Index Item 2"></ui-list-item>
+                <ui-list-item label="Index Item 3"></ui-list-item>
+                <ui-list-item label="Index Item 4"></ui-list-item>
+                <ui-list-item label="Index Item 5"></ui-list-item>
+              </ui-list>
             </div>
           </section>
 
@@ -275,14 +267,14 @@
             <div class="demo-card grid-2">
               <div>
                 <p>Skeleton Loading</p>
-                <dui-list loading variant="soft"></dui-list>
+                <ui-list loading variant="soft"></ui-list>
               </div>
               <div>
                 <p>Empty State</p>
-                <dui-list
+                <ui-list
                   empty-message="No items found in this collection."
                   variant="outlined"
-                ></dui-list>
+                ></ui-list>
               </div>
             </div>
           </section>
@@ -295,21 +287,21 @@
             <div class="demo-card grid-3">
               <div>
                 <p>Small (SM)</p>
-                <dui-list size="sm" variant="filled">
-                  <dui-list-item label="Small Item"></dui-list-item>
-                </dui-list>
+                <ui-list size="sm" variant="filled">
+                  <ui-list-item label="Small Item"></ui-list-item>
+                </ui-list>
               </div>
               <div>
                 <p>Medium (MD)</p>
-                <dui-list size="md" variant="filled">
-                  <dui-list-item label="Medium Item"></dui-list-item>
-                </dui-list>
+                <ui-list size="md" variant="filled">
+                  <ui-list-item label="Medium Item"></ui-list-item>
+                </ui-list>
               </div>
               <div>
                 <p>Large (LG)</p>
-                <dui-list size="lg" variant="filled">
-                  <dui-list-item label="Large Item"></dui-list-item>
-                </dui-list>
+                <ui-list size="lg" variant="filled">
+                  <ui-list-item label="Large Item"></ui-list-item>
+                </ui-list>
               </div>
             </div>
           </section>

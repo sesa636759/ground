@@ -26,27 +26,27 @@
             <div class="demo-card">
               <div class="w-300">
                 <span>Expand on Click:</span>
-                <dui-cascade-select
+                <ui-cascade-select
                   expand-trigger="click"
                   [options]="fileSystemOptions"
                   placeholder="Click to expand"
-                ></dui-cascade-select>
+                ></ui-cascade-select>
               </div>
               <div class="w-300">
                 <span>Leaf Only Display:</span>
-                <dui-cascade-select
+                <ui-cascade-select
                   [show-full-path]="false"
                   [options]="fileSystemOptions"
                   placeholder="Documents / Work / ..."
-                ></dui-cascade-select>
+                ></ui-cascade-select>
               </div>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="triggersCode"
               [label]="'Configuration Examples'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </section>
 
           <!-- Selection Logic -->
@@ -58,19 +58,19 @@
             <div class="demo-card">
               <div class="w-300">
                 <span>Change on Select (Any level):</span>
-                <dui-cascade-select
+                <ui-cascade-select
                   change-on-select
                   [options]="fileSystemOptions"
                   placeholder="Select any folder or file"
-                ></dui-cascade-select>
+                ></ui-cascade-select>
               </div>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="selectionCode"
               [label]="'Selection Examples'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </section>
         </div>
       </div>

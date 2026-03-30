@@ -59,23 +59,23 @@ export class DmBreadcrumbDemoComponent extends BaseDemoComponent {
     { label: 'Q1 Results', active: true },
   ]);
 
-  basicCode = `<dui-breadcrumb [items]="basicItems"></dui-breadcrumb>`;
+  basicCode = `<ui-breadcrumb [items]="basicItems"></ui-breadcrumb>`;
 
-  separatorsCode = `<dui-breadcrumb [items]="basicItems" separator=">"></dui-breadcrumb>
-<dui-breadcrumb [items]="basicItems" separator-icon="chevron-right" separator-icon-library="lucide"></dui-breadcrumb>`;
+  separatorsCode = `<ui-breadcrumb [items]="basicItems" separator=">"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" separator-icon="chevron-right" separator-icon-library="lucide"></ui-breadcrumb>`;
 
-  iconsCode = `<dui-breadcrumb [items]="iconItems" show-home home-icon="home" home-icon-library="lucide"></dui-breadcrumb>`;
+  iconsCode = `<ui-breadcrumb [items]="iconItems" show-home home-icon="home" home-icon-library="lucide"></ui-breadcrumb>`;
 
-  collapsingCode = `<dui-breadcrumb [items]="collapsibleItems" max-items="3" show-home home-icon="layout-dashboard" home-icon-library="lucide"></dui-breadcrumb>`;
+  collapsingCode = `<ui-breadcrumb [items]="collapsibleItems" max-items="3" show-home home-icon="layout-dashboard" home-icon-library="lucide"></ui-breadcrumb>`;
 
-  sizesCode = `<dui-breadcrumb [items]="basicItems" size="sm"></dui-breadcrumb>
-<dui-breadcrumb [items]="basicItems" size="md"></dui-breadcrumb>
-<dui-breadcrumb [items]="basicItems" size="lg"></dui-breadcrumb>`;
+  sizesCode = `<ui-breadcrumb [items]="basicItems" size="sm"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" size="md"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" size="lg"></ui-breadcrumb>`;
 
-  variantsCode = `<dui-breadcrumb [items]="basicItems" variant="default"></dui-breadcrumb>
-<dui-breadcrumb [items]="basicItems" variant="pills"></dui-breadcrumb>
+  variantsCode = `<ui-breadcrumb [items]="basicItems" variant="default"></ui-breadcrumb>
+<ui-breadcrumb [items]="basicItems" variant="pills"></ui-breadcrumb>
 <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 1.5rem; border-radius: 8px;">
-  <dui-breadcrumb [items]="basicItems" variant="glass"></dui-breadcrumb>
+  <ui-breadcrumb [items]="basicItems" variant="glass"></ui-breadcrumb>
 </div>`;
 
   handleBreadcrumbClick(ev: any) {

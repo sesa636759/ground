@@ -22,13 +22,13 @@
               <p>Default row-based layout.</p>
             </div>
             <div class="demo-card stack-wrap">
-              <dui-stack direction="horizontal" spacing="12px">
+              <ui-stack direction="horizontal" spacing="12px">
                 <div class="box">A</div>
                 <div class="box">B</div>
                 <div class="box">C</div>
-              </dui-stack>
+              </ui-stack>
             </div>
-            <dui-code-preview [htmlCode]="directionCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="directionCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Vertical -->
@@ -38,11 +38,11 @@
               <p>Column-based layout.</p>
             </div>
             <div class="demo-card stack-wrap">
-              <dui-stack direction="vertical" spacing="8px" align="start">
+              <ui-stack direction="vertical" spacing="8px" align="start">
                 <div class="box">Item 1</div>
                 <div class="box">Item 2</div>
                 <div class="box">Item 3</div>
-              </dui-stack>
+              </ui-stack>
             </div>
           </section>
 
@@ -53,11 +53,11 @@
               <p>Automatically move items to a new line when space is limited.</p>
             </div>
             <div class="demo-card stack-wrap max-w-400">
-              <dui-stack wrap="wrap" spacing="10px">
+              <ui-stack wrap="wrap" spacing="10px">
                 <div class="box-sm" *ngFor="let b of [1, 2, 3, 4, 5, 6, 7, 8]">#{{ b }}</div>
-              </dui-stack>
+              </ui-stack>
             </div>
-            <dui-code-preview [htmlCode]="wrapCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="wrapCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Spacing -->
@@ -69,19 +69,19 @@
             <div class="demo-card stack-stack">
               <div>
                 <p>Spacious (32px)</p>
-                <dui-stack spacing="32px"
+                <ui-stack spacing="32px"
                   ><div class="box-sm"></div>
                   <div class="box-sm"></div>
                   <div class="box-sm"></div
-                ></dui-stack>
+                ></ui-stack>
               </div>
               <div>
                 <p>Compact (4px)</p>
-                <dui-stack spacing="4px"
+                <ui-stack spacing="4px"
                   ><div class="box-sm"></div>
                   <div class="box-sm"></div>
                   <div class="box-sm"></div
-                ></dui-stack>
+                ></ui-stack>
               </div>
             </div>
           </section>
@@ -90,16 +90,16 @@
           <section class="demo-section" id="dividers">
             <div class="section-header"><h2>Dividers & Borders</h2></div>
             <div class="demo-card stack-stack">
-              <dui-stack show-dividers spacing="24px">
+              <ui-stack show-dividers spacing="24px">
                 <span>Profile</span><span>Settings</span><span>Account</span>
-              </dui-stack>
-              <dui-stack show-dividers divider-type="dashed" spacing="24px">
+              </ui-stack>
+              <ui-stack show-dividers divider-type="dashed" spacing="24px">
                 <div class="box-sm"></div>
                 <div class="box-sm"></div>
                 <div class="box-sm"></div>
-              </dui-stack>
+              </ui-stack>
             </div>
-            <dui-code-preview [htmlCode]="dividersCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="dividersCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Avatars -->
@@ -109,14 +109,14 @@
               <p>Classic overlapping circles common in group chats.</p>
             </div>
             <div class="demo-card">
-              <dui-stack overlap spacing="-15px">
+              <ui-stack overlap spacing="-15px">
                 <div class="avatar bg-blue">JD</div>
                 <div class="avatar bg-soft-red">AS</div>
                 <div class="avatar bg-green">MK</div>
                 <div class="avatar bg-orange">TH</div>
-              </dui-stack>
+              </ui-stack>
             </div>
-            <dui-code-preview [htmlCode]="overlapCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="overlapCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Max -->
@@ -126,11 +126,11 @@
               <p>Limit visibility and show a '+N' indicator.</p>
             </div>
             <div class="demo-card">
-              <dui-stack overlap spacing="-12px" [max]="3">
+              <ui-stack overlap spacing="-12px" [max]="3">
                 <div class="avatar bg-indigo" *ngFor="let a of avatars">{{ a }}</div>
-              </dui-stack>
+              </ui-stack>
             </div>
-            <dui-code-preview [htmlCode]="maxCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="maxCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>

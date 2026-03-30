@@ -13,7 +13,7 @@
       <ng-content></ng-content>
     </div>
     <div class="code-content">
-      <dui-code-preview
+      <ui-code-preview
         [label]="title"
         [htmlCode]="language === 'html' ? code : ''"
         [tsCode]="language === 'typescript' || language === 'ts' ? code : ''"
@@ -29,7 +29,7 @@
                 : 'html'
         "
         [expanded]="expanded"
-      ></dui-code-preview>
+      ></ui-code-preview>
     </div>
   </div>
 </section>

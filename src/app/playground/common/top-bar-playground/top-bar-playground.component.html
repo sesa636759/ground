@@ -7,15 +7,15 @@
   <div slot="content-structure" class="control-grid p-16">
     <div class="control-group">
       <label>Logo Text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.logoText"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
         Sticky Position
       </label>
     </div>
@@ -24,17 +24,17 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Height (px)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.height"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div preview class="w-full display-flex justify-center items-center flex-col gap-20 p-40">
     <div class="top-bar-container w-full max-w-600 border rounded-8 overflow-hidden bg-surface-1">
-      <dui-top-bar [attr.sticky]="pgConfig.sticky ? '' : null" [style.height.px]="pgConfig.height">
+      <ui-top-bar [attr.sticky]="pgConfig.sticky ? '' : null" [style.height.px]="pgConfig.height">
         <div slot="start" class="px-20 font-bold display-flex items-center h-full">
           {{ pgConfig.logoText }}
         </div>
@@ -42,7 +42,7 @@
           <span>Alerts</span>
           <span>Profile</span>
         </div>
-      </dui-top-bar>
+      </ui-top-bar>
     </div>
     <div class="content-placeholder w-full max-w-600 text-center text-muted p-24">
       <p>Body content goes here. If sticky is enabled, the bar will stay at the top on scroll.</p>

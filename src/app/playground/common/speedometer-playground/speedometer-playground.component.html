@@ -7,57 +7,57 @@
   <div slot="content-settings" class="control-grid p-16">
     <div class="control-group">
       <label>Current Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Secondary Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.secondaryValue"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Min Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.minValue"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Value</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.maxValue"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Label</label>
-      <dui-input [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Unit</label>
-      <dui-input [(ngModel)]="pgConfig.unit" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.unit" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showPercentage"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Percentage
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.interactive"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Interactive
       </label>
     </div>
@@ -66,101 +66,101 @@
   <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Size (px)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Needle Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [options]="needleShapeOptions"
         [(ngModel)]="pgConfig.needleShape"
         (ngModelChange)="updateConfig()"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Needle Color</label>
-      <dui-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.needleColor"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Start Angle</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.startAngle"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>End Angle</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.endAngle"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Animation (ms)</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.animationDuration"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-advanced" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showTicks"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Ticks
       </label>
     </div>
     <div class="control-group">
       <label>Tick Count</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.tickCount"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group full-width">
       <label>Ranges (JSON)</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.ranges"
         (ngModelChange)="updateConfig()"
         placeholder='[{"min":0,"max":30,"color":"#green"}]'
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group full-width">
       <label>Custom Labels (JSON)</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.customLabels"
         (ngModelChange)="updateConfig()"
         placeholder='{"0":"E","100":"F"}'
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group full-width">
       <label>Gradient Colors</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.gradientColors"
         (ngModelChange)="updateConfig()"
         placeholder="red, yellow, green"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div preview>
     <div class="preview-stage p-40 display-flex items-center justify-center min-h-400 bg-white">
-      <dui-speedometer
+      <ui-speedometer
         [attr.value]="pgConfig.value"
         [attr.secondary-value]="pgConfig.secondaryValue"
         [attr.min-value]="pgConfig.minValue"
@@ -181,7 +181,7 @@
         [attr.custom-labels]="pgConfig.customLabels"
         [attr.gradient-colors]="pgConfig.gradientColors"
         (valueChange)="onValueChange($event)"
-      ></dui-speedometer>
+      ></ui-speedometer>
     </div>
   </div>
 </pg-playground>

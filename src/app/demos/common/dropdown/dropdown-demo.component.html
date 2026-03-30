@@ -21,10 +21,10 @@
           [code]="basicCode"
         >
           <div class="max-w-320">
-            <dui-dropdown
+            <ui-dropdown
               [options]="jsonOptions(basicOptions)"
               placeholder="Select one..."
-            ></dui-dropdown>
+            ></ui-dropdown>
           </div>
         </pg-example-section>
 
@@ -36,10 +36,10 @@
           [code]="premiumCode"
         >
           <div class="max-w-320">
-            <dui-dropdown
+            <ui-dropdown
               [options]="jsonOptions(premiumOptions)"
               placeholder="Infrastructure types"
-            ></dui-dropdown>
+            ></ui-dropdown>
           </div>
         </pg-example-section>
 
@@ -53,19 +53,19 @@
           <div class="demo-grid col-2">
             <div class="demo-card">
               <h4 class="demo-sub-title">Multi-Select</h4>
-              <dui-dropdown
+              <ui-dropdown
                 multi-select
                 [options]="jsonOptions(basicOptions)"
                 placeholder="Pick multiple"
-              ></dui-dropdown>
+              ></ui-dropdown>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Hierarchical (Cascading)</h4>
-              <dui-dropdown
+              <ui-dropdown
                 cascading
                 [options]="jsonOptions(cascadingOptions)"
                 placeholder="Drill down categories"
-              ></dui-dropdown>
+              ></ui-dropdown>
             </div>
           </div>
         </pg-example-section>
@@ -78,11 +78,11 @@
           [code]="searchCode"
         >
           <div class="max-w-320">
-            <dui-dropdown
+            <ui-dropdown
               searchable
               [options]="jsonOptions(premiumOptions)"
               placeholder="Start typing..."
-            ></dui-dropdown>
+            ></ui-dropdown>
           </div>
         </pg-example-section>
 
@@ -94,17 +94,17 @@
           [code]="appearanceCode"
         >
           <div class="demo-flex-wrap">
-            <dui-dropdown
+            <ui-dropdown
               appearance="dropdown"
               [options]="jsonOptions(basicOptions)"
               placeholder="Standard Mode"
-            ></dui-dropdown>
+            ></ui-dropdown>
 
-            <dui-dropdown
+            <ui-dropdown
               appearance="button"
               [options]="jsonOptions(basicOptions)"
               placeholder="Action Overflow"
-            ></dui-dropdown>
+            ></ui-dropdown>
           </div>
         </pg-example-section>
 
@@ -116,21 +116,21 @@
           [code]="sizesCode"
         >
           <div class="demo-flex-wrap items-end">
-            <dui-dropdown
+            <ui-dropdown
               size="sm"
               [options]="jsonOptions(basicOptions)"
               placeholder="Small"
-            ></dui-dropdown>
-            <dui-dropdown
+            ></ui-dropdown>
+            <ui-dropdown
               size="md"
               [options]="jsonOptions(basicOptions)"
               placeholder="Medium"
-            ></dui-dropdown>
-            <dui-dropdown
+            ></ui-dropdown>
+            <ui-dropdown
               size="lg"
               [options]="jsonOptions(basicOptions)"
               placeholder="Large"
-            ></dui-dropdown>
+            ></ui-dropdown>
           </div>
         </pg-example-section>
 
@@ -144,23 +144,23 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h4 class="demo-sub-title">Pre-selected Value</h4>
-              <dui-dropdown value="2" [options]="jsonOptions(basicOptions)"></dui-dropdown>
+              <ui-dropdown value="2" [options]="jsonOptions(basicOptions)"></ui-dropdown>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Disabled State</h4>
-              <dui-dropdown
+              <ui-dropdown
                 disabled
                 [options]="jsonOptions(basicOptions)"
                 placeholder="Offline"
-              ></dui-dropdown>
+              ></ui-dropdown>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Full Width</h4>
-              <dui-dropdown
+              <ui-dropdown
                 full-width
                 [options]="jsonOptions(basicOptions)"
                 placeholder="Expanding to container"
-              ></dui-dropdown>
+              ></ui-dropdown>
             </div>
           </div>
         </pg-example-section>

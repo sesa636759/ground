@@ -8,67 +8,67 @@
         <h3>📐 Layout</h3>
         <div class="control-group">
           <label>Size</label>
-          <dui-input
+          <ui-input
             type="range"
             min="200"
             max="380"
             step="20"
             [(ngModel)]="cfg.size"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="fs-08rem text-muted">{{ cfg.size }}px</span>
         </div>
         <div class="control-group">
           <label>Inner Radius</label>
-          <dui-input
+          <ui-input
             type="range"
             min="0"
             max="60"
             step="5"
             [(ngModel)]="cfg.innerR"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="fs-08rem text-muted">{{ cfg.innerR }}px</span>
         </div>
         <div class="control-group">
           <label>Dataset</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.dataset"
             (ngModelChange)="onDataset()"
             [options]="datasetOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showLabels"
             [(ngModel)]="cfg.showLabels"
             (ngModelChange)="update()"
             label="Show Labels"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showVals"
             [(ngModel)]="cfg.showValues"
             (ngModelChange)="update()"
             label="Show Values"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="legend"
             [(ngModel)]="cfg.showLegend"
             (ngModelChange)="update()"
             label="Show Legend"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper w-full display-flex justify-center">
@@ -84,12 +84,12 @@
     </div>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

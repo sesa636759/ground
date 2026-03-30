@@ -24,18 +24,10 @@
             language="javascript"
           >
             <div class="demo-flex-wrap">
-              <dui-button
-                variant="success"
-                label="Success"
-                (click)="notify('success')"
-              ></dui-button>
-              <dui-button variant="danger" label="Error" (click)="notify('error')"></dui-button>
-              <dui-button
-                variant="warning"
-                label="Warning"
-                (click)="notify('warning')"
-              ></dui-button>
-              <dui-button variant="secondary" label="Info" (click)="notify('info')"></dui-button>
+              <ui-button variant="success" label="Success" (click)="notify('success')"></ui-button>
+              <ui-button variant="danger" label="Error" (click)="notify('error')"></ui-button>
+              <ui-button variant="warning" label="Warning" (click)="notify('warning')"></ui-button>
+              <ui-button variant="secondary" label="Info" (click)="notify('info')"></ui-button>
             </div>
           </pg-example-section>
 
@@ -47,36 +39,36 @@
             [code]="positionsCode"
           >
             <div class="demo-grid col-3 gap-12">
-              <dui-button
+              <ui-button
                 variant="secondary"
                 label="Top Left"
                 (click)="notifyAt('info', 'top-left')"
-              ></dui-button>
-              <dui-button
+              ></ui-button>
+              <ui-button
                 variant="secondary"
                 label="Top Center"
                 (click)="notifyAt('success', 'top-center')"
-              ></dui-button>
-              <dui-button
+              ></ui-button>
+              <ui-button
                 variant="secondary"
                 label="Top Right"
                 (click)="notifyAt('success', 'top-right')"
-              ></dui-button>
-              <dui-button
+              ></ui-button>
+              <ui-button
                 variant="secondary"
                 label="Bottom Left"
                 (click)="notifyAt('warning', 'bottom-left')"
-              ></dui-button>
-              <dui-button
+              ></ui-button>
+              <ui-button
                 variant="secondary"
                 label="Bottom Center"
                 (click)="notifyAt('error', 'bottom-center')"
-              ></dui-button>
-              <dui-button
+              ></ui-button>
+              <ui-button
                 variant="secondary"
                 label="Bottom Right"
                 (click)="notifyAt('info', 'bottom-right')"
-              ></dui-button>
+              ></ui-button>
             </div>
           </pg-example-section>
 
@@ -88,16 +80,12 @@
             [code]="cardStackCode"
           >
             <div class="demo-flex-wrap">
-              <dui-button
+              <ui-button
                 variant="primary"
                 label="Stack Notifications"
                 (click)="notify('success')"
-              ></dui-button>
-              <dui-button
-                variant="primary"
-                label="Add Another"
-                (click)="notify('info')"
-              ></dui-button>
+              ></ui-button>
+              <ui-button variant="primary" label="Add Another" (click)="notify('info')"></ui-button>
             </div>
           </pg-example-section>
         </div>
@@ -111,39 +99,39 @@
 </div>
 
 <!-- Per-position snackbar containers -->
-<dui-snackbar
+<ui-snackbar
   #snackbarGlobal
   position="top-right"
   max-visible="3"
   icon-library="lucide"
-></dui-snackbar>
-<dui-snackbar
+></ui-snackbar>
+<ui-snackbar
   #snackbarTopLeft
   position="top-left"
   max-visible="3"
   icon-library="lucide"
-></dui-snackbar>
-<dui-snackbar
+></ui-snackbar>
+<ui-snackbar
   #snackbarTopCenter
   position="top-center"
   max-visible="3"
   icon-library="lucide"
-></dui-snackbar>
-<dui-snackbar
+></ui-snackbar>
+<ui-snackbar
   #snackbarBottomLeft
   position="bottom-left"
   max-visible="3"
   icon-library="lucide"
-></dui-snackbar>
-<dui-snackbar
+></ui-snackbar>
+<ui-snackbar
   #snackbarBottomCenter
   position="bottom-center"
   max-visible="3"
   icon-library="lucide"
-></dui-snackbar>
-<dui-snackbar
+></ui-snackbar>
+<ui-snackbar
   #snackbarBottomRight
   position="bottom-right"
   max-visible="3"
   icon-library="lucide"
-></dui-snackbar>
+></ui-snackbar>

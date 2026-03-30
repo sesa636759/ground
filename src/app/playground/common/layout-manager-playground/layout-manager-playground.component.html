@@ -7,28 +7,25 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Mode</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.mode"
         (ngModelChange)="updateConfig()"
         [options]="modeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-features" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.resizable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Resizable Panels
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.closable"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()"></ui-checkbox>
         Closable Panels
       </label>
     </div>
@@ -39,7 +36,7 @@
     class="preview-stage h-scrollable w-full display-flex justify-center items-center p-40"
   >
     <div class="layout-wrapper w-full">
-      <dui-layout-manager
+      <ui-layout-manager
         #demoElement
         [attr.mode]="pgConfig.mode"
         [attr.resizable]="pgConfig.resizable ? '' : null"
@@ -57,7 +54,7 @@
           <h3>Panel 3</h3>
           <p>Sidebar content</p>
         </div>
-      </dui-layout-manager>
+      </ui-layout-manager>
     </div>
   </div>
 

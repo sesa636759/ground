@@ -123,7 +123,7 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<dui-switch\n`;
+    let code = `<ui-switch\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     if (this.pgConfig.checked) code += `  checked\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
@@ -189,7 +189,7 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.switchTabIndex !== 0)
       code += `  switch-tab-index="${this.pgConfig.switchTabIndex}"\n`;
 
-    code += '></dui-switch>';
+    code += '></ui--switch>';
 
     this.generatedCode.set(code);
     this.refreshCode();

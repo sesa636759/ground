@@ -8,77 +8,77 @@
   <div slot="content-appearance" class="control-grid appearance-section">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Layout</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.layout"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Vertical', value: 'vertical' },
           { label: 'Horizontal', value: 'horizontal' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Importance</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.importance"
         (ngModelChange)="updateConfig()"
         [options]="importanceOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Pattern</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.pattern"
         (ngModelChange)="updateConfig()"
         [options]="patternOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Border Radius</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.borderRadius"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 16px"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Width</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.width"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 100%"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Height</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.height"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. auto"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -86,90 +86,81 @@
   <div slot="content-features" class="checkbox-grid features-section">
     <div class="control-group full-width features-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.hoverable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Hoverable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></ui-checkbox>
         Glass Effect
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.bordered"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.bordered" (ngModelChange)="updateConfig()"></ui-checkbox>
         Bordered
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.flippable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Flippable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.collapsible"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Collapsible
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.closable"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()"></ui-checkbox>
         Closable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.clickable"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Clickable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.autoScroll"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Auto Scroll
       </label>
     </div>
 
     <div class="control-group" *ngIf="pgConfig.flippable">
       <label>Flip Trigger</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.flipTrigger"
         (ngModelChange)="updateConfig()"
         [options]="flipTriggerOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group" *ngIf="pgConfig.autoScroll">
       <label>Scroll Behavior</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.scrollBehavior"
         (ngModelChange)="updateConfig()"
         [options]="scrollBehaviorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -177,49 +168,49 @@
   <div slot="content-content" class="control-grid content-section">
     <div class="control-group">
       <label>Card Title</label>
-      <dui-input [(ngModel)]="pgConfig.cardTitle" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.cardTitle" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Description</label>
-      <dui-input [(ngModel)]="pgConfig.description" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.description" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Tag Text</label>
-      <dui-input [(ngModel)]="pgConfig.tag" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.tag" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Action Comma List</label>
-      <dui-input [(ngModel)]="pgConfig.actions" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.actions" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Ribbon Text</label>
-      <dui-input [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group" *ngIf="pgConfig.ribbon">
       <label>Ribbon Position</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.ribbonPosition"
         (ngModelChange)="updateConfig()"
         [options]="ribbonPositionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Extra (Header)</label>
-      <dui-input [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()"></dui-input>
+      <ui-input [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>HREF (Clickable)</label>
-      <dui-input
+      <ui-input
         [(ngModel)]="pgConfig.href"
         (ngModelChange)="updateConfig()"
         placeholder="https://..."
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <!-- Preview Area -->
   <div preview class="preview-stage card-preview">
-    <dui-card
+    <ui-card
       #demoElement
       [attr.card-id]="pgConfig.cardId"
       [attr.card-title]="pgConfig.cardTitle"
@@ -270,27 +261,27 @@
     >
       <!-- Mixed content demo -->
       <div slot="tabs" *ngIf="pgConfig.pattern === 'default'">
-        <dui-tabs>
-          <dui-tab-panel label="Info" icon="info" icon-library="lucide"
-            >Information content</dui-tab-panel
+        <ui-tabs>
+          <ui-tab-panel label="Info" icon="info" icon-library="lucide"
+            >Information content</ui-tab-panel
           >
-          <dui-tab-panel label="Settings" icon="settings" icon-library="lucide"
-            >Settings content</dui-tab-panel
+          <ui-tab-panel label="Settings" icon="settings" icon-library="lucide"
+            >Settings content</ui-tab-panel
           >
-        </dui-tabs>
+        </ui-tabs>
       </div>
 
       <div slot="back" *ngIf="pgConfig.flippable">
         <div class="card-back-content">
-          <dui-icon
+          <ui-icon
             name="shield-check"
             library="lucide"
             size="3em"
             color="var(--ui-success)"
-          ></dui-icon>
+          ></ui-icon>
           <h3 class="card-back-title">Security Verified</h3>
           <p>This side is perfectly secure for sensitive data.</p>
-          <dui-button label="Verify" variant="success"></dui-button>
+          <ui-button label="Verify" variant="success"></ui-button>
         </div>
       </div>
 
@@ -300,11 +291,11 @@
 
       <div slot="footer" *ngIf="!pgConfig.buttonText && !pgConfig.actions">
         <div class="card-footer-actions">
-          <dui-button label="Cancel" variant="ghost"></dui-button>
-          <dui-button label="Submit" variant="primary"></dui-button>
+          <ui-button label="Cancel" variant="ghost"></ui-button>
+          <ui-button label="Submit" variant="primary"></ui-button>
         </div>
       </div>
-    </dui-card>
+    </ui-card>
   </div>
 
   <pg-playground-event-log

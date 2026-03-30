@@ -82,7 +82,7 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
   }
 
   updateConfig() {
-    let code = `<dui-dock\n`;
+    let code = `<ui-dock\n`;
     code += `  [items]="dockItems"\n`;
     if (this.pgConfig.position !== 'bottom') code += `  position="${this.pgConfig.position}"\n`;
     if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
@@ -92,7 +92,7 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
     if (this.pgConfig.iconLibrary !== 'default')
       code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
 
-    code += `></dui-dock>`;
+    code += `></ui--dock>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

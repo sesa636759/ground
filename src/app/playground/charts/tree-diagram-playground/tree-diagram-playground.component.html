@@ -8,63 +8,63 @@
         <h3>📐 Layout</h3>
         <div class="control-group">
           <label>Orientation</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.orientation"
             (ngModelChange)="update()"
             [options]="orientOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Dataset</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.dataset"
             (ngModelChange)="onDataset()"
             [options]="datasetOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Node Radius</label>
-          <dui-input
+          <ui-input
             type="range"
             min="16"
             max="36"
             step="2"
             [(ngModel)]="cfg.nodeR"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="tree-diagram-node-label">{{ cfg.nodeR }}px</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showLines"
             [(ngModel)]="cfg.showLines"
             (ngModelChange)="update()"
             label="Show Lines"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="curved"
             [(ngModel)]="cfg.curved"
             (ngModelChange)="update()"
             label="Curved Lines"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="icons"
             [(ngModel)]="cfg.showIcons"
             (ngModelChange)="update()"
             label="Show Icons"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper tree-diagram-preview">
@@ -126,12 +126,12 @@
     </div>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

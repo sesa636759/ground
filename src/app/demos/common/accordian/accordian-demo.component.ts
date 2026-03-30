@@ -65,7 +65,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
         '<ul><li>Compact vertical layout</li><li>Single or multiple expansion</li><li>Keyboard accessible</li><li>Customizable styling</li></ul>',
     },
   ];
-  basicAccordionCode = `<dui-accordion [items]="items"></dui-accordion>`;
+  basicAccordionCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
   formAccordionItems = [
     {
@@ -74,20 +74,20 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       subtitle: 'Complete your profile',
       content: `
         <form style="display: flex; flex-direction: column; gap: 1rem;">
-          <dui-input type="text" label="First Name" placeholder="Enter first name"></dui-input>
-          <dui-input type="text" label="Last Name" placeholder="Enter last name"></dui-input>
-          <dui-input type="email" label="Email Address" placeholder="alex@example.com"></dui-input>
-          <dui-input type="password" label="Password" show-password-toggle="true" placeholder="Enter password"></dui-input>
-          <dui-input type="tel" label="Phone Number" placeholder="+1 (555) 000-0000"></dui-input>
-          <dui-input type="number" label="Age" min="18" max="120" show-steppers="true"></dui-input>
-          <dui-input type="date" label="Date of Birth"></dui-input>
-          <dui-input type="time" label="Preferred Meeting Time"></dui-input>
-          <dui-input type="color" label="Favorite Color" value="#667eea"></dui-input>
-          <dui-input type="file" label="Profile Picture" accept="image/*"></dui-input>
-          <dui-input type="range" label="Experience Level" min="1" max="100" value="50"></dui-input>
-          <dui-input multiline="true" label="Bio" placeholder="Tell us about yourself" rows="4"></dui-input>
+          <ui-input type="text" label="First Name" placeholder="Enter first name"></ui-input>
+          <ui-input type="text" label="Last Name" placeholder="Enter last name"></ui-input>
+          <ui-input type="email" label="Email Address" placeholder="alex@example.com"></ui-input>
+          <ui-input type="password" label="Password" show-password-toggle="true" placeholder="Enter password"></ui-input>
+          <ui-input type="tel" label="Phone Number" placeholder="+1 (555) 000-0000"></ui-input>
+          <ui-input type="number" label="Age" min="18" max="120" show-steppers="true"></ui-input>
+          <ui-input type="date" label="Date of Birth"></ui-input>
+          <ui-input type="time" label="Preferred Meeting Time"></ui-input>
+          <ui-input type="color" label="Favorite Color" value="#667eea"></ui-input>
+          <ui-input type="file" label="Profile Picture" accept="image/*"></ui-input>
+          <ui-input type="range" label="Experience Level" min="1" max="100" value="50"></ui-input>
+          <ui-input multiline="true" label="Bio" placeholder="Tell us about yourself" rows="4"></ui-input>
           <div style="margin-top: 1rem; text-align: right;">
-            <dui-button label="Save Details" variant="primary"></dui-button>
+            <ui-button label="Save Details" variant="primary"></ui-button>
           </div>
         </form>
       `,
@@ -97,17 +97,17 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Preferences',
       content: `
          <form style="display: flex; flex-direction: column; gap: 1rem;">
-           <dui-checkbox label="Subscribe to newsletter" checked="true"></dui-checkbox>
-           <dui-switch label="Enable notifications" checked="true"></dui-switch>
-           <dui-radio-group label="Theme" options="[{&quot;label&quot;:&quot;Light&quot;,&quot;value&quot;:&quot;light&quot;},{&quot;label&quot;:&quot;Dark&quot;,&quot;value&quot;:&quot;dark&quot;},{&quot;label&quot;:&quot;System&quot;,&quot;value&quot;:&quot;system&quot;}]" value="system"></dui-radio-group>
-           <dui-dropdown label="Role" placeholder="Select a role" o
+           <ui-checkbox label="Subscribe to newsletter" checked="true"></ui-checkbox>
+           <ui-switch label="Enable notifications" checked="true"></ui-switch>
+           <ui-radio-group label="Theme" options="[{&quot;label&quot;:&quot;Light&quot;,&quot;value&quot;:&quot;light&quot;},{&quot;label&quot;:&quot;Dark&quot;,&quot;value&quot;:&quot;dark&quot;},{&quot;label&quot;:&quot;System&quot;,&quot;value&quot;:&quot;system&quot;}]" value="system"></ui-radio-group>
+           <ui-dropdown label="Role" placeholder="Select a role" o
            ptions="[{&quot;label&quot;:&quot;Admin&quot;,&quot;value&quot;:&quot;admin&quot;},
-           {&quot;label&quot;:&quot;User&quot;,&quot;value&quot;:&quot;user&quot;}]"></dui-dropdown>
+           {&quot;label&quot;:&quot;User&quot;,&quot;value&quot;:&quot;user&quot;}]"></ui-dropdown>
          </form>
        `,
     },
   ];
-  formAccordionCode = '<dui-accordion [items]="formAccordionItems"></dui-accordion>';
+  formAccordionCode = '<ui-accordion [items]="formAccordionItems"></ui-accordion>';
 
   subtitlesItems = [
     {
@@ -129,7 +129,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       content: '<p>View and manage your billing information.</p>',
     },
   ];
-  subtitlesCode = `<dui-accordion [items]="items"></dui-accordion>`;
+  subtitlesCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
   searchItems = [
     { id: 'react', title: 'React', content: 'A JavaScript library for building user interfaces' },
@@ -142,7 +142,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     { id: 'svelte', title: 'Svelte', content: 'Cybernetically enhanced web apps' },
     { id: 'ember', title: 'Ember', content: 'A framework for ambitious web developers' },
   ];
-  searchCode = `<dui-accordion [items]="items" enable-search search-placeholder="Search frameworks..."></dui-accordion>`;
+  searchCode = `<ui-accordion [items]="items" enable-search search-placeholder="Search frameworks..."></ui-accordion>`;
 
   actionsItems = [
     {
@@ -166,7 +166,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       ],
     },
   ];
-  actionsCode = `<dui-accordion [items]="items" (accordionAction)="handleAction($event)"></dui-accordion>`;
+  actionsCode = `<ui-accordion [items]="items" (accordionAction)="handleAction($event)"></ui-accordion>`;
 
   nestedItems = [
     {
@@ -193,7 +193,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       ],
     },
   ];
-  nestedCode = `<dui-accordion [items]="items" enable-nested></dui-accordion>`;
+  nestedCode = `<ui-accordion [items]="items" enable-nested></ui-accordion>`;
 
   dragDropItems = [
     { id: 'todo', title: 'To Do', content: 'Tasks to be done' },
@@ -201,29 +201,29 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     { id: 'done', title: 'Done', content: 'Completed tasks' },
     { id: 'archived', title: 'Archived', content: 'Old tasks' },
   ];
-  dragDropCode = `<dui-accordion [items]="items" enable-drag-drop (accordionReorder)="handleReorder($event)"></dui-accordion>`;
+  dragDropCode = `<ui-accordion [items]="items" enable-drag-drop (accordionReorder)="handleReorder($event)"></ui-accordion>`;
 
   persistenceItems = [
     { id: 'pref1', title: 'Preference 1', content: 'Setting 1' },
     { id: 'pref2', title: 'Preference 2', content: 'Setting 2' },
     { id: 'pref3', title: 'Preference 3', content: 'Setting 3' },
   ];
-  persistenceCode = `<dui-accordion [items]="items" enable-persistence persistence-key="custom-key-v1"></dui-accordion>`;
+  persistenceCode = `<ui-accordion [items]="items" enable-persistence persistence-key="custom-key-v1"></ui-accordion>`;
 
-  loadingCode = `<dui-accordion [items]="[]" loading></dui-accordion>`;
+  loadingCode = `<ui-accordion [items]="[]" loading></ui-accordion>`;
 
   rtlItems = [
     { id: '1', title: 'القسم الأول', content: 'محتوى القسم الأول' },
     { id: '2', title: 'القسم الثاني', content: 'محتوى القسم الثاني' },
   ];
-  rtlCode = `<dui-accordion [items]="items" rtl></dui-accordion>`;
+  rtlCode = `<ui-accordion [items]="items" rtl></ui-accordion>`;
 
   denseItems = Array.from({ length: 5 }, (_, i) => ({
     id: `item-${i}`,
     title: `Dense Item ${i + 1}`,
     content: `Compact content for item ${i + 1}`,
   }));
-  denseCode = `<dui-accordion [items]="items" dense></dui-accordion>`;
+  denseCode = `<ui-accordion [items]="items" dense></ui-accordion>`;
 
   cardAccordionItems = [
     {
@@ -248,16 +248,16 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       content: '<p>Review and manage your personal data sharing preferences.</p>',
     },
   ];
-  cardAccordionCode = `<dui-accordion [items]="cardAccordionItems" variant="card"></dui-accordion>`;
+  cardAccordionCode = `<ui-accordion [items]="cardAccordionItems" variant="card"></ui-accordion>`;
 
-  cardListAccordionCode = `<dui-accordion [items]="cardAccordionItems" variant="card-list"></dui-accordion>`;
+  cardListAccordionCode = `<ui-accordion [items]="cardAccordionItems" variant="card-list"></ui-accordion>`;
 
   eventsItems = [
     { id: 'e1', title: 'Event Source 1', content: 'Interact with me' },
     { id: 'e2', title: 'Event Source 2', content: 'Interact with me too' },
   ];
   eventsLog: string[] = [];
-  eventsCode = `<dui-accordion [items]="items" (afterOpen)="log('After Open', $event)"></dui-accordion>`;
+  eventsCode = `<ui-accordion [items]="items" (afterOpen)="log('After Open', $event)"></ui-accordion>`;
 
   controlledItems = [
     { id: 'c1', title: 'Panel 1', content: 'Controlled Panel 1' },
@@ -265,13 +265,13 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     { id: 'c3', title: 'Panel 3', content: 'Controlled Panel 3' },
   ];
   controlledExpanded: string[] = [];
-  controlledCode = `<dui-accordion [items]="items" [expandedItems]="currentExpanded"></dui-accordion>`;
+  controlledCode = `<ui-accordion [items]="items" [expandedItems]="currentExpanded"></ui-accordion>`;
 
   asyncLazyItems = [
     { id: 'l1', title: 'Lazy Content 1', content: 'This content was rendered only when opened.' },
     { id: 'l2', title: 'Lazy Content 2', content: 'Check the DOM, I was not there when closed.' },
   ];
-  asyncLazyCode = `<dui-accordion [items]="items" lazy></dui-accordion>`;
+  asyncLazyCode = `<ui-accordion [items]="items" lazy></ui-accordion>`;
 
   handleAction(event: any) {
     alert(`Action clicked: ${event.detail.actionId} on item ${event.detail.itemId}`);

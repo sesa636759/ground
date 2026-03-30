@@ -165,11 +165,11 @@ export class DmSmartMenuPlaygroundComponent extends BasePlaygroundComponent {
           : `  <!-- programmatically opened -->`;
 
     const codeLines = [
-      `<dui-smart-context-menu`,
+      `<ui-smart-context-menu`,
       targetAttr,
       `  icon-library="${this.pgConfig.iconLibrary}"`,
       `  [items]="menuItems"`,
-      `></dui-smart-context-menu>`,
+      `></ui--smart-context-menu>`,
     ];
 
     this.generatedCode.set(codeLines.join('\n'));

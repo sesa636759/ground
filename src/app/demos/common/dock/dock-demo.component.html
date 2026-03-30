@@ -19,9 +19,9 @@
           <section class="demo-section" id="basic">
             <div class="section-header"><h2>Basic Layout</h2></div>
             <div class="demo-card dock-panel">
-              <dui-dock [attr.items]="basicItems | json"></dui-dock>
+              <ui-dock [attr.items]="basicItems | json"></ui-dock>
             </div>
-            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Positions -->
@@ -32,21 +32,21 @@
             </div>
             <div class="demo-grid col-2">
               <div class="demo-card dock-position-card">
-                <dui-dock position="left" [attr.items]="basicItems | json"></dui-dock>
+                <ui-dock position="left" [attr.items]="basicItems | json"></ui-dock>
                 <div class="dock-label">Left Position</div>
               </div>
               <div class="demo-card dock-position-card">
-                <dui-dock position="right" [attr.items]="basicItems | json"></dui-dock>
+                <ui-dock position="right" [attr.items]="basicItems | json"></ui-dock>
                 <div class="dock-label">Right Position</div>
               </div>
             </div>
 
             <div class="demo-card dock-top-position-card">
-              <dui-dock position="top" [attr.items]="basicItems | json"></dui-dock>
+              <ui-dock position="top" [attr.items]="basicItems | json"></ui-dock>
               <div class="dock-label top-label">Top Position</div>
             </div>
 
-            <dui-code-preview [htmlCode]="positionsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="positionsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Magnify -->
@@ -56,9 +56,9 @@
               <p>Items scale up smoothly as the mouse nears them.</p>
             </div>
             <div class="demo-card dock-panel">
-              <dui-dock [attr.items]="basicItems | json" magnify></dui-dock>
+              <ui-dock [attr.items]="basicItems | json" magnify></ui-dock>
             </div>
-            <dui-code-preview [htmlCode]="magnifyCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="magnifyCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Blur -->
@@ -68,16 +68,16 @@
               <p>Adds a semi-transparent, blurred background to the dock.</p>
             </div>
             <div class="demo-card dock-panel dock-blur-demo-card">
-              <dui-dock [attr.items]="basicItems | json" blur-effect></dui-dock>
+              <ui-dock [attr.items]="basicItems | json" blur-effect></ui-dock>
             </div>
-            <dui-code-preview [htmlCode]="blurCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="blurCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Badges -->
           <section class="demo-section" id="badges">
             <div class="section-header"><h2>Badges & Indicators</h2></div>
             <div class="demo-card dock-panel">
-              <dui-dock [attr.items]="badgeItems | json"></dui-dock>
+              <ui-dock [attr.items]="badgeItems | json"></ui-dock>
             </div>
           </section>
 
@@ -88,15 +88,15 @@
               <p>A full-featured dock with separators, active indicators, and bounce effects.</p>
             </div>
             <div class="demo-card os-mock">
-              <dui-dock
+              <ui-dock
                 [attr.items]="osItems | json"
                 position="bottom"
                 size="md"
                 magnify
                 blur-effect
-              ></dui-dock>
+              ></ui-dock>
             </div>
-            <dui-code-preview [htmlCode]="osCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="osCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Interactive -->
@@ -106,10 +106,10 @@
               <p>Drag to reorder items or click to trigger actions.</p>
             </div>
             <div class="demo-card dock-panel">
-              <dui-dock
+              <ui-dock
                 [attr.items]="basicItems | json"
                 (dockItemClick)="handleItemClick($event)"
-              ></dui-dock>
+              ></ui-dock>
             </div>
           </section>
         </div>

@@ -10,42 +10,42 @@
         <h3>📐 Layout</h3>
         <div class="control-group">
           <label>Orientation</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="pgConfig.orientation"
             (ngModelChange)="updateConfig()"
             [options]="standardOrientationOptions"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Dataset Mode</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="pgConfig.mode"
             (ngModelChange)="onModeChange()"
             [options]="modeOptions"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Bar Width %</label>
-          <dui-input
+          <ui-input
             type="range"
             min="20"
             max="90"
             step="5"
             [(ngModel)]="pgConfig.barWidth"
             (ngModelChange)="updateConfig()"
-          ></dui-input>
+          ></ui-input>
           <span class="fs-08rem text-muted">{{ pgConfig.barWidth }}%</span>
         </div>
         <div class="control-group">
           <label>Border Radius</label>
-          <dui-input
+          <ui-input
             type="range"
             min="0"
             max="16"
             step="2"
             [(ngModel)]="pgConfig.borderRadius"
             (ngModelChange)="updateConfig()"
-          ></dui-input>
+          ></ui-input>
           <span class="fs-08rem text-muted">{{ pgConfig.borderRadius }}px</span>
         </div>
       </div>
@@ -53,58 +53,58 @@
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="pgConfig.showGrid"
             (ngModelChange)="updateConfig()"
             label="Show Grid"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showValues"
             [(ngModel)]="pgConfig.showValues"
             (ngModelChange)="updateConfig()"
             label="Show Values"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="stacked"
             [(ngModel)]="pgConfig.stacked"
             (ngModelChange)="updateConfig()"
             label="Stacked"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="enableAnimation"
             [(ngModel)]="pgConfig.enableAnimation"
             (ngModelChange)="updateConfig()"
             label="Animate on Load"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="showTooltip"
             [(ngModel)]="pgConfig.showTooltip"
             (ngModelChange)="updateConfig()"
             label="Show Tooltip"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
   </div>
   <div preview class="w-full display-flex flex-col gap-16 justify-center items-center">
-    <dui-bar-chart
+    <ui-bar-chart
       [attr.orientation]="pgConfig.orientation"
       [attr.bar-width]="pgConfig.barWidth"
       [attr.border-radius]="pgConfig.borderRadius"
@@ -117,6 +117,6 @@
       [labels]="labelsJson"
       [datasets]="datasetsJson"
       class="w-full h-380"
-    ></dui-bar-chart>
+    ></ui-bar-chart>
   </div>
 </pg-playground>

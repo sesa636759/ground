@@ -38,36 +38,36 @@ export class DmPanelDemoComponent extends BaseDemoComponent {
     { id: 'glassmorphism', title: 'Glassmorphism', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<dui-panel variant="elevated" panel-title="Elevated Panel">
+  playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>
-</dui-panel>`;
+</ui-panel>`;
 
   stylesCode = `<!-- Elevated (default) -->
-<dui-panel variant="elevated" panel-title="Elevated Panel">
+<ui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>
-</dui-panel>
+</ui-panel>
 
 <!-- Outlined -->
-<dui-panel variant="outlined" panel-title="Outlined Panel">
+<ui-panel variant="outlined" panel-title="Outlined Panel">
   <div slot="content">Clean border without shadow.</div>
-</dui-panel>
+</ui-panel>
 
 <!-- Filled -->
-<dui-panel variant="filled" panel-title="Filled Panel">
+<ui-panel variant="filled" panel-title="Filled Panel">
   <div slot="content">Subtle background fill.</div>
-</dui-panel>
+</ui-panel>
 
 <!-- Flat -->
-<dui-panel variant="flat" panel-title="Flat Panel">
+<ui-panel variant="flat" panel-title="Flat Panel">
   <div slot="content">No border or shadow.</div>
-</dui-panel>`;
+</ui-panel>`;
 
-  themesCode = `<dui-panel theme="primary" panel-title="Primary Theme"><div slot="content">Blue accent.</div></dui-panel>
-<dui-panel theme="success" panel-title="Success Theme"><div slot="content">Green accent.</div></dui-panel>
-<dui-panel theme="warning" panel-title="Warning Theme"><div slot="content">Orange accent.</div></dui-panel>
-<dui-panel theme="danger"  panel-title="Danger Theme"><div slot="content">Red accent.</div></dui-panel>`;
+  themesCode = `<ui-panel theme="primary" panel-title="Primary Theme"><div slot="content">Blue accent.</div></ui-panel>
+<ui-panel theme="success" panel-title="Success Theme"><div slot="content">Green accent.</div></ui-panel>
+<ui-panel theme="warning" panel-title="Warning Theme"><div slot="content">Orange accent.</div></ui-panel>
+<ui-panel theme="danger"  panel-title="Danger Theme"><div slot="content">Red accent.</div></ui-panel>`;
 
-  interactiveCode = `<dui-panel
+  interactiveCode = `<ui-panel
   toggleable
   minimizable
   maximizable
@@ -76,12 +76,12 @@ export class DmPanelDemoComponent extends BaseDemoComponent {
   panel-title="Full Interactive Panel"
 >
   <div slot="content">Drag, resize, minimize, maximize me!</div>
-</dui-panel>`;
+</ui-panel>`;
 
   glassCode = `<!-- Wrap in a gradient/image background -->
 <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 32px; border-radius: 12px">
-  <dui-panel glass panel-title="Glass Panel">
+  <ui-panel glass panel-title="Glass Panel">
     <div slot="content">Translucent blur effect.</div>
-  </dui-panel>
+  </ui-panel>
 </div>`;
 }

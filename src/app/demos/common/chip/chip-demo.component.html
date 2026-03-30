@@ -23,11 +23,11 @@
           >
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-chip label="Filled" variant="filled" color="primary"></dui-chip>
-                <dui-chip label="Outlined" variant="outlined" color="primary"></dui-chip>
-                <dui-chip label="Soft" variant="soft" color="success"></dui-chip>
-                <dui-chip label="Gradient" variant="gradient" color="warning"></dui-chip>
-                <dui-chip label="Text Only" variant="text" color="danger"></dui-chip>
+                <ui-chip label="Filled" variant="filled" color="primary"></ui-chip>
+                <ui-chip label="Outlined" variant="outlined" color="primary"></ui-chip>
+                <ui-chip label="Soft" variant="soft" color="success"></ui-chip>
+                <ui-chip label="Gradient" variant="gradient" color="warning"></ui-chip>
+                <ui-chip label="Text Only" variant="text" color="danger"></ui-chip>
               </div>
             </div>
           </pg-example-section>
@@ -40,21 +40,21 @@
           >
             <div class="demo-card chip-stack">
               <div class="demo-flex">
-                <dui-chip label="Pill" shape="pill" color="info"></dui-chip>
-                <dui-chip label="Rounded" shape="rounded" color="info"></dui-chip>
-                <dui-chip label="Square" shape="square" color="info"></dui-chip>
-                <dui-chip
+                <ui-chip label="Pill" shape="pill" color="info"></ui-chip>
+                <ui-chip label="Rounded" shape="rounded" color="info"></ui-chip>
+                <ui-chip label="Square" shape="square" color="info"></ui-chip>
+                <ui-chip
                   label="Circle"
                   shape="circle"
                   icon="star"
                   icon-library="lucide"
                   color="info"
-                ></dui-chip>
+                ></ui-chip>
               </div>
               <div class="demo-flex mt-24">
-                <dui-chip label="Small" size="sm" color="secondary"></dui-chip>
-                <dui-chip label="Medium" size="md" color="secondary"></dui-chip>
-                <dui-chip label="Large" size="lg" color="secondary"></dui-chip>
+                <ui-chip label="Small" size="sm" color="secondary"></ui-chip>
+                <ui-chip label="Medium" size="md" color="secondary"></ui-chip>
+                <ui-chip label="Large" size="lg" color="secondary"></ui-chip>
               </div>
             </div>
           </pg-example-section>
@@ -67,9 +67,9 @@
           >
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-chip label="Github" icon="github" icon-library="lucide"></dui-chip>
-                <dui-chip label="John Doe" user-avatar="https://i.pravatar.cc/150?u=1"></dui-chip>
-                <dui-chip label="Scenic View" image="https://picsum.photos/20/20"></dui-chip>
+                <ui-chip label="Github" icon="github" icon-library="lucide"></ui-chip>
+                <ui-chip label="John Doe" user-avatar="https://i.pravatar.cc/150?u=1"></ui-chip>
+                <ui-chip label="Scenic View" image="https://picsum.photos/20/20"></ui-chip>
               </div>
             </div>
           </pg-example-section>
@@ -82,14 +82,9 @@
           >
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-chip label="Notifications" badge="99" color="danger"></dui-chip>
-                <dui-chip label="Files" counter="12" color="warning"></dui-chip>
-                <dui-chip
-                  label="Status"
-                  counter="Critical"
-                  color="danger"
-                  variant="soft"
-                ></dui-chip>
+                <ui-chip label="Notifications" badge="99" color="danger"></ui-chip>
+                <ui-chip label="Files" counter="12" color="warning"></ui-chip>
+                <ui-chip label="Status" counter="Critical" color="danger" variant="soft"></ui-chip>
               </div>
             </div>
           </pg-example-section>
@@ -102,15 +97,15 @@
           >
             <div class="demo-card">
               <div class="demo-flex h-120 flex-items-center">
-                <dui-chip label="Horizontal" orientation="horizontal"></dui-chip>
-                <dui-chip
+                <ui-chip label="Horizontal" orientation="horizontal"></ui-chip>
+                <ui-chip
                   label="Vertical"
                   orientation="vertical"
                   icon="move-vertical"
                   icon-library="lucide"
-                ></dui-chip>
-                <dui-chip label="Vertical Text" orientation="vertical-text"></dui-chip>
-                <dui-chip label="Vertical Rotated" orientation="vertical-rotated"></dui-chip>
+                ></ui-chip>
+                <ui-chip label="Vertical Text" orientation="vertical-text"></ui-chip>
+                <ui-chip label="Vertical Rotated" orientation="vertical-rotated"></ui-chip>
               </div>
             </div>
           </pg-example-section>
@@ -123,31 +118,31 @@
           >
             <div class="demo-card chip-stack">
               <div class="demo-flex">
-                <dui-chip
+                <ui-chip
                   label="Clickable"
                   clickable
                   color="info"
                   (chipClick)="onChipClick()"
-                ></dui-chip>
-                <dui-chip
+                ></ui-chip>
+                <ui-chip
                   label="Removable"
                   removable
                   variant="soft"
                   color="danger"
                   (chipRemove)="onChipRemove()"
-                ></dui-chip>
-                <dui-chip
+                ></ui-chip>
+                <ui-chip
                   label="Selectable"
                   clickable
                   selected
                   color="primary"
                   (chipSelect)="onChipSelect($event)"
-                ></dui-chip>
+                ></ui-chip>
               </div>
               <div class="demo-flex mt-24">
-                <dui-chip label="Loading" loading color="secondary"></dui-chip>
-                <dui-chip label="Disabled" disabled color="secondary"></dui-chip>
-                <dui-chip label="Hover me" color="success" tooltip="Hello world!"></dui-chip>
+                <ui-chip label="Loading" loading color="secondary"></ui-chip>
+                <ui-chip label="Disabled" disabled color="secondary"></ui-chip>
+                <ui-chip label="Hover me" color="success" tooltip="Hello world!"></ui-chip>
               </div>
             </div>
           </pg-example-section>
@@ -160,10 +155,10 @@
           >
             <div class="demo-card">
               <div class="demo-flex">
-                <dui-chip label="Scale" animation="scale" color="primary"></dui-chip>
-                <dui-chip label="Fade" animation="fade" color="success"></dui-chip>
-                <dui-chip label="Slide" animation="slide" color="warning"></dui-chip>
-                <dui-chip label="Bounce" animation="bounce" color="danger"></dui-chip>
+                <ui-chip label="Scale" animation="scale" color="primary"></ui-chip>
+                <ui-chip label="Fade" animation="fade" color="success"></ui-chip>
+                <ui-chip label="Slide" animation="slide" color="warning"></ui-chip>
+                <ui-chip label="Bounce" animation="bounce" color="danger"></ui-chip>
               </div>
             </div>
           </pg-example-section>

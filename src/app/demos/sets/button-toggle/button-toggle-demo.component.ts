@@ -58,131 +58,131 @@ export class DmButtonToggleDemoComponent extends BaseDemoComponent {
   }
 
   // Code snippets
-  segmentedCode = `<dui-button-toggle-group
+  segmentedCode = `<ui-button-toggle-group
   mode="segmented"
   label="Select View Mode"
   value="list"
   color="primary"
   [options]="viewOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  glidingCode = `<dui-button-toggle-group
+  glidingCode = `<ui-button-toggle-group
   mode="segmented"
   value="day"
   color="info"
   variant="soft"
   [options]="timeOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
   colorCode = `@for (color of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']; track color) {
-  <dui-button-toggle-group
+  <ui-button-toggle-group
     value="option2"
     [color]="color"
     [options]="basicOptions"
-  ></dui-button-toggle-group>
+  ></ui-button-toggle-group>
 }`;
 
   styleCode = `@for (style of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface']; track style) {
-  <dui-button-toggle-group
+  <ui-button-toggle-group
     value="option2"
     color="primary"
     [variant]="style"
     [options]="basicOptions"
-  ></dui-button-toggle-group>
+  ></ui-button-toggle-group>
 }`;
 
   sizeCode = `@for (size of ['small', 'medium', 'large']; track size) {
-  <dui-button-toggle-group
+  <ui-button-toggle-group
     [size]="size"
     value="option2"
     [options]="basicOptions"
-  ></dui-button-toggle-group>
+  ></ui-button-toggle-group>
 }`;
 
   shapesCode = `<!-- Rectangle (Default) -->
-<dui-button-toggle-group shape="rectangle" value="opt1" [options]="basicOptions"></dui-button-toggle-group>
+<ui-button-toggle-group shape="rectangle" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
 
 <!-- Pill Shape -->
-<dui-button-toggle-group shape="pill" value="opt1" [options]="basicOptions"></dui-button-toggle-group>
+<ui-button-toggle-group shape="pill" value="opt1" [options]="basicOptions"></ui-button-toggle-group>
 
 <!-- Circle Shape (best with icon-only) -->
-<dui-button-toggle-group shape="circle" display-mode="icon-only" value="left" [options]="alignOptions"></dui-button-toggle-group>
+<ui-button-toggle-group shape="circle" display-mode="icon-only" value="left" [options]="alignOptions"></ui-button-toggle-group>
 
 <!-- Square Shape -->
-<dui-button-toggle-group shape="square" value="opt1" [options]="basicOptions"></dui-button-toggle-group>`;
+<ui-button-toggle-group shape="square" value="opt1" [options]="basicOptions"></ui-button-toggle-group>`;
 
-  avatarsCode = `<dui-button-toggle-group value="user1">
-  <dui-button-toggle value="user1" label="Alex" avatar-src="https://i.pravatar.cc/150?u=a" status="online"></dui-button-toggle>
-  <dui-button-toggle value="user2" label="Jordan" avatar-src="https://i.pravatar.cc/150?u=j" status="busy"></dui-button-toggle>
-  <dui-button-toggle value="user3" label="Taylor" avatar-src="https://i.pravatar.cc/150?u=t" status="offline"></dui-button-toggle>
-</dui-button-toggle-group>`;
+  avatarsCode = `<ui-button-toggle-group value="user1">
+  <ui-button-toggle value="user1" label="Alex" avatar-src="https://i.pravatar.cc/150?u=a" status="online"></ui-button-toggle>
+  <ui-button-toggle value="user2" label="Jordan" avatar-src="https://i.pravatar.cc/150?u=j" status="busy"></ui-button-toggle>
+  <ui-button-toggle value="user3" label="Taylor" avatar-src="https://i.pravatar.cc/150?u=t" status="offline"></ui-button-toggle>
+</ui-button-toggle-group>`;
 
-  badgesCode = `<dui-button-toggle-group value="inbox">
-  <dui-button-toggle value="inbox" label="Inbox" icon="fas fa-inbox" badge="12" tooltip="12 New Messages"></dui-button-toggle>
-  <dui-button-toggle value="sent" label="Sent" icon="fas fa-paper-plane" tooltip="View sent items"></dui-button-toggle>
-  <dui-button-toggle value="drafts" label="Drafts" icon="fas fa-file-alt" badge="3" tooltip="3 Drafts waiting"></dui-button-toggle>
-</dui-button-toggle-group>`;
+  badgesCode = `<ui-button-toggle-group value="inbox">
+  <ui-button-toggle value="inbox" label="Inbox" icon="fas fa-inbox" badge="12" tooltip="12 New Messages"></ui-button-toggle>
+  <ui-button-toggle value="sent" label="Sent" icon="fas fa-paper-plane" tooltip="View sent items"></ui-button-toggle>
+  <ui-button-toggle value="drafts" label="Drafts" icon="fas fa-file-alt" badge="3" tooltip="3 Drafts waiting"></ui-button-toggle>
+</ui-button-toggle-group>`;
 
-  iconCode = `<dui-button-toggle-group
+  iconCode = `<ui-button-toggle-group
   label="Alignment"
   value="center"
   color="secondary"
   [options]="alignOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  iconOnlyCode = `<dui-button-toggle-group
+  iconOnlyCode = `<ui-button-toggle-group
   label="View"
   value="grid"
   color="primary"
   display-mode="icon-only"
   [options]="iconOnlyOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  dropdownCode = `<dui-button-toggle-group
+  dropdownCode = `<ui-button-toggle-group
   mode="dropdown"
   label="Export Options"
   value="pdf"
   [options]="exportOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  splitButtonCode = `<dui-button-toggle-group
+  splitButtonCode = `<ui-button-toggle-group
   mode="dropdown"
   keep-button-label="true"
   label="File Operations"
   value="file"
   [options]="actionsMenuOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  displayCode = `<dui-button-toggle-group
+  displayCode = `<ui-button-toggle-group
   display-mode="icon-only"
   value="grid"
   [options]="iconOnlyOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  multiSelectCode = `<dui-button-toggle-group
+  multiSelectCode = `<ui-button-toggle-group
   multi-select="true"
   search-enabled="true"
   batch-actions="true"
   label="Select Categories"
   [options]="categoryOptions"
-></dui-button-toggle-group>
+></ui-button-toggle-group>
 
-<dui-button-toggle-group
+<ui-button-toggle-group
   mode="dropdown"
   multi-select="true"
   search-enabled="true"
   export-enabled="true"
   label="Multi-Select Dropdown"
   [options]="userListOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  orientationCode = `<dui-button-toggle-group
+  orientationCode = `<ui-button-toggle-group
   orientation="vertical"
   value="option2"
   [options]="basicOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  customSlotCode = `<dui-button-toggle-group
+  customSlotCode = `<ui-button-toggle-group
   mode="dropdown"
   label="Advanced Filters"
   custom-content="true"
@@ -192,21 +192,21 @@ export class DmButtonToggleDemoComponent extends BaseDemoComponent {
       <!-- Your custom HTML here -->
     </div>
   </div>
-</dui-button-toggle-group>`;
+</ui-button-toggle-group>`;
 
-  loadingCode = `<dui-button-toggle-group
+  loadingCode = `<ui-button-toggle-group
   mode="dropdown"
   label="Save Document"
   value="cloud"
   [loading]="true"
   [options]="saveOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  stateCode = `<dui-button-toggle-group
+  stateCode = `<ui-button-toggle-group
   value="option2"
   [disabled]="true"
   [options]="basicOptions"
-></dui-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
   // Options Data
   basicOptions = [

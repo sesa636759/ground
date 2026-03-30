@@ -11,22 +11,22 @@
 
     <!-- Demo Credentials Info -->
     <div class="demo-banner">
-      <dui-icon name="lightbulb" library="lucide" size="18px" class="demo-icon"></dui-icon>
+      <ui-icon name="lightbulb" library="lucide" size="18px" class="demo-icon"></ui-icon>
       <div class="demo-content">
         <strong>Demo Login:</strong>
         <span>demo@example.com / demo123</span>
       </div>
-      <dui-button
+      <ui-button
         label="Use Demo"
         variant="filled"
         type="button"
         (click)="loginWithDemo()"
-      ></dui-button>
+      ></ui-button>
     </div>
 
     <!-- Error Message -->
     <div class="alert alert-error" *ngIf="error()">
-      <dui-icon name="alert-triangle" library="lucide" size="18px" class="alert-icon"></dui-icon>
+      <ui-icon name="alert-triangle" library="lucide" size="18px" class="alert-icon"></ui-icon>
       <span>{{ error() }}</span>
     </div>
 
@@ -36,8 +36,8 @@
       <div class="form-group">
         <label for="email">Email Address</label>
         <div class="input-wrapper">
-          <dui-icon name="mail" library="lucide" size="18px" class="input-icon"></dui-icon>
-          <dui-input
+          <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
+          <ui-input
             type="email"
             id="email"
             name="email"
@@ -45,7 +45,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          ></dui-input>
+          ></ui-input>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <div class="input-wrapper">
-          <dui-input
+          <ui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -64,7 +64,7 @@
             autocomplete="current-password"
           >
             <ng-container suffix>
-              <dui-button
+              <ui-button
                 type="button"
                 class="toggle-password px-6 min-w-0"
                 (click)="togglePasswordVisibility()"
@@ -72,24 +72,24 @@
                 size="sm"
                 [title]="showPassword() ? 'Hide password' : 'Show password'"
               >
-                <dui-icon
+                <ui-icon
                   [name]="showPassword() ? 'eye-off' : 'eye'"
                   library="lucide"
                   size="18px"
-                ></dui-icon>
-              </dui-button>
+                ></ui-icon>
+              </ui-button>
             </ng-container>
-          </dui-input>
+          </ui-input>
         </div>
 
         <!-- Password Strength Indicator -->
         <!-- <div class="password-strength" *ngIf="credentials.password">
-          <dui-icon
+          <ui-icon
             name="lock"
             library="lucide"
             size="16px"
             [class]="'strength-icon ' + passwordStrength()"
-          ></dui-icon>
+          ></ui-icon>
           <div class="strength-bar">
             <div
               class="strength-fill"
@@ -113,14 +113,14 @@
       <!-- Remember Me & Forgot Password -->
       <div class="form-options">
         <label class="checkbox-label">
-          <dui-checkbox name="rememberMe" [(ngModel)]="credentials.rememberMe"></dui-checkbox>
+          <ui-checkbox name="rememberMe" [(ngModel)]="credentials.rememberMe"></ui-checkbox>
           <span>Remember me</span>
         </label>
         <a href="#" class="forgot-link">Forgot password?</a>
       </div>
 
       <!-- Submit Button -->
-      <dui-button
+      <ui-button
         type="submit"
         [label]="!loading() ? 'Sign In' : 'Signing in...'"
         size="xl"
@@ -128,7 +128,7 @@
         full-width
         [disabled]="loading()"
       >
-      </dui-button>
+      </ui-button>
     </form>
 
     <!-- Divider -->
@@ -138,7 +138,7 @@
 
     <!-- Social Login Options -->
     <div class="social-login">
-      <dui-button
+      <ui-button
         size="xxl"
         label="Google"
         icon="logo-google"
@@ -148,8 +148,8 @@
         variant="outline"
         class="btn-social btn-google"
       >
-      </dui-button>
-      <dui-button
+      </ui-button>
+      <ui-button
         size="xxl"
         label="GitHub"
         icon="logo-github"
@@ -159,8 +159,8 @@
         variant="outline"
         class="btn-social btn-github"
       >
-      </dui-button>
-      <dui-button
+      </ui-button>
+      <ui-button
         size="xxl"
         label="Microsoft"
         icon="logo-microsoft"
@@ -170,10 +170,10 @@
         variant="outline"
         class="btn-social btn-microsoft"
       >
-      </dui-button>
+      </ui-button>
     </div>
     <div class="primary-login-container">
-      <dui-button
+      <ui-button
         size="xl"
         label="Schneider Elec."
         icon="assets/images/Schneider-Electric-Logo.jpg"
@@ -182,7 +182,7 @@
         variant="outline"
         class="btn-social btn-schneider"
       >
-      </dui-button>
+      </ui-button>
     </div>
 
     <!-- Register Link -->

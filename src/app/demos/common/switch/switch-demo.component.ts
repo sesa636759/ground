@@ -37,63 +37,63 @@ export class DmSwitchDemoComponent {
     return this.variants;
   }
 
-  playgroundCode = `<dui-switch label="Enable Feature" checked variant="primary"></dui-switch>`;
+  playgroundCode = `<ui-switch label="Enable Feature" checked variant="primary"></ui-switch>`;
 
-  colorsCode = `<dui-switch label="Primary" variant="primary" checked></dui-switch>
-<dui-switch label="Secondary" variant="secondary" checked></dui-switch>
-<dui-switch label="Success" variant="success" checked></dui-switch>
-<dui-switch label="Warning" variant="warning" checked></dui-switch>
-<dui-switch label="Danger" variant="danger" checked></dui-switch>
-<dui-switch label="Info" variant="info" checked></dui-switch>`;
+  colorsCode = `<ui-switch label="Primary" variant="primary" checked></ui-switch>
+<ui-switch label="Secondary" variant="secondary" checked></ui-switch>
+<ui-switch label="Success" variant="success" checked></ui-switch>
+<ui-switch label="Warning" variant="warning" checked></ui-switch>
+<ui-switch label="Danger" variant="danger" checked></ui-switch>
+<ui-switch label="Info" variant="info" checked></ui-switch>`;
 
-  sizesCode = `<dui-switch label="XXXS" size="xxxs" checked></dui-switch>
-<dui-switch label="Extra Small" size="xs" checked></dui-switch>
-<dui-switch label="Small" size="small" checked></dui-switch>
-<dui-switch label="Medium" size="medium" checked></dui-switch>
-<dui-switch label="Large" size="large" checked></dui-switch>
-<dui-switch label="XL" size="xl" checked></dui-switch>
-<dui-switch label="XXXL" size="xxxl" checked></dui-switch>`;
+  sizesCode = `<ui-switch label="XXXS" size="xxxs" checked></ui-switch>
+<ui-switch label="Extra Small" size="xs" checked></ui-switch>
+<ui-switch label="Small" size="small" checked></ui-switch>
+<ui-switch label="Medium" size="medium" checked></ui-switch>
+<ui-switch label="Large" size="large" checked></ui-switch>
+<ui-switch label="XL" size="xl" checked></ui-switch>
+<ui-switch label="XXXL" size="xxxl" checked></ui-switch>`;
 
-  shapesCode = `<dui-switch label="Default" shape="default" checked></dui-switch>
-<dui-switch label="Rounded" shape="rounded" checked></dui-switch>
-<dui-switch label="Pill" shape="pill" checked></dui-switch>
-<dui-switch label="Square" shape="square" checked></dui-switch>
+  shapesCode = `<ui-switch label="Default" shape="default" checked></ui-switch>
+<ui-switch label="Rounded" shape="rounded" checked></ui-switch>
+<ui-switch label="Pill" shape="pill" checked></ui-switch>
+<ui-switch label="Square" shape="square" checked></ui-switch>
 <div style="margin-top: 10px;">
-  <dui-switch label="Square Thumb" thumb-shape="square" checked></dui-switch>
+  <ui-switch label="Square Thumb" thumb-shape="square" checked></ui-switch>
 </div>`;
 
-  iconsCode = `<dui-switch show-icons icon-on="moon" icon-off="sun" icon-library="lucide" checked></dui-switch>
-<dui-switch show-icons icon-on="volume-2" icon-off="volume-x" icon-library="lucide" checked></dui-switch>
-<dui-switch show-default-icons checked></dui-switch>
-<dui-switch show-track-text checked-text="YES" unchecked-text="NO" checked></dui-switch>`;
+  iconsCode = `<ui-switch show-icons icon-on="moon" icon-off="sun" icon-library="lucide" checked></ui-switch>
+<ui-switch show-icons icon-on="volume-2" icon-off="volume-x" icon-library="lucide" checked></ui-switch>
+<ui-switch show-default-icons checked></ui-switch>
+<ui-switch show-track-text checked-text="YES" unchecked-text="NO" checked></ui-switch>`;
 
-  statesCode = `<dui-switch label="Disabled" disabled checked></dui-switch>
-<dui-switch label="Readonly" readonly checked></dui-switch>
-<dui-switch label="Loading" loading checked></dui-switch>
-<dui-switch label="Indeterminate" indeterminate></dui-switch>
-<dui-switch label="Required" required></dui-switch>
-<dui-switch label="Invalid State" invalid error-message="Selection required"></dui-switch>`;
+  statesCode = `<ui-switch label="Disabled" disabled checked></ui-switch>
+<ui-switch label="Readonly" readonly checked></ui-switch>
+<ui-switch label="Loading" loading checked></ui-switch>
+<ui-switch label="Indeterminate" indeterminate></ui-switch>
+<ui-switch label="Required" required></ui-switch>
+<ui-switch label="Invalid State" invalid error-message="Selection required"></ui-switch>`;
 
-  visualsCode = `<dui-switch label="Elevation" elevation="3" checked></dui-switch>
-<dui-switch label="Gradient" gradient checked></dui-switch>
-<dui-switch label="Custom Gradient" gradient gradient-colors='["#f43f5e", "#fb923c"]' checked></dui-switch>
-<dui-switch label="Confirmation Required" require-confirmation confirmation-message="Are you really sure?"></dui-switch>
-<dui-switch label="Success Feedback" show-success-feedback></dui-switch>
-<dui-switch label="Tooltip" show-tooltip tooltip-text="This is a tooltip"></dui-switch>`;
+  visualsCode = `<ui-switch label="Elevation" elevation="3" checked></ui-switch>
+<ui-switch label="Gradient" gradient checked></ui-switch>
+<ui-switch label="Custom Gradient" gradient gradient-colors='["#f43f5e", "#fb923c"]' checked></ui-switch>
+<ui-switch label="Confirmation Required" require-confirmation confirmation-message="Are you really sure?"></ui-switch>
+<ui-switch label="Success Feedback" show-success-feedback></ui-switch>
+<ui-switch label="Tooltip" show-tooltip tooltip-text="This is a tooltip"></ui-switch>`;
 
   formsCode = `<form action="/submit" method="POST">
-  <dui-switch 
+  <ui-switch 
     name="marketing_emails" 
     value="subscribed" 
     label="Subscribe to newsletter"
     checked
-  ></dui-switch>
+  ></ui-switch>
 
-  <dui-switch 
+  <ui-switch 
     name="auto_save" 
     label="Auto-submit on change" 
     auto-submit
-  ></dui-switch>
+  ></ui-switch>
 </form>`;
 
   scrollToSection(id: string) {

@@ -166,7 +166,7 @@ export class DmAdvancedDataTablePlaygroundComponent
   }
 
   generateSnippet() {
-    let code = '<dui-advanced-data-table\n';
+    let code = '<ui-advanced-data-table\n';
     code += `  [data]="tableData"\n`;
     code += `  [columns]="tableCols"\n`;
 
@@ -208,7 +208,7 @@ export class DmAdvancedDataTablePlaygroundComponent
     if (this.pgConfig.showActions) code += `  show-actions\n`;
     if (this.pgConfig.columnGrouping) code += `  column-grouping\n`;
 
-    code += '></dui-advanced-data-table>';
+    code += '></ui--advanced-data-table>';
 
     this.generatedCode.set(code);
     this.refreshCode();

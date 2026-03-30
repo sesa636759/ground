@@ -37,33 +37,33 @@ export class DmDividerDemoComponent extends BaseDemoComponent {
     { id: 'effects', title: 'Premium Effects', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  variantsCode = `<dui-divider variant="solid"></dui-divider>
-<dui-divider variant="dashed" size="lg"></dui-divider>
-<dui-divider variant="double-solid" size="lg"></dui-divider>
-<dui-divider variant="gradient" color="linear-gradient(to right, #3b82f6, #ec4899)"></dui-divider>`;
+  variantsCode = `<ui-divider variant="solid"></ui-divider>
+<ui-divider variant="dashed" size="lg"></ui-divider>
+<ui-divider variant="double-solid" size="lg"></ui-divider>
+<ui-divider variant="gradient" color="linear-gradient(to right, #3b82f6, #ec4899)"></ui-divider>`;
 
-  contentCode = `<dui-divider text="Label"></dui-divider>
-<dui-divider text="Left Align" text-align="left"></dui-divider>
-<dui-divider icon="⭐"></dui-divider>
-<dui-divider text="New Section" badge="Updated" color="primary"></dui-divider>`;
+  contentCode = `<ui-divider text="Label"></ui-divider>
+<ui-divider text="Left Align" text-align="left"></ui-divider>
+<ui-divider icon="⭐"></ui-divider>
+<ui-divider text="New Section" badge="Updated" color="primary"></ui-divider>`;
 
   verticalCode = `<div style="display: flex; height: 100px; align-items: center;">
   <span>Section A</span>
-  <dui-divider orientation="vertical" gap="0 24px"></dui-divider>
+  <ui-divider orientation="vertical" gap="0 24px"></ui-divider>
   <span>Section B</span>
-  <dui-divider orientation="vertical" variant="dashed" vertical-align="top" gap="0 24px"></dui-divider>
+  <ui-divider orientation="vertical" variant="dashed" vertical-align="top" gap="0 24px"></ui-divider>
   <span>Section C</span>
 </div>`;
 
-  patternsCode = `<dui-divider pattern="dots" color="#94a3b8"></dui-divider>
-<dui-divider pattern="stripes" size="lg"></dui-divider>
-<dui-divider pattern="zigzag" size="lg"></dui-divider>`;
+  patternsCode = `<ui-divider pattern="dots" color="#94a3b8"></ui-divider>
+<ui-divider pattern="stripes" size="lg"></ui-divider>
+<ui-divider pattern="zigzag" size="lg"></ui-divider>`;
 
-  shapesCode = `<dui-divider shape="wave" shape-color="#f8fafc"></dui-divider>
-<dui-divider shape="tilt" shape-color="#f1f5f9"></dui-divider>
-<dui-divider shape="triangle" shape-color="#e2e8f0"></dui-divider>`;
+  shapesCode = `<ui-divider shape="wave" shape-color="#f8fafc"></ui-divider>
+<ui-divider shape="tilt" shape-color="#f1f5f9"></ui-divider>
+<ui-divider shape="triangle" shape-color="#e2e8f0"></ui-divider>`;
 
-  effectsCode = `<dui-divider loading></dui-divider>
-<dui-divider text="Hover Me" clickable glow color="primary"></dui-divider>
-<dui-divider shadow variant="double-solid" size="lg"></dui-divider>`;
+  effectsCode = `<ui-divider loading></ui-divider>
+<ui-divider text="Hover Me" clickable glow color="primary"></ui-divider>
+<ui-divider shadow variant="double-solid" size="lg"></ui-divider>`;
 }

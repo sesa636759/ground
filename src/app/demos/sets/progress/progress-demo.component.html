@@ -24,18 +24,18 @@
             <div class="demo-card progress-stack">
               <div class="demo-row">
                 <p>Default Line</p>
-                <dui-progress [percent]="progressValue"></dui-progress>
+                <ui-progress [percent]="progressValue"></ui-progress>
               </div>
               <div class="demo-row">
                 <p>Thick Stroke</p>
-                <dui-progress [percent]="75" stroke-width="20"></dui-progress>
+                <ui-progress [percent]="75" stroke-width="20"></ui-progress>
               </div>
               <div class="demo-row">
                 <p>Steps Layout</p>
-                <dui-progress [percent]="60" steps="5"></dui-progress>
+                <ui-progress [percent]="60" steps="5"></ui-progress>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="lineCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="lineCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Circle Progress -->
@@ -45,11 +45,11 @@
               <p>Circular indicators suitable for compact areas and dashboard widgets.</p>
             </div>
             <div class="demo-card progress-row">
-              <dui-progress type="circle" [percent]="progressValue"></dui-progress>
-              <dui-progress type="circle" [percent]="100" status="success"></dui-progress>
-              <dui-progress type="circle" [percent]="50" size="small"></dui-progress>
+              <ui-progress type="circle" [percent]="progressValue"></ui-progress>
+              <ui-progress type="circle" [percent]="100" status="success"></ui-progress>
+              <ui-progress type="circle" [percent]="50" size="small"></ui-progress>
             </div>
-            <dui-code-preview [htmlCode]="circleCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="circleCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Dashboard Style -->
@@ -59,21 +59,21 @@
               <p>Segmented arcs perfect for performance gauges and limits.</p>
             </div>
             <div class="demo-card progress-row">
-              <dui-progress type="dashboard" [percent]="progressValue"></dui-progress>
-              <dui-progress
+              <ui-progress type="dashboard" [percent]="progressValue"></ui-progress>
+              <ui-progress
                 type="dashboard"
                 [percent]="75"
                 gap-degree="90"
                 gap-position="bottom"
-              ></dui-progress>
-              <dui-progress
+              ></ui-progress>
+              <ui-progress
                 type="dashboard"
                 [percent]="60"
                 gap-degree="120"
                 gap-position="top"
-              ></dui-progress>
+              ></ui-progress>
             </div>
-            <dui-code-preview [htmlCode]="dashboardCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="dashboardCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- State & Status -->
@@ -83,12 +83,12 @@
               <p>Visual hints representing different progress states.</p>
             </div>
             <div class="demo-card progress-stack">
-              <dui-progress percent="100" status="success"></dui-progress>
-              <dui-progress percent="50" status="exception"></dui-progress>
-              <dui-progress percent="70" status="active"></dui-progress>
-              <dui-progress percent="30" status="normal"></dui-progress>
+              <ui-progress percent="100" status="success"></ui-progress>
+              <ui-progress percent="50" status="exception"></ui-progress>
+              <ui-progress percent="70" status="active"></ui-progress>
+              <ui-progress percent="30" status="normal"></ui-progress>
             </div>
-            <dui-code-preview [htmlCode]="statusCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="statusCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Buffer & Loading -->
@@ -100,18 +100,18 @@
             <div class="demo-card progress-stack">
               <div class="demo-row">
                 <p>Buffer State</p>
-                <dui-progress [percent]="40" show-buffer buffer="65"></dui-progress>
+                <ui-progress [percent]="40" show-buffer buffer="65"></ui-progress>
               </div>
               <div class="demo-row">
                 <p>Indeterminate Line</p>
-                <dui-progress indeterminate></dui-progress>
+                <ui-progress indeterminate></ui-progress>
               </div>
               <div class="demo-row">
                 <p>Indeterminate Circle</p>
-                <dui-progress type="circle" indeterminate></dui-progress>
+                <ui-progress type="circle" indeterminate></ui-progress>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="bufferCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="bufferCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Multi-Segment -->
@@ -121,11 +121,11 @@
               <p>Stack multiple progress values in a single bar for data breakdown.</p>
             </div>
             <div class="demo-card">
-              <dui-progress
+              <ui-progress
                 [attr.multi-progress]="'[{&quot;percent&quot;:30,&quot;color&quot;:&quot;#3b82f6&quot;,&quot;label&quot;:&quot;Apps&quot;},{&quot;percent&quot;:20,&quot;color&quot;:&quot;#ef4444&quot;,&quot;label&quot;:&quot;System&quot;},{&quot;percent&quot;:15,&quot;color&quot;:&quot;#10b981&quot;,&quot;label&quot;:&quot;Media&quot;}]'"
-              ></dui-progress>
+              ></ui-progress>
             </div>
-            <dui-code-preview [htmlCode]="multiCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="multiCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Premium Effects -->
@@ -137,20 +137,20 @@
             <div class="demo-card progress-stack bg-dark p-32">
               <div class="demo-row">
                 <p class="text-white">Liquid Wave Effect</p>
-                <dui-progress [percent]="65" liquid stroke-color="#00f2fe"></dui-progress>
+                <ui-progress [percent]="65" liquid stroke-color="#00f2fe"></ui-progress>
               </div>
               <div class="demo-row">
                 <p class="text-white">Glassmorphism & Glow</p>
-                <dui-progress
+                <ui-progress
                   [percent]="80"
                   glass
                   glow
                   stroke-color="#fff"
                   trail-color="rgba(255,255,255,0.1)"
-                ></dui-progress>
+                ></ui-progress>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="premiumCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="premiumCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Interactive Controls -->
@@ -160,18 +160,18 @@
               <p>Pause buttons and time estimation features.</p>
             </div>
             <div class="demo-card progress-stack">
-              <dui-progress
+              <ui-progress
                 [percent]="45"
                 show-pause-button
                 show-time-estimate
                 estimated-time="150"
-              ></dui-progress>
+              ></ui-progress>
               <div class="display-flex gap-8 mt-16">
-                <dui-button (click)="increaseProgress()">+10%</dui-button>
-                <dui-button (click)="decreaseProgress()">-10%</dui-button>
+                <ui-button (click)="increaseProgress()">+10%</ui-button>
+                <ui-button (click)="decreaseProgress()">-10%</ui-button>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="controlsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="controlsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Layout & Labels -->
@@ -183,18 +183,18 @@
             <div class="demo-card progress-stack">
               <div class="demo-row">
                 <p>Top Label Position</p>
-                <dui-progress [percent]="85" label-position="top"></dui-progress>
+                <ui-progress [percent]="85" label-position="top"></ui-progress>
               </div>
               <div class="demo-row">
                 <p>Custom Color Percentage</p>
-                <dui-progress
+                <ui-progress
                   [percent]="60"
                   percentage-color="#8b5cf6"
                   decimal-precision="1"
-                ></dui-progress>
+                ></ui-progress>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="labelsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="labelsCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>

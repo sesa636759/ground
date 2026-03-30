@@ -180,7 +180,7 @@ export class DmContextMenuDemoComponent {
   (itemClick)="onMenuClick($event)"
 ></app-context-menu>`);
 
-  clickTriggerCode = signal(`<dui-button #menuBtn label="More Actions"></dui-button>
+  clickTriggerCode = signal(`<ui-button #menuBtn label="More Actions"></ui-button>
 
 <app-context-menu
   [triggerElement]="menuBtn"

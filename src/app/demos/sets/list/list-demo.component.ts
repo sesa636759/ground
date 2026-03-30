@@ -40,20 +40,20 @@ export class DmListDemoComponent extends BaseDemoComponent {
     { id: 'sizes', title: 'Sizes & Spacing', icon: 'move-vertical', iconLibrary: 'lucide' },
   ];
 
-  basicCode = `<dui-list variant="filled" color="primary">
-  <dui-list-item label="Item 1" icon="lucide-star"></dui-list-item>
-  <dui-list-item label="Item 2" icon="lucide-heart"></dui-list-item>
-</dui-list>`;
+  basicCode = `<ui-list variant="filled" color="primary">
+  <ui-list-item label="Item 1" icon="lucide-star"></ui-list-item>
+  <ui-list-item label="Item 2" icon="lucide-heart"></ui-list-item>
+</ui-list>`;
 
-  layoutCode = `<dui-list horizontal>...</dui-list>\n<dui-list numbered>...</dui-list>`;
+  layoutCode = `<ui-list horizontal>...</ui-list>\n<ui-list numbered>...</ui-list>`;
 
-  nestingCode = `<dui-list-item label="Parent" collapsible expanded>
+  nestingCode = `<ui-list-item label="Parent" collapsible expanded>
   <div slot="children">
-    <dui-list-item label="Child" level="1"></dui-list-item>
+    <ui-list-item label="Child" level="1"></ui-list-item>
   </div>
-</dui-list-item>`;
+</ui-list-item>`;
 
-  selectionCode = `<dui-list selectable multi-select checkbox-selection>...</dui-list>`;
+  selectionCode = `<ui-list selectable multi-select checkbox-selection>...</ui-list>`;
 
-  performanceCode = `<dui-list virtual-scroll [attr.items]="largeData"></dui-list>`;
+  performanceCode = `<ui-list virtual-scroll [attr.items]="largeData"></ui-list>`;
 }

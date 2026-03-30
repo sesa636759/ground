@@ -1,53 +1,103 @@
 <div class="presentation-wrapper">
   <!-- Slides Container -->
-  <div class="slides-container" [style.transform]="'translateX(-' + (currentSlide * 100) + 'vw)'">
-    <section *ngFor="let slide of slides; let i = index" class="slide" [class.active]="currentSlide === i">
+  <div class="slides-container" [style.transform]="'translateX(-' + currentSlide * 100 + 'vw)'">
+    <section
+      *ngFor="let slide of slides; let i = index"
+      class="slide"
+      [class.active]="currentSlide === i"
+    >
       <div class="slide-content">
         <div class="content-left">
-          <div uiAnimateOnScroll [animation]="'slide-up'" [duration]="800" [delay]="100" [once]="false">
+          <div
+            uiAnimateOnScroll
+            [animation]="'slide-up'"
+            [duration]="800"
+            [delay]="100"
+            [once]="false"
+          >
             <h1 class="slide-title">{{ slide.title }}</h1>
           </div>
-          
-          <div uiAnimateOnScroll [animation]="'slide-up'" [duration]="800" [delay]="400" [once]="false">
+
+          <div
+            uiAnimateOnScroll
+            [animation]="'slide-up'"
+            [duration]="800"
+            [delay]="400"
+            [once]="false"
+          >
             <h2 class="slide-subtitle text-gradient">{{ slide.subtitle }}</h2>
           </div>
-          
-          <div uiAnimateOnScroll [animation]="'slide-up'" [duration]="800" [delay]="600" [once]="false">
+
+          <div
+            uiAnimateOnScroll
+            [animation]="'slide-up'"
+            [duration]="800"
+            [delay]="600"
+            [once]="false"
+          >
             <p class="slide-description">{{ slide.description }}</p>
           </div>
-          
-          <div uiAnimateOnScroll [animation]="'fade-in'" [duration]="800" [delay]="800" [once]="false">
+
+          <div
+            uiAnimateOnScroll
+            [animation]="'fade-in'"
+            [duration]="800"
+            [delay]="800"
+            [once]="false"
+          >
             <div class="action-btn">
-               <ng-container *ngIf="!slide['isGallery']; else galleryControls">
-                  <dui-button (click)="nextSlide()" variant="primary" size="large" rounded="true">
-                    {{ slide.buttonText }}
-                    <dui-icon slot="suffix" name="arrow-right" library="lucide"></dui-icon>
-                  </dui-button>
-               </ng-container>
-               <ng-template #galleryControls>
-                  <div class="gallery-nav-btns">
-                    <dui-button (click)="prevGalleryItem()" variant="secondary" size="large" rounded="true">
-                      <dui-icon name="arrow-left" library="lucide"></dui-icon>
-                    </dui-button>
-                    <dui-button (click)="nextGalleryItem()" variant="primary" size="large" rounded="true">
-                      Next Feature
-                      <dui-icon slot="suffix" name="arrow-right" library="lucide"></dui-icon>
-                    </dui-button>
-                  </div>
-               </ng-template>
+              <ng-container *ngIf="!slide['isGallery']; else galleryControls">
+                <ui-button (click)="nextSlide()" variant="primary" size="large" rounded="true">
+                  {{ slide.buttonText }}
+                  <ui-icon slot="suffix" name="arrow-right" library="lucide"></ui-icon>
+                </ui-button>
+              </ng-container>
+              <ng-template #galleryControls>
+                <div class="gallery-nav-btns">
+                  <ui-button
+                    (click)="prevGalleryItem()"
+                    variant="secondary"
+                    size="large"
+                    rounded="true"
+                  >
+                    <ui-icon name="arrow-left" library="lucide"></ui-icon>
+                  </ui-button>
+                  <ui-button
+                    (click)="nextGalleryItem()"
+                    variant="primary"
+                    size="large"
+                    rounded="true"
+                  >
+                    Next Feature
+                    <ui-icon slot="suffix" name="arrow-right" library="lucide"></ui-icon>
+                  </ui-button>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>
-        
+
         <div class="content-right" [class.gallery-mode]="slide['isGallery']">
           <ng-container *ngIf="!slide['isGallery']; else galleryTemplate">
-            <div uiAnimateOnScroll [animation]="'zoom-in'" [duration]="1200" [delay]="300" [once]="false">
+            <div
+              uiAnimateOnScroll
+              [animation]="'zoom-in'"
+              [duration]="1200"
+              [delay]="300"
+              [once]="false"
+            >
               <div class="image-placeholder">
                 <div class="visual-accent" [ngClass]="'accent-' + i"></div>
                 <div class="device-mockup">
                   <div class="mockup-content">
-                      <dui-icon [name]="i === 0 ? 'zap' : i === 1 ? 'sparkles' : i === 2 ? 'layout-list' : 'rocket'" 
-                              library="lucide" size="120" color="var(--primary-color)"></dui-icon>
+                    <ui-icon
+                      [name]="
+                        i === 0 ? 'zap' : i === 1 ? 'sparkles' : i === 2 ? 'layout-list' : 'rocket'
+                      "
+                      library="lucide"
+                      size="120"
+                      color="var(--primary-color)"
+                    ></ui-icon>
                   </div>
                 </div>
               </div>
@@ -56,21 +106,30 @@
 
           <ng-template #galleryTemplate>
             <div class="gallery-3d-scene">
-               <div class="gallery-track" 
-                    (mouseenter)="onGalleryMouseEnter()" 
-                    (mouseleave)="onGalleryMouseLeave()">
-                  <div *ngFor="let item of galleryItems; let g = index" 
-                       class="gallery-card"
-                       [ngStyle]="getCardStyle(g)">
-                    <div class="card-visual">
-                       <dui-icon [name]="item.icon" library="lucide" size="80" [color]="item.color"></dui-icon>
-                    </div>
-                    <div class="card-info">
-                       <h3>{{ item.title }}</h3>
-                       <p>{{ item.description }}</p>
-                    </div>
+              <div
+                class="gallery-track"
+                (mouseenter)="onGalleryMouseEnter()"
+                (mouseleave)="onGalleryMouseLeave()"
+              >
+                <div
+                  *ngFor="let item of galleryItems; let g = index"
+                  class="gallery-card"
+                  [ngStyle]="getCardStyle(g)"
+                >
+                  <div class="card-visual">
+                    <ui-icon
+                      [name]="item.icon"
+                      library="lucide"
+                      size="80"
+                      [color]="item.color"
+                    ></ui-icon>
                   </div>
-               </div>
+                  <div class="card-info">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </ng-template>
         </div>
@@ -82,17 +141,19 @@
   <footer class="presentation-footer">
     <div class="footer-left">
       <div class="edge-logo">
-        <dui-icon name="globe" library="lucide" color="#0078d4" size="24"></dui-icon>
+        <ui-icon name="globe" library="lucide" color="#0078d4" size="24"></ui-icon>
         <span class="brand-name">Microsoft Edge</span>
       </div>
     </div>
 
     <nav class="footer-nav">
       <div class="nav-steps">
-        <div *ngFor="let step of slides; let i = index" 
-             class="nav-tab" 
-             [class.active]="currentSlide === i"
-             (click)="goToSlide(i)">
+        <div
+          *ngFor="let step of slides; let i = index"
+          class="nav-tab"
+          [class.active]="currentSlide === i"
+          (click)="goToSlide(i)"
+        >
           <span class="step-number">{{ i + 1 }}.</span>
           <span class="step-label" *ngIf="currentSlide === i">{{ step.subtitle }}</span>
           <div class="tab-indicator" *ngIf="currentSlide === i"></div>
@@ -101,11 +162,11 @@
     </nav>
 
     <div class="footer-right">
-       <div class="search-box-placeholder">
-          <dui-input placeholder="Search the web" size="small" rounded="true">
-            <dui-icon slot="prefix" name="search" library="lucide" size="14"></dui-icon>
-          </dui-input>
-       </div>
+      <div class="search-box-placeholder">
+        <ui-input placeholder="Search the web" size="small" rounded="true">
+          <ui-icon slot="prefix" name="search" library="lucide" size="14"></ui-icon>
+        </ui-input>
+      </div>
     </div>
   </footer>
 </div>

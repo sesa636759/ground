@@ -107,7 +107,7 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
   }
 
   updateConfig() {
-    let code = `<dui-masonry\n`;
+    let code = `<ui-masonry\n`;
     code += `  [items]="items"\n`;
     if (this.pgConfig.layoutType !== 'masonry')
       code += `  layout-type="${this.pgConfig.layoutType}"\n`;
@@ -122,7 +122,7 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
     if (this.pgConfig.infiniteScroll) code += `  infinite-scroll\n`;
     if (this.pgConfig.loadingState) code += `  loading-state\n`;
 
-    code += `></dui-masonry>`;
+    code += `></ui--masonry>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -35,11 +35,11 @@ export class DmPaginationDemoComponent extends BaseDemoComponent {
     { id: 'logic', title: 'Behavioral Logic', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
-  basicCode = signal(`<dui-pagination [total-items]="100" [items-per-page]="10"></dui-pagination>`);
+  basicCode = signal(`<ui-pagination [total-items]="100" [items-per-page]="10"></ui-pagination>`);
   detailedCode = signal(
-    `<dui-pagination type="detailed" show-page-size show-total show-jump-to></dui-pagination>`,
+    `<ui-pagination type="detailed" show-page-size show-total show-jump-to></ui-pagination>`,
   );
-  infiniteCode = signal(`<dui-pagination infinite loading></dui-pagination>`);
-  dropdownCode = signal(`<dui-pagination type="dropdown"></dui-pagination>`);
-  logicCode = signal(`<dui-pagination url-sync persist-page smart-compact></dui-pagination>`);
+  infiniteCode = signal(`<ui-pagination infinite loading></ui-pagination>`);
+  dropdownCode = signal(`<ui-pagination type="dropdown"></ui-pagination>`);
+  logicCode = signal(`<ui-pagination url-sync persist-page smart-compact></ui-pagination>`);
 }

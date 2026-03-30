@@ -96,10 +96,10 @@ export class DmDropdownDemoComponent extends BaseDemoComponent {
     },
   ];
 
-  basicCode = `<dui-dropdown [options]="options" placeholder="Select one..."></dui-dropdown>`;
+  basicCode = `<ui-dropdown [options]="options" placeholder="Select one..."></ui-dropdown>`;
 
   premiumCode = `<!-- Options with icons, subtitles, tags and right-side icons -->
-<dui-dropdown [options]="premiumOptions" placeholder="Select infrastructure"></dui-dropdown>
+<ui-dropdown [options]="premiumOptions" placeholder="Select infrastructure"></ui-dropdown>
 
 <!-- Options shape:
 { 
@@ -112,32 +112,32 @@ export class DmDropdownDemoComponent extends BaseDemoComponent {
 } -->`;
 
   selectionCode = `<!-- Multi-select with checkmarks -->
-<dui-dropdown multi-select [options]="options" placeholder="Choose multiple"></dui-dropdown>
+<ui-dropdown multi-select [options]="options" placeholder="Choose multiple"></ui-dropdown>
 
 <!-- Hierarchical/Cascading mode -->
-<dui-dropdown cascading [options]="hierarchalOptions" placeholder="Select category"></dui-dropdown>`;
+<ui-dropdown cascading [options]="hierarchalOptions" placeholder="Select category"></ui-dropdown>`;
 
   searchCode = `<!-- Built-in fuzzy search filtering -->
-<dui-dropdown searchable [options]="options" placeholder="Search technology..."></dui-dropdown>`;
+<ui-dropdown searchable [options]="options" placeholder="Search technology..."></ui-dropdown>`;
 
   appearanceCode = `<!-- Standard select look -->
-<dui-dropdown appearance="dropdown" [options]="options"></dui-dropdown>
+<ui-dropdown appearance="dropdown" [options]="options"></ui-dropdown>
 
 <!-- Button-like interaction (no arrow) -->
-<dui-dropdown appearance="button" [options]="options" placeholder="More Actions"></dui-dropdown>`;
+<ui-dropdown appearance="button" [options]="options" placeholder="More Actions"></ui-dropdown>`;
 
-  sizesCode = `<dui-dropdown size="sm" [options]="options"></dui-dropdown>
-<dui-dropdown size="md" [options]="options"></dui-dropdown>
-<dui-dropdown size="lg" [options]="options"></dui-dropdown>`;
+  sizesCode = `<ui-dropdown size="sm" [options]="options"></ui-dropdown>
+<ui-dropdown size="md" [options]="options"></ui-dropdown>
+<ui-dropdown size="lg" [options]="options"></ui-dropdown>`;
 
   statesCode = `<!-- Disabled state -->
-<dui-dropdown disabled placeholder="System offline"></dui-dropdown>
+<ui-dropdown disabled placeholder="System offline"></ui-dropdown>
 
 <!-- Pre-selected value -->
-<dui-dropdown value="2" [options]="options"></dui-dropdown>
+<ui-dropdown value="2" [options]="options"></ui-dropdown>
 
 <!-- Full width container -->
-<dui-dropdown full-width [options]="options"></dui-dropdown>`;
+<ui-dropdown full-width [options]="options"></ui-dropdown>`;
 
   jsonOptions(opts: any) {
     return JSON.stringify(opts);

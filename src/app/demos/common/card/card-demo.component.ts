@@ -38,10 +38,10 @@ export class DmCardDemoComponent extends BaseDemoComponent {
     { id: 'advanced', title: 'Advanced Patterns', icon: '🚀', iconLibrary: 'emoji' },
   ];
 
-  playgroundCode = `<dui-card variant="elevated" hoverable width="340px">
+  playgroundCode = `<ui-card variant="elevated" hoverable width="340px">
   <div slot="cover">...</div>
   <div slot="header"><h3>Card Title</h3></div>
   <div slot="content">...</div>
   <div slot="footer">...</div>
-</dui-card>`;
+</ui-card>`;
 }

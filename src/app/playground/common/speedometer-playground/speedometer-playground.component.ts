@@ -28,7 +28,7 @@ export class DmSpeedometerPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<dui-speedometer\n`;
+    let code = `<ui-speedometer\n`;
     code += `  [value]="${this.pgConfig.value}"\n`;
     if (this.pgConfig.secondaryValue !== undefined)
       code += `  [secondary-value]="${this.pgConfig.secondaryValue}"\n`;
@@ -59,7 +59,7 @@ export class DmSpeedometerPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.gradientColors)
       code += `  gradient-colors="${this.pgConfig.gradientColors}"\n`;
 
-    code += `></dui-speedometer>`;
+    code += `></ui--speedometer>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

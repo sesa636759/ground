@@ -27,11 +27,11 @@ export class DmScrollTopDemoComponent extends BaseDemoComponent {
     { id: 'shapes', title: 'Shapes & Icons', icon: 'square-arrow-up', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<dui-scroll-top threshold="400" icon="↑"></dui-scroll-top>`;
+  playgroundCode = `<ui-scroll-top threshold="400" icon="↑"></ui-scroll-top>`;
 
   shapesCode = `<!-- Square Shape -->
-<dui-scroll-top shape="square" icon="TOP"></dui-scroll-top>
+<ui-scroll-top shape="square" icon="TOP"></ui-scroll-top>
 
 <!-- Circle with Custom Icon -->
-<dui-scroll-top shape="circle" icon="🚀"></dui-scroll-top>`;
+<ui-scroll-top shape="circle" icon="🚀"></ui-scroll-top>`;
 }

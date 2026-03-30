@@ -24,31 +24,27 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Filled Theme</p>
-                <dui-pagination
+                <ui-pagination
                   variant="filled"
                   theme="primary"
                   [attr.total-items]="100"
                   [attr.items-per-page]="10"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Soft Theme</p>
-                <dui-pagination
-                  variant="soft"
-                  theme="info"
-                  [attr.total-items]="100"
-                ></dui-pagination>
+                <ui-pagination variant="soft" theme="info" [attr.total-items]="100"></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Outlined Style</p>
-                <dui-pagination
+                <ui-pagination
                   variant="outlined"
                   theme="success"
                   [attr.total-items]="80"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="basicCode()" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode()" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Detailed Controls -->
@@ -58,16 +54,16 @@
               <p>Combines total counts, page sizing, and direct "jump to" input.</p>
             </div>
             <div class="demo-card">
-              <dui-pagination
+              <ui-pagination
                 type="detailed"
                 [attr.total-items]="1000"
                 show-page-size
                 show-total
                 show-jump-to
                 theme="primary"
-              ></dui-pagination>
+              ></ui-pagination>
             </div>
-            <dui-code-preview [htmlCode]="detailedCode()" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="detailedCode()" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Minimalist Styles -->
@@ -78,11 +74,11 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Minimal Type (Arrow only)</p>
-                <dui-pagination type="minimal" [attr.total-items]="100" size="sm"></dui-pagination>
+                <ui-pagination type="minimal" [attr.total-items]="100" size="sm"></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Compact Basic</p>
-                <dui-pagination type="compact" [attr.total-items]="50"></dui-pagination>
+                <ui-pagination type="compact" [attr.total-items]="50"></ui-pagination>
               </div>
             </div>
           </section>
@@ -96,18 +92,18 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Infinite Style (Load More)</p>
-                <dui-pagination
+                <ui-pagination
                   infinite
                   [attr.total-items]="1000"
                   [attr.items-per-page]="50"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Infinite Loading State</p>
-                <dui-pagination infinite loading [attr.total-items]="1000"></dui-pagination>
+                <ui-pagination infinite loading [attr.total-items]="1000"></ui-pagination>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="infiniteCode()" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="infiniteCode()" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Selector Modes -->
@@ -118,14 +114,14 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Dropdown Selector</p>
-                <dui-pagination type="dropdown" [attr.total-items]="500"></dui-pagination>
+                <ui-pagination type="dropdown" [attr.total-items]="500"></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Manual Number Input</p>
-                <dui-pagination type="input" [attr.total-items]="300" theme="info"></dui-pagination>
+                <ui-pagination type="input" [attr.total-items]="300" theme="info"></ui-pagination>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="dropdownCode()" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="dropdownCode()" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Visual Progress -->
@@ -137,20 +133,20 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Dot Indicators</p>
-                <dui-pagination
+                <ui-pagination
                   type="indicator"
                   theme="primary"
                   [attr.total-items]="50"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Progress Bar Mode</p>
-                <dui-pagination
+                <ui-pagination
                   show-progress
                   theme="success"
                   [attr.total-items]="100"
                   [attr.current-page]="6"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
             </div>
           </section>
@@ -163,27 +159,27 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Pill Shape</p>
-                <dui-pagination
+                <ui-pagination
                   shape="pill"
                   variant="filled"
                   [attr.total-items]="100"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Rounded Square</p>
-                <dui-pagination
+                <ui-pagination
                   shape="rounded"
                   variant="outlined"
                   [attr.total-items]="100"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Sharp Square</p>
-                <dui-pagination
+                <ui-pagination
                   shape="square"
                   variant="soft"
                   [attr.total-items]="100"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
             </div>
           </section>
@@ -194,9 +190,9 @@
               <h2>Color Themes</h2>
             </div>
             <div class="demo-card pagination-stack">
-              <dui-pagination theme="warning" [attr.total-items]="100"></dui-pagination>
-              <dui-pagination theme="error" [attr.total-items]="100"></dui-pagination>
-              <dui-pagination theme="secondary" [attr.total-items]="100"></dui-pagination>
+              <ui-pagination theme="warning" [attr.total-items]="100"></ui-pagination>
+              <ui-pagination theme="error" [attr.total-items]="100"></ui-pagination>
+              <ui-pagination theme="secondary" [attr.total-items]="100"></ui-pagination>
             </div>
           </section>
 
@@ -208,24 +204,24 @@
             <div class="demo-card pagination-stack">
               <div class="demo-row">
                 <p>Quick Jump Step (+10)</p>
-                <dui-pagination
+                <ui-pagination
                   quick-jump
                   [attr.quick-jump-step]="10"
                   [attr.total-items]="1000"
                   [attr.current-page]="50"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
               <div class="demo-row">
                 <p>Smart Compact Mode</p>
-                <dui-pagination
+                <ui-pagination
                   smart-compact
                   [attr.smart-compact-threshold]="5"
                   [attr.total-items]="500"
                   theme="warning"
-                ></dui-pagination>
+                ></ui-pagination>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="logicCode()" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="logicCode()" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>

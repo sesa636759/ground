@@ -8,7 +8,7 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -16,21 +16,21 @@
           { label: 'Medium', value: 'medium' },
           { label: 'Large', value: 'large' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Max Display</label>
-      <dui-input
+      <ui-input
         type="number"
         min="1"
         max="10"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Layout Type</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.layout"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -38,40 +38,40 @@
           { label: 'Spaced', value: 'spaced' },
           { label: 'Grid', value: 'grid' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Direction</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.direction"
         (ngModelChange)="updateConfig()"
         [options]="[
           { label: 'Horizontal', value: 'horizontal' },
           { label: 'Vertical', value: 'vertical' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     @if (pgConfig.layout === 'grid') {
       <div class="control-group">
         <label>Grid Columns</label>
-        <dui-input
+        <ui-input
           type="number"
           min="1"
           max="6"
           [(ngModel)]="pgConfig.columns"
           (ngModelChange)="updateConfig()"
-        ></dui-input>
+        ></ui-input>
       </div>
     }
     <div class="control-group">
       <label>Spacing</label>
-      <dui-input
+      <ui-input
         type="number"
         min="0"
         max="40"
         [(ngModel)]="pgConfig.spacing"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -79,7 +79,7 @@
   <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -87,11 +87,11 @@
           { label: 'Rounded', value: 'rounded' },
           { label: 'Square', value: 'square' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Hover Effect</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.hoverEffect"
         (ngModelChange)="updateConfig()"
         [options]="[
@@ -100,26 +100,26 @@
           { label: 'Lift', value: 'lift' },
           { label: 'Glow', value: 'glow' },
         ]"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Border Width</label>
-      <dui-input
+      <ui-input
         type="number"
         min="0"
         max="10"
         [(ngModel)]="pgConfig.borderWidth"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Border Color</label>
-      <dui-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.borderColor"
         (ngModelChange)="updateConfig()"
         class="w-full h-40 border-none bg-none cursor-pointer"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -127,19 +127,19 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.showTooltips" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showTooltips" (ngModelChange)="updateConfig()" />
         Show Tooltips
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
         Clickable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.showPopover" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showPopover" (ngModelChange)="updateConfig()" />
         Show Popover
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
         Animated Transitions
       </label>
     </div>

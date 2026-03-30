@@ -7,36 +7,36 @@
   <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="standardOrientationOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Alignment</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.align"
         (ngModelChange)="updateConfig()"
         [options]="alignOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
   <div slot="content-content" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showOpposite"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Opposite Side
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.customMarker"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Custom Markers
       </label>
     </div>
@@ -44,7 +44,7 @@
 
   <div preview class="w-full display-flex justify-center items-start p-40">
     <div class="timeline-container w-full max-w-600 bg-surface-1 p-24 rounded-12 border">
-      <dui-timeline
+      <ui-timeline
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
         [value]="valueJson"
@@ -60,7 +60,7 @@
             class="w-12 h-12 rounded-50"
           ></div>
         </ng-template>
-      </dui-timeline>
+      </ui-timeline>
     </div>
   </div>
 

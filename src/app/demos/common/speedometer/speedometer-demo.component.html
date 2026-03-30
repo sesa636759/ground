@@ -22,15 +22,15 @@
               <p>Simple numeric displays for speed or capacity.</p>
             </div>
             <div class="demo-card gauge-row">
-              <dui-speedometer [value]="65" label="Speed" unit="km/h"></dui-speedometer>
-              <dui-speedometer
+              <ui-speedometer [value]="65" label="Speed" unit="km/h"></ui-speedometer>
+              <ui-speedometer
                 [value]="85"
                 label="Performance"
                 unit="%"
                 show-percentage
-              ></dui-speedometer>
+              ></ui-speedometer>
             </div>
-            <dui-code-preview [htmlCode]="basicCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Color Thresholds -->
@@ -42,18 +42,18 @@
             <div class="demo-card gauge-row">
               <div class="gauge-item">
                 <p>Fuel Gauge (E/F)</p>
-                <dui-speedometer [value]="15" [attr.ranges]="fuelRanges"></dui-speedometer>
+                <ui-speedometer [value]="15" [attr.ranges]="fuelRanges"></ui-speedometer>
               </div>
               <div class="gauge-item">
                 <p>Credit Score (Red-Yellow-Green)</p>
-                <dui-speedometer
+                <ui-speedometer
                   [value]="75"
                   [attr.ranges]="scoreRanges"
                   [size]="200"
-                ></dui-speedometer>
+                ></ui-speedometer>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="rangesCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="rangesCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Custom Arcs -->
@@ -63,29 +63,29 @@
               <p>Adjust the start and end angles to create semi-circles or full circles.</p>
             </div>
             <div class="demo-card gauge-row">
-              <dui-speedometer
+              <ui-speedometer
                 [start-angle]="-90"
                 [end-angle]="90"
                 [value]="45"
                 label="180° Half"
                 [size]="200"
-              ></dui-speedometer>
-              <dui-speedometer
+              ></ui-speedometer>
+              <ui-speedometer
                 [start-angle]="0"
                 [end-angle]="360"
                 [value]="270"
                 label="360° Full"
                 [size]="200"
-              ></dui-speedometer>
-              <dui-speedometer
+              ></ui-speedometer>
+              <ui-speedometer
                 [start-angle]="-45"
                 [end-angle]="45"
                 [value]="10"
                 label="90° Small"
                 [size]="150"
-              ></dui-speedometer>
+              ></ui-speedometer>
             </div>
-            <dui-code-preview [htmlCode]="anglesCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="anglesCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Needle Shapes -->
@@ -95,25 +95,25 @@
               <p>Various needle shapes and colors to match your UI design.</p>
             </div>
             <div class="demo-card gauge-row">
-              <dui-speedometer
+              <ui-speedometer
                 needle-shape="arrow"
                 [value]="80"
                 needle-color="#3b82f6"
                 label="Arrow"
-              ></dui-speedometer>
-              <dui-speedometer
+              ></ui-speedometer>
+              <ui-speedometer
                 needle-shape="line"
                 [value]="40"
                 needle-color="#ff4d4f"
                 label="Line"
-              ></dui-speedometer>
-              <dui-speedometer
+              ></ui-speedometer>
+              <ui-speedometer
                 needle-shape="triangle"
                 [value]="60"
                 label="Triangle"
-              ></dui-speedometer>
+              ></ui-speedometer>
             </div>
-            <dui-code-preview [htmlCode]="shapesCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="shapesCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Interactive Mode -->
@@ -123,9 +123,9 @@
               <p>Enable users to change the value by dragging the needle directly.</p>
             </div>
             <div class="demo-card gauge-row">
-              <dui-speedometer interactive [value]="30" label="Drag Me"></dui-speedometer>
+              <ui-speedometer interactive [value]="30" label="Drag Me"></ui-speedometer>
             </div>
-            <dui-code-preview [htmlCode]="interactiveCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="interactiveCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Custom Labels -->
@@ -135,17 +135,17 @@
               <p>Map specific values to text labels for non-numeric gauges.</p>
             </div>
             <div class="demo-card gauge-row">
-              <dui-speedometer
+              <ui-speedometer
                 [attr.custom-labels]="customMap"
                 [value]="50"
                 label="Tank Capacity"
-              ></dui-speedometer>
-              <dui-speedometer
+              ></ui-speedometer>
+              <ui-speedometer
                 [attr.custom-labels]="'{&quot;0&quot;:&quot;Low&quot;,&quot;50&quot;:&quot;Med&quot;,&quot;100&quot;:&quot;High&quot;}'"
                 [value]="0"
-              ></dui-speedometer>
+              ></ui-speedometer>
             </div>
-            <dui-code-preview [htmlCode]="labelsCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="labelsCode" activeLang="html"></ui-code-preview>
           </section>
 
           <!-- Secondary & Export -->
@@ -157,21 +157,18 @@
             <div class="demo-card gauge-row">
               <div class="gauge-item">
                 <p>Comparison (Secondary Value)</p>
-                <dui-speedometer
+                <ui-speedometer
                   [value]="80"
                   [secondary-value]="45"
                   label="Actual vs Target"
-                ></dui-speedometer>
+                ></ui-speedometer>
               </div>
               <div class="gauge-item">
                 <p>Gradient Arc</p>
-                <dui-speedometer
-                  [value]="90"
-                  gradient-colors="red, yellow, green"
-                ></dui-speedometer>
+                <ui-speedometer [value]="90" gradient-colors="red, yellow, green"></ui-speedometer>
               </div>
             </div>
-            <dui-code-preview [htmlCode]="advancedCode" activeLang="html"></dui-code-preview>
+            <ui-code-preview [htmlCode]="advancedCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>

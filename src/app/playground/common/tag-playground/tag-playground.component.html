@@ -7,55 +7,48 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Value / Text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Icon</label>
-      <dui-input
-        type="text"
-        [(ngModel)]="pgConfig.icon"
-        (ngModelChange)="updateConfig()"
-      ></dui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Severity</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.severity"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="fullSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.rounded"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()"></ui-checkbox>
         Rounded Corners
       </label>
     </div>
   </div>
 
   <div preview class="w-full display-flex justify-center items-center p-40">
-    <dui-tag
+    <ui-tag
       [attr.value]="pgConfig.value"
       [attr.icon]="pgConfig.icon"
       [attr.severity]="pgConfig.severity"
       [attr.rounded]="pgConfig.rounded ? '' : null"
       [attr.size]="pgConfig.size"
-    ></dui-tag>
+    ></ui-tag>
   </div>
 
   <pg-playground-event-log

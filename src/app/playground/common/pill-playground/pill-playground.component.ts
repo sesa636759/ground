@@ -83,7 +83,7 @@ export class DmPillPlaygroundComponent extends BasePlaygroundComponent implement
   }
 
   updateConfig() {
-    let code = '<dui-pill\n';
+    let code = '<ui-pill\n';
     code += `  label="${this.pgConfig.label}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  color="${this.pgConfig.color}"\n`;
@@ -109,7 +109,7 @@ export class DmPillPlaygroundComponent extends BasePlaygroundComponent implement
       code += `  gradient="${this.pgConfig.gradient}"\n`;
     }
 
-    code += '></dui-pill>';
+    code += '></ui--pill>';
 
     this.generatedCode.set(code);
     this.refreshCode();

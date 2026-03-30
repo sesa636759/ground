@@ -24,33 +24,33 @@
               <p>Apply different visual weights using standard color variants.</p>
             </div>
             <div class="demo-card">
-              <dui-split-button
+              <ui-split-button
                 label="Delete All"
                 variant="danger"
                 [model]="menuItems"
-              ></dui-split-button>
-              <dui-split-button
+              ></ui-split-button>
+              <ui-split-button
                 label="Publish"
                 variant="success"
                 [model]="menuItems"
-              ></dui-split-button>
-              <dui-split-button
+              ></ui-split-button>
+              <ui-split-button
                 label="Secondary"
                 variant="secondary"
                 [model]="menuItems"
-              ></dui-split-button>
-              <dui-split-button
+              ></ui-split-button>
+              <ui-split-button
                 label="Outline Only"
                 variant="outline"
                 [model]="menuItems"
-              ></dui-split-button>
+              ></ui-split-button>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="colorsCode"
               [label]="'Theme Examples'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </section>
 
           <!-- Visual States -->
@@ -60,19 +60,15 @@
               <p>Communicate ongoing processes or restricted access.</p>
             </div>
             <div class="demo-card">
-              <dui-split-button
-                loading
-                label="Processing..."
-                [model]="menuItems"
-              ></dui-split-button>
-              <dui-split-button disabled label="Locked" [model]="menuItems"></dui-split-button>
+              <ui-split-button loading label="Processing..." [model]="menuItems"></ui-split-button>
+              <ui-split-button disabled label="Locked" [model]="menuItems"></ui-split-button>
             </div>
-            <dui-code-preview
+            <ui-code-preview
               [htmlCode]="statesCode"
               [label]="'State Examples'"
               activeLang="html"
               expanded="true"
-            ></dui-code-preview>
+            ></ui-code-preview>
           </section>
         </div>
       </div>

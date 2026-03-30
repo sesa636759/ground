@@ -28,23 +28,23 @@ export class CardExamplesComponent extends BaseDemoComponent {
 
   patternsCode = `<div class="card-grid">
   <!-- Emphasized Importance -->
-  <dui-card importance="emphasized" card-title="Emphasized Card" description="Used for high-priority items."></dui-card>
+  <ui-card importance="emphasized" card-title="Emphasized Card" description="Used for high-priority items."></ui-card>
   
   <!-- Product Pattern -->
-  <dui-card pattern="product" card-title="Smart Watch Pro" tag="Sale -20%" cover="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"></dui-card>
+  <ui-card pattern="product" card-title="Smart Watch Pro" tag="Sale -20%" cover="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"></ui-card>
   
   <!-- Shortcut Pattern -->
-  <dui-card pattern="shortcut" card-title="Quick Settings" avatar-icon="fas fa-cog"></dui-card>
+  <ui-card pattern="shortcut" card-title="Quick Settings" avatar-icon="fas fa-cog"></ui-card>
 </div>`;
 
   specializedCode = `<div class="card-grid">
   <!-- Collapsible Card -->
-  <dui-card collapsible card-title="Collapsible Details">
+  <ui-card collapsible card-title="Collapsible Details">
     <div slot="content">Detailed performance logs and system status information that can be hidden.</div>
-  </dui-card>
+  </ui-card>
 
   <!-- Auto-Scrolling Card -->
-  <dui-card auto-scroll height="200px" card-title="Real-time Logs">
+  <ui-card auto-scroll height="200px" card-title="Real-time Logs">
     <div slot="content">
       <p style="margin: 4px 0;">[10:00:01] System boot started...</p>
       <p style="margin: 4px 0;">[10:00:05] Kernel loaded.</p>
@@ -54,39 +54,39 @@ export class CardExamplesComponent extends BaseDemoComponent {
       <p style="margin: 4px 0;">[10:00:25] API Gateway ready.</p>
       <p style="margin: 4px 0;">[10:00:30] System operational.</p>
     </div>
-  </dui-card>
+  </ui-card>
   
   <!-- Inner Type for Nesting -->
-  <dui-card card-title="Project Management">
+  <ui-card card-title="Project Management">
     <div slot="content">
       <p>Main project overview content.</p>
-      <dui-card type="inner" card-title="Sub-task A" description="Due in 2 days" variant="outlined"></dui-card>
-      <dui-card type="inner" card-title="Sub-task B" description="Completed" variant="outlined" style="margin-top: 8px;"></dui-card>
+      <ui-card type="inner" card-title="Sub-task A" description="Due in 2 days" variant="outlined"></ui-card>
+      <ui-card type="inner" card-title="Sub-task B" description="Completed" variant="outlined" style="margin-top: 8px;"></ui-card>
     </div>
-  </dui-card>
+  </ui-card>
 </div>`;
 
-  advancedSlotsCode = `<dui-card>
+  advancedSlotsCode = `<ui-card>
   <div slot="tabs">
-    <dui-tabs>
-      <dui-tab-panel label="Details">Technical specifications of the product...</dui-tab-panel>
-      <dui-tab-panel label="Reviews">User feedback and ratings...</dui-tab-panel>
-    </dui-tabs>
+    <ui-tabs>
+      <ui-tab-panel label="Details">Technical specifications of the product...</ui-tab-panel>
+      <ui-tab-panel label="Reviews">User feedback and ratings...</ui-tab-panel>
+    </ui-tabs>
   </div>
   <div slot="content">Main product description goes here. This area is visible below the tabs.</div>
-</dui-card>
+</ui-card>
 
-<dui-card>
+<ui-card>
   <div slot="grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #eee;">
     <div style="background: white; padding: 20px; text-align: center;">Feature 1</div>
     <div style="background: white; padding: 20px; text-align: center;">Feature 2</div>
     <div style="background: white; padding: 20px; text-align: center;">Feature 3</div>
   </div>
-</dui-card>`;
+</ui-card>`;
 
   premiumHeroCode = `<div class="card-grid">
   <!-- Dashboard Card -->
-  <dui-card variant="elevated" hoverable width="380px" ribbon="NEW" ribbon-color="indigo">
+  <ui-card variant="elevated" hoverable width="380px" ribbon="NEW" ribbon-color="indigo">
     <div slot="cover" class="premium-cover">
       <img
         src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
@@ -118,20 +118,20 @@ export class CardExamplesComponent extends BaseDemoComponent {
       </div>
     </div>
     <div slot="footer" class="footer-actions">
-      <dui-button variant="primary" label="Open Dashboard" size="md"></dui-button>
-      <dui-button
+      <ui-button variant="primary" label="Open Dashboard" size="md"></ui-button>
+      <ui-button
         size="md"
         variant="primary"
         label="Export"
         icon="download"
         icon-library="lucide"
         icon-position="left"
-      ></dui-button>
+      ></ui-button>
     </div>
-  </dui-card>
+  </ui-card>
 
   <!-- Profile Card -->
-  <dui-card variant="elevated" hoverable width="320px" type="inner">
+  <ui-card variant="elevated" hoverable width="320px" type="inner">
     <div slot="header" class="profile-header">
       <div class="avatar-container">
         <img
@@ -151,14 +151,14 @@ export class CardExamplesComponent extends BaseDemoComponent {
       </div>
     </div>
     <div slot="footer">
-      <dui-button label="Connect" width="100%"></dui-button>
+      <ui-button label="Connect" width="100%"></ui-button>
     </div>
-  </dui-card>
+  </ui-card>
 </div>`;
 
-  basicCode = `<dui-card variant="elevated" card-title="Basic Card" description="This is a basic card using properties instead of slots for simple content."></dui-card>`;
+  basicCode = `<ui-card variant="elevated" card-title="Basic Card" description="This is a basic card using properties instead of slots for simple content."></ui-card>`;
 
-  mediaCode = `<dui-card hoverable>
+  mediaCode = `<ui-card hoverable>
   <div slot="cover">
     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project" />
     <div class="overlay-badge">In Progress</div>
@@ -172,10 +172,10 @@ export class CardExamplesComponent extends BaseDemoComponent {
       <div class="stat"><span class="label">Growth</span> +18%</div>
     </div>
   </div>
-</dui-card>`;
+</ui-card>`;
 
   interactionCode = `<!-- Flippable Interaction -->
-<dui-card flippable flip-trigger="click">
+<ui-card flippable flip-trigger="click">
   <div slot="content">
     <div class="back-preview">
       <i class="fas fa-sync"></i>
@@ -189,29 +189,29 @@ export class CardExamplesComponent extends BaseDemoComponent {
       <li>Uptime: 99.99%</li>
     </ul>
   </div>
-</dui-card>`;
+</ui-card>`;
 
   variantsCode = `<div class="card-grid">
-  <dui-card variant="elevated">Elevated</dui-card>
-  <dui-card variant="outlined">Outlined</dui-card>
-  <dui-card variant="filled">Filled</dui-card>
-  <dui-card variant="primary">Primary</dui-card>
-  <dui-card variant="success">Success</dui-card>
+  <ui-card variant="elevated">Elevated</ui-card>
+  <ui-card variant="outlined">Outlined</ui-card>
+  <ui-card variant="filled">Filled</ui-card>
+  <ui-card variant="primary">Primary</ui-card>
+  <ui-card variant="success">Success</ui-card>
 </div>`;
 
-  responsiveCode = `<dui-card layout="horizontal" width="100%">
+  responsiveCode = `<ui-card layout="horizontal" width="100%">
   <div slot="cover" style="width: 200px">
     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" />
   </div>
   <div slot="header"><h3>Horizontal Layout</h3></div>
   <div slot="content">Perfect for list items and article previews. content should wrap nicely.</div>
-</dui-card>`;
+</ui-card>`;
 
-  statesCode = `<dui-card loading></dui-card>
-<dui-card disabled>Disabled State content</dui-card>`;
+  statesCode = `<ui-card loading></ui-card>
+<ui-card disabled>Disabled State content</ui-card>`;
 
-  advancedCode = `<dui-card glass="true" ribbon="FEATURED">
+  advancedCode = `<ui-card glass="true" ribbon="FEATURED">
   <div slot="header"><h3>Premium Glass Card</h3></div>
   <div slot="content">Utilizing glassmorphism for modern interfaces.</div>
-</dui-card>`;
+</ui-card>`;
 }

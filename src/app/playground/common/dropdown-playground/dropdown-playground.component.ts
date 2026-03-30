@@ -106,7 +106,7 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
 
   updateConfig() {
     setTimeout(() => {
-      let code = '<dui-dropdown\n';
+      let code = '<ui-dropdown\n';
       code += `  placeholder="${this.pgConfig.placeholder}"\n`;
       code += `  size="${this.pgConfig.size}"\n`;
       if (this.pgConfig.appearance !== 'dropdown')
@@ -120,7 +120,7 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
       if (!this.pgConfig.showArrow) code += `  [showArrow]="false"\n`;
       if (this.pgConfig.disabled) code += `  disabled\n`;
       code += `  [options]="dropdownOptions"\n`;
-      code += '></dui-dropdown>';
+      code += '></ui--dropdown>';
 
       this.generatedCode.set(code);
       this.refreshCode();

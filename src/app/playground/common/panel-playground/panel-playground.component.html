@@ -7,54 +7,53 @@
   <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Panel Title</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.panelTitle"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Subtitle</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.panelSubtitle"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Badge Text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.badge"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-visual" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Theme</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.theme"
         (ngModelChange)="updateConfig()"
         [options]="themeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass Effect
+        <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass Effect
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.noPadding" (ngModelChange)="updateConfig()" /> No
-        Padding
+        <ui-checkbox [(ngModel)]="pgConfig.noPadding" (ngModelChange)="updateConfig()" /> No Padding
       </label>
     </div>
   </div>
@@ -62,34 +61,33 @@
   <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.showClose" (ngModelChange)="updateConfig()" /> Show
-        Close
+        <ui-checkbox [(ngModel)]="pgConfig.showClose" (ngModelChange)="updateConfig()" /> Show Close
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.showSettings" (ngModelChange)="updateConfig()" /> Show
+        <ui-checkbox [(ngModel)]="pgConfig.showSettings" (ngModelChange)="updateConfig()" /> Show
         Settings
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.toggleable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.toggleable" (ngModelChange)="updateConfig()" />
         Toggleable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.minimizable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.minimizable" (ngModelChange)="updateConfig()" />
         Minimizable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.maximizable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.maximizable" (ngModelChange)="updateConfig()" />
         Maximizable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.isDraggable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.isDraggable" (ngModelChange)="updateConfig()" />
         Draggable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.resizable" (ngModelChange)="updateConfig()" /> Resizable
+        <ui-checkbox [(ngModel)]="pgConfig.resizable" (ngModelChange)="updateConfig()" /> Resizable
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
         State
       </label>
     </div>
@@ -97,7 +95,7 @@
 
   <div preview class="preview-stage h-scrollable">
     <div class="w-full max-w-600">
-      <dui-panel
+      <ui-panel
         [attr.panel-title]="pgConfig.panelTitle"
         [attr.panel-subtitle]="pgConfig.panelSubtitle"
         [attr.badge]="pgConfig.badge"
@@ -125,14 +123,14 @@
             titles, subtitles, badges, and control which actions are available in the header.
           </p>
           <div class="mt-16 display-flex gap-8">
-            <dui-button label="Action 1" variant="solid"></dui-button>
-            <dui-button label="Action 2" variant="soft"></dui-button>
+            <ui-button label="Action 1" variant="solid"></ui-button>
+            <ui-button label="Action 2" variant="soft"></ui-button>
           </div>
         </div>
         <div slot="footer">
           <span class="fs-08rem text-muted"> Last updated: Today at 10:45 AM </span>
         </div>
-      </dui-panel>
+      </ui-panel>
     </div>
   </div>
 

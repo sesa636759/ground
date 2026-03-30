@@ -26,7 +26,7 @@
           [code]="fadeTransitionCode"
           class="mt-0"
         >
-          <dui-carousel effect="fade" autoplay="true" autoplay-interval="4000" show-progress="true">
+          <ui-carousel effect="fade" autoplay="true" autoplay-interval="4000" show-progress="true">
             <div class="slide bg-gradient-nature p-60 text-white text-center">
               <h3>Nature</h3>
               <p>Breathtaking landscapes</p>
@@ -39,7 +39,7 @@
               <h3>Mountains</h3>
               <p>Peak experience</p>
             </div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Slide Transition -->
@@ -49,7 +49,7 @@
           description="Classic sliding animation with smooth transitions"
           [code]="slideTransitionCode"
         >
-          <dui-carousel
+          <ui-carousel
             effect="slide"
             autoplay="true"
             autoplay-interval="3000"
@@ -72,7 +72,7 @@
               <h3>Slide 4</h3>
               <p>Easy to customize</p>
             </div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Center Mode -->
@@ -82,7 +82,7 @@
           description="Highlight the active slide with partial side visibility"
           [code]="centerModeCode"
         >
-          <dui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
+          <ui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
             <div class="slide bg-rose-600 p-40 text-white text-center rounded-8 mx-10">Item 1</div>
             <div class="slide bg-pink-600 p-40 text-white text-center rounded-8 mx-10">Item 2</div>
             <div class="slide bg-fuchsia-600 p-40 text-white text-center rounded-8 mx-10">
@@ -94,7 +94,7 @@
             <div class="slide bg-violet-600 p-40 text-white text-center rounded-8 mx-10">
               Item 5
             </div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Multiple Slides -->
@@ -104,7 +104,7 @@
           description="Show multiple slides at once"
           [code]="multipleItemsCode"
         >
-          <dui-carousel
+          <ui-carousel
             slides-to-show="3"
             slides-to-scroll="1"
             infinite="true"
@@ -129,7 +129,7 @@
             <div class="slide bg-sky-50 p-30 text-center border-cyan-2 rounded-8 mx-10">
               <h4>Slide 6</h4>
             </div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Vertical Carousel -->
@@ -140,7 +140,7 @@
           [code]="verticalCode"
         >
           <div class="h-400 w-full">
-            <dui-carousel
+            <ui-carousel
               direction="vertical"
               slides-to-show="1"
               autoplay="true"
@@ -149,7 +149,7 @@
               <div class="slide bg-blue-100 p-60 text-center border-blue-2">Vertical Slide 1</div>
               <div class="slide bg-blue-100 p-60 text-center border-blue-2">Vertical Slide 2</div>
               <div class="slide bg-blue-100 p-60 text-center border-blue-2">Vertical Slide 3</div>
-            </dui-carousel>
+            </ui-carousel>
           </div>
         </pg-example-section>
 
@@ -160,11 +160,11 @@
           description="Seamless continuous looping carousel"
           [code]="infiniteLoopCode"
         >
-          <dui-carousel infinite="true" loop="true" autoplay="true" autoplay-interval="2000">
+          <ui-carousel infinite="true" loop="true" autoplay="true" autoplay-interval="2000">
             <div class="slide bg-pink-500 p-60 text-white text-center">Loop Item 1</div>
             <div class="slide bg-yellow-bright p-60 text-white text-center">Loop Item 2</div>
             <div class="slide bg-green-soft p-60 text-white text-center">Loop Item 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Swipe & Drag -->
@@ -174,7 +174,7 @@
           description="Full touch and mouse interaction support"
           [code]="swipeGestureCode"
         >
-          <dui-carousel
+          <ui-carousel
             swipe="true"
             drag="true"
             mouse-drag="true"
@@ -184,7 +184,7 @@
             <div class="slide bg-gradient-sunset p-60 text-white text-center">Swipe/Drag 1</div>
             <div class="slide bg-gradient-indigo p-60 text-white text-center">Swipe/Drag 2</div>
             <div class="slide bg-gradient-magenta p-60 text-white text-center">Swipe/Drag 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Autoplay Control -->
@@ -194,7 +194,7 @@
           description="Automatic playback with hover and focus pause"
           [code]="scrollAutoplayCode"
         >
-          <dui-carousel
+          <ui-carousel
             autoplay="true"
             autoplay-interval="3000"
             pause-on-hover="true"
@@ -203,7 +203,7 @@
             <div class="slide bg-blue-500 p-60 text-white text-center">Hover to pause</div>
             <div class="slide bg-violet-500 p-60 text-white text-center">Focus to pause</div>
             <div class="slide bg-pink-500 p-60 text-white text-center">Auto resume</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Drag Threshold -->
@@ -213,11 +213,11 @@
           description="Fine-tune swipe sensitivity and drag distance"
           [code]="thresholdCode"
         >
-          <dui-carousel drag="true" swipe="true" drag-threshold="10" touch-threshold="5">
+          <ui-carousel drag="true" swipe="true" drag-threshold="10" touch-threshold="5">
             <div class="slide bg-emerald-500 p-60 text-white text-center">Threshold 1</div>
             <div class="slide bg-teal-500 p-60 text-white text-center">Threshold 2</div>
             <div class="slide bg-amber-500 p-60 text-white text-center">Threshold 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Animation Easing -->
@@ -227,11 +227,11 @@
           description="Control animation timing with CSS easing functions"
           [code]="easingCode"
         >
-          <dui-carousel animation-duration="800" animation-easing="ease-in-out" autoplay="true">
+          <ui-carousel animation-duration="800" animation-easing="ease-in-out" autoplay="true">
             <div class="slide bg-violet-300 p-60 text-white text-center">EaseInOut 1</div>
             <div class="slide bg-fuchsia-300 p-60 text-white text-center">EaseInOut 2</div>
             <div class="slide bg-fuchsia-400 p-60 text-white text-center">EaseInOut 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Dots Indicators -->
@@ -241,7 +241,7 @@
           description="Classic dot pagination for slide navigation"
           [code]="dotsIndicatorsCode"
         >
-          <dui-carousel
+          <ui-carousel
             indicators="true"
             indicator-type="dots"
             indicator-position="bottom"
@@ -250,7 +250,7 @@
             <div class="slide bg-pink-500 p-60 text-white text-center">Slide 1</div>
             <div class="slide bg-rose-500 p-60 text-white text-center">Slide 2</div>
             <div class="slide bg-orange-500 p-60 text-white text-center">Slide 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Number Indicators -->
@@ -260,11 +260,11 @@
           description="Numeric pagination showing slide numbers"
           [code]="numberIndicatorsCode"
         >
-          <dui-carousel indicators="true" indicator-type="numbers" indicator-position="bottom">
+          <ui-carousel indicators="true" indicator-type="numbers" indicator-position="bottom">
             <div class="slide bg-teal-500 p-60 text-white text-center">Slide 1</div>
             <div class="slide bg-sky-500 p-60 text-white text-center">Slide 2</div>
             <div class="slide bg-blue-500 p-60 text-white text-center">Slide 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Progress Bar -->
@@ -274,11 +274,11 @@
           description="Visual progress bar showing autoplay timing"
           [code]="progressBarCode"
         >
-          <dui-carousel show-progress="true" autoplay="true" autoplay-interval="3000">
+          <ui-carousel show-progress="true" autoplay="true" autoplay-interval="3000">
             <div class="slide bg-emerald-500 p-60 text-white text-center">Progress 1</div>
             <div class="slide bg-emerald-600 p-60 text-white text-center">Progress 2</div>
             <div class="slide bg-emerald-700 p-60 text-white text-center">Progress 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Size Small -->
@@ -288,11 +288,11 @@
           description="Compact carousel with reduced height"
           [code]="sizeSmallCode"
         >
-          <dui-carousel height="200px" slides-to-show="1">
+          <ui-carousel height="200px" slides-to-show="1">
             <div class="slide bg-amber-400 p-40 text-white text-center">Small 1</div>
             <div class="slide bg-orange-400 p-40 text-white text-center">Small 2</div>
             <div class="slide bg-red-400 p-40 text-white text-center">Small 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Size Medium -->
@@ -302,11 +302,11 @@
           description="Standard carousel height for most use cases"
           [code]="sizeMediumCode"
         >
-          <dui-carousel height="400px" slides-to-show="2">
+          <ui-carousel height="400px" slides-to-show="2">
             <div class="slide bg-slate-blue p-60 text-white text-center">Medium 1</div>
             <div class="slide bg-sky-cyan p-60 text-white text-center">Medium 2</div>
             <div class="slide bg-mint p-60 text-white text-center">Medium 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Size Large -->
@@ -316,11 +316,11 @@
           description="Full-height carousel for hero sections"
           [code]="sizeLargeCode"
         >
-          <dui-carousel height="600px" slides-to-show="3">
+          <ui-carousel height="600px" slides-to-show="3">
             <div class="slide bg-indigo-400 p-80 text-white text-center">Large 1</div>
             <div class="slide bg-violet-700 p-80 text-white text-center">Large 2</div>
             <div class="slide bg-fuchsia-300 p-80 text-white text-center">Large 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Speed Fast -->
@@ -330,11 +330,11 @@
           description="Quick transitions and short autoplay interval"
           [code]="speedFastCode"
         >
-          <dui-carousel animation-duration="300" autoplay-interval="2000" autoplay="true">
+          <ui-carousel animation-duration="300" autoplay-interval="2000" autoplay="true">
             <div class="slide bg-pink-500 p-60 text-white text-center">Fast 1</div>
             <div class="slide bg-yellow-soft p-60 text-white text-center">Fast 2</div>
             <div class="slide bg-cyan-soft p-60 text-white text-center">Fast 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Speed Normal -->
@@ -344,11 +344,11 @@
           description="Balanced timing for comfortable viewing"
           [code]="speedNormalCode"
         >
-          <dui-carousel animation-duration="500" autoplay-interval="3000" autoplay="true">
+          <ui-carousel animation-duration="500" autoplay-interval="3000" autoplay="true">
             <div class="slide bg-slate-blue p-60 text-white text-center">Normal 1</div>
             <div class="slide bg-sky-cyan p-60 text-white text-center">Normal 2</div>
             <div class="slide bg-mint p-60 text-white text-center">Normal 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Speed Slow -->
@@ -358,11 +358,11 @@
           description="Relaxed transitions for detailed content"
           [code]="speedSlowCode"
         >
-          <dui-carousel animation-duration="1000" autoplay-interval="5000" autoplay="true">
+          <ui-carousel animation-duration="1000" autoplay-interval="5000" autoplay="true">
             <div class="slide bg-indigo-400 p-60 text-white text-center">Slow 1</div>
             <div class="slide bg-violet-700 p-60 text-white text-center">Slow 2</div>
             <div class="slide bg-fuchsia-300 p-60 text-white text-center">Slow 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Responsive Breakpoints -->
@@ -372,14 +372,14 @@
           description="Adapts slide count based on screen width"
           [code]="responsiveCode"
         >
-          <dui-carousel
+          <ui-carousel
             slides-to-show="3"
             responsive="[{breakpoint: 1024, settings: {slidesToShow: 2}}, {breakpoint: 640, settings: {slidesToShow: 1}}]"
           >
             <div class="slide bg-sky-100 p-40 text-center border-cyan-2 mx-10">Responsive 1</div>
             <div class="slide bg-sky-100 p-40 text-center border-cyan-2 mx-10">Responsive 2</div>
             <div class="slide bg-sky-100 p-40 text-center border-cyan-2 mx-10">Responsive 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Custom Controls -->
@@ -389,7 +389,7 @@
           description="Extensive control over navigation appearance and behavior"
           [code]="customControlsCode"
         >
-          <dui-carousel
+          <ui-carousel
             arrows="true"
             indicators="true"
             show-progress="true"
@@ -399,7 +399,7 @@
             <div class="slide bg-indigo-500 p-60 text-white text-center">Slide 1</div>
             <div class="slide bg-indigo-600 p-60 text-white text-center">Slide 2</div>
             <div class="slide bg-indigo-700 p-60 text-white text-center">Slide 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
       </div>
     </div>

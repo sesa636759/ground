@@ -59,7 +59,7 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent imple
   }
 
   updateConfig() {
-    let code = `<dui-splitter\n`;
+    let code = `<ui-splitter\n`;
     if (this.pgConfig.direction !== 'horizontal')
       code += `  direction="${this.pgConfig.direction}"\n`;
     if (this.pgConfig.gutterSize !== 8) code += `  [gutter-size]="${this.pgConfig.gutterSize}"\n`;
@@ -82,7 +82,7 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent imple
     code += `>\n`;
     code += `  <div slot="panel-0">Left Panel</div>\n`;
     code += `  <div slot="panel-1">Right Panel</div>\n`;
-    code += `</dui-splitter>`;
+    code += `</ui-splitter>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

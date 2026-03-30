@@ -48,11 +48,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Interface Animations</span>
                 <span class="desc">Enable smooth transitions and micro-interactions</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="animations()"
                 variant="primary"
                 (switchChange)="animations.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -60,11 +60,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Reduced Motion</span>
                 <span class="desc">Minimize animations for better accessibility</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="reduceMotion()"
                 variant="warning"
                 (switchChange)="reduceMotion.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 >
               </div>
               <div class="segmented-control">
-                <dui-button
+                <ui-button
                   [class.active]="navOrientation() === 'vertical'"
                   (click)="navOrientation.set('vertical')"
                   variant="ghost"
@@ -128,8 +128,8 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   style="min-width: 80px;"
                 >
                   Vertical
-                </dui-button>
-                <dui-button
+                </ui-button>
+                <ui-button
                   [class.active]="navOrientation() === 'horizontal'"
                   (click)="navOrientation.set('horizontal')"
                   variant="ghost"
@@ -137,7 +137,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   style="min-width: 80px;"
                 >
                   Horizontal
-                </dui-button>
+                </ui-button>
               </div>
             </div>
 
@@ -146,11 +146,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Cloud Auto-save</span>
                 <span class="desc">Automatically save changes to your profile as you work</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="autoSave()"
                 variant="success"
                 (switchChange)="autoSave.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -158,11 +158,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Keyboard Shortcuts</span>
                 <span class="desc">Enable quick navigation using hotkeys</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="keyboardShortcuts()"
                 variant="primary"
                 (switchChange)="keyboardShortcuts.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -170,11 +170,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Contextual Tooltips</span>
                 <span class="desc">Show helpful hints when hovering over UI elements</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="tooltips()"
                 variant="info"
                 (switchChange)="tooltips.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
 
             <div class="setting-row">
@@ -182,18 +182,18 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                 <span class="label">Destructive Action Confirmation</span>
                 <span class="desc">Ask before deleting or permanently modifying items</span>
               </div>
-              <dui-switch
+              <ui-switch
                 [checked]="confirmDelete()"
                 variant="danger"
                 (switchChange)="confirmDelete.set($any($event).detail.checked)"
-              ></dui-switch>
+              ></ui-switch>
             </div>
           </div>
         </div>
 
         <div class="form-actions-full">
-          <dui-button label="Reset to Defaults" variant="secondary" (click)="reset()"></dui-button>
-          <dui-button label="Save Preferences" variant="primary" (click)="save()"></dui-button>
+          <ui-button label="Reset to Defaults" variant="secondary" (click)="reset()"></ui-button>
+          <ui-button label="Save Preferences" variant="primary" (click)="save()"></ui-button>
         </div>
       </div>
     </div>

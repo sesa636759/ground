@@ -58,13 +58,13 @@ export class DmBarChartDemoComponent extends BaseDemoComponent {
 
   /* ── Code examples ── */
   basicCode = `<!-- Basic Bar Chart -->
-<dui-bar-chart
+<ui-bar-chart
   show-legend
   enable-animation
   show-tooltip
   [labels]="labels"
   [datasets]="datasets"
-></dui-bar-chart>
+></ui-bar-chart>
 
 // TypeScript
 labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
@@ -73,13 +73,13 @@ datasets = [
 ];`;
 
   multiCode = `<!-- Multi-Dataset Bar Chart -->
-<dui-bar-chart
+<ui-bar-chart
   show-legend
   enable-animation
   show-tooltip
   [labels]="labels"
   [datasets]="datasets"
-></dui-bar-chart>
+></ui-bar-chart>
 
 // TypeScript
 labels = ['Q1', 'Q2', 'Q3', 'Q4'];
@@ -90,22 +90,22 @@ datasets = [
 ];`;
 
   stackedCode = `<!-- Stacked Bar Chart -->
-<dui-bar-chart
+<ui-bar-chart
   stacked
   show-legend
   enable-animation
   show-tooltip
   [labels]="labels"
   [datasets]="datasets"
-></dui-bar-chart>`;
+></ui-bar-chart>`;
 
   horizontalCode = `<!-- Horizontal Bar Chart -->
-<dui-bar-chart
+<ui-bar-chart
   orientation="horizontal"
   show-legend
   enable-animation
   show-tooltip
   [labels]="labels"
   [datasets]="datasets"
-></dui-bar-chart>`;
+></ui-bar-chart>`;
 }

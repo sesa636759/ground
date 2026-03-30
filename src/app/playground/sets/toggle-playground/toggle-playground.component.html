@@ -7,17 +7,17 @@
   <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Layout</label>
-      <dui-dropdown
+      <ui-dropdown
         name="layout"
         [(ngModel)]="pgConfig.layout"
         (ngModelChange)="updateConfig()"
         [options]="layoutOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Grid Columns</label>
-      <dui-input
+      <ui-input
         name="columns"
         type="number"
         min="1"
@@ -25,109 +25,109 @@
         [(ngModel)]="pgConfig.columns"
         (ngModelChange)="updateConfig()"
         [disabled]="pgConfig.layout !== 'grid'"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Selection Mode</label>
-      <dui-dropdown
+      <ui-dropdown
         name="selectionMode"
         [(ngModel)]="pgConfig.selectionMode"
         (ngModelChange)="updateConfig()"
         [options]="selectionModeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Size</label>
-      <dui-dropdown
+      <ui-dropdown
         name="size"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="fullSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Color</label>
-      <dui-dropdown
+      <ui-dropdown
         name="color"
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Variant</label>
-      <dui-dropdown
+      <ui-dropdown
         name="variant"
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Elevation (0-5)</label>
-      <dui-input
+      <ui-input
         name="elevation"
         type="number"
         min="0"
         max="5"
         [(ngModel)]="pgConfig.elevation"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Thumb Shape</label>
-      <dui-dropdown
+      <ui-dropdown
         name="thumbShape"
         [(ngModel)]="pgConfig.thumbShape"
         (ngModelChange)="updateConfig()"
         [options]="thumbShapeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Label</label>
-      <dui-input
+      <ui-input
         name="label"
         type="text"
         [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Helper Text</label>
-      <dui-input
+      <ui-input
         name="helperText"
         type="text"
         [(ngModel)]="pgConfig.helperText"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Label Position</label>
-      <dui-dropdown
+      <ui-dropdown
         name="labelPosition"
         [(ngModel)]="pgConfig.labelPosition"
         (ngModelChange)="updateConfig()"
         [options]="labelPositionOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
 
     <div class="control-group">
       <label>Orientation</label>
-      <dui-dropdown
+      <ui-dropdown
         name="orientation"
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="standardOrientationOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -135,59 +135,59 @@
   <div slot="content-states" class="pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="showIcons"
           [(ngModel)]="pgConfig.showIcons"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Show Icons
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="disabled"
           [(ngModel)]="pgConfig.disabled"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="readonly"
           [(ngModel)]="pgConfig.readonly"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Readonly
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="required"
           [(ngModel)]="pgConfig.required"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="invalid"
           [(ngModel)]="pgConfig.invalid"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Invalid
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="animation"
           [(ngModel)]="pgConfig.animation"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Animation
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           name="skeleton"
           [(ngModel)]="pgConfig.skeleton"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Skeleton
       </label>
     </div>

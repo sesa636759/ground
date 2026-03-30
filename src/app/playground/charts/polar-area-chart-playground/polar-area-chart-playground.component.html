@@ -8,55 +8,55 @@
         <h3>📐 Layout</h3>
         <div class="control-group">
           <label>Dataset</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.dataset"
             (ngModelChange)="onDataset()"
             [options]="datasetOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Legend Position</label>
-          <dui-dropdown
+          <ui-dropdown
             [(ngModel)]="cfg.legendPos"
             (ngModelChange)="update()"
             [options]="legendOpts"
-          ></dui-dropdown>
+          ></ui-dropdown>
         </div>
         <div class="control-group">
           <label>Fill Opacity</label>
-          <dui-input
+          <ui-input
             type="range"
             min="0.3"
             max="1"
             step="0.05"
             [(ngModel)]="cfg.opacity"
             (ngModelChange)="update()"
-          ></dui-input>
+          ></ui-input>
           <span class="fs-08rem text-muted">{{ cfg.opacity }}</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="legend"
             [(ngModel)]="cfg.showLegend"
             (ngModelChange)="update()"
             label="Show Legend"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <dui-checkbox
+          <ui-checkbox
             id="anim"
             [(ngModel)]="cfg.animate"
             (ngModelChange)="update()"
             label="Animate"
-          ></dui-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-      <dui-button variant="secondary" (click)="reset()" label="Reset"></dui-button>
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
   <div preview class="chart-preview-wrapper w-full display-flex justify-center">
@@ -70,12 +70,12 @@
     ></app-chart>
   </div>
   @if (showCode) {
-    <dui-code-preview
+    <ui-code-preview
       code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
-    ></dui-code-preview>
+    ></ui-code-preview>
   }
 </pg-playground>

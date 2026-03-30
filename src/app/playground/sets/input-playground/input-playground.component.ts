@@ -153,7 +153,7 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = `<dui-input\n`;
+    let code = `<ui-input\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     if (this.pgConfig.type !== 'text') code += `  type="${this.pgConfig.type}"\n`;
     if (this.pgConfig.variant !== 'outlined') code += `  variant="${this.pgConfig.variant}"\n`;
@@ -203,7 +203,7 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
       if (this.pgConfig.rows !== 3) code += `  rows="${this.pgConfig.rows}"\n`;
     }
 
-    code += `></dui-input>`;
+    code += `></ui-input>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

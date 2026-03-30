@@ -17,13 +17,13 @@
       <h3>Quick Add Panel</h3>
       <div class="control-group">
         <label>Target Region</label>
-        <dui-dropdown [(ngModel)]="quickAddRegionId" [options]="regionSelectOptions"></dui-dropdown>
+        <ui-dropdown [(ngModel)]="quickAddRegionId" [options]="regionSelectOptions"></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Title</label>
-        <dui-input [(ngModel)]="quickAddTitle" placeholder="Panel Title" />
+        <ui-input [(ngModel)]="quickAddTitle" placeholder="Panel Title" />
       </div>
-      <dui-button (click)="quickAddPanel()" class="btn primary" label="Add Panel"></dui-button>
+      <ui-button (click)="quickAddPanel()" class="btn primary" label="Add Panel"></ui-button>
     </div>
 
     <!-- Manage Regions -->
@@ -31,11 +31,11 @@
       <h3>Manage Regions</h3>
       <div class="control-group">
         <label>New Region Name</label>
-        <dui-input [(ngModel)]="newRegionName" placeholder="Region Name" />
+        <ui-input [(ngModel)]="newRegionName" placeholder="Region Name" />
       </div>
       <div class="control-group">
         <label>Type</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="newRegionType"
           [options]="[
             { label: 'Default', value: 'default' },
@@ -44,25 +44,21 @@
             { label: 'Content Only', value: 'content-only' },
             { label: 'Title Only', value: 'title-only' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
       <div class="btn-row">
-        <dui-button
-          (click)="addRegion('start')"
-          class="btn secondary"
-          label="Add Start"
-        ></dui-button>
-        <dui-button (click)="addRegion('end')" class="btn secondary" label="Add End"></dui-button>
+        <ui-button (click)="addRegion('start')" class="btn secondary" label="Add Start"></ui-button>
+        <ui-button (click)="addRegion('end')" class="btn secondary" label="Add End"></ui-button>
       </div>
       <div class="control-group layout-manager-remove-group">
         <label>Remove Region</label>
-        <dui-dropdown [(ngModel)]="removeRegionId" [options]="regionSelectOptions"></dui-dropdown>
-        <dui-button
+        <ui-dropdown [(ngModel)]="removeRegionId" [options]="regionSelectOptions"></ui-dropdown>
+        <ui-button
           (click)="removeRegion()"
           class="btn danger"
           [disabled]="!removeRegionId"
           label="Remove"
-        ></dui-button>
+        ></ui-button>
       </div>
     </div>
 
@@ -70,9 +66,9 @@
     <div class="control-panel">
       <h3>Split & Merge (Center)</h3>
       <div class="btn-row">
-        <dui-button (click)="splitCenter('horizontal')" class="btn" label="Split H"></dui-button>
-        <dui-button (click)="splitCenter('vertical')" class="btn" label="Split V"></dui-button>
-        <dui-button (click)="mergeCenter()" class="btn" label="Merge"></dui-button>
+        <ui-button (click)="splitCenter('horizontal')" class="btn" label="Split H"></ui-button>
+        <ui-button (click)="splitCenter('vertical')" class="btn" label="Split V"></ui-button>
+        <ui-button (click)="mergeCenter()" class="btn" label="Merge"></ui-button>
       </div>
     </div>
 
@@ -81,34 +77,30 @@
       <h3>Panel Actions</h3>
       <div class="control-group">
         <label>Panel ID</label>
-        <dui-input [(ngModel)]="panelIdInput" placeholder="Panel ID" />
+        <ui-input [(ngModel)]="panelIdInput" placeholder="Panel ID" />
       </div>
       <div class="control-group">
         <label>Target Region</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="targetMoveRegion"
           [options]="panelMoveRegionOptions"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
       <div class="btn-grid">
-        <dui-button (click)="performPanelAction('move')" class="btn" label="Move"></dui-button>
-        <dui-button (click)="performPanelAction('dock')" class="btn" label="Dock"></dui-button>
-        <dui-button (click)="performPanelAction('popout')" class="btn" label="Popout"></dui-button>
-        <dui-button
+        <ui-button (click)="performPanelAction('move')" class="btn" label="Move"></ui-button>
+        <ui-button (click)="performPanelAction('dock')" class="btn" label="Dock"></ui-button>
+        <ui-button (click)="performPanelAction('popout')" class="btn" label="Popout"></ui-button>
+        <ui-button
           (click)="performPanelAction('maximize')"
           class="btn"
           label="Maximize"
-        ></dui-button>
-        <dui-button
-          (click)="performPanelAction('restore')"
-          class="btn"
-          label="Restore"
-        ></dui-button>
-        <dui-button
+        ></ui-button>
+        <ui-button (click)="performPanelAction('restore')" class="btn" label="Restore"></ui-button>
+        <ui-button
           (click)="performPanelAction('remove')"
           class="btn danger"
           label="Remove"
-        ></dui-button>
+        ></ui-button>
       </div>
     </div>
   </div>

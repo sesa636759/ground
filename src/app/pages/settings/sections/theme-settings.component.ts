@@ -29,7 +29,7 @@ import { ThemeSelectorComponent } from '../../../components/theme-selector/theme
 
           <div class="theme-info-footer">
             <div class="info-item">
-              <dui-icon name="info" library="lucide" size="16px"></dui-icon>
+              <ui-icon name="info" library="lucide" size="16px"></ui-icon>
               <span>The chosen theme will be applied instantly and synced to your account.</span>
             </div>
           </div>

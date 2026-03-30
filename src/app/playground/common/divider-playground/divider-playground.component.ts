@@ -161,7 +161,7 @@ export class DmDividerPlaygroundComponent extends BasePlaygroundComponent implem
   }
 
   updateConfig() {
-    let code = `<dui-divider\n`;
+    let code = `<ui-divider\n`;
     if (this.pgConfig.text) code += `  text="${this.pgConfig.text}"\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     if (this.pgConfig.badge) code += `  badge="${this.pgConfig.badge}"\n`;
@@ -200,7 +200,7 @@ export class DmDividerPlaygroundComponent extends BasePlaygroundComponent implem
       if (this.pgConfig.shapeColor) code += `  shape-color="${this.pgConfig.shapeColor}"\n`;
     }
 
-    code += `></dui-divider>`;
+    code += `></ui--divider>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

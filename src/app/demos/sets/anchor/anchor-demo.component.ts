@@ -205,170 +205,170 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   ];
 
   // Code examples
-  verticalLeftCode = signal(`<dui-anchor
+  verticalLeftCode = signal(`<ui-anchor
   mode="vertical"
   position="left"
   sticky="true"
   smooth-scroll="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  verticalRightCode = signal(`<dui-anchor
+  verticalRightCode = signal(`<ui-anchor
   mode="vertical"
   position="right"
   sticky="true"
   smooth-scroll="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  horizontalTopCode = signal(`<dui-anchor
+  horizontalTopCode = signal(`<ui-anchor
   mode="horizontal"
   position="top"
   sticky="true"
   smooth-scroll="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  horizontalBottomCode = signal(`<dui-anchor
+  horizontalBottomCode = signal(`<ui-anchor
   mode="horizontal"
   position="bottom"
   sticky="true"
   smooth-scroll="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  badgeCode = signal(`<dui-anchor
+  badgeCode = signal(`<ui-anchor
   mode="vertical"
   position="left"
   show-badge="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  sizeSmallCode = signal(`<dui-anchor
+  sizeSmallCode = signal(`<ui-anchor
   mode="vertical"
   size="small"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  sizeMediumCode = signal(`<dui-anchor
+  sizeMediumCode = signal(`<ui-anchor
   mode="vertical"
   size="medium"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  sizeLargeCode = signal(`<dui-anchor
+  sizeLargeCode = signal(`<ui-anchor
   mode="vertical"
   size="large"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  numericCode = signal(`<dui-anchor
+  numericCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="numeric"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  decimalCode = signal(`<dui-anchor
+  decimalCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="decimal"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  alphaCode = signal(`<dui-anchor
+  alphaCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="alpha"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  romanCode = signal(`<dui-anchor
+  romanCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="roman"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  affixCode = signal(`<dui-anchor
+  affixCode = signal(`<ui-anchor
   mode="vertical"
   affix
   affix-offset="50"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  progressCode = signal(`<dui-anchor
+  progressCode = signal(`<ui-anchor
   mode="vertical"
   show-progress="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  hashCode = signal(`<dui-anchor
+  hashCode = signal(`<ui-anchor
   mode="vertical"
   update-hash="true"
   smooth-scroll="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  keyboardCode = signal(`<dui-anchor
+  keyboardCode = signal(`<ui-anchor
   mode="vertical"
   arrow-navigation="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  nestedCode = signal(`<dui-anchor
+  nestedCode = signal(`<ui-anchor
   mode="vertical"
   collapsible="true"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
   // Theme variants
-  lightThemeCode = signal(`<dui-anchor
+  lightThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="light"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  darkThemeCode = signal(`<dui-anchor
+  darkThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="dark"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  customThemeCode = signal(`<dui-anchor
+  customThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="custom"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
   // Event handling
-  eventsCode = signal(`<dui-anchor
+  eventsCode = signal(`<ui-anchor
   mode="horizontal"
   position="top"
   (change)="onActiveChange($event)"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
   // Alignment options
-  alignLeftCode = signal(`<dui-anchor
+  alignLeftCode = signal(`<ui-anchor
   mode="horizontal"
   align="left"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  alignCenterCode = signal(`<dui-anchor
+  alignCenterCode = signal(`<ui-anchor
   mode="horizontal"
   align="center"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  alignRightCode = signal(`<dui-anchor
+  alignRightCode = signal(`<ui-anchor
   mode="horizontal"
   align="right"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 
-  playgroundCode = signal(`<dui-anchor
+  playgroundCode = signal(`<ui-anchor
   [mode]="mode"
   [position]="position"
   [sticky]="sticky"
@@ -376,5 +376,5 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
   [offset-top]="offsetTop"
   [show-numbers]="showNumbers"
   [items]="items"
-></dui-anchor>`);
+></ui-anchor>`);
 }

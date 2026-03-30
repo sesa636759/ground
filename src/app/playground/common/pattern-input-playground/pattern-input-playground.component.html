@@ -3,36 +3,36 @@
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Mask Pattern</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.pattern"
         (ngModelChange)="updateConfig()"
         [options]="patternOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Placeholder</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.placeholder"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Size tier</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="standardSizeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Mask Character</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.maskChar"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. #, 9, *"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -40,37 +40,37 @@
   <div slot="content-logic" class="control-grid p-16">
     <div class="control-group">
       <label>Input restriction</label>
-      <dui-dropdown
+      <ui-dropdown
         [(ngModel)]="pgConfig.inputType"
         (ngModelChange)="updateConfig()"
         [options]="inputTypeOptions"
-      ></dui-dropdown>
+      ></ui-dropdown>
     </div>
     <div class="control-group" *ngIf="pgConfig.inputType === 'custom'">
       <label>Allowed Chars (Regex)</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.allowedChars"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. [A-Z]"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Validation Regex</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.validationRegex"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. ^\d{10}$"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Characters</label>
-      <dui-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.maxLength"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -78,38 +78,32 @@
   <div slot="content-states" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
-          [(ngModel)]="pgConfig.required"
-          (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValidation"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Validation icons
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.autoFormat"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Auto Format
       </label>
       <label class="checkbox-item">
-        <dui-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showCounter"
           (ngModelChange)="updateConfig()"
-        ></dui-checkbox>
+        ></ui-checkbox>
         Display Counter
       </label>
     </div>
@@ -119,41 +113,41 @@
   <div slot="content-labels" class="control-grid p-16">
     <div class="control-group">
       <label>Field Label</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Helper text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.helperText"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Error text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.errorMessage"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Success text</label>
-      <dui-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.successMessage"
         (ngModelChange)="updateConfig()"
-      ></dui-input>
+      ></ui-input>
     </div>
   </div>
 
   <div preview class="preview-stage w-full display-flex justify-center items-center p-40">
     <div class="w-full max-w-400">
-      <dui-pattern-input
+      <ui-pattern-input
         #demoElement
         [attr.pattern]="pgConfig.pattern || null"
         [attr.placeholder]="pgConfig.placeholder"
@@ -173,7 +167,7 @@
         [attr.allowed-chars]="pgConfig.allowedChars || null"
         [attr.validation-regex]="pgConfig.validationRegex || null"
         (patternInputChange)="onPatternInputChange($event)"
-      ></dui-pattern-input>
+      ></ui-pattern-input>
 
       <div class="mt-24 text-muted fs-14 text-center">
         Formatted Value:

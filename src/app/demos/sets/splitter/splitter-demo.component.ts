@@ -126,10 +126,10 @@ export class DmSplitterDemoComponent extends BaseDemoComponent {
   collapsiblePanels = [{ collapsible: true, size: 25 }, { size: 75 }];
 
   // Code snippets (summarized for clarity in demos)
-  horizontalBasicCode = `<dui-splitter direction="horizontal">...</dui-splitter>`;
-  verticalBasicCode = `<dui-splitter direction="vertical">...</dui-splitter>`;
-  panelsCode = `<dui-splitter [panels]="panelsConfig">...</dui-splitter>`;
-  constraintsCode = `<dui-splitter [panels]='[{"minSize":20, "maxSize":40}, {}]'></dui-splitter>`;
-  styleCode = `<dui-splitter rounded elevated gutter-size="12" gutter-color="#22c55e"></dui-splitter>`;
-  persistCode = `<dui-splitter persist-state storage-key="my-key"></dui-splitter>`;
+  horizontalBasicCode = `<ui-splitter direction="horizontal">...</ui-splitter>`;
+  verticalBasicCode = `<ui-splitter direction="vertical">...</ui-splitter>`;
+  panelsCode = `<ui-splitter [panels]="panelsConfig">...</ui-splitter>`;
+  constraintsCode = `<ui-splitter [panels]='[{"minSize":20, "maxSize":40}, {}]'></ui-splitter>`;
+  styleCode = `<ui-splitter rounded elevated gutter-size="12" gutter-color="#22c55e"></ui-splitter>`;
+  persistCode = `<ui-splitter persist-state storage-key="my-key"></ui-splitter>`;
 }

@@ -113,7 +113,7 @@ export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent imp
 
   updateConfig() {
     const config = this.pgConfig;
-    let code = `<dui-pagination\n`;
+    let code = `<ui-pagination\n`;
     code += `  [current-page]="${config.currentPage}"\n`;
     code += `  [total-items]="${config.totalItems}"\n`;
     code += `  [items-per-page]="${config.itemsPerPage}"\n`;
@@ -145,7 +145,7 @@ export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent imp
     }
     if (!config.ellipsisTooltip) code += `  [ellipsis-tooltip]="false"\n`;
     code += `  (pageChange)="onPageChange($event)"\n`;
-    code += `></dui-pagination>`;
+    code += `></ui--pagination>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

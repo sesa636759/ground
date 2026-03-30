@@ -6,7 +6,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.variant"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -16,12 +16,12 @@
             { label: 'Circular', value: 'circular' },
             { label: 'Rounded', value: 'rounded' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -29,12 +29,12 @@
             { label: 'Medium', value: 'medium' },
             { label: 'Large', value: 'large' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Position</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.position"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -45,12 +45,12 @@
             { label: 'Bottom Center', value: 'bottom-center' },
             { label: 'Top Center', value: 'top-center' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.theme"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -58,22 +58,22 @@
             { label: 'Dark', value: 'dark' },
             { label: 'Auto', value: 'auto' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Color</label>
-        <dui-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
+        <ui-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <dui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
+        <ui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Tooltip Position</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.tooltipPosition"
           (ngModelChange)="updateConfig()"
           [options]="[
@@ -82,41 +82,41 @@
             { label: 'Left', value: 'left' },
             { label: 'Right', value: 'right' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Target</label>
-        <dui-dropdown
+        <ui-dropdown
           [(ngModel)]="pgConfig.targetType"
           (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Window (Page)', value: 'window' },
             { label: 'Local Container', value: 'container' },
           ]"
-        ></dui-dropdown>
+        ></ui-dropdown>
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Show Progress
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
         Show Text
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse
+        <ui-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse
         Animation
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
         Always Visible
       </label>
       <label class="checkbox-item">
-        <dui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
         Disabled
       </label>
     </div>
@@ -153,11 +153,11 @@
     ></app-scroll-top>
   </div>
 
-  <dui-code-preview
+  <ui-code-preview
     code
     [htmlCode]="generatedCode()"
     [label]="'Generated Code'"
     activeLang="html"
     expanded="true"
-  ></dui-code-preview>
+  ></ui-code-preview>
 </pg-playground>

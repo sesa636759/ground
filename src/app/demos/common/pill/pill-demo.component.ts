@@ -33,43 +33,43 @@ export class DmPillDemoComponent extends BaseDemoComponent {
     { id: 'animations', title: 'Animations', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<dui-pill label="New Tag" variant="soft" color="primary"></dui-pill>`;
+  playgroundCode = `<ui-pill label="New Tag" variant="soft" color="primary"></ui-pill>`;
 
-  variantsCode = `<dui-pill label="Filled" variant="filled"></dui-pill>
-<dui-pill label="Outlined" variant="outlined"></dui-pill>
-<dui-pill label="Soft" variant="soft" color="success"></dui-pill>
-<dui-pill label="Bordered" variant="bordered" color="danger"></dui-pill>
-<dui-pill label="Gradient" variant="gradient" gradient="blue-purple"></dui-pill>`;
+  variantsCode = `<ui-pill label="Filled" variant="filled"></ui-pill>
+<ui-pill label="Outlined" variant="outlined"></ui-pill>
+<ui-pill label="Soft" variant="soft" color="success"></ui-pill>
+<ui-pill label="Bordered" variant="bordered" color="danger"></ui-pill>
+<ui-pill label="Gradient" variant="gradient" gradient="blue-purple"></ui-pill>`;
 
-  colorsCode = `<dui-pill label="Primary" color="primary"></dui-pill>
-<dui-pill label="Success" color="success"></dui-pill>
-<dui-pill label="Custom Color" custom-color="#ff00ff" custom-text-color="#ffffff"></dui-pill>
+  colorsCode = `<ui-pill label="Primary" color="primary"></ui-pill>
+<ui-pill label="Success" color="success"></ui-pill>
+<ui-pill label="Custom Color" custom-color="#ff00ff" custom-text-color="#ffffff"></ui-pill>
 
-<dui-pill label="Small" size="sm"></dui-pill>
-<dui-pill label="Medium" size="md"></dui-pill>
-<dui-pill label="Large" size="lg"></dui-pill>`;
+<ui-pill label="Small" size="sm"></ui-pill>
+<ui-pill label="Medium" size="md"></ui-pill>
+<ui-pill label="Large" size="lg"></ui-pill>`;
 
-  mediaCode = `<dui-pill label="Start Icon" icon="star" icon-library="lucide"></dui-pill>
-<dui-pill label="End Icon" icon="check-circle" icon-library="lucide" icon-position="end"></dui-pill>
-<dui-pill label="John Doe" avatar="https://i.pravatar.cc/150?u=1"></dui-pill>
-<dui-pill label="Analytics" icon="bar-chart" icon-library="lucide" counter="24"></dui-pill>`;
+  mediaCode = `<ui-pill label="Start Icon" icon="star" icon-library="lucide"></ui-pill>
+<ui-pill label="End Icon" icon="check-circle" icon-library="lucide" icon-position="end"></ui-pill>
+<ui-pill label="John Doe" avatar="https://i.pravatar.cc/150?u=1"></ui-pill>
+<ui-pill label="Analytics" icon="bar-chart" icon-library="lucide" counter="24"></ui-pill>`;
 
-  orientationsCode = `<dui-pill label="Horizontal" orientation="horizontal"></dui-pill>
-<dui-pill label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></dui-pill>
-<dui-pill label="Vertical Text" orientation="vertical-text"></dui-pill>
-<dui-pill label="Vertical Rotated" orientation="vertical-rotated"></dui-pill>`;
+  orientationsCode = `<ui-pill label="Horizontal" orientation="horizontal"></ui-pill>
+<ui-pill label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></ui-pill>
+<ui-pill label="Vertical Text" orientation="vertical-text"></ui-pill>
+<ui-pill label="Vertical Rotated" orientation="vertical-rotated"></ui-pill>`;
 
-  actionsCode = `<dui-pill label="Clickable" clickable (pillClick)="onPillClick()"></dui-pill>
-<dui-pill label="Selectable" clickable selected (pillSelect)="onPillSelect($event)"></dui-pill>
-<dui-pill label="Removable" removable (pillRemove)="onPillRemove()"></dui-pill>
-<dui-pill label="Loading" loading></dui-pill>
-<dui-pill label="Disabled" disabled></dui-pill>
-<dui-pill label="With Tooltip" tooltip="Important information!"></dui-pill>`;
+  actionsCode = `<ui-pill label="Clickable" clickable (pillClick)="onPillClick()"></ui-pill>
+<ui-pill label="Selectable" clickable selected (pillSelect)="onPillSelect($event)"></ui-pill>
+<ui-pill label="Removable" removable (pillRemove)="onPillRemove()"></ui-pill>
+<ui-pill label="Loading" loading></ui-pill>
+<ui-pill label="Disabled" disabled></ui-pill>
+<ui-pill label="With Tooltip" tooltip="Important information!"></ui-pill>`;
 
-  animationsCode = `<dui-pill label="Scale" animation="scale"></dui-pill>
-<dui-pill label="Fade" animation="fade"></dui-pill>
-<dui-pill label="Slide" animation="slide"></dui-pill>
-<dui-pill label="None" animation="none"></dui-pill>`;
+  animationsCode = `<ui-pill label="Scale" animation="scale"></ui-pill>
+<ui-pill label="Fade" animation="fade"></ui-pill>
+<ui-pill label="Slide" animation="slide"></ui-pill>
+<ui-pill label="None" animation="none"></ui-pill>`;
 
   onPillClick() {
     console.log('Pill clicked');

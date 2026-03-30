@@ -83,7 +83,7 @@ export class DmMeterGroupPlaygroundComponent extends BasePlaygroundComponent imp
   }
 
   updateConfig() {
-    let code = `<dui-meter-group\n`;
+    let code = `<ui-meter-group\n`;
     code += `  [values]="meterValues"\n`;
     if (this.pgConfig.orientation !== 'horizontal')
       code += `  orientation="${this.pgConfig.orientation}"\n`;
@@ -98,7 +98,7 @@ export class DmMeterGroupPlaygroundComponent extends BasePlaygroundComponent imp
     if (this.pgConfig.max !== 100) code += `  [max]="${this.pgConfig.max}"\n`;
     if (this.pgConfig.interactive) code += `  interactive\n`;
 
-    code += `></dui-meter-group>`;
+    code += `></ui--meter-group>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

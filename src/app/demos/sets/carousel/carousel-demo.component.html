@@ -26,7 +26,7 @@
           [code]="fadeTransitionCode"
           class="mt-0"
         >
-          <dui-carousel effect="fade" autoplay="true" show-progress="true">
+          <ui-carousel effect="fade" autoplay="true" show-progress="true">
             <div class="slide bg-gradient-nature p-60 text-center">
               <h3>Nature</h3>
               <p>Breathtaking landscapes</p>
@@ -39,7 +39,7 @@
               <h3>Mountains</h3>
               <p>Peak experience</p>
             </div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Slide Transition -->
@@ -49,7 +49,7 @@
           description="Classic sliding animation"
           [code]="slideTransitionCode"
         >
-          <dui-carousel effect="slide" autoplay="true" arrows="true" indicators="true">
+          <ui-carousel effect="slide" autoplay="true" arrows="true" indicators="true">
             <div class="slide bg-gradient-purple p-60 text-center">
               <h3>Innovation</h3>
               <p>Building the future</p>
@@ -62,7 +62,7 @@
               <h3>Speed</h3>
               <p>Lightning fast performance</p>
             </div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Center Mode -->
@@ -72,11 +72,11 @@
           description="Highlight active slide"
           [code]="centerModeCode"
         >
-          <dui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
+          <ui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
             <div class="slide bg-gradient-blue p-40 text-center border-subtle mx-10">Item 1</div>
             <div class="slide bg-gradient-pink p-40 text-center border-subtle mx-10">Item 2</div>
             <div class="slide bg-gradient-purple p-40 text-center border-subtle mx-10">Item 3</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Multiple Slides -->
@@ -86,12 +86,12 @@
           description="Show multiple items"
           [code]="multipleItemsCode"
         >
-          <dui-carousel slides-to-show="3" infinite="true" arrows="true" indicators="true">
+          <ui-carousel slides-to-show="3" infinite="true" arrows="true" indicators="true">
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 1</h4></div>
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 2</h4></div>
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 3</h4></div>
             <div class="slide p-24 text-center border-subtle mx-10"><h4>Slide 4</h4></div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Vertical Carousel -->
@@ -102,11 +102,11 @@
           [code]="verticalCode"
         >
           <div class="h-300">
-            <dui-carousel vertical="true" arrows="true" indicators="true">
+            <ui-carousel vertical="true" arrows="true" indicators="true">
               <div class="slide bg-gradient-nature p-40 text-center">Vertical 1</div>
               <div class="slide bg-gradient-forest p-40 text-center">Vertical 2</div>
               <div class="slide bg-gradient-mountain p-40 text-center">Vertical 3</div>
-            </dui-carousel>
+            </ui-carousel>
           </div>
         </pg-example-section>
 
@@ -117,7 +117,7 @@
           description="Adaptive layouts"
           [code]="responsiveCode"
         >
-          <dui-carousel
+          <ui-carousel
             slides-to-show="4"
             [responsive]="[
               { breakpoint: 1024, settings: { slidesToShow: 3 } },
@@ -130,7 +130,7 @@
             <div class="slide p-16 text-center border-subtle">Panel 2</div>
             <div class="slide p-16 text-center border-subtle">Panel 3</div>
             <div class="slide p-16 text-center border-subtle">Panel 4</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Animation Easing -->
@@ -140,10 +140,10 @@
           description="Custom transition timing"
           [code]="easingCode"
         >
-          <dui-carousel css-ease="cubic-bezier(0.77, 0, 0.175, 1)" speed="800" arrows="true">
+          <ui-carousel css-ease="cubic-bezier(0.77, 0, 0.175, 1)" speed="800" arrows="true">
             <div class="slide bg-gradient-purple p-60 text-center">Smooth Easing</div>
             <div class="slide bg-gradient-blue p-60 text-center">Fluid Motion</div>
-          </dui-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Interactive Actions -->
@@ -153,13 +153,13 @@
           description="Event handling and methods"
         >
           <div class="flex-column gap-12">
-            <dui-carousel #carouselObj arrows="true">
+            <ui-carousel #carouselObj arrows="true">
               <div class="slide bg-gradient-nature p-40 text-center">Manual Control</div>
               <div class="slide bg-gradient-forest p-40 text-center">Programmatic API</div>
-            </dui-carousel>
+            </ui-carousel>
             <div class="flex-center gap-24 mt-16">
-              <dui-button (click)="carouselObj.prev()">Previous</dui-button>
-              <dui-button (click)="carouselObj.next()">Next</dui-button>
+              <ui-button (click)="carouselObj.prev()">Previous</ui-button>
+              <ui-button (click)="carouselObj.next()">Next</ui-button>
             </div>
           </div>
         </pg-example-section>
