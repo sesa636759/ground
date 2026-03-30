@@ -28,29 +28,31 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
     {
       id: 'content',
       title: 'Content & Text',
-      icon: 'settings',
-      library: 'lucide',
+      icon: 'type',
       iconLibrary: 'lucide',
     },
     {
       id: 'appearance',
       title: 'Appearance & Size',
       icon: 'palette',
-      library: 'lucide',
       iconLibrary: 'lucide',
     },
     {
       id: 'states',
       title: 'Behavioral States',
-      icon: 'settings',
-      library: 'lucide',
+      icon: 'toggle-left',
       iconLibrary: 'lucide',
     },
     {
       id: 'link',
       title: 'Link & Extra',
-      icon: 'settings',
-      library: 'lucide',
+      icon: 'external-link',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'premium',
+      title: 'Premium & God Mode',
+      icon: 'zap',
       iconLibrary: 'lucide',
     },
   ];
@@ -66,8 +68,18 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
     { label: 'Info', value: 'info' },
     { label: 'Outline', value: 'outline' },
     { label: 'Ghost', value: 'ghost' },
+    { label: 'Glass', value: 'glass' },
+    { label: 'Soft', value: 'soft' },
     { label: 'Dark', value: 'dark' },
     { label: 'Raised', value: 'raised' },
+    { label: 'Gradient', value: 'gradient' },
+    { label: 'Gradient Blue', value: 'gradient-blue' },
+    { label: 'Gradient Purple', value: 'gradient-purple' },
+    { label: 'Gradient Orange', value: 'gradient-orange' },
+    { label: 'Gradient Ocean', value: 'gradient-ocean' },
+    { label: 'Gradient Sunset', value: 'gradient-sunset' },
+    { label: 'Gradient Candy', value: 'gradient-candy' },
+    { label: 'Gradient Gold', value: 'gradient-gold' },
   ];
 
   sizeOptions = [
@@ -113,6 +125,44 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
     { label: 'Inline Right', value: 'inline-right' },
   ];
 
+  shapeOptions = [
+    { label: 'Default (Square)', value: '' },
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Pill', value: 'pill' },
+    { label: 'Chip', value: 'chip' },
+    { label: 'Circle', value: 'circle' },
+  ];
+
+  softColorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  statusOptions = [
+    { label: 'None', value: '' },
+    { label: 'Online', value: 'online' },
+    { label: 'Offline', value: 'offline' },
+    { label: 'Busy', value: 'busy' },
+    { label: 'Away', value: 'away' },
+  ];
+
+  audioOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Click Tick', value: 'click' },
+    { label: 'Success Chime', value: 'success' },
+    { label: 'Error Thud', value: 'error' },
+  ];
+
+  revealOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Fade In', value: 'fade-in' },
+    { label: 'Slide Up', value: 'slide-up' },
+    { label: 'Zoom In', value: 'zoom' },
+  ];
+
   constructor() {
     super();
   }
@@ -131,6 +181,8 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
       badge: '',
       variant: 'primary',
       size: 'medium',
+      shape: '',
+      color: '',
       elevation: 2,
       iconOnly: false,
       loading: false,
@@ -150,6 +202,34 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
       rel: '',
       rtl: false,
       badgePosition: 'top-right',
+      avatarSrc: '',
+      status: '',
+      // Premium
+      active: false,
+      skeleton: false,
+      hasDropdown: false,
+      hideLabelOnMobile: false,
+      copyValue: '',
+      shortcut: '',
+      // God Mode
+      audio: 'none',
+      holdTime: 0,
+      timer: 0,
+      confirmLabel: '',
+      confirmBubble: false,
+      tilt: false,
+      haptic: false,
+      glossy: false,
+      shake: false,
+      liquid: false,
+      rainbow: false,
+      glow: false,
+      followGlow: false,
+      isSplit: false,
+      shatter: false,
+      successMorph: 0,
+      reveal: 'none',
+      revealDelay: 0,
     };
   }
 
@@ -161,6 +241,3 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
     this.logEvent(`Button Clicked`);
   }
 }
-
-
-

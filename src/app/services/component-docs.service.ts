@@ -63,26 +63,94 @@ export class ComponentDocsService {
           {
             name: 'items',
             type: 'string | AccordionItem[]',
-            description: 'Array of accordion items (can be JSON string or array)',
+            description:
+              'Array of accordion items (JSON string or array). Each item: { id, title, subtitle?, content?, icon?, iconLibrary?, badge?, disabled?, loading?, actions?, children? }',
             defaultValue: '[]',
             required: true,
           },
           {
+            name: 'multiple',
+            type: 'boolean',
+            description: 'Allow multiple panels to be open at the same time',
+            defaultValue: 'false',
+          },
+          {
+            name: 'variant',
+            type: "'default' | 'bordered' | 'splitted' | 'light' | 'shadow' | 'card' | 'card-list'",
+            description: 'Visual style of the accordion',
+            defaultValue: "'default'",
+          },
+          {
+            name: 'size',
+            type: "'sm' | 'md' | 'lg'",
+            description: 'Size of the accordion items',
+            defaultValue: "'md'",
+          },
+          {
+            name: 'icon-library',
+            type: 'string',
+            description:
+              "Global icon library for item icons: 'lucide', 'fontawesome', 'emoji'. Can be overridden per-item.",
+            defaultValue: "''",
+          },
+          {
+            name: 'icon-position',
+            type: "'start' | 'end'",
+            description: 'Position of the expand/collapse chevron icon',
+            defaultValue: "'end'",
+          },
+          {
+            name: 'selected-header-color',
+            type: 'string',
+            description: 'Custom accent color applied to the selected/open header',
+            defaultValue: "'#3b82f6'",
+          },
+          {
+            name: 'hide-arrow',
+            type: 'boolean',
+            description: 'Hide the expand/collapse arrow icon entirely',
+            defaultValue: 'false',
+          },
+          {
+            name: 'show-numbers',
+            type: 'boolean',
+            description: 'Show sequential numbers above each accordion header',
+            defaultValue: 'false',
+          },
+          {
+            name: 'defaultOpen',
+            type: 'string[]',
+            description: 'Array of item IDs to open by default on first render',
+            defaultValue: '[]',
+          },
+          {
+            name: 'expandedItems',
+            type: 'string[]',
+            description: 'Controlled open items — overrides internal state when set',
+            defaultValue: '[]',
+          },
+          {
             name: 'enable-search',
             type: 'boolean',
-            description: 'Enable built-in search functionality',
+            description: 'Enable built-in real-time search/filter functionality',
             defaultValue: 'false',
           },
           {
             name: 'search-placeholder',
             type: 'string',
-            description: 'Placeholder text for search input',
+            description: 'Placeholder text for the search input',
             defaultValue: '"Search..."',
+          },
+          {
+            name: 'enable-expand-collapse-all',
+            type: 'boolean',
+            description: 'Show Expand All / Collapse All buttons above the accordion',
+            defaultValue: 'false',
           },
           {
             name: 'enable-nested',
             type: 'boolean',
-            description: 'Enable nested accordion structures',
+            description: 'Enable nested accordion structures with visual guide lines',
             defaultValue: 'false',
           },
           {
@@ -94,44 +162,56 @@ export class ComponentDocsService {
           {
             name: 'enable-persistence',
             type: 'boolean',
-            description: 'Save expansion state to localStorage',
+            description: 'Save and restore expansion state via localStorage',
             defaultValue: 'false',
           },
           {
             name: 'persistence-key',
             type: 'string',
-            description: 'Unique key for localStorage persistence',
+            description: 'Unique localStorage key for state persistence',
             defaultValue: '"accordion-state"',
           },
           {
             name: 'loading',
             type: 'boolean',
-            description: 'Show skeleton loading state',
+            description: 'Show global skeleton loading state for the whole accordion',
             defaultValue: 'false',
           },
           {
             name: 'rtl',
             type: 'boolean',
-            description: 'Enable right-to-left layout support',
+            description: 'Enable right-to-left layout for Arabic, Hebrew, and other RTL languages',
             defaultValue: 'false',
           },
           {
             name: 'dense',
             type: 'boolean',
-            description: 'Compact layout with reduced padding',
+            description: 'Compact layout with reduced padding — ideal for dashboards',
             defaultValue: 'false',
           },
           {
             name: 'lazy',
             type: 'boolean',
-            description: 'Lazy render content only when expanded',
+            description: 'Lazy render: content is not added to the DOM until the panel is opened',
             defaultValue: 'false',
           },
           {
-            name: 'expandedItems',
-            type: 'string[]',
-            description: 'Array of item IDs that should be expanded (for controlled mode)',
-            defaultValue: '[]',
+            name: 'animation-duration',
+            type: 'number',
+            description: 'Duration of the open/close animation in milliseconds',
+            defaultValue: '300',
+          },
+          {
+            name: 'animation-timing',
+            type: "'ease' | 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out'",
+            description: 'CSS timing function for the open/close animation',
+            defaultValue: "'ease'",
+          },
+          {
+            name: 'header-level',
+            type: '1 | 2 | 3 | 4 | 5 | 6',
+            description: 'ARIA heading level for accordion headers (accessibility)',
+            defaultValue: '3',
           },
         ],
         events: [
@@ -180,11 +260,14 @@ export class ComponentDocsService {
           'Maximum recommended nesting depth is 3 levels',
         ],
         examples: [
-          `<!-- Search Example -->
+          `<!-- Basic with icons -->
+<ui-accordion [items]="items" icon-library="lucide"></ui-accordion>`,
+          `<!-- Search with placeholder -->
 <ui-accordion 
   [items]="items" 
   enable-search 
-  search-placeholder="Search items...">
+  search-placeholder="Search items..."
+  icon-library="lucide">
 </ui-accordion>`,
           `<!-- Drag & Drop with Persistence -->
 <ui-accordion 
@@ -192,18 +275,39 @@ export class ComponentDocsService {
   enable-drag-drop 
   enable-persistence 
   persistence-key="my-accordion-v1"
+  icon-library="lucide"
   (accordionReorder)="handleReorder($event)">
 </ui-accordion>`,
           `<!-- Nested Accordion -->
 <ui-accordion 
   [items]="nestedItems" 
-  enable-nested>
+  enable-nested
+  icon-library="lucide">
 </ui-accordion>`,
-          `<!-- With Actions and Events -->
+          `<!-- Emoji icons with badges -->
+<ui-accordion 
+  [items]="emojiItems" 
+  icon-library="emoji" 
+  multiple>
+</ui-accordion>`,
+          `<!-- Slot content (no content property on item) -->
+<ui-accordion [items]="items" icon-library="lucide" multiple>
+  <div slot="content-item1">
+    <!-- Any rich HTML goes here -->
+  </div>
+</ui-accordion>`,
+          `<!-- Card List with accent color -->
 <ui-accordion 
   [items]="items" 
-  (accordionAction)="handleAction($event)"
-  (afterOpen)="onItemOpen($event)">
+  variant="card-list"
+  selected-header-color="#10b981">
+</ui-accordion>`,
+          `<!-- Controlled mode -->
+<ui-accordion 
+  [items]="items" 
+  [expandedItems]="openIds"
+  multiple
+  icon-library="lucide">
 </ui-accordion>`,
         ],
       },

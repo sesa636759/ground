@@ -44,10 +44,17 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Search', value: 'search' },
     { label: 'Tel', value: 'tel' },
     { label: 'Url', value: 'url' },
+    { label: 'Time', value: 'time' },
     { label: 'Date', value: 'date' },
+    { label: 'DateTime Local', value: 'datetime-local' },
+    { label: 'Month', value: 'month' },
+    { label: 'Week', value: 'week' },
+    { label: 'Range', value: 'range' },
     { label: 'Color', value: 'color' },
     { label: 'File', value: 'file' },
-    { label: 'Range', value: 'range' },
+    { label: 'OTP Code', value: 'otp' },
+    { label: 'PIN Code', value: 'pin' },
+    { label: 'Currency', value: 'currency' },
   ];
 
   variantOptions = [
@@ -56,12 +63,48 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Underlined', value: 'underlined' },
     { label: 'Soft', value: 'soft' },
     { label: 'Ghost', value: 'ghost' },
+    { label: 'Glass', value: 'glass' },
+    { label: 'Raised', value: 'raised' },
+    { label: 'Borderless', value: 'borderless' },
   ];
 
   sizeOptions = [
+    { label: 'XXX Small', value: 'xxxs' },
+    { label: 'XX Small', value: 'xxs' },
+    { label: 'X Small', value: 'xs' },
     { label: 'Small', value: 'small' },
     { label: 'Medium', value: 'medium' },
     { label: 'Large', value: 'large' },
+    { label: 'X Large', value: 'xl' },
+    { label: 'XX Large', value: 'xxl' },
+    { label: 'XXX Large', value: 'xxxl' },
+  ];
+
+  colorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+    { label: 'Secondary', value: 'secondary' },
+  ];
+
+  statusIndicatorOptions = [
+    { label: 'None', value: '' },
+    { label: 'Online', value: 'online' },
+    { label: 'Typing', value: 'typing' },
+    { label: 'Offline', value: 'offline' },
+    { label: 'Away', value: 'away' },
+  ];
+
+  prefixColorOptions = [
+    { label: 'None', value: '' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+    { label: 'Secondary', value: 'secondary' },
   ];
 
   validationOptions = [
@@ -149,6 +192,18 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
       prefixClickable: false,
       suffixClickable: false,
       rippleEffect: true,
+      color: 'primary',
+      statusIndicator: '',
+      voiceEnabled: false,
+      gradientBorder: false,
+      backdropSheen: false,
+      animatedLine: false,
+      showProgressCircle: false,
+      dirtyTracking: false,
+      prefixColor: '',
+      suffixColor: '',
+      otpLength: 6,
+      suggestedValue: '',
     };
   }
 
@@ -184,17 +239,34 @@ export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.successText) code += `  success-text="${this.pgConfig.successText}"\n`;
 
     // Decorators
+    if (this.pgConfig.color) code += `  color="${this.pgConfig.color}"\n`;
     if (this.pgConfig.prefixText) code += `  prefix-text="${this.pgConfig.prefixText}"\n`;
     if (this.pgConfig.suffixText) code += `  suffix-text="${this.pgConfig.suffixText}"\n`;
     if (this.pgConfig.prefixIcon) code += `  prefix-icon="${this.pgConfig.prefixIcon}"\n`;
     if (this.pgConfig.suffixIcon) code += `  suffix-icon="${this.pgConfig.suffixIcon}"\n`;
     if (this.pgConfig.badge) code += `  badge="${this.pgConfig.badge}"\n`;
+    if (this.pgConfig.prefixColor) code += `  prefix-color="${this.pgConfig.prefixColor}"\n`;
+    if (this.pgConfig.suffixColor) code += `  suffix-color="${this.pgConfig.suffixColor}"\n`;
+    if (this.pgConfig.prefixClickable) code += `  prefix-clickable\n`;
+    if (this.pgConfig.suffixClickable) code += `  suffix-clickable\n`;
 
     // Number & Special
     if (this.pgConfig.type === 'number' && this.pgConfig.showSteppers) code += `  show-steppers\n`;
     if (this.pgConfig.mask !== 'none') code += `  mask="${this.pgConfig.mask}"\n`;
     if (this.pgConfig.maxLength) code += `  max-length="${this.pgConfig.maxLength}"\n`;
     if (this.pgConfig.showCounter) code += `  show-counter\n`;
+    if (this.pgConfig.statusIndicator)
+      code += `  status-indicator="${this.pgConfig.statusIndicator}"\n`;
+    if (this.pgConfig.voiceEnabled) code += `  voice-enabled\n`;
+    if (this.pgConfig.gradientBorder) code += `  gradient-border\n`;
+    if (this.pgConfig.backdropSheen) code += `  backdrop-sheen\n`;
+    if (this.pgConfig.animatedLine) code += `  animated-line\n`;
+    if (this.pgConfig.showProgressCircle) code += `  show-progress-circle\n`;
+    if (this.pgConfig.dirtyTracking) code += `  dirty-tracking\n`;
+    if (this.pgConfig.suggestedValue)
+      code += `  suggested-value="${this.pgConfig.suggestedValue}"\n`;
+    if ((this.pgConfig.type === 'otp' || this.pgConfig.type === 'pin') && this.pgConfig.otpLength)
+      code += `  otp-length="${this.pgConfig.otpLength}"\n`;
 
     // Multiline
     if (this.pgConfig.multiline) {

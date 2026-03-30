@@ -57,6 +57,14 @@
         [options]="sizeOptions"
       ></ui-dropdown>
     </div>
+    <div class="control-group">
+      <label>Color Theme</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="colorOptions"
+      ></ui-dropdown>
+    </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -132,6 +140,22 @@
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
+    <div class="control-group">
+      <label>Prefix Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.prefixColor"
+        (ngModelChange)="updateConfig()"
+        [options]="prefixColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Suffix Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.suffixColor"
+        (ngModelChange)="updateConfig()"
+        [options]="prefixColorOptions"
+      ></ui-dropdown>
+    </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -150,6 +174,20 @@
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
         Password Toggle
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.prefixClickable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Prefix Clickable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.suffixClickable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Suffix Clickable
       </label>
     </div>
   </div>
@@ -184,12 +222,70 @@
         <ui-checkbox [(ngModel)]="pgConfig.autoTrim" (ngModelChange)="updateConfig()"></ui-checkbox>
         Auto Trim
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.voiceEnabled"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Voice Enabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.gradientBorder"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Gradient Border
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.backdropSheen"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Backdrop Sheen
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.animatedLine"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Animated Line
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showProgressCircle"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Progress Circle
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.dirtyTracking"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Dirty Tracking
+      </label>
     </div>
     <div class="control-group">
       <label>Debounce (ms)</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.debounce"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Status Indicator</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.statusIndicator"
+        (ngModelChange)="updateConfig()"
+        [options]="statusIndicatorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Suggested Value (Ghost Text)</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.suggestedValue"
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
@@ -299,6 +395,14 @@
       <ui-checkbox [(ngModel)]="pgConfig.multiple" (ngModelChange)="updateConfig()"></ui-checkbox>
       Allow Multiple
     </div>
+    <div class="control-group" *ngIf="pgConfig.type === 'otp' || pgConfig.type === 'pin'">
+      <label>OTP / PIN Length</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.otpLength"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
   </div>
 
   <!-- Preview Area -->
@@ -349,6 +453,22 @@
         [attr.password-icon]="pgConfig.passwordIcon"
         [attr.password-visible-icon]="pgConfig.passwordVisibleIcon"
         [attr.ripple-effect]="pgConfig.rippleEffect ? '' : null"
+        [attr.color]="pgConfig.color"
+        [attr.status-indicator]="pgConfig.statusIndicator || null"
+        [attr.voice-enabled]="pgConfig.voiceEnabled ? '' : null"
+        [attr.gradient-border]="pgConfig.gradientBorder ? '' : null"
+        [attr.backdrop-sheen]="pgConfig.backdropSheen ? '' : null"
+        [attr.animated-line]="pgConfig.animatedLine ? '' : null"
+        [attr.show-progress-circle]="pgConfig.showProgressCircle ? '' : null"
+        [attr.dirty-tracking]="pgConfig.dirtyTracking ? '' : null"
+        [attr.prefix-color]="pgConfig.prefixColor || null"
+        [attr.suffix-color]="pgConfig.suffixColor || null"
+        [attr.prefix-clickable]="pgConfig.prefixClickable ? '' : null"
+        [attr.suffix-clickable]="pgConfig.suffixClickable ? '' : null"
+        [attr.suggested-value]="pgConfig.suggestedValue || null"
+        [attr.otp-length]="
+          pgConfig.type === 'otp' || pgConfig.type === 'pin' ? pgConfig.otpLength : null
+        "
         (inputChange)="onInputChange($event)"
         (inputFocus)="onInputFocus()"
         (inputBlur)="onInputBlur()"

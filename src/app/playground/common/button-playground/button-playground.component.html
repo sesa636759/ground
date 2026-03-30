@@ -95,6 +95,24 @@
         placeholder="e.g. 1.2em, 20px"
       ></ui-input>
     </div>
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [ignoreParentPosition]="true"
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="shapeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.variant === 'soft'">
+      <label>Color (soft)</label>
+      <ui-dropdown
+        [ignoreParentPosition]="true"
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="softColorOptions"
+      ></ui-dropdown>
+    </div>
   </div>
 
   <div slot="content-states" class="p-16">
@@ -144,6 +162,23 @@
       </label>
     </div>
     <div class="control-grid mt-16">
+      <div class="control-group">
+        <label>Avatar Src (URL)</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.avatarSrc"
+          (ngModelChange)="updateConfig()"
+          placeholder="https://i.pravatar.cc/100"
+        ></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.avatarSrc">
+        <label>Status</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.status"
+          (ngModelChange)="updateConfig()"
+          [options]="statusOptions"
+        ></ui-dropdown>
+      </div>
       <div class="control-group">
         <label>Width</label>
         <ui-input
@@ -212,6 +247,165 @@
     </div>
   </div>
 
+  <div slot="content-premium" class="control-grid p-16">
+    <div class="control-group">
+      <label>Copy Value</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.copyValue"
+        (ngModelChange)="updateConfig()"
+        placeholder="Text to copy on click"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Keyboard Shortcut</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.shortcut"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. ctrl+s, /"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Audio Feedback</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.audio"
+        (ngModelChange)="updateConfig()"
+        [options]="audioOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Hold Time (ms)</label>
+      <ui-input
+        type="number"
+        min="0"
+        step="500"
+        [(ngModel)]="pgConfig.holdTime"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Timer (sec)</label>
+      <ui-input
+        type="number"
+        min="0"
+        [(ngModel)]="pgConfig.timer"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Confirm Label</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.confirmLabel"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. Are you sure?"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Reveal Animation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.reveal"
+        (ngModelChange)="updateConfig()"
+        [options]="revealOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.reveal !== 'none'">
+      <label>Reveal Delay (ms)</label>
+      <ui-input
+        type="number"
+        min="0"
+        step="50"
+        [(ngModel)]="pgConfig.revealDelay"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Success Morph (ms)</label>
+      <ui-input
+        type="number"
+        min="0"
+        step="500"
+        [(ngModel)]="pgConfig.successMorph"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="checkbox-grid mt-16">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.active" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Active / Selected
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Skeleton
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.hasDropdown"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Has Dropdown
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.hideLabelOnMobile"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Hide Label on Mobile
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.confirmBubble"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Bubble Confirm
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.tilt" (ngModelChange)="updateConfig()"></ui-checkbox>
+        3D Tilt
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.haptic" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Mobile Haptic
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.glossy" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glossy Shine
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.shake" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Error Shake
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.liquid" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Liquid Progress
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rainbow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Rainbow Glow
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glow
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.followGlow"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Follow Glow
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.isSplit" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Split Mode
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.shatter" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Shatter
+      </label>
+    </div>
+  </div>
+
   <div preview class="preview-stage">
     <ui-button
       #demoElement
@@ -219,11 +413,13 @@
       [attr.icon]="pgConfig.icon"
       [attr.icon-library]="pgConfig.iconLibrary"
       [attr.icon-position]="pgConfig.iconPosition"
-      [attr.icon-size]="pgConfig.iconSize"
-      [attr.badge]="pgConfig.badge"
+      [attr.icon-size]="pgConfig.iconSize || null"
+      [attr.badge]="pgConfig.badge || null"
       [attr.badge-position]="pgConfig.badgePosition"
       [attr.variant]="pgConfig.variant"
       [attr.size]="pgConfig.size"
+      [attr.shape]="pgConfig.shape || null"
+      [attr.color]="pgConfig.color || null"
       [attr.elevation]="pgConfig.elevation"
       [attr.icon-only]="pgConfig.iconOnly ? '' : null"
       [attr.loading]="pgConfig.loading ? '' : null"
@@ -233,15 +429,41 @@
       [attr.pill]="pgConfig.pill ? '' : null"
       [attr.rounded]="pgConfig.rounded ? '' : null"
       [attr.full-width]="pgConfig.fullWidth ? '' : null"
-      [attr.width]="pgConfig.width"
-      [attr.min-width]="pgConfig.minWidth"
+      [attr.width]="pgConfig.width || null"
+      [attr.min-width]="pgConfig.minWidth || null"
       [attr.grow]="pgConfig.grow ? '' : null"
       [attr.selected]="pgConfig.selected ? '' : null"
       [attr.no-ripple]="pgConfig.noRipple ? '' : null"
       [attr.type]="pgConfig.type"
-      [attr.href]="pgConfig.href"
-      [attr.target]="pgConfig.target"
-      [attr.rel]="pgConfig.rel"
+      [attr.href]="pgConfig.href || null"
+      [attr.target]="pgConfig.target || null"
+      [attr.rel]="pgConfig.rel || null"
+      [attr.avatar-src]="pgConfig.avatarSrc || null"
+      [attr.status]="pgConfig.status || null"
+      [attr.active]="pgConfig.active ? '' : null"
+      [attr.skeleton]="pgConfig.skeleton ? '' : null"
+      [attr.has-dropdown]="pgConfig.hasDropdown ? '' : null"
+      [attr.hide-label-on-mobile]="pgConfig.hideLabelOnMobile ? '' : null"
+      [attr.copy-value]="pgConfig.copyValue || null"
+      [attr.shortcut]="pgConfig.shortcut || null"
+      [attr.audio]="pgConfig.audio !== 'none' ? pgConfig.audio : null"
+      [attr.hold-time]="pgConfig.holdTime || null"
+      [attr.timer]="pgConfig.timer || null"
+      [attr.confirm-label]="pgConfig.confirmLabel || null"
+      [attr.confirm-bubble]="pgConfig.confirmBubble ? '' : null"
+      [attr.tilt]="pgConfig.tilt ? '' : null"
+      [attr.haptic]="pgConfig.haptic ? '' : null"
+      [attr.glossy]="pgConfig.glossy ? '' : null"
+      [attr.shake]="pgConfig.shake ? '' : null"
+      [attr.liquid]="pgConfig.liquid ? '' : null"
+      [attr.rainbow]="pgConfig.rainbow ? '' : null"
+      [attr.glow]="pgConfig.glow ? '' : null"
+      [attr.follow-glow]="pgConfig.followGlow ? '' : null"
+      [attr.is-split]="pgConfig.isSplit ? '' : null"
+      [attr.shatter]="pgConfig.shatter ? '' : null"
+      [attr.success-morph]="pgConfig.successMorph || null"
+      [attr.reveal]="pgConfig.reveal !== 'none' ? pgConfig.reveal : null"
+      [attr.reveal-delay]="pgConfig.revealDelay || null"
       (buttonClick)="onButtonClick($event)"
     ></ui-button>
   </div>

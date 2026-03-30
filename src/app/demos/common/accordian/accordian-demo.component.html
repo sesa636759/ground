@@ -17,10 +17,10 @@
         <pg-example-section
           id="basic"
           title="Basic"
-          description="Simple expandable content panels"
+          description="Simple expandable content panels with Lucide icons."
           [code]="basicAccordionCode"
         >
-          <ui-accordion [items]="basicAccordionItems"></ui-accordion>
+          <ui-accordion [items]="basicAccordionItems" icon-library="lucide"></ui-accordion>
         </pg-example-section>
 
         <!-- Form Inside Accordion -->
@@ -37,23 +37,24 @@
         <pg-example-section
           id="subtitles"
           title="Subtitles"
-          description="Items with additional descriptive text"
+          description="Items with icons, badges, and additional descriptive subtitle text."
           [code]="subtitlesCode"
         >
-          <ui-accordion [items]="subtitlesItems"></ui-accordion>
+          <ui-accordion [items]="subtitlesItems" icon-library="lucide"></ui-accordion>
         </pg-example-section>
 
         <!-- Search -->
         <pg-example-section
           id="search"
           title="Search"
-          description="Filter items with built-in search functionality"
+          description="Filter items in real-time with built-in search and keyword highlighting."
           [code]="searchCode"
         >
           <ui-accordion
             [items]="searchItems"
             enable-search
             search-placeholder="Search frameworks..."
+            icon-library="lucide"
           ></ui-accordion>
         </pg-example-section>
 
@@ -61,11 +62,12 @@
         <pg-example-section
           id="actions"
           title="Actions"
-          description="Action buttons within the accordion header"
+          description="Action buttons with Lucide icons within the accordion header."
           [code]="actionsCode"
         >
           <ui-accordion
             [items]="actionsItems"
+            icon-library="lucide"
             (accordionAction)="handleAction($event)"
           ></ui-accordion>
         </pg-example-section>
@@ -74,22 +76,28 @@
         <pg-example-section
           id="nested"
           title="Nested"
-          description="Recursive accordion structure for hierarchical data"
+          description="Recursive accordion structure with visual guide lines for hierarchical data."
           [code]="nestedCode"
         >
-          <ui-accordion [items]="nestedItems" enable-nested></ui-accordion>
+          <ui-accordion
+            [items]="nestedItems"
+            enable-nested
+            multiple
+            icon-library="lucide"
+          ></ui-accordion>
         </pg-example-section>
 
         <!-- Drag & Drop -->
         <pg-example-section
           id="drag-drop"
           title="Drag & Drop"
-          description="Reorder items using drag and drop"
+          description="Reorder items by dragging. The accordionReorder event fires with old and new indices."
           [code]="dragDropCode"
         >
           <ui-accordion
             [items]="dragDropItems"
             enable-drag-drop
+            icon-library="lucide"
             (accordionReorder)="handleReorder($event)"
           ></ui-accordion>
         </pg-example-section>
@@ -98,13 +106,14 @@
         <pg-example-section
           id="persistence"
           title="Persistence"
-          description="State is preserved in localStorage (refresh page to test)"
+          description="Open/close state is saved to localStorage. Refresh the page to verify."
           [code]="persistenceCode"
         >
           <ui-accordion
             [items]="persistenceItems"
             enable-persistence
             persistence-key="demo-persist-v1"
+            icon-library="lucide"
           ></ui-accordion>
         </pg-example-section>
 
@@ -112,9 +121,22 @@
         <pg-example-section
           id="loading"
           title="Loading"
-          description="Skeleton loading state"
+          description="Global skeleton state for the whole accordion, or per-item loading indicators."
           [code]="loadingCode"
         >
+          <p
+            class="example-label mb-8"
+            style="font-size: 0.8rem; color: var(--color-text-muted, #6b7280); margin-bottom: 8px"
+          >
+            Per-item loading
+          </p>
+          <ui-accordion [items]="loadingItems" icon-library="lucide"></ui-accordion>
+          <p
+            class="example-label mt-16 mb-8"
+            style="font-size: 0.8rem; color: var(--color-text-muted, #6b7280); margin: 16px 0 8px"
+          >
+            Global skeleton loading
+          </p>
           <ui-accordion loading></ui-accordion>
         </pg-example-section>
 
@@ -122,20 +144,20 @@
         <pg-example-section
           id="rtl"
           title="RTL"
-          description="Right-to-Left layout support"
+          description="Full right-to-left layout support for Arabic, Hebrew, and other RTL languages."
           [code]="rtlCode"
         >
-          <ui-accordion [items]="rtlItems" rtl></ui-accordion>
+          <ui-accordion [items]="rtlItems" rtl icon-library="lucide"></ui-accordion>
         </pg-example-section>
 
         <!-- Dense -->
         <pg-example-section
           id="dense"
           title="Dense"
-          description="Payload is concentrated for high-density information"
+          description="Compact mode with reduced padding — ideal for dashboards and data-heavy UIs."
           [code]="denseCode"
         >
-          <ui-accordion [items]="denseItems" dense></ui-accordion>
+          <ui-accordion [items]="denseItems" dense multiple icon-library="lucide"></ui-accordion>
         </pg-example-section>
 
         <!-- Card Variant -->
@@ -152,21 +174,196 @@
         <pg-example-section
           id="card-list"
           title="Card List Variant"
-          description="A more compact separated card list layout."
+          description="Navigation-style accordion with tinted icon pills. Click a color swatch to change the accent."
           [code]="cardListAccordionCode"
         >
-          <ui-accordion [items]="cardAccordionItems" variant="card-list"></ui-accordion>
+          <div class="mb-12 display-flex gap-8 align-items-center">
+            <span style="font-size: 0.8rem; color: var(--color-text-muted, #6b7280)"
+              >Accent color:</span
+            >
+            <button
+              (click)="changeCardListColor('#10b981')"
+              style="
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #10b981;
+                border: 2px solid white;
+                cursor: pointer;
+                box-shadow: 0 0 0 1px #e5e7eb;
+              "
+              title="#10b981"
+            ></button>
+            <button
+              (click)="changeCardListColor('#6366f1')"
+              style="
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #6366f1;
+                border: 2px solid white;
+                cursor: pointer;
+                box-shadow: 0 0 0 1px #e5e7eb;
+              "
+              title="#6366f1"
+            ></button>
+            <button
+              (click)="changeCardListColor('#f43f5e')"
+              style="
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #f43f5e;
+                border: 2px solid white;
+                cursor: pointer;
+                box-shadow: 0 0 0 1px #e5e7eb;
+              "
+              title="#f43f5e"
+            ></button>
+            <button
+              (click)="changeCardListColor('#3b82f6')"
+              style="
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background: #3b82f6;
+                border: 2px solid white;
+                cursor: pointer;
+                box-shadow: 0 0 0 1px #e5e7eb;
+              "
+              title="#3b82f6"
+            ></button>
+          </div>
+          <ui-accordion
+            [items]="cardListAccordionItems"
+            variant="card-list"
+            [attr.selected-header-color]="cardListSelectedColor"
+          ></ui-accordion>
+        </pg-example-section>
+
+        <!-- Slot Content -->
+        <pg-example-section
+          id="slot-content"
+          title="Slot Content"
+          description="Inject complex HTML into accordion panels using named slots (slot='content-{id}')."
+          [code]="slotContentCode"
+        >
+          <ui-accordion
+            [items]="slotContentItems"
+            icon-library="lucide"
+            multiple
+            [defaultOpen]="['slot1', 'normal']"
+          >
+            <!-- Rich HTML slot for item id="slot1" -->
+            <div
+              slot="content-slot1"
+              style="
+                padding: 16px;
+                background: #f0f9ff;
+                border: 1px solid #bae6fd;
+                border-radius: 8px;
+              "
+            >
+              <div style="display: flex; gap: 16px; align-items: flex-start">
+                <div
+                  style="
+                    width: 48px;
+                    height: 48px;
+                    background: #0ea5e9;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    color: white;
+                    font-size: 1.5rem;
+                  "
+                >
+                  🌟
+                </div>
+                <div>
+                  <h4 style="margin: 0 0 8px 0; color: #0369a1">Rich HTML Content</h4>
+                  <p style="margin: 0 0 12px 0; font-size: 0.9em; color: #334155; line-height: 1.5">
+                    This entire block is passed via a named slot. You can include buttons, images,
+                    or any other components here.
+                  </p>
+                  <div style="display: flex; gap: 8px">
+                    <ui-button label="Primary Action" variant="primary" size="small"></ui-button>
+                    <ui-button label="Secondary" variant="secondary" size="small"></ui-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Table slot for item id="slot2" -->
+            <div
+              slot="content-slot2"
+              style="
+                background: #f8fafc;
+                border-radius: 8px;
+                overflow: hidden;
+                border: 1px solid #e2e8f0;
+              "
+            >
+              <div
+                style="
+                  padding: 10px 12px;
+                  background: #f1f5f9;
+                  border-bottom: 1px solid #e2e8f0;
+                  font-weight: 600;
+                  font-size: 0.85em;
+                "
+              >
+                User Details
+              </div>
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.88em">
+                <tr style="border-bottom: 1px solid #f1f5f9">
+                  <td style="padding: 8px 12px; color: #64748b">Name</td>
+                  <td style="padding: 8px 12px; font-weight: 500">John Doe</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9">
+                  <td style="padding: 8px 12px; color: #64748b">Email</td>
+                  <td style="padding: 8px 12px; font-weight: 500">john&#64;example.com</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 12px; color: #64748b">Status</td>
+                  <td style="padding: 8px 12px">
+                    <span
+                      style="
+                        padding: 2px 8px;
+                        background: #dcfce7;
+                        color: #166534;
+                        border-radius: 12px;
+                        font-size: 0.8em;
+                      "
+                      >Active</span
+                    >
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </ui-accordion>
+        </pg-example-section>
+
+        <!-- Emoji Icons -->
+        <pg-example-section
+          id="emoji-icons"
+          title="Emoji Icons"
+          description="Use any Unicode emoji as item icons via iconLibrary: 'emoji'. Supports per-item badge counts."
+          [code]="emojiIconsCode"
+        >
+          <ui-accordion [items]="emojiItems" icon-library="emoji" multiple></ui-accordion>
         </pg-example-section>
 
         <!-- Events -->
         <pg-example-section
           id="events"
           title="Events"
-          description="Lifecycle events and interaction logging"
+          description="Animation lifecycle events: beforeOpen, afterOpen, beforeClose, afterClose."
           [code]="eventsCode"
         >
           <ui-accordion
             [items]="eventsItems"
+            icon-library="lucide"
             (beforeOpen)="logEvent('Before Open', $event)"
             (afterOpen)="logEvent('After Open', $event)"
             (beforeClose)="logEvent('Before Close', $event)"
@@ -182,7 +379,7 @@
         <pg-example-section
           id="controlled"
           title="Controlled"
-          description="Control expansion state programmatically"
+          description="Control the expansion state programmatically from the parent component."
           [code]="controlledCode"
         >
           <div class="mb-16 display-flex gap-8">
@@ -215,6 +412,7 @@
             [items]="controlledItems"
             [expandedItems]="controlledExpanded"
             multiple
+            icon-library="lucide"
           ></ui-accordion>
         </pg-example-section>
 
@@ -222,10 +420,441 @@
         <pg-example-section
           id="async-lazy"
           title="Async & Lazy"
-          description="Lazy loading content (content is not in DOM until opened)"
+          description="Content is not rendered in the DOM until the panel is opened — ideal for heavy or asynchronous content."
           [code]="asyncLazyCode"
         >
-          <ui-accordion [items]="asyncLazyItems" lazy></ui-accordion>
+          <ui-accordion [items]="asyncLazyItems" lazy icon-library="lucide"></ui-accordion>
+        </pg-example-section>
+
+        <!-- Auto Scroll -->
+        <pg-example-section
+          id="auto-scroll"
+          title="Auto Scroll"
+          description="When auto-scroll is enabled, expanding an off-screen item scrolls it into view automatically. Great for long lists."
+          [code]="autoScrollCode"
+        >
+          <ui-accordion
+            [items]="autoScrollItems"
+            auto-scroll
+            variant="bordered"
+            icon-library="lucide"
+          ></ui-accordion>
+        </pg-example-section>
+
+        <!-- Kinetic Physics -->
+        <pg-example-section
+          id="physics"
+          title="Kinetic Physics"
+          description="Apex-tier expansion physics. Bouncy uses a spring overshoot; Liquid uses high-viscosity easing with skew distortion."
+          [code]="physicsCode"
+        >
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
+            <div>
+              <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 600; color: #f43f5e">
+                ● Bouncy (Stiff Spring)
+              </p>
+              <ui-accordion
+                [items]="physicsItems"
+                physics="bouncy"
+                selected-header-color="#f43f5e"
+                multiple
+                icon-library="lucide"
+              ></ui-accordion>
+            </div>
+            <div>
+              <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 600; color: #0ea5e9">
+                ● Liquid (High Viscosity)
+              </p>
+              <ui-accordion
+                [items]="physicsItems"
+                physics="liquid"
+                selected-header-color="#0ea5e9"
+                animation-duration="600"
+                multiple
+                icon-library="lucide"
+              ></ui-accordion>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Dropdown Integration -->
+        <pg-example-section
+          id="dropdown-integration"
+          title="Dropdown Integration"
+          description="Seamlessly nest form controls inside accordion panels. Portaling ensures dropdowns render above overflow constraints."
+          [code]="dropdownIntegrationCode"
+        >
+          <ui-accordion
+            [items]="dropdownIntegrationItems"
+            variant="card-list"
+            selected-header-color="#8b5cf6"
+            multiple
+          >
+            <div
+              slot="content-filters"
+              style="padding: 24px; display: flex; flex-direction: column; gap: 20px"
+            >
+              <div>
+                <label
+                  style="
+                    display: block;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #4b5563;
+                    margin-bottom: 8px;
+                  "
+                  >Select Department</label
+                >
+                <ui-dropdown
+                  [options]="deptOptions"
+                  placeholder="All Departments"
+                  icon-library="lucide"
+                ></ui-dropdown>
+              </div>
+              <div>
+                <label
+                  style="
+                    display: block;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #4b5563;
+                    margin-bottom: 8px;
+                  "
+                  >Filter by Role</label
+                >
+                <ui-dropdown
+                  [options]="roleOptions"
+                  multi-select
+                  placeholder="Select roles..."
+                  icon-library="lucide"
+                ></ui-dropdown>
+              </div>
+            </div>
+            <div slot="content-settings" style="padding: 24px">
+              <label
+                style="
+                  display: block;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: #4b5563;
+                  margin-bottom: 8px;
+                "
+                >Region Selection</label
+              >
+              <ui-dropdown
+                [options]="regionOptions"
+                cascading
+                placeholder="Select region..."
+                icon-library="lucide"
+              ></ui-dropdown>
+            </div>
+          </ui-accordion>
+        </pg-example-section>
+
+        <!-- Success Radiant Pulse -->
+        <pg-example-section
+          id="success-pulse"
+          title="Success Radiant Pulse"
+          description="Call accordion.success(itemId) to trigger a premium radiant pulse animation confirming a successful operation on a specific item."
+          [code]="successPulseCode"
+        >
+          <ui-accordion
+            #successAcc
+            [items]="successPulseItems"
+            variant="card-list"
+            multiple
+            icon-library="lucide"
+            [defaultOpen]="['step1']"
+          ></ui-accordion>
+          <div style="display: flex; gap: 12px; margin-top: 16px">
+            <button
+              style="
+                padding: 8px 16px;
+                background: #10b981;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+              "
+              (click)="successAcc.success('step1')"
+            >
+              ✨ Pulse Step 1
+            </button>
+            <button
+              style="
+                padding: 8px 16px;
+                background: #10b981;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+              "
+              (click)="successAcc.success('step2')"
+            >
+              ✨ Pulse Step 2
+            </button>
+          </div>
+        </pg-example-section>
+
+        <!-- Headline Variant -->
+        <pg-example-section
+          id="headline"
+          title="Headline Variant"
+          description="Large typographic accordion for editorial and landing page layouts. Supports size tiers: main, section, subsection, and popover."
+          [code]="headlineCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 64px; padding: 16px 0">
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: #9ca3af;
+                  margin: 0 0 16px 0;
+                "
+              >
+                🎯 Primary Solutions (size: main)
+              </p>
+              <ui-accordion
+                [items]="headlineItems"
+                variant="headline"
+                size="main"
+                selection-position="none"
+                [defaultOpen]="['3']"
+              ></ui-accordion>
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: #9ca3af;
+                  margin: 0 0 16px 0;
+                "
+              >
+                📌 Section Header (size: section)
+              </p>
+              <ui-accordion
+                [items]="headlineItems"
+                variant="headline"
+                size="section"
+                selection-position="none"
+                [defaultOpen]="['3']"
+              ></ui-accordion>
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: #9ca3af;
+                  margin: 0 0 16px 0;
+                "
+              >
+                📂 Subsection (size: subsection)
+              </p>
+              <ui-accordion
+                [items]="headlineItems"
+                variant="headline"
+                size="subsection"
+                selection-position="none"
+                [defaultOpen]="['3']"
+              ></ui-accordion>
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: #9ca3af;
+                  margin: 0 0 16px 0;
+                "
+              >
+                💬 Compact Utility (size: popover)
+              </p>
+              <ui-accordion
+                [items]="headlineItems"
+                variant="headline"
+                size="popover"
+                selection-position="none"
+                [defaultOpen]="['3']"
+              ></ui-accordion>
+            </div>
+            <div
+              style="
+                padding: 32px;
+                background: #f9fafb;
+                border-radius: 16px;
+                border: 1px dashed #e5e7eb;
+              "
+            >
+              <p
+                style="
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: #9ca3af;
+                  margin: 0 0 16px 0;
+                "
+              >
+                🔗 Direct Navigation (no subtitles)
+              </p>
+              <ui-accordion
+                [items]="headlineNoSubItems"
+                variant="headline"
+                size="section"
+                selection-position="none"
+              ></ui-accordion>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Selection Position -->
+        <pg-example-section
+          id="selection-position"
+          title="Selection Position"
+          description="Configure where the active selection indicator appears: left (standard bar) or top (tab-style border)."
+          [code]="selectionCode"
+        >
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px">
+            <div>
+              <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 600; color: #4b5563">
+                Selection: Left (Default)
+              </p>
+              <ui-accordion
+                [items]="selectionItems"
+                selection-position="left"
+                selected-header-color="#3b82f6"
+                [defaultOpen]="['1']"
+              ></ui-accordion>
+            </div>
+            <div>
+              <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 600; color: #4b5563">
+                Selection: Top (Premium)
+              </p>
+              <ui-accordion
+                [items]="selectionItems"
+                selection-position="top"
+                selected-header-color="#8b5cf6"
+                [defaultOpen]="['1']"
+              ></ui-accordion>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Zenith Mastery Controls -->
+        <pg-example-section
+          id="zenith-controls"
+          title="Zenith Mastery Controls"
+          description="Test the absolute latest Zenith-Tier features: haptics, parallax, sticky headers, sparklines, AI summaries, voice control, and more."
+          [code]="zenithCode"
+        >
+          <ui-accordion
+            [items]="zenithItems"
+            variant="card-list"
+            selected-header-color="#8b5cf6"
+            enable-search
+            enable-nested
+            enable-quick-actions
+            [defaultOpen]="['node-stream']"
+          ></ui-accordion>
+        </pg-example-section>
+
+        <!-- Apex God-Tier -->
+        <pg-example-section
+          id="apex-god-tier"
+          title="Apex God-Tier"
+          description="The ultimate showcase: Wizard Mode with Glassmorphism theming, sticky headers, parallax, haptics, status badges, and progress tracking."
+          [code]="godTierCode"
+        >
+          <div style="background: #0f172a; padding: 40px; border-radius: 20px; color: white">
+            <header style="margin-bottom: 40px; text-align: center">
+              <h2
+                style="
+                  font-size: 2rem;
+                  font-weight: 800;
+                  background: linear-gradient(135deg, #38bdf8, #818cf8);
+                  background-clip: text;
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  margin: 0 0 8px 0;
+                "
+              >
+                The Apex God-Tier
+              </h2>
+              <p style="color: #94a3b8; margin: 0; font-size: 0.95rem">
+                Radiant Theme · Sticky Headers · Parallax · Haptics · Status Tracking
+              </p>
+            </header>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px">
+              <div>
+                <p style="color: #38bdf8; font-size: 13px; font-weight: 600; margin: 0 0 16px 0">
+                  Primary Control Plate (theme: radiant)
+                </p>
+                <ui-accordion
+                  [items]="godTierItems"
+                  variant="card-list"
+                  theme="radiant"
+                  lazy
+                  sticky-headers
+                  enable-parallax
+                  enable-haptics
+                  selected-header-color="#38bdf8"
+                  [defaultOpen]="['step3']"
+                ></ui-accordion>
+              </div>
+              <div>
+                <p style="color: #818cf8; font-size: 13px; font-weight: 600; margin: 0 0 16px 0">
+                  Mirror Secondary Plate (theme: glass)
+                </p>
+                <ui-accordion
+                  [items]="godTierItems"
+                  variant="card-list"
+                  theme="glass"
+                  lazy
+                  enable-parallax
+                  enable-haptics
+                  selected-header-color="#818cf8"
+                  [defaultOpen]="['step3']"
+                ></ui-accordion>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Veto & Kinetic Shake -->
+        <pg-example-section
+          id="veto-shake"
+          title="Veto & Kinetic Shake"
+          description="Listen to the beforeOpen event and call event.preventDefault() to cancel expansion. Call accordion.shake(itemId) to trigger a kinetic rejection animation as visual feedback."
+          [code]="vetoShakeCode"
+        >
+          <ui-accordion
+            #vetoAccEl
+            [items]="vetoItems"
+            variant="card-list"
+            icon-library="lucide"
+            [defaultOpen]="['unlocked']"
+            (accordionAction)="handleAction($event)"
+            (beforeOpen)="onVetoBeforeOpen($event, vetoAccEl)"
+          ></ui-accordion>
+          <div
+            style="
+              margin-top: 14px;
+              min-height: 24px;
+              font-size: 14px;
+              font-weight: 600;
+              color: #ef4444;
+              text-align: center;
+              transition: opacity 0.3s;
+            "
+          >
+            {{ vetoStatus }}
+          </div>
         </pg-example-section>
       </div>
       <!-- /examples-content -->

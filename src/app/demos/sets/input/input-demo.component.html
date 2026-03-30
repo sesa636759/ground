@@ -13,6 +13,73 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
+        <!-- All Input Types -->
+        <pg-example-section
+          id="all-types"
+          title="All Input Types"
+          description="Every HTML5 input type supported by ui-input with premium styling and automatic icons."
+          [code]="allTypesCode"
+        >
+          <h4 style="margin-top: 0">Standard Text</h4>
+          <div class="demo-grid col-2">
+            <ui-input type="text" label="Text" placeholder="Basic text input" full-width></ui-input>
+            <ui-input type="password" label="Password" show-password-toggle full-width></ui-input>
+            <ui-input
+              type="email"
+              label="Email"
+              placeholder="user@example.com"
+              full-width
+            ></ui-input>
+            <ui-input type="tel" label="Tel" placeholder="(555) 555-5555" full-width></ui-input>
+            <ui-input
+              type="url"
+              label="URL"
+              placeholder="https://example.com"
+              full-width
+            ></ui-input>
+            <ui-input type="search" label="Search" show-clear full-width></ui-input>
+          </div>
+          <h4>Numbers &amp; Range</h4>
+          <div class="demo-grid col-2">
+            <ui-input type="number" label="Number" full-width></ui-input>
+            <ui-input
+              type="number"
+              label="Number + Steppers"
+              show-steppers
+              value="10"
+              full-width
+            ></ui-input>
+            <ui-input type="range" label="Range" min="0" max="100" value="45" full-width></ui-input>
+          </div>
+          <h4>Date &amp; Time</h4>
+          <div class="demo-grid col-2">
+            <ui-input type="date" label="Date" full-width></ui-input>
+            <ui-input type="time" label="Time" full-width></ui-input>
+            <ui-input type="datetime-local" label="DateTime Local" full-width></ui-input>
+            <ui-input type="month" label="Month" full-width></ui-input>
+            <ui-input type="week" label="Week" full-width></ui-input>
+          </div>
+          <h4>Specialized</h4>
+          <div class="demo-grid col-2">
+            <ui-input type="color" label="Color Picker" value="#3b82f6" full-width></ui-input>
+            <ui-input type="file" label="File Upload" full-width></ui-input>
+            <ui-input
+              type="otp"
+              otp-length="6"
+              label="OTP Code"
+              helper-text="6-digit verification"
+              full-width
+            ></ui-input>
+            <ui-input
+              type="pin"
+              otp-length="4"
+              label="PIN Code"
+              helper-text="4-digit secure PIN"
+              full-width
+            ></ui-input>
+          </div>
+        </pg-example-section>
+
         <!-- Basic Types -->
         <pg-example-section
           id="basic"
@@ -113,6 +180,80 @@
           </div>
         </pg-example-section>
 
+        <!-- Color Variants -->
+        <pg-example-section
+          id="color-variants"
+          title="Color Variants"
+          description="Semantic color contexts using the color prop across outlined and soft variants."
+          [code]="colorVariantsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input
+              color="primary"
+              variant="outlined"
+              label="Primary"
+              prefix-icon="zap"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="primary"
+              variant="soft"
+              label="Primary Soft"
+              prefix-icon="zap"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="success"
+              variant="outlined"
+              label="Success"
+              prefix-icon="check-circle"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="success"
+              variant="soft"
+              label="Success Soft"
+              prefix-icon="check-circle"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="danger"
+              variant="outlined"
+              label="Danger"
+              prefix-icon="alert-circle"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="danger"
+              variant="soft"
+              label="Danger Soft"
+              prefix-icon="alert-circle"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="warning"
+              variant="outlined"
+              label="Warning"
+              prefix-icon="alert-triangle"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="info"
+              variant="outlined"
+              label="Info"
+              prefix-icon="info"
+              full-width
+            ></ui-input>
+            <ui-input
+              color="secondary"
+              variant="outlined"
+              label="Secondary"
+              prefix-icon="box"
+              full-width
+            ></ui-input>
+          </div>
+        </pg-example-section>
+
         <!-- Floating Labels -->
         <pg-example-section
           id="floating"
@@ -149,6 +290,62 @@
               full-width
             ></ui-input>
             <ui-input badge="99+" label="Inbound Tasks" suffix-icon="bell" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Chromatic Decorators -->
+        <pg-example-section
+          id="color-decorators"
+          title="Chromatic Decorators"
+          description="Professional colored prefix/suffix blocks with semantic coloring for high-impact context."
+          [code]="colorDecoratorsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input
+              label="Secure Domain"
+              prefix-text="https://"
+              prefix-color="success"
+              placeholder="example.com"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Access Token"
+              prefix-icon="shield-check"
+              prefix-color="primary"
+              placeholder="Enter secure token..."
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Global Search"
+              suffix-icon="search"
+              suffix-color="primary"
+              suffix-clickable
+              placeholder="Search cloud..."
+              full-width
+            ></ui-input>
+            <ui-input
+              label="System Clear"
+              suffix-text="RESET"
+              suffix-color="danger"
+              suffix-clickable
+              placeholder="Irreversible action"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Subdomain"
+              suffix-text=".dream.io"
+              suffix-color="secondary"
+              placeholder="myspace"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Currency"
+              prefix-text="USD"
+              prefix-color="info"
+              type="number"
+              placeholder="0.00"
+              full-width
+            ></ui-input>
           </div>
         </pg-example-section>
 
@@ -244,6 +441,46 @@
           </div>
         </pg-example-section>
 
+        <!-- Range Sliders -->
+        <pg-example-section
+          id="range"
+          title="Range Sliders"
+          description="Premium range slider styling with dynamic track filling, variants, and sizes."
+          [code]="rangeCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input
+              type="range"
+              label="Volume Control"
+              min="0"
+              max="100"
+              value="65"
+              full-width
+            ></ui-input>
+            <ui-input
+              type="range"
+              label="Brightness"
+              variant="soft"
+              min="0"
+              max="100"
+              value="40"
+              prefix-icon="sun"
+              full-width
+            ></ui-input>
+            <ui-input
+              type="range"
+              label="Opacity"
+              size="xl"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.85"
+              full-width
+            ></ui-input>
+            <ui-input type="range" label="Locked Setting" disabled value="50" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
         <!-- Multimedia -->
         <pg-example-section
           id="multimedia"
@@ -320,6 +557,129 @@
           </div>
         </pg-example-section>
 
+        <!-- OTP & PIN -->
+        <pg-example-section
+          id="otp-pin"
+          title="OTP & PIN"
+          description="Segmented verification fields with elite focus transitions for secure code entry."
+          [code]="otpPinCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input
+              type="otp"
+              otp-length="6"
+              label="Verification Code"
+              helper-text="Check your email for the 6-digit code"
+              full-width
+            ></ui-input>
+            <ui-input
+              type="pin"
+              otp-length="4"
+              label="Security PIN"
+              helper-text="Enter your 4-digit PIN"
+              full-width
+            ></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Voice & Status -->
+        <pg-example-section
+          id="voice-status"
+          title="Voice & Status"
+          description="Integrated AI voice dictation and real-time connectivity status indicators."
+          [code]="voiceStatusCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input
+              label="Voice Messenger"
+              voice-enabled
+              placeholder="Click the mic to speak..."
+              status-indicator="online"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Dynamic State"
+              status-indicator="typing"
+              placeholder="Someone is typing..."
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Online User"
+              status-indicator="online"
+              placeholder="Available"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Away User"
+              status-indicator="away"
+              placeholder="Be right back"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Offline User"
+              status-indicator="offline"
+              placeholder="Currently unavailable"
+              full-width
+            ></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Master Tier -->
+        <pg-example-section
+          id="master-tier"
+          title="Master Tier"
+          description="Next-generation cinematic effects: gradient borders, backdrop sheen, progress rings, dirty tracking, and AI ghost text."
+          [code]="masterTierCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input
+              label="Gradient Horizon"
+              gradient-border
+              variant="outlined"
+              placeholder="Animated focus boundary"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Deep Sheen"
+              backdrop-sheen
+              variant="glass"
+              placeholder="Interactive depth field"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Animated Line"
+              animated-line
+              variant="underlined"
+              placeholder="Animated line on focus"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Content Velocity"
+              show-progress-circle
+              max-length="50"
+              value="Tracking character density..."
+              full-width
+            ></ui-input>
+            <ui-input
+              label="Dirty Tracking"
+              dirty-tracking
+              default-value="Original State"
+              value="Modified state"
+              helper-text="Amber dot = unsaved changes"
+              full-width
+            ></ui-input>
+            <ui-input
+              label="AI Smart Search"
+              value="how to "
+              suggested-value="how to build elite stencil components"
+              prefix-icon="sparkles"
+              variant="glass"
+              helper-text="Ghost text shows AI completion"
+              full-width
+            ></ui-input>
+          </div>
+        </pg-example-section>
+
         <!-- Suggestions -->
         <pg-example-section
           id="suggestions"
@@ -348,6 +708,42 @@
             <ui-input disabled value="Not editable" label="Disabled State" full-width></ui-input>
             <ui-input readonly value="View only data" label="Readonly State" full-width></ui-input>
             <ui-input rtl value="امتحان نص مكتوب للعرب" label="RTL Mode" full-width></ui-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Input Pair -->
+        <pg-example-section
+          id="input-pair"
+          title="Input Pair"
+          description="Seamlessly connected dual inputs for range selection, name fields, and multi-part data entry."
+          [code]="inputPairCode"
+        >
+          <div class="demo-grid col-1">
+            <ui-input-pair
+              type="currency"
+              label-left="Minimum Price"
+              label-right="Maximum Price"
+              placeholder-left="0.00"
+              placeholder-right="No limit"
+              gap="0"
+              full-width
+            ></ui-input-pair>
+            <ui-input-pair
+              label-left="First Name"
+              label-right="Last Name"
+              placeholder-left="John"
+              placeholder-right="Doe"
+              gap="12px"
+              full-width
+            ></ui-input-pair>
+            <ui-input-pair
+              type="number"
+              label-left="From"
+              label-right="To"
+              gap="0"
+              variant="soft"
+              full-width
+            ></ui-input-pair>
           </div>
         </pg-example-section>
       </div>

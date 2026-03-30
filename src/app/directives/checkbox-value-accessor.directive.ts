@@ -2,7 +2,7 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dui-checkbox[ngModel], dui-checkbox[formControl], dui-checkbox[formControlName]',
+  selector: 'dui-checkbox[ngModel], dui-checkbox[formControl], dui-checkbox[formControlName], ui-checkbox[ngModel], ui-checkbox[formControl], ui-checkbox[formControlName]',
   standalone: true,
   providers: [
     {

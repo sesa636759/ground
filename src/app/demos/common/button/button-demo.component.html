@@ -17,7 +17,7 @@
         <pg-example-section
           id="visual-variants"
           title="Visual Variants"
-          description="Different styles for different visual hierarchies"
+          description="All core and semantic variants for different visual hierarchies and actions."
           [code]="variantsCode"
         >
           <div class="demo-flex-wrap">
@@ -25,10 +25,151 @@
             <ui-button label="Secondary" variant="secondary"></ui-button>
             <ui-button label="Outline" variant="outline"></ui-button>
             <ui-button label="Ghost" variant="ghost"></ui-button>
+            <ui-button label="Glass" variant="glass"></ui-button>
             <ui-button label="Success" variant="success"></ui-button>
             <ui-button label="Danger" variant="danger"></ui-button>
             <ui-button label="Warning" variant="warning"></ui-button>
             <ui-button label="Info" variant="info"></ui-button>
+            <ui-button label="Dark" variant="dark"></ui-button>
+            <ui-button label="Raised" variant="raised"></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Gradients -->
+        <pg-example-section
+          id="gradients"
+          title="Gradient Variants"
+          description="Premium gradient buttons with smooth hover effects and glow shadows."
+          [code]="gradientsCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 20px">
+            <div>
+              <p class="demo-section-label">Solid Gradients</p>
+              <div class="demo-flex-wrap">
+                <ui-button label="Brand" variant="gradient"></ui-button>
+                <ui-button label="Blue Purple" variant="gradient-blue"></ui-button>
+                <ui-button label="Purple Pink" variant="gradient-purple"></ui-button>
+                <ui-button label="Orange Red" variant="gradient-orange"></ui-button>
+                <ui-button label="Ocean" variant="gradient-ocean"></ui-button>
+                <ui-button label="Sunset" variant="gradient-sunset"></ui-button>
+                <ui-button label="Candy" variant="gradient-candy"></ui-button>
+                <ui-button label="Gold" variant="gradient-gold"></ui-button>
+              </div>
+            </div>
+            <div>
+              <p class="demo-section-label">With Icons</p>
+              <div class="demo-flex-wrap">
+                <ui-button
+                  label="Dashboard"
+                  variant="gradient"
+                  icon="layout-dashboard"
+                  icon-library="lucide"
+                ></ui-button>
+                <ui-button
+                  label="Analytics"
+                  variant="gradient-blue"
+                  icon="bar-chart-2"
+                  icon-library="lucide"
+                ></ui-button>
+                <ui-button
+                  label="Premium"
+                  variant="gradient-purple"
+                  icon="star"
+                  icon-library="lucide"
+                ></ui-button>
+                <ui-button
+                  label="Alert"
+                  variant="gradient-orange"
+                  icon="zap"
+                  icon-library="lucide"
+                ></ui-button>
+                <ui-button
+                  label="Explore"
+                  variant="gradient-ocean"
+                  icon="compass"
+                  icon-library="lucide"
+                ></ui-button>
+                <ui-button
+                  label="Like"
+                  variant="gradient-candy"
+                  icon="heart"
+                  icon-library="lucide"
+                ></ui-button>
+                <ui-button
+                  label="Award"
+                  variant="gradient-gold"
+                  icon="award"
+                  icon-library="lucide"
+                ></ui-button>
+              </div>
+            </div>
+            <div>
+              <p class="demo-section-label">Pill Shape + Icon Only</p>
+              <div class="demo-flex-wrap">
+                <ui-button label="Green Pill" variant="gradient" pill></ui-button>
+                <ui-button label="Blue Pill" variant="gradient-blue" pill></ui-button>
+                <ui-button label="Purple Pill" variant="gradient-purple" pill></ui-button>
+                <ui-button
+                  icon="zap"
+                  icon-library="lucide"
+                  variant="gradient"
+                  icon-only
+                  pill
+                ></ui-button>
+                <ui-button
+                  icon="star"
+                  icon-library="lucide"
+                  variant="gradient-blue"
+                  icon-only
+                  pill
+                ></ui-button>
+                <ui-button
+                  icon="heart"
+                  icon-library="lucide"
+                  variant="gradient-purple"
+                  icon-only
+                  pill
+                ></ui-button>
+                <ui-button
+                  icon="flame"
+                  icon-library="lucide"
+                  variant="gradient-orange"
+                  icon-only
+                  pill
+                ></ui-button>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Soft Variants -->
+        <pg-example-section
+          id="soft-variants"
+          title="Soft Variants"
+          description="Muted background with tinted text — ideal for secondary actions and status chips."
+          [code]="softVariantsCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button label="Primary" variant="soft" color="primary"></ui-button>
+            <ui-button label="Success" variant="soft" color="success"></ui-button>
+            <ui-button label="Danger" variant="soft" color="danger"></ui-button>
+            <ui-button label="Warning" variant="soft" color="warning"></ui-button>
+            <ui-button label="Info" variant="soft" color="info"></ui-button>
+            <ui-button
+              label="With Icon"
+              variant="soft"
+              color="primary"
+              icon="zap"
+              icon-library="lucide"
+            ></ui-button>
+            <ui-button
+              label="Pill"
+              variant="soft"
+              color="success"
+              pill
+              icon="check"
+              icon-library="lucide"
+            ></ui-button>
           </div>
         </pg-example-section>
 
@@ -36,15 +177,103 @@
         <pg-example-section
           id="sizes"
           title="Sizes"
-          description="Scalable sizes from extra small to extra large"
+          description="9 size tiers from xxxs (20px) to xxxl (80px) — consistent height across label-only, icon+label, and badge combinations."
           [code]="sizesCode"
         >
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            @for (
+              s of [
+                { size: 'xxxs', label: 'xxxs', variant: 'primary', icon: 'zap' },
+                { size: 'xxs', label: 'xxs', variant: 'secondary', icon: 'star' },
+                { size: 'xs', label: 'xs', variant: 'success', icon: 'check' },
+                { size: 'small', label: 'small', variant: 'info', icon: 'info' },
+                { size: 'medium', label: 'medium', variant: 'primary', icon: 'play' },
+                { size: 'large', label: 'large', variant: 'warning', icon: 'alert-triangle' },
+                { size: 'xl', label: 'xl', variant: 'danger', icon: 'trash-2' },
+                { size: 'xxl', label: 'xxl', variant: 'info', icon: 'cloud' },
+                { size: 'xxxl', label: 'xxxl', variant: 'dark', icon: 'grid' },
+              ];
+              track s.size
+            ) {
+              <div class="demo-flex-wrap items-center">
+                <span style="min-width: 80px; font-size: 12px; font-weight: 600; color: #6b7280">{{
+                  s.label
+                }}</span>
+                <ui-button
+                  [attr.size]="s.size"
+                  [attr.variant]="s.variant"
+                  label="Simple"
+                ></ui-button>
+                <ui-button
+                  [attr.size]="s.size"
+                  [attr.variant]="s.variant"
+                  [attr.icon]="s.icon"
+                  icon-library="lucide"
+                  label="With Icon"
+                ></ui-button>
+                <ui-button
+                  [attr.size]="s.size"
+                  [attr.variant]="s.variant"
+                  [attr.icon]="s.icon"
+                  icon-library="lucide"
+                  label="Badged"
+                  badge="8"
+                ></ui-button>
+                <ui-button
+                  [attr.size]="s.size"
+                  [attr.variant]="s.variant"
+                  [attr.icon]="s.icon"
+                  icon-library="lucide"
+                  shape="circle"
+                  icon-only
+                ></ui-button>
+              </div>
+            }
+          </div>
+        </pg-example-section>
+
+        <!-- Shapes -->
+        <pg-example-section
+          id="shapes"
+          title="Shapes"
+          description="Control button border-radius and form factor with the shape prop."
+          [code]="shapesCode"
+        >
           <div class="demo-flex-wrap items-center">
-            <ui-button label="Extra Small" size="xs"></ui-button>
-            <ui-button label="Small" size="sm"></ui-button>
-            <ui-button label="Medium" size="md"></ui-button>
-            <ui-button label="Large" size="lg"></ui-button>
-            <ui-button label="Extra Large" size="xl"></ui-button>
+            <ui-button variant="secondary" label="Square (default)"></ui-button>
+            <ui-button variant="secondary" shape="rounded" label="Rounded"></ui-button>
+            <ui-button variant="secondary" shape="pill" label="Pill"></ui-button>
+            <ui-button variant="secondary" shape="chip" label="Chip"></ui-button>
+            <ui-button
+              variant="primary"
+              shape="circle"
+              icon="plus"
+              icon-library="lucide"
+              icon-only
+            ></ui-button>
+          </div>
+          <div class="demo-flex-wrap mt-16">
+            <ui-button
+              variant="glass"
+              label="Glass + Pill"
+              shape="pill"
+              icon="sparkles"
+              icon-library="lucide"
+            ></ui-button>
+            <ui-button
+              variant="raised"
+              label="Raised + Rounded"
+              shape="rounded"
+              icon="layers"
+              icon-library="lucide"
+            ></ui-button>
+            <ui-button
+              variant="dark"
+              label="Dark + Chip"
+              shape="chip"
+              icon="moon"
+              icon-library="lucide"
+            ></ui-button>
           </div>
         </pg-example-section>
 
@@ -52,7 +281,7 @@
         <pg-example-section
           id="icons-badges"
           title="Icons & Badges"
-          description="Enhance buttons with visual cues and status indicators"
+          description="Enhance buttons with visual cues and status indicators."
           [code]="iconsBadgesCode"
         >
           <div class="demo-flex-wrap">
@@ -62,6 +291,60 @@
             <ui-button label="Notifications" icon="🔔" badge="9" variant="warning"></ui-button>
             <ui-button icon="🔍" icon-only pill variant="primary"></ui-button>
             <ui-button icon="➕" icon-only rounded variant="outline"></ui-button>
+            <ui-button
+              label="Inbox"
+              icon="inbox"
+              icon-library="lucide"
+              badge="3"
+              variant="primary"
+            ></ui-button>
+            <ui-button
+              icon="bell"
+              icon-library="lucide"
+              icon-only
+              badge="9+"
+              variant="secondary"
+              rounded
+            ></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Icon Positions -->
+        <pg-example-section
+          id="icon-positions"
+          title="Icon Positions"
+          description="Icons can be placed at any side of the label using the icon-position prop."
+          [code]="iconPositionsCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button
+              label="Left Icon"
+              icon="arrow-left"
+              icon-library="lucide"
+              icon-position="left"
+              variant="outline"
+            ></ui-button>
+            <ui-button
+              label="Right Icon"
+              icon="arrow-right"
+              icon-library="lucide"
+              icon-position="right"
+              variant="outline"
+            ></ui-button>
+            <ui-button
+              label="Top Icon"
+              icon="arrow-up"
+              icon-library="lucide"
+              icon-position="top"
+              variant="outline"
+            ></ui-button>
+            <ui-button
+              label="Bottom Icon"
+              icon="arrow-down"
+              icon-library="lucide"
+              icon-position="bottom"
+              variant="outline"
+            ></ui-button>
           </div>
         </pg-example-section>
 
@@ -69,7 +352,7 @@
         <pg-example-section
           id="badge-positions"
           title="Badge Positions"
-          description="Control where badges appear on the button"
+          description="Control where badges appear — absolute corners or inline within the button."
           [code]="badgePositionsCode"
         >
           <div class="demo-flex-wrap">
@@ -113,35 +396,107 @@
         <pg-example-section
           id="icon-libraries"
           title="Icon Libraries"
-          description="Support for various popular icon libraries and custom SVGs"
+          description="Built-in support for Lucide, Ionicons, FontAwesome, Bootstrap, Iconoir, SVG paths, URLs, and Emoji."
           [code]="iconLibrariesCode"
         >
-          <div class="demo-flex-wrap">
-            <ui-button
-              label="SVG Path"
-              icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-              variant="primary"
-            ></ui-button>
-            <ui-button label="Material" icon="face"></ui-button>
-            <ui-button
-              label="Lucide"
-              icon="search"
-              icon-library="lucide"
-              variant="success"
-            ></ui-button>
-            <ui-button
-              label="Ionicons"
-              icon="heart"
-              icon-library="ionicons"
-              variant="danger"
-            ></ui-button>
-            <ui-button
-              label="Bootstrap SVG"
-              icon="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M14 14.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v2.5z"
-              variant="warning"
-            ></ui-button>
-            <ui-button label="Emoji" icon="🚀" variant="info"></ui-button>
-            <ui-button label="Custom Size" icon="🎨" icon-size="28" variant="secondary"></ui-button>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+              gap: 16px;
+            "
+          >
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0">Classic Font Libraries</p>
+              <div class="demo-flex-wrap">
+                <ui-button
+                  label="FontAwesome"
+                  icon="fa-solid fa-flag"
+                  icon-library="fontawesome"
+                  variant="primary"
+                  size="small"
+                ></ui-button>
+                <ui-button
+                  label="Bootstrap"
+                  icon="bi-lightning-fill"
+                  icon-library="bootstrap"
+                  variant="warning"
+                  size="small"
+                ></ui-button>
+              </div>
+              <div class="demo-flex-wrap mt-16">
+                <ui-button
+                  icon="fa-brands fa-github"
+                  icon-library="fontawesome"
+                  variant="outline"
+                  icon-only
+                  rounded
+                ></ui-button>
+                <ui-button
+                  icon="bi-twitter-x"
+                  icon-library="bootstrap"
+                  variant="outline"
+                  icon-only
+                  rounded
+                ></ui-button>
+              </div>
+            </div>
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0">Modern SVG Libraries</p>
+              <div class="demo-flex-wrap">
+                <ui-button
+                  label="Lucide"
+                  icon="zap"
+                  icon-library="lucide"
+                  variant="info"
+                  size="small"
+                ></ui-button>
+                <ui-button
+                  label="Ionicons"
+                  icon="logo-ionic"
+                  icon-library="ionicons"
+                  variant="secondary"
+                  size="small"
+                ></ui-button>
+              </div>
+              <div class="demo-flex-wrap mt-16">
+                <ui-button
+                  icon="moon"
+                  icon-library="lucide"
+                  variant="ghost"
+                  icon-only
+                  rounded
+                ></ui-button>
+                <ui-button
+                  icon="sunny"
+                  icon-library="ionicons"
+                  variant="ghost"
+                  icon-only
+                  rounded
+                ></ui-button>
+              </div>
+            </div>
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0">Custom Assets</p>
+              <div class="demo-flex-wrap">
+                <ui-button label="Emoji" icon="🚀" variant="outline" size="small"></ui-button>
+                <ui-button
+                  label="QuartzDS"
+                  icon="house"
+                  icon-library="se"
+                  variant="outline"
+                  size="small"
+                ></ui-button>
+              </div>
+              <div class="demo-flex-wrap mt-16">
+                <ui-button
+                  label="SVG Path"
+                  variant="outline"
+                  size="small"
+                  icon="M12 2L2 7l10 5l10-5zM2 17l10 5l10-5M2 12l10 5l10-5"
+                ></ui-button>
+              </div>
+            </div>
           </div>
         </pg-example-section>
 
@@ -149,7 +504,7 @@
         <pg-example-section
           id="states"
           title="Functional States"
-          description="Communicate interaction availability and background processes"
+          description="Communicate interaction availability and background processes."
           [code]="statesCode"
         >
           <div class="demo-flex-wrap">
@@ -157,7 +512,50 @@
             <ui-button label="Disabled" disabled variant="primary"></ui-button>
             <ui-button label="Loading" loading variant="primary"></ui-button>
             <ui-button label="Pill Style" pill variant="outline"></ui-button>
-            <ui-button label="Full Width Action" full-width variant="secondary"></ui-button>
+            <ui-button label="Rounded" rounded variant="secondary"></ui-button>
+            <ui-button label="Grow" grow variant="ghost"></ui-button>
+            <ui-button label="No Ripple" no-ripple variant="outline"></ui-button>
+            <ui-button label="Full Width" full-width variant="secondary"></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Counters & Loading -->
+        <pg-example-section
+          id="counters"
+          title="Counters & Loading"
+          description="Inline counters for quantities distinct from status badges, plus loading spinner positions."
+          [code]="countersCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button label="Messages" counter="5" variant="primary"></ui-button>
+            <ui-button
+              label="Tasks"
+              counter="12"
+              counter-color="success"
+              counter-variant="soft"
+              variant="outline"
+            ></ui-button>
+            <ui-button
+              label="Alerts"
+              counter="!"
+              counter-color="warning"
+              variant="glass"
+            ></ui-button>
+          </div>
+          <div class="demo-flex-wrap mt-16">
+            <ui-button
+              label="Loading Left"
+              loading
+              loading-position="left"
+              variant="primary"
+            ></ui-button>
+            <ui-button
+              label="Loading Right"
+              loading
+              loading-position="right"
+              variant="success"
+            ></ui-button>
+            <ui-button label="Loading (Pill)" loading variant="outline" shape="pill"></ui-button>
           </div>
         </pg-example-section>
 
@@ -165,7 +563,7 @@
         <pg-example-section
           id="elevations"
           title="Elevations"
-          description="Visual depth using shadow effects"
+          description="Visual depth using shadow intensities from 1 to 5."
           [code]="elevationsCode"
         >
           <div class="demo-flex-wrap py-20">
@@ -177,15 +575,399 @@
           </div>
         </pg-example-section>
 
+        <!-- Avatar Buttons -->
+        <pg-example-section
+          id="avatar"
+          title="Avatar Buttons"
+          description="Buttons with circular profile images and real-time status indicators (online, busy, away, offline)."
+          [code]="avatarCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px">
+            <div>
+              <p class="demo-section-label">User Profile Buttons</p>
+              <div class="demo-flex-wrap">
+                <ui-button
+                  label="Praveen"
+                  avatar-src="https://i.pravatar.cc/100?u=praveen"
+                  status="online"
+                  variant="outline"
+                  shape="pill"
+                ></ui-button>
+                <ui-button
+                  label="Sarah Chen"
+                  avatar-src="https://i.pravatar.cc/100?u=sarah"
+                  status="busy"
+                  variant="soft"
+                  shape="rounded"
+                ></ui-button>
+                <ui-button
+                  label="System Admin"
+                  avatar-src="https://i.pravatar.cc/100?u=admin"
+                  status="offline"
+                  variant="dark"
+                  shape="pill"
+                ></ui-button>
+              </div>
+            </div>
+            <div>
+              <p class="demo-section-label">Sizes</p>
+              <div class="demo-flex-wrap items-end">
+                <ui-button
+                  size="small"
+                  label="Small"
+                  avatar-src="https://i.pravatar.cc/100?u=sm"
+                  status="away"
+                  variant="outline"
+                ></ui-button>
+                <ui-button
+                  size="medium"
+                  label="Medium"
+                  avatar-src="https://i.pravatar.cc/100?u=md"
+                  status="online"
+                  variant="outline"
+                ></ui-button>
+                <ui-button
+                  size="large"
+                  label="Large"
+                  avatar-src="https://i.pravatar.cc/100?u=lg"
+                  status="busy"
+                  variant="outline"
+                ></ui-button>
+                <ui-button
+                  size="xl"
+                  label="X-Large"
+                  avatar-src="https://i.pravatar.cc/100?u=xl"
+                  status="online"
+                  variant="outline"
+                ></ui-button>
+              </div>
+            </div>
+            <div>
+              <p class="demo-section-label">Avatar Only (Quick Select)</p>
+              <div class="demo-flex-wrap">
+                <ui-button
+                  avatar-src="https://i.pravatar.cc/100?u=1"
+                  status="online"
+                  variant="ghost"
+                  title="User 1"
+                ></ui-button>
+                <ui-button
+                  avatar-src="https://i.pravatar.cc/100?u=2"
+                  status="away"
+                  variant="ghost"
+                  title="User 2"
+                ></ui-button>
+                <ui-button
+                  avatar-src="https://i.pravatar.cc/100?u=3"
+                  status="busy"
+                  variant="ghost"
+                  title="User 3"
+                ></ui-button>
+                <ui-button
+                  avatar-src="https://i.pravatar.cc/100?u=4"
+                  status="online"
+                  variant="ghost"
+                  title="User 4"
+                ></ui-button>
+                <ui-button
+                  variant="soft"
+                  shape="circle"
+                  icon="plus"
+                  icon-library="lucide"
+                  title="Add User"
+                ></ui-button>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Image Type -->
+        <pg-example-section
+          id="image-type"
+          title="Image Type"
+          description="Buttons that combine a raster image with a label for rich visual interaction."
+          [code]="imageTypeCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button
+              type="image"
+              img-src="https://picsum.photos/id/237/64/64"
+              img-alt="Puppy"
+              label="Adopt Me"
+              variant="primary"
+            ></ui-button>
+            <ui-button
+              type="image"
+              img-src="https://picsum.photos/id/1025/64/64"
+              img-alt="Pug"
+              label="Pug Life"
+              variant="outline"
+            ></ui-button>
+            <ui-button
+              type="image"
+              img-src="https://picsum.photos/id/200/64/64"
+              img-alt="Cow"
+              label="Moo!"
+              variant="success"
+              shape="rounded"
+            ></ui-button>
+            <ui-button
+              type="image"
+              img-src="https://picsum.photos/id/100/64/64"
+              img-alt="Beach"
+              label="Vacation"
+              variant="info"
+              shape="pill"
+            ></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Auto Width -->
+        <pg-example-section
+          id="auto-width"
+          title="Auto Width"
+          description="ui-button-group with the fill prop distributes widths automatically based on child count."
+          [code]="autoWidthCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px; max-width: 500px">
+            <div>
+              <p class="demo-section-label">Single Button (100%)</p>
+              <ui-button-group fill>
+                <ui-button variant="primary" label="Confirm Purchase"></ui-button>
+              </ui-button-group>
+            </div>
+            <div>
+              <p class="demo-section-label">Two Buttons (50% each)</p>
+              <ui-button-group fill gap="12px">
+                <ui-button variant="outline" label="Cancel"></ui-button>
+                <ui-button variant="primary" label="Submit"></ui-button>
+              </ui-button-group>
+            </div>
+            <div>
+              <p class="demo-section-label">Three Buttons (33.3% each)</p>
+              <ui-button-group fill gap="12px">
+                <ui-button variant="ghost" label="Later"></ui-button>
+                <ui-button variant="outline" label="Skip"></ui-button>
+                <ui-button variant="success" label="Finish"></ui-button>
+              </ui-button-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Premium Features -->
+        <pg-example-section
+          id="premium"
+          title="Premium Features"
+          description="Copy-to-clipboard, keyboard shortcuts, skeleton state, active mode, responsive labels, and dropdown indicators."
+          [code]="premiumCode"
+        >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 16px;
+            "
+          >
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0">Utilities</p>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <ui-button
+                  label="Copy API ID"
+                  icon="copy"
+                  icon-library="lucide"
+                  copy-value="ID_45920-X"
+                  variant="outline"
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Quick Search"
+                  icon="search"
+                  icon-library="lucide"
+                  shortcut="/"
+                  variant="soft"
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Save All"
+                  icon="save"
+                  icon-library="lucide"
+                  shortcut="ctrl+s"
+                  variant="primary"
+                  full-width
+                ></ui-button>
+              </div>
+            </div>
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0">Advanced States</p>
+              <div class="demo-flex-wrap">
+                <ui-button label="Skeleton" skeleton variant="primary" width="120px"></ui-button>
+                <ui-button label="Export" has-dropdown variant="outline"></ui-button>
+                <ui-button
+                  label="Active Mode"
+                  active
+                  variant="success"
+                  icon="check"
+                  icon-library="lucide"
+                ></ui-button>
+              </div>
+            </div>
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0">Responsive Label</p>
+              <p style="font-size: 13px; color: #6b7280; margin: 0 0 12px 0">
+                Resize to mobile — label hides, icon stays.
+              </p>
+              <ui-button
+                label="Edit Profile"
+                icon="user"
+                icon-library="lucide"
+                hide-label-on-mobile
+                variant="primary"
+                size="large"
+                shape="pill"
+              ></ui-button>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- God Mode -->
+        <pg-example-section
+          id="god-mode"
+          title="God Mode"
+          description="The absolute peak of UI engineering: safety holds, haptics, audio feedback, rainbow glow, liquid progress, shatter, and more."
+          [code]="godModeCode"
+        >
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 24px;
+            "
+          >
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0; color: #ef4444">
+                🛡️ High-Stakes Safety
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <ui-button
+                  label="Purge Memory"
+                  variant="danger"
+                  hold-time="2000"
+                  shake
+                  audio="error"
+                  haptic
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Delete Cloud"
+                  variant="outline"
+                  color="danger"
+                  confirm-bubble
+                  confirm-label="Permanent Delete?"
+                  audio="error"
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Resend OTP"
+                  timer="15"
+                  shake
+                  variant="soft"
+                  color="primary"
+                  full-width
+                ></ui-button>
+              </div>
+            </div>
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0; color: #8b5cf6">
+                🕹️ Hyper-Aesthetics
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <ui-button
+                  label="VIP Rainbow Glow"
+                  variant="dark"
+                  glow
+                  rainbow
+                  glossy
+                  audio="click"
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Liquid Wave Progress"
+                  variant="primary"
+                  progress="45"
+                  liquid
+                  audio="click"
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Success Morph"
+                  variant="success"
+                  success-morph="2000"
+                  haptic
+                  full-width
+                ></ui-button>
+              </div>
+            </div>
+            <div class="demo-card-inner">
+              <p class="demo-section-label" style="margin-top: 0; color: #f59e0b">
+                🏗️ Orchestrated Motion
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <div class="demo-flex-wrap">
+                  <ui-button
+                    label="1"
+                    variant="soft"
+                    reveal="slide-up"
+                    reveal-delay="0"
+                  ></ui-button>
+                  <ui-button
+                    label="2"
+                    variant="soft"
+                    reveal="slide-up"
+                    reveal-delay="150"
+                  ></ui-button>
+                  <ui-button
+                    label="3"
+                    variant="soft"
+                    reveal="slide-up"
+                    reveal-delay="300"
+                  ></ui-button>
+                </div>
+                <ui-button
+                  label="Task in Progress"
+                  loading
+                  progress="65"
+                  variant="outline"
+                  color="primary"
+                  full-width
+                ></ui-button>
+                <ui-button
+                  label="Shatter Effect"
+                  shatter
+                  variant="danger"
+                  audio="error"
+                  full-width
+                ></ui-button>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
         <!-- Link & Extra -->
         <pg-example-section
           id="link-extra"
           title="Link & Extra Features"
-          description="Specialized behaviors like RTL and link rendering"
+          description="Anchor rendering via href, RTL support, and custom loading positions."
           [code]="linkExtraCode"
         >
           <div class="demo-flex-wrap">
-            <ui-button label="Go to Google" href="https://google.com" target="_blank"></ui-button>
+            <ui-button
+              label="Go to Google"
+              href="https://google.com"
+              target="_blank"
+              icon="external-link"
+              icon-library="lucide"
+              variant="outline"
+            ></ui-button>
             <ui-button label="RTL Button" icon="🚀" rtl variant="success"></ui-button>
             <ui-button
               label="Loading Top"
@@ -199,6 +981,7 @@
               loading-position="right"
               variant="warning"
             ></ui-button>
+            <ui-button label="No Ripple" no-ripple variant="secondary"></ui-button>
           </div>
         </pg-example-section>
       </div>

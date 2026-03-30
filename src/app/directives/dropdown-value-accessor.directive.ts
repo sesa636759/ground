@@ -2,7 +2,7 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dui-dropdown[ngModel], dui-dropdown[formControl], dui-dropdown[formControlName]',
+  selector: 'dui-dropdown[ngModel], dui-dropdown[formControl], dui-dropdown[formControlName], ui-dropdown[ngModel], ui-dropdown[formControl], ui-dropdown[formControlName]',
   standalone: true,
   providers: [
     {

@@ -33,6 +33,15 @@
     </div>
 
     <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconLibrary"
+        (ngModelChange)="updateConfig()"
+        [options]="iconLibraryOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
       <label>Selected Header Color</label>
       <ui-input
         type="color"
@@ -89,6 +98,16 @@
       ></ui-input>
     </div>
 
+    <div class="control-group mt-16" [class.disabled-group]="!pgConfig.enableSearch">
+      <label>Search Placeholder</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.searchPlaceholder"
+        (ngModelChange)="updateConfig()"
+        placeholder="Search..."
+      ></ui-input>
+    </div>
+
     <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
@@ -111,8 +130,22 @@
         <ui-checkbox [(ngModel)]="pgConfig.enableNested" (ngModelChange)="updateConfig()" /> Nested
       </label>
       <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.enablePersistence" (ngModelChange)="updateConfig()" />
+        Persistence
+      </label>
+      <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
       </label>
+    </div>
+
+    <div class="control-group mt-16" [class.disabled-group]="!pgConfig.enablePersistence">
+      <label>Persistence Key</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.persistenceKey"
+        (ngModelChange)="updateConfig()"
+        placeholder="accordion-state-v1"
+      ></ui-input>
     </div>
   </div>
 
@@ -140,6 +173,70 @@
     </div>
   </div>
 
+  <div slot="content-advanced" class="control-grid p-16">
+    <div class="control-group">
+      <label>Physics</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.physics"
+        (ngModelChange)="updateConfig()"
+        [options]="physicsOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Theme</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.theme"
+        (ngModelChange)="updateConfig()"
+        [options]="themeOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Columns (1–4)</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.columns"
+        (ngModelChange)="updateConfig()"
+        [options]="columnsOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Arrow Icon Collapsed</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.arrowIconCollapsed"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. chevron-right"
+      ></ui-input>
+    </div>
+
+    <div class="control-group">
+      <label>Arrow Icon Expanded</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.arrowIconExpanded"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. chevron-down"
+      ></ui-input>
+    </div>
+
+    <div class="checkbox-grid mt-16">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.autoScroll" (ngModelChange)="updateConfig()" /> Auto
+        Scroll
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.stickyHeaders" (ngModelChange)="updateConfig()" /> Sticky
+        Headers
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.printExpandAll" (ngModelChange)="updateConfig()" /> Print
+        Expand All
+      </label>
+    </div>
+  </div>
+
   <div preview class="preview-stage h-scrollable">
     <ui-accordion
       #demoElement
@@ -148,6 +245,7 @@
       [defaultOpen]="getParsedDefaultOpen()"
       [variant]="pgConfig.variant"
       [size]="pgConfig.size"
+      [attr.icon-library]="pgConfig.iconLibrary || null"
       [attr.icon-position]="pgConfig.iconPosition"
       [attr.selected-header-color]="pgConfig.selectedHeaderColor"
       [attr.hide-arrow]="pgConfig.hideArrow ? '' : null"
@@ -156,14 +254,25 @@
       [attr.dense]="pgConfig.dense ? '' : null"
       [attr.disabled]="pgConfig.disabled ? '' : null"
       [attr.enable-search]="pgConfig.enableSearch ? '' : null"
+      [attr.search-placeholder]="pgConfig.enableSearch ? pgConfig.searchPlaceholder : null"
       [attr.enable-expand-collapse-all]="pgConfig.enableExpandCollapseAll ? '' : null"
       [attr.enable-drag-drop]="pgConfig.enableDragDrop ? '' : null"
       [attr.enable-nested]="pgConfig.enableNested ? '' : null"
+      [attr.enable-persistence]="pgConfig.enablePersistence ? '' : null"
+      [attr.persistence-key]="pgConfig.enablePersistence ? pgConfig.persistenceKey : null"
       [attr.loading]="pgConfig.loading ? '' : null"
       [attr.animation-duration]="pgConfig.animationDuration"
       [attr.animation-timing]="pgConfig.animationTiming"
       [attr.lazy]="pgConfig.lazy ? '' : null"
       [attr.header-level]="pgConfig.headerLevel"
+      [attr.auto-scroll]="pgConfig.autoScroll ? '' : null"
+      [attr.sticky-headers]="pgConfig.stickyHeaders ? '' : null"
+      [attr.physics]="pgConfig.physics !== 'stiff' ? pgConfig.physics : null"
+      [attr.columns]="pgConfig.columns > 1 ? pgConfig.columns : null"
+      [attr.theme]="pgConfig.theme !== 'default' ? pgConfig.theme : null"
+      [attr.print-expand-all]="pgConfig.printExpandAll ? '' : null"
+      [attr.arrow-icon-collapsed]="pgConfig.arrowIconCollapsed || null"
+      [attr.arrow-icon-expanded]="pgConfig.arrowIconExpanded || null"
       class="w-full"
       (accordionChange)="onAccordionChange($event)"
     >
