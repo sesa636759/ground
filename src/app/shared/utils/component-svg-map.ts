@@ -144,17 +144,6 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="48" y1="78" x2="108" y2="78" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
   </svg>`,
 
-  chip: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="10"  y="30" width="64" height="30" rx="15" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="1.5"/>
-    <line x1="24" y1="45" x2="56"  y2="45" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-    <line x1="62" y1="39" x2="68"  y2="51" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-    <line x1="68" y1="39" x2="62"  y2="51" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-    <rect x="82"  y="30" width="58" height="30" rx="15" fill="currentColor" fill-opacity=".1"  stroke="currentColor" stroke-width="1.5"/>
-    <line x1="96" y1="45" x2="128" y2="45" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-    <rect x="148" y="30" width="44" height="30" rx="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
-    <line x1="158" y1="45" x2="182" y2="45" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
-  </svg>`,
-
   'context-menu': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="38" y="5"  width="124" height="80" rx="10" fill="currentColor" fill-opacity=".08" stroke="currentColor" stroke-width="1.5"/>
     <circle cx="52" cy="22" r="5"  fill="currentColor" opacity=".4"/>
@@ -318,15 +307,6 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="133" y1="22" x2="185" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
     <line x1="133" y1="34" x2="185" y2="34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
     <line x1="133" y1="65" x2="185" y2="65" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".35"/>
-  </svg>`,
-
-  pill: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="12"  y="30" width="70" height="30" rx="15" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="1.5"/>
-    <line x1="24" y1="45" x2="72"  y2="45" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-    <rect x="92"  y="30" width="50" height="30" rx="15" fill="none" stroke="currentColor" stroke-width="1.5"/>
-    <line x1="104" y1="45" x2="132" y2="45" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-    <rect x="152" y="33" width="38" height="24" rx="12" fill="currentColor" fill-opacity=".3"/>
-    <line x1="161" y1="45" x2="181" y2="45" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
   </svg>`,
 
   popover: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -658,6 +638,3 @@ COMPONENT_SVG_MAP['set-avatar-group'] = COMPONENT_SVG_MAP['avatar-group'];
 COMPONENT_SVG_MAP['set-context-menu'] = COMPONENT_SVG_MAP['context-menu'];
 COMPONENT_SVG_MAP['set-anchor'] = COMPONENT_SVG_MAP['anchor'];
 COMPONENT_SVG_MAP['set-animate-on-scroll'] = COMPONENT_SVG_MAP['animate-on-scroll'];
-
-
-

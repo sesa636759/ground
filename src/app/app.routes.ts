@@ -373,11 +373,6 @@ export const routes: Routes = [
           import('./demos/common/badge/badge-demo.component').then((m) => m.DmBadgeDemoComponent),
       },
       {
-        path: 'chip',
-        loadComponent: () =>
-          import('./demos/common/chip/chip-demo.component').then((m) => m.DmChipDemoComponent),
-      },
-      {
         path: 'switch',
         loadComponent: () =>
           import('./demos/common/switch/switch-demo.component').then(
@@ -451,11 +446,6 @@ export const routes: Routes = [
       //     ),
       // },
 
-      {
-        path: 'pill',
-        loadComponent: () =>
-          import('./demos/common/pill/pill-demo.component').then((m) => m.DmPillDemoComponent),
-      },
       {
         path: 'cascade-select',
         loadComponent: () =>

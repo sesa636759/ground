@@ -1,7 +1,7 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
     icon="sparkles"
-  iconLibrary="lucide"
+    iconLibrary="lucide"
     title="Animate on Scroll"
     description="Add stunning, hardware-accelerated scroll animations to any element with a single directive or component wrapper."
   ></pg-demo-header>
@@ -11,670 +11,666 @@
       <ds-animate-on-scroll-playground></ds-animate-on-scroll-playground>
     </div>
 
-    <div slot="examples">
-      <div class="demo-split-layout">
-        <aside class="sidebar-column">
-          <pg-demo-sidebar [variants]="anchorLinks"></pg-demo-sidebar>
-        </aside>
-        <div class="examples-content scroll-spy-container">
-          <!-- Basic Animations -->
-          <pg-example-section
-            id="fade-in-basic"
-            title="✨ Fade In"
-            description="Smooth fade entrance with configurable duration."
-            [code]="fadeInBasicCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="fade-in" duration="600">
-                  <div class="content-box">
-                    <h3>Fade In</h3>
-                    <p>Smooth fade entrance</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Basic Animations -->
+        <pg-example-section
+          id="fade-in-basic"
+          title="Fade In"
+          description="Smooth fade entrance with configurable duration."
+          [code]="fadeInBasicCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="fade-in" duration="600">
+                <div class="content-box">
+                  <h3>Fade In</h3>
+                  <p>Smooth fade entrance</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="fade-out-basic"
-            title="✨ Fade Out"
-            description="Fade out effect triggered on scroll."
-            [code]="fadeOutBasicCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="fade-out" duration="600">
-                  <div class="content-box">
-                    <h3>Fade Out</h3>
-                    <p>Fade out on scroll</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="fade-out-basic"
+          title="Fade Out"
+          description="Fade out effect triggered on scroll."
+          [code]="fadeOutBasicCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="fade-out" duration="600">
+                <div class="content-box">
+                  <h3>Fade Out</h3>
+                  <p>Fade out on scroll</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="slide-up"
-            title="⬆️ Slide Up"
-            description="Element slides up from bottom with smooth motion."
-            [code]="slideUpCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="slide-up" duration="800" offset="100">
-                  <div class="content-box">
-                    <h3>Slide Up</h3>
-                    <p>Slide up from bottom</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="slide-up"
+          title="Slide Up"
+          description="Element slides up from bottom with smooth motion."
+          [code]="slideUpCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="slide-up" duration="800" offset="100">
+                <div class="content-box">
+                  <h3>Slide Up</h3>
+                  <p>Slide up from bottom</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="slide-down"
-            title="⬇️ Slide Down"
-            description="Element slides down from top."
-            [code]="slideDownCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="slide-down" duration="800">
-                  <div class="content-box">
-                    <h3>Slide Down</h3>
-                    <p>Slide down from top</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="slide-down"
+          title="Slide Down"
+          description="Element slides down from top."
+          [code]="slideDownCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="slide-down" duration="800">
+                <div class="content-box">
+                  <h3>Slide Down</h3>
+                  <p>Slide down from top</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="slide-left"
-            title="⬅️ Slide Left"
-            description="Element slides from right to left."
-            [code]="slideLeftCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="slide-left" duration="800">
-                  <div class="content-box">
-                    <h3>Slide Left</h3>
-                    <p>Slide from right to left</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="slide-left"
+          title="Slide Left"
+          description="Element slides from right to left."
+          [code]="slideLeftCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="slide-left" duration="800">
+                <div class="content-box">
+                  <h3>Slide Left</h3>
+                  <p>Slide from right to left</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="slide-right"
-            title="➡️ Slide Right"
-            description="Element slides from left to right."
-            [code]="slideRightCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="slide-right" duration="800">
-                  <div class="content-box">
-                    <h3>Slide Right</h3>
-                    <p>Slide from left to right</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="slide-right"
+          title="Slide Right"
+          description="Element slides from left to right."
+          [code]="slideRightCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="slide-right" duration="800">
+                <div class="content-box">
+                  <h3>Slide Right</h3>
+                  <p>Slide from left to right</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="zoom-in"
-            title="🔍 Zoom In"
-            description="Scale up entrance effect from 50% to full size."
-            [code]="zoomInCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="zoom-in" duration="700" scale="0.5">
-                  <div class="content-box">
-                    <h3>Zoom In</h3>
-                    <p>Scale up entrance</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="zoom-in"
+          title="Zoom In"
+          description="Scale up entrance effect from 50% to full size."
+          [code]="zoomInCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="zoom-in" duration="700" scale="0.5">
+                <div class="content-box">
+                  <h3>Zoom In</h3>
+                  <p>Scale up entrance</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="zoom-out"
-            title="🔍 Zoom Out"
-            description="Scale down entrance effect from 150% to normal size."
-            [code]="zoomOutCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="zoom-out" duration="700" scale="1.5">
-                  <div class="content-box">
-                    <h3>Zoom Out</h3>
-                    <p>Scale down entrance</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="zoom-out"
+          title="Zoom Out"
+          description="Scale down entrance effect from 150% to normal size."
+          [code]="zoomOutCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="zoom-out" duration="700" scale="1.5">
+                <div class="content-box">
+                  <h3>Zoom Out</h3>
+                  <p>Scale down entrance</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="bounce"
-            title="🏀 Bounce"
-            description="Bouncy, energetic entrance effect."
-            [code]="bounceCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="bounce" duration="1000">
-                  <div class="content-box">
-                    <h3>Bounce</h3>
-                    <p>Bouncy entrance effect</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="bounce"
+          title="Bounce"
+          description="Bouncy, energetic entrance effect."
+          [code]="bounceCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="bounce" duration="1000">
+                <div class="content-box">
+                  <h3>Bounce</h3>
+                  <p>Bouncy entrance effect</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="flip"
-            title="🔄 Flip"
-            description="Classic flip animation effect."
-            [code]="flipCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="flip" duration="900">
-                  <div class="content-box">
-                    <h3>Flip</h3>
-                    <p>Flip animation</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="flip"
+          title="Flip"
+          description="Classic flip animation effect."
+          [code]="flipCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="flip" duration="900">
+                <div class="content-box">
+                  <h3>Flip</h3>
+                  <p>Flip animation</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <!-- Cinematic Effects -->
-          <pg-example-section
-            id="blur-entrance"
-            title="🌫️ Blur Entrance"
-            description="Starts blurry and becomes sharp for premium feel."
-            [code]="blurEntranceCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll
-                  animation="fade-in"
-                  blur-amount="10"
-                  duration="1000"
-                  easing="ease-out"
-                >
-                  <div class="cinematic-box">
-                    <h3>Blur Entrance</h3>
-                    <p>Starts blurry, becomes sharp</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <!-- Cinematic Effects -->
+        <pg-example-section
+          id="blur-entrance"
+          title="Blur Entrance"
+          description="Starts blurry and becomes sharp for premium feel."
+          [code]="blurEntranceCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll
+                animation="fade-in"
+                blur-amount="10"
+                duration="1000"
+                easing="ease-out"
+              >
+                <div class="cinematic-box">
+                  <h3>Blur Entrance</h3>
+                  <p>Starts blurry, becomes sharp</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="glassmorphic-blur"
-            title="🌫️ Glassmorphic Blur"
-            description="20px Gaussian blur with elastic easing for native-app feel."
-            [code]="glassmorphicBlurCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll
-                  animation="fade-in"
-                  blur-amount="20"
-                  easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-                  duration="1200"
-                >
-                  <div class="glass-box">
-                    <h3>Premium Content</h3>
-                    <p>Glassmorphic blur with elastic easing</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="glassmorphic-blur"
+          title="Glassmorphic Blur"
+          description="20px Gaussian blur with elastic easing for native-app feel."
+          [code]="glassmorphicBlurCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll
+                animation="fade-in"
+                blur-amount="20"
+                easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+                duration="1200"
+              >
+                <div class="glass-box">
+                  <h3>Premium Content</h3>
+                  <p>Glassmorphic blur with elastic easing</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="elastic-easing"
-            title="〽️ Elastic Easing"
-            description="Bouncy, playful animation curve using cubic-bezier."
-            [code]="elasticEasingCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll
-                  animation="slide-up"
-                  easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-                  duration="1000"
-                >
-                  <div class="content-box">
-                    <h3>Elastic Easing</h3>
-                    <p>Bouncy, playful animation curve</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="elastic-easing"
+          title="Elastic Easing"
+          description="Bouncy, playful animation curve using cubic-bezier."
+          [code]="elasticEasingCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll
+                animation="slide-up"
+                easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+                duration="1000"
+              >
+                <div class="content-box">
+                  <h3>Elastic Easing</h3>
+                  <p>Bouncy, playful animation curve</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <!-- 3D Transforms -->
-          <pg-example-section
-            id="flip-in-3d"
-            title="🧊 Flip In 3D"
-            description="Hardware-accelerated 3D flip along X-axis with perspective."
-            [code]="flipIn3dCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-700 pt-350">
-                <ui-animate-on-scroll
-                  animation="flip-in"
-                  perspective="1000"
-                  rotate-x="90"
-                  duration="800"
-                >
-                  <div class="content-box bg-gradient-purple text-white">
-                    <h3>Flip In 3D</h3>
-                    <p>Rotates along X-axis with perspective</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <!-- 3D Transforms -->
+        <pg-example-section
+          id="flip-in-3d"
+          title="Flip In 3D"
+          description="Hardware-accelerated 3D flip along X-axis with perspective."
+          [code]="flipIn3dCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-700 pt-350">
+              <ui-animate-on-scroll
+                animation="flip-in"
+                perspective="1000"
+                rotate-x="90"
+                duration="800"
+              >
+                <div class="content-box bg-gradient-purple text-white">
+                  <h3>Flip In 3D</h3>
+                  <p>Rotates along X-axis with perspective</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="rotate-3d"
-            title="🧊 Rotate 3D"
-            description="Complex 3D rotation from center point along Y-axis."
-            [code]="rotate3dCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-700 pt-350">
-                <ui-animate-on-scroll
-                  animation="rotate-3d"
-                  perspective="1500"
-                  rotate-y="180"
-                  duration="1000"
-                >
-                  <div class="content-box bg-gradient-pink text-white">
-                    <h3>Rotate 3D</h3>
-                    <p>Complex 3D rotation from center</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="rotate-3d"
+          title="Rotate 3D"
+          description="Complex 3D rotation from center point along Y-axis."
+          [code]="rotate3dCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-700 pt-350">
+              <ui-animate-on-scroll
+                animation="rotate-3d"
+                perspective="1500"
+                rotate-y="180"
+                duration="1000"
+              >
+                <div class="content-box bg-gradient-pink text-white">
+                  <h3>Rotate 3D</h3>
+                  <p>Complex 3D rotation from center</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="perspective-depth"
-            title="🧊 Perspective Depth"
-            description="Deep 3D perspective with multiple rotation axes."
-            [code]="perspectiveDepthCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-700 pt-350">
-                <ui-animate-on-scroll
-                  animation="zoom-in"
-                  perspective="2000"
-                  rotate-x="45"
-                  rotate-y="45"
-                  duration="1200"
-                >
-                  <div class="content-box bg-gradient-blue text-white">
-                    <h3>Perspective Depth</h3>
-                    <p>Deep 3D perspective with multiple axes</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="perspective-depth"
+          title="Perspective Depth"
+          description="Deep 3D perspective with multiple rotation axes."
+          [code]="perspectiveDepthCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-700 pt-350">
+              <ui-animate-on-scroll
+                animation="zoom-in"
+                perspective="2000"
+                rotate-x="45"
+                rotate-y="45"
+                duration="1200"
+              >
+                <div class="content-box bg-gradient-blue text-white">
+                  <h3>Perspective Depth</h3>
+                  <p>Deep 3D perspective with multiple axes</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <!-- Stagger Effects -->
-          <pg-example-section
-            id="stagger-children"
-            title="🪜 Stagger Children"
-            description="Sequentially animate child elements with 100ms delay."
-            [code]="staggerChildrenCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-800 pt-400">
-                <ui-animate-on-scroll animation="fade-in" stagger="100">
-                  <div class="stagger-item">
-                    <strong>Analytics</strong>
-                    <p>Track your metrics</p>
-                  </div>
-                  <div class="stagger-item">
-                    <strong>Security</strong>
-                    <p>Protected data</p>
-                  </div>
-                  <div class="stagger-item">
-                    <strong>Speed</strong>
-                    <p>Lightning fast</p>
-                  </div>
-                  <div class="stagger-item">
-                    <strong>Cloud</strong>
-                    <p>Always available</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <!-- Stagger Effects -->
+        <pg-example-section
+          id="stagger-children"
+          title="Stagger Children"
+          description="Sequentially animate child elements with 100ms delay."
+          [code]="staggerChildrenCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-800 pt-400">
+              <ui-animate-on-scroll animation="fade-in" stagger="100">
+                <div class="stagger-item">
+                  <strong>Analytics</strong>
+                  <p>Track your metrics</p>
+                </div>
+                <div class="stagger-item">
+                  <strong>Security</strong>
+                  <p>Protected data</p>
+                </div>
+                <div class="stagger-item">
+                  <strong>Speed</strong>
+                  <p>Lightning fast</p>
+                </div>
+                <div class="stagger-item">
+                  <strong>Cloud</strong>
+                  <p>Always available</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="stagger-fast"
-            title="🪜 Stagger Fast"
-            description="Quick sequential animation with 50ms stagger delay."
-            [code]="staggerFastCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-800 pt-400">
-                <ui-animate-on-scroll animation="slide-up" stagger="50">
-                  <div class="stagger-item fast">Item 1</div>
-                  <div class="stagger-item fast">Item 2</div>
-                  <div class="stagger-item fast">Item 3</div>
-                  <div class="stagger-item fast">Item 4</div>
-                  <div class="stagger-item fast">Item 5</div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="stagger-fast"
+          title="Stagger Fast"
+          description="Quick sequential animation with 50ms stagger delay."
+          [code]="staggerFastCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-800 pt-400">
+              <ui-animate-on-scroll animation="slide-up" stagger="50">
+                <div class="stagger-item fast">Item 1</div>
+                <div class="stagger-item fast">Item 2</div>
+                <div class="stagger-item fast">Item 3</div>
+                <div class="stagger-item fast">Item 4</div>
+                <div class="stagger-item fast">Item 5</div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="stagger-slow"
-            title="🪜 Stagger Slow"
-            description="Deliberate sequential animation with 200ms stagger."
-            [code]="staggerSlowCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-700 pt-350">
-                <ui-animate-on-scroll animation="fade-in" stagger="200">
-                  <div class="stagger-item slow">Step 1</div>
-                  <div class="stagger-item slow">Step 2</div>
-                  <div class="stagger-item slow">Step 3</div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="stagger-slow"
+          title="Stagger Slow"
+          description="Deliberate sequential animation with 200ms stagger."
+          [code]="staggerSlowCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-700 pt-350">
+              <ui-animate-on-scroll animation="fade-in" stagger="200">
+                <div class="stagger-item slow">Step 1</div>
+                <div class="stagger-item slow">Step 2</div>
+                <div class="stagger-item slow">Step 3</div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <!-- Scroll Interactions -->
-          <pg-example-section
-            id="scroll-trigger"
-            title="⚡ Scroll Trigger"
-            description="Animate one element based on another element's scroll position."
-            [code]="scrollTriggerCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-1200">
-                <div class="trigger-box w-full">
-                  <div class="sticky-sidebar">
-                    <ui-animate-on-scroll animation="shake" trigger="#trigger-zone">
-                      <div class="content-box">
-                        <strong>Reactive Sidebar</strong>
-                        <p>Watching trigger...</p>
-                      </div>
-                    </ui-animate-on-scroll>
-                  </div>
-                  <div class="main-column">
-                    <div class="generic-content"><p>Generic Content</p></div>
-                    <div id="trigger-zone" class="trigger-zone">
-                      <h3>TRIGGER ZONE</h3>
-                      <p>Scroll here to activate sidebar</p>
+        <!-- Scroll Interactions -->
+        <pg-example-section
+          id="scroll-trigger"
+          title="Scroll Trigger"
+          description="Animate one element based on another element's scroll position."
+          [code]="scrollTriggerCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-1200">
+              <div class="trigger-box w-full">
+                <div class="sticky-sidebar">
+                  <ui-animate-on-scroll animation="shake" trigger="#trigger-zone">
+                    <div class="content-box">
+                      <strong>Reactive Sidebar</strong>
+                      <p>Watching trigger...</p>
                     </div>
-                    <div class="generic-content"><p>Active Content Area</p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </pg-example-section>
-
-          <pg-example-section
-            id="scroll-scrubbing"
-            title="🖱️ Scroll Scrubbing"
-            description="Directly bind animation progress to scrollbar position."
-            [code]="scrollScrubbingCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-1500 pt-600 pb-600">
-                <div class="scrub-box">
-                  <h3>SCRUB</h3>
-                  <p>Scroll up and down to see me rotate and zoom!</p>
-                  <ui-animate-on-scroll animation="scrub" scrub="true" rotate-z="360" scale="1.5">
-                    <div class="scrub-item">SCRUB</div>
                   </ui-animate-on-scroll>
                 </div>
-              </div>
-            </div>
-          </pg-example-section>
-
-          <pg-example-section
-            id="scrub-rotate"
-            title="🔄 Scrub Rotate"
-            description="Double rotation (720 degrees) tied to scroll progress."
-            [code]="scrubRotateCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-1500 pt-600 pb-600">
-                <div class="scrub-box">
-                  <ui-animate-on-scroll animation="scrub" scrub="true" rotate-z="720">
-                    <div class="scrub-item bg-gradient-pink">720 ROTATE</div>
-                  </ui-animate-on-scroll>
+                <div class="main-column">
+                  <div class="generic-content"><p>Generic Content</p></div>
+                  <div id="trigger-zone" class="trigger-zone">
+                    <h3>TRIGGER ZONE</h3>
+                    <p>Scroll here to activate sidebar</p>
+                  </div>
+                  <div class="generic-content"><p>Active Content Area</p></div>
                 </div>
               </div>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="scrub-scale"
-            title="🔍 Scrub Scale"
-            description="Scale to 2x size based on scroll position."
-            [code]="scrubScaleCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-1500 pt-600 pb-600">
-                <div class="scrub-box">
-                  <ui-animate-on-scroll animation="scrub" scrub="true" scale="2">
-                    <div class="scrub-item bg-gradient-blue">2x SCALE</div>
-                  </ui-animate-on-scroll>
+        <pg-example-section
+          id="scroll-scrubbing"
+          title="Scroll Scrubbing"
+          description="Directly bind animation progress to scrollbar position."
+          [code]="scrollScrubbingCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-1500 pt-600 pb-600">
+              <div class="scrub-box">
+                <h3>SCRUB</h3>
+                <p>Scroll up and down to see me rotate and zoom!</p>
+                <ui-animate-on-scroll animation="scrub" scrub="true" rotate-z="360" scale="1.5">
+                  <div class="scrub-item">SCRUB</div>
+                </ui-animate-on-scroll>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="scrub-rotate"
+          title="Scrub Rotate"
+          description="Double rotation (720 degrees) tied to scroll progress."
+          [code]="scrubRotateCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-1500 pt-600 pb-600">
+              <div class="scrub-box">
+                <ui-animate-on-scroll animation="scrub" scrub="true" rotate-z="720">
+                  <div class="scrub-item bg-gradient-pink">720 ROTATE</div>
+                </ui-animate-on-scroll>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="scrub-scale"
+          title="Scrub Scale"
+          description="Scale to 2x size based on scroll position."
+          [code]="scrubScaleCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-1500 pt-600 pb-600">
+              <div class="scrub-box">
+                <ui-animate-on-scroll animation="scrub" scrub="true" scale="2">
+                  <div class="scrub-item bg-gradient-blue">2x SCALE</div>
+                </ui-animate-on-scroll>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Text Animations -->
+        <pg-example-section
+          id="text-char"
+          title="Text Character"
+          description="Reveal text character-by-character with 50ms stagger."
+          [code]="textCharCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-800 pt-400">
+              <ui-animate-on-scroll animation="text-reveal" text-mode="char" stagger="50">
+                <h2 class="text-center text-3xl m-0">Start Building</h2>
+              </ui-animate-on-scroll>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="text-word"
+          title="Text Word"
+          description="Reveal text word-by-word with 100ms stagger."
+          [code]="textWordCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-800 pt-400">
+              <ui-animate-on-scroll animation="text-reveal" text-mode="word" stagger="100">
+                <p class="text-center text-xl m-0">Create amazing scroll experiences today</p>
+              </ui-animate-on-scroll>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="text-stagger"
+          title="Text Stagger"
+          description="Fast character reveal with 30ms stagger for dramatic effect."
+          [code]="textStaggerCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-800 pt-400">
+              <ui-animate-on-scroll
+                animation="text-reveal"
+                text-mode="char"
+                stagger="30"
+                duration="50"
+              >
+                <h1 class="text-center text-4xl m-0">Fast Character Reveal</h1>
+              </ui-animate-on-scroll>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Advanced Features -->
+        <pg-example-section
+          id="shake-animation"
+          title="Shake"
+          description="Attention-grabbing shake effect for notifications or alerts."
+          [code]="shakeAnimationCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="shake" duration="500">
+                <div class="content-box">
+                  <h3>Shake</h3>
+                  <p>Attention-grabbing shake effect</p>
                 </div>
-              </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <!-- Text Animations -->
-          <pg-example-section
-            id="text-char"
-            title="🔠 Text Character"
-            description="Reveal text character-by-character with 50ms stagger."
-            [code]="textCharCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-800 pt-400">
-                <ui-animate-on-scroll animation="text-reveal" text-mode="char" stagger="50">
-                  <h2 class="text-center text-3xl m-0">Start Building</h2>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="repeat-animation"
+          title="Repeat Animation"
+          description="Animation repeats every time element enters viewport."
+          [code]="repeatAnimationCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="bounce" repeat="true" duration="1000">
+                <div class="content-box">
+                  <h3>Repeat</h3>
+                  <p>Animation repeats on every scroll</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="text-word"
-            title="🔤 Text Word"
-            description="Reveal text word-by-word with 100ms stagger."
-            [code]="textWordCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-800 pt-400">
-                <ui-animate-on-scroll animation="text-reveal" text-mode="word" stagger="100">
-                  <p class="text-center text-xl m-0">Create amazing scroll experiences today</p>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="mirror-effect"
+          title="Mirror Effect"
+          description="Animation reverses when scrolling up."
+          [code]="mirrorEffectCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="slide-up" mirror="true" duration="800">
+                <div class="content-box">
+                  <h3>Mirror</h3>
+                  <p>Reverses when scrolling up</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="text-stagger"
-            title="🔠 Text Stagger"
-            description="Fast character reveal with 30ms stagger for dramatic effect."
-            [code]="textStaggerCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-800 pt-400">
-                <ui-animate-on-scroll
-                  animation="text-reveal"
-                  text-mode="char"
-                  stagger="30"
-                  duration="50"
-                >
-                  <h1 class="text-center text-4xl m-0">Fast Character Reveal</h1>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="custom-threshold"
+          title="Custom Threshold"
+          description="Trigger animation at 50% visibility instead of default."
+          [code]="customThresholdCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="fade-in" threshold="0.5" duration="600">
+                <div class="content-box">
+                  <h3>Custom Threshold</h3>
+                  <p>Triggers at 50% visibility</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <!-- Advanced Features -->
-          <pg-example-section
-            id="shake-animation"
-            title="📳 Shake"
-            description="Attention-grabbing shake effect for notifications or alerts."
-            [code]="shakeAnimationCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="shake" duration="500">
-                  <div class="content-box">
-                    <h3>Shake</h3>
-                    <p>Attention-grabbing shake effect</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="delay-timing"
+          title="Delay Timing"
+          description="500ms delay before animation starts."
+          [code]="delayTimingCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="fade-in" delay="500" duration="800">
+                <div class="content-box">
+                  <h3>Delayed</h3>
+                  <p>500ms delay before animation</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="repeat-animation"
-            title="🔁 Repeat Animation"
-            description="Animation repeats every time element enters viewport."
-            [code]="repeatAnimationCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="bounce" repeat="true" duration="1000">
-                  <div class="content-box">
-                    <h3>Repeat</h3>
-                    <p>Animation repeats on every scroll</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="duration-control"
+          title="Duration Control"
+          description="Extended 2 second duration for dramatic slow-motion effect."
+          [code]="durationControlCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview">
+              <ui-animate-on-scroll animation="slide-up" duration="2000">
+                <div class="content-box">
+                  <h3>Slow Motion</h3>
+                  <p>2 second duration for dramatic effect</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="mirror-effect"
-            title="🪞 Mirror Effect"
-            description="Animation reverses when scrolling up."
-            [code]="mirrorEffectCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="slide-up" mirror="true" duration="800">
-                  <div class="content-box">
-                    <h3>Mirror</h3>
-                    <p>Reverses when scrolling up</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
+        <pg-example-section
+          id="combined-effects"
+          title="Combined Effects"
+          description="Combines blur, 3D perspective, rotation, scale, and elastic easing."
+          [code]="combinedEffectsCode()"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box scrollable-preview min-h-700 pt-350">
+              <ui-animate-on-scroll
+                animation="fade-in"
+                blur-amount="15"
+                perspective="1000"
+                rotate-x="30"
+                scale="0.8"
+                duration="1200"
+                easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+              >
+                <div class="glass-box">
+                  <h3>Combined Effects</h3>
+                  <p>Blur + 3D + Scale + Elastic Easing</p>
+                </div>
+              </ui-animate-on-scroll>
             </div>
-          </pg-example-section>
-
-          <pg-example-section
-            id="custom-threshold"
-            title="🎯 Custom Threshold"
-            description="Trigger animation at 50% visibility instead of default."
-            [code]="customThresholdCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="fade-in" threshold="0.5" duration="600">
-                  <div class="content-box">
-                    <h3>Custom Threshold</h3>
-                    <p>Triggers at 50% visibility</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
-            </div>
-          </pg-example-section>
-
-          <pg-example-section
-            id="delay-timing"
-            title="⏱️ Delay Timing"
-            description="500ms delay before animation starts."
-            [code]="delayTimingCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="fade-in" delay="500" duration="800">
-                  <div class="content-box">
-                    <h3>Delayed</h3>
-                    <p>500ms delay before animation</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
-            </div>
-          </pg-example-section>
-
-          <pg-example-section
-            id="duration-control"
-            title="⏳ Duration Control"
-            description="Extended 2 second duration for dramatic slow-motion effect."
-            [code]="durationControlCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview">
-                <ui-animate-on-scroll animation="slide-up" duration="2000">
-                  <div class="content-box">
-                    <h3>Slow Motion</h3>
-                    <p>2 second duration for dramatic effect</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
-            </div>
-          </pg-example-section>
-
-          <pg-example-section
-            id="combined-effects"
-            title="🎭 Combined Effects"
-            description="Combines blur, 3D perspective, rotation, scale, and elastic easing."
-            [code]="combinedEffectsCode()"
-          >
-            <div class="demo-grid col-1">
-              <div class="preview-box scrollable-preview min-h-700 pt-350">
-                <ui-animate-on-scroll
-                  animation="fade-in"
-                  blur-amount="15"
-                  perspective="1000"
-                  rotate-x="30"
-                  scale="0.8"
-                  duration="1200"
-                  easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-                >
-                  <div class="glass-box">
-                    <h3>Combined Effects</h3>
-                    <p>Blur + 3D + Scale + Elastic Easing</p>
-                  </div>
-                </ui-animate-on-scroll>
-              </div>
-            </div>
-          </pg-example-section>
-        </div>
+          </div>
+        </pg-example-section>
       </div>
     </div>
     <div slot="docs">

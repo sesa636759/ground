@@ -1,7 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
     icon="bell"
-  iconLibrary="lucide"
+    iconLibrary="lucide"
     title="Snackbar"
     description="Lightweight toast notifications that slide in from any corner of the screen with built-in types, stacking, and auto-dismiss."
   ></pg-demo-header>
@@ -11,85 +11,83 @@
       <dm-snackbar-playground></dm-snackbar-playground>
     </div>
 
-    <div slot="examples">
-      <div class="demo-split-layout">
-        <pg-demo-sidebar [variants]="exampleVariants"></pg-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <div class="examples-content scroll-spy-container">
-          <!-- Types -->
-          <pg-example-section
-            id="types"
-            title="Types"
-            description="Built-in notification types: success, error, warning, and info"
-            [code]="typesCode"
-            language="javascript"
-          >
-            <div class="demo-flex-wrap">
-              <ui-button variant="success" label="Success" (click)="notify('success')"></ui-button>
-              <ui-button variant="danger" label="Error" (click)="notify('error')"></ui-button>
-              <ui-button variant="warning" label="Warning" (click)="notify('warning')"></ui-button>
-              <ui-button variant="secondary" label="Info" (click)="notify('info')"></ui-button>
-            </div>
-          </pg-example-section>
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Types -->
+        <pg-example-section
+          id="types"
+          title="Types"
+          description="Built-in notification types: success, error, warning, and info"
+          [code]="typesCode"
+          language="javascript"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button variant="success" label="Success" (click)="notify('success')"></ui-button>
+            <ui-button variant="danger" label="Error" (click)="notify('error')"></ui-button>
+            <ui-button variant="warning" label="Warning" (click)="notify('warning')"></ui-button>
+            <ui-button variant="secondary" label="Info" (click)="notify('info')"></ui-button>
+          </div>
+        </pg-example-section>
 
-          <!-- Positions -->
-          <pg-example-section
-            id="positions"
-            title="Positions"
-            description="Six positions — top/bottom × left/center/right. Each button fires a notification at its labelled position."
-            [code]="positionsCode"
-          >
-            <div class="demo-grid col-3 gap-12">
-              <ui-button
-                variant="secondary"
-                label="Top Left"
-                (click)="notifyAt('info', 'top-left')"
-              ></ui-button>
-              <ui-button
-                variant="secondary"
-                label="Top Center"
-                (click)="notifyAt('success', 'top-center')"
-              ></ui-button>
-              <ui-button
-                variant="secondary"
-                label="Top Right"
-                (click)="notifyAt('success', 'top-right')"
-              ></ui-button>
-              <ui-button
-                variant="secondary"
-                label="Bottom Left"
-                (click)="notifyAt('warning', 'bottom-left')"
-              ></ui-button>
-              <ui-button
-                variant="secondary"
-                label="Bottom Center"
-                (click)="notifyAt('error', 'bottom-center')"
-              ></ui-button>
-              <ui-button
-                variant="secondary"
-                label="Bottom Right"
-                (click)="notifyAt('info', 'bottom-right')"
-              ></ui-button>
-            </div>
-          </pg-example-section>
+        <!-- Positions -->
+        <pg-example-section
+          id="positions"
+          title="Positions"
+          description="Six positions — top/bottom × left/center/right. Each button fires a notification at its labelled position."
+          [code]="positionsCode"
+        >
+          <div class="demo-grid col-3 gap-12">
+            <ui-button
+              variant="secondary"
+              label="Top Left"
+              (click)="notifyAt('info', 'top-left')"
+            ></ui-button>
+            <ui-button
+              variant="secondary"
+              label="Top Center"
+              (click)="notifyAt('success', 'top-center')"
+            ></ui-button>
+            <ui-button
+              variant="secondary"
+              label="Top Right"
+              (click)="notifyAt('success', 'top-right')"
+            ></ui-button>
+            <ui-button
+              variant="secondary"
+              label="Bottom Left"
+              (click)="notifyAt('warning', 'bottom-left')"
+            ></ui-button>
+            <ui-button
+              variant="secondary"
+              label="Bottom Center"
+              (click)="notifyAt('error', 'bottom-center')"
+            ></ui-button>
+            <ui-button
+              variant="secondary"
+              label="Bottom Right"
+              (click)="notifyAt('info', 'bottom-right')"
+            ></ui-button>
+          </div>
+        </pg-example-section>
 
-          <!-- Card Stack -->
-          <pg-example-section
-            id="card-stack"
-            title="Card Stacking"
-            description="Stack multiple notifications visually to reduce screen clutter"
-            [code]="cardStackCode"
-          >
-            <div class="demo-flex-wrap">
-              <ui-button
-                variant="primary"
-                label="Stack Notifications"
-                (click)="notify('success')"
-              ></ui-button>
-              <ui-button variant="primary" label="Add Another" (click)="notify('info')"></ui-button>
-            </div>
-          </pg-example-section>
-        </div>
+        <!-- Card Stack -->
+        <pg-example-section
+          id="card-stack"
+          title="Card Stacking"
+          description="Stack multiple notifications visually to reduce screen clutter"
+          [code]="cardStackCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button
+              variant="primary"
+              label="Stack Notifications"
+              (click)="notify('success')"
+            ></ui-button>
+            <ui-button variant="primary" label="Add Another" (click)="notify('info')"></ui-button>
+          </div>
+        </pg-example-section>
       </div>
     </div>
 
