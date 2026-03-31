@@ -120,7 +120,7 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
       if (!this.pgConfig.showArrow) code += `  [showArrow]="false"\n`;
       if (this.pgConfig.disabled) code += `  disabled\n`;
       code += `  [options]="dropdownOptions"\n`;
-      code += '></ui--dropdown>';
+      code += '></ui-dropdown>';
 
       this.generatedCode.set(code);
       this.refreshCode();

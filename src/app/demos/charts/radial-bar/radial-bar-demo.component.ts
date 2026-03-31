@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-radial-bar-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmRadialBarPlaygroundComponent,
     DemoTabsComponent,
@@ -25,8 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRadialBarDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'kpi', title: 'KPI Rings', icon: '🎯', color: '#6366f1' },
-    { id: 'skills', title: 'Skills Radar', icon: '💼', color: '#10b981' },
+    { id: 'kpi', title: 'KPI Rings', icon: 'target',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'skills', title: 'Skills Radar', icon: 'star',
+      iconLibrary: 'lucide', color: '#10b981' },
   ];
 
   kpiBars = [

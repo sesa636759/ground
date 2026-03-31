@@ -1,6 +1,7 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="✅"
+    icon="check-square"
+  iconLibrary="lucide"
     title="Checkbox Component"
     description="Versatile checkbox component with support for multiple visual variants, states, groups, and seamless form integration."
   >
@@ -256,6 +257,86 @@
                 {{ formMessage }}
               </p>
             </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Elite Effects -->
+        <pg-example-section
+          id="elite-effects"
+          title="Elite Effects"
+          description="Glassmorphism, raised relief, confetti bursts, glow halos, and haptic feedback."
+          [code]="eliteEffectsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-checkbox
+              label="Frosted Glass"
+              description="Refractive backdrop"
+              variant="glass"
+              color="info"
+              glow
+              checked
+            ></ui-checkbox>
+            <ui-checkbox
+              label="Raised Relief"
+              description="Skeletal depth shadows"
+              variant="raised"
+              color="primary"
+              glow
+              checked
+            ></ui-checkbox>
+            <ui-checkbox
+              label="Confetti Burst"
+              description="Click to celebrate!"
+              confetti
+              haptic
+              color="success"
+            ></ui-checkbox>
+            <ui-checkbox label="Primary Glow" color="primary" glow checked></ui-checkbox>
+            <ui-checkbox label="Danger Glow" color="danger" glow checked></ui-checkbox>
+            <ui-checkbox
+              label="Custom Star Icon"
+              custom-check-icon="star"
+              color="warning"
+              checked
+              variant="round-color"
+            ></ui-checkbox>
+          </div>
+        </pg-example-section>
+
+        <!-- Reveal Animations -->
+        <pg-example-section
+          id="reveal-animations"
+          title="Reveal & Stagger"
+          description="Orchestrated entrance animations using reveal and reveal-stagger on checkbox groups."
+          [code]="revealAnimationsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-checkbox-group
+              orientation="vertical"
+              reveal="slide-up"
+              reveal-stagger="80"
+              label="Slide-Up Stagger"
+            >
+              <ui-checkbox value="read" label="Read Access" description="View only"></ui-checkbox>
+              <ui-checkbox
+                value="write"
+                label="Write Access"
+                description="Modify records"
+              ></ui-checkbox>
+              <ui-checkbox value="admin" label="Admin" description="Full control"></ui-checkbox>
+            </ui-checkbox-group>
+            <ui-checkbox-group
+              layout="grid"
+              columns="2"
+              reveal="zoom"
+              reveal-stagger="50"
+              label="Zoom-In Grid"
+            >
+              <ui-checkbox value="a" variant="button" label="Analytics"></ui-checkbox>
+              <ui-checkbox value="b" variant="button" label="Security"></ui-checkbox>
+              <ui-checkbox value="c" variant="button" label="Caching"></ui-checkbox>
+              <ui-checkbox value="d" variant="button" label="Logs"></ui-checkbox>
+            </ui-checkbox-group>
           </div>
         </pg-example-section>
       </div>

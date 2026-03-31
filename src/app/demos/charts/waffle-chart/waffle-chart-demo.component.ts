@@ -4,11 +4,13 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DmWaffleChartPlaygroundComponent } from '../../../playground/common/waffle-chart-playground/waffle-chart-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-waffle-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,

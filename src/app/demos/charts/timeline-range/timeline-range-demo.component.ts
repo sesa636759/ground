@@ -7,12 +7,14 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-timeline-range-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmTimelineRangePlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -25,8 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmTimelineRangeDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'project', title: 'Project Schedule', icon: '📋', color: '#6366f1' },
-    { id: 'team', title: 'Team Schedule', icon: '👥', color: '#10b981' },
+    { id: 'project', title: 'Project Schedule', icon: 'calendar-range',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'team', title: 'Team Schedule', icon: 'users',
+      iconLibrary: 'lucide', color: '#10b981' },
   ];
 
   projectCode = `<!-- Timeline Range – Project Phases (SVG) -->

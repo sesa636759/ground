@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-ohlc-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmOhlcChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,9 +27,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic OHLC', icon: '📊', color: '#6366f1' },
-    { id: 'withma', title: 'With MA', icon: '📉', color: '#0ea5e9' },
-    { id: 'weekly', title: 'Weekly', icon: '📅', color: '#10b981' },
+    { id: 'basic', title: 'Basic OHLC', icon: 'square',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'withma', title: 'With MA', icon: 'trending-up',
+      iconLibrary: 'lucide', color: '#0ea5e9' },
+    { id: 'weekly', title: 'Weekly', icon: 'calendar',
+      iconLibrary: 'lucide', color: '#10b981' },
   ];
 
   basicCode = `<!-- OHLC Chart (SVG) — Open/High/Low/Close bars -->

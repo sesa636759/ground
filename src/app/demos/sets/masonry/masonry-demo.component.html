@@ -1,6 +1,7 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="🧱"
+    icon="layout-grid"
+  iconLibrary="lucide"
     title="Masonry"
     description="A powerful grid layout component supporting masonry (waterfall), fixed grid, and flex column layouts with built-in filtering, sorting, and image lightbox."
   ></pg-demo-header>
@@ -16,134 +17,83 @@
 
         <div class="examples-content">
           <!-- Masonry Layout -->
-          <section class="demo-section" id="masonry">
-            <div class="section-header">
-              <h2>Classic Masonry</h2>
-              <p>
-                Items with variable heights are packed into columns without gaps. Best for image
-                galleries.
-              </p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry [attr.items]="sampleItems | json" [columns]="3" [gap]="16"></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="masonryCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="masonry" title="Masonry" [code]="masonryCode"
+          >
+            <ui-masonry [attr.items]="sampleItems | json" [columns]="3" [gap]="16"></ui-masonry>
+          </pg-example-section>
 
           <!-- Fixed Grid -->
-          <section class="demo-section" id="grid">
-            <div class="section-header">
-              <h2>Fixed Grid</h2>
-              <p>
-                Standard CSS grid behavior where items have consistent cell sizes. Best for product
-                listings.
-              </p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry
-                [attr.items]="sampleItems | json"
-                layout-type="grid"
-                [columns]="4"
-                [gap]="12"
-              ></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="gridCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="grid" title="Grid" [code]="gridCode"
+          >
+            <ui-masonry
+              [attr.items]="sampleItems | json"
+              layout-type="grid"
+              [columns]="4"
+              [gap]="12"
+            ></ui-masonry>
+          </pg-example-section>
 
           <!-- Columns Layout -->
-          <section class="demo-section" id="columns">
-            <div class="section-header">
-              <h2>Flex Columns</h2>
-              <p>Traditional flex-based columns. Useful for newspaper-style layouts.</p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry
-                [attr.items]="sampleItems | json"
-                layout-type="columns"
-                [columns]="3"
-                [gap]="24"
-              ></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="columnsCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="columns" title="Columns" description="Traditional flex-based columns. Useful for newspaper-style layouts." [code]="columnsCode"
+          >
+            <ui-masonry
+              [attr.items]="sampleItems | json"
+              layout-type="columns"
+              [columns]="3"
+              [gap]="24"
+            ></ui-masonry>
+          </pg-example-section>
 
           <!-- Responsive Design -->
-          <section class="demo-section" id="responsive">
-            <div class="section-header">
-              <h2>Responsive Design</h2>
-              <p>
-                Define different column counts for specific screen widths using the breakpoints
-                property.
-              </p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry
-                [attr.items]="sampleItems | json"
-                [attr.breakpoints]="{ '640': 2, '768': 3, '1024': 4 }"
-                [gap]="16"
-              ></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="responsiveCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="responsive" title="Design" [code]="responsiveCode"
+          >
+            <ui-masonry
+              [attr.items]="sampleItems | json"
+              [attr.breakpoints]="{ '640': 2, '768': 3, '1024': 4 }"
+              [gap]="16"
+            ></ui-masonry>
+          </pg-example-section>
 
           <!-- Filtering -->
-          <section class="demo-section" id="filtering">
-            <div class="section-header">
-              <h2>Filtering & Sorting</h2>
-              <p>Built-in UI for filtering by categories and sorting by title or date.</p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry
-                [attr.items]="sampleItems | json"
-                show-filters
-                [attr.filter-options]="filterOptions"
-                [columns]="3"
-              ></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="filteringCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section id="filtering" title="Filtering & Sorting" description="Built-in UI for filtering by categories and sorting by title or date." [code]="filteringCode"
+          >
+            <ui-masonry
+              [attr.items]="sampleItems | json"
+              show-filters
+              [attr.filter-options]="filterOptions"
+              [columns]="3"
+            ></ui-masonry>
+          </pg-example-section>
 
           <!-- Selection -->
-          <section class="demo-section" id="selection">
-            <div class="section-header">
-              <h2>Selection & Batch Actions</h2>
-              <p>Enable checkboxes and batch actions for managing collections.</p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry
-                [attr.items]="sampleItems | json"
-                selectable
-                multi-select
-                show-batch-actions
-                [columns]="3"
-              ></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="selectionCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section id="selection" title="Selection & Batch Actions" description="Enable checkboxes and batch actions for managing collections." [code]="selectionCode"
+          >
+            <ui-masonry
+              [attr.items]="sampleItems | json"
+              selectable
+              multi-select
+              show-batch-actions
+              [columns]="3"
+            ></ui-masonry>
+          </pg-example-section>
 
           <!-- Gallery Lightbox -->
-          <section class="demo-section" id="lightbox">
-            <div class="section-header">
-              <h2>Gallery Lightbox</h2>
-              <p>Click any item to view it in a full-screen optimized browser gallery.</p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry [attr.items]="sampleItems | json" lightbox [columns]="4"></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="lightboxCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="lightbox" title="Lightbox" description="Click any item to view it in a full-screen optimized browser gallery." [code]="lightboxCode"
+          >
+            <ui-masonry [attr.items]="sampleItems | json" lightbox [columns]="4"></ui-masonry>
+          </pg-example-section>
 
           <!-- Skeleton Loading -->
-          <section class="demo-section" id="skeleton">
-            <div class="section-header">
-              <h2>Loading States</h2>
-              <p>Use skeleton screens to improve perceived performance while loading data.</p>
-            </div>
-            <div class="demo-card p-24 bg-white min-h-400">
-              <ui-masonry loading-state [columns]="3" [gap]="16"></ui-masonry>
-            </div>
-            <ui-code-preview [htmlCode]="skeletonCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="skeleton" title="States" description="Use skeleton screens to improve perceived performance while loading data." [code]="skeletonCode"
+          >
+            <ui-masonry loading-state [columns]="3" [gap]="16"></ui-masonry>
+          </pg-example-section>
         </div>
       </div>
     </div>

@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-polar-area-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmPolarAreaChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,9 +27,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmPolarAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'skills', title: 'Skills Radar', icon: '🌐', color: '#6366f1' },
-    { id: 'sales', title: 'Sales Regions', icon: '🗺️', color: '#10b981' },
-    { id: 'multi', title: 'Multi-Dataset', icon: '📊', color: '#0ea5e9' },
+    { id: 'skills', title: 'Skills Radar', icon: 'star',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'sales', title: 'Sales Regions', icon: 'dollar-sign',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'multi', title: 'Multi-Dataset', icon: 'layers',
+      iconLibrary: 'lucide', color: '#0ea5e9' },
   ];
 
   // Sample items for different layouts

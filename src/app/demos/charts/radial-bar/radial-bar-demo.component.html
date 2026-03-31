@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🎯"
+    icon="target"
+  iconLibrary="lucide"
     title="Radial Bar Chart"
     description="Circular progress bars arranged in concentric rings. Great for comparing categorical performance metrics, KPIs, and multi-dimensional data in a compact radial layout."
   ></pg-demo-header>
@@ -14,148 +15,125 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="kpi">
-            <div class="section-header">
-              <h2>🎯 KPI Progress</h2>
-              <p>
-                Track multiple KPIs simultaneously using concentric arcs, each representing a
-                different metric.
-              </p>
-            </div>
-            <div class="demo-card display-flex justify-center p-24">
-              <svg width="300" height="300" viewBox="-150 -150 300 300">
-                <!-- Tracks -->
-                <circle cx="0" cy="0" r="120" fill="none" stroke="#e5e7eb" stroke-width="14" />
-                <circle cx="0" cy="0" r="96" fill="none" stroke="#e5e7eb" stroke-width="14" />
-                <circle cx="0" cy="0" r="72" fill="none" stroke="#e5e7eb" stroke-width="14" />
-                <circle cx="0" cy="0" r="48" fill="none" stroke="#e5e7eb" stroke-width="14" />
-                <!-- Revenue 85% -->
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="120"
-                  fill="none"
-                  stroke="#6366f1"
-                  stroke-width="14"
-                  stroke-dasharray="640.9 754"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <text x="130" y="-115" font-size="10" fill="#6b7280">Revenue 85%</text>
-                <!-- Users 72% -->
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="96"
-                  fill="none"
-                  stroke="#0ea5e9"
-                  stroke-width="14"
-                  stroke-dasharray="432.5 603.2"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <text x="104" y="-91" font-size="10" fill="#6b7280">Users 72%</text>
-                <!-- Tasks 90% -->
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="72"
-                  fill="none"
-                  stroke="#10b981"
-                  stroke-width="14"
-                  stroke-dasharray="407.2 452.4"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <text x="80" y="-67" font-size="10" fill="#6b7280">Tasks 90%</text>
-                <!-- Score 65% -->
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="48"
-                  fill="none"
-                  stroke="#f59e0b"
-                  stroke-width="14"
-                  stroke-dasharray="195.8 301.6"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <text x="54" y="-43" font-size="10" fill="#6b7280">Score 65%</text>
-              </svg>
-            </div>
-            <ui-code-preview
-              [htmlCode]="'<!-- Radial Bar Chart (SVG stroke-dasharray technique) -->\n<svg width=\'300\' height=\'300\' viewBox=\'-150 -150 300 300\'>\n  <!-- Track -->\n  <circle cx=\'0\' cy=\'0\' r=\'120\' fill=\'none\' stroke=\'#e5e7eb\' stroke-width=\'14\'/>\n  <!-- Progress arc for 85% = circumference*0.85 -->\n  <circle cx=\'0\' cy=\'0\' r=\'120\' fill=\'none\' stroke=\'#6366f1\' stroke-width=\'14\'\n    stroke-dasharray=\'640.9 754\' stroke-linecap=\'round\' transform=\'rotate(-90)\'/>\n</svg>'"
-              label="Radial Bar KPI"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="kpi" title="Progress" [code]="'<!-- Radial Bar Chart (SVG stroke-dasharray technique) -->\n<svg width=\'300\' height=\'300\' viewBox=\'-150 -150 300 300\'>\n  <!-- Track -->\n  <circle cx=\'0\' cy=\'0\' r=\'120\' fill=\'none\' stroke=\'#e5e7eb\' stroke-width=\'14\'/>\n  <!-- Progress arc for 85% = circumference*0.85 -->\n  <circle cx=\'0\' cy=\'0\' r=\'120\' fill=\'none\' stroke=\'#6366f1\' stroke-width=\'14\'\n    stroke-dasharray=\'640.9 754\' stroke-linecap=\'round\' transform=\'rotate(-90)\'/>\n</svg>'"
+          >
+            <svg width="300" height="300" viewBox="-150 -150 300 300">
+              <!-- Tracks -->
+              <circle cx="0" cy="0" r="120" fill="none" stroke="#e5e7eb" stroke-width="14" />
+              <circle cx="0" cy="0" r="96" fill="none" stroke="#e5e7eb" stroke-width="14" />
+              <circle cx="0" cy="0" r="72" fill="none" stroke="#e5e7eb" stroke-width="14" />
+              <circle cx="0" cy="0" r="48" fill="none" stroke="#e5e7eb" stroke-width="14" />
+              <!-- Revenue 85% -->
+              <circle
+                cx="0"
+                cy="0"
+                r="120"
+                fill="none"
+                stroke="#6366f1"
+                stroke-width="14"
+                stroke-dasharray="640.9 754"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <text x="130" y="-115" font-size="10" fill="#6b7280">Revenue 85%</text>
+              <!-- Users 72% -->
+              <circle
+                cx="0"
+                cy="0"
+                r="96"
+                fill="none"
+                stroke="#0ea5e9"
+                stroke-width="14"
+                stroke-dasharray="432.5 603.2"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <text x="104" y="-91" font-size="10" fill="#6b7280">Users 72%</text>
+              <!-- Tasks 90% -->
+              <circle
+                cx="0"
+                cy="0"
+                r="72"
+                fill="none"
+                stroke="#10b981"
+                stroke-width="14"
+                stroke-dasharray="407.2 452.4"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <text x="80" y="-67" font-size="10" fill="#6b7280">Tasks 90%</text>
+              <!-- Score 65% -->
+              <circle
+                cx="0"
+                cy="0"
+                r="48"
+                fill="none"
+                stroke="#f59e0b"
+                stroke-width="14"
+                stroke-dasharray="195.8 301.6"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <text x="54" y="-43" font-size="10" fill="#6b7280">Score 65%</text>
+            </svg>
+          </pg-example-section>
 
-          <section class="demo-section" id="skills">
-            <div class="section-header">
-              <h2>💼 Skills Assessment</h2>
-              <p>Visualize proficiency levels across multiple skill categories.</p>
-            </div>
-            <div class="demo-card display-flex justify-center">
-              <svg width="300" height="300" viewBox="-150 -150 300 300">
-                <circle cx="0" cy="0" r="110" fill="none" stroke="#f3f4f6" stroke-width="20" />
-                <circle cx="0" cy="0" r="82" fill="none" stroke="#f3f4f6" stroke-width="20" />
-                <circle cx="0" cy="0" r="54" fill="none" stroke="#f3f4f6" stroke-width="20" />
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="110"
-                  fill="none"
-                  stroke="#6366f1"
-                  stroke-width="20"
-                  stroke-dasharray="602.9 691.2"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="82"
-                  fill="none"
-                  stroke="#0ea5e9"
-                  stroke-width="20"
-                  stroke-dasharray="436.2 515.2"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <circle
-                  cx="0"
-                  cy="0"
-                  r="54"
-                  fill="none"
-                  stroke="#10b981"
-                  stroke-width="20"
-                  stroke-dasharray="253.4 339.3"
-                  stroke-linecap="round"
-                  transform="rotate(-90)"
-                />
-                <text
-                  x="0"
-                  y="-5"
-                  text-anchor="middle"
-                  font-size="13"
-                  font-weight="700"
-                  fill="#1f2937"
-                >
-                  Skills
-                </text>
-                <text x="0" y="12" text-anchor="middle" font-size="10" fill="#6b7280">
-                  Assessment
-                </text>
-              </svg>
-            </div>
-            <ui-code-preview
-              [htmlCode]="'<!-- Skills Radial Bars -->'"
-              label="Skills Assessment"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="skills" title="Assessment" description="Visualize proficiency levels across multiple skill categories." [code]="'<!-- Skills Radial Bars -->'"
+          >
+            <svg width="300" height="300" viewBox="-150 -150 300 300">
+              <circle cx="0" cy="0" r="110" fill="none" stroke="#f3f4f6" stroke-width="20" />
+              <circle cx="0" cy="0" r="82" fill="none" stroke="#f3f4f6" stroke-width="20" />
+              <circle cx="0" cy="0" r="54" fill="none" stroke="#f3f4f6" stroke-width="20" />
+              <circle
+                cx="0"
+                cy="0"
+                r="110"
+                fill="none"
+                stroke="#6366f1"
+                stroke-width="20"
+                stroke-dasharray="602.9 691.2"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <circle
+                cx="0"
+                cy="0"
+                r="82"
+                fill="none"
+                stroke="#0ea5e9"
+                stroke-width="20"
+                stroke-dasharray="436.2 515.2"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <circle
+                cx="0"
+                cy="0"
+                r="54"
+                fill="none"
+                stroke="#10b981"
+                stroke-width="20"
+                stroke-dasharray="253.4 339.3"
+                stroke-linecap="round"
+                transform="rotate(-90)"
+              />
+              <text
+                x="0"
+                y="-5"
+                text-anchor="middle"
+                font-size="13"
+                font-weight="700"
+                fill="#1f2937"
+              >
+                Skills
+              </text>
+              <text x="0" y="12" text-anchor="middle" font-size="10" fill="#6b7280">
+                Assessment
+              </text>
+            </svg>
+          </pg-example-section>
         </div>
       </div>
     </div>

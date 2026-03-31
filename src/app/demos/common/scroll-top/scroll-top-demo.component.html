@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🚀"
+    icon="arrow-up-to-line"
+  iconLibrary="lucide"
     title="Scroll Top"
     description="A helpful utility component that allows users to quickly return to the top of a page or a scrollable container. It appears automatically after a specified scroll threshold."
   ></pg-demo-header>
@@ -18,44 +19,33 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Shapes & Icons -->
-          <section class="demo-section mt-0" id="shapes">
-            <div class="section-header">
-              <h2>💎 Shapes & Icons</h2>
-              <p>Choose between circular and square designs to match your UI style.</p>
-            </div>
-            <div class="demo-card display-flex flex-row gap-40">
-              <div class="scroll-preview-box" id="box1-id">
-                <div class="long-content">
-                  <p>Scroll me (Square + Text)</p>
-                  <ui-scroll-top
-                    target="#box1-id"
-                    threshold="100"
-                    shape="square"
-                    icon="TOP"
-                    speed="100"
-                  ></ui-scroll-top>
-                </div>
-              </div>
-              <div class="scroll-preview-box" id="box2-id">
-                <div class="long-content">
-                  <p>Scroll me (Circle + Icon)</p>
-                  <ui-scroll-top
-                    target="#box2-id"
-                    threshold="100"
-                    shape="circle"
-                    icon="🚀"
-                    speed="100"
-                  ></ui-scroll-top>
-                </div>
+          <pg-example-section id="shapes" title="Shapes & Icons" description="Choose between circular and square designs to match your UI style." [code]="shapesCode"
+          >
+            <div class="scroll-preview-box" id="box1-id">
+              <div class="long-content">
+                <p>Scroll me (Square + Text)</p>
+                <ui-scroll-top
+                  target="#box1-id"
+                  threshold="100"
+                  shape="square"
+                  icon="TOP"
+                  speed="100"
+                ></ui-scroll-top>
               </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="shapesCode"
-              [label]="'Styling Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+            <div class="scroll-preview-box" id="box2-id">
+              <div class="long-content">
+                <p>Scroll me (Circle + Icon)</p>
+                <ui-scroll-top
+                  target="#box2-id"
+                  threshold="100"
+                  shape="circle"
+                  icon="🚀"
+                  speed="100"
+                ></ui-scroll-top>
+              </div>
+            </div>
+          </pg-example-section>
         </div>
       </div>
     </div>

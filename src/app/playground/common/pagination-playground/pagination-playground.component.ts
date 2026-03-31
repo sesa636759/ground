@@ -145,7 +145,7 @@ export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent imp
     }
     if (!config.ellipsisTooltip) code += `  [ellipsis-tooltip]="false"\n`;
     code += `  (pageChange)="onPageChange($event)"\n`;
-    code += `></ui--pagination>`;
+    code += `></ui-pagination>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

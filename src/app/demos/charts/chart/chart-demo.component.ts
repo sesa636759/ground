@@ -7,12 +7,14 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-chart-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -24,7 +26,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './chart-demo.component.scss',
 })
 export class DmChartDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'types', title: 'Chart Types', icon: '📈', color: '#3b82f6' }];
+  exampleVariants = [{ id: 'types', title: 'Chart Types', icon: 'chart-pie',
+      iconLibrary: 'lucide', color: '#3b82f6' }];
 
   chartData = {
     labels: ['A', 'B', 'C', 'D'],

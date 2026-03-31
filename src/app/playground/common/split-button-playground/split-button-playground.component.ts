@@ -55,7 +55,7 @@ export class DmSplitButtonPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.disabled) code += `  disabled="true"\n`;
     if (this.pgConfig.loading) code += `  loading="true"\n`;
     code += `  [model]="menuItems"\n`;
-    code += '></ui--split-button>';
+    code += '></ui-split-button>';
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -91,7 +91,7 @@ export class DmCascadeSelectPlaygroundComponent extends BasePlaygroundComponent 
       code += `  separator="${this.pgConfig.separator}"\n`;
       if (this.pgConfig.changeOnSelect) code += `  change-on-select\n`;
       code += `  [options]="locations"\n`;
-      code += '></ui--cascade-select>';
+      code += '></ui-cascade-select>';
 
       this.generatedCode.set(code);
       this.refreshCode();

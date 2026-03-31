@@ -6,12 +6,14 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-speed-dial-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmSpeedDialPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -32,9 +34,12 @@ export class DmSpeedDialDemoComponent extends BaseDemoComponent {
   ];
 
   actions = JSON.stringify([
-    { id: 'copy', icon: 'copy', label: 'Copy Link' },
-    { id: 'edit', icon: 'edit-2', label: 'Edit Post' },
-    { id: 'delete', icon: 'trash-2', label: 'Delete', color: '#ef4444' },
+    { id: 'copy', icon: 'copy',
+      iconLibrary: 'lucide', label: 'Copy Link' },
+    { id: 'edit', icon: 'edit-2',
+      iconLibrary: 'lucide', label: 'Edit Post' },
+    { id: 'delete', icon: 'trash-2',
+      iconLibrary: 'lucide', label: 'Delete', color: '#ef4444' },
   ]);
 
   lucideActions = JSON.stringify([

@@ -7,11 +7,13 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/waterfall-chart-playground/waterfall-chart-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-waterfall-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmWaterfallChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,8 +27,10 @@ import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/
 })
 export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'revenue', title: 'Revenue', icon: '💰', color: '#10b981' },
-    { id: 'pl', title: 'P&L Statement', icon: '📊', color: '#6366f1' },
+    { id: 'revenue', title: 'Revenue', icon: 'circle',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'pl', title: 'P&L Statement', icon: 'trending-up',
+      iconLibrary: 'lucide', color: '#6366f1' },
   ];
 
   revenueCode = `<!-- Waterfall Chart (floating SVG bars) -->

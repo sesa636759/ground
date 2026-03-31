@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-funnel-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmFunnelChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,8 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmFunnelChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'sales', title: 'Sales Funnel', icon: '🔽', color: '#6366f1' },
-    { id: 'marketing', title: 'Marketing', icon: '📣', color: '#10b981' },
+    { id: 'sales', title: 'Sales Funnel', icon: 'dollar-sign',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'marketing', title: 'Marketing', icon: 'megaphone',
+      iconLibrary: 'lucide', color: '#10b981' },
   ];
 
   salesSegments = [

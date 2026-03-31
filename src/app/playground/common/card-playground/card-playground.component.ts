@@ -238,7 +238,7 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
 
     // Potential Slots (only as placeholder comments if desired, or simplified)
     code += `\n  <!-- Custom content slots available: header, footer, tabs, grid, back... -->`;
-    code += `\n</ui--card>`;
+    code += `\n</ui-card>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

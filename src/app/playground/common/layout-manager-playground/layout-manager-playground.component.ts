@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -55,7 +55,7 @@ export class DmLayoutManagerPlaygroundComponent extends BasePlaygroundComponent 
     code += '>\n';
     code += '  <div slot="panel-1">Content 1</div>\n';
     code += '  <div slot="panel-2">Content 2</div>\n';
-    code += '</ui--layout-manager>';
+    code += '</ui-layout-manager>';
 
     this.generatedCode.set(code);
     this.refreshCode();

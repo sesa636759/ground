@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -33,31 +33,31 @@ export class DmTreeListPlaygroundComponent extends BasePlaygroundComponent imple
   model = [
     {
       label: 'Documents',
-      icon: '📁',
+      icon: '??',
       expanded: true,
       children: [
         {
           label: 'Work',
-          icon: '💼',
+          icon: '??',
           children: [
-            { label: 'Project A.docx', icon: '📄' },
-            { label: 'Project B.xlsx', icon: '📊' },
+            { label: 'Project A.docx', icon: '??' },
+            { label: 'Project B.xlsx', icon: '??' },
           ],
         },
-        { label: 'Personal', icon: '🏠', children: [{ label: 'Resume.pdf', icon: '📄' }] },
+        { label: 'Personal', icon: '??', children: [{ label: 'Resume.pdf', icon: '??' }] },
       ],
     },
     {
       label: 'Pictures',
-      icon: '🖼️',
+      icon: '???',
       children: [
-        { label: 'Vacation.jpg', icon: '🏖️' },
-        { label: 'Family.png', icon: '👨‍👩‍👧‍👦' },
+        { label: 'Vacation.jpg', icon: '???' },
+        { label: 'Family.png', icon: '???????????' },
       ],
     },
     {
       label: 'Downloads',
-      icon: '⬇️',
+      icon: '??',
       children: [],
     },
   ];
@@ -85,7 +85,7 @@ export class DmTreeListPlaygroundComponent extends BasePlaygroundComponent imple
       if (!this.demoElement) return;
       let code = this.getCleanFormattedDom(this.demoElement, 'ui-tree-list');
       // Add model prop to code manually inside the bracket if needed, actually it should be captured by DOM if bound as attr, but it's bound as property.
-      code = code.replace('></ui--tree-list>', '\n  [model]="treeData"\n></ui--tree-list>');
+      code = code.replace('></ui-tree-list>', '\n  [model]="treeData"\n></ui-tree-list>');
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);

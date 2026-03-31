@@ -59,6 +59,22 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Blue Purple', value: 'blue-purple' },
     { label: 'Green Teal', value: 'green-teal' },
     { label: 'Orange Red', value: 'orange-red' },
+    { label: 'Pink Purple', value: 'pink-purple' },
+  ];
+
+  colorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
   ];
 
   getDefaultConfig() {
@@ -82,6 +98,8 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
       interactive: false,
       closeable: false,
       showZero: false,
+      customColor: '',
+      customTextColor: '',
     };
   }
 
@@ -110,13 +128,16 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
     }
 
     if (this.pgConfig.gradient) code += `  gradient="${this.pgConfig.gradient}"\n`;
+    if (this.pgConfig.customColor) code += `  custom-color="${this.pgConfig.customColor}"\n`;
+    if (this.pgConfig.customTextColor)
+      code += `  custom-text-color="${this.pgConfig.customTextColor}"\n`;
     if (this.pgConfig.offsetX !== 0) code += `  [offset-x]="${this.pgConfig.offsetX}"\n`;
     if (this.pgConfig.offsetY !== 0) code += `  [offset-y]="${this.pgConfig.offsetY}"\n`;
 
     code += '>\n';
     code +=
       '  <div style="width: 48px; height: 48px; background: var(--surface-2); border-radius: 8px;"></div>\n';
-    code += '</ui--badge>';
+    code += '</ui-badge>';
 
     this.generatedCode.set(code);
     this.refreshCode();

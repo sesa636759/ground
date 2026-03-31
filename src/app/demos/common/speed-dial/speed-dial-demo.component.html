@@ -1,6 +1,7 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="✨"
+    icon="zap"
+  iconLibrary="lucide"
     title="Speed Dial"
     description="A floating action button that expands into a menu of related actions, used for primary actions in a clean interface."
   ></pg-demo-header>
@@ -16,154 +17,132 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section" id="basic">
-            <div class="section-header">
-              <h2>Basic Usage</h2>
-              <p>Default fixed speed dial. Click to open.</p>
-            </div>
-            <div class="demo-card dial-container">
-              <ui-speed-dial
-                strategy="absolute"
-                position="center"
-                [attr.actions]="lucideActions"
-                icon="plus"
-                icon-library="lucide"
-                action-library="lucide"
-                (actionClick)="handleActionClick($event)"
-              ></ui-speed-dial>
-            </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="basic" title="Basic Usage" description="Default fixed speed dial. Click to open." [code]="basicCode"
+          >
+            <ui-speed-dial
+              strategy="absolute"
+              position="center"
+              [attr.actions]="lucideActions"
+              icon="plus"
+              icon-library="lucide"
+              action-library="lucide"
+              (actionClick)="handleActionClick($event)"
+            ></ui-speed-dial>
+          </pg-example-section>
 
           <!-- Positions -->
-          <section class="demo-section" id="positions">
-            <div class="section-header">
-              <h2>Positions & Direction</h2>
-              <p>Place the dial anywhere and control its expanding direction.</p>
-            </div>
-            <div class="demo-card dial-container fixed-box">
-              <ui-speed-dial
-                strategy="absolute"
-                position="top-left"
-                direction="right"
-                [attr.actions]="lucideActions"
-                icon="arrow-right"
-                icon-library="lucide"
-                action-library="lucide"
-                tooltip-position="bottom"
-              ></ui-speed-dial>
-              <ui-speed-dial
-                strategy="absolute"
-                position="top-right"
-                direction="down"
-                [attr.actions]="lucideActions"
-                icon="arrow-down"
-                icon-library="lucide"
-                action-library="lucide"
-                tooltip-position="left"
-              ></ui-speed-dial>
-              <ui-speed-dial
-                strategy="absolute"
-                position="bottom-left"
-                direction="up"
-                [attr.actions]="lucideActions"
-                icon="arrow-up"
-                icon-library="lucide"
-                action-library="lucide"
-                tooltip-position="right"
-              ></ui-speed-dial>
-              <ui-speed-dial
-                strategy="absolute"
-                position="bottom-right"
-                direction="left"
-                [attr.actions]="lucideActions"
-                icon="arrow-left"
-                icon-library="lucide"
-                action-library="lucide"
-                tooltip-position="top"
-              ></ui-speed-dial>
-              <ui-speed-dial
-                strategy="absolute"
-                position="center"
-                direction="up"
-                [attr.actions]="lucideActions"
-                icon="target"
-                icon-library="lucide"
-                action-library="lucide"
-              ></ui-speed-dial>
-            </div>
-            <ui-code-preview [htmlCode]="positionsCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="positions" title="Positions & Direction" description="Place the dial anywhere and control its expanding direction." [code]="positionsCode"
+          >
+            <ui-speed-dial
+              strategy="absolute"
+              position="top-left"
+              direction="right"
+              [attr.actions]="lucideActions"
+              icon="arrow-right"
+              icon-library="lucide"
+              action-library="lucide"
+              tooltip-position="bottom"
+            ></ui-speed-dial>
+            <ui-speed-dial
+              strategy="absolute"
+              position="top-right"
+              direction="down"
+              [attr.actions]="lucideActions"
+              icon="arrow-down"
+              icon-library="lucide"
+              action-library="lucide"
+              tooltip-position="left"
+            ></ui-speed-dial>
+            <ui-speed-dial
+              strategy="absolute"
+              position="bottom-left"
+              direction="up"
+              [attr.actions]="lucideActions"
+              icon="arrow-up"
+              icon-library="lucide"
+              action-library="lucide"
+              tooltip-position="right"
+            ></ui-speed-dial>
+            <ui-speed-dial
+              strategy="absolute"
+              position="bottom-right"
+              direction="left"
+              [attr.actions]="lucideActions"
+              icon="arrow-left"
+              icon-library="lucide"
+              action-library="lucide"
+              tooltip-position="top"
+            ></ui-speed-dial>
+            <ui-speed-dial
+              strategy="absolute"
+              position="center"
+              direction="up"
+              [attr.actions]="lucideActions"
+              icon="target"
+              icon-library="lucide"
+              action-library="lucide"
+            ></ui-speed-dial>
+          </pg-example-section>
 
           <!-- Trigger -->
-          <section class="demo-section" id="trigger">
-            <div class="section-header">
-              <h2>Hover Trigger & Tooltips</h2>
-              <p>Open on hover instead of click. Explicit tooltip positioning.</p>
-            </div>
-            <div class="demo-card dial-container">
-              <ui-speed-dial
-                strategy="absolute"
-                position="center"
-                trigger="hover"
-                tooltip-position="bottom"
-                [attr.actions]="lucideActions"
-                icon="mouse-pointer-2"
-                icon-library="lucide"
-                action-library="lucide"
-              ></ui-speed-dial>
-            </div>
-            <ui-code-preview [htmlCode]="triggerCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="trigger" title="Hover Trigger & Tooltips" description="Open on hover instead of click. Explicit tooltip positioning." [code]="triggerCode"
+          >
+            <ui-speed-dial
+              strategy="absolute"
+              position="center"
+              trigger="hover"
+              tooltip-position="bottom"
+              [attr.actions]="lucideActions"
+              icon="mouse-pointer-2"
+              icon-library="lucide"
+              action-library="lucide"
+            ></ui-speed-dial>
+          </pg-example-section>
 
           <!-- Styles -->
-          <section class="demo-section" id="styles">
-            <div class="section-header">
-              <h2>Sizes & Colors</h2>
-              <p>Customize the primary button's visual weight.</p>
-            </div>
-            <div class="demo-card dial-container fixed-box">
-              <ui-speed-dial
-                strategy="absolute"
-                position="top-left"
-                size="sm"
-                color="success"
-                [attr.actions]="lucideActions"
-                icon="check"
-                icon-library="lucide"
-                action-library="lucide"
-                direction="right"
-              ></ui-speed-dial>
-              <ui-speed-dial
-                strategy="absolute"
-                position="bottom-right"
-                size="lg"
-                color="danger"
-                [attr.actions]="lucideActions"
-                icon="alert-circle"
-                icon-library="lucide"
-                action-library="lucide"
-                direction="up"
-              ></ui-speed-dial>
-            </div>
-            <ui-code-preview [htmlCode]="stylesCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="styles" title="Sizes & Colors" description="Customize the primary button's visual weight." [code]="stylesCode"
+          >
+            <ui-speed-dial
+              strategy="absolute"
+              position="top-left"
+              size="sm"
+              color="success"
+              [attr.actions]="lucideActions"
+              icon="check"
+              icon-library="lucide"
+              action-library="lucide"
+              direction="right"
+            ></ui-speed-dial>
+            <ui-speed-dial
+              strategy="absolute"
+              position="bottom-right"
+              size="lg"
+              color="danger"
+              [attr.actions]="lucideActions"
+              icon="alert-circle"
+              icon-library="lucide"
+              action-library="lucide"
+              direction="up"
+            ></ui-speed-dial>
+          </pg-example-section>
 
           <!-- Custom Icons -->
-          <section class="demo-section" id="custom-icons">
-            <div class="section-header"><h2>Custom Icons & Themes</h2></div>
-            <div class="demo-card dial-container">
-              <ui-speed-dial
-                strategy="absolute"
-                position="center"
-                icon="menu"
-                icon-library="lucide"
-                [attr.actions]="lucideActions"
-                action-library="lucide"
-              ></ui-speed-dial>
-            </div>
-            <ui-code-preview [htmlCode]="customIconsCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="custom-icons" title="Custom Icons & Themes" [code]="customIconsCode"
+          >
+            <ui-speed-dial
+              strategy="absolute"
+              position="center"
+              icon="menu"
+              icon-library="lucide"
+              [attr.actions]="lucideActions"
+              action-library="lucide"
+            ></ui-speed-dial>
+          </pg-example-section>
         </div>
       </div>
     </div>

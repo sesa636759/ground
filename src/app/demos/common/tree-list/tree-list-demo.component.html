@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🌳"
+    icon="list-tree"
+  iconLibrary="lucide"
     title="Tree List"
     description="A hierarchical tree view component for displaying nested data structures. Perfect for file systems, organizational charts, category navigation, and any hierarchical data representation."
   ></pg-demo-header>
@@ -18,22 +19,13 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Examples -->
-          <section class="demo-section mt-0" id="examples">
-            <div class="section-header">
-              <h2>📁 Examples</h2>
-              <p>Common use cases for hierarchical data display.</p>
+          <pg-example-section
+            id="examples" title="Examples" description="Common use cases for hierarchical data display." [code]="examplesCode"
+          >
+            <div class="max-w-500">
+              <ui-tree-list [model]="treeData" selectable></ui-tree-list>
             </div>
-            <div class="demo-card">
-              <div class="max-w-500">
-                <ui-tree-list [model]="treeData" selectable></ui-tree-list>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="examplesCode"
-              label="File System Example"
-              activeLang="ts"
-            ></ui-code-preview>
-          </section>
+          </pg-example-section>
         </div>
       </div>
     </div>

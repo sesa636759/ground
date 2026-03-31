@@ -1,6 +1,7 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="📊"
+    icon="gauge"
+  iconLibrary="lucide"
     title="Meter Group"
     description="Display multi-segmented status bars or circles to visualize resource allocation, storage usage, or task distribution."
   ></pg-demo-header>
@@ -16,94 +17,79 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section" id="basic">
-            <div class="section-header"><h2>Basic Layouts</h2></div>
-            <div class="demo-card meter-panel">
-              <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
-            </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="basic" title="Basic Layouts" [code]="basicCode"
+          >
+            <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
+          </pg-example-section>
 
           <!-- Shapes -->
-          <section class="demo-section" id="shapes">
-            <div class="section-header">
-              <h2>Line vs Circle</h2>
-              <p>Switch between a linear bar and a radial gauge.</p>
+          <pg-example-section
+            id="shapes" title="Line vs Circle" description="Switch between a linear bar and a radial gauge."
+          >
+            <div>
+              <p>Linear Bar</p>
+              <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
             </div>
-            <div class="demo-card meter-grid">
-              <div>
-                <p>Linear Bar</p>
-                <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
-              </div>
-              <div>
-                <p>Radial Circle</p>
-                <ui-meter-group shape="circle" [attr.values]="diskValues"></ui-meter-group>
-              </div>
+            <div>
+              <p>Radial Circle</p>
+              <ui-meter-group shape="circle" [attr.values]="diskValues"></ui-meter-group>
             </div>
-          </section>
+          </pg-example-section>
 
           <!-- Vertical -->
-          <section class="demo-section" id="vertical">
-            <div class="section-header"><h2>Vertical Orientation</h2></div>
-            <div class="demo-card meter-panel h-300">
-              <ui-meter-group orientation="vertical" [attr.values]="diskValues"></ui-meter-group>
-            </div>
-            <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="vertical" title="Vertical Orientation" [code]="verticalCode"
+          >
+            <ui-meter-group orientation="vertical" [attr.values]="diskValues"></ui-meter-group>
+          </pg-example-section>
 
           <!-- Sizing -->
-          <section class="demo-section" id="sizing">
-            <div class="section-header"><h2>Sizes & Thickness</h2></div>
-            <div class="demo-card meter-stack">
-              <div>
-                <p>Small (SM)</p>
-                <ui-meter-group size="sm" [attr.values]="diskValues"></ui-meter-group>
-              </div>
-              <div>
-                <p>Medium (MD)</p>
-                <ui-meter-group size="md" [attr.values]="diskValues"></ui-meter-group>
-              </div>
-              <div>
-                <p>Large (LG)</p>
-                <ui-meter-group size="lg" [attr.values]="diskValues"></ui-meter-group>
-              </div>
+          <pg-example-section
+            id="sizing" title="Sizes & Thickness" description="Small (SM)"
+          >
+            <div>
+              <p>Small (SM)</p>
+              <ui-meter-group size="sm" [attr.values]="diskValues"></ui-meter-group>
             </div>
-          </section>
+            <div>
+              <p>Medium (MD)</p>
+              <ui-meter-group size="md" [attr.values]="diskValues"></ui-meter-group>
+            </div>
+            <div>
+              <p>Large (LG)</p>
+              <ui-meter-group size="lg" [attr.values]="diskValues"></ui-meter-group>
+            </div>
+          </pg-example-section>
 
           <!-- Legend -->
-          <section class="demo-section" id="legend">
-            <div class="section-header"><h2>Legends & Labels</h2></div>
-            <div class="demo-card meter-panel">
-              <ui-meter-group show-legend [attr.values]="diskValues"></ui-meter-group>
-            </div>
-          </section>
+          <pg-example-section
+            id="legend" title="Legends & Labels"
+          >
+            <ui-meter-group show-legend [attr.values]="diskValues"></ui-meter-group>
+          </pg-example-section>
 
           <!-- Icons -->
-          <section class="demo-section" id="icons">
-            <div class="section-header"><h2>Icons & Libraries</h2></div>
-            <div class="demo-card meter-panel">
-              <ui-meter-group
-                icon-library="lucide"
-                show-legend
-                [attr.values]="diskValues"
-              ></ui-meter-group>
-            </div>
-          </section>
+          <pg-example-section
+            id="icons" title="Icons & Libraries"
+          >
+            <ui-meter-group
+              icon-library="lucide"
+              show-legend
+              [attr.values]="diskValues"
+            ></ui-meter-group>
+          </pg-example-section>
 
           <!-- Interactive -->
-          <section class="demo-section" id="interactive">
-            <div class="section-header">
-              <h2>Interactive Mode</h2>
-              <p>Segments and legend items respond to hover and click events.</p>
-            </div>
-            <div class="demo-card meter-panel">
-              <ui-meter-group
-                interactive
-                [attr.values]="diskValues"
-                (meterClick)="handleMeterClick($event)"
-              ></ui-meter-group>
-            </div>
-          </section>
+          <pg-example-section
+            id="interactive" title="Interactive Mode" description="Segments and legend items respond to hover and click events."
+          >
+            <ui-meter-group
+              interactive
+              [attr.values]="diskValues"
+              (meterClick)="handleMeterClick($event)"
+            ></ui-meter-group>
+          </pg-example-section>
         </div>
       </div>
     </div>

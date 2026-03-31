@@ -6,6 +6,7 @@ import { DmThemeSwitcherPlaygroundComponent } from '../../../playground/sets/the
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-theme-switcher-demo',
@@ -17,6 +18,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
     ComponentDocumentationComponent,
     DemoHeaderComponent,
     DemoSidebarComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './theme-switcher-demo.component.html',

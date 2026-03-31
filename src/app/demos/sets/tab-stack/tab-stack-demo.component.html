@@ -1,167 +1,129 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="🗂️"
-    title="Tab Stack Component"
-    description="Flexible tab system with support for horizontal/vertical orientations, closable tabs, drag-and-drop reordering, and various visual styles."
-  >
-  </pg-demo-header>
+    icon="layout-panel-top"
+    iconLibrary="lucide"
+    title="Tab Stack"
+    description="Flexible tab system supporting horizontal/vertical orientations, closable tabs, drag-and-drop reordering, and various visual styles."
+  ></pg-demo-header>
 
   <pg-demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Orientations -->
-        <section class="demo-section mt-0" id="orientations">
-          <div class="section-header">
-            <h2>↔️ Orientation Options</h2>
-            <p>Horizontal and vertical tab stacks</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Horizontal</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack orientation="horizontal" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Vertical</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack orientation="vertical" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Variants -->
-        <section class="demo-section" id="variants">
-          <div class="section-header">
-            <h2>🎨 Visual Variants</h2>
-            <p>Different styles for tab stacks</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Default</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack variant="default" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Pills</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack variant="pills" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Underline</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack variant="underline" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Features -->
-        <section class="demo-section" id="features">
-          <div class="section-header">
-            <h2>🚀 Advanced Features</h2>
-            <p>Closable, draggable, and scrollable tabs</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Closable Tabs</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack closable="true" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Draggable</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack draggable="true" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Scrollable</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack scrollable="true" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Sizes -->
-        <section class="demo-section" id="sizes">
-          <div class="section-header">
-            <h2>📏 Size Variants</h2>
-            <p>Different sizes for tab stacks</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Small</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack size="small" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Medium</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack size="medium" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Large</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack size="large" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Premium Features -->
-        <section class="demo-section" id="premium">
-          <div class="section-header">
-            <h2>💎 Premium Features</h2>
-            <p>Grouped tabs and custom styling</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Grouped Tabs</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack grouped="true" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-
-            <div class="demo-card bg-gradient-purple">
-              <h3 class="text-white">Glass Variant</h3>
-              <div class="preview-box tab-demo glass-preview">
-                <app-tab-stack variant="glass" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Playground Slot -->
     <div slot="playground">
       <ds-tab-stack-playground></ds-tab-stack-playground>
     </div>
 
-    <!-- Documentation Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <div class="examples-content" id="examples-scroll-area">
+
+        <pg-example-section
+          id="orientations"
+          title="Orientation Options"
+          description="Horizontal and vertical tab stack layouts."
+          [code]="playgroundCode"
+          class="mt-0"
+        >
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Horizontal</p>
+              <app-tab-stack orientation="horizontal" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Vertical</p>
+              <app-tab-stack orientation="vertical" [tabs]="tabs"></app-tab-stack>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="variants"
+          title="Visual Variants"
+          description="Different visual styles — default, pills, and underline."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Default</p>
+              <app-tab-stack variant="default" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Pills</p>
+              <app-tab-stack variant="pills" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Underline</p>
+              <app-tab-stack variant="underline" [tabs]="tabs"></app-tab-stack>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="features"
+          title="Advanced Features"
+          description="Closable, draggable, and scrollable tab behaviors."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Closable Tabs</p>
+              <app-tab-stack closable="true" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Draggable</p>
+              <app-tab-stack draggable="true" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Scrollable</p>
+              <app-tab-stack scrollable="true" [tabs]="tabs"></app-tab-stack>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="sizes"
+          title="Size Variants"
+          description="Small, medium, and large sizes."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Small</p>
+              <app-tab-stack size="small" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Medium</p>
+              <app-tab-stack size="medium" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Large</p>
+              <app-tab-stack size="large" [tabs]="tabs"></app-tab-stack>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="premium"
+          title="Premium Features"
+          description="Grouped tabs and glassmorphism variant."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Grouped Tabs</p>
+              <app-tab-stack grouped="true" [tabs]="tabs"></app-tab-stack>
+            </div>
+            <div style="padding: 16px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 8px;">
+              <p style="margin-bottom: 8px; font-size: 12px; color: rgba(255,255,255,0.7);">Glass Variant</p>
+              <app-tab-stack variant="glass" [tabs]="tabs"></app-tab-stack>
+            </div>
+          </div>
+        </pg-example-section>
+
+      </div>
+    </div>
+
     <div slot="docs">
       <pg-component-documentation componentId="tabs"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
-
-

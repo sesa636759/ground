@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-rose-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmRoseChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,9 +27,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRoseChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'monthly', title: 'Monthly Revenue', icon: '🌹', color: '#6366f1' },
-    { id: 'performance', title: 'Performance', icon: '📊', color: '#10b981' },
-    { id: 'wind', title: 'Wind Direction', icon: '💨', color: '#0ea5e9' },
+    { id: 'monthly', title: 'Monthly Revenue', icon: 'calendar',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'performance', title: 'Performance', icon: 'gauge',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'wind', title: 'Wind Direction', icon: 'wind',
+      iconLibrary: 'lucide', color: '#0ea5e9' },
   ];
 
   // Sample items for different layouts

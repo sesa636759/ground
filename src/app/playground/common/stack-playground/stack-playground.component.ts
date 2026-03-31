@@ -97,7 +97,7 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
     code += `>\n`;
     code += `  <div>1</div>\n`;
     code += `  <div>2</div>\n`;
-    code += `</ui--stack>`;
+    code += `</ui-stack>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

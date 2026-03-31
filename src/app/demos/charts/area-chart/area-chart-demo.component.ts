@@ -8,11 +8,13 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DmAreaChartPlaygroundComponent } from '../../../playground/charts/area-chart-playground/area-chart-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-area-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmAreaChartPlaygroundComponent,
     DemoTabsComponent,
@@ -26,9 +28,12 @@ import { DmAreaChartPlaygroundComponent } from '../../../playground/charts/area-
 })
 export class DmAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Area', icon: '🏔️', color: '#6366f1' },
-    { id: 'stacked', title: 'Stacked', icon: '📚', color: '#10b981' },
-    { id: 'gradient', title: 'Gradient', icon: '🌈', color: '#f59e0b' },
+    { id: 'basic', title: 'Basic Area', icon: 'square',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'stacked', title: 'Stacked', icon: 'layers',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'gradient', title: 'Gradient', icon: 'sparkles',
+      iconLibrary: 'lucide', color: '#f59e0b' },
   ];
 
   basicData = [

@@ -1,264 +1,185 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="🌳"
+    icon="tree-pine"
+    iconLibrary="lucide"
     title="Tree Component"
-    description="Hierarchical tree structure with expandable nodes, icons, selection, and more."
-  >
-  </pg-demo-header>
+    description="Hierarchical tree structure with expandable nodes, icons, selection, checkboxes, search, and more."
+  ></pg-demo-header>
 
   <pg-demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Tree -->
-        <section class="demo-section mt-0" id="basic-tree">
-          <div class="section-header">
-            <h2>🌳 Basic Tree</h2>
-            <p>Simple tree structure with expandable nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>File System Tree</h3>
-            <div class="tree-container">
-              <app-tree [nodes]="simpleTreeData" show-lines></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Icons and Colors -->
-        <section class="demo-section" id="icons-colors">
-          <div class="section-header">
-            <h2>🎨 Icons and Colors</h2>
-            <p>Custom icons and color variants for nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>Project Structure</h3>
-            <div class="tree-container">
-              <app-tree [nodes]="projectTreeData" show-lines show-icons></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Badges and Counters -->
-        <section class="demo-section" id="badges-counters">
-          <div class="section-header">
-            <h2>🏷️ Badges and Counters</h2>
-            <p>Display badges and counters on tree nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>Task Management</h3>
-            <div class="tree-container">
-              <app-tree [nodes]="taskTreeData" show-lines show-icons></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Selectable Tree -->
-        <section class="demo-section" id="selectable">
-          <div class="section-header">
-            <h2>✅ Selectable Tree</h2>
-            <p>Single and multi-select capabilities</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>Single Select</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines selectable></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Multi Select</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines selectable multi-select></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- With Checkboxes -->
-        <section class="demo-section" id="checkboxes">
-          <div class="section-header">
-            <h2>☑️ With Checkboxes</h2>
-            <p>Tree with checkbox selection</p>
-          </div>
-          <div class="demo-card">
-            <h3>Checkbox Tree</h3>
-            <div class="tree-container">
-              <app-tree [nodes]="projectTreeData" show-lines checkboxes></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Searchable Tree -->
-        <section class="demo-section" id="searchable">
-          <div class="section-header">
-            <h2>🔍 Searchable Tree</h2>
-            <p>Search and filter tree nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>Search Enabled</h3>
-            <div class="tree-container">
-              <app-tree [nodes]="projectTreeData" show-lines searchable></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Sizes -->
-        <section class="demo-section" id="sizes">
-          <div class="section-header">
-            <h2>📏 Sizes</h2>
-            <p>Small, medium, and large tree sizes</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>Small</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines size="small"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Medium (Default)</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines size="medium"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Large</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines size="large"></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Variants -->
-        <section class="demo-section" id="variants">
-          <div class="section-header">
-            <h2>✨ Variants</h2>
-            <p>Different visual styles</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>Default</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines variant="default"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Bordered</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines variant="bordered"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Rounded</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" show-lines variant="rounded"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Minimal</h3>
-              <div class="tree-container">
-                <app-tree [nodes]="simpleTreeData" variant="minimal"></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Org Chart Layout -->
-        <section class="demo-section" id="org-chart">
-          <div class="section-header">
-            <h2>📊 Org Chart Layout</h2>
-            <p>Horizontal organization chart style</p>
-          </div>
-          <div class="demo-card full-width">
-            <h3>Company Organization</h3>
-            <div class="tree-container chart-view">
-              <app-tree
-                layout="org-chart"
-                [nodes]="orgChartData"
-                variant="rounded"
-                show-lines
-              ></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Premium Aesthetics -->
-        <section class="demo-section" id="premium">
-          <div class="section-header">
-            <h2>💎 Premium Aesthetics</h2>
-            <p>Modern glassmorphism, depth elevations, and glowing effects</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card glass-wrapper">
-              <h3>Glassmorphism</h3>
-              <div class="glass-bg">
-                <app-tree
-                  [nodes]="projectTreeData"
-                  variant="glass"
-                  theme="dark"
-                  show-lines
-                ></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Glow Effect</h3>
-              <div class="tree-container">
-                <app-tree
-                  [nodes]="projectTreeData"
-                  variant="bordered"
-                  show-lines
-                  show-glow
-                ></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Drag and Drop -->
-        <section class="demo-section" id="drag-drop">
-          <div class="section-header">
-            <h2>🖱️ Drag and Drop</h2>
-            <p>Reorder nodes using native drag and drop (Simulation)</p>
-          </div>
-          <div class="demo-card">
-            <h3>Move Items</h3>
-            <div class="tree-container">
-              <app-tree [nodes]="projectTreeData" show-lines enable-drag></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Dark Theme -->
-        <section class="demo-section" id="dark-theme">
-          <div class="section-header">
-            <h2>🌙 Dark Theme</h2>
-            <p>Tree component in dark mode</p>
-          </div>
-          <div class="demo-card">
-            <h3>Dark Mode</h3>
-            <div class="tree-container bg-dark p-32 rounded-8">
-              <app-tree [nodes]="projectTreeData" show-lines theme="dark"></app-tree>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Playground Slot -->
     <div slot="playground">
       <ds-tree-playground></ds-tree-playground>
     </div>
 
-    <!-- Documentation Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <div class="examples-content" id="examples-scroll-area">
+
+        <pg-example-section
+          id="basic-tree"
+          title="Basic Tree"
+          description="Simple tree structure with expandable nodes and connection lines."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines></app-tree>'"
+          class="mt-0"
+        >
+          <app-tree [nodes]="simpleTreeData" show-lines></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="icons-colors"
+          title="Icons & Colors"
+          description="Custom icons and color variants for tree nodes."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines show-icons></app-tree>'"
+        >
+          <app-tree [nodes]="projectTreeData" show-lines show-icons></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="badges-counters"
+          title="Badges & Counters"
+          description="Display badges and counters on tree nodes for status indicators."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines show-icons></app-tree>'"
+        >
+          <app-tree [nodes]="taskTreeData" show-lines show-icons></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="selectable"
+          title="Selectable Tree"
+          description="Single and multi-select capabilities for tree nodes."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; selectable multi-select></app-tree>'"
+        >
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Single Select</p>
+              <app-tree [nodes]="simpleTreeData" show-lines selectable></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Multi Select</p>
+              <app-tree [nodes]="simpleTreeData" show-lines selectable multi-select></app-tree>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="checkboxes"
+          title="With Checkboxes"
+          description="Tree with checkbox selection for hierarchical multi-select."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines checkboxes></app-tree>'"
+        >
+          <app-tree [nodes]="projectTreeData" show-lines checkboxes></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="searchable"
+          title="Searchable Tree"
+          description="Built-in search to filter and highlight matching tree nodes."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines searchable></app-tree>'"
+        >
+          <app-tree [nodes]="projectTreeData" show-lines searchable></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="sizes"
+          title="Sizes"
+          description="Small, medium (default), and large size variants."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; size=&quot;small|medium|large&quot;></app-tree>'"
+        >
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Small</p>
+              <app-tree [nodes]="simpleTreeData" show-lines size="small"></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Medium</p>
+              <app-tree [nodes]="simpleTreeData" show-lines size="medium"></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Large</p>
+              <app-tree [nodes]="simpleTreeData" show-lines size="large"></app-tree>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="variants"
+          title="Variants"
+          description="Different visual styles — default, bordered, rounded, and minimal."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; variant=&quot;bordered|rounded|minimal&quot;></app-tree>'"
+        >
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Default</p>
+              <app-tree [nodes]="simpleTreeData" show-lines variant="default"></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Bordered</p>
+              <app-tree [nodes]="simpleTreeData" show-lines variant="bordered"></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Rounded</p>
+              <app-tree [nodes]="simpleTreeData" show-lines variant="rounded"></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Minimal</p>
+              <app-tree [nodes]="simpleTreeData" variant="minimal"></app-tree>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="org-chart"
+          title="Org Chart"
+          description="Horizontal organization chart layout for hierarchy visualization."
+          [code]="'<app-tree layout=&quot;org-chart&quot; [nodes]=&quot;nodes&quot; variant=&quot;rounded&quot; show-lines></app-tree>'"
+        >
+          <app-tree layout="org-chart" [nodes]="orgChartData" variant="rounded" show-lines></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="premium"
+          title="Premium Aesthetics"
+          description="Glassmorphism, depth elevations, and glowing effects."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; variant=&quot;glass&quot; theme=&quot;dark&quot; show-lines></app-tree>'"
+        >
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="padding: 16px; background: linear-gradient(135deg, #1e293b, #0f172a); border-radius: 8px;">
+              <p style="margin-bottom: 8px; font-size: 12px; color: rgba(255,255,255,0.6);">Glassmorphism</p>
+              <app-tree [nodes]="projectTreeData" variant="glass" theme="dark" show-lines></app-tree>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Glow Effect</p>
+              <app-tree [nodes]="projectTreeData" variant="bordered" show-lines show-glow></app-tree>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="drag-drop"
+          title="Drag & Drop"
+          description="Reorder nodes using native drag and drop."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines enable-drag></app-tree>'"
+        >
+          <app-tree [nodes]="projectTreeData" show-lines enable-drag></app-tree>
+        </pg-example-section>
+
+        <pg-example-section
+          id="dark-theme"
+          title="Dark Theme"
+          description="Tree component in dark mode with dark surface coloring."
+          [code]="'<app-tree [nodes]=&quot;nodes&quot; show-lines theme=&quot;dark&quot;></app-tree>'"
+        >
+          <div style="background: #1e293b; padding: 24px; border-radius: 8px;">
+            <app-tree [nodes]="projectTreeData" show-lines theme="dark"></app-tree>
+          </div>
+        </pg-example-section>
+
+      </div>
+    </div>
+
     <div slot="docs">
       <pg-component-documentation componentId="tree"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
-
-

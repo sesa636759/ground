@@ -1,6 +1,7 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="📄"
+    icon="arrow-left-right"
+  iconLibrary="lucide"
     title="Pagination"
     description="Comprehensive navigation controls with support for 8+ display modes, infinite scroll styles, and deep behavioral customization."
   ></pg-demo-header>
@@ -16,213 +17,175 @@
 
         <div class="examples-content">
           <!-- Basic & Variants -->
-          <section class="demo-section mt-0" id="basic">
-            <div class="section-header">
-              <h2>Basic & Variants</h2>
-              <p>The core numeric layout used for general navigation.</p>
-            </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Filled Theme</p>
-                <ui-pagination
-                  variant="filled"
-                  theme="primary"
-                  [attr.total-items]="100"
-                  [attr.items-per-page]="10"
-                ></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Soft Theme</p>
-                <ui-pagination variant="soft" theme="info" [attr.total-items]="100"></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Outlined Style</p>
-                <ui-pagination
-                  variant="outlined"
-                  theme="success"
-                  [attr.total-items]="80"
-                ></ui-pagination>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="basicCode()" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Detailed Controls -->
-          <section class="demo-section" id="detailed">
-            <div class="section-header">
-              <h2>Detailed Controls</h2>
-              <p>Combines total counts, page sizing, and direct "jump to" input.</p>
-            </div>
-            <div class="demo-card">
+          <pg-example-section id="basic" title="Basic & Variants" description="The core numeric layout used for general navigation." [code]="basicCode()"
+          >
+            <div class="demo-row">
+              <p>Filled Theme</p>
               <ui-pagination
-                type="detailed"
-                [attr.total-items]="1000"
-                show-page-size
-                show-total
-                show-jump-to
+                variant="filled"
                 theme="primary"
+                [attr.total-items]="100"
+                [attr.items-per-page]="10"
               ></ui-pagination>
             </div>
-            <ui-code-preview [htmlCode]="detailedCode()" activeLang="html"></ui-code-preview>
-          </section>
+            <div class="demo-row">
+              <p>Soft Theme</p>
+              <ui-pagination variant="soft" theme="info" [attr.total-items]="100"></ui-pagination>
+            </div>
+            <div class="demo-row">
+              <p>Outlined Style</p>
+              <ui-pagination
+                variant="outlined"
+                theme="success"
+                [attr.total-items]="80"
+              ></ui-pagination>
+            </div>
+          </pg-example-section>
+
+          <!-- Detailed Controls -->
+          <pg-example-section
+            id="detailed" title="Controls" description="Combines total counts, page sizing, and direct &quot;jump to&quot; input." [code]="detailedCode()"
+          >
+            <ui-pagination
+              type="detailed"
+              [attr.total-items]="1000"
+              show-page-size
+              show-total
+              show-jump-to
+              theme="primary"
+            ></ui-pagination>
+          </pg-example-section>
 
           <!-- Minimalist Styles -->
-          <section class="demo-section" id="minimal">
-            <div class="section-header">
-              <h2>Minimalist Styles</h2>
+          <pg-example-section
+            id="minimal" title="Styles" description="Minimal Type (Arrow only)"
+          >
+            <div class="demo-row">
+              <p>Minimal Type (Arrow only)</p>
+              <ui-pagination type="minimal" [attr.total-items]="100" size="sm"></ui-pagination>
             </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Minimal Type (Arrow only)</p>
-                <ui-pagination type="minimal" [attr.total-items]="100" size="sm"></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Compact Basic</p>
-                <ui-pagination type="compact" [attr.total-items]="50"></ui-pagination>
-              </div>
+            <div class="demo-row">
+              <p>Compact Basic</p>
+              <ui-pagination type="compact" [attr.total-items]="50"></ui-pagination>
             </div>
-          </section>
+          </pg-example-section>
 
           <!-- Streaming (Infinite) -->
-          <section class="demo-section" id="infinite">
-            <div class="section-header">
-              <h2>Streaming (Infinite)</h2>
-              <p>Replaces discrete pages with a "Load More" button or auto-fetching state.</p>
+          <pg-example-section
+            id="infinite" title="(Infinite)" description="Replaces discrete pages with a &quot;Load More&quot; button or auto-fetching state." [code]="infiniteCode()"
+          >
+            <div class="demo-row">
+              <p>Infinite Style (Load More)</p>
+              <ui-pagination
+                infinite
+                [attr.total-items]="1000"
+                [attr.items-per-page]="50"
+              ></ui-pagination>
             </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Infinite Style (Load More)</p>
-                <ui-pagination
-                  infinite
-                  [attr.total-items]="1000"
-                  [attr.items-per-page]="50"
-                ></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Infinite Loading State</p>
-                <ui-pagination infinite loading [attr.total-items]="1000"></ui-pagination>
-              </div>
+            <div class="demo-row">
+              <p>Infinite Loading State</p>
+              <ui-pagination infinite loading [attr.total-items]="1000"></ui-pagination>
             </div>
-            <ui-code-preview [htmlCode]="infiniteCode()" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
           <!-- Selector Modes -->
-          <section class="demo-section" id="modes">
-            <div class="section-header">
-              <h2>Selector Modes</h2>
+          <pg-example-section
+            id="modes" title="Modes" description="Dropdown Selector" [code]="dropdownCode()"
+          >
+            <div class="demo-row">
+              <p>Dropdown Selector</p>
+              <ui-pagination type="dropdown" [attr.total-items]="500"></ui-pagination>
             </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Dropdown Selector</p>
-                <ui-pagination type="dropdown" [attr.total-items]="500"></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Manual Number Input</p>
-                <ui-pagination type="input" [attr.total-items]="300" theme="info"></ui-pagination>
-              </div>
+            <div class="demo-row">
+              <p>Manual Number Input</p>
+              <ui-pagination type="input" [attr.total-items]="300" theme="info"></ui-pagination>
             </div>
-            <ui-code-preview [htmlCode]="dropdownCode()" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
           <!-- Visual Progress -->
-          <section class="demo-section" id="visuals">
-            <div class="section-header">
-              <h2>Visual Progress</h2>
-              <p>Dot indicators for carousels and progress bars.</p>
+          <pg-example-section
+            id="visuals" title="Progress" description="Dot indicators for carousels and progress bars."
+          >
+            <div class="demo-row">
+              <p>Dot Indicators</p>
+              <ui-pagination
+                type="indicator"
+                theme="primary"
+                [attr.total-items]="50"
+              ></ui-pagination>
             </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Dot Indicators</p>
-                <ui-pagination
-                  type="indicator"
-                  theme="primary"
-                  [attr.total-items]="50"
-                ></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Progress Bar Mode</p>
-                <ui-pagination
-                  show-progress
-                  theme="success"
-                  [attr.total-items]="100"
-                  [attr.current-page]="6"
-                ></ui-pagination>
-              </div>
+            <div class="demo-row">
+              <p>Progress Bar Mode</p>
+              <ui-pagination
+                show-progress
+                theme="success"
+                [attr.total-items]="100"
+                [attr.current-page]="6"
+              ></ui-pagination>
             </div>
-          </section>
+          </pg-example-section>
 
           <!-- Shapes & Borders -->
-          <section class="demo-section" id="shapes">
-            <div class="section-header">
-              <h2>Shapes & Borders</h2>
+          <pg-example-section id="shapes" title="Shapes & Borders" description="Pill Shape"
+          >
+            <div class="demo-row">
+              <p>Pill Shape</p>
+              <ui-pagination
+                shape="pill"
+                variant="filled"
+                [attr.total-items]="100"
+              ></ui-pagination>
             </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Pill Shape</p>
-                <ui-pagination
-                  shape="pill"
-                  variant="filled"
-                  [attr.total-items]="100"
-                ></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Rounded Square</p>
-                <ui-pagination
-                  shape="rounded"
-                  variant="outlined"
-                  [attr.total-items]="100"
-                ></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Sharp Square</p>
-                <ui-pagination
-                  shape="square"
-                  variant="soft"
-                  [attr.total-items]="100"
-                ></ui-pagination>
-              </div>
+            <div class="demo-row">
+              <p>Rounded Square</p>
+              <ui-pagination
+                shape="rounded"
+                variant="outlined"
+                [attr.total-items]="100"
+              ></ui-pagination>
             </div>
-          </section>
+            <div class="demo-row">
+              <p>Sharp Square</p>
+              <ui-pagination
+                shape="square"
+                variant="soft"
+                [attr.total-items]="100"
+              ></ui-pagination>
+            </div>
+          </pg-example-section>
 
           <!-- Color Themes -->
-          <section class="demo-section" id="themes">
-            <div class="section-header">
-              <h2>Color Themes</h2>
-            </div>
-            <div class="demo-card pagination-stack">
-              <ui-pagination theme="warning" [attr.total-items]="100"></ui-pagination>
-              <ui-pagination theme="error" [attr.total-items]="100"></ui-pagination>
-              <ui-pagination theme="secondary" [attr.total-items]="100"></ui-pagination>
-            </div>
-          </section>
+          <pg-example-section
+            id="themes" title="Themes"
+          >
+            <ui-pagination theme="warning" [attr.total-items]="100"></ui-pagination>
+            <ui-pagination theme="error" [attr.total-items]="100"></ui-pagination>
+            <ui-pagination theme="secondary" [attr.total-items]="100"></ui-pagination>
+          </pg-example-section>
 
           <!-- Behavioral Logic -->
-          <section class="demo-section" id="logic">
-            <div class="section-header">
-              <h2>Behavioral Logic</h2>
+          <pg-example-section
+            id="logic" title="Logic" description="Quick Jump Step (+10)" [code]="logicCode()"
+          >
+            <div class="demo-row">
+              <p>Quick Jump Step (+10)</p>
+              <ui-pagination
+                quick-jump
+                [attr.quick-jump-step]="10"
+                [attr.total-items]="1000"
+                [attr.current-page]="50"
+              ></ui-pagination>
             </div>
-            <div class="demo-card pagination-stack">
-              <div class="demo-row">
-                <p>Quick Jump Step (+10)</p>
-                <ui-pagination
-                  quick-jump
-                  [attr.quick-jump-step]="10"
-                  [attr.total-items]="1000"
-                  [attr.current-page]="50"
-                ></ui-pagination>
-              </div>
-              <div class="demo-row">
-                <p>Smart Compact Mode</p>
-                <ui-pagination
-                  smart-compact
-                  [attr.smart-compact-threshold]="5"
-                  [attr.total-items]="500"
-                  theme="warning"
-                ></ui-pagination>
-              </div>
+            <div class="demo-row">
+              <p>Smart Compact Mode</p>
+              <ui-pagination
+                smart-compact
+                [attr.smart-compact-threshold]="5"
+                [attr.total-items]="500"
+                theme="warning"
+              ></ui-pagination>
             </div>
-            <ui-code-preview [htmlCode]="logicCode()" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
         </div>
       </div>
     </div>

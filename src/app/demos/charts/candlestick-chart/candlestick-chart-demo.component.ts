@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-candlestick-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmCandlestickChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,8 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmCandlestickChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'daily', title: 'Daily Candles', icon: '📈', color: '#6366f1' },
-    { id: 'hollow', title: 'Hollow Body', icon: '🕯️', color: '#f59e0b' },
+    { id: 'daily', title: 'Daily Candles', icon: 'candlestick-chart',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'hollow', title: 'Hollow Body', icon: 'circle',
+      iconLibrary: 'lucide', color: '#f59e0b' },
   ];
 
   dailyCandles = [

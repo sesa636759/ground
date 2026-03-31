@@ -153,7 +153,7 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
     if (this.pgConfig.loading) code += `  loading\n`;
     if (this.pgConfig.mode === 'table') code += `  [columns]='${this.columnsJson}'\n`;
 
-    code += `></ui--transfer-list>`;
+    code += `></ui-transfer-list>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

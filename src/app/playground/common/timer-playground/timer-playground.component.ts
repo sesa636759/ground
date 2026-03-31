@@ -101,7 +101,7 @@ export class DmTimerPlaygroundComponent extends BasePlaygroundComponent implemen
     if (this.pgConfig.steps) code += `  steps='${this.pgConfig.steps}'\n`;
     if (this.pgConfig.targetDate) code += `  target-date="${this.pgConfig.targetDate}"\n`;
 
-    code += `></ui--timer>`;
+    code += `></ui-timer>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

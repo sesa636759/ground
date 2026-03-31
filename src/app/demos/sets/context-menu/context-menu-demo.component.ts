@@ -5,6 +5,7 @@ import { DmContextMenuPlaygroundComponent } from '../../../playground/sets/conte
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'ds-context-menu-demo',
@@ -16,6 +17,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
     ComponentDocumentationComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './context-menu-demo.component.html',
@@ -40,10 +42,13 @@ export class DmContextMenuDemoComponent {
 
   // Basic menu items
   basicItems = [
-    { id: 'view', label: 'View Details', icon: 'fas fa-eye' },
-    { id: 'edit', label: 'Quick Edit', icon: 'fas fa-pen' },
+    { id: 'view', label: 'View Details', icon: 'circle',
+      iconLibrary: 'lucide' },
+    { id: 'edit', label: 'Quick Edit', icon: 'circle',
+      iconLibrary: 'lucide' },
     { divider: true },
-    { id: 'delete', label: 'Remove Item', icon: 'fas fa-trash', color: 'danger' },
+    { id: 'delete', label: 'Remove Item', icon: 'circle',
+      iconLibrary: 'lucide', color: 'danger' },
   ];
 
   // Multi-level nested items
@@ -51,7 +56,8 @@ export class DmContextMenuDemoComponent {
     {
       id: 'sort',
       label: 'Sort By',
-      icon: 'fas fa-sort',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       children: [
         { id: 'name', label: 'Name (A-Z)' },
         { id: 'date', label: 'Date Modified' },
@@ -61,7 +67,8 @@ export class DmContextMenuDemoComponent {
     {
       id: 'export',
       label: 'Export As',
-      icon: 'fas fa-file-export',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       children: [
         { id: 'pdf', label: 'PDF Document (.pdf)' },
         { id: 'csv', label: 'Comma Separated (.csv)' },
@@ -124,20 +131,26 @@ export class DmContextMenuDemoComponent {
 
   // Grouped items
   fileMenuItems = [
-    { id: 'new', label: 'New File', icon: 'fas fa-plus', group: 'Create', shortcut: 'Ctrl+N' },
-    { id: 'open', label: 'Open', icon: 'fas fa-folder-open', group: 'Create', shortcut: 'Ctrl+O' },
+    { id: 'new', label: 'New File', icon: 'circle',
+      iconLibrary: 'lucide', group: 'Create', shortcut: 'Ctrl+N' },
+    { id: 'open', label: 'Open', icon: 'circle',
+      iconLibrary: 'lucide', group: 'Create', shortcut: 'Ctrl+O' },
     { divider: true },
-    { id: 'save', label: 'Save', icon: 'fas fa-save', group: 'File', shortcut: 'Ctrl+S' },
+    { id: 'save', label: 'Save', icon: 'circle',
+      iconLibrary: 'lucide', group: 'File', shortcut: 'Ctrl+S' },
     {
       id: 'save-as',
       label: 'Save As...',
-      icon: 'fas fa-save',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       group: 'File',
       shortcut: 'Ctrl+Shift+S',
     },
     { divider: true },
-    { id: 'close', label: 'Close', icon: 'fas fa-times', group: 'File', shortcut: 'Ctrl+W' },
-    { id: 'exit', label: 'Exit', icon: 'fas fa-sign-out-alt', group: 'File', shortcut: 'Ctrl+Q' },
+    { id: 'close', label: 'Close', icon: 'circle',
+      iconLibrary: 'lucide', group: 'File', shortcut: 'Ctrl+W' },
+    { id: 'exit', label: 'Exit', icon: 'circle',
+      iconLibrary: 'lucide', group: 'File', shortcut: 'Ctrl+Q' },
   ];
 
   // Deep nested (5 levels)

@@ -14,16 +14,21 @@ import { PLAYGROUND_IMPORTS } from '../../../../../shared/components/demo-playgr
 })
 export class CardExamplesComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
-    { id: 'basic', title: 'Core Structure', icon: '📋' },
-    { id: 'interactions', title: 'Rich Interactions', icon: '⚡' },
-    { id: 'patterns', title: 'Hierarchy & Patterns', icon: '🏗️' },
-    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
-    { id: 'specialized', title: 'Specialized Behaviors', icon: '🛠️' },
-    { id: 'advanced-slots', title: 'Advanced Slots', icon: '🚀' },
-    { id: 'variants-showcase', title: 'Design Variants', icon: '🎨' },
-    { id: 'responsive', title: 'Adaptive Layouts', icon: '📱' },
-    { id: 'states', title: 'Functional States', icon: '⏳' },
+    { id: 'playground-hero', title: 'Premium Showcase', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Core Structure', icon: 'square', iconLibrary: 'lucide' },
+    {
+      id: 'interactions',
+      title: 'Rich Interactions',
+      icon: 'mouse-pointer-click',
+      iconLibrary: 'lucide',
+    },
+    { id: 'patterns', title: 'Hierarchy & Patterns', icon: 'layout-grid', iconLibrary: 'lucide' },
+    { id: 'media', title: 'Media Enhancements', icon: 'image', iconLibrary: 'lucide' },
+    { id: 'specialized', title: 'Specialized Behaviors', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'advanced-slots', title: 'Advanced Slots', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'variants-showcase', title: 'Design Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'responsive', title: 'Adaptive Layouts', icon: 'smartphone', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Functional States', icon: 'loader', iconLibrary: 'lucide' },
   ];
 
   patternsCode = `<div class="card-grid">

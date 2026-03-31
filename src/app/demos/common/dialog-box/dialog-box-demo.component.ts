@@ -26,15 +26,24 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Dialog', icon: '📝' },
-    { id: 'slots', title: 'Custom Slots', icon: '🧩' },
-    { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },
-    { id: 'form', title: 'Form Inputs Dialog', icon: '📝' },
-    { id: 'variants', title: 'Variants & Status', icon: '🎨' },
-    { id: 'positions', title: 'Positions', icon: '📍' },
-    { id: 'scroll', title: 'Scroll Behaviors', icon: '📜' },
-    { id: 'advanced', title: 'Advanced Behaviors', icon: '🛠️' },
-    { id: 'premium', title: 'Premium Capabilities', icon: '💎' },
+    { id: 'basic', title: 'Basic Dialog', icon: 'square',
+      iconLibrary: 'lucide' },
+    { id: 'slots', title: 'Custom Slots', icon: 'circle',
+      iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Predefined Sizes', icon: 'maximize',
+      iconLibrary: 'lucide' },
+    { id: 'form', title: 'Form Inputs Dialog', icon: 'circle',
+      iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Variants & Status', icon: 'shapes',
+      iconLibrary: 'lucide' },
+    { id: 'positions', title: 'Positions', icon: 'map-pin',
+      iconLibrary: 'lucide' },
+    { id: 'scroll', title: 'Scroll Behaviors', icon: 'circle',
+      iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced Behaviors', icon: 'settings',
+      iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Capabilities', icon: 'crown',
+      iconLibrary: 'lucide' },
   ];
 
   dialogVisible: { [key: string]: boolean } = {};

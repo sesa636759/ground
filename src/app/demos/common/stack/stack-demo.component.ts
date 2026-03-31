@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmStackPlaygroundComponent } from '../../../playground/common/stack-playground/stack-playground.component';
@@ -6,12 +6,15 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-stack-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
+    
     DmStackPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

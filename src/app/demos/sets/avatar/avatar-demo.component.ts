@@ -8,6 +8,7 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-avatar-demo',
@@ -19,6 +20,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
     ComponentDocumentationComponent,
     DemoHeaderComponent,
     DemoSidebarComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-demo.component.html',

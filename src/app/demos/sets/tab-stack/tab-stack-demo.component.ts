@@ -7,6 +7,7 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DmTabStackPlaygroundComponent } from '../../../playground/sets/tab-stack-playground/tab-stack-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'ds-tab-stack-demo',
@@ -18,6 +19,7 @@ import { DmTabStackPlaygroundComponent } from '../../../playground/sets/tab-stac
     ComponentDocumentationComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tab-stack-demo.component.html',
@@ -33,10 +35,14 @@ export class DmTabStackDemoComponent extends BaseDemoComponent {
   ];
 
   tabs = [
-    { id: 'tab1', label: 'Dashboard', icon: 'fas fa-home', content: 'Dashboard content' },
-    { id: 'tab2', label: 'Analytics', icon: 'fas fa-chart-line', content: 'Analytics content' },
-    { id: 'tab3', label: 'Settings', icon: 'fas fa-cog', content: 'Settings content' },
-    { id: 'tab4', label: 'Profile', icon: 'fas fa-user', content: 'Profile content' },
+    { id: 'tab1', label: 'Dashboard', icon: 'circle',
+      iconLibrary: 'lucide', content: 'Dashboard content' },
+    { id: 'tab2', label: 'Analytics', icon: 'circle',
+      iconLibrary: 'lucide', content: 'Analytics content' },
+    { id: 'tab3', label: 'Settings', icon: 'circle',
+      iconLibrary: 'lucide', content: 'Settings content' },
+    { id: 'tab4', label: 'Profile', icon: 'circle',
+      iconLibrary: 'lucide', content: 'Profile content' },
   ];
 
   playgroundCode = `<app-tab-stack

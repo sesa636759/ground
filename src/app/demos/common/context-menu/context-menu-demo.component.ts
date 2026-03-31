@@ -25,7 +25,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './context-menu-demo.component.scss',
 })
 export class DmContextMenuDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: '🎯' }];
+  exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: 'circle',
+      iconLibrary: 'lucide' }];
 
   fileItems = [
     { label: 'Open', icon: '📁' },

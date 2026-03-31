@@ -4,25 +4,78 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid p-16">
+  <!-- Content & Media Panel -->
+  <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
-      <label>Value / Text</label>
+      <label>Label</label>
       <ui-input
         type="text"
-        [(ngModel)]="pgConfig.value"
+        [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
     <div class="control-group">
       <label>Icon</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.icon"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. star"
+      ></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.icon">
+      <label>Icon Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="iconPositionOptions"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Severity</label>
+      <label>Image URL</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.image"
+        (ngModelChange)="updateConfig()"
+        placeholder="https://..."
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>User Avatar URL</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.userAvatar"
+        (ngModelChange)="updateConfig()"
+        placeholder="https://..."
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Counter</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.counter"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. 5"
+      ></ui-input>
+    </div>
+  </div>
+
+  <!-- Appearance Panel -->
+  <div slot="content-appearance" class="control-grid p-16">
+    <div class="control-group">
+      <label>Color</label>
       <ui-dropdown
-        [(ngModel)]="pgConfig.severity"
+        [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
         [options]="standardColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -41,13 +94,46 @@
     </div>
   </div>
 
+  <!-- States & Behavior Panel -->
+  <div slot="content-behavior" class="control-grid p-16">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.checkable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Checkable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Checked
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.removable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Removable
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview -->
   <div preview class="w-full display-flex justify-center items-center p-40">
     <ui-tag
-      [attr.value]="pgConfig.value"
-      [attr.icon]="pgConfig.icon"
-      [attr.severity]="pgConfig.severity"
-      [attr.rounded]="pgConfig.rounded ? '' : null"
+      [attr.label]="pgConfig.label"
+      [attr.color]="pgConfig.color"
+      [attr.variant]="pgConfig.variant"
       [attr.size]="pgConfig.size"
+      [attr.rounded]="pgConfig.rounded ? '' : null"
+      [attr.icon]="pgConfig.icon || null"
+      [attr.icon-pos]="pgConfig.iconPosition !== 'start' ? pgConfig.iconPosition : null"
+      [attr.image]="pgConfig.image || null"
+      [attr.user-avatar]="pgConfig.userAvatar || null"
+      [attr.checkable]="pgConfig.checkable ? '' : null"
+      [attr.checked]="pgConfig.checked ? '' : null"
+      [attr.removable]="pgConfig.removable ? '' : null"
+      [attr.counter]="pgConfig.counter || null"
     ></ui-tag>
   </div>
 

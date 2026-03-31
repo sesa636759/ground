@@ -109,8 +109,35 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
       value: 'notifications',
       name: 'notification_toggle',
       switchTabIndex: 0,
+      description: '',
+      descriptionPosition: 'bottom',
+      material: 'solid',
+      glow: false,
+      haptic: false,
+      physics: 'liquid',
+      checkedImage: '',
+      uncheckedImage: '',
     };
   }
+
+  materialOptions = [
+    { label: 'Solid (Default)', value: 'solid' },
+    { label: 'Glass', value: 'glass' },
+    { label: 'Raised', value: 'raised' },
+    { label: 'Outlined', value: 'outlined' },
+  ];
+
+  physicsOptions = [
+    { label: 'Liquid (Default)', value: 'liquid' },
+    { label: 'Stiff', value: 'stiff' },
+    { label: 'Bouncy', value: 'bouncy' },
+    { label: 'Linear', value: 'linear' },
+  ];
+
+  descriptionPositionOptions = [
+    { label: 'Bottom', value: 'bottom' },
+    { label: 'Side (Dense)', value: 'side' },
+  ];
 
   thumbShapeOptions = [
     { label: 'Circle', value: 'circle' },
@@ -189,7 +216,18 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.switchTabIndex !== 0)
       code += `  switch-tab-index="${this.pgConfig.switchTabIndex}"\n`;
 
-    code += '></ui--switch>';
+    if (this.pgConfig.description) code += `  description="${this.pgConfig.description}"\n`;
+    if (this.pgConfig.descriptionPosition !== 'bottom')
+      code += `  description-position="${this.pgConfig.descriptionPosition}"\n`;
+    if (this.pgConfig.material !== 'solid') code += `  material="${this.pgConfig.material}"\n`;
+    if (this.pgConfig.glow) code += `  glow\n`;
+    if (this.pgConfig.haptic) code += `  haptic\n`;
+    if (this.pgConfig.physics !== 'liquid') code += `  physics="${this.pgConfig.physics}"\n`;
+    if (this.pgConfig.checkedImage) code += `  checked-image="${this.pgConfig.checkedImage}"\n`;
+    if (this.pgConfig.uncheckedImage)
+      code += `  unchecked-image="${this.pgConfig.uncheckedImage}"\n`;
+
+    code += '></ui-switch>';
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-gantt-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmGanttChartPlaygroundComponent,
     DemoTabsComponent,
@@ -24,7 +26,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './gantt-chart-demo.component.scss',
 })
 export class DmGanttChartDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'project', title: 'Project Plan', icon: '📋', color: '#6366f1' }];
+  exampleVariants = [{ id: 'project', title: 'Project Plan', icon: 'calendar-range',
+      iconLibrary: 'lucide', color: '#6366f1' }];
 
   tasks = [
     { id: '1', name: 'Requirements', start: 0, end: 10, color: '#6366f1' },

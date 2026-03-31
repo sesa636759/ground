@@ -92,7 +92,7 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
     if (this.pgConfig.iconLibrary !== 'default')
       code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
 
-    code += `></ui--dock>`;
+    code += `></ui-dock>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

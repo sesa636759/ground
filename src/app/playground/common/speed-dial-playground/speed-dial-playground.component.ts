@@ -101,7 +101,7 @@ export class DmSpeedDialPlaygroundComponent extends BasePlaygroundComponent impl
     code += `  trigger="${this.pgConfig.trigger}"\n`;
     if (!this.pgConfig.showTooltips) code += `  [show-tooltips]="false"\n`;
     code += `  [actions]="actions"\n`;
-    code += '></ui--speed-dial>';
+    code += '></ui-speed-dial>';
 
     this.generatedCode.set(code);
     this.refreshCode();

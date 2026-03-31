@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-tree-diagram-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmTreeDiagramPlaygroundComponent,
     DemoTabsComponent,
@@ -25,8 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmTreeDiagramDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'org', title: 'Org Chart', icon: '🏢', color: '#6366f1' },
-    { id: 'filesystem', title: 'File System', icon: '📁', color: '#10b981' },
+    { id: 'org', title: 'Org Chart', icon: 'sitemap',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'filesystem', title: 'File System', icon: 'folder-tree',
+      iconLibrary: 'lucide', color: '#10b981' },
   ];
 
   orgCode = `<!-- Org Chart Tree (SVG + layout algorithm) -->

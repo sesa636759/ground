@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -128,8 +128,8 @@ export class DmDialogBoxPlaygroundComponent extends BasePlaygroundComponent impl
     <p>This is the content of the dialog.</p>
   </div>`;
       const code = this.getCleanFormattedDom(this.demoElement, 'ui-dialog-box').replace(
-        '></ui--dialog-box>',
-        `>\n${innerContent}\n</ui--dialog-box>`,
+        '></ui-dialog-box>',
+        `>\n${innerContent}\n</ui-dialog-box>`,
       );
       this.generatedCode.set(code);
       this.refreshCode();

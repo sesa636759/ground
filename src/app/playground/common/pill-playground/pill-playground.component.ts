@@ -109,7 +109,7 @@ export class DmPillPlaygroundComponent extends BasePlaygroundComponent implement
       code += `  gradient="${this.pgConfig.gradient}"\n`;
     }
 
-    code += '></ui--pill>';
+    code += '></ui-pill>';
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🏔️"
+    icon="area-chart"
+  iconLibrary="lucide"
     title="Area Chart"
     description="Line chart variant with area fill below the line, emphasizing volume and magnitude over time. Supports basic, stacked, and gradient variants for rich data storytelling."
   ></pg-demo-header>
@@ -14,55 +15,35 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="basic">
-            <div class="section-header">
-              <h2>🏔️ Basic Area Chart</h2>
-              <p>Single series area chart showing revenue growth over time.</p>
-            </div>
-            <div class="demo-card">
-              <chart-line
-                [data]="basicData"
-                chart-title="Monthly Revenue"
-                x-axis-label="Month"
-                y-axis-label="Revenue ($k)"
-                show-legend
-                show-grid
-                enable-animation
-                width="580"
-                height="300"
-              ></chart-line>
-            </div>
-            <ui-code-preview
-              [htmlCode]="basicCode"
-              label="Basic Area Chart"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="basic" title="Area Chart" description="Single series area chart showing revenue growth over time." [code]="basicCode"
+          >
+            <chart-line
+              [data]="basicData"
+              chart-title="Monthly Revenue"
+              x-axis-label="Month"
+              y-axis-label="Revenue ($k)"
+              show-legend
+              show-grid
+              enable-animation
+              width="580"
+              height="300"
+            ></chart-line>
+          </pg-example-section>
 
-          <section class="demo-section" id="stacked">
-            <div class="section-header">
-              <h2>📚 Stacked Area Chart</h2>
-              <p>Multiple series stacked to show composition and trend simultaneously.</p>
-            </div>
-            <div class="demo-card">
-              <chart-line
-                [data]="stackedData"
-                chart-title="Traffic by Channel"
-                show-legend
-                show-grid
-                enable-animation
-                width="580"
-                height="300"
-              ></chart-line>
-            </div>
-            <ui-code-preview
-              [htmlCode]="stackedCode"
-              label="Stacked Area Chart"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="stacked" title="Area Chart" description="Multiple series stacked to show composition and trend simultaneously." [code]="stackedCode"
+          >
+            <chart-line
+              [data]="stackedData"
+              chart-title="Traffic by Channel"
+              show-legend
+              show-grid
+              enable-animation
+              width="580"
+              height="300"
+            ></chart-line>
+          </pg-example-section>
         </div>
       </div>
     </div>

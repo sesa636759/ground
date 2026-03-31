@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🧇"
+    icon="grid-2x2"
+  iconLibrary="lucide"
     title="Waffle Chart"
     description="An SVG-based chart where a grid of cells visualises a value against a total. Supports custom grid dimensions, fill/empty colours, percentage display, and descriptive titles."
   ></pg-demo-header>
@@ -16,99 +17,69 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section mt-0" id="basic">
-            <div class="section-header">
-              <h2>🧇 Basic Waffle</h2>
-              <p>Show a single value-against-total metric with a fill colour and title.</p>
-            </div>
-            <div class="demo-card justify-center">
-              <chart-waffle
-                value="72"
-                total="100"
-                chart-title="Task Completion"
-                fill-color="#6366f1"
-              ></chart-waffle>
-            </div>
-            <ui-code-preview
-              [htmlCode]="basicCode"
-              [label]="'Basic Waffle Chart'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="basic" title="Waffle" description="Show a single value-against-total metric with a fill colour and title." [code]="basicCode"
+          >
+            <chart-waffle
+              value="72"
+              total="100"
+              chart-title="Task Completion"
+              fill-color="#6366f1"
+            ></chart-waffle>
+          </pg-example-section>
 
           <!-- Colors -->
-          <section class="demo-section" id="colors">
-            <div class="section-header">
-              <h2>🎨 Color Variants</h2>
-              <p>Use fill-color to match your brand palette or semantic status colours.</p>
-            </div>
-            <div class="demo-card display-flex gap-32 wrap justify-center">
-              <chart-waffle
-                value="72"
-                total="100"
-                fill-color="#6366f1"
-                chart-title="Engineering"
-              ></chart-waffle>
-              <chart-waffle
-                value="55"
-                total="100"
-                fill-color="#f59e0b"
-                chart-title="Marketing"
-              ></chart-waffle>
-              <chart-waffle
-                value="88"
-                total="100"
-                fill-color="#10b981"
-                chart-title="Operations"
-              ></chart-waffle>
-              <chart-waffle
-                value="40"
-                total="100"
-                fill-color="#f43f5e"
-                chart-title="HR"
-              ></chart-waffle>
-            </div>
-            <ui-code-preview
-              [htmlCode]="colorsCode"
-              [label]="'Color Variants'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="colors" title="Variants" description="Use fill-color to match your brand palette or semantic status colours." [code]="colorsCode"
+          >
+            <chart-waffle
+              value="72"
+              total="100"
+              fill-color="#6366f1"
+              chart-title="Engineering"
+            ></chart-waffle>
+            <chart-waffle
+              value="55"
+              total="100"
+              fill-color="#f59e0b"
+              chart-title="Marketing"
+            ></chart-waffle>
+            <chart-waffle
+              value="88"
+              total="100"
+              fill-color="#10b981"
+              chart-title="Operations"
+            ></chart-waffle>
+            <chart-waffle
+              value="40"
+              total="100"
+              fill-color="#f43f5e"
+              chart-title="HR"
+            ></chart-waffle>
+          </pg-example-section>
 
           <!-- Grid Sizes -->
-          <section class="demo-section" id="grid-sizes">
-            <div class="section-header">
-              <h2>📐 Grid Sizes</h2>
-              <p>Override rows and columns to create square, compact, or wide waffle layouts.</p>
-            </div>
-            <div class="demo-card display-flex gap-32 wrap items-start justify-center">
-              <chart-waffle value="65" total="100" chart-title="Default (10×10)"></chart-waffle>
-              <chart-waffle
-                value="65"
-                total="100"
-                rows="5"
-                columns="10"
-                cell-size="22"
-                chart-title="Compact (5×10)"
-              ></chart-waffle>
-              <chart-waffle
-                value="65"
-                total="100"
-                rows="5"
-                columns="20"
-                cell-size="18"
-                chart-title="Wide (5×20)"
-              ></chart-waffle>
-            </div>
-            <ui-code-preview
-              [htmlCode]="gridCode"
-              [label]="'Grid Size Variants'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="grid-sizes" title="Sizes" description="Override rows and columns to create square, compact, or wide waffle layouts." [code]="gridCode"
+          >
+            <chart-waffle value="65" total="100" chart-title="Default (10×10)"></chart-waffle>
+            <chart-waffle
+              value="65"
+              total="100"
+              rows="5"
+              columns="10"
+              cell-size="22"
+              chart-title="Compact (5×10)"
+            ></chart-waffle>
+            <chart-waffle
+              value="65"
+              total="100"
+              rows="5"
+              columns="20"
+              cell-size="18"
+              chart-title="Wide (5×20)"
+            ></chart-waffle>
+          </pg-example-section>
         </div>
       </div>
     </div>

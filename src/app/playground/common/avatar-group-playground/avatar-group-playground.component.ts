@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -66,11 +66,11 @@ export class DmAvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
       el.borderWidth = this.pgConfig.borderWidth;
 
       const innerContent = `
-  <ui-avatar label="JD" src="https://i.pravatar.cc/150?u=1"></ui--avatar>
-  <ui-avatar label="AB" src="https://i.pravatar.cc/150?u=2"></ui--avatar>
-  <ui-avatar label="CD" src="https://i.pravatar.cc/150?u=3"></ui--avatar>
-  <ui-avatar label="EF" src="https://i.pravatar.cc/150?u=4"></ui--avatar>
-  <ui-avatar label="GH" src="https://i.pravatar.cc/150?u=5"></ui--avatar>`;
+  <ui-avatar label="JD" src="https://i.pravatar.cc/150?u=1"></ui-avatar>
+  <ui-avatar label="AB" src="https://i.pravatar.cc/150?u=2"></ui-avatar>
+  <ui-avatar label="CD" src="https://i.pravatar.cc/150?u=3"></ui-avatar>
+  <ui-avatar label="EF" src="https://i.pravatar.cc/150?u=4"></ui-avatar>
+  <ui-avatar label="GH" src="https://i.pravatar.cc/150?u=5"></ui-avatar>`;
 
       let code = `<ui-avatar-group
   size="${this.pgConfig.size}"
@@ -87,7 +87,7 @@ export class DmAvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
       if (this.pgConfig.borderWidth !== 2)
         code += `\n  border-width="${this.pgConfig.borderWidth}"`;
 
-      code += `\n>${innerContent}\n</ui--avatar-group>`;
+      code += `\n>${innerContent}\n</ui-avatar-group>`;
 
       this.generatedCode.set(code);
       this.refreshCode();

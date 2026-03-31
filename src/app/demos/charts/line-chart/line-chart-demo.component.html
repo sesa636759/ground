@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="💹"
+    icon="chart-line"
+  iconLibrary="lucide"
     title="Line Chart"
     description="An SVG-based line chart for visualising trends over time. Supports single and multi-series data, custom colours, grid, legend, markers, and animation."
   ></pg-demo-header>
@@ -16,85 +17,55 @@
 
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section mt-0" id="basic">
-            <div class="section-header">
-              <h2>💹 Basic Line Chart</h2>
-              <p>A single-series line chart showing monthly revenue trends.</p>
-            </div>
-            <div class="demo-card">
-              <chart-line
-                chart-title="Monthly Revenue"
-                x-axis-label="Month"
-                y-axis-label="Revenue ($k)"
-                show-legend
-                show-grid
-                enable-animation
-                width="600"
-                height="300"
-                [data]="basicData"
-              ></chart-line>
-            </div>
-            <ui-code-preview
-              [htmlCode]="basicCode"
-              [label]="'Basic Line Chart'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="basic" title="Line Chart" description="A single-series line chart showing monthly revenue trends." [code]="basicCode"
+          >
+            <chart-line
+              chart-title="Monthly Revenue"
+              x-axis-label="Month"
+              y-axis-label="Revenue ($k)"
+              show-legend
+              show-grid
+              enable-animation
+              width="600"
+              height="300"
+              [data]="basicData"
+            ></chart-line>
+          </pg-example-section>
 
           <!-- Multi Series -->
-          <section class="demo-section" id="multi-series">
-            <div class="section-header">
-              <h2>📈 Multi Series</h2>
-              <p>Compare multiple metrics on the same chart using different colours per series.</p>
-            </div>
-            <div class="demo-card">
-              <chart-line
-                chart-title="Financial Overview"
-                x-axis-label="Month"
-                y-axis-label="Amount ($k)"
-                show-legend
-                show-grid
-                enable-animation
-                width="600"
-                height="300"
-                [data]="multiSeriesData"
-              ></chart-line>
-            </div>
-            <ui-code-preview
-              [htmlCode]="multiSeriesCode"
-              [label]="'Multi-Series Line Chart'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="multi-series" title="Series" description="Compare multiple metrics on the same chart using different colours per series." [code]="multiSeriesCode"
+          >
+            <chart-line
+              chart-title="Financial Overview"
+              x-axis-label="Month"
+              y-axis-label="Amount ($k)"
+              show-legend
+              show-grid
+              enable-animation
+              width="600"
+              height="300"
+              [data]="multiSeriesData"
+            ></chart-line>
+          </pg-example-section>
 
           <!-- Stepped -->
-          <section class="demo-section" id="stepped">
-            <div class="section-header">
-              <h2>🪜 Stepped Line</h2>
-              <p>Use closely-spaced points to represent discrete state changes over time.</p>
-            </div>
-            <div class="demo-card">
-              <chart-line
-                chart-title="Server Load (%)"
-                x-axis-label="Hour"
-                y-axis-label="Load (%)"
-                show-markers
-                show-grid
-                stroke-width="2"
-                width="600"
-                height="300"
-                [data]="steppedData"
-              ></chart-line>
-            </div>
-            <ui-code-preview
-              [htmlCode]="steppedCode"
-              [label]="'Stepped Line Chart'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="stepped" title="Line" description="Use closely-spaced points to represent discrete state changes over time." [code]="steppedCode"
+          >
+            <chart-line
+              chart-title="Server Load (%)"
+              x-axis-label="Hour"
+              y-axis-label="Load (%)"
+              show-markers
+              show-grid
+              stroke-width="2"
+              width="600"
+              height="300"
+              [data]="steppedData"
+            ></chart-line>
+          </pg-example-section>
         </div>
       </div>
     </div>

@@ -7,6 +7,14 @@
   <!-- Global Configuration -->
   <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
+      <label>Material Style</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.material"
+        (ngModelChange)="updateConfig()"
+        [options]="materialOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
       <label>Label</label>
       <ui-input
         type="text"
@@ -60,6 +68,23 @@
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
         [options]="orientationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Description</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.description"
+        (ngModelChange)="updateConfig()"
+        placeholder="Optional description"
+      ></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.description">
+      <label>Description Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.descriptionPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="descriptionPositionOptions"
       ></ui-dropdown>
     </div>
   </div>
@@ -169,6 +194,14 @@
         ></ui-checkbox>
         Success Feedback
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glow
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.haptic" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Haptic
+      </label>
     </div>
 
     <div class="control-grid mt-16">
@@ -230,6 +263,32 @@
           max="5"
           [(ngModel)]="pgConfig.elevation"
           (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Physics / Animation</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.physics"
+          (ngModelChange)="updateConfig()"
+          [options]="physicsOptions"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Checked Image URL</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.checkedImage"
+          (ngModelChange)="updateConfig()"
+          placeholder="https://..."
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Unchecked Image URL</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.uncheckedImage"
+          (ngModelChange)="updateConfig()"
+          placeholder="https://..."
         ></ui-input>
       </div>
       <div class="control-group" *ngIf="pgConfig.showTooltip">
@@ -359,6 +418,14 @@
         [attr.value]="pgConfig.value"
         [attr.aria-label]="pgConfig.ariaLabel"
         [attr.tabindex]="pgConfig.switchTabIndex"
+        [attr.description]="pgConfig.description || null"
+        [attr.description-position]="pgConfig.description ? pgConfig.descriptionPosition : null"
+        [attr.material]="pgConfig.material !== 'solid' ? pgConfig.material : null"
+        [attr.glow]="pgConfig.glow ? '' : null"
+        [attr.haptic]="pgConfig.haptic ? '' : null"
+        [attr.physics]="pgConfig.physics !== 'liquid' ? pgConfig.physics : null"
+        [attr.checked-image]="pgConfig.checkedImage || null"
+        [attr.unchecked-image]="pgConfig.uncheckedImage || null"
         (switchChange)="onSwitchChange($event)"
         (switchFocus)="onSwitchFocus()"
         (switchBlur)="onSwitchBlur()"

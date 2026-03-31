@@ -58,7 +58,7 @@ export class DmScrollTopPlaygroundComponent extends BasePlaygroundComponent impl
     code += `  threshold="${this.pgConfig.threshold}"\n`;
     code += `  icon="${this.pgConfig.icon}"\n`;
     code += `  shape="${this.pgConfig.shape}"\n`;
-    code += '></ui--scroll-top>';
+    code += '></ui-scroll-top>';
 
     this.generatedCode.set(code);
     this.refreshCode();

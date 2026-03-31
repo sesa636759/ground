@@ -1,6 +1,7 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="↔️"
+    icon="columns"
+    iconLibrary="lucide"
     title="Splitter"
     description="A multi-pane layout component that allows users to resize adjacent panels. Supports nesting, min/max constraints, state persistence, and keyboard navigation."
   ></pg-demo-header>
@@ -10,83 +11,102 @@
       <ds-splitter-playground></ds-splitter-playground>
     </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <div class="examples-content">
-          <!-- Basic Layouts -->
-          <section class="demo-section" id="horizontal-basic">
-            <div class="section-header"><h2>Horizontal Basic</h2></div>
-            <div class="demo-card splitter-wrapper">
-              <ui-splitter direction="horizontal">
-                <div slot="panel-0" class="panel-box">Left</div>
-                <div slot="panel-1" class="panel-box">Right</div>
-              </ui-splitter>
-            </div>
-            <ui-code-preview [htmlCode]="horizontalBasicCode" activeLang="html"></ui-code-preview>
-          </section>
+      <div class="examples-content" id="examples-scroll-area">
 
-          <section class="demo-section" id="vertical-basic">
-            <div class="section-header"><h2>Vertical Basic</h2></div>
-            <div class="demo-card splitter-wrapper">
-              <ui-splitter direction="vertical">
-                <div slot="panel-0" class="panel-box">Top</div>
-                <div slot="panel-1" class="panel-box">Bottom</div>
-              </ui-splitter>
-            </div>
-            <ui-code-preview [htmlCode]="verticalBasicCode" activeLang="html"></ui-code-preview>
-          </section>
+        <pg-example-section
+          id="horizontal-basic"
+          title="Horizontal Basic"
+          description="Side-by-side panels with a draggable divider."
+          [code]="horizontalBasicCode"
+          class="mt-0"
+        >
+          <div style="height: 120px; border: 1px solid var(--ui-border-color); border-radius: 8px; overflow: hidden;">
+            <ui-splitter direction="horizontal">
+              <div slot="panel-0" style="padding: 16px; height: 100%; box-sizing: border-box;">Left Panel</div>
+              <div slot="panel-1" style="padding: 16px; height: 100%; box-sizing: border-box;">Right Panel</div>
+            </ui-splitter>
+          </div>
+        </pg-example-section>
 
-          <section class="demo-section" id="two-panels">
-            <div class="section-header"><h2>Two Panels</h2></div>
-            <div class="demo-card splitter-wrapper">
-              <ui-splitter [attr.panels]="basicPanels | json">
-                <div slot="panel-0" class="panel-box">Panel 1</div>
-                <div slot="panel-1" class="panel-box">Panel 2</div>
-              </ui-splitter>
-            </div>
-            <ui-code-preview [htmlCode]="panelsCode" activeLang="html"></ui-code-preview>
-          </section>
+        <pg-example-section
+          id="vertical-basic"
+          title="Vertical Basic"
+          description="Top-and-bottom panels with a draggable horizontal divider."
+          [code]="verticalBasicCode"
+        >
+          <div style="height: 180px; border: 1px solid var(--ui-border-color); border-radius: 8px; overflow: hidden;">
+            <ui-splitter direction="vertical">
+              <div slot="panel-0" style="padding: 16px;">Top Panel</div>
+              <div slot="panel-1" style="padding: 16px;">Bottom Panel</div>
+            </ui-splitter>
+          </div>
+        </pg-example-section>
 
-          <!-- Interaction Examples Simplified for clean output -->
-          <section class="demo-section" id="snap-threshold">
-            <div class="section-header"><h2>Snap to Threshold</h2></div>
-            <div class="demo-card splitter-wrapper">
-              <ui-splitter snap-threshold="30">
-                <div slot="panel-0" class="panel-box">Snap Zone</div>
-                <div slot="panel-1" class="panel-box">Content</div>
-              </ui-splitter>
-            </div>
-          </section>
+        <pg-example-section
+          id="two-panels"
+          title="Two Panels"
+          description="Two panels with custom initial sizes via the panels attribute."
+          [code]="panelsCode"
+        >
+          <div style="height: 120px; border: 1px solid var(--ui-border-color); border-radius: 8px; overflow: hidden;">
+            <ui-splitter [attr.panels]="basicPanels | json">
+              <div slot="panel-0" style="padding: 16px;">Panel 1 (30%)</div>
+              <div slot="panel-1" style="padding: 16px;">Panel 2 (70%)</div>
+            </ui-splitter>
+          </div>
+        </pg-example-section>
 
-          <!-- Complex Nested -->
-          <section class="demo-section" id="nested-ide-layout">
-            <div class="section-header"><h2>IDE-Style Layout</h2></div>
-            <div class="demo-card h-400 border-subtle rounded-8 overflow-hidden">
-              <ui-splitter direction="horizontal">
-                <div slot="panel-0" class="panel-box fixed-150">Files</div>
-                <div slot="panel-1">
-                  <ui-splitter direction="vertical" class="h-full">
-                    <div slot="panel-0" class="panel-box">Editor.ts</div>
-                    <div slot="panel-1" class="panel-box">Terminal</div>
-                  </ui-splitter>
-                </div>
-              </ui-splitter>
-            </div>
-          </section>
+        <pg-example-section
+          id="snap-threshold"
+          title="Snap to Threshold"
+          description="Panels snap to the edge when dragged close enough."
+          [code]="horizontalBasicCode"
+        >
+          <div style="height: 120px; border: 1px solid var(--ui-border-color); border-radius: 8px; overflow: hidden;">
+            <ui-splitter snap-threshold="30">
+              <div slot="panel-0" style="padding: 16px;">Snap Zone</div>
+              <div slot="panel-1" style="padding: 16px;">Content</div>
+            </ui-splitter>
+          </div>
+        </pg-example-section>
 
-          <section class="demo-section" id="header-body-footer">
-            <div class="section-header"><h2>Header-Body-Footer</h2></div>
-            <div class="demo-card h-300 border-subtle rounded-8 overflow-hidden">
-              <ui-splitter direction="vertical">
-                <div slot="panel-0" class="panel-box fixed-50">HEADER</div>
-                <div slot="panel-1" class="panel-box">BODY CONTENT</div>
-                <div slot="panel-2" class="panel-box fixed-40">FOOTER</div>
-              </ui-splitter>
-            </div>
-          </section>
-        </div>
+        <pg-example-section
+          id="nested-ide-layout"
+          title="IDE-Style Layout"
+          description="Nested splitters for complex multi-pane layouts like code editors."
+          [code]="horizontalBasicCode"
+        >
+          <div style="height: 200px; border: 1px solid var(--ui-border-color); border-radius: 8px; overflow: hidden;">
+            <ui-splitter direction="horizontal">
+              <div slot="panel-0" style="padding: 12px; font-size: 12px; background: var(--ui-surface-secondary);">File Explorer</div>
+              <div slot="panel-1">
+                <ui-splitter direction="vertical" style="height: 100%;">
+                  <div slot="panel-0" style="padding: 12px; font-size: 12px;">Editor Area</div>
+                  <div slot="panel-1" style="padding: 12px; font-size: 12px; background: var(--ui-surface-secondary);">Terminal</div>
+                </ui-splitter>
+              </div>
+            </ui-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="header-body-footer"
+          title="Header-Body-Footer"
+          description="Three-panel vertical layout for page structure."
+          [code]="verticalBasicCode"
+        >
+          <div style="height: 200px; border: 1px solid var(--ui-border-color); border-radius: 8px; overflow: hidden;">
+            <ui-splitter direction="vertical">
+              <div slot="panel-0" style="padding: 12px; background: var(--ui-surface-secondary); font-size: 12px; font-weight: 600;">HEADER</div>
+              <div slot="panel-1" style="padding: 12px; font-size: 12px;">BODY CONTENT</div>
+              <div slot="panel-2" style="padding: 12px; background: var(--ui-surface-secondary); font-size: 12px; font-weight: 600;">FOOTER</div>
+            </ui-splitter>
+          </div>
+        </pg-example-section>
+
       </div>
     </div>
 

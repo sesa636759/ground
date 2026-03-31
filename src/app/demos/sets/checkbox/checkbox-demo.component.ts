@@ -36,6 +36,13 @@ export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit
     { id: 'states', title: 'Component States', icon: 'list-checks', iconLibrary: 'lucide' },
     { id: 'groups', title: 'Checkbox Groups', icon: 'layers', iconLibrary: 'lucide' },
     { id: 'form', title: 'Form Integration', icon: 'clipboard-list', iconLibrary: 'lucide' },
+    { id: 'elite-effects', title: 'Elite Effects', icon: 'sparkles', iconLibrary: 'lucide' },
+    {
+      id: 'reveal-animations',
+      title: 'Reveal & Stagger',
+      icon: 'play-circle',
+      iconLibrary: 'lucide',
+    },
   ];
 
   // Select All Group State
@@ -137,6 +144,75 @@ export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit
   [invalid]="termsInvalid"
   error-message="Required"
 ></ui-checkbox>`;
+
+  eliteEffectsCode = `<!-- Glassmorphism variant -->
+<ui-checkbox
+  label="Frosted Transmission"
+  description="Refractive backdrop-filter substrate"
+  variant="glass"
+  color="info"
+  glow
+  checked
+></ui-checkbox>
+
+<!-- Raised relief -->
+<ui-checkbox
+  label="Tactile Elevation"
+  description="Multi-layered skeletal shadows"
+  variant="raised"
+  color="primary"
+  glow
+  checked
+></ui-checkbox>
+
+<!-- Confetti burst on check -->
+<ui-checkbox
+  label="Achievement Unlocked"
+  description="Integrated particle physics engine"
+  confetti
+  haptic
+  color="success"
+></ui-checkbox>
+
+<!-- Glow effect on all colors -->
+<ui-checkbox label="Primary Glow" color="primary" glow checked></ui-checkbox>
+<ui-checkbox label="Danger Glow" color="danger" glow checked></ui-checkbox>
+<ui-checkbox label="Success Glow" color="success" glow checked></ui-checkbox>`;
+
+  revealAnimationsCode = `<!-- Slide-up staggered reveal -->
+<ui-checkbox-group
+  orientation="vertical"
+  reveal="slide-up"
+  reveal-stagger="80"
+  label="Permission Set"
+>
+  <ui-checkbox value="read" label="Read Access" description="View public assets"></ui-checkbox>
+  <ui-checkbox value="write" label="Write Access" description="Modify existing records"></ui-checkbox>
+  <ui-checkbox value="admin" label="Admin Privileges" description="Full system control"></ui-checkbox>
+</ui-checkbox-group>
+
+<!-- Zoom-in grid stagger -->
+<ui-checkbox-group
+  layout="grid"
+  columns="2"
+  reveal="zoom"
+  reveal-stagger="50"
+  label="Module Selection"
+>
+  <ui-checkbox value="analytics" variant="button" label="Analytics"></ui-checkbox>
+  <ui-checkbox value="security" variant="button" label="Security"></ui-checkbox>
+  <ui-checkbox value="caching" variant="button" label="Caching"></ui-checkbox>
+  <ui-checkbox value="logs" variant="button" label="Logs"></ui-checkbox>
+</ui-checkbox-group>
+
+<!-- Searchable group -->
+<ui-checkbox-group
+  label="Security Subsystems"
+  searchable
+  show-select-all
+  show-selection-count
+  victory-glow
+></ui-checkbox-group>`;
 
   ngOnInit() {
     this.updateMasterState();

@@ -170,7 +170,7 @@ export class DmButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
       code += `    <p>Custom Playground Content</p>\n`;
       code += `  </div>\n`;
     }
-    code += `</ui--button-toggle-group>`;
+    code += `</ui-button-toggle-group>`;
     this.generatedCode.set(code);
     this.refreshCode();
   }

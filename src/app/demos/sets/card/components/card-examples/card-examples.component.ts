@@ -13,11 +13,16 @@ import { ExampleSectionComponent } from 'src/app/shared/components/example-secti
 })
 export class CardExamplesComponent extends BaseDemoComponent {
   variants = [
-    { id: 'basic-cards', name: 'Basic Cards', icon: '🃏' },
-    { id: 'media-covers', name: 'Media & Covers', icon: '🖼️' },
-    { id: 'flippable-cards', name: 'Flippable Cards', icon: '🔄' },
-    { id: 'premium-features', name: 'Premium Layouts', icon: '💎' },
-    { id: 'states-interaction', name: 'States & Interaction', icon: '⚙️' },
+    { id: 'basic-cards', name: 'Basic Cards', icon: 'square', iconLibrary: 'lucide' },
+    { id: 'media-covers', name: 'Media & Covers', icon: 'image', iconLibrary: 'lucide' },
+    { id: 'flippable-cards', name: 'Flippable Cards', icon: 'refresh-cw', iconLibrary: 'lucide' },
+    { id: 'premium-features', name: 'Premium Layouts', icon: 'crown', iconLibrary: 'lucide' },
+    {
+      id: 'states-interaction',
+      name: 'States & Interaction',
+      icon: 'settings',
+      iconLibrary: 'lucide',
+    },
   ];
 
   get exampleVariants() {
@@ -25,6 +30,7 @@ export class CardExamplesComponent extends BaseDemoComponent {
       id: v.id,
       title: v.name,
       icon: v.icon,
+      iconLibrary: v.iconLibrary,
     }));
   }
 

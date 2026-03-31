@@ -1,6 +1,7 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="🥖"
+    icon="chevron-right"
+    iconLibrary="lucide"
     title="Breadcrumb"
     description="A navigation element that helps users understand their location within a website or application's hierarchy."
   ></pg-demo-header>
@@ -10,130 +11,116 @@
       <dm-breadcrumb-playground></dm-breadcrumb-playground>
     </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <div class="examples-content">
-          <!-- Basic -->
-          <section class="demo-section" id="basic">
-            <div class="section-header">
-              <h2>Basic Usage</h2>
-              <p>A simple breadcrumb trail with default string separator.</p>
-            </div>
-            <div class="demo-card">
+      <div class="examples-content" id="examples-scroll-area">
+
+        <pg-example-section
+          id="basic"
+          title="Basic Usage"
+          description="A simple breadcrumb trail with default string separator."
+          [code]="basicCode"
+          class="mt-0"
+        >
+          <ui-breadcrumb
+            [attr.items]="basicItems"
+            (breadcrumbClick)="handleBreadcrumbClick($event)"
+          ></ui-breadcrumb>
+        </pg-example-section>
+
+        <pg-example-section
+          id="separators"
+          title="Custom Separators"
+          description="Use custom string separators or SVG icon separators."
+          [code]="separatorsCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <ui-breadcrumb [attr.items]="basicItems" separator=">"></ui-breadcrumb>
+            <ui-breadcrumb
+              [attr.items]="basicItems"
+              separator-icon="chevron-right"
+              separator-icon-library="lucide"
+            ></ui-breadcrumb>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="icons"
+          title="Icons & Badges"
+          description="Include item icons, a home icon, and notification badges."
+          [code]="iconsCode"
+        >
+          <ui-breadcrumb
+            [attr.items]="iconItems"
+            show-home
+            home-icon="home"
+            home-icon-library="lucide"
+            separator-icon="chevron-right"
+            separator-icon-library="lucide"
+          ></ui-breadcrumb>
+        </pg-example-section>
+
+        <pg-example-section
+          id="collapsing"
+          title="Smart Collapsing"
+          description="Automatically collapse long breadcrumb trails into a dropdown menu using max-items."
+          [code]="collapsingCode"
+        >
+          <ui-breadcrumb
+            [attr.items]="collapsibleItems"
+            max-items="3"
+            show-home
+            home-icon="layout-dashboard"
+            home-icon-library="lucide"
+            separator-icon="chevron-right"
+            separator-icon-library="lucide"
+          ></ui-breadcrumb>
+        </pg-example-section>
+
+        <pg-example-section
+          id="sizes"
+          title="Sizes"
+          description="Small, medium, and large sizing variations."
+          [code]="sizesCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <ui-breadcrumb [attr.items]="basicItems" size="sm"></ui-breadcrumb>
+            <ui-breadcrumb [attr.items]="basicItems" size="md"></ui-breadcrumb>
+            <ui-breadcrumb [attr.items]="basicItems" size="lg"></ui-breadcrumb>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="variants"
+          title="Visual Variants"
+          description="Different structural appearances — default, pills, and glassmorphism."
+          [code]="variantsCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <ui-breadcrumb
+              [attr.items]="basicItems"
+              variant="default"
+              separator-icon="chevron-right"
+              separator-icon-library="lucide"
+            ></ui-breadcrumb>
+            <ui-breadcrumb
+              [attr.items]="basicItems"
+              variant="pills"
+              separator-icon="chevron-right"
+              separator-icon-library="lucide"
+            ></ui-breadcrumb>
+            <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 1.5rem; border-radius: 8px;">
               <ui-breadcrumb
                 [attr.items]="basicItems"
-                (breadcrumbClick)="handleBreadcrumbClick($event)"
-              ></ui-breadcrumb>
-            </div>
-            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Separators -->
-          <section class="demo-section" id="separators">
-            <div class="section-header">
-              <h2>Custom Separators</h2>
-              <p>Use custom string separators or SVG icons.</p>
-            </div>
-            <div class="demo-card breadcrumb-stack">
-              <ui-breadcrumb [attr.items]="basicItems" separator=">"></ui-breadcrumb>
-              <ui-breadcrumb
-                [attr.items]="basicItems"
+                variant="glass"
                 separator-icon="chevron-right"
                 separator-icon-library="lucide"
               ></ui-breadcrumb>
             </div>
-            <ui-code-preview [htmlCode]="separatorsCode" activeLang="html"></ui-code-preview>
-          </section>
+          </div>
+        </pg-example-section>
 
-          <!-- Icons & Badges -->
-          <section class="demo-section" id="icons">
-            <div class="section-header">
-              <h2>Icons & Badges</h2>
-              <p>Include item icons, a home icon, and notification badges.</p>
-            </div>
-            <div class="demo-card">
-              <ui-breadcrumb
-                [attr.items]="iconItems"
-                show-home
-                home-icon="home"
-                home-icon-library="lucide"
-                separator-icon="chevron-right"
-                separator-icon-library="lucide"
-              ></ui-breadcrumb>
-            </div>
-            <ui-code-preview [htmlCode]="iconsCode" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Smart Collapsing -->
-          <section class="demo-section" id="collapsing">
-            <div class="section-header">
-              <h2>Smart Collapsing</h2>
-              <p>
-                Automatically collapse long breadcrumb trails into a dropdown menu using
-                <code>max-items</code>.
-              </p>
-            </div>
-            <div class="demo-card">
-              <ui-breadcrumb
-                [attr.items]="collapsibleItems"
-                max-items="3"
-                show-home
-                home-icon="layout-dashboard"
-                home-icon-library="lucide"
-                separator-icon="chevron-right"
-                separator-icon-library="lucide"
-              ></ui-breadcrumb>
-            </div>
-            <ui-code-preview [htmlCode]="collapsingCode" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Sizes -->
-          <section class="demo-section" id="sizes">
-            <div class="section-header">
-              <h2>Sizes</h2>
-              <p>Small, medium, and large sizing variations.</p>
-            </div>
-            <div class="demo-card breadcrumb-stack">
-              <ui-breadcrumb [attr.items]="basicItems" size="sm"></ui-breadcrumb>
-              <ui-breadcrumb [attr.items]="basicItems" size="md"></ui-breadcrumb>
-              <ui-breadcrumb [attr.items]="basicItems" size="lg"></ui-breadcrumb>
-            </div>
-            <ui-code-preview [htmlCode]="sizesCode" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Visual Variants -->
-          <section class="demo-section" id="variants">
-            <div class="section-header">
-              <h2>Visual Variants</h2>
-              <p>Different structural appearances like pills and glassmorphism.</p>
-            </div>
-            <div class="demo-card breadcrumb-stack">
-              <ui-breadcrumb
-                [attr.items]="basicItems"
-                variant="default"
-                separator-icon="chevron-right"
-                separator-icon-library="lucide"
-              ></ui-breadcrumb>
-              <ui-breadcrumb
-                [attr.items]="basicItems"
-                variant="pills"
-                separator-icon="chevron-right"
-                separator-icon-library="lucide"
-              ></ui-breadcrumb>
-              <div class="glass-bg">
-                <ui-breadcrumb
-                  [attr.items]="basicItems"
-                  variant="glass"
-                  separator-icon="chevron-right"
-                  separator-icon-library="lucide"
-                ></ui-breadcrumb>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
-          </section>
-        </div>
       </div>
     </div>
 

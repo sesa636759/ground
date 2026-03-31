@@ -1,8 +1,9 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="📑"
+    icon="layout-dashboard"
+    iconLibrary="lucide"
     title="Tabs"
-    description="Organize content into multiple panels, where only one panel is visible at a time. Supports multiple visual variants, orientations, and responsive scrollable headers."
+    description="Organize content into multiple panels with only one visible at a time. Supports multiple visual variants, orientations, badges, closeable tabs, and icon tabs."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -10,116 +11,145 @@
       <dm-tabs-playground></dm-tabs-playground>
     </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Visual Variants -->
-          <section class="demo-section mt-0" id="styles">
-            <div class="section-header">
-              <h2>🎨 Visual Variants</h2>
-              <p>Choose the presentation style that matches your application's design system.</p>
-            </div>
-            <div class="demo-card">
-              <div class="tab-preview-box">
-                <span>Pills Variant:</span>
-                <ui-tabs variant="pills">
-                  <ui-tab label="Analytics" icon="📈"></ui-tab>
-                  <ui-tab label="Reports" icon="📑"></ui-tab>
-                  <ui-tab label="Logs" icon="📜"></ui-tab>
-                </ui-tabs>
-              </div>
-              <div class="tab-preview-box">
-                <span>Underline Variant:</span>
-                <ui-tabs variant="underline">
-                  <ui-tab label="Overview"></ui-tab>
-                  <ui-tab label="Advanced"></ui-tab>
-                  <ui-tab label="Dev Tools"></ui-tab>
-                </ui-tabs>
-              </div>
-              <div class="tab-preview-box">
-                <span>Enclosed Variant:</span>
-                <ui-tabs variant="enclosed">
-                  <ui-tab label="Code"></ui-tab>
-                  <ui-tab label="Preview"></ui-tab>
-                </ui-tabs>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="stylesCode"
-              [label]="'Design Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+      <div class="examples-content" id="examples-scroll-area">
 
-          <!-- Orientations & Layouts -->
-          <section class="demo-section" id="layouts">
-            <div class="section-header">
-              <h2>📐 Orientations & Layouts</h2>
-              <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
+        <pg-example-section
+          id="styles"
+          title="Visual Variants"
+          description="Choose the presentation style — default, pills, underline, or enclosed."
+          [code]="stylesCode"
+          class="mt-0"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Default</p>
+              <ui-tabs variant="default">
+                <ui-tab label="Home"></ui-tab>
+                <ui-tab label="About"></ui-tab>
+                <ui-tab label="Contact"></ui-tab>
+              </ui-tabs>
             </div>
-            <div class="demo-card">
-              <div class="tab-preview-box display-flex flex-col gap-20">
-                <span>Vertical Orientation:</span>
-                <ui-tabs orientation="vertical">
-                  <ui-tab label="Inbox" icon="📥"></ui-tab>
-                  <ui-tab label="Sent" icon="📤"></ui-tab>
-                  <ui-tab label="Spam" icon="🚫"></ui-tab>
-                </ui-tabs>
-              </div>
-              <div class="tab-preview-box">
-                <span>Center Alignment:</span>
-                <ui-tabs align="center">
-                  <ui-tab label="Feed"></ui-tab>
-                  <ui-tab label="Groups"></ui-tab>
-                  <ui-tab label="Events"></ui-tab>
-                </ui-tabs>
-              </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Pills</p>
+              <ui-tabs variant="pills">
+                <ui-tab label="Analytics"></ui-tab>
+                <ui-tab label="Reports"></ui-tab>
+                <ui-tab label="Logs"></ui-tab>
+              </ui-tabs>
             </div>
-            <ui-code-preview
-              [htmlCode]="layoutsCode"
-              [label]="'Layout Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Underline</p>
+              <ui-tabs variant="underline">
+                <ui-tab label="Overview"></ui-tab>
+                <ui-tab label="Advanced"></ui-tab>
+                <ui-tab label="Dev Tools"></ui-tab>
+              </ui-tabs>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Enclosed</p>
+              <ui-tabs variant="enclosed">
+                <ui-tab label="Code"></ui-tab>
+                <ui-tab label="Preview"></ui-tab>
+              </ui-tabs>
+            </div>
+          </div>
+        </pg-example-section>
 
-          <!-- Tab Stack -->
-          <section class="demo-section" id="tab-stack">
-            <div class="section-header">
-              <h2>📚 Advanced Tab Stack</h2>
-              <p>
-                Enhanced tabs with closable, draggable, and dynamic features for advanced use cases.
-              </p>
+        <pg-example-section
+          id="layouts"
+          title="Orientations"
+          description="Switch between horizontal and vertical flows, and control alignment for different navigation patterns."
+          [code]="layoutsCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Vertical Orientation</p>
+              <ui-tabs orientation="vertical">
+                <ui-tab label="Inbox"></ui-tab>
+                <ui-tab label="Sent"></ui-tab>
+                <ui-tab label="Spam"></ui-tab>
+              </ui-tabs>
             </div>
-            <div class="demo-card">
-              <div class="tab-preview-box">
-                <span>Tab Stack with Multiple Features:</span>
-                <app-tab-stack active-tab="t1" variant="pills">
-                  <app-tab label="Dashboard" value="t1" icon="fas fa-home">
-                    <div class="p-20">Dashboard content</div>
-                  </app-tab>
-                  <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
-                    <div class="p-20">Analytics content</div>
-                  </app-tab>
-                  <app-tab label="Settings" value="t3" icon="fas fa-cog">
-                    <div class="p-20">Settings content</div>
-                  </app-tab>
-                </app-tab-stack>
-              </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Center Alignment</p>
+              <ui-tabs align="center">
+                <ui-tab label="Feed"></ui-tab>
+                <ui-tab label="Groups"></ui-tab>
+                <ui-tab label="Events"></ui-tab>
+              </ui-tabs>
             </div>
-            <ui-code-preview
-              [htmlCode]="tabStackCode"
-              [label]="'Tab Stack Example'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+            <div>
+              <p style="margin-bottom: 8px; font-size: 12px; color: var(--ui-text-secondary);">Right Alignment</p>
+              <ui-tabs align="right">
+                <ui-tab label="Profile"></ui-tab>
+                <ui-tab label="Settings"></ui-tab>
+              </ui-tabs>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="badges"
+          title="Badges & Counters"
+          description="Show notification counts and status indicators inline on tab labels."
+          [code]="badgesCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <ui-tabs variant="pills">
+              <ui-tab label="Inbox" badge="12" badge-variant="danger"></ui-tab>
+              <ui-tab label="Drafts" badge="3" badge-variant="warning"></ui-tab>
+              <ui-tab label="Sent" badge="0"></ui-tab>
+            </ui-tabs>
+            <ui-tabs variant="underline">
+              <ui-tab label="Tasks" badge="5" badge-variant="primary"></ui-tab>
+              <ui-tab label="Done" badge="42" badge-variant="success"></ui-tab>
+            </ui-tabs>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="closeable"
+          title="Closeable Tabs"
+          description="Allow users to close individual tabs — useful for editor and browser-style interfaces."
+          [code]="closeableCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <ui-tabs closeable>
+              <ui-tab label="Dashboard"></ui-tab>
+              <ui-tab label="Analytics"></ui-tab>
+              <ui-tab label="Reports"></ui-tab>
+            </ui-tabs>
+            <ui-tabs variant="pills" closeable>
+              <ui-tab label="Editor"></ui-tab>
+              <ui-tab label="Terminal"></ui-tab>
+              <ui-tab label="Output"></ui-tab>
+            </ui-tabs>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="icons"
+          title="Icon Tabs"
+          description="Combine icons with labels or use icon-only tabs for compact navigation."
+          [code]="iconsCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <ui-tabs icon-library="lucide" variant="pills">
+              <ui-tab label="Home" icon="home"></ui-tab>
+              <ui-tab label="Search" icon="search"></ui-tab>
+              <ui-tab label="Settings" icon="settings"></ui-tab>
+            </ui-tabs>
+            <ui-tabs icon-library="lucide" variant="underline">
+              <ui-tab icon="user"></ui-tab>
+              <ui-tab icon="bell"></ui-tab>
+              <ui-tab icon="mail"></ui-tab>
+            </ui-tabs>
+          </div>
+        </pg-example-section>
+
       </div>
     </div>
 

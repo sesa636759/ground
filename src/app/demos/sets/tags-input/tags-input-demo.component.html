@@ -1,210 +1,116 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="🏷️"
-    title="Tags Input Component"
-    description="An intuitive input field that converts typed text into removable tags."
-  >
-  </pg-demo-header>
+    icon="tags"
+    iconLibrary="lucide"
+    title="Tags Input"
+    description="An intuitive input field that converts typed text into removable tags. Supports colors, sizes, autocomplete, and validation states."
+  ></pg-demo-header>
+
   <pg-demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Usage -->
-        <section class="demo-section mt-0" id="basic">
-          <div class="section-header">
-            <h2>🚀 Basic Usage</h2>
-            <p>Simple tag input examples</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Default Tags</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Technologies"
-                  placeholder="Add a tag..."
-                  [value]="defaultTags"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>With Max Tags</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Skills (Max 5)"
-                  placeholder="Add skill..."
-                  max-tags="5"
-                  [value]="skillTags"
-                ></app-tags-input>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Colors -->
-        <section class="demo-section" id="colors">
-          <div class="section-header">
-            <h2>🎨 Color Variants</h2>
-            <p>Different color schemes for tags</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Primary</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Primary Tags"
-                  color="primary"
-                  [value]="['Design', 'UI/UX']"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Success</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Success Tags"
-                  color="success"
-                  [value]="['Completed', 'Verified']"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Warning</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Warning Tags"
-                  color="warning"
-                  [value]="['Pending', 'Review']"
-                ></app-tags-input>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Sizes -->
-        <section class="demo-section" id="sizes">
-          <div class="section-header">
-            <h2>📏 Size Variants</h2>
-            <p>Different sizes for various use cases</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Small</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Small Tags"
-                  size="small"
-                  [value]="['Tag1', 'Tag2']"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Medium</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Medium Tags"
-                  size="medium"
-                  [value]="['Tag1', 'Tag2']"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Large</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Large Tags"
-                  size="large"
-                  [value]="['Tag1', 'Tag2']"
-                ></app-tags-input>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Premium Features -->
-        <section class="demo-section" id="premium">
-          <div class="section-header">
-            <h2>💎 Premium Features</h2>
-            <p>Advanced styling and functionality</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>With Autocomplete</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Autocomplete Tags"
-                  placeholder="Type to search..."
-                  enable-autocomplete="true"
-                  [suggestions]="['JavaScript', 'TypeScript', 'Python', 'Java', 'C++']"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Readonly Mode</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Readonly Tags"
-                  readonly="true"
-                  [value]="categoryTags"
-                ></app-tags-input>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- States -->
-        <section class="demo-section" id="states">
-          <div class="section-header">
-            <h2>⚙️ Component States</h2>
-            <p>Different states and validations</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Disabled</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Disabled Tags"
-                  disabled="true"
-                  [value]="['Disabled', 'Tags']"
-                ></app-tags-input>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <h3>Invalid State</h3>
-              <div class="preview-box">
-                <app-tags-input
-                  label="Invalid Tags"
-                  invalid="true"
-                  error-message="Please add at least 3 tags"
-                  [value]="['Only', 'Two']"
-                ></app-tags-input>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Playground Slot -->
     <div slot="playground">
       <ds-tags-input-playground></ds-tags-input-playground>
     </div>
 
-    <!-- Documentation Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <div class="examples-content" id="examples-scroll-area">
+
+        <pg-example-section
+          id="basic"
+          title="Basic Usage"
+          description="Simple tag input with default configuration and max tag limit."
+          [code]="playgroundCode"
+          class="mt-0"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+            <app-tags-input
+              label="Technologies"
+              placeholder="Add a tag..."
+              [value]="defaultTags"
+            ></app-tags-input>
+            <app-tags-input
+              label="Skills (Max 5)"
+              placeholder="Add skill..."
+              max-tags="5"
+              [value]="skillTags"
+            ></app-tags-input>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="colors"
+          title="Color Variants"
+          description="Different color schemes for tags — primary, success, warning, and more."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+            <app-tags-input label="Primary" color="primary" [value]="['Design', 'UI/UX']"></app-tags-input>
+            <app-tags-input label="Success" color="success" [value]="['Completed', 'Verified']"></app-tags-input>
+            <app-tags-input label="Warning" color="warning" [value]="['Pending', 'Review']"></app-tags-input>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="sizes"
+          title="Size Variants"
+          description="Small, medium, and large sizes for different use cases."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+            <app-tags-input label="Small" size="small" [value]="['Tag1', 'Tag2']"></app-tags-input>
+            <app-tags-input label="Medium" size="medium" [value]="['Tag1', 'Tag2']"></app-tags-input>
+            <app-tags-input label="Large" size="large" [value]="['Tag1', 'Tag2']"></app-tags-input>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="premium"
+          title="Premium Features"
+          description="Autocomplete suggestions and readonly mode."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+            <app-tags-input
+              label="With Autocomplete"
+              placeholder="Type to search..."
+              enable-autocomplete="true"
+              [suggestions]="['JavaScript', 'TypeScript', 'Python', 'Java', 'C++']"
+            ></app-tags-input>
+            <app-tags-input
+              label="Readonly Tags"
+              readonly="true"
+              [value]="categoryTags"
+            ></app-tags-input>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="states"
+          title="Component States"
+          description="Disabled and invalid states with error messages."
+          [code]="playgroundCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+            <app-tags-input
+              label="Disabled"
+              disabled="true"
+              [value]="['Disabled', 'Tags']"
+            ></app-tags-input>
+            <app-tags-input
+              label="Invalid State"
+              invalid="true"
+              error-message="Please add at least 3 tags"
+              [value]="['Only', 'Two']"
+            ></app-tags-input>
+          </div>
+        </pg-example-section>
+
+      </div>
+    </div>
+
     <div slot="docs">
       <pg-component-documentation componentId="tags-input"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
-
-

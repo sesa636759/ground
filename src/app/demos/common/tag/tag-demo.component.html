@@ -1,8 +1,9 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🏷️"
+    icon="tag"
+  iconLibrary="lucide"
     title="Tag Component"
-    description="A small component used to categorize or label content, with support for icons, counters, and various severity levels."
+    description="A small component used to categorize or label content, with support for icons, avatars, counters, and various style variants."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -18,46 +19,108 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <!-- Severities -->
+        <!-- Variants -->
         <pg-example-section
-          id="severities"
-          title="Severities"
-          description="Different color schemes based on importance or status."
-          [code]="severitiesCode"
+          id="variants"
+          title="Variants"
+          description="Style options: default, light, outlined, filled, and dot indicator."
+          [code]="variantsCode"
           class="mt-0"
         >
           <div class="demo-flex-wrap">
-            <ui-tag severity="primary" value="Primary"></ui-tag>
-            <ui-tag severity="success" value="Success"></ui-tag>
-            <ui-tag severity="info" value="Info"></ui-tag>
-            <ui-tag severity="warning" value="Warning"></ui-tag>
-            <ui-tag severity="danger" value="Danger"></ui-tag>
+            <ui-tag label="Default"></ui-tag>
+            <ui-tag label="Success" color="success" variant="light"></ui-tag>
+            <ui-tag label="Error" color="danger" variant="outlined"></ui-tag>
+            <ui-tag label="Active" color="primary" variant="filled" rounded></ui-tag>
+            <ui-tag label="New" variant="dot" color="primary"></ui-tag>
           </div>
         </pg-example-section>
 
-        <!-- Styles & Sizes -->
+        <!-- Sizes & Shapes -->
         <pg-example-section
-          id="styles"
-          title="Styles & Sizes"
-          description="Configurations for shape and scale."
-          [code]="stylesCode"
+          id="sizes"
+          title="Sizes & Shapes"
+          description="Control scale and border radius."
+          [code]="sizesCode"
         >
           <div class="demo-grid col-2">
             <div class="demo-card">
-              <h3>Shapes</h3>
+              <h3>Sizes</h3>
               <div class="demo-flex">
-                <ui-tag value="Square" [rounded]="false"></ui-tag>
-                <ui-tag value="Rounded" rounded></ui-tag>
+                <ui-tag label="Small" color="primary" size="sm"></ui-tag>
+                <ui-tag label="Medium" color="primary" size="md"></ui-tag>
+                <ui-tag label="Large" color="primary" size="lg"></ui-tag>
               </div>
             </div>
             <div class="demo-card">
-              <h3>Sizes</h3>
+              <h3>Shapes</h3>
               <div class="demo-flex">
-                <ui-tag value="Small" size="small" severity="info"></ui-tag>
-                <ui-tag value="Medium" severity="info"></ui-tag>
-                <ui-tag value="Large" size="large" severity="info"></ui-tag>
+                <ui-tag label="Square" color="info" variant="filled"></ui-tag>
+                <ui-tag label="Rounded" color="info" variant="filled" rounded></ui-tag>
               </div>
             </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Media & Icons -->
+        <pg-example-section
+          id="media"
+          title="Media & Icons"
+          description="Add context with icons, image logos, and user avatars."
+          [code]="mediaCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-tag label="Premium" icon="star" color="warning" variant="light"></ui-tag>
+            <ui-tag
+              label="Verified"
+              icon="check-circle"
+              color="success"
+              variant="light"
+              rounded
+            ></ui-tag>
+            <ui-tag label="Alert" icon="alert-triangle" color="danger" variant="filled"></ui-tag>
+            <ui-tag label="Next Page" icon="arrow-right" icon-pos="end" color="primary"></ui-tag>
+            <ui-tag
+              label="John Doe"
+              user-avatar="https://i.pravatar.cc/150?u=1"
+              variant="light"
+              rounded
+            ></ui-tag>
+            <ui-tag
+              label="Alice Smith"
+              user-avatar="https://i.pravatar.cc/150?u=2"
+              color="info"
+              variant="outlined"
+              rounded
+            ></ui-tag>
+          </div>
+        </pg-example-section>
+
+        <!-- Interactive -->
+        <pg-example-section
+          id="interactive"
+          title="Interactive"
+          description="Checkable tags act as toggles — select and deselect inline."
+          [code]="interactiveCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-tag label="Selectable 1" checkable color="primary"></ui-tag>
+            <ui-tag label="Selectable 2" checkable color="success"></ui-tag>
+            <ui-tag label="Pre-checked" checkable checked color="warning" variant="filled"></ui-tag>
+          </div>
+        </pg-example-section>
+
+        <!-- Removable -->
+        <pg-example-section
+          id="removable"
+          title="Removable"
+          description="Tags with a remove button for dynamic list management."
+          [code]="removableCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-tag label="JavaScript" removable color="primary" variant="light"></ui-tag>
+            <ui-tag label="TypeScript" removable color="info" variant="light" rounded></ui-tag>
+            <ui-tag label="Angular" removable color="danger" variant="outlined"></ui-tag>
           </div>
         </pg-example-section>
 
@@ -65,21 +128,29 @@
         <pg-example-section
           id="visuals"
           title="Visual Enhancements"
-          description="Add context with icons, counters, and interative elements."
+          description="Add context with counters and combined feature sets."
           [code]="visualsCode"
         >
           <div class="demo-grid col-3">
             <div class="demo-card">
-              <h3>Icons</h3>
-              <ui-tag icon="⭐" value="Starred" severity="warning"></ui-tag>
+              <h3>Counter</h3>
+              <ui-tag label="Messages" counter="5" color="danger" variant="light"></ui-tag>
             </div>
             <div class="demo-card">
-              <h3>Counters</h3>
-              <ui-tag value="Messages" counter="5" severity="danger"></ui-tag>
+              <h3>Notifications</h3>
+              <ui-tag label="Alerts" counter="12" color="warning" variant="filled"></ui-tag>
             </div>
             <div class="demo-card">
-              <h3>Removable</h3>
-              <ui-tag value="Javascript" removable severity="primary"></ui-tag>
+              <h3>Combined</h3>
+              <ui-tag
+                label="Featured"
+                icon="star"
+                color="primary"
+                variant="filled"
+                rounded
+                counter="3"
+                removable
+              ></ui-tag>
             </div>
           </div>
         </pg-example-section>

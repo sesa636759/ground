@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -116,7 +116,7 @@ export class DmAvatarPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.gradient) code += `  gradient\n`;
     if (this.pgConfig.autoColor) code += `  auto-color\n`;
 
-    code += '></ui--avatar>';
+    code += '></ui-avatar>';
 
     this.generatedCode.set(code);
     this.refreshCode();

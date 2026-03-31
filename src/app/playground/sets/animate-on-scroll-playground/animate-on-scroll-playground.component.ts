@@ -6,12 +6,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { AnimateOnScrollComponent } from '../../../directives/animate-on-scroll.component';
 
 @Component({
   selector: 'ds-animate-on-scroll-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, AnimateOnScrollComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './animate-on-scroll-playground.component.html',

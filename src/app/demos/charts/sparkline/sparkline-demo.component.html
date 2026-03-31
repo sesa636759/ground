@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="📉"
+    icon="activity"
+  iconLibrary="lucide"
     title="Sparkline Chart"
     description="Compact inline charts for displaying trends in a small space. Perfect for dashboard metrics, table cells, and quick at-a-glance data visualization."
   ></pg-demo-header>
@@ -14,106 +15,96 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="inline">
-            <div class="section-header">
-              <h2>📉 Inline Metrics</h2>
-              <p>Sparklines embedded in a metrics dashboard, showing trend at a glance.</p>
-            </div>
-            <div class="demo-card">
-              <div class="display-grid grid-cols-2 gap-16 p-12">
-                <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
-                  <div>
-                    <div class="fs-11 text-gray-500 mb-2">Revenue</div>
-                    <div class="fs-22 font-bold text-gray-800">$82.4k</div>
-                    <div class="fs-11 text-emerald-500">▲ 12%</div>
-                  </div>
-                  <svg width="100" height="40">
-                    <defs>
-                      <linearGradient id="sp-g1" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3" />
-                        <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M0,35 L16,28 L32,32 L48,18 L64,20 L80,10 L100,5"
-                      fill="none"
-                      stroke="#6366f1"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M0,35 L16,28 L32,32 L48,18 L64,20 L80,10 L100,5 L100,40 L0,40Z"
-                      fill="url(#sp-g1)"
-                    />
-                    <circle cx="100" cy="5" r="3" fill="#6366f1" />
-                  </svg>
+          <pg-example-section
+            id="inline" title="Metrics" description="Sparklines embedded in a metrics dashboard, showing trend at a glance." [code]="'<!-- Inline Sparkline SVG -->\n<svg width=\'100\' height=\'40\'>\n  <path d=\'M0,35 L16,28 ...\' fill=\'none\' stroke=\'#6366f1\' stroke-width=\'2\'/>\n  <circle cx=\'100\' cy=\'5\' r=\'3\' fill=\'#6366f1\'/>\n</svg>'"
+          >
+            <div class="display-grid grid-cols-2 gap-16 p-12">
+              <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
+                <div>
+                  <div class="fs-11 text-gray-500 mb-2">Revenue</div>
+                  <div class="fs-22 font-bold text-gray-800">$82.4k</div>
+                  <div class="fs-11 text-emerald-500">▲ 12%</div>
                 </div>
-                <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
-                  <div>
-                    <div class="fs-11 text-gray-500 mb-2">Users</div>
-                    <div class="fs-22 font-bold text-gray-800">14.2k</div>
-                    <div class="fs-11 text-emerald-500">▲ 8%</div>
-                  </div>
-                  <svg width="100" height="40">
-                    <defs>
-                      <linearGradient id="sp-g2" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.3" />
-                        <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M0,30 L16,24 L32,26 L48,14 L64,16 L80,8 L100,2"
-                      fill="none"
-                      stroke="#0ea5e9"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M0,30 L16,24 L32,26 L48,14 L64,16 L80,8 L100,2 L100,40 L0,40Z"
-                      fill="url(#sp-g2)"
-                    />
-                    <circle cx="100" cy="2" r="3" fill="#0ea5e9" />
-                  </svg>
+                <svg width="100" height="40">
+                  <defs>
+                    <linearGradient id="sp-g1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M0,35 L16,28 L32,32 L48,18 L64,20 L80,10 L100,5"
+                    fill="none"
+                    stroke="#6366f1"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M0,35 L16,28 L32,32 L48,18 L64,20 L80,10 L100,5 L100,40 L0,40Z"
+                    fill="url(#sp-g1)"
+                  />
+                  <circle cx="100" cy="5" r="3" fill="#6366f1" />
+                </svg>
+              </div>
+              <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
+                <div>
+                  <div class="fs-11 text-gray-500 mb-2">Users</div>
+                  <div class="fs-22 font-bold text-gray-800">14.2k</div>
+                  <div class="fs-11 text-emerald-500">▲ 8%</div>
                 </div>
-                <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
-                  <div>
-                    <div class="fs-11 text-gray-500 mb-2">Orders</div>
-                    <div class="fs-22 font-bold text-gray-800">3,841</div>
-                    <div class="fs-11 text-rose-500">▼ 3%</div>
-                  </div>
-                  <svg width="100" height="40">
-                    <path
-                      d="M0,8 L16,12 L32,10 L48,20 L64,18 L80,28 L100,32"
-                      fill="none"
-                      stroke="#f43f5e"
-                      stroke-width="2"
-                    />
-                    <circle cx="100" cy="32" r="3" fill="#f43f5e" />
-                  </svg>
+                <svg width="100" height="40">
+                  <defs>
+                    <linearGradient id="sp-g2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M0,30 L16,24 L32,26 L48,14 L64,16 L80,8 L100,2"
+                    fill="none"
+                    stroke="#0ea5e9"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M0,30 L16,24 L32,26 L48,14 L64,16 L80,8 L100,2 L100,40 L0,40Z"
+                    fill="url(#sp-g2)"
+                  />
+                  <circle cx="100" cy="2" r="3" fill="#0ea5e9" />
+                </svg>
+              </div>
+              <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
+                <div>
+                  <div class="fs-11 text-gray-500 mb-2">Orders</div>
+                  <div class="fs-22 font-bold text-gray-800">3,841</div>
+                  <div class="fs-11 text-rose-500">▼ 3%</div>
                 </div>
-                <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
-                  <div>
-                    <div class="fs-11 text-gray-500 mb-2">Churn</div>
-                    <div class="fs-22 font-bold text-gray-800">1.2%</div>
-                    <div class="fs-11 text-emerald-500">▼ 0.4%</div>
-                  </div>
-                  <svg width="100" height="40">
-                    <path
-                      d="M0,20 L16,22 L32,18 L48,24 L64,20 L80,16 L100,14"
-                      fill="none"
-                      stroke="#f59e0b"
-                      stroke-width="2"
-                    />
-                    <circle cx="100" cy="14" r="3" fill="#f59e0b" />
-                  </svg>
+                <svg width="100" height="40">
+                  <path
+                    d="M0,8 L16,12 L32,10 L48,20 L64,18 L80,28 L100,32"
+                    fill="none"
+                    stroke="#f43f5e"
+                    stroke-width="2"
+                  />
+                  <circle cx="100" cy="32" r="3" fill="#f43f5e" />
+                </svg>
+              </div>
+              <div class="bg-slate-50 rounded-10 p-14-12 display-flex items-center gap-12">
+                <div>
+                  <div class="fs-11 text-gray-500 mb-2">Churn</div>
+                  <div class="fs-22 font-bold text-gray-800">1.2%</div>
+                  <div class="fs-11 text-emerald-500">▼ 0.4%</div>
                 </div>
+                <svg width="100" height="40">
+                  <path
+                    d="M0,20 L16,22 L32,18 L48,24 L64,20 L80,16 L100,14"
+                    fill="none"
+                    stroke="#f59e0b"
+                    stroke-width="2"
+                  />
+                  <circle cx="100" cy="14" r="3" fill="#f59e0b" />
+                </svg>
               </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="'<!-- Inline Sparkline SVG -->\n<svg width=\'100\' height=\'40\'>\n  <path d=\'M0,35 L16,28 ...\' fill=\'none\' stroke=\'#6366f1\' stroke-width=\'2\'/>\n  <circle cx=\'100\' cy=\'5\' r=\'3\' fill=\'#6366f1\'/>\n</svg>'"
-              label="Inline Sparkline"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          </pg-example-section>
         </div>
       </div>
     </div>

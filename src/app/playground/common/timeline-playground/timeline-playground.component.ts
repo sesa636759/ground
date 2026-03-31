@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -89,7 +89,7 @@ export class DmTimelinePlaygroundComponent extends BasePlaygroundComponent imple
     code += '    <div>{{ item.status }}</div>\n';
     if (this.pgConfig.showOpposite) code += '    <div slot="opposite">{{ item.date }}</div>\n';
     code += '  </ng-template>\n';
-    code += '</ui--timeline>';
+    code += '</ui-timeline>';
 
     this.generatedCode.set(code);
     this.refreshCode();

@@ -45,6 +45,8 @@ export class DmCheckboxPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Default', value: 'default' },
     { label: 'Rounded', value: 'rounded' },
     { label: 'Square', value: 'square' },
+    { label: 'Glass', value: 'glass' },
+    { label: 'Raised', value: 'raised' },
     { label: 'Button', value: 'button' },
     { label: 'Chip', value: 'chip' },
     { label: 'Filled', value: 'filled' },
@@ -102,6 +104,11 @@ export class DmCheckboxPlaygroundComponent extends BasePlaygroundComponent {
       labelClickable: true,
       rtl: false,
       customClass: '',
+      description: '',
+      confetti: false,
+      glow: false,
+      haptic: false,
+      customImage: '',
     };
   }
 

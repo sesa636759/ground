@@ -103,6 +103,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'what-is',
       title: 'What is an Accordion?',
       icon: 'info',
+      iconLibrary: 'lucide',
       content:
         '<p>An accordion is a vertically stacked list of items where each item can be expanded or collapsed to reveal the content associated with that item.</p>',
     },
@@ -110,6 +111,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'when-to-use',
       title: 'When should I use it?',
       icon: 'zap',
+      iconLibrary: 'lucide',
       content:
         "<p>Use accordions to organize related information in a limited space. They're perfect for FAQs, settings panels, and content sections.</p>",
     },
@@ -117,6 +119,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'features',
       title: 'Key Features',
       icon: 'rocket',
+      iconLibrary: 'lucide',
       content:
         '<ul><li>Compact vertical layout</li><li>Single or multiple expansion</li><li>Keyboard accessible</li><li>Customizable styling</li></ul>',
     },
@@ -171,6 +174,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'User Profile',
       subtitle: 'Manage your personal information',
       icon: 'user',
+      iconLibrary: 'lucide',
       content: '<p>Update your name, email, avatar, and other profile details here.</p>',
     },
     {
@@ -178,6 +182,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Security Settings',
       subtitle: 'Password, 2FA, and login history',
       icon: 'lock',
+      iconLibrary: 'lucide',
       content:
         '<p>Configure two-factor authentication, change your password, and review recent login activity.</p>',
     },
@@ -186,6 +191,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Notifications',
       subtitle: 'Email and push notification preferences',
       icon: 'bell',
+      iconLibrary: 'lucide',
       badge: 3,
       content:
         '<p>Choose which notifications you want to receive and how you want to be notified.</p>',
@@ -199,6 +205,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'React',
       subtitle: 'A JavaScript library for building user interfaces',
       icon: 'layers',
+      iconLibrary: 'lucide',
       content:
         'React makes it painless to create interactive UIs. Design simple views for each state in your application.',
     },
@@ -207,6 +214,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Angular',
       subtitle: 'Platform for building mobile and desktop web applications',
       icon: 'triangle',
+      iconLibrary: 'lucide',
       content:
         'Angular is a platform and framework for building single-page client applications using HTML and TypeScript.',
     },
@@ -215,6 +223,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Vue.js',
       subtitle: 'The Progressive JavaScript Framework',
       icon: 'heart',
+      iconLibrary: 'lucide',
       content:
         'Vue is a progressive framework for building user interfaces. It is designed to be incrementally adoptable.',
     },
@@ -223,6 +232,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Svelte',
       subtitle: 'Cybernetically enhanced web apps',
       icon: 'flame',
+      iconLibrary: 'lucide',
       content:
         'Svelte is a radical new approach to building user interfaces. It shifts work into a compile step.',
     },
@@ -231,6 +241,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Ember',
       subtitle: 'A framework for ambitious web developers',
       icon: 'star',
+      iconLibrary: 'lucide',
       content:
         'Ember is a productive, battle-tested JavaScript framework for building modern web applications.',
     },
@@ -243,12 +254,15 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Project Proposal.docx',
       subtitle: 'Last modified: 2 hours ago',
       icon: 'file',
+      iconLibrary: 'lucide',
       content:
         '<p>This is the main project proposal document containing all requirements and specifications.</p>',
       actions: [
         { id: 'edit', label: 'Edit', icon: 'pencil' },
-        { id: 'share', label: 'Share', icon: 'link' },
-        { id: 'delete', label: 'Delete', icon: 'trash-2' },
+        { id: 'share', label: 'Share', icon: 'link',
+      iconLibrary: 'lucide' },
+        { id: 'delete', label: 'Delete', icon: 'trash-2',
+      iconLibrary: 'lucide' },
       ],
     },
     {
@@ -256,10 +270,12 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Budget Report.xlsx',
       subtitle: 'Last modified: 1 day ago',
       icon: 'bar-chart-2',
+      iconLibrary: 'lucide',
       content: '<p>Financial budget report for Q1 2024 with detailed breakdowns.</p>',
       actions: [
         { id: 'download', label: 'Download', icon: 'download' },
-        { id: 'print', label: 'Print', icon: 'printer' },
+        { id: 'print', label: 'Print', icon: 'printer',
+      iconLibrary: 'lucide' },
       ],
     },
     {
@@ -267,10 +283,12 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Design Assets.zip',
       subtitle: 'Last modified: 3 days ago',
       icon: 'palette',
+      iconLibrary: 'lucide',
       content: '<p>All design assets and source files for the project.</p>',
       actions: [
         { id: 'download', label: 'Download', icon: 'download' },
-        { id: 'delete', label: 'Delete', icon: 'trash-2' },
+        { id: 'delete', label: 'Delete', icon: 'trash-2',
+      iconLibrary: 'lucide' },
       ],
     },
   ];
@@ -282,6 +300,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Frontend Development',
       subtitle: '3 subcategories',
       icon: 'palette',
+      iconLibrary: 'lucide',
       content: 'All frontend-related topics and resources.',
       children: [
         {
@@ -295,11 +314,14 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
               icon: 'file-text',
               content: 'Superset of JS with static types',
             },
-            { id: 'es6', title: 'ES6+', icon: 'star', content: 'Modern JS features' },
+            { id: 'es6', title: 'ES6+', icon: 'star',
+      iconLibrary: 'lucide', content: 'Modern JS features' },
           ],
         },
-        { id: 'css', title: 'CSS', icon: 'layout', content: 'Styling the web' },
-        { id: 'html', title: 'HTML', icon: 'code', content: 'Markup language for the web' },
+        { id: 'css', title: 'CSS', icon: 'layout',
+      iconLibrary: 'lucide', content: 'Styling the web' },
+        { id: 'html', title: 'HTML', icon: 'code',
+      iconLibrary: 'lucide', content: 'Markup language for the web' },
       ],
     },
     {
@@ -307,10 +329,12 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Backend Development',
       subtitle: '2 subcategories',
       icon: 'server',
+      iconLibrary: 'lucide',
       content: 'Server-side development topics.',
       children: [
         { id: 'node', title: 'Node.js', icon: 'globe', content: 'JS on the server' },
-        { id: 'python', title: 'Python', icon: 'terminal', content: 'Versatile language' },
+        { id: 'python', title: 'Python', icon: 'terminal',
+      iconLibrary: 'lucide', content: 'Versatile language' },
       ],
     },
   ];
@@ -321,24 +345,28 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'task1',
       title: '1. Project Setup',
       icon: 'clipboard-list',
+      iconLibrary: 'lucide',
       content: 'Initialize the repository and install dependencies.',
     },
     {
       id: 'task2',
       title: '2. UI Design',
       icon: 'palette',
+      iconLibrary: 'lucide',
       content: 'Create wireframes and design mockups.',
     },
     {
       id: 'task3',
       title: '3. Implementation',
       icon: 'settings',
+      iconLibrary: 'lucide',
       content: 'Build features based on the design.',
     },
     {
       id: 'task4',
       title: '4. Testing & QA',
       icon: 'check-circle',
+      iconLibrary: 'lucide',
       content: 'Write tests and fix bugs.',
     },
   ];
@@ -349,18 +377,21 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'pref1',
       title: 'Persistent Item 1',
       icon: 'save',
+      iconLibrary: 'lucide',
       content: 'Open/close this and refresh the page — the state is saved!',
     },
     {
       id: 'pref2',
       title: 'Persistent Item 2',
       icon: 'refresh-cw',
+      iconLibrary: 'lucide',
       content: 'Try opening/closing and refreshing the page.',
     },
     {
       id: 'pref3',
       title: 'Persistent Item 3',
       icon: 'star',
+      iconLibrary: 'lucide',
       content: 'Your preferences are remembered via localStorage.',
     },
   ];
@@ -371,16 +402,19 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'load1',
       title: 'Loaded Item',
       icon: 'check-circle',
+      iconLibrary: 'lucide',
       content: 'This item is fully loaded and ready.',
     },
     {
       id: 'load2',
       title: 'Loading Item',
       icon: 'loader',
+      iconLibrary: 'lucide',
       loading: true,
       content: 'This item is still loading...',
     },
-    { id: 'load3', title: 'Another Item', icon: 'file', content: 'Normal fully loaded item.' },
+    { id: 'load3', title: 'Another Item', icon: 'file',
+      iconLibrary: 'lucide', content: 'Normal fully loaded item.' },
   ];
   loadingCode = `<ui-accordion [items]="loadingItems" icon-library="lucide"></ui-accordion>`;
   globalLoadingCode = `<ui-accordion loading></ui-accordion>`;
@@ -390,18 +424,21 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'rtl1',
       title: 'مرحبا بك (Welcome)',
       icon: 'globe',
+      iconLibrary: 'lucide',
       content: 'This is RTL mode with Arabic text support.',
     },
     {
       id: 'rtl2',
       title: 'שלום (Hello)',
       icon: 'book-open',
+      iconLibrary: 'lucide',
       content: 'Hebrew text is also supported in RTL mode.',
     },
     {
       id: 'rtl3',
       title: 'RTL Layout',
       icon: 'arrow-right',
+      iconLibrary: 'lucide',
       content: 'All elements are properly aligned for right-to-left reading.',
     },
   ];
@@ -413,6 +450,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Compact Item 1',
       subtitle: 'Less padding',
       icon: 'package',
+      iconLibrary: 'lucide',
       content: 'Dense mode uses less spacing — perfect for data-heavy UIs.',
     },
     {
@@ -420,6 +458,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Compact Item 2',
       subtitle: 'Higher density',
       icon: 'bar-chart-2',
+      iconLibrary: 'lucide',
       content: 'More content visible without scrolling.',
     },
     {
@@ -427,6 +466,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Compact Item 3',
       subtitle: 'Efficient layout',
       icon: 'trending-up',
+      iconLibrary: 'lucide',
       content: 'Fit more on screen for dashboard-style views.',
     },
     {
@@ -434,6 +474,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Compact Item 4',
       subtitle: 'Optimized spacing',
       icon: 'zap',
+      iconLibrary: 'lucide',
       content: 'Ideal for tables, logs, and compact lists.',
     },
     {
@@ -441,6 +482,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Compact Item 5',
       subtitle: 'Fast scanning',
       icon: 'eye',
+      iconLibrary: 'lucide',
       content: 'Users can scan content quickly in dense mode.',
     },
   ];
@@ -525,17 +567,20 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
   cardListAccordionCode = `<ui-accordion [items]="cardListAccordionItems" variant="card-list" [attr.selected-header-color]="selectedColor"></ui-accordion>`;
 
   eventsItems = [
-    { id: 'e1', title: 'Event Item 1', icon: 'rss', content: 'Click to trigger lifecycle events.' },
+    { id: 'e1', title: 'Event Item 1', icon: 'rss',
+      iconLibrary: 'lucide', content: 'Click to trigger lifecycle events.' },
     {
       id: 'e2',
       title: 'Event Item 2',
       icon: 'eye',
+      iconLibrary: 'lucide',
       content: 'Watch the log below for event details.',
     },
     {
       id: 'e3',
       title: 'Event Item 3',
       icon: 'sparkles',
+      iconLibrary: 'lucide',
       content: 'All events (beforeOpen, afterOpen, beforeClose, afterClose) are captured.',
     },
   ];
@@ -552,18 +597,21 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'c1',
       title: 'Controlled Panel 1',
       icon: 'gamepad',
+      iconLibrary: 'lucide',
       content: 'I am controlled by the buttons above.',
     },
     {
       id: 'c2',
       title: 'Controlled Panel 2',
       icon: 'sliders',
+      iconLibrary: 'lucide',
       content: 'Me too! Click the buttons to open/close me.',
     },
     {
       id: 'c3',
       title: 'Controlled Panel 3',
       icon: 'dices',
+      iconLibrary: 'lucide',
       content: 'We can be opened together with "Open All".',
     },
   ];
@@ -575,18 +623,21 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'l1',
       title: 'Lazy Content 1',
       icon: 'cloud',
+      iconLibrary: 'lucide',
       content: 'This content was rendered only when you opened me.',
     },
     {
       id: 'l2',
       title: 'Lazy Content 2',
       icon: 'zap',
+      iconLibrary: 'lucide',
       content: 'Check the DOM — I was not there when closed.',
     },
     {
       id: 'l3',
       title: 'Lazy Content 3',
       icon: 'package',
+      iconLibrary: 'lucide',
       content: 'Heavy content is ideal for lazy rendering.',
     },
   ];
@@ -598,18 +649,21 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Rich Content Item',
       subtitle: 'Uses slot="content-slot1"',
       icon: 'layout',
+      iconLibrary: 'lucide',
     },
     {
       id: 'slot2',
       title: 'Table Layout Item',
       subtitle: 'Uses slot="content-slot2"',
       icon: 'table',
+      iconLibrary: 'lucide',
     },
     {
       id: 'normal',
       title: 'Standard Item',
       subtitle: 'Uses the content property directly',
       icon: 'file-text',
+      iconLibrary: 'lucide',
       content: 'This is a standard string content item — no slot needed.',
     },
   ];
@@ -693,18 +747,21 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       id: 'p1',
       title: 'Expand Me',
       icon: 'zap',
+      iconLibrary: 'lucide',
       content: 'Notice the spring over-travel on expansion.',
     },
     {
       id: 'p2',
       title: 'Mechanical Feel',
       icon: 'cog',
+      iconLibrary: 'lucide',
       content: 'High-fidelity motion curves for premium look.',
     },
     {
       id: 'p3',
       title: 'Elastic Return',
       icon: 'repeat',
+      iconLibrary: 'lucide',
       content: 'The panel overshoots and settles smoothly.',
     },
   ];
@@ -772,6 +829,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       title: 'Unlocked Content (Click me)',
       content: 'Universal access permitted. This item opens freely.',
       icon: 'unlock',
+      iconLibrary: 'lucide',
     },
     {
       id: 'locked',
@@ -779,6 +837,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       subtitle: 'Restricted access — click to see the veto shake',
       content: '',
       icon: 'lock',
+      iconLibrary: 'lucide',
       actions: [{ id: 'req', label: 'Request Access', icon: 'key' }],
     },
   ];
@@ -812,6 +871,7 @@ onVetoBeforeOpen(event: CustomEvent, accordion: any) {
       subtitle: 'Data Validation Completed',
       content: 'Step 1 has been validated automatically. All data integrity checks passed.',
       icon: 'check-circle',
+      iconLibrary: 'lucide',
     },
     {
       id: 'step2',
@@ -819,6 +879,7 @@ onVetoBeforeOpen(event: CustomEvent, accordion: any) {
       subtitle: 'Compliance Review',
       content: 'Compliance tokens generated successfully. Regulatory thresholds met.',
       icon: 'shield-check',
+      iconLibrary: 'lucide',
     },
   ];
   successPulseCode = `<ui-accordion [items]="items" variant="card-list" multiple icon-library="lucide"></ui-accordion>
@@ -875,12 +936,14 @@ accordion.success('step1');`;
       title: 'Interactive Selection',
       content: 'The colored border indicates the active state.',
       icon: 'mouse-pointer',
+      iconLibrary: 'lucide',
     },
     {
       id: '2',
       title: 'Configurable Color',
       content: 'Set any hex color via selected-header-color for the indicator.',
       icon: 'palette',
+      iconLibrary: 'lucide',
     },
   ];
   selectionCode = `<!-- Left indicator (default) -->
@@ -896,6 +959,7 @@ accordion.success('step1');`;
       title: 'Sovereign Telemetry',
       subtitle: 'Live Cluster A',
       icon: 'zap',
+      iconLibrary: 'lucide',
       content: 'Telemetry stream is operating within normal industrial thresholds.',
     },
     {
@@ -904,6 +968,7 @@ accordion.success('step1');`;
       subtitle: 'Zone Alpha',
       content: 'Authenticated! All perimeter nodes are active and secure.',
       icon: 'shield',
+      iconLibrary: 'lucide',
       actions: [{ id: 'lock', icon: 'lock' }],
     },
     ...Array.from({ length: 5 }, (_, i) => ({
@@ -912,7 +977,8 @@ accordion.success('step1');`;
       subtitle: `Server Instance #${100 + i}`,
       content: `Technical logs for instance ${i + 1}. No critical errors recorded.`,
       icon: 'server',
-      actions: [{ id: 'pin', icon: 'pin' }],
+      actions: [{ id: 'pin', icon: 'pin',
+      iconLibrary: 'lucide' }],
     })),
   ];
   zenithCode = `<ui-accordion [items]="items" variant="card-list"
@@ -931,6 +997,7 @@ accordion.success('step1');`;
       progress: 100,
       badge: 12,
       icon: 'server',
+      iconLibrary: 'lucide',
     },
     {
       id: 'step2',
@@ -941,6 +1008,7 @@ accordion.success('step1');`;
       status: 'error',
       progress: 12,
       icon: 'lock',
+      iconLibrary: 'lucide',
     },
     {
       id: 'step3',
@@ -950,6 +1018,7 @@ accordion.success('step1');`;
       status: 'current',
       progress: 70,
       icon: 'activity',
+      iconLibrary: 'lucide',
     },
     {
       id: 'step4',
@@ -958,6 +1027,7 @@ accordion.success('step1');`;
       content: 'Engine is analyzing traffic patterns. Estimated cost savings: $4.2k/month.',
       status: 'warning',
       icon: 'zap',
+      iconLibrary: 'lucide',
     },
     {
       id: 'step5',
@@ -965,6 +1035,7 @@ accordion.success('step1');`;
       subtitle: 'Version 4.2.0 stable rollout',
       content: 'Ready to finalize. All hooks are verified.',
       icon: 'package',
+      iconLibrary: 'lucide',
     },
     {
       id: 'step6',
@@ -972,6 +1043,7 @@ accordion.success('step1');`;
       subtitle: 'Active node health checks',
       content: 'Nodes: 42 Active, 0 Drained, 0 Failing.',
       icon: 'bar-chart',
+      iconLibrary: 'lucide',
     },
   ];
   godTierCode = `<ui-accordion [items]="items" variant="card-list"

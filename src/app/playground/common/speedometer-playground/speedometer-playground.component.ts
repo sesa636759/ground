@@ -59,7 +59,7 @@ export class DmSpeedometerPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.gradientColors)
       code += `  gradient-colors="${this.pgConfig.gradientColors}"\n`;
 
-    code += `></ui--speedometer>`;
+    code += `></ui-speedometer>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

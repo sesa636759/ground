@@ -253,7 +253,7 @@ export class DmDashboardPlaygroundComponent
     // Properties that are usually attributes
     code += `  breakpoints='${this.pgConfig.breakpoints}'\n`;
 
-    code += `></ui--dashboard>\n\n`;
+    code += `></ui-dashboard>\n\n`;
 
     code += `// JavaScript initialization\n`;
     code += `const dashboard = document.getElementById('dashboard');\n`;

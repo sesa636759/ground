@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-sparkline-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmSparklinePlaygroundComponent,
     DemoTabsComponent,
@@ -24,7 +26,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './sparkline-demo.component.scss',
 })
 export class DmSparklineDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'inline', title: 'Inline Metrics', icon: '📈', color: '#6366f1' }];
+  exampleVariants = [{ id: 'inline', title: 'Inline Metrics', icon: 'activity',
+      iconLibrary: 'lucide', color: '#6366f1' }];
 
   inlineKpiSparklines = [
     { label: 'Revenue', trend: 12.4, color: '#6366f1', points: [42, 55, 48, 70, 65, 80, 75, 95] },

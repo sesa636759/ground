@@ -7,12 +7,14 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { DmPieChartPlaygroundComponent } from '../../../playground/charts/pie-chart-playground/pie-chart-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-pie-chart-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmPieChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -25,10 +27,14 @@ import { DmPieChartPlaygroundComponent } from '../../../playground/charts/pie-ch
 })
 export class DmPieChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'pie', title: 'Pie Chart', icon: '🥧', color: '#6366f1' },
-    { id: 'doughnut', title: 'Doughnut', icon: '🍩', color: '#f59e0b' },
-    { id: 'polar-area', title: 'Polar Area', icon: '🌐', color: '#10b981' },
-    { id: 'multi-ring', title: 'Multi Ring', icon: '🎯', color: '#0ea5e9' },
+    { id: 'pie', title: 'Pie Chart', icon: 'pie-chart',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'doughnut', title: 'Doughnut', icon: 'circle',
+      iconLibrary: 'lucide', color: '#f59e0b' },
+    { id: 'polar-area', title: 'Polar Area', icon: 'radar',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'multi-ring', title: 'Multi Ring', icon: 'target',
+      iconLibrary: 'lucide', color: '#0ea5e9' },
   ];
 
   // ── Pie: Sales by region ──

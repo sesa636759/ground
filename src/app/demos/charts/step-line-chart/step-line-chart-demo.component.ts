@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-step-line-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmStepLineChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,8 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmStepLineChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'price', title: 'Price Steps', icon: '🪜', color: '#6366f1' },
-    { id: 'status', title: 'System Status', icon: '📈', color: '#10b981' },
+    { id: 'price', title: 'Price Steps', icon: 'dollar-sign',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'status', title: 'System Status', icon: 'circle-check',
+      iconLibrary: 'lucide', color: '#10b981' },
   ];
 
   basicData = [

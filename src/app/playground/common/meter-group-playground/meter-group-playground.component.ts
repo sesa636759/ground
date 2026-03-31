@@ -98,7 +98,7 @@ export class DmMeterGroupPlaygroundComponent extends BasePlaygroundComponent imp
     if (this.pgConfig.max !== 100) code += `  [max]="${this.pgConfig.max}"\n`;
     if (this.pgConfig.interactive) code += `  interactive\n`;
 
-    code += `></ui--meter-group>`;
+    code += `></ui-meter-group>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

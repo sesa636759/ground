@@ -74,7 +74,7 @@ export class DmBreadcrumbPlaygroundComponent extends BasePlaygroundComponent imp
     setTimeout(() => {
       if (!this.demoElement) return;
       let code = this.getCleanFormattedDom(this.demoElement, 'ui-breadcrumb');
-      code = code.replace('></ui--breadcrumb>', '\n  [items]="items"\n></ui--breadcrumb>');
+      code = code.replace('></ui-breadcrumb>', '\n  [items]="items"\n></ui-breadcrumb>');
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);

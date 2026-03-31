@@ -106,7 +106,7 @@ export class DmKnobPlaygroundComponent extends BasePlaygroundComponent implement
     if (config.snap) code += `  snap\n`;
     if (config.allowInput) code += `  allow-input\n`;
     code += `  (knobChange)="onValueChange($event)"\n`;
-    code += `></ui--knob>`;
+    code += `></ui-knob>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

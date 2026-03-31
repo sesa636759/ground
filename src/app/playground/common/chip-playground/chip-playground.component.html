@@ -46,6 +46,24 @@
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
+    <div class="control-group">
+      <label>Tooltip</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.tooltip"
+        (ngModelChange)="updateConfig()"
+        placeholder="Tooltip text"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Image URL</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.image"
+        (ngModelChange)="updateConfig()"
+        placeholder="https://..."
+      ></ui-input>
+    </div>
   </div>
 
   <div slot="content-style" class="control-grid p-16">
@@ -79,6 +97,22 @@
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Orientation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.orientation"
+        (ngModelChange)="updateConfig()"
+        [options]="orientationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Animation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.animation"
+        (ngModelChange)="updateConfig()"
+        [options]="animationOptions"
       ></ui-dropdown>
     </div>
   </div>
@@ -126,6 +160,10 @@
       [attr.clickable]="pgConfig.clickable ? '' : null"
       [attr.selected]="pgConfig.selected ? '' : null"
       [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.orientation]="pgConfig.orientation !== 'horizontal' ? pgConfig.orientation : null"
+      [attr.animation]="pgConfig.animation !== 'scale' ? pgConfig.animation : null"
+      [attr.tooltip]="pgConfig.tooltip || null"
+      [attr.image]="pgConfig.image || null"
       (chipClick)="logEvent('Chip Clicked')"
       (chipRemove)="logEvent('Chip Removed')"
     ></ui-chip>

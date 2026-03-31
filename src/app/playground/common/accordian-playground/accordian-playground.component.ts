@@ -180,7 +180,7 @@ export class DmAccordianPlaygroundComponent extends BasePlaygroundComponent impl
     setTimeout(() => {
       if (!this.demoElement) return;
       let code = this.getCleanFormattedDom(this.demoElement, 'ui-accordion');
-      code = code.replace('></ui--accordion>', '\n  [items]="items"\n></ui--accordion>');
+      code = code.replace('></ui-accordion>', '\n  [items]="items"\n></ui-accordion>');
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);

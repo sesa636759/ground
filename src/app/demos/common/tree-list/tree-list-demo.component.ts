@@ -8,12 +8,14 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DmTreeListPlaygroundComponent } from '../../../playground/common/tree-list-playground/tree-list-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-tree-list-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmTreeListPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,

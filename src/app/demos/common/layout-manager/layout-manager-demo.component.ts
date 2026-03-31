@@ -7,12 +7,14 @@ import { DmLayoutManagerPlaygroundComponent } from '../../../playground/common/l
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-layout-manager-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmLayoutManagerPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -24,7 +26,8 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
   styleUrl: './layout-manager-demo.component.scss',
 })
 export class DmLayoutManagerDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'modes', title: 'Layout Modes', icon: '🗂️', color: '#3b82f6' }];
+  exampleVariants = [{ id: 'modes', title: 'Layout Modes', icon: 'settings-2',
+      iconLibrary: 'lucide', color: '#3b82f6' }];
 
   playgroundCode = `<ui-layout-manager mode="docking" resizable closable>
   <div slot="panel-1">Main Content</div>

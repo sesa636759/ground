@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -35,17 +35,17 @@ export class DmNavBarPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   model = [
-    { label: 'Dashboard', icon: '📊', items: [] },
+    { label: 'Dashboard', icon: '??', items: [] },
     {
       label: 'Users',
-      icon: '👥',
+      icon: '??',
       items: [
-        { label: 'List', icon: '📝' },
-        { label: 'Groups', icon: '📁' },
+        { label: 'List', icon: '??' },
+        { label: 'Groups', icon: '??' },
       ],
     },
-    { label: 'Settings', icon: '⚙️', items: [] },
-    { label: 'Help', icon: '❓', items: [] },
+    { label: 'Settings', icon: '??', items: [] },
+    { label: 'Help', icon: '?', items: [] },
   ];
 
   modelJson = JSON.stringify(this.model);
@@ -69,7 +69,7 @@ export class DmNavBarPlaygroundComponent extends BasePlaygroundComponent {
     code += `  [model]="navItems"\n`;
     code += '>\n';
     code += '  <div slot="header"> Logo </div>\n';
-    code += '</ui--nav-bar>';
+    code += '</ui-nav-bar>';
 
     this.generatedCode.set(code);
     this.refreshCode();

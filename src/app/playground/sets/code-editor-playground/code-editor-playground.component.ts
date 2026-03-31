@@ -86,7 +86,7 @@ console.log(user.greet());`,
       code += `  toolbar-label-display="${this.pgConfig.labelDisplay}"\n`;
 
     code += '  value="${yourCodeString}"\n';
-    code += `></ui--code-editor>`;
+    code += `></ui-code-editor>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

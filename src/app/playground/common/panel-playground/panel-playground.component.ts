@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -85,7 +85,7 @@ export class DmPanelPlaygroundComponent extends BasePlaygroundComponent {
     code += '>\n';
     code += '  <div slot="content">Panel content here...</div>\n';
     code += '  <div slot="footer">Panel footer here...</div>\n';
-    code += '</ui--panel>';
+    code += '</ui-panel>';
 
     this.generatedCode.set(code);
     this.refreshCode();

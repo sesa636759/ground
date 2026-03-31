@@ -13,13 +13,12 @@ import {
   faRocket,
   faTerminal,
 } from '@fortawesome/free-solid-svg-icons';
-import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.component';
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
   selector: 'pg-home',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent, AnimateOnScrollDirective],
+  imports: [CommonModule, FontAwesomeModule, AnimateOnScrollDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -319,6 +318,3 @@ export class HomeComponent {
     return descriptions[id] || 'Explore components in this category';
   }
 }
-
-
-

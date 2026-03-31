@@ -6,11 +6,13 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { DmLineChartPlaygroundComponent } from '../../../playground/common/line-chart-playground/line-chart-playground.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-line-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmLineChartPlaygroundComponent,
     DemoTabsComponent,
@@ -24,9 +26,12 @@ import { DmLineChartPlaygroundComponent } from '../../../playground/common/line-
 })
 export class DmLineChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic', icon: '💹', color: '#6366f1' },
-    { id: 'multi-series', title: 'Multi Series', icon: '📈', color: '#10b981' },
-    { id: 'stepped', title: 'Stepped Line', icon: '🪜', color: '#0ea5e9' },
+    { id: 'basic', title: 'Basic', icon: 'square',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'multi-series', title: 'Multi Series', icon: 'activity',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'stepped', title: 'Stepped Line', icon: 'trending-up',
+      iconLibrary: 'lucide', color: '#0ea5e9' },
   ];
 
   // chart-line data format: LineSeries[] = { name, color, points: {x, y}[] }

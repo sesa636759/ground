@@ -6,6 +6,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'ds-tree-demo',
@@ -17,6 +18,7 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
     ComponentDocumentationComponent,
     DemoHeaderComponent,
     DemoSidebarComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-demo.component.html',
@@ -43,12 +45,15 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
     {
       id: '1',
       label: 'Root Folder',
-      icon: 'fas fa-folder',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       expanded: true,
       children: [
         { id: '2', label: 'Documents', icon: 'fas fa-folder' },
-        { id: '3', label: 'Pictures', icon: 'fas fa-folder' },
-        { id: '4', label: 'Music', icon: 'fas fa-folder' },
+        { id: '3', label: 'Pictures', icon: 'circle',
+      iconLibrary: 'lucide' },
+        { id: '4', label: 'Music', icon: 'circle',
+      iconLibrary: 'lucide' },
       ],
     },
   ];
@@ -58,7 +63,8 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
     {
       id: 'proj',
       label: 'My Project',
-      icon: 'fas fa-folder-open',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       color: '#3b82f6',
       expanded: true,
       children: [
@@ -69,13 +75,18 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
           color: '#8b5cf6',
           children: [
             { id: 'index', label: 'index.ts', icon: 'fab fa-js', color: '#f59e0b' },
-            { id: 'styles', label: 'styles.css', icon: 'fab fa-css3', color: '#06b6d4' },
-            { id: 'app', label: 'App.tsx', icon: 'fab fa-react', color: '#61dafb' },
+            { id: 'styles', label: 'styles.css', icon: 'palette',
+      iconLibrary: 'lucide', color: '#06b6d4' },
+            { id: 'app', label: 'App.tsx', icon: 'circle',
+      iconLibrary: 'lucide', color: '#61dafb' },
           ],
         },
-        { id: 'public', label: 'public', icon: 'fas fa-folder', color: '#10b981' },
-        { id: 'package', label: 'package.json', icon: 'fas fa-file-code', color: '#ef4444' },
-        { id: 'readme', label: 'README.md', icon: 'fas fa-file-alt', color: '#6b7280' },
+        { id: 'public', label: 'public', icon: 'circle',
+      iconLibrary: 'lucide', color: '#10b981' },
+        { id: 'package', label: 'package.json', icon: 'circle',
+      iconLibrary: 'lucide', color: '#ef4444' },
+        { id: 'readme', label: 'README.md', icon: 'circle',
+      iconLibrary: 'lucide', color: '#6b7280' },
       ],
     },
   ];
@@ -85,7 +96,8 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
     {
       id: 'projects',
       label: 'Projects',
-      icon: 'fas fa-briefcase',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       badge: 'Active',
       badgeColor: 'success',
       counter: 3,
@@ -102,7 +114,8 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
         {
           id: 'mobile',
           label: 'Mobile App',
-          icon: 'fas fa-mobile',
+          icon: 'circle',
+      iconLibrary: 'lucide',
           badge: 'Medium',
           badgeColor: 'warning',
           counter: 8,
@@ -116,7 +129,8 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
     {
       id: 'board',
       label: 'Board of Directors',
-      icon: 'fas fa-users',
+      icon: 'circle',
+      iconLibrary: 'lucide',
       extra: 'Top Level',
       expanded: true,
       children: [
@@ -139,12 +153,15 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
                   icon: 'fas fa-code',
                   extra: 'Management',
                 },
-                { id: 'eng-mgr', label: 'Engineering Manager', icon: 'fas fa-users-cog' },
-                { id: 'platform', label: 'Platform Architect', icon: 'fas fa-server' },
+                { id: 'eng-mgr', label: 'Engineering Manager', icon: 'circle',
+      iconLibrary: 'lucide' },
+                { id: 'platform', label: 'Platform Architect', icon: 'circle',
+      iconLibrary: 'lucide' },
                 {
                   id: 'data',
                   label: 'Head of Data Science',
-                  icon: 'fas fa-chart-line',
+                  icon: 'circle',
+      iconLibrary: 'lucide',
                   extra: 'AI/ML',
                 },
               ],
@@ -152,7 +169,8 @@ export class DmTreeDemoComponent extends BaseDemoComponent {
             {
               id: 'cpo',
               label: 'Chief Product Officer',
-              icon: 'fas fa-lightbulb',
+              icon: 'circle',
+      iconLibrary: 'lucide',
               extra: 'Product',
             },
           ],

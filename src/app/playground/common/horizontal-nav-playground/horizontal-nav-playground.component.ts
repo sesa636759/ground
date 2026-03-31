@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -36,11 +36,11 @@ export class DmHorizontalNavPlaygroundComponent extends BasePlaygroundComponent 
   ];
 
   model = [
-    { label: 'Home', icon: '🏠', command: () => this.logEvent('Home Clicked') },
-    { label: 'Products', icon: '📦', command: () => this.logEvent('Products Clicked') },
-    { label: 'Services', icon: '⚙️', command: () => this.logEvent('Services Clicked') },
-    { label: 'About', icon: 'ℹ️', command: () => this.logEvent('About Clicked') },
-    { label: 'Contact', icon: '📧', command: () => this.logEvent('Contact Clicked') },
+    { label: 'Home', icon: '??', command: () => this.logEvent('Home Clicked') },
+    { label: 'Products', icon: '??', command: () => this.logEvent('Products Clicked') },
+    { label: 'Services', icon: '??', command: () => this.logEvent('Services Clicked') },
+    { label: 'About', icon: '??', command: () => this.logEvent('About Clicked') },
+    { label: 'Contact', icon: '??', command: () => this.logEvent('Contact Clicked') },
   ];
 
   modelJson = JSON.stringify(this.model);
@@ -67,7 +67,7 @@ export class DmHorizontalNavPlaygroundComponent extends BasePlaygroundComponent 
       code += `  theme="${this.pgConfig.theme}"\n`;
       if (this.pgConfig.sticky) code += `  sticky\n`;
       code += `  [model]="navItems"\n`;
-      code += '></ui--horizontal-nav>';
+      code += '></ui-horizontal-nav>';
 
       this.generatedCode.set(code);
       this.refreshCode();

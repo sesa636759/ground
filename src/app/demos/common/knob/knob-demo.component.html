@@ -1,6 +1,7 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="🎛️"
+    icon="gauge"
+  iconLibrary="lucide"
     title="Knob"
     description="A versatile circular control for numeric input, supporting snapping, custom track styles, and gauge-style arc rotation."
   ></pg-demo-header>
@@ -16,79 +17,72 @@
 
         <div class="examples-content">
           <!-- Size -->
-          <section class="demo-section" id="size">
-            <div class="section-header"><h2>Size Variants</h2></div>
-            <div class="demo-card knob-grid">
-              <ui-knob size="60" value="30"></ui-knob>
-              <ui-knob size="100" value="50"></ui-knob>
-              <ui-knob size="150" value="70"></ui-knob>
-            </div>
-          </section>
+          <pg-example-section
+            id="size" title="Size Variants"
+          >
+            <ui-knob size="60" value="30"></ui-knob>
+            <ui-knob size="100" value="50"></ui-knob>
+            <ui-knob size="150" value="70"></ui-knob>
+          </pg-example-section>
 
           <!-- Colors -->
-          <section class="demo-section" id="colors">
-            <div class="section-header"><h2>Custom Colors</h2></div>
-            <div class="demo-card knob-grid">
-              <ui-knob
-                color="#ef4444"
-                track-color="#fee2e2"
-                thumb-color="#b91c1c"
-                value="60"
-              ></ui-knob>
-              <ui-knob color="#22c55e" track-color="#dcfce7" value="80"></ui-knob>
-              <ui-knob color="#3b82f6" track-color="#dbeafe" value="40"></ui-knob>
-            </div>
-          </section>
+          <pg-example-section
+            id="colors" title="Custom Colors"
+          >
+            <ui-knob
+              color="#ef4444"
+              track-color="#fee2e2"
+              thumb-color="#b91c1c"
+              value="60"
+            ></ui-knob>
+            <ui-knob color="#22c55e" track-color="#dcfce7" value="80"></ui-knob>
+            <ui-knob color="#3b82f6" track-color="#dbeafe" value="40"></ui-knob>
+          </pg-example-section>
 
           <!-- Arc -->
-          <section class="demo-section" id="arc">
-            <div class="section-header"><h2>Arc & Gauge Styles</h2></div>
-            <div class="demo-card knob-grid">
-              <ui-knob type="gauge" start-angle="135" end-angle="45" value="50"></ui-knob>
-              <ui-knob type="gauge" start-angle="180" end-angle="0" value="30"></ui-knob>
-            </div>
-          </section>
+          <pg-example-section
+            id="arc" title="Arc & Gauge Styles"
+          >
+            <ui-knob type="gauge" start-angle="135" end-angle="45" value="50"></ui-knob>
+            <ui-knob type="gauge" start-angle="180" end-angle="0" value="30"></ui-knob>
+          </pg-example-section>
 
           <!-- Ticks -->
-          <section class="demo-section" id="ticks">
-            <div class="section-header"><h2>Ticks & Subticks</h2></div>
-            <div class="demo-card knob-grid">
-              <ui-knob show-ticks tick-count="12" sub-ticks="4" value="25"></ui-knob>
-              <ui-knob show-ticks tick-count="5" labels="LO,MED,HI,EXTREME" value="2"></ui-knob>
-            </div>
-          </section>
+          <pg-example-section
+            id="ticks" title="Ticks & Subticks"
+          >
+            <ui-knob show-ticks tick-count="12" sub-ticks="4" value="25"></ui-knob>
+            <ui-knob show-ticks tick-count="5" labels="LO,MED,HI,EXTREME" value="2"></ui-knob>
+          </pg-example-section>
 
           <!-- Snap -->
-          <section class="demo-section" id="snap">
-            <div class="section-header"><h2>Snapping & Steps</h2></div>
-            <div class="demo-card knob-grid">
-              <div>
-                <p>Snap to 10</p>
-                <ui-knob snap [snap-step]="10" value="50"></ui-knob>
-              </div>
-              <div>
-                <p>Step 0.1</p>
-                <ui-knob [step]="0.1" value="0.5" min="0" max="1"></ui-knob>
-              </div>
+          <pg-example-section
+            id="snap" title="Snapping & Steps" description="Snap to 10"
+          >
+            <div>
+              <p>Snap to 10</p>
+              <ui-knob snap [snap-step]="10" value="50"></ui-knob>
             </div>
-          </section>
+            <div>
+              <p>Step 0.1</p>
+              <ui-knob [step]="0.1" value="0.5" min="0" max="1"></ui-knob>
+            </div>
+          </pg-example-section>
 
           <!-- Interaction -->
-          <section class="demo-section" id="interaction">
-            <div class="section-header"><h2>Mouse Wheel & Multi-Touch</h2></div>
-            <div class="demo-card knob-grid">
-              <ui-knob enable-wheel keyboard-step="5" value="45"></ui-knob>
-            </div>
-          </section>
+          <pg-example-section
+            id="interaction" title="Mouse Wheel & Multi-Touch"
+          >
+            <ui-knob enable-wheel keyboard-step="5" value="45"></ui-knob>
+          </pg-example-section>
 
           <!-- States -->
-          <section class="demo-section" id="states">
-            <div class="section-header"><h2>Disabled & Readonly</h2></div>
-            <div class="demo-card knob-grid">
-              <ui-knob disabled value="40"></ui-knob>
-              <ui-knob readonly value="80"></ui-knob>
-            </div>
-          </section>
+          <pg-example-section
+            id="states" title="Disabled & Readonly"
+          >
+            <ui-knob disabled value="40"></ui-knob>
+            <ui-knob readonly value="80"></ui-knob>
+          </pg-example-section>
         </div>
       </div>
     </div>

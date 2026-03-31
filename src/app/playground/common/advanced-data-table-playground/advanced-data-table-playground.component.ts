@@ -208,7 +208,7 @@ export class DmAdvancedDataTablePlaygroundComponent
     if (this.pgConfig.showActions) code += `  show-actions\n`;
     if (this.pgConfig.columnGrouping) code += `  column-grouping\n`;
 
-    code += '></ui--advanced-data-table>';
+    code += '></ui-advanced-data-table>';
 
     this.generatedCode.set(code);
     this.refreshCode();

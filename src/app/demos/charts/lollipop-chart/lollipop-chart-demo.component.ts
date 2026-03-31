@@ -7,11 +7,13 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-lollipop-chart-demo',
   standalone: true,
   imports: [
+    ExampleSectionComponent,
     CommonModule,
     DmLollipopChartPlaygroundComponent,
     DemoTabsComponent,
@@ -25,9 +27,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmLollipopChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'vertical', title: 'Vertical', icon: '🍭', color: '#6366f1' },
-    { id: 'horizontal', title: 'Horizontal', icon: '↔️', color: '#10b981' },
-    { id: 'gradient', title: 'Multi-color', icon: '🌈', color: '#f59e0b' },
+    { id: 'vertical', title: 'Vertical', icon: 'align-vertical-justify-center',
+      iconLibrary: 'lucide', color: '#6366f1' },
+    { id: 'horizontal', title: 'Horizontal', icon: 'align-horizontal-justify-center',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'gradient', title: 'Multi-color', icon: 'sparkles',
+      iconLibrary: 'lucide', color: '#f59e0b' },
   ];
 
   verticalCode = `<!-- Vertical Lollipop Chart (SVG) -->

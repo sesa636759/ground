@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -72,7 +72,7 @@ export class DmBarChartPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.showTooltip) code += `  show-tooltip\n`;
     code += `  [labels]="labels"\n`;
     code += `  [datasets]="datasets"\n`;
-    code += '></ui--bar-chart>';
+    code += '></ui-bar-chart>';
     this.generatedCode.set(code);
     this.refreshCode();
   }

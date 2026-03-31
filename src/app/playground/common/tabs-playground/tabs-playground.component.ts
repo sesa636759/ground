@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -61,9 +61,9 @@ export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.scrollable) code += `  scrollable="true"\n`;
     if (this.pgConfig.closeable) code += `  closeable="true"\n`;
     code += '>\n';
-    code += '  <ui-tab label="Overview" value="overview"> Content 1 </ui--tab>\n';
-    code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui--tab>\n';
-    code += '</ui--tabs>';
+    code += '  <ui-tab label="Overview" value="overview"> Content 1 </ui-tab>\n';
+    code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui-tab>\n';
+    code += '</ui-tabs>';
 
     this.generatedCode.set(code);
     this.refreshCode();

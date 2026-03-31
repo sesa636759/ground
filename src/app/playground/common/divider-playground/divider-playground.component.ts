@@ -200,7 +200,7 @@ export class DmDividerPlaygroundComponent extends BasePlaygroundComponent implem
       if (this.pgConfig.shapeColor) code += `  shape-color="${this.pgConfig.shapeColor}"\n`;
     }
 
-    code += `></ui--divider>`;
+    code += `></ui-divider>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

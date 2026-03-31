@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="⏍"
+    icon="chevrons-up-down"
+  iconLibrary="lucide"
     title="Split Button"
     description='Combines a default action button with a dropdown menu for related auxiliary actions. Ideal for "Save" operations or multi-state actions.'
   ></pg-demo-header>
@@ -18,58 +19,38 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Color Themes -->
-          <section class="demo-section mt-0" id="colors">
-            <div class="section-header">
-              <h2>🎨 Color Themes</h2>
-              <p>Apply different visual weights using standard color variants.</p>
-            </div>
-            <div class="demo-card">
-              <ui-split-button
-                label="Delete All"
-                variant="danger"
-                [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
-                label="Publish"
-                variant="success"
-                [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
-                label="Secondary"
-                variant="secondary"
-                [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
-                label="Outline Only"
-                variant="outline"
-                [model]="menuItems"
-              ></ui-split-button>
-            </div>
-            <ui-code-preview
-              [htmlCode]="colorsCode"
-              [label]="'Theme Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="colors" title="Themes" description="Apply different visual weights using standard color variants." [code]="colorsCode"
+          >
+            <ui-split-button
+              label="Delete All"
+              variant="danger"
+              [model]="menuItems"
+            ></ui-split-button>
+            <ui-split-button
+              label="Publish"
+              variant="success"
+              [model]="menuItems"
+            ></ui-split-button>
+            <ui-split-button
+              label="Secondary"
+              variant="secondary"
+              [model]="menuItems"
+            ></ui-split-button>
+            <ui-split-button
+              label="Outline Only"
+              variant="outline"
+              [model]="menuItems"
+            ></ui-split-button>
+          </pg-example-section>
 
           <!-- Visual States -->
-          <section class="demo-section" id="states">
-            <div class="section-header">
-              <h2>⚡ Visual States</h2>
-              <p>Communicate ongoing processes or restricted access.</p>
-            </div>
-            <div class="demo-card">
-              <ui-split-button loading label="Processing..." [model]="menuItems"></ui-split-button>
-              <ui-split-button disabled label="Locked" [model]="menuItems"></ui-split-button>
-            </div>
-            <ui-code-preview
-              [htmlCode]="statesCode"
-              [label]="'State Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="states" title="States" description="Communicate ongoing processes or restricted access." [code]="statesCode"
+          >
+            <ui-split-button loading label="Processing..." [model]="menuItems"></ui-split-button>
+            <ui-split-button disabled label="Locked" [model]="menuItems"></ui-split-button>
+          </pg-example-section>
         </div>
       </div>
     </div>

@@ -122,7 +122,7 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
     if (this.pgConfig.infiniteScroll) code += `  infinite-scroll\n`;
     if (this.pgConfig.loadingState) code += `  loading-state\n`;
 
-    code += `></ui--masonry>`;
+    code += `></ui-masonry>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

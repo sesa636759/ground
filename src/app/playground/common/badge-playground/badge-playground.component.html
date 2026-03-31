@@ -77,6 +77,24 @@
         [options]="gradientOptions"
       ></ui-dropdown>
     </div>
+    <div class="control-group">
+      <label>Custom Color (hex)</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.customColor"
+        (ngModelChange)="updateConfig()"
+        placeholder="#ff00ff"
+      ></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.customColor">
+      <label>Custom Text Color (hex)</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.customTextColor"
+        (ngModelChange)="updateConfig()"
+        placeholder="#ffffff"
+      ></ui-input>
+    </div>
   </div>
 
   <div slot="content-layout" class="control-grid p-16">
@@ -164,6 +182,8 @@
       [attr.icon-position]="pgConfig.iconPosition"
       [attr.icon-library]="pgConfig.iconLibrary"
       [attr.gradient]="pgConfig.gradient"
+      [attr.custom-color]="pgConfig.customColor || null"
+      [attr.custom-text-color]="pgConfig.customColor ? pgConfig.customTextColor : null"
       [attr.offset-x]="pgConfig.offsetX"
       [attr.offset-y]="pgConfig.offsetY"
       (badgeClick)="onBadgeClick()"

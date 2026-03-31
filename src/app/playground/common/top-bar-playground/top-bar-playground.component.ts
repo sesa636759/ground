@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -44,7 +44,7 @@ export class DmTopBarPlaygroundComponent extends BasePlaygroundComponent impleme
     code += '>\n';
     code += `  <div slot="start"> ${this.pgConfig.logoText} </div>\n`;
     code += '  <div slot="end"> Actions </div>\n';
-    code += '</ui--top-bar>';
+    code += '</ui-top-bar>';
 
     this.generatedCode.set(code);
     this.refreshCode();

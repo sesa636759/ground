@@ -46,6 +46,19 @@ export class DmChipPlaygroundComponent extends BasePlaygroundComponent implement
     { label: 'Circle', value: 'circle' },
   ];
 
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  animationOptions = [
+    { label: 'Scale', value: 'scale' },
+    { label: 'Fade', value: 'fade' },
+    { label: 'Slide', value: 'slide' },
+    { label: 'Bounce', value: 'bounce' },
+    { label: 'None', value: 'none' },
+  ];
+
   constructor() {
     super();
   }
@@ -69,6 +82,10 @@ export class DmChipPlaygroundComponent extends BasePlaygroundComponent implement
       clickable: true,
       selected: false,
       loading: false,
+      orientation: 'horizontal',
+      animation: 'scale',
+      tooltip: '',
+      image: '',
     };
   }
 
@@ -79,6 +96,3 @@ export class DmChipPlaygroundComponent extends BasePlaygroundComponent implement
     }, 50);
   }
 }
-
-
-

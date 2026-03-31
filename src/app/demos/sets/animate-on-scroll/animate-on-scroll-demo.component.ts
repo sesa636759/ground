@@ -5,7 +5,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmAnimateOnScrollPlaygroundComponent } from '../../../playground/sets/animate-on-scroll-playground/animate-on-scroll-playground.component';
-import { AnimateOnScrollComponent } from '../../../directives/animate-on-scroll.component';
 
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -15,7 +14,6 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    AnimateOnScrollComponent,
     DmAnimateOnScrollPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,

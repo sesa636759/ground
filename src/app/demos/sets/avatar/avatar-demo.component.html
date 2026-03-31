@@ -1,862 +1,459 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <pg-demo-header
-    icon="👤"
-    title="Avatar Component Demo"
-    description="A comprehensive avatar component supporting images, icons, initials, status indicators, and group layouts."
-  >
-  </pg-demo-header>
+    icon="user-circle"
+    iconLibrary="lucide"
+    title="Avatar"
+    description="Flexible avatar component supporting images, initials, icons, groups, badges, status indicators, animations, and premium effects."
+  ></pg-demo-header>
 
   <pg-demo-tabs>
-    <!-- Playground Slot -->
     <div slot="playground">
       <ds-avatar-playground></ds-avatar-playground>
     </div>
 
-    <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
       <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-      <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Shapes & Sizes -->
-        <section class="demo-section" id="basic">
-          <div class="section-header">
-            <h2>📐 Basic Shapes & Sizes</h2>
-            <p>Three sizes and two shapes are available</p>
+        <pg-example-section
+          id="basic"
+          title="Basic Shapes & Sizes"
+          description="Circle and square shapes across small, default, and large sizes."
+          [code]="basicCode"
+          class="mt-0"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="LC" size="large" shape="circle"></app-avatar>
+            <app-avatar name="DC" size="default" shape="circle"></app-avatar>
+            <app-avatar name="SC" size="small" shape="circle"></app-avatar>
+            <app-avatar name="LS" size="large" shape="square"></app-avatar>
+            <app-avatar name="DS" size="default" shape="square"></app-avatar>
+            <app-avatar name="SS" size="small" shape="square"></app-avatar>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Large Circle</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="LC" size="large" shape="circle"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Default Circle</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="DC" size="default" shape="circle"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Small Circle</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="SC" size="small" shape="circle"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Large Square</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="LS" size="large" shape="square"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Default Square</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="DS" size="default" shape="square"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Small Square</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="SS" size="small" shape="square"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="basicCode"
-            label="Basic"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Avatar Types -->
-        <section class="demo-section" id="types">
-          <div class="section-header">
-            <h2>👤 Avatar Types</h2>
-            <p>Image, Icon and letter are supported</p>
+        <pg-example-section
+          id="types"
+          title="Avatar Types"
+          description="Image, icon, and initials-based avatars."
+          [code]="typesCode"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <app-avatar icon="fa fa-user" name="Icon Avatar"></app-avatar>
+            <app-avatar name="John Doe"></app-avatar>
+            <app-avatar name="Christopher Alexander"></app-avatar>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=1"
+              name="Image"
+            ></app-avatar>
           </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Icon with Tooltip</h3>
-              <div class="preview-box center-content">
-                <app-avatar icon="fa fa-user" name="Icon with Tooltip" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Text with Tooltip</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="John Doe" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Long Name</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Christopher Alexander" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Image</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=1"
-                  name="Image"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="typesCode"
-            label="Types"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Sizes -->
-        <section class="demo-section" id="sizes">
-          <div class="section-header">
-            <h2>📏 Sizes</h2>
-            <p>Standard t-shirt sizes and custom numeric values</p>
+        <pg-example-section
+          id="sizes"
+          title="Sizes"
+          description="Extra small, small, medium, large, extra large, and custom pixel sizes."
+          [code]="sizesCode"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end">
+            <app-avatar name="XS" size="xs"></app-avatar>
+            <app-avatar name="S" size="s"></app-avatar>
+            <app-avatar name="M" size="m"></app-avatar>
+            <app-avatar name="L" size="l"></app-avatar>
+            <app-avatar name="XL" size="xl"></app-avatar>
+            <app-avatar name="C" size="80px"></app-avatar>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>XS (24px)</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="XS" size="xs"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>S (32px)</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="S" size="s"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>M (40px)</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="M" size="m"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>L (48px)</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="L" size="l"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>XL (64px)</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="XL" size="xl"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Custom (80px)</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="C" size="80px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="sizesCode"
-            label="Sizes"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Auto-scale Font Size -->
-        <section class="demo-section" id="auto-scale">
-          <div class="section-header">
-            <h2>🅰️ Auto-scale Font Size</h2>
-            <p>
-              For letter type Avatar, when the letters are too long to display, the font size can be
-              automatically adjusted
-            </p>
+        <pg-example-section
+          id="auto-scale"
+          title="Auto-scale Font"
+          description="Initials auto-scale with text length to fit within the avatar circle."
+          [code]="autoScaleCode"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="A"></app-avatar>
+            <app-avatar name="AB"></app-avatar>
+            <app-avatar name="ABC"></app-avatar>
+            <app-avatar name="ABCD"></app-avatar>
           </div>
-          <div class="demo-card">
-            <h3>Progressive Scaling</h3>
-            <div class="preview-box center-content flex-row gap-4">
-              <app-avatar name="A" size="64px"></app-avatar>
-              <app-avatar name="AB" size="64px"></app-avatar>
-              <app-avatar name="ABC" size="64px"></app-avatar>
-              <app-avatar name="ABCD" size="64px"></app-avatar>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="autoScaleCode"
-            label="Auto-scale"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- With Badge -->
-        <section class="demo-section" id="badge">
-          <div class="section-header">
-            <h2>📛 With Badge</h2>
-            <p>Usually used for reminders and notifications</p>
+        <pg-example-section
+          id="badge"
+          title="With Badge"
+          description="Notification count, dot, and colored badge overlays."
+          [code]="badgeCode"
+        >
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="User" badge="1"></app-avatar>
+            <app-avatar name="User" badge="99+"></app-avatar>
+            <app-avatar name="User" badge="dot" badge-color="green"></app-avatar>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Count Badge</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" badge="1" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>High Count</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" badge="99+" size="64px" badge-color="#ef4444"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Dot Badge</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" badge="dot" size="64px" badge-color="#10b981"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="badgeCode"
-            label="Badge"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Avatar Groups -->
-        <section class="demo-section" id="avatar-group">
-          <div class="section-header">
-            <h2>👥 Avatar Groups</h2>
-            <p>Avatar group display with overlap effect</p>
-          </div>
-          <div class="demo-card">
-            <h3>With Tooltips and Max Count</h3>
-            <p>
-              Hover over avatars to see tooltips. Hover over "+N" to see all hidden users in a
-              popover.
-            </p>
-            <div class="preview-box center-content">
-              <app-avatar-group max="3">
-                <app-avatar src="https://i.pravatar.cc/150?u=user1" name="User 1"></app-avatar>
-                <app-avatar src="https://i.pravatar.cc/150?u=user2" name="User 2"></app-avatar>
-                <app-avatar src="https://i.pravatar.cc/150?u=user3" name="User 3"></app-avatar>
-                <app-avatar src="https://i.pravatar.cc/150?u=user4" name="User 4"></app-avatar>
-                <app-avatar src="https://i.pravatar.cc/150?u=user5" name="User 5"></app-avatar>
-                <app-avatar src="https://i.pravatar.cc/150?u=user6" name="User 6"></app-avatar>
-              </app-avatar-group>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="avatarGroupCode"
-            label="Avatar Groups"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="avatar-group"
+          title="Avatar Groups"
+          description="Stack multiple avatars with a +N overflow indicator."
+          [code]="avatarGroupCode"
+        >
+          <app-avatar-group max="3">
+            <app-avatar src="https://i.pravatar.cc/150?u=a" name="Member A"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=b" name="Member B"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=c" name="Member C"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=d" name="Member D"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=e" name="Member E"></app-avatar>
+          </app-avatar-group>
+        </pg-example-section>
 
-        <!-- Custom Colors -->
-        <section class="demo-section" id="custom-colors">
-          <div class="section-header">
-            <h2>🎨 Custom Colors</h2>
-            <p>Avatars with different background and text colors</p>
+        <pg-example-section
+          id="custom-colors"
+          title="Custom Colors"
+          description="Override background and text colors for branded avatars."
+          [code]="customColorsCode"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="Red" bg-color="#ef4444" text-color="white"></app-avatar>
+            <app-avatar name="Blue" bg-color="#3b82f6" text-color="white"></app-avatar>
+            <app-avatar name="Green" bg-color="#10b981" text-color="white"></app-avatar>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Red</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="Red"
-                  bg-color="#ef4444"
-                  text-color="white"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Blue</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="Blue"
-                  bg-color="#3b82f6"
-                  text-color="white"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Green</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="Green"
-                  bg-color="#10b981"
-                  text-color="white"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="customColorsCode"
-            label="Custom Colors"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Responsive Size -->
-        <section class="demo-section" id="responsive">
-          <div class="section-header">
-            <h2>📱 Responsive Size</h2>
-            <p>Avatar size can be automatically adjusted based on the screen size</p>
-          </div>
-          <div class="demo-card">
-            <h3>Responsive Avatar</h3>
-            <p>Resize your browser to see the effect</p>
-            <div class="preview-box center-content">
-              <app-avatar name="Responsive" size="responsive"></app-avatar>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="responsiveCode"
-            label="Responsive"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="responsive"
+          title="Responsive Size"
+          description="Avatar that adapts its size based on the viewport."
+          [code]="responsiveCode"
+        >
+          <app-avatar name="Responsive" size="responsive"></app-avatar>
+        </pg-example-section>
 
-        <!-- User Status Indicators -->
-        <section class="demo-section" id="status">
-          <div class="section-header">
-            <h2>🚥 User Status Indicators</h2>
-            <p>Avatars with online status indicators</p>
+        <pg-example-section
+          id="status"
+          title="Status Indicators"
+          description="Visual presence indicators — online, offline, away, busy, and DND."
+          [code]="statusCode"
+        >
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
+            <div style="text-align: center">
+              <app-avatar name="Online" status="online"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                online
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="Offline" status="offline"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                offline
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="Away" status="away"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">away</p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="Busy" status="busy"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">busy</p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="DND" status="dnd"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">dnd</p>
+            </div>
           </div>
+        </pg-example-section>
 
-          <div class="demo-card">
-            <h3>Status Types</h3>
-            <div class="preview-box center-content flex-row gap-4">
-              <app-avatar name="Online" status="online" size="64px"></app-avatar>
-              <app-avatar name="Offline" status="offline" size="64px"></app-avatar>
-              <app-avatar name="Away" status="away" size="64px"></app-avatar>
-              <app-avatar name="Busy" status="busy" size="64px"></app-avatar>
-              <app-avatar name="DND" status="dnd" size="64px"></app-avatar>
-            </div>
+        <pg-example-section
+          id="borders"
+          title="Custom Borders"
+          description="Apply solid, dashed, or dotted borders with custom colors."
+          [code]="bordersCode"
+        >
+          <div style="display: flex; gap: 16px; align-items: center">
+            <app-avatar name="User" border="2px solid #3b82f6"></app-avatar>
+            <app-avatar name="User" border="3px dashed #ef4444"></app-avatar>
           </div>
-          <ui-code-preview
-            [htmlCode]="statusCode"
-            label="Status"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Custom Borders -->
-        <section class="demo-section" id="borders">
-          <div class="section-header">
-            <h2>🔳 Custom Borders</h2>
-            <p>Avatars with custom borders</p>
+        <pg-example-section
+          id="tooltips"
+          title="Tooltips & Popovers"
+          description="Hover tooltips on individual avatars and group popovers."
+          [code]="tooltipsCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 16px">
+            <app-avatar name="John Doe" tooltip="Software Engineer"></app-avatar>
+            <app-avatar-group max="3" show-popover>
+              <app-avatar name="User 1"></app-avatar>
+              <app-avatar name="User 2"></app-avatar>
+              <app-avatar name="User 3"></app-avatar>
+              <app-avatar name="User 4"></app-avatar>
+            </app-avatar-group>
           </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Solid Border</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" border="2px solid #3b82f6" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Dashed Border</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" border="3px dashed #ef4444" size="64px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="bordersCode"
-            label="Borders"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Tooltips and Popovers -->
-        <section class="demo-section" id="tooltips">
-          <div class="section-header">
-            <h2>💬 Tooltips and Popovers</h2>
-            <p>Hover over individual avatars to see tooltips</p>
+        <pg-example-section
+          id="icons"
+          title="Different Icons"
+          description="Use FontAwesome or other icon libraries inside avatars."
+          [code]="iconsCode"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <app-avatar icon="fa fa-user" iconLibrary="fa"></app-avatar>
+            <app-avatar icon="fa fa-star" iconLibrary="fa"></app-avatar>
+            <app-avatar icon="fa fa-heart" iconLibrary="fa"></app-avatar>
+            <app-avatar icon="fa fa-cog" iconLibrary="fa"></app-avatar>
           </div>
+        </pg-example-section>
 
-          <div class="demo-card">
-            <h3>Individual Tooltips</h3>
-            <div class="preview-box center-content flex-row gap-4">
-              <app-avatar name="John Doe" tooltip="Software Engineer" size="64px"></app-avatar>
-              <app-avatar name="Jane Smith" tooltip="Product Manager" size="64px"></app-avatar>
-              <app-avatar name="Bob Johnson" tooltip="Designer" size="64px"></app-avatar>
-            </div>
+        <pg-example-section
+          id="badge-overlay"
+          title="Badge Overlay"
+          description="Positional badges at any corner of the avatar."
+          [code]="badgeOverlayCode"
+        >
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="User" badge="3" badge-position="top-right"></app-avatar>
+            <app-avatar name="User" badge="99+" badge-position="bottom-right"></app-avatar>
+            <app-avatar
+              name="User"
+              badge="NEW"
+              badge-position="top-left"
+              badge-color="#10b981"
+            ></app-avatar>
+            <app-avatar
+              name="User"
+              badge="!"
+              badge-position="bottom-left"
+              badge-color="#ef4444"
+            ></app-avatar>
           </div>
-          <ui-code-preview
-            [htmlCode]="tooltipsCode"
-            label="Tooltips"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Different Icons -->
-        <section class="demo-section" id="icons">
-          <div class="section-header">
-            <h2>✨ Different Icons</h2>
-            <p>Various Font Awesome icons in avatars</p>
+        <pg-example-section
+          id="verified"
+          title="Verified Badge"
+          description="Blue verification checkmark for verified users."
+          [code]="verifiedCode"
+        >
+          <div style="display: flex; gap: 16px; align-items: center">
+            <app-avatar name="Verified User" verified></app-avatar>
+            <app-avatar
+              src="https://i.pravatar.cc/150?u=verified"
+              name="Verified"
+              verified
+            ></app-avatar>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>User Icon</h3>
-              <div class="preview-box center-content">
-                <app-avatar icon="fa fa-user" iconLibrary="fa" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Star Icon</h3>
-              <div class="preview-box center-content">
-                <app-avatar icon="fa fa-star" iconLibrary="fa" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Heart Icon</h3>
-              <div class="preview-box center-content">
-                <app-avatar icon="fa fa-heart" iconLibrary="fa" size="64px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="iconsCode"
-            label="Icons"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Badge Overlay -->
-        <section class="demo-section" id="badge-overlay">
-          <div class="section-header">
-            <h2>🏷️ Badge Overlay</h2>
-            <p>Add badge notifications with customizable positions and colors</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Top Right (3 notifications)</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="User"
-                  badge="3"
-                  badge-position="top-right"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Bottom Right (99+)</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="User"
-                  badge="99+"
-                  badge-position="bottom-right"
-                  badge-color="#ef4444"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="badgeOverlayCode"
-            label="Badge Overlay"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="editable"
+          title="Editable/Upload"
+          description="Clickable avatar with camera overlay for photo upload."
+          [code]="editableCode"
+        >
+          <app-avatar name="User" editable></app-avatar>
+        </pg-example-section>
 
-        <!-- Verified Badge -->
-        <section class="demo-section" id="verified">
-          <div class="section-header">
-            <h2>✅ Verified Badge</h2>
-            <p>Show verification status with a checkmark badge</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Verified User</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Verified User" verified size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Verified with Image</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  src="https://i.pravatar.cc/150?u=verified"
-                  name="Verified"
-                  verified
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="verifiedCode"
-            label="Verified"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="loading"
+          title="Loading State"
+          description="Skeleton shimmer while the avatar image loads."
+          [code]="loadingCode"
+        >
+          <app-avatar name="Loading" loading></app-avatar>
+        </pg-example-section>
 
-        <!-- Editable/Upload -->
-        <section class="demo-section" id="editable">
-          <div class="section-header">
-            <h2>✏️ Editable/Upload</h2>
-            <p>Allow users to upload their own avatar images</p>
-          </div>
-          <div class="demo-card">
-            <h3>Click to upload</h3>
-            <div class="preview-box center-content">
-              <app-avatar name="User" editable size="80px"></app-avatar>
+        <pg-example-section
+          id="image-fit"
+          title="Image Fit Options"
+          description="Control how the image fills the avatar frame."
+          [code]="imageFitCode"
+        >
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
+            <div style="text-align: center">
+              <app-avatar src="https://i.pravatar.cc/150?u=fit1" fit="cover"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">cover</p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar src="https://i.pravatar.cc/150?u=fit2" fit="contain"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                contain
+              </p>
             </div>
           </div>
-          <ui-code-preview
-            [htmlCode]="editableCode"
-            label="Editable"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Loading State -->
-        <section class="demo-section" id="loading">
-          <div class="section-header">
-            <h2>⌛ Loading State</h2>
-            <p>Show loading spinner while processing</p>
+        <pg-example-section
+          id="auto-color"
+          title="Auto Color from Name"
+          description="Automatically generates a consistent background color based on the name."
+          [code]="autoColorCode"
+        >
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="Alice Anderson" auto-color></app-avatar>
+            <app-avatar name="Bob Baker" auto-color></app-avatar>
+            <app-avatar name="Charlie Clark" auto-color></app-avatar>
+            <app-avatar name="Diana Davis" auto-color></app-avatar>
           </div>
-          <div class="demo-card">
-            <h3>Loading Avatar</h3>
-            <div class="preview-box center-content">
-              <app-avatar name="Loading" loading size="64px"></app-avatar>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="loadingCode"
-            label="Loading"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Image Fit Options -->
-        <section class="demo-section" id="image-fit">
-          <div class="section-header">
-            <h2>🖼️ Image Fit Options</h2>
-            <p>Control how images fit within the avatar container</p>
+        <pg-example-section
+          id="gradients"
+          title="Gradient Backgrounds"
+          description="Apply gradient backgrounds with built-in or custom color stops."
+          [code]="gradientsCode"
+        >
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="User" gradient="default"></app-avatar>
+            <app-avatar
+              name="User"
+              gradient="custom"
+              gradient-colors="#667eea,#764ba2"
+            ></app-avatar>
+            <app-avatar name="User" gradient="blue" gradient-colors="#4facfe,#00f2fe"></app-avatar>
           </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Cover (default)</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  src="https://i.pravatar.cc/150?u=cover"
-                  fit="cover"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Contain</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  src="https://i.pravatar.cc/150?u=contain"
-                  fit="contain"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="imageFitCode"
-            label="Image Fit"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Auto Color from Name -->
-        <section class="demo-section" id="auto-color">
-          <div class="section-header">
-            <h2>🌈 Auto Color from Name</h2>
-            <p>Automatically generate background color from user name</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Alice Anderson</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Alice Anderson" auto-color size="64px"></app-avatar>
-              </div>
+        <pg-example-section
+          id="animations"
+          title="Animations"
+          description="Pulse, ring, and glow animations for drawing user attention."
+          [code]="animationsCode"
+        >
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+            <div style="text-align: center">
+              <app-avatar name="Pulse" animation="pulse"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">pulse</p>
             </div>
-            <div class="demo-card">
-              <h3>Bob Baker</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Bob Baker" auto-color size="64px"></app-avatar>
-              </div>
+            <div style="text-align: center">
+              <app-avatar name="Ring" animation="ring"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">ring</p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="Glow" animation="glow"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">glow</p>
             </div>
           </div>
-          <ui-code-preview
-            [htmlCode]="autoColorCode"
-            label="Auto Color"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Gradient Backgrounds -->
-        <section class="demo-section" id="gradients">
-          <div class="section-header">
-            <h2>🌈 Gradient Backgrounds</h2>
-            <p>Use gradient colors for avatars</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Default Gradient</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" gradient="default" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Custom Gradient</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="User"
-                  gradient="custom"
-                  gradient-colors="#667eea,#764ba2"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Blue Gradient</h3>
-              <div class="preview-box center-content">
-                <app-avatar
-                  name="User"
-                  gradient="blue"
-                  gradient-colors="#4facfe,#00f2fe"
-                  size="64px"
-                ></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="gradientsCode"
-            label="Gradients"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="clickable"
+          title="Clickable Avatars"
+          description="Interactive avatars with pointer cursor and click events."
+          [code]="clickableCode"
+        >
+          <app-avatar name="Click Me" clickable></app-avatar>
+        </pg-example-section>
 
-        <!-- Animations -->
-        <section class="demo-section" id="animations">
-          <div class="section-header">
-            <h2>🎬 Animations</h2>
-            <p>Add visual animations to avatars</p>
+        <pg-example-section
+          id="ring-color"
+          title="Ring Color"
+          description="Colored ring borders around the avatar frame."
+          [code]="ringColorCode"
+        >
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
+            <app-avatar name="User" ring-color="#3b82f6"></app-avatar>
+            <app-avatar name="User" ring-color="#ef4444"></app-avatar>
+            <app-avatar name="User" ring-color="#10b981"></app-avatar>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Pulse</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Pulse" animation="pulse" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Ring</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Ring" animation="ring" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Glow</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="Glow" animation="glow" size="64px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="animationsCode"
-            label="Animations"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Clickable Avatars -->
-        <section class="demo-section" id="clickable">
-          <div class="section-header">
-            <h2>🖱️ Clickable Avatars</h2>
-            <p>Make avatars interactive with click events</p>
-          </div>
-          <div class="demo-card">
-            <h3>Click to interact</h3>
-            <div class="preview-box center-content">
-              <app-avatar name="Click Me" clickable size="64px"></app-avatar>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="clickableCode"
-            label="Clickable"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="lazy-loading"
+          title="Lazy Loading"
+          description="Deferred image loading using IntersectionObserver."
+          [code]="lazyLoadingCode"
+        >
+          <app-avatar src="https://i.pravatar.cc/150?u=lazy" lazy-load></app-avatar>
+        </pg-example-section>
 
-        <!-- Ring Color -->
-        <section class="demo-section" id="ring-color">
-          <div class="section-header">
-            <h2>⭕ Ring Color</h2>
-            <p>Add custom colored rings around avatars</p>
+        <pg-example-section
+          id="premium"
+          title="Premium Features"
+          description="Story rings, active speaker indicator, status pulse, and smart initials."
+          [code]="premiumCode"
+        >
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
+            <div style="text-align: center">
+              <app-avatar name="User" story-ring></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                story ring
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="User" story-seen></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                story seen
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="User" active-speaker></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                speaker
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="User" status="online" status-pulse></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                pulsing
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="John Doe" smart-initials></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                smart initials
+              </p>
+            </div>
           </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Blue Ring</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" ring-color="#3b82f6" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Red Ring</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" ring-color="#ef4444" size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Green Ring</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" ring-color="#10b981" size="64px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="ringColorCode"
-            label="Ring Color"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Lazy Loading -->
-        <section class="demo-section" id="lazy-loading">
-          <div class="section-header">
-            <h2>💤 Lazy Loading</h2>
-            <p>Images load only when visible in viewport</p>
-          </div>
-          <div class="demo-card">
-            <h3>Lazy Loaded Image</h3>
-            <div class="preview-box center-content">
-              <app-avatar src="https://i.pravatar.cc/150?u=lazy" lazy-load size="64px"></app-avatar>
+        <pg-example-section
+          id="premium-showcase"
+          title="Premium Showcase"
+          description="Skeleton shimmer, glassmorphism, 3D effect, and story segments."
+          [code]="premiumShowcaseCode"
+        >
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
+            <div style="text-align: center">
+              <app-avatar name="User" skeleton shimmer></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                shimmer
+              </p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="User" glassmorphism></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">glass</p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="User" effect-3d></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">3D</p>
+            </div>
+            <div style="text-align: center">
+              <app-avatar name="User" story-segments="4"></app-avatar>
+              <p style="font-size: 11px; margin-top: 4px; color: var(--ui-text-secondary)">
+                segments
+              </p>
             </div>
           </div>
-          <ui-code-preview
-            [htmlCode]="lazyLoadingCode"
-            [label]="'Lazy Loading'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        </pg-example-section>
 
-        <!-- Premium Features -->
-        <section class="demo-section" id="premium">
-          <div class="section-header">
-            <h2>💎 Premium Features</h2>
-            <p>High-end UX enhancements for avatars</p>
-          </div>
-          <div class="demo-grid col-3">
-            <div class="demo-card">
-              <h3>Story Ring</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" story-ring size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Story Seen</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" story-seen size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Active Speaker</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" active-speaker size="64px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="premiumCode"
-            [label]="'Premium Features'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
-
-        <!-- Premium Showcase -->
-        <section class="demo-section" id="premium-showcase">
-          <div class="section-header">
-            <h2>💎 Premium Showcase</h2>
-            <p>Experience the next level of Avatar interaction</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Skeleton Shimmer</h3>
-              <div class="preview-box center-content">
-                <app-avatar name="User" skeleton shimmer size="64px"></app-avatar>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Glassmorphism</h3>
-              <div class="preview-box center-content bg-gradient">
-                <app-avatar name="User" glassmorphism size="64px"></app-avatar>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="premiumShowcaseCode"
-            [label]="'Premium Showcase'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
-
-        <!-- Animated Groups -->
-        <section class="demo-section" id="animated-groups">
-          <div class="section-header">
-            <h2>🎬 Animated Groups</h2>
-            <p>Smooth shifting hover effect</p>
-          </div>
-          <div class="demo-card">
-            <h3>Smooth Shifting Hover Effect</h3>
-            <div class="preview-box center-content">
-              <app-avatar-group animated max="5">
-                <app-avatar name="User 1" size="56px"></app-avatar>
-                <app-avatar name="User 2" size="56px"></app-avatar>
-                <app-avatar name="User 3" size="56px"></app-avatar>
-                <app-avatar name="User 4" size="56px"></app-avatar>
-                <app-avatar name="User 5" size="56px"></app-avatar>
-                <app-avatar name="User 6" size="56px"></app-avatar>
-              </app-avatar-group>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="animatedGroupsCode"
-            [label]="'Animated Groups'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
+        <pg-example-section
+          id="animated-groups"
+          title="Animated Groups"
+          description="Avatar groups with enter/leave animations."
+          [code]="animatedGroupsCode"
+        >
+          <app-avatar-group animated>
+            <app-avatar src="https://i.pravatar.cc/150?u=ag1" name="User 1"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=ag2" name="User 2"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=ag3" name="User 3"></app-avatar>
+            <app-avatar src="https://i.pravatar.cc/150?u=ag4" name="User 4"></app-avatar>
+          </app-avatar-group>
+        </pg-example-section>
       </div>
     </div>
-    <!-- Documentation Slot -->
+
     <div slot="docs">
       <pg-component-documentation componentId="avatar"></pg-component-documentation>
     </div>

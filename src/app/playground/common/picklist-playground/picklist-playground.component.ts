@@ -139,7 +139,7 @@ export class DmPicklistPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.reorderable) code += `  reorderable\n`;
 
     code += `  (picklistChange)="onChange($event)"\n`;
-    code += `></ui--picklist>`;
+    code += `></ui-picklist>`;
 
     this.generatedCode.set(code);
     this.refreshCode();

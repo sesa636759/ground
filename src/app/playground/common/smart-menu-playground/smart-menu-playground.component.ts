@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
@@ -169,7 +169,7 @@ export class DmSmartMenuPlaygroundComponent extends BasePlaygroundComponent {
       targetAttr,
       `  icon-library="${this.pgConfig.iconLibrary}"`,
       `  [items]="menuItems"`,
-      `></ui--smart-context-menu>`,
+      `></ui-smart-context-menu>`,
     ];
 
     this.generatedCode.set(codeLines.join('\n'));

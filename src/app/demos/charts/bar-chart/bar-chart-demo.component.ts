@@ -8,12 +8,14 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'dm-bar-chart-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
+    ExampleSectionComponent,
     DmBarChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -26,10 +28,14 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmBarChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic', icon: '📊', color: '#3b82f6' },
-    { id: 'multi-dataset', title: 'Multi Dataset', icon: '🗂️', color: '#10b981' },
-    { id: 'stacked', title: 'Stacked', icon: '📦', color: '#f59e0b' },
-    { id: 'horizontal', title: 'Horizontal', icon: '↔️', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic', icon: 'square',
+      iconLibrary: 'lucide', color: '#3b82f6' },
+    { id: 'multi-dataset', title: 'Multi Dataset', icon: 'bar-chart',
+      iconLibrary: 'lucide', color: '#10b981' },
+    { id: 'stacked', title: 'Stacked', icon: 'layers',
+      iconLibrary: 'lucide', color: '#f59e0b' },
+    { id: 'horizontal', title: 'Horizontal', icon: 'align-horizontal-justify-center',
+      iconLibrary: 'lucide', color: '#8b5cf6' },
   ];
 
   /* ── Basic single-series ── */

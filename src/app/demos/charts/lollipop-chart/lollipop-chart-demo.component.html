@@ -1,6 +1,7 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="🍭"
+    icon="circle-dot"
+  iconLibrary="lucide"
     title="Lollipop Chart"
     description="A clean alternative to bar charts with a circle connected by a thin stick. Reduces visual clutter while maintaining clarity, ideal for ranking, comparison, and minimalist dashboards."
   ></pg-demo-header>
@@ -14,110 +15,90 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section mt-0" id="vertical">
-            <div class="section-header">
-              <h2>🍭 Vertical Lollipop</h2>
-              <p>Standard vertical orientation showing monthly performance values.</p>
-            </div>
-            <div class="demo-card">
-              <svg width="560" height="300" class="display-block m-0-auto">
-                <!-- Grid -->
-                <line x1="40" y1="20" x2="40" y2="240" stroke="#e5e7eb" />
-                <line x1="40" y1="240" x2="540" y2="240" stroke="#e5e7eb" />
-                <line x1="40" y1="80" x2="540" y2="80" stroke="#f3f4f6" stroke-dasharray="4,3" />
-                <line x1="40" y1="140" x2="540" y2="140" stroke="#f3f4f6" stroke-dasharray="4,3" />
-                <line x1="40" y1="200" x2="540" y2="200" stroke="#f3f4f6" stroke-dasharray="4,3" />
-                <!-- Lollipops: Jan -->
-                <line x1="88" y1="240" x2="88" y2="130" stroke="#6366f1" stroke-width="2" />
-                <circle cx="88" cy="130" r="7" fill="#6366f1" />
-                <text x="88" y="120" text-anchor="middle" font-size="10" fill="#4338ca">42</text>
-                <text x="88" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Jan</text>
-                <!-- Feb -->
-                <line x1="152" y1="240" x2="152" y2="100" stroke="#6366f1" stroke-width="2" />
-                <circle cx="152" cy="100" r="7" fill="#6366f1" />
-                <text x="152" y="90" text-anchor="middle" font-size="10" fill="#4338ca">55</text>
-                <text x="152" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Feb</text>
-                <!-- Mar -->
-                <line x1="216" y1="240" x2="216" y2="115" stroke="#6366f1" stroke-width="2" />
-                <circle cx="216" cy="115" r="7" fill="#6366f1" />
-                <text x="216" y="105" text-anchor="middle" font-size="10" fill="#4338ca">48</text>
-                <text x="216" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Mar</text>
-                <!-- Apr -->
-                <line x1="280" y1="240" x2="280" y2="75" stroke="#6366f1" stroke-width="2" />
-                <circle cx="280" cy="75" r="7" fill="#6366f1" />
-                <text x="280" y="65" text-anchor="middle" font-size="10" fill="#4338ca">70</text>
-                <text x="280" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Apr</text>
-                <!-- May -->
-                <line x1="344" y1="240" x2="344" y2="85" stroke="#10b981" stroke-width="2" />
-                <circle cx="344" cy="85" r="7" fill="#10b981" />
-                <text x="344" y="75" text-anchor="middle" font-size="10" fill="#059669">65</text>
-                <text x="344" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">May</text>
-                <!-- Jun -->
-                <line x1="408" y1="240" x2="408" y2="55" stroke="#10b981" stroke-width="2" />
-                <circle cx="408" cy="55" r="7" fill="#10b981" />
-                <text x="408" y="45" text-anchor="middle" font-size="10" fill="#059669">90</text>
-                <text x="408" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Jun</text>
-                <!-- Jul -->
-                <line x1="472" y1="240" x2="472" y2="60" stroke="#10b981" stroke-width="2" />
-                <circle cx="472" cy="60" r="7" fill="#10b981" />
-                <text x="472" y="50" text-anchor="middle" font-size="10" fill="#059669">88</text>
-                <text x="472" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Jul</text>
-              </svg>
-            </div>
-            <ui-code-preview
-              [htmlCode]="verticalCode"
-              label="Vertical Lollipop"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+          <pg-example-section
+            id="vertical" title="Lollipop" description="Standard vertical orientation showing monthly performance values." [code]="verticalCode"
+          >
+            <svg width="560" height="300" class="display-block m-0-auto">
+              <!-- Grid -->
+              <line x1="40" y1="20" x2="40" y2="240" stroke="#e5e7eb" />
+              <line x1="40" y1="240" x2="540" y2="240" stroke="#e5e7eb" />
+              <line x1="40" y1="80" x2="540" y2="80" stroke="#f3f4f6" stroke-dasharray="4,3" />
+              <line x1="40" y1="140" x2="540" y2="140" stroke="#f3f4f6" stroke-dasharray="4,3" />
+              <line x1="40" y1="200" x2="540" y2="200" stroke="#f3f4f6" stroke-dasharray="4,3" />
+              <!-- Lollipops: Jan -->
+              <line x1="88" y1="240" x2="88" y2="130" stroke="#6366f1" stroke-width="2" />
+              <circle cx="88" cy="130" r="7" fill="#6366f1" />
+              <text x="88" y="120" text-anchor="middle" font-size="10" fill="#4338ca">42</text>
+              <text x="88" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Jan</text>
+              <!-- Feb -->
+              <line x1="152" y1="240" x2="152" y2="100" stroke="#6366f1" stroke-width="2" />
+              <circle cx="152" cy="100" r="7" fill="#6366f1" />
+              <text x="152" y="90" text-anchor="middle" font-size="10" fill="#4338ca">55</text>
+              <text x="152" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Feb</text>
+              <!-- Mar -->
+              <line x1="216" y1="240" x2="216" y2="115" stroke="#6366f1" stroke-width="2" />
+              <circle cx="216" cy="115" r="7" fill="#6366f1" />
+              <text x="216" y="105" text-anchor="middle" font-size="10" fill="#4338ca">48</text>
+              <text x="216" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Mar</text>
+              <!-- Apr -->
+              <line x1="280" y1="240" x2="280" y2="75" stroke="#6366f1" stroke-width="2" />
+              <circle cx="280" cy="75" r="7" fill="#6366f1" />
+              <text x="280" y="65" text-anchor="middle" font-size="10" fill="#4338ca">70</text>
+              <text x="280" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Apr</text>
+              <!-- May -->
+              <line x1="344" y1="240" x2="344" y2="85" stroke="#10b981" stroke-width="2" />
+              <circle cx="344" cy="85" r="7" fill="#10b981" />
+              <text x="344" y="75" text-anchor="middle" font-size="10" fill="#059669">65</text>
+              <text x="344" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">May</text>
+              <!-- Jun -->
+              <line x1="408" y1="240" x2="408" y2="55" stroke="#10b981" stroke-width="2" />
+              <circle cx="408" cy="55" r="7" fill="#10b981" />
+              <text x="408" y="45" text-anchor="middle" font-size="10" fill="#059669">90</text>
+              <text x="408" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Jun</text>
+              <!-- Jul -->
+              <line x1="472" y1="240" x2="472" y2="60" stroke="#10b981" stroke-width="2" />
+              <circle cx="472" cy="60" r="7" fill="#10b981" />
+              <text x="472" y="50" text-anchor="middle" font-size="10" fill="#059669">88</text>
+              <text x="472" y="258" text-anchor="middle" font-size="10" fill="#9ca3af">Jul</text>
+            </svg>
+          </pg-example-section>
 
-          <section class="demo-section" id="horizontal">
-            <div class="section-header">
-              <h2>↔️ Horizontal Lollipop</h2>
-              <p>Horizontal layout for ranking categories — perfect for long category names.</p>
-            </div>
-            <div class="demo-card">
-              <svg width="500" height="340" class="display-block m-0-auto">
-                <!-- Axis -->
-                <line x1="120" y1="20" x2="120" y2="310" stroke="#e5e7eb" />
-                <line x1="120" y1="310" x2="470" y2="310" stroke="#e5e7eb" />
-                <!-- Rows -->
-                <text x="114" y="50" text-anchor="end" font-size="11" fill="#6b7280">Frontend</text>
-                <line x1="120" y1="46" x2="380" y2="46" stroke="#6366f1" stroke-width="2" />
-                <circle cx="380" cy="46" r="7" fill="#6366f1" />
-                <text x="392" y="50" font-size="10" fill="#4338ca">85</text>
+          <pg-example-section
+            id="horizontal" title="Lollipop" description="Horizontal layout for ranking categories — perfect for long category names." [code]="horizontalCode"
+          >
+            <svg width="500" height="340" class="display-block m-0-auto">
+              <!-- Axis -->
+              <line x1="120" y1="20" x2="120" y2="310" stroke="#e5e7eb" />
+              <line x1="120" y1="310" x2="470" y2="310" stroke="#e5e7eb" />
+              <!-- Rows -->
+              <text x="114" y="50" text-anchor="end" font-size="11" fill="#6b7280">Frontend</text>
+              <line x1="120" y1="46" x2="380" y2="46" stroke="#6366f1" stroke-width="2" />
+              <circle cx="380" cy="46" r="7" fill="#6366f1" />
+              <text x="392" y="50" font-size="10" fill="#4338ca">85</text>
 
-                <text x="114" y="96" text-anchor="end" font-size="11" fill="#6b7280">Backend</text>
-                <line x1="120" y1="92" x2="340" y2="92" stroke="#0ea5e9" stroke-width="2" />
-                <circle cx="340" cy="92" r="7" fill="#0ea5e9" />
-                <text x="352" y="96" font-size="10" fill="#0369a1">78</text>
+              <text x="114" y="96" text-anchor="end" font-size="11" fill="#6b7280">Backend</text>
+              <line x1="120" y1="92" x2="340" y2="92" stroke="#0ea5e9" stroke-width="2" />
+              <circle cx="340" cy="92" r="7" fill="#0ea5e9" />
+              <text x="352" y="96" font-size="10" fill="#0369a1">78</text>
 
-                <text x="114" y="146" text-anchor="end" font-size="11" fill="#6b7280">DevOps</text>
-                <line x1="120" y1="142" x2="295" y2="142" stroke="#f59e0b" stroke-width="2" />
-                <circle cx="295" cy="142" r="7" fill="#f59e0b" />
-                <text x="307" y="146" font-size="10" fill="#b45309">65</text>
+              <text x="114" y="146" text-anchor="end" font-size="11" fill="#6b7280">DevOps</text>
+              <line x1="120" y1="142" x2="295" y2="142" stroke="#f59e0b" stroke-width="2" />
+              <circle cx="295" cy="142" r="7" fill="#f59e0b" />
+              <text x="307" y="146" font-size="10" fill="#b45309">65</text>
 
-                <text x="114" y="196" text-anchor="end" font-size="11" fill="#6b7280">Design</text>
-                <line x1="120" y1="192" x2="420" y2="192" stroke="#10b981" stroke-width="2" />
-                <circle cx="420" cy="192" r="7" fill="#10b981" />
-                <text x="432" y="196" font-size="10" fill="#059669">90</text>
+              <text x="114" y="196" text-anchor="end" font-size="11" fill="#6b7280">Design</text>
+              <line x1="120" y1="192" x2="420" y2="192" stroke="#10b981" stroke-width="2" />
+              <circle cx="420" cy="192" r="7" fill="#10b981" />
+              <text x="432" y="196" font-size="10" fill="#059669">90</text>
 
-                <text x="114" y="246" text-anchor="end" font-size="11" fill="#6b7280">
-                  Security
-                </text>
-                <line x1="120" y1="242" x2="320" y2="242" stroke="#f43f5e" stroke-width="2" />
-                <circle cx="320" cy="242" r="7" fill="#f43f5e" />
-                <text x="332" y="246" font-size="10" fill="#dc2626">72</text>
-              </svg>
-            </div>
-            <ui-code-preview
-              [htmlCode]="horizontalCode"
-              label="Horizontal Lollipop"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+              <text x="114" y="246" text-anchor="end" font-size="11" fill="#6b7280">
+                Security
+              </text>
+              <line x1="120" y1="242" x2="320" y2="242" stroke="#f43f5e" stroke-width="2" />
+              <circle cx="320" cy="242" r="7" fill="#f43f5e" />
+              <text x="332" y="246" font-size="10" fill="#dc2626">72</text>
+            </svg>
+          </pg-example-section>
         </div>
       </div>
     </div>

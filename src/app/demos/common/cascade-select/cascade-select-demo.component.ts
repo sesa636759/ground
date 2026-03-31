@@ -5,7 +5,7 @@ import { DmCascadeSelectPlaygroundComponent } from '../../../playground/common/c
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
-
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
@@ -18,6 +18,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
     DemoSidebarComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './cascade-select-demo.component.html',
@@ -25,8 +26,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmCascadeSelectDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'triggers', title: 'Triggers & Display', icon: '⚡' },
-    { id: 'selection', title: 'Selection Logic', icon: '🖱️' },
+    { id: 'triggers', title: 'Triggers & Display', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'selection', title: 'Selection Logic', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
   ];
 
   fileSystemOptions = [
