@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   signal,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -14,6 +14,7 @@ import {
   categoryNavItems,
   bottomNavItems,
   userProfileNavItems,
+  NavItem,
 } from './data/navigation.data';
 import { ThemeService } from './services/theme.service';
 import { AuthService } from './services/auth.service';
@@ -66,14 +67,57 @@ export class App implements OnInit {
   faChevronDown = faChevronDown;
   faChevronUp = faChevronUp;
 
-  // Expose navigation data for template
+  // Expose navigation data for template with child count enrichment
   topItems = this.getProcessedTopItems();
+  categoryItems = this.enrichWithChildCount(categoryNavItems);
+  bottomItems = this.enrichWithChildCount(bottomNavItems);
+  userProfileItems = this.enrichWithChildCount(userProfileNavItems);
+
+  private enrichWithChildCount(items: NavItem[]): NavItem[] {
+    if (!Array.isArray(items)) return [];
+
+    return items.map((item) => {
+      // 1. Create a clean shallow clone and ensure string ID
+      const newItem = {
+        ...item,
+        id: item.id ? String(item.id) : `gen-${Math.random().toString(36).substr(2, 9)}`,
+      };
+
+      // 2. Process Children
+      if (Array.isArray(newItem.children) && newItem.children.length > 0) {
+        // Only set badge if not already explicitly set (preserving 'New' or special badges)
+        if (!newItem.badge) {
+          const count = newItem.children.length;
+          newItem.badge = count > 0 ? String(count) : undefined;
+        }
+        // Recursively enrich children
+        newItem.children = this.enrichWithChildCount(newItem.children);
+      }
+
+      // 3. String Sanitization for VDOM (Critical for preventing [object Object] errors)
+      if (newItem.icon) {
+        newItem.icon = String(newItem.icon);
+      }
+      if (newItem.label) {
+        newItem.label = String(newItem.label || '');
+      }
+      if (newItem.badge) {
+        newItem.badge = String(newItem.badge);
+      }
+      if (newItem.id) {
+        newItem.id = String(newItem.id);
+      }
+
+      return newItem;
+    });
+  }
 
   private getProcessedTopItems() {
+    const enriched = this.enrichWithChildCount(topNavItems);
     const maxVisible = 4;
-    if (topNavItems.length > maxVisible) {
-      const visible = topNavItems.slice(0, maxVisible);
-      const overflow = topNavItems.slice(maxVisible);
+    if (enriched.length > maxVisible) {
+      const visible = enriched.slice(0, maxVisible);
+      const overflow = enriched.slice(maxVisible);
       return [
         ...visible,
         {
@@ -82,15 +126,12 @@ export class App implements OnInit {
           icon: 'more-horizontal',
           iconLibrary: 'lucide',
           children: overflow,
+          badge: String(overflow.length),
         },
       ];
     }
-    return topNavItems;
+    return enriched;
   }
-
-  categoryItems = categoryNavItems;
-  bottomItems = bottomNavItems;
-  userProfileItems = userProfileNavItems;
 
   // Theme Switcher State
   themeMenuOpen = signal(false);

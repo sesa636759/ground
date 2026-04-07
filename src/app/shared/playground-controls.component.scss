@@ -8,7 +8,7 @@
 .playground-layout {
   display: flex;
   gap: var(--space-2xl);
-  height: 70vh;
+  min-height: 0; // Removed 70vh
   align-items: stretch;
 
   @media (max-width: 1200px) {
@@ -169,8 +169,9 @@ input[type='range'] {
   .playground-controls,
   .playground-preview {
     position: sticky;
-    max-height: calc(100vh - 25rem);
-    overflow-y: auto;
+    top: 2rem;
+    height: auto; // Removed fixed max-height and hidden overflow
+    overflow-y: visible;
     outline: 2px solid var(--border-color);
     outline-offset: -2px;
     padding: 1rem;

@@ -98,10 +98,15 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
 <ui-button icon="🔍" icon-only pill></ui-button>
 <ui-button label="Profile" icon="👤" icon-position="right"></ui-button>`;
 
-  iconPositionsCode = `<ui-button label="Left Icon" icon="arrow-left" icon-library="lucide" icon-position="left" variant="outline"></ui-button>
+  iconPositionsCode = `<!-- icon-position="left" (default) — icon appears before the label -->
+<ui-button label="Left Icon" icon="arrow-left" icon-library="lucide" icon-position="left" variant="outline"></ui-button>
+<ui-button label="Download" icon="download" icon-library="lucide" icon-position="left" variant="primary"></ui-button>
+<ui-button label="Back" icon="chevron-left" icon-library="lucide" icon-position="left" variant="secondary"></ui-button>
+
+<!-- icon-position="right" — icon appears after the label -->
 <ui-button label="Right Icon" icon="arrow-right" icon-library="lucide" icon-position="right" variant="outline"></ui-button>
-<ui-button label="Top Icon" icon="arrow-up" icon-library="lucide" icon-position="top" variant="outline"></ui-button>
-<ui-button label="Bottom Icon" icon="arrow-down" icon-library="lucide" icon-position="bottom" variant="outline"></ui-button>`;
+<ui-button label="Next" icon="chevron-right" icon-library="lucide" icon-position="right" variant="success"></ui-button>
+<ui-button label="Share" icon="share-2" icon-library="lucide" icon-position="right" variant="outline"></ui-button>`;
 
   badgePositionsCode = `<!-- Absolute Positions -->
 <ui-button label="Notifications" icon="🔔" badge="9" badge-position="top-right"></ui-button>
@@ -150,16 +155,26 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
 <ui-button label="Elevation 4" elevation="4"></ui-button>
 <ui-button label="Elevation 5" elevation="5"></ui-button>`;
 
-  avatarCode = `<!-- User profile button with online status -->
-<ui-button label="Praveen" avatar-src="https://i.pravatar.cc/100?u=praveen" status="online" variant="outline" shape="pill"></ui-button>
-<ui-button label="Sarah Chen" avatar-src="https://i.pravatar.cc/100?u=sarah" status="busy" variant="soft" shape="rounded"></ui-button>
+  avatarCode = `<!-- Slot an img inside ui-button for avatar buttons -->
+<ui-button label="Praveen" variant="outline" pill>
+  <img src="https://i.pravatar.cc/100?u=praveen" alt="Praveen" class="btn-avatar-img" />
+</ui-button>
+<ui-button label="Sarah Chen" variant="secondary" pill>
+  <img src="https://i.pravatar.cc/100?u=sarah" alt="Sarah" class="btn-avatar-img" />
+</ui-button>
 
-<!-- Avatar only (quick select) -->
-<ui-button avatar-src="https://i.pravatar.cc/100?u=1" status="online" variant="ghost"></ui-button>`;
+<!-- Avatar-only (icon-only + slot) -->
+<ui-button icon-only variant="ghost" rounded title="User 1">
+  <img src="https://i.pravatar.cc/100?u=1" alt="User 1" class="btn-avatar-img btn-avatar-only" />
+</ui-button>`;
 
-  imageTypeCode = `<ui-button type="image" img-src="https://picsum.photos/id/237/64/64" img-alt="Puppy" label="Adopt Me" variant="primary"></ui-button>
-<ui-button type="image" img-src="https://picsum.photos/id/1025/64/64" img-alt="Pug" label="Pug Life" variant="outline"></ui-button>
-<ui-button type="image" img-src="https://picsum.photos/id/200/64/64" img-alt="Beach" label="Vacation" variant="info" shape="pill"></ui-button>`;
+  imageTypeCode = `<!-- Slot a thumbnail image alongside the label -->
+<ui-button label="Adopt Me" variant="primary" pill>
+  <img src="https://picsum.photos/id/237/32/32" alt="Puppy" class="btn-thumb-img" />
+</ui-button>
+<ui-button label="Pug Life" variant="outline" pill>
+  <img src="https://picsum.photos/id/1025/32/32" alt="Pug" class="btn-thumb-img" />
+</ui-button>`;
 
   autoWidthCode = `<!-- ui-button-group with fill distributes width automatically -->
 <ui-button-group fill gap="12px">

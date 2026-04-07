@@ -15,11 +15,11 @@
   flex-direction: column;
   position: relative;
 
-  // Override demo-base's height:100% — not needed when using flex: 1
+  // Override demo-base's height:100% to allow natural growth
   > .examples-split-layout {
     flex: 1;
     min-height: 0;
-    height: 100vh;
+    height: auto; // Changed from 100vh
   }
 }
 

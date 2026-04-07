@@ -18,8 +18,10 @@
 .playground-layout {
   display: flex;
   gap: var(--space-2xl);
-  height: 100%;
+  // height: auto; 
   align-items: stretch;
+  min-height: 0;
+  overflow: visible;
 
   @media (max-width: 1200px) {
     flex-direction: column;
@@ -153,19 +155,20 @@ ui-button.reset-btn {
 @media (min-width: 1201px) {
   .playground-layout {
     align-items: stretch;
-    height: 800px;
-    max-height: 70vh;
-    min-height: 600px;
+    height: auto; // Changed from 800px to auto
+    max-height: none; // Removed 70vh limit
+    min-height: 0;
   }
 
   .playground-controls,
   .playground-preview {
-    overflow-y: auto;
+    overflow-y: visible;
+    overflow-x: visible;
     scrollbar-gutter: stable;
     display: flex;
     flex-direction: column;
 
-    // Thin green scrollbar
+    // Scrollbar styles kept in case parents scroll
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
 

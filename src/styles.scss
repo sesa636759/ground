@@ -13,6 +13,15 @@
   box-sizing: border-box;
 }
 
+/* Round edges on all ui-button by default.
+   --dui-radius-sm is the dream-ui Shadow DOM variable used for the default
+   button shape; --dui-radius-md is used for the "rounded" variant.
+   Setting both to 9999px on :root cascades into the Shadow DOM. */
+:root {
+  --dui-radius-sm: 9999px;
+  --dui-radius-md: 9999px;
+}
+
 body {
   font-family:
     'Inter',

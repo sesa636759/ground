@@ -5,3 +5,28 @@
     font-family: 'Material Icons';
   }
 }
+
+.btn-avatar-img {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.btn-avatar-only {
+  width: 2em;
+  height: 2em;
+}
+
+.btn-thumb-img {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 4px;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}

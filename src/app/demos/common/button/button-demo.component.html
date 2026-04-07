@@ -1,7 +1,7 @@
 <div class="demo-container">
   <pg-demo-header
     icon="mouse-pointer-click"
-  iconLibrary="lucide"
+    iconLibrary="lucide"
     title="Button Component"
     description="An interactive component used to trigger actions or navigate through the application, featuring multiple styles, sizes, and states."
   >
@@ -314,7 +314,7 @@
         <pg-example-section
           id="icon-positions"
           title="Icon Positions"
-          description="Icons can be placed at any side of the label using the icon-position prop."
+          description='Use icon-position="left" (default) or "right" to place the icon inline with the label.'
           [code]="iconPositionsCode"
         >
           <div class="demo-flex-wrap">
@@ -333,17 +333,31 @@
               variant="outline"
             ></ui-button>
             <ui-button
-              label="Top Icon"
-              icon="arrow-up"
+              label="Download"
+              icon="download"
               icon-library="lucide"
-              icon-position="top"
-              variant="outline"
+              icon-position="left"
+              variant="primary"
             ></ui-button>
             <ui-button
-              label="Bottom Icon"
-              icon="arrow-down"
+              label="Next"
+              icon="chevron-right"
               icon-library="lucide"
-              icon-position="bottom"
+              icon-position="right"
+              variant="success"
+            ></ui-button>
+            <ui-button
+              label="Back"
+              icon="chevron-left"
+              icon-library="lucide"
+              icon-position="left"
+              variant="secondary"
+            ></ui-button>
+            <ui-button
+              label="Share"
+              icon="share-2"
+              icon-library="lucide"
+              icon-position="right"
               variant="outline"
             ></ui-button>
           </div>
@@ -580,99 +594,77 @@
         <pg-example-section
           id="avatar"
           title="Avatar Buttons"
-          description="Buttons with circular profile images and real-time status indicators (online, busy, away, offline)."
+          description="Slot an img element inside ui-button to show a circular avatar alongside the label."
           [code]="avatarCode"
         >
           <div style="display: flex; flex-direction: column; gap: 24px">
             <div>
               <p class="demo-section-label">User Profile Buttons</p>
               <div class="demo-flex-wrap">
-                <ui-button
-                  label="Praveen"
-                  avatar-src="https://i.pravatar.cc/100?u=praveen"
-                  status="online"
-                  variant="outline"
-                  shape="pill"
-                ></ui-button>
-                <ui-button
-                  label="Sarah Chen"
-                  avatar-src="https://i.pravatar.cc/100?u=sarah"
-                  status="busy"
-                  variant="soft"
-                  shape="rounded"
-                ></ui-button>
-                <ui-button
-                  label="System Admin"
-                  avatar-src="https://i.pravatar.cc/100?u=admin"
-                  status="offline"
-                  variant="dark"
-                  shape="pill"
-                ></ui-button>
+                <ui-button label="Praveen" variant="outline" pill>
+                  <img
+                    src="https://i.pravatar.cc/100?u=praveen"
+                    alt="Praveen"
+                    class="btn-avatar-img"
+                  />
+                </ui-button>
+                <ui-button label="Sarah Chen" variant="secondary" pill>
+                  <img src="https://i.pravatar.cc/100?u=sarah" alt="Sarah" class="btn-avatar-img" />
+                </ui-button>
+                <ui-button label="System Admin" variant="dark" pill>
+                  <img src="https://i.pravatar.cc/100?u=admin" alt="Admin" class="btn-avatar-img" />
+                </ui-button>
               </div>
             </div>
             <div>
-              <p class="demo-section-label">Sizes</p>
+              <p class="demo-section-label">Different Sizes</p>
               <div class="demo-flex-wrap items-end">
-                <ui-button
-                  size="small"
-                  label="Small"
-                  avatar-src="https://i.pravatar.cc/100?u=sm"
-                  status="away"
-                  variant="outline"
-                ></ui-button>
-                <ui-button
-                  size="medium"
-                  label="Medium"
-                  avatar-src="https://i.pravatar.cc/100?u=md"
-                  status="online"
-                  variant="outline"
-                ></ui-button>
-                <ui-button
-                  size="large"
-                  label="Large"
-                  avatar-src="https://i.pravatar.cc/100?u=lg"
-                  status="busy"
-                  variant="outline"
-                ></ui-button>
-                <ui-button
-                  size="xl"
-                  label="X-Large"
-                  avatar-src="https://i.pravatar.cc/100?u=xl"
-                  status="online"
-                  variant="outline"
-                ></ui-button>
+                <ui-button size="small" label="Small" variant="outline" pill>
+                  <img src="https://i.pravatar.cc/100?u=sm" alt="" class="btn-avatar-img" />
+                </ui-button>
+                <ui-button size="medium" label="Medium" variant="outline" pill>
+                  <img src="https://i.pravatar.cc/100?u=md" alt="" class="btn-avatar-img" />
+                </ui-button>
+                <ui-button size="large" label="Large" variant="outline" pill>
+                  <img src="https://i.pravatar.cc/100?u=lg" alt="" class="btn-avatar-img" />
+                </ui-button>
               </div>
             </div>
             <div>
-              <p class="demo-section-label">Avatar Only (Quick Select)</p>
+              <p class="demo-section-label">Avatar Only</p>
               <div class="demo-flex-wrap">
+                <ui-button icon-only variant="ghost" rounded title="User 1">
+                  <img
+                    src="https://i.pravatar.cc/100?u=1"
+                    alt="User 1"
+                    class="btn-avatar-img btn-avatar-only"
+                  />
+                </ui-button>
+                <ui-button icon-only variant="ghost" rounded title="User 2">
+                  <img
+                    src="https://i.pravatar.cc/100?u=2"
+                    alt="User 2"
+                    class="btn-avatar-img btn-avatar-only"
+                  />
+                </ui-button>
+                <ui-button icon-only variant="ghost" rounded title="User 3">
+                  <img
+                    src="https://i.pravatar.cc/100?u=3"
+                    alt="User 3"
+                    class="btn-avatar-img btn-avatar-only"
+                  />
+                </ui-button>
+                <ui-button icon-only variant="ghost" rounded title="User 4">
+                  <img
+                    src="https://i.pravatar.cc/100?u=4"
+                    alt="User 4"
+                    class="btn-avatar-img btn-avatar-only"
+                  />
+                </ui-button>
                 <ui-button
-                  avatar-src="https://i.pravatar.cc/100?u=1"
-                  status="online"
-                  variant="ghost"
-                  title="User 1"
-                ></ui-button>
-                <ui-button
-                  avatar-src="https://i.pravatar.cc/100?u=2"
-                  status="away"
-                  variant="ghost"
-                  title="User 2"
-                ></ui-button>
-                <ui-button
-                  avatar-src="https://i.pravatar.cc/100?u=3"
-                  status="busy"
-                  variant="ghost"
-                  title="User 3"
-                ></ui-button>
-                <ui-button
-                  avatar-src="https://i.pravatar.cc/100?u=4"
-                  status="online"
-                  variant="ghost"
-                  title="User 4"
-                ></ui-button>
-                <ui-button
+                  icon-only
+                  rounded
                   variant="soft"
-                  shape="circle"
                   icon="plus"
                   icon-library="lucide"
                   title="Add User"
@@ -686,40 +678,22 @@
         <pg-example-section
           id="image-type"
           title="Image Type"
-          description="Buttons that combine a raster image with a label for rich visual interaction."
+          description="Slot a thumbnail image inside ui-button alongside the label."
           [code]="imageTypeCode"
         >
           <div class="demo-flex-wrap">
-            <ui-button
-              type="image"
-              img-src="https://picsum.photos/id/237/64/64"
-              img-alt="Puppy"
-              label="Adopt Me"
-              variant="primary"
-            ></ui-button>
-            <ui-button
-              type="image"
-              img-src="https://picsum.photos/id/1025/64/64"
-              img-alt="Pug"
-              label="Pug Life"
-              variant="outline"
-            ></ui-button>
-            <ui-button
-              type="image"
-              img-src="https://picsum.photos/id/200/64/64"
-              img-alt="Cow"
-              label="Moo!"
-              variant="success"
-              shape="rounded"
-            ></ui-button>
-            <ui-button
-              type="image"
-              img-src="https://picsum.photos/id/100/64/64"
-              img-alt="Beach"
-              label="Vacation"
-              variant="info"
-              shape="pill"
-            ></ui-button>
+            <ui-button label="Adopt Me" variant="primary" pill>
+              <img src="https://picsum.photos/id/237/32/32" alt="Puppy" class="btn-thumb-img" />
+            </ui-button>
+            <ui-button label="Pug Life" variant="outline" pill>
+              <img src="https://picsum.photos/id/1025/32/32" alt="Pug" class="btn-thumb-img" />
+            </ui-button>
+            <ui-button label="Moo!" variant="success" rounded>
+              <img src="https://picsum.photos/id/200/32/32" alt="Cow" class="btn-thumb-img" />
+            </ui-button>
+            <ui-button label="Vacation" variant="info" pill>
+              <img src="https://picsum.photos/id/100/32/32" alt="Beach" class="btn-thumb-img" />
+            </ui-button>
           </div>
         </pg-example-section>
 

@@ -1,11 +1,11 @@
 // Enterprise Demo Page Styles
 
 .demo-container {
-  height: 100%;
-  max-height: 100vh;
+  min-height: 100%; // Changed from height: 100%
+  // max-height: 100vh; // Removed
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  // overflow: hidden; // Removed
   box-sizing: border-box;
   padding: var(--space-lg) var(--space-lg) 0 var(--space-lg);
   animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -163,10 +163,10 @@
 .pane-playground,
 .pane-examples,
 .pane-docs {
-  height: 100vh;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 
   > * {
     height: 100%;
@@ -179,7 +179,7 @@
     // handles its own (sidebar/content) scrolls.
     &:has(.examples-split-layout),
     &.examples-split-layout {
-      overflow: hidden !important;
+      overflow: visible !important;
     }
   }
 
@@ -197,20 +197,23 @@
   position: relative;
   flex: 1;
   min-height: 0;
-  height: 100%;
+  height: auto;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible;
   padding: 1rem;
   background: #f4faf6;
 
   .examples-content {
     flex: 1;
     min-width: 0;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    // height: 100%; // Removed
+    overflow-y: visible; // Changed from auto to visible to allow parent scroll
+    overflow-x: visible;
     scrollbar-gutter: stable;
     position: relative;
+    height: auto; // Allow content to dictate height
+    min-height: 0;
+    flex: 1;
     /* needed for reliable getBoundingClientRect scroll calc */
     padding: 2rem;
     background: #ffffff;

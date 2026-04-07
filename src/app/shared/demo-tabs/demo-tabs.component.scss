@@ -17,11 +17,11 @@
 .demo-master-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   background: #ffffff;
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 20px;
 }
 
@@ -39,10 +39,10 @@ ui-tabs {
 .pane-playground,
 .pane-examples,
 .pane-docs {
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
   flex: 1;
 }
 
