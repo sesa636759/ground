@@ -79,6 +79,35 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "ui-ground": {
+      "projectType": "library",
+      "root": "projects/ui-anuglar-lib",
+      "sourceRoot": "projects/ui-anuglar-lib/src",
+      "prefix": "ui",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/ui-anuglar-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ui-anuglar-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ui-anuglar-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/ui-anuglar-lib/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

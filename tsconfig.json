@@ -17,9 +17,18 @@
     "jsxFragmentFactory": "h.Fragment",
     "baseUrl": ".",
     "paths": {
-      "@service/*": ["src/service/*"]
+      "@service/*": ["src/service/*"],
+      "@enterprise/ui-ground": ["./dist/ui-ground"]
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "src/components.d.ts"]
+  "exclude": ["node_modules", "src/components.d.ts"],
+  "references": [
+    {
+      "path": "./projects/ui-anuglar-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ui-anuglar-lib/tsconfig.spec.json"
+    }
+  ]
 }

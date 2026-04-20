@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Component Library Analysis</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline';">
+    <meta name="description" content="Comprehensive analysis of app-ui-library (70+ components) and set-ui-lib (45+ components) with WCAG 2.1AA accessibility compliance and security features.">
+    <title>UI Component Library Analysis - WCAG 2.1AA Compliant</title>
     <style>
         * {
             margin: 0;
@@ -11,11 +13,30 @@
             box-sizing: border-box;
         }
         
+        /* WCAG 2.1AA: Skip link for keyboard navigation */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 0 0 4px 0;
+            font-weight: 600;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            overflow: hidden;
         }
         
         .presentation {
@@ -36,9 +57,9 @@
             display: none;
             animation: slideIn 0.6s ease-out;
             min-height: 600px;
-            display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow-y: auto;
         }
         
         .slide.active {
@@ -56,6 +77,15 @@
             }
         }
         
+        /* WCAG 2.1AA: Reduce motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
         /* Title Slide */
         .slide-title {
             text-align: center;
@@ -67,6 +97,7 @@
             font-size: 4em;
             margin-bottom: 20px;
             font-weight: 700;
+            color: white;
         }
         
         .slide-title .subtitle {
@@ -138,6 +169,13 @@
             font-size: 0.95em;
         }
         
+        .component-table caption {
+            text-align: left;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
         .component-table th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -153,24 +191,6 @@
         
         .component-table tr:hover {
             background: #f5f5f5;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin: 3px;
-        }
-        
-        .badge.events {
-            background: #764ba2;
-        }
-        
-        .badge.methods {
-            background: #f093fb;
         }
         
         /* Comparison */
@@ -268,8 +288,11 @@
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
         }
         
-        button:active {
-            transform: translateY(0);
+        /* WCAG 2.1AA: Focus visible indicator */
+        button:focus-visible {
+            outline: 3px solid #000;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
         }
         
         .slide-counter {
@@ -305,6 +328,18 @@
             font-size: 1.2em;
         }
         
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
         /* Conclusion Slide */
         .slide-conclusion {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -333,6 +368,9 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to presentation</a>
+    
+    <main id="main-content" role="main">
     <div class="presentation">
         <!-- Slide 1: Title -->
         <div class="slide slide-title active">
@@ -352,9 +390,9 @@
         </div>
         
         <!-- Slide 2: Overview -->
-        <div class="slide">
-            <h2>📊 Library Overview</h2>
-            <div class="stats-grid">
+        <div class="slide" role="region" aria-label="Slide 2: Library Overview">
+            <h2><span role="img" aria-label="chart">📊</span> Library Overview</h2>
+            <div class="stats-grid" role="presentation">
                 <div class="stat-box">
                     <div class="stat-number">70+</div>
                     <div class="stat-label">app-ui-library Components</div>
@@ -375,8 +413,8 @@
         </div>
         
         <!-- Slide 3: Key Features -->
-        <div class="slide">
-            <h2>✨ Key Features</h2>
+        <div class="slide" role="region" aria-label="Slide 3: Key Features">
+            <h2><span role="img" aria-label="sparkles">✨</span> Key Features</h2>
             
             <h3>app-ui-library Highlights</h3>
             <ul class="feature-list">
@@ -398,16 +436,17 @@
         </div>
         
         <!-- Slide 4: Button & Toggle Components -->
-        <div class="slide">
-            <h2>🔘 Button & Toggle Components</h2>
+        <div class="slide" role="region" aria-label="Slide 4: Button and Toggle Components">
+            <h2><span role="img" aria-label="button">🔘</span> Button & Toggle Components</h2>
             <table class="component-table">
+                <caption>Comparison of button and toggle components across libraries</caption>
                 <thead>
                     <tr>
-                        <th>Component</th>
-                        <th>Library</th>
-                        <th>Props</th>
-                        <th>Events</th>
-                        <th>Variants</th>
+                        <th scope="col">Component</th>
+                        <th scope="col">Library</th>
+                        <th scope="col">Props</th>
+                        <th scope="col">Events</th>
+                        <th scope="col">Variants</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -444,16 +483,17 @@
         </div>
         
         <!-- Slide 5: Input Components -->
-        <div class="slide">
-            <h2>📝 Input & Form Components</h2>
+        <div class="slide" role="region" aria-label="Slide 5: Input and Form Components">
+            <h2><span role="img" aria-label="memo">📝</span> Input & Form Components</h2>
             <table class="component-table">
+                <caption>Comparison of input and form components across libraries</caption>
                 <thead>
                     <tr>
-                        <th>Component</th>
-                        <th>Library</th>
-                        <th>Props</th>
-                        <th>Validation</th>
-                        <th>Features</th>
+                        <th scope="col">Component</th>
+                        <th scope="col">Library</th>
+                        <th scope="col">Props</th>
+                        <th scope="col">Validation</th>
+                        <th scope="col">Features</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -490,16 +530,17 @@
         </div>
         
         <!-- Slide 6: Navigation & Layout -->
-        <div class="slide">
-            <h2>🗺️ Navigation & Layout Components</h2>
+        <div class="slide" role="region" aria-label="Slide 6: Navigation and Layout Components">
+            <h2><span role="img" aria-label="world map">🗺️</span> Navigation & Layout Components</h2>
             <table class="component-table">
+                <caption>Comparison of navigation and layout management components</caption>
                 <thead>
                     <tr>
-                        <th>Component</th>
-                        <th>Library</th>
-                        <th>Props</th>
-                        <th>Methods</th>
-                        <th>Key Feature</th>
+                        <th scope="col">Component</th>
+                        <th scope="col">Library</th>
+                        <th scope="col">Props</th>
+                        <th scope="col">Methods</th>
+                        <th scope="col">Key Feature</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -536,15 +577,16 @@
         </div>
         
         <!-- Slide 7: Data Table & Charts -->
-        <div class="slide">
-            <h2>📈 Data Processing Components</h2>
+        <div class="slide" role="region" aria-label="Slide 7: Data Processing Components">
+            <h2><span role="img" aria-label="chart trending up">📈</span> Data Processing Components</h2>
             <table class="component-table">
+                <caption>Comparison of high-performance data visualization components</caption>
                 <thead>
                     <tr>
-                        <th>Component</th>
-                        <th>Library</th>
-                        <th>Props</th>
-                        <th>Key Features</th>
+                        <th scope="col">Component</th>
+                        <th scope="col">Library</th>
+                        <th scope="col">Props</th>
+                        <th scope="col">Key Features</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -552,7 +594,7 @@
                         <td><strong>UiAdvancedDataTable</strong></td>
                         <td>app-ui-library</td>
                         <td>95+</td>
-                        <td>Sorting, filtering, export, virtual scroll, virtual scroll, column pinning</td>
+                        <td>Sorting, filtering, export, virtual scroll, column pinning</td>
                     </tr>
                     <tr>
                         <td><strong>UiBarChart</strong></td>
@@ -577,11 +619,11 @@
         </div>
         
         <!-- Slide 8: Comparison -->
-        <div class="slide">
-            <h2>⚖️ Library Comparison</h2>
+        <div class="slide" role="region" aria-label="Slide 8: Library Comparison">
+            <h2><span role="img" aria-label="balance scale">⚖️</span> Library Comparison</h2>
             <div class="comparison">
                 <div class="comparison-item">
-                    <h4>🎨 app-ui-library</h4>
+                    <h4><span role="img" aria-label="artist palette">🎨</span> app-ui-library</h4>
                     <ul class="comparison-list">
                         <li>70+ Components</li>
                         <li>More data-focused</li>
@@ -593,7 +635,7 @@
                     </ul>
                 </div>
                 <div class="comparison-item set-ui">
-                    <h4>🎭 set-ui-lib</h4>
+                    <h4><span role="img" aria-label="theater masks">🎭</span> set-ui-lib</h4>
                     <ul class="comparison-list">
                         <li>45+ Components</li>
                         <li>Layout-focused</li>
@@ -608,20 +650,20 @@
         </div>
         
         <!-- Slide 9: Variants Showcase -->
-        <div class="slide">
-            <h2>🎨 Component Variants</h2>
+        <div class="slide" role="region" aria-label="Slide 9: Component Variants">
+            <h2><span role="img" aria-label="artist palette">🎨</span> Component Variants</h2>
             <h3>Color & Style Variants</h3>
-            <div class="variants-grid">
-                <div class="variant-item"><strong>Colors:</strong> primary, secondary, success, danger, warning, info</div>
-                <div class="variant-item"><strong>Styles:</strong> filled, outlined, text, soft, gradient</div>
-                <div class="variant-item"><strong>Shapes:</strong> circle, square, rounded, pill, hexagon</div>
+            <div class="variants-grid" role="list">
+                <div class="variant-item" role="listitem"><strong>Colors:</strong> primary, secondary, success, danger, warning, info</div>
+                <div class="variant-item" role="listitem"><strong>Styles:</strong> filled, outlined, text, soft, gradient</div>
+                <div class="variant-item" role="listitem"><strong>Shapes:</strong> circle, square, rounded, pill, hexagon</div>
             </div>
             
             <h3>Layout & Display Variants</h3>
-            <div class="variants-grid">
-                <div class="variant-item"><strong>Orientation:</strong> horizontal, vertical</div>
-                <div class="variant-item"><strong>Position:</strong> top, bottom, left, right</div>
-                <div class="variant-item"><strong>Sizes:</strong> xs, sm, md, lg, xl, 2xl</div>
+            <div class="variants-grid" role="list">
+                <div class="variant-item" role="listitem"><strong>Orientation:</strong> horizontal, vertical</div>
+                <div class="variant-item" role="listitem"><strong>Position:</strong> top, bottom, left, right</div>
+                <div class="variant-item" role="listitem"><strong>Sizes:</strong> xs, sm, md, lg, xl, 2xl</div>
             </div>
             
             <h3>Most Variant-Rich Components</h3>
@@ -634,8 +676,8 @@
         </div>
         
         <!-- Slide 10: Use Cases -->
-        <div class="slide">
-            <h2>💡 Recommended Use Cases</h2>
+        <div class="slide" role="region" aria-label="Slide 10: Recommended Use Cases">
+            <h2><span role="img" aria-label="light bulb">💡</span> Recommended Use Cases</h2>
             
             <h3>Use app-ui-library When:</h3>
             <ul class="feature-list">
@@ -657,8 +699,8 @@
         </div>
         
         <!-- Slide 11: Best Practices -->
-        <div class="slide">
-            <h2>🎯 Best Practices</h2>
+        <div class="slide" role="region" aria-label="Slide 11: Best Practices">
+            <h2><span role="img" aria-label="target">🎯</span> Best Practices</h2>
             
             <h3>For Component Development</h3>
             <ul class="feature-list">
@@ -679,8 +721,8 @@
         </div>
         
         <!-- Slide 12: Conclusion -->
-        <div class="slide slide-conclusion">
-            <h2>🚀 Conclusion</h2>
+        <div class="slide slide-conclusion" role="region" aria-label="Slide 12: Conclusion">
+            <h2><span role="img" aria-label="rocket">🚀</span> Conclusion</h2>
             <div class="highlight">
                 <p>Both libraries provide comprehensive, production-ready components with extensive customization options.</p>
                 <p style="font-size: 1.2em; margin-top: 30px;">
@@ -691,17 +733,22 @@
                     <strong>app-ui-library</strong> for data-heavy apps | <strong>set-ui-lib</strong> for layout-centric apps
                 </p>
             </div>
-            <p style="margin-top: 50px; opacity: 0.9;">Ready to build amazing interfaces! 🎉</p>
+            <p style="margin-top: 50px; opacity: 0.9;">Ready to build amazing interfaces! <span role="img" aria-label="tada">🎉</span></p>
         </div>
+    </div>
+    </main>
+
+    <div aria-live="polite" aria-atomic="true" class="sr-only" id="slide-status">
+        Slide 1 of 12
     </div>
     
     <!-- Controls -->
-    <div class="controls">
-        <button onclick="previousSlide()">← Previous</button>
-        <button onclick="nextSlide()">Next →</button>
-    </div>
+    <nav class="controls" aria-label="Slide navigation">
+        <button onclick="previousSlide()" aria-label="Previous slide">← Previous</button>
+        <button onclick="nextSlide()" aria-label="Next slide">Next →</button>
+    </nav>
     
-    <div class="slide-counter">
+    <div class="slide-counter" aria-label="Slide orientation">
         <span id="current">1</span> / <span id="total">12</span>
     </div>
     
@@ -713,10 +760,18 @@
         document.getElementById('total').textContent = totalSlides;
         
         function showSlide(n) {
+            if (!Number.isInteger(n)) return;
+            
             slides[currentSlide].classList.remove('active');
-            currentSlide = (n + totalSlides) % totalSlides;
+            currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
             slides[currentSlide].classList.add('active');
             document.getElementById('current').textContent = currentSlide + 1;
+            
+            // Update screen reader status
+            const status = document.getElementById('slide-status');
+            if (status) {
+                status.textContent = `Slide ${currentSlide + 1} of ${totalSlides}: ${slides[currentSlide].getAttribute('aria-label') || 'Title Slide'}`;
+            }
         }
         
         function nextSlide() {
@@ -731,6 +786,13 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') nextSlide();
             if (e.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>ide();
         });
     </script>
 </body>
